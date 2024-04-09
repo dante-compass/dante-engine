@@ -37,7 +37,7 @@
 
     <groupId>cn.herodotus.engine</groupId>
     <artifactId>dependencies</artifactId>
-    <version>3.1.10.1</version>
+    <version>3.1.10.2</version>
     <packaging>pom</packaging>
 
     <description>基于 Spring Authorization Server 的 Dante Cloud Dependencies</description>
@@ -71,7 +71,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <!--Spring 家族-->
-        <spring-boot-admin.version>3.2.2</spring-boot-admin.version>
+        <spring-boot-admin.version>3.2.3</spring-boot-admin.version>
         <spring-boot-dependencies.version>3.1.10</spring-boot-dependencies.version>
         <spring-cloud-dependencies.version>2022.0.4</spring-cloud-dependencies.version>
         <spring-cloud-alibaba-dependencies.version>2022.0.0.0</spring-cloud-alibaba-dependencies.version>
@@ -94,9 +94,9 @@
         <p6spy.version>3.9.1</p6spy.version>
         <springdoc.version>2.5.0</springdoc.version>
         <logstash-logback-encoder.version>7.4</logstash-logback-encoder.version>
-        <skywalking.version>9.1.0</skywalking.version>
+        <skywalking.version>9.2.0</skywalking.version>
         <minio.version>8.5.9</minio.version>
-        <aws-java-sdk-s3.version>1.12.692</aws-java-sdk-s3.version>
+        <aws-java-sdk-s3.version>1.12.696</aws-java-sdk-s3.version>
         <org.eclipse.paho.version>1.2.5</org.eclipse.paho.version>
         <influxdb-client.version>7.0.0</influxdb-client.version>
         <!-- 阿里巴巴开源工具依赖 -->
@@ -107,17 +107,17 @@
         <transmittable-thread-local.version>2.14.5</transmittable-thread-local.version>
         <!-- 国内开源通用组件 -->
         <hutool.version>6.0.0-M11</hutool.version>
-        <hutool-5.X.version>5.8.26</hutool-5.X.version>
+        <hutool-5.X.version>5.8.27</hutool-5.X.version>
         <okhttps.version>4.0.2</okhttps.version>
         <weixin-java-sdk.version>4.6.0</weixin-java-sdk.version>
         <just-auth.verison>1.16.6</just-auth.verison>
         <!--第三方starter-->
         <jasypt-spring-boot-starter.version>3.0.5</jasypt-spring-boot-starter.version>
-        <camunda-bpm-spring-boot-starter-rest.version>7.20.0</camunda-bpm-spring-boot-starter-rest.version>
+        <camunda-bpm-spring-boot-starter-rest.version>7.21.0</camunda-bpm-spring-boot-starter-rest.version>
         <sms4j-spring-boot-starter.version>3.2.0</sms4j-spring-boot-starter.version>
-        <mybatis-plus-boot-starter.version>3.5.5</mybatis-plus-boot-starter.version>
-        <mybatis-plus-generator.version>3.5.5</mybatis-plus-generator.version>
-        <mybatis.version>3.5.15</mybatis.version>
+        <mybatis-plus-boot-starter.version>3.5.6</mybatis-plus-boot-starter.version>
+        <mybatis-plus-generator.version>3.5.6</mybatis-plus-generator.version>
+        <mybatis.version>3.5.16</mybatis.version>
         <velocity.version>2.3</velocity.version>
         <!--Webjars 依赖-->
         <animate.css.version>4.1.1</animate.css.version>
@@ -133,7 +133,7 @@
         <aliyun-java-sdk-core.version>4.6.4</aliyun-java-sdk-core.version>
         <aliyun-java-sdk-green.version>3.6.6</aliyun-java-sdk-green.version>
         <aliyun-sdk-oss.version>3.17.4</aliyun-sdk-oss.version>
-        <alipay-sdk-java.version>4.39.19.ALL</alipay-sdk-java.version>
+        <alipay-sdk-java.version>4.39.31.ALL</alipay-sdk-java.version>
         <com.baidu.aip.version>4.16.18</com.baidu.aip.version>
         <!--以下为特殊处理, 统一版本处理漏洞等-->
         <commons-text.version>1.10.0</commons-text.version>
@@ -143,10 +143,10 @@
         <okio.version>3.9.0</okio.version>
         <xnio.version>3.8.13.Final</xnio.version>
         <checker-qual.version>3.42.0</checker-qual.version>
-        <maven-source-plugin.version>3.3.0</maven-source-plugin.version>
+        <maven-source-plugin.version>3.3.1</maven-source-plugin.version>
         <git-commit-id-maven-plugin.version>8.0.2</git-commit-id-maven-plugin.version>
-        <bcprov-jdk18on.version>1.77</bcprov-jdk18on.version>
-        <bcpkix-jdk18on.version>1.77</bcpkix-jdk18on.version>
+        <bcprov-jdk18on.version>1.78</bcprov-jdk18on.version>
+        <bcpkix-jdk18on.version>1.78</bcpkix-jdk18on.version>
         <dom4j.version>2.1.4</dom4j.version>
         <snakeyaml.version>2.2</snakeyaml.version>
         <sqlite-jdbc.version>3.45.2.0</sqlite-jdbc.version>
