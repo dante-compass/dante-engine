@@ -101,7 +101,7 @@
         <influxdb-client.version>7.0.0</influxdb-client.version>
         <!-- 阿里巴巴开源工具依赖 -->
         <fastjson.version>1.2.83</fastjson.version>
-        <fastjson2.version>2.0.48</fastjson2.version>
+        <fastjson2.version>2.0.49</fastjson2.version>
         <jetcache.version>2.7.5</jetcache.version>
         <nacos.version>2.3.2</nacos.version>
         <transmittable-thread-local.version>2.14.5</transmittable-thread-local.version>
