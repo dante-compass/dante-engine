@@ -13,7 +13,7 @@
     <a href="https://nacos.io/zh-cn/index.html" target="_blank"><img src="https://shields.io/badge/Nacos-2.3.2-brightgreen.svg?logo=alibabadotcom" alt="Nacos 2.3.2"></a>
 </p>
 <p align="center">
-    <a href="#" target="_blank"><img src="https://shields.io/badge/Version-3.1.11.1-red.svg?logo=spring" alt="Version 3.1.11.1"></a>
+    <a href="#" target="_blank"><img src="https://shields.io/badge/Version-3.1.11.2-red.svg?logo=spring" alt="Version 3.1.11.2"></a>
     <a href="https://bell-sw.com/pages/downloads/#downloads" target="_blank"><img src="https://img.shields.io/badge/JDK-17%2B-green.svg?logo=openjdk" alt="Java 17"></a>
     <a href="./LICENSE"><img src="https://img.shields.io/badge/License-Apache--2.0-blue.svg?logo=apache" alt="License Apache 2.0"></a>
     <a href="https://www.herodotus.cn"><img src="https://visitor-badge.laobi.icu/badge?page_id=dante-cloud&title=Total%20Visits" alt="Total Visits"></a>
@@ -33,7 +33,7 @@
 
 ## 重要说明
 
-因 Spring Boot 2.7.X 和 3.0.X 将分别于 2023年11月18日 和 2023年11月24日 停止维护，考虑到技术发展趋势，决定停止 Dante Cloud 2.7.X 版本代码的维护，专注 3.1.X 维护及 3.2.X 开发。2.7.16.Final 版本是 Dante Cloud 2.7.X 系列最后一个版本，代码仍旧会保留，可在工程 2.7.X 分支中获取。
+新增文档站点 https://www.herodotus.vip 。 该站点目前包含矫正和重新梳理后的系统部署相关内容，后续计划根据系统涉及的详细知识点和模块，在该站点陆续补充对应设计实现和认知理解相关文章（主要面向 Dante Cloud 3.3.X (Reactive 版) 即将发布）。原有站点如无特殊原因，仍旧会保留。欢迎喜欢 Dante Cloud 的朋友持续关注！
 
 ## 项目特点
 

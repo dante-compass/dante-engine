@@ -37,7 +37,7 @@
 
     <groupId>cn.herodotus.engine</groupId>
     <artifactId>dependencies</artifactId>
-    <version>3.1.11.1</version>
+    <version>3.1.11.2</version>
     <packaging>pom</packaging>
 
     <description>基于 Spring Authorization Server 的 Dante Cloud Dependencies</description>
@@ -88,16 +88,16 @@
         <commons-fileupload.version>1.5</commons-fileupload.version>
         <commons-io.version>2.16.1</commons-io.version>
         <commons-text.version>1.12.0</commons-text.version>
-        <guava.version>33.1.0-jre</guava.version>
+        <guava.version>33.2.0-jre</guava.version>
         <zxing.version>3.5.3</zxing.version>
         <!-- 应用开发辅助工具组件 -->
-        <redisson.version>3.29.0</redisson.version>
+        <redisson.version>3.30.0</redisson.version>
         <p6spy.version>3.9.1</p6spy.version>
         <springdoc.version>2.5.0</springdoc.version>
         <logstash-logback-encoder.version>7.4</logstash-logback-encoder.version>
         <skywalking.version>9.2.0</skywalking.version>
         <minio.version>8.5.10</minio.version>
-        <aws-java-sdk-s3.version>1.12.709</aws-java-sdk-s3.version>
+        <aws-java-sdk-s3.version>1.12.720</aws-java-sdk-s3.version>
         <org.eclipse.paho.version>1.2.5</org.eclipse.paho.version>
         <influxdb-client.version>7.0.0</influxdb-client.version>
         <!-- 阿里巴巴开源工具依赖 -->
@@ -107,7 +107,7 @@
         <nacos.version>2.3.2</nacos.version>
         <transmittable-thread-local.version>2.14.5</transmittable-thread-local.version>
         <!-- 国内开源通用组件 -->
-        <hutool.version>6.0.0-M11</hutool.version>
+        <hutool.version>6.0.0-M12</hutool.version>
         <hutool-5.X.version>5.8.27</hutool-5.X.version>
         <okhttps.version>4.0.2</okhttps.version>
         <weixin-java-sdk.version>4.6.0</weixin-java-sdk.version>
@@ -123,18 +123,18 @@
         <!--Webjars 依赖-->
         <animate.css.version>4.1.1</animate.css.version>
         <bootstrap.version>5.3.3</bootstrap.version>
-        <font-awesome.version>6.5.1</font-awesome.version>
+        <font-awesome.version>6.5.2</font-awesome.version>
         <jquery.version>3.7.1</jquery.version>
         <jquery-backstretch.version>2.1.17</jquery-backstretch.version>
         <mdi__font.version>7.4.47</mdi__font.version>
-        <quasar.version>2.15.4</quasar.version>
+        <quasar.version>2.16.1</quasar.version>
         <uniform.version>2.1.2-1</uniform.version>
-        <vue.version>3.4.23</vue.version>
+        <vue.version>3.4.25</vue.version>
         <!--厂商应用集成-->
         <aliyun-java-sdk-core.version>4.6.4</aliyun-java-sdk-core.version>
         <aliyun-java-sdk-green.version>3.6.6</aliyun-java-sdk-green.version>
         <aliyun-sdk-oss.version>3.17.4</aliyun-sdk-oss.version>
-        <alipay-sdk-java.version>4.39.52.ALL</alipay-sdk-java.version>
+        <alipay-sdk-java.version>4.39.70.ALL</alipay-sdk-java.version>
         <com.baidu.aip.version>4.16.18</com.baidu.aip.version>
         <!--以下为特殊处理, 统一版本处理漏洞等-->
         <httpclient.version>4.5.14</httpclient.version>
@@ -142,7 +142,7 @@
         <org.json.version>20240303</org.json.version>
         <okio.version>3.9.0</okio.version>
         <xnio.version>3.8.14.Final</xnio.version>
-        <checker-qual.version>3.42.0</checker-qual.version>
+        <checker-qual.version>3.43.0</checker-qual.version>
         <maven-source-plugin.version>3.3.1</maven-source-plugin.version>
         <git-commit-id-maven-plugin.version>8.0.2</git-commit-id-maven-plugin.version>
         <bcprov-jdk18on.version>1.78.1</bcprov-jdk18on.version>
