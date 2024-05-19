@@ -33,7 +33,7 @@
     <parent>
         <artifactId>engine-oauth2</artifactId>
         <groupId>cn.herodotus.engine</groupId>
-        <version>3.1.11.2</version>
+        <version>3.1.11.3</version>
     </parent>
 
     <artifactId>oauth2-sdk-management</artifactId>
@@ -69,7 +69,7 @@
             <artifactId>jquery</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.webjars.bower</groupId>
+            <groupId>org.webjars</groupId>
             <artifactId>jquery-backstretch</artifactId>
         </dependency>
         <dependency>
@@ -88,6 +88,10 @@
         <dependency>
             <groupId>org.webjars.npm</groupId>
             <artifactId>quasar</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars.npm</groupId>
+            <artifactId>sweetalert2</artifactId>
         </dependency>
 
     </dependencies>

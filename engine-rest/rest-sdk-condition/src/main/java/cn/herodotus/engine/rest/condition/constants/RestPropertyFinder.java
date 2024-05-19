@@ -51,8 +51,8 @@ public class RestPropertyFinder {
         return PropertyResolver.getProperty(conditionContext, RestConstants.ITEM_PROTECT_CRYPTO_STRATEGY);
     }
 
-    public static boolean isScanEnabled(ConditionContext conditionContext) {
-        return PropertyResolver.getBoolean(conditionContext, RestConstants.ITEM_SCAN_ENABLED);
+    public static boolean isScanEnabled(ConditionContext conditionContext, boolean defaultValue) {
+        return PropertyResolver.getBoolean(conditionContext, RestConstants.ITEM_SCAN_ENABLED, defaultValue);
     }
 
     public static boolean isOpenFeignOkHttpEnabled(ConditionContext conditionContext) {
