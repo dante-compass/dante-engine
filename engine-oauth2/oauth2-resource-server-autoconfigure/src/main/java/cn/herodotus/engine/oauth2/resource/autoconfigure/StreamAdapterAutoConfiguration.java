@@ -25,7 +25,6 @@
 
 package cn.herodotus.engine.oauth2.resource.autoconfigure;
 
-import cn.herodotus.engine.message.kafka.autoconfigure.MessageKafkaAutoConfiguration;
 import cn.herodotus.engine.oauth2.resource.autoconfigure.stream.StreamMessageSendingAdapter;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
@@ -46,7 +45,7 @@ import org.springframework.context.annotation.Bean;
 @ConditionalOnBean(StreamBridge.class)
 public class StreamAdapterAutoConfiguration {
 
-    private static final Logger log = LoggerFactory.getLogger(MessageKafkaAutoConfiguration.class);
+    private static final Logger log = LoggerFactory.getLogger(StreamAdapterAutoConfiguration.class);
 
     @PostConstruct
     public void postConstruct() {

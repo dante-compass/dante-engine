@@ -25,6 +25,7 @@
 
 package cn.herodotus.engine.rest.core.constants;
 
+import cn.herodotus.engine.assistant.core.constants.DefaultConstants;
 import com.google.common.collect.Lists;
 
 import java.util.List;
@@ -53,5 +54,5 @@ public class WebResources {
             "/favicon.ico");
     public static final List<String> DEFAULT_PERMIT_ALL_RESOURCES = Lists.newArrayList("/open/**", "/stomp/ws", "/oauth2/sign-out", "/login*");
 
-    public static final List<String> DEFAULT_HAS_AUTHENTICATED_RESOURCES = Lists.newArrayList("/engine-rest/**");
+    public static final List<String> DEFAULT_HAS_AUTHENTICATED_RESOURCES = Lists.newArrayList("/engine-rest/**", DefaultConstants.AUTHORIZATION_CONSENT_URI, DefaultConstants.DEVICE_VERIFICATION_SUCCESS_URI);
 }

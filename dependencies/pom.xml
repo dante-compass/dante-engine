@@ -31,13 +31,13 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.1.11</version>
+        <version>3.1.12</version>
         <relativePath/>
     </parent>
 
     <groupId>cn.herodotus.engine</groupId>
     <artifactId>dependencies</artifactId>
-    <version>3.1.11.3</version>
+    <version>3.1.12.0-Final</version>
     <packaging>pom</packaging>
 
     <description>基于 Spring Authorization Server 的 Dante Cloud Dependencies</description>
@@ -72,7 +72,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <!--Spring 家族-->
         <spring-boot-admin.version>3.2.3</spring-boot-admin.version>
-        <spring-boot-dependencies.version>3.1.11</spring-boot-dependencies.version>
+        <spring-boot-dependencies.version>3.1.12</spring-boot-dependencies.version>
         <spring-cloud-dependencies.version>2022.0.4</spring-cloud-dependencies.version>
         <spring-cloud-alibaba-dependencies.version>2022.0.0.0</spring-cloud-alibaba-dependencies.version>
         <spring-cloud-tencent-dependencies.version>1.13.2-2022.0.4</spring-cloud-tencent-dependencies.version>
@@ -135,8 +135,8 @@
         <aliyun-java-sdk-core.version>4.6.4</aliyun-java-sdk-core.version>
         <aliyun-java-sdk-green.version>3.6.6</aliyun-java-sdk-green.version>
         <aliyun-sdk-oss.version>3.17.4</aliyun-sdk-oss.version>
-        <alipay-sdk-java.version>4.39.70.ALL</alipay-sdk-java.version>
-        <com.baidu.aip.version>4.16.18</com.baidu.aip.version>
+        <alipay-sdk-java.version>4.39.79.ALL</alipay-sdk-java.version>
+        <com.baidu.aip.version>4.16.19</com.baidu.aip.version>
         <!--以下为特殊处理, 统一版本处理漏洞等-->
         <httpclient.version>4.5.14</httpclient.version>
         <mysql.version>8.4.0</mysql.version>
