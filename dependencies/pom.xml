@@ -41,22 +41,26 @@
     <url>https://www.herodotus.cn</url>
     <licenses>
         <license>
-            <name>GNU LESSER GENERAL PUBLIC LICENSE Version 3</name>
-            <url>https://www.gnu.org/licenses/lgpl-3.0.html</url>
+            <name>GNU AFFERO GENERAL PUBLIC LICENSE Version 3</name>
+            <url>https://www.gnu.org/licenses/agpl-3.0.html</url>
         </license>
     </licenses>
+    <organization>
+        <name>dromara</name>
+        <url>https://dromara.org.cn</url>
+    </organization>
     <developers>
         <developer>
-            <id>herodotus-cloud</id>
+            <id>herodotus-ecosystem</id>
             <name>码匠君</name>
             <email>herodotus@aliyun.com</email>
-            <organization>Dromara</organization>
+            <organization>dromara</organization>
             <organizationUrl>https://dromara.org.cn</organizationUrl>
             <timezone>+8</timezone>
         </developer>
     </developers>
     <scm>
-        <url>https://github.com/dromara/dante-cloud</url>
+        <url>https://github.com/dromara/dante-cloud.git</url>
     </scm>
 
     <!-- ${basedir} 项目根目录 -->
