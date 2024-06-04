@@ -33,7 +33,7 @@
 
     <groupId>cn.herodotus.engine</groupId>
     <artifactId>dependencies</artifactId>
-    <version>3.3.0.3</version>
+    <version>3.3.0.4</version>
     <packaging>pom</packaging>
 
     <description>基于 Spring Authorization Server 的 Dante Cloud Dependencies</description>
@@ -77,7 +77,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <!--Spring 家族-->
-        <spring-boot-admin.version>3.2.3</spring-boot-admin.version>
+        <spring-boot-admin.version>3.3.1</spring-boot-admin.version>
         <spring-boot-dependencies.version>3.3.0</spring-boot-dependencies.version>
         <spring-cloud-dependencies.version>2023.0.2</spring-cloud-dependencies.version>
         <spring-cloud-alibaba-dependencies.version>2023.0.1.0</spring-cloud-alibaba-dependencies.version>
@@ -102,7 +102,7 @@
         <logstash-logback-encoder.version>7.4</logstash-logback-encoder.version>
         <skywalking.version>9.2.0</skywalking.version>
         <minio.version>8.5.10</minio.version>
-        <aws-java-sdk-s3.version>1.12.733</aws-java-sdk-s3.version>
+        <aws-java-sdk-s3.version>1.12.735</aws-java-sdk-s3.version>
         <org.eclipse.paho.version>1.2.5</org.eclipse.paho.version>
         <influxdb-client.version>7.1.0</influxdb-client.version>
         <!-- 阿里巴巴开源工具依赖 -->
@@ -142,15 +142,14 @@
         <aliyun-java-sdk-core.version>4.6.4</aliyun-java-sdk-core.version>
         <aliyun-java-sdk-green.version>3.6.6</aliyun-java-sdk-green.version>
         <aliyun-sdk-oss.version>3.17.4</aliyun-sdk-oss.version>
-        <alipay-sdk-java.version>4.39.86.ALL</alipay-sdk-java.version>
+        <alipay-sdk-java.version>4.39.95.ALL</alipay-sdk-java.version>
         <com.baidu.aip.version>4.16.19</com.baidu.aip.version>
         <!--以下为特殊处理, 统一版本处理漏洞等-->
         <bcprov-jdk18on.version>1.78.1</bcprov-jdk18on.version>
         <bcpkix-jdk18on.version>1.78.1</bcpkix-jdk18on.version>
-        <checker-qual.version>3.43.0</checker-qual.version>
+        <checker-qual.version>3.44.0</checker-qual.version>
         <dom4j.version>2.1.4</dom4j.version>
         <fastjson.version>1.2.83</fastjson.version>
-        <git-commit-id-maven-plugin.version>8.0.2</git-commit-id-maven-plugin.version>
         <httpclient.version>4.5.14</httpclient.version>
         <mysql.version>8.4.0</mysql.version>
         <org.json.version>20240303</org.json.version>

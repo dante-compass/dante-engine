@@ -29,7 +29,7 @@
     <parent>
         <artifactId>engine-cache</artifactId>
         <groupId>cn.herodotus.engine</groupId>
-        <version>3.3.0.3</version>
+        <version>3.3.0.4</version>
     </parent>
 
     <artifactId>cache-sdk-redis</artifactId>
