@@ -51,6 +51,7 @@ public enum GrantType implements BaseUiEnum<String> {
     DEVICE_CODE(AuthorizationGrantType.DEVICE_CODE.getValue(), "Device Code 模式"),
     REFRESH_TOKEN(AuthorizationGrantType.REFRESH_TOKEN.getValue(), "Refresh Token 模式"),
     JWT_BEARER(AuthorizationGrantType.JWT_BEARER.getValue(), "JWT Token 模式"),
+    TOKEN_EXCHANGE(AuthorizationGrantType.TOKEN_EXCHANGE.getValue(), "Token Exchange 模式"),
     PASSWORD(BaseConstants.PASSWORD, "Password 模式"),
     SOCIAL_CREDENTIALS(BaseConstants.SOCIAL_CREDENTIALS, "Social Credentials 模式");
 

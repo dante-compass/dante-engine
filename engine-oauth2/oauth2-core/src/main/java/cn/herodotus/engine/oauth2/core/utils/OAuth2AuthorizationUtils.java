@@ -44,7 +44,10 @@ public class OAuth2AuthorizationUtils {
             return AuthorizationGrantType.DEVICE_CODE;
         } else if (AuthorizationGrantType.JWT_BEARER.getValue().equals(authorizationGrantType)) {
             return AuthorizationGrantType.JWT_BEARER;
+        } else if (AuthorizationGrantType.TOKEN_EXCHANGE.getValue().equals(authorizationGrantType)) {
+            return AuthorizationGrantType.TOKEN_EXCHANGE;
         }
+
         return new AuthorizationGrantType(authorizationGrantType);        // Custom authorization grant type
     }
 
@@ -59,6 +62,10 @@ public class OAuth2AuthorizationUtils {
             return ClientAuthenticationMethod.PRIVATE_KEY_JWT;
         } else if (ClientAuthenticationMethod.NONE.getValue().equals(clientAuthenticationMethod)) {
             return ClientAuthenticationMethod.NONE;
+        } else if (ClientAuthenticationMethod.TLS_CLIENT_AUTH.getValue().equals(clientAuthenticationMethod)) {
+            return ClientAuthenticationMethod.TLS_CLIENT_AUTH;
+        } else if (ClientAuthenticationMethod.SELF_SIGNED_TLS_CLIENT_AUTH.getValue().equals(clientAuthenticationMethod)) {
+            return ClientAuthenticationMethod.SELF_SIGNED_TLS_CLIENT_AUTH;
         }
         return new ClientAuthenticationMethod(clientAuthenticationMethod);
     }
