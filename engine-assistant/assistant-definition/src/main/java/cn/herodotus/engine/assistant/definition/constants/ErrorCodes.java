@@ -135,6 +135,11 @@ public interface ErrorCodes {
     ForbiddenFeedback SQL_INJECTION_REQUEST = new ForbiddenFeedback("疑似SQL注入请求");
 
     /**
+     * 404.** Not Found	服务器无法根据客户端的请求找到资源（网页）。通过此代码，网站设计人员可设置"您所请求的资源无法找到"的个性页面
+     */
+    NotFoundFeedback NO_RESOURCE_FOUND_EXCEPTION = new NotFoundFeedback("指定的资源未找到");
+
+    /**
      * 405.** 方法不允许 与405对应
      */
     MethodNotAllowedFeedback METHOD_NOT_ALLOWED = new MethodNotAllowedFeedback("方法不允许");
