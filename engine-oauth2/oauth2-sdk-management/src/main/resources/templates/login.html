@@ -84,7 +84,7 @@
                 </div>
                 <div class="mb-2">
                     <label class="form-check">
-                        <input th:id="${anubis}" th:name="${anubis}" type="checkbox" class="form-check-input"/>
+                        <input id="machine" type="checkbox" class="form-check-input"/>
                         <span class="form-check-label">下次自动登录</span>
                     </label>
                 </div>
@@ -93,6 +93,7 @@
                 <input type="hidden" th:name="${vulgar_tycoon}" th:id="${vulgar_tycoon}">
                 <input type="hidden" th:name="${beast}" th:id="${beast}">
                 <input type="hidden" th:name="${graphic}" th:id="${graphic}">
+                <input type="hidden" th:name="${anubis}" th:id="${anubis}">
                 <div class="form-footer">
                     <button id="disco" type="submit" class="btn btn-primary w-100">登录</button>
                 </div>
@@ -151,42 +152,24 @@
         loadCaptcha();
     }
 
-    function login() {
-        // Fetch all the forms we want to apply custom Bootstrap validation styles to
-        const forms = document.getElementsByClassName('needs-validation');
-
-        // Loop over them and prevent submission
-        const validation = Array.prototype.filter.call(forms, function(form) {
-            form.addEventListener('submit', function(event) {
-                console.log(form);
-                console.log(form.checkValidity());
-                if (form.checkValidity() === false) {
-                    event.preventDefault();
-                    event.stopPropagation();
-                } else {
-                    form.classList.add('was-validated');
-                }
-
-            }, false);
-        });
-    }
-
-
     $('#disco').click(function () {
         $("#login-form").submit(function (e) {
             let tank = $('#tank').val();
             let fighter = $('#fighter').val();
             let missile = $('#missile').val();
+            let machine = $('#machine').val();
 
             let data =  $.security.encryptSignInFormData(tank, fighter, missile, key)
 
             let vulgarTycoon = '#' + '[[${vulgar_tycoon}]]';
             let beast = '#' + '[[${beast}]]';
             let graphic = '#' + '[[${graphic}]]';
+            let anubis = '#' + '[[${anubis}]]';
 
             $(vulgarTycoon).val(data.encryptTank);
             $(beast).val(data.encryptFighter);
             $(graphic).val(data.encryptMissile);
+            $(anubis).val(machine);
         });
     });
 

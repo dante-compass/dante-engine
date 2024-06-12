@@ -49,9 +49,8 @@ public class FormLoginWebAuthenticationDetailsDeserializer extends JsonDeseriali
         String parameterName = JsonNodeUtils.findStringValue(jsonNode, "parameterName");
         String category = JsonNodeUtils.findStringValue(jsonNode, "category");
         String code = JsonNodeUtils.findStringValue(jsonNode, "code");
-        String identity = JsonNodeUtils.findStringValue(jsonNode, "identity");
-        boolean closed = JsonNodeUtils.findBooleanValue(jsonNode, "closed");
+        boolean enabled = JsonNodeUtils.findBooleanValue(jsonNode, "enabled");
 
-        return new FormLoginWebAuthenticationDetails(remoteAddress, sessionId, closed, parameterName, category, code, identity);
+        return new FormLoginWebAuthenticationDetails(remoteAddress, sessionId, enabled, parameterName, category, code);
     }
 }

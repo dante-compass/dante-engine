@@ -67,11 +67,11 @@ public class OAuth2FormLoginAuthenticationProvider extends DaoAuthenticationProv
 
         if (ObjectUtils.isNotEmpty(details) && details instanceof FormLoginWebAuthenticationDetails formLoginWebAuthenticationDetails) {
 
-            if (!formLoginWebAuthenticationDetails.getClosed()) {
+            if (formLoginWebAuthenticationDetails.getEnabled()) {
 
                 String code = formLoginWebAuthenticationDetails.getCode();
                 String category = formLoginWebAuthenticationDetails.getCategory();
-                String identity = formLoginWebAuthenticationDetails.getIdentity();
+                String identity = formLoginWebAuthenticationDetails.getSessionId();
 
                 if (StringUtils.isBlank(code)) {
                     throw new OAuth2CaptchaIsEmptyException("Captcha is empty.");
