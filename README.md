@@ -87,7 +87,6 @@ herodotus-engine
 ├    └── access-spring-boot-starter -- 外部登录  模块统一 Starter
 ├── engine-assistant -- 核心通用代码包
 ├    ├── assistant-core -- 核心通用代码
-├    ├── assistant-sdk-ip2region -- IP离线定位组件核心代码模块
 ├    └── assistant-autoconfigure -- Assistant  模块统一 Starter
 ├── engine-cache -- 缓存模块
 ├    ├── cache-core -- 缓存通用代码
@@ -112,7 +111,6 @@ herodotus-engine
 ├    ├── facility-alibaba-spring-boot-starter -- 面向 Spring Cloud Alibaba 的微服务基础设施适配模块
 ├    ├── facility-core -- 基础设施共性通用代码
 ├    ├── facility-gateway-spring-boot-starter -- Alibaba Sentinel 在 Gateway 环境下基础设施适配模块
-├    ├── facility-original-spring-boot-starter -- 面向 Spring Cloud 原生全家桶的微服务基础设施适配模块
 ├    └── facility-tencent-spring-boot-starter -- 面向 Spring Cloud Tencent 的微服务基础设施适配模块
 ├── engine-message -- 消息模块
 ├    ├── message-core -- 消息共性通用代码

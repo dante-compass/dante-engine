@@ -269,11 +269,6 @@
             </dependency>
             <dependency>
                 <groupId>cn.herodotus.engine</groupId>
-                <artifactId>assistant-sdk-ip2region</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.herodotus.engine</groupId>
                 <artifactId>assistant-spring-boot-starter</artifactId>
                 <version>${project.version}</version>
             </dependency>
@@ -405,11 +400,6 @@
             <dependency>
                 <groupId>cn.herodotus.engine</groupId>
                 <artifactId>message-kafka-spring-boot-starter</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.herodotus.engine</groupId>
-                <artifactId>message-rabbitmq-spring-boot-starter</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

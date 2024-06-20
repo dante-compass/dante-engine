@@ -38,7 +38,6 @@
         <module>facility-core</module>
         <module>facility-alibaba-spring-boot-starter</module>
         <module>facility-tencent-spring-boot-starter</module>
-        <module>facility-original-spring-boot-starter</module>
         <module>facility-gateway-spring-boot-starter</module>
     </modules>
 
