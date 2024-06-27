@@ -30,11 +30,11 @@ import cn.herodotus.engine.access.wxapp.properties.WxappProperties;
 import com.google.common.collect.Maps;
 import me.chanjar.weixin.common.error.WxErrorException;
 import me.chanjar.weixin.common.error.WxRuntimeException;
+import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.InitializingBean;
 
 import java.io.File;
 import java.util.List;
@@ -47,49 +47,48 @@ import java.util.stream.Collectors;
  * @author : gengwei.zheng
  * @date : 2021/5/27 20:29
  */
-public class WxappProcessor implements InitializingBean {
+public class WxappProcessor {
 
     private static final Logger log = LoggerFactory.getLogger(WxappProcessor.class);
 
-    private WxappProperties wxappProperties;
-    private WxappLogHandler wxappLogHandler;
+    private final WxappProperties wxappProperties;
+    private final WxappLogHandler wxappLogHandler;
+    private final Map<String, WxMaMessageRouter> wxMaMessageRouters;
+    private final Map<String, WxMaService> wxMaServices;
 
-    private Map<String, WxMaMessageRouter> wxMaMessagerouters = Maps.newHashMap();
-    private Map<String, WxMaService> wxMaServices = Maps.newHashMap();
-
-    public void setWxappProperties(WxappProperties wxappProperties) {
+    public WxappProcessor(WxappProperties wxappProperties) {
         this.wxappProperties = wxappProperties;
+        this.wxappLogHandler = new WxappLogHandler();
+        this.wxMaMessageRouters = Maps.newHashMap();
+        this.wxMaServices = initWxMaServices(this.wxappProperties, this.wxMaMessageRouters);
     }
 
-    public void setWxappLogHandler(WxappLogHandler wxappLogHandler) {
-        this.wxappLogHandler = wxappLogHandler;
-    }
+    private Map<String, WxMaService> initWxMaServices(WxappProperties wxappProperties, Map<String, WxMaMessageRouter> wxMaMessageRouters) {
+        List<WxappProperties.Config> configs = wxappProperties.getConfigs();
 
-    @Override
-    public void afterPropertiesSet() throws Exception {
-        List<WxappProperties.Config> configs = this.wxappProperties.getConfigs();
-        if (configs == null) {
+        if (CollectionUtils.isNotEmpty(configs)) {
+
+            log.info("[Herodotus] |- Bean [Weixin Mini App] Configure.");
+
+            return configs.stream()
+                    .map(a -> {
+                        WxMaDefaultConfigImpl config = new WxMaDefaultConfigImpl();
+//                WxMaDefaultConfigImpl config = new WxMaRedisConfigImpl(new JedisPool());
+                        // 使用上面的配置时，需要同时引入jedis-lock的依赖，否则会报类无法找到的异常
+                        config.setAppid(a.getAppId());
+                        config.setSecret(a.getSecret());
+                        config.setToken(a.getToken());
+                        config.setAesKey(a.getAesKey());
+                        config.setMsgDataFormat(a.getMessageDataFormat());
+
+                        WxMaService service = new WxMaServiceImpl();
+                        service.setWxMaConfig(config);
+                        wxMaMessageRouters.put(a.getAppId(), this.newRouter(service));
+                        return service;
+                    }).collect(Collectors.toMap(s -> s.getWxMaConfig().getAppid(), a -> a));
+        } else {
             throw new WxRuntimeException("Weixin Mini App Configuraiton is not setting!");
         }
-
-        wxMaServices = configs.stream()
-                .map(a -> {
-                    WxMaDefaultConfigImpl config = new WxMaDefaultConfigImpl();
-//                WxMaDefaultConfigImpl config = new WxMaRedisConfigImpl(new JedisPool());
-                    // 使用上面的配置时，需要同时引入jedis-lock的依赖，否则会报类无法找到的异常
-                    config.setAppid(a.getAppId());
-                    config.setSecret(a.getSecret());
-                    config.setToken(a.getToken());
-                    config.setAesKey(a.getAesKey());
-                    config.setMsgDataFormat(a.getMessageDataFormat());
-
-                    WxMaService service = new WxMaServiceImpl();
-                    service.setWxMaConfig(config);
-                    wxMaMessagerouters.put(a.getAppId(), this.newRouter(service));
-                    return service;
-                }).collect(Collectors.toMap(s -> s.getWxMaConfig().getAppid(), a -> a));
-
-        log.info("[Herodotus] |- Bean [herodotus Weixin Mini App] Auto Configure.");
     }
 
     private WxMaMessageRouter newRouter(WxMaService wxMaService) {
@@ -98,19 +97,32 @@ public class WxappProcessor implements InitializingBean {
         return router;
     }
 
+    /**
+     * 根据 Appid 获取到 {@link WxMaService} 对象
+     * @param appid 小程序 AppId
+     * @return {@link WxMaService} 对象
+     */
     public WxMaService getWxMaService(String appid) {
         WxMaService wxMaService = wxMaServices.get(appid);
         if (ObjectUtils.isEmpty(wxMaService)) {
             throw new IllegalArgumentException(String.format("Cannot find the configuration of appid=[%s], please check!", appid));
         }
-
         return wxMaService;
     }
 
+    /**
+     * 根据 Appid 获取到 {@link WxMaMessageRouter} 对象
+     * @param appid 小程序 AppId
+     * @return {@link WxMaMessageRouter} 对象
+     */
     public WxMaMessageRouter getWxMaMessageRouter(String appid) {
-        return wxMaMessagerouters.get(appid);
+        return wxMaMessageRouters.get(appid);
     }
 
+    /**
+     * 根据默认的 AppId 获取对应的 {@link WxMaService} 对象
+     * @return {@link WxMaService} 对象
+     */
     public WxMaService getWxMaService() {
         String appId = wxappProperties.getDefaultAppId();
         if (StringUtils.isBlank(appId)) {
@@ -139,6 +151,22 @@ public class WxappProcessor implements InitializingBean {
     }
 
     /**
+     * 使用 code 和 appId，登录微信小程序
+     * @param code 小程序生成的 code
+     * @param appId 小程序 AppId
+     * @return {@link WxMaJscode2SessionResult} 对象
+     */
+    public WxMaJscode2SessionResult login(String code, String appId) {
+        WxMaService wxMaService = getWxMaService(appId);
+        if (StringUtils.isNotBlank(code) && ObjectUtils.isNotEmpty(wxMaService)) {
+            return this.getSessionInfo(code, wxMaService);
+        } else {
+            log.error("[Herodotus] |- Weixin Mini App login failed, please check code param!");
+            return null;
+        }
+    }
+
+    /**
      * 验证用户完整性
      *
      * @param sessionKey  会话密钥
@@ -157,6 +185,10 @@ public class WxappProcessor implements InitializingBean {
         }
     }
 
+    private boolean checkUserInfo(String rawData, String signature) {
+        return StringUtils.isNotBlank(rawData) && StringUtils.isNotBlank(signature);
+    }
+
     /**
      * 解密用户信息
      *
@@ -172,54 +204,11 @@ public class WxappProcessor implements InitializingBean {
         return wxMaUserInfo;
     }
 
-    /**
-     * 解密手机号
-     * <p>
-     * 确认下前后端传递的参数有没有做UrlEncode/UrlDecode，因为encryptedData里会包含特殊字符在传递参数时被转义，可能服务器端实际拿到的参数encryptedData并不是前端实际获取到的值，导致SDK调用微信相应接口时无法解密而报错，只要保证前端实际获取到的encryptedData和服务器端调用SDK时传入的encryptedData一致就不会报错的，SDK中方法并无问题；建议让前后台都打印下日志，看下服务端最终使用的参数值是否还是前端获取到的原始值呢。PS：SpringBoot某些场景下form表单参数是会自动做UrlDecode的...
-     * <p>
-     * {@see :https://github.com/Wechat-Group/WxJava/issues/359}
-     *
-     * @param sessionKey    会话密钥
-     * @param encryptedData 消息密文
-     * @param iv            加密算法的初始向量
-     * @param wxMaService   微信小程序服务
-     * @return {@link WxMaPhoneNumberInfo}
-     */
-    private WxMaPhoneNumberInfo getPhoneNumberInfo(String sessionKey, String encryptedData, String iv, WxMaService wxMaService) {
-        log.info("[Herodotus] |- Weixin Mini App get encryptedData： {}", encryptedData);
-
-        WxMaPhoneNumberInfo wxMaPhoneNumberInfo;
-        try {
-            wxMaPhoneNumberInfo = wxMaService.getUserService().getPhoneNoInfo(sessionKey, encryptedData, iv);
-            log.debug("[Herodotus] |- Weixin Mini App get phone number successfully!");
-            log.debug("[Herodotus] |- WxMaPhoneNumberInfo : {}", wxMaPhoneNumberInfo.toString());
-            return wxMaPhoneNumberInfo;
-        } catch (Exception e) {
-            log.error("[Herodotus] |- Weixin Mini App get phone number failed!");
-            return null;
-        }
-    }
-
-    private boolean checkUserInfo(String rawData, String signature) {
-        return StringUtils.isNotBlank(rawData) && StringUtils.isNotBlank(signature);
-    }
-
-    public WxMaJscode2SessionResult login(String code, String appId) {
-        WxMaService wxMaService = getWxMaService(appId);
-        if (StringUtils.isNotBlank(code) && ObjectUtils.isNotEmpty(wxMaService)) {
-            return this.getSessionInfo(code, wxMaService);
-        } else {
-            log.error("[Herodotus] |- Weixin Mini App login failed, please check code param!");
-            return null;
-        }
-    }
-
     public WxMaUserInfo getUserInfo(String appId, String sessionKey, String encryptedData, String iv) {
         return this.getUserInfo(appId, sessionKey, encryptedData, iv, null, null);
     }
 
     public WxMaUserInfo getUserInfo(String appId, String sessionKey, String encryptedData, String iv, String rawData, String signature) {
-
         WxMaService wxMaService = getWxMaService(appId);
 
         if (ObjectUtils.isNotEmpty(wxMaService)) {
@@ -229,7 +218,6 @@ public class WxappProcessor implements InitializingBean {
                     return null;
                 }
             }
-
             return this.getUserInfo(sessionKey, encryptedData, iv, wxMaService);
         } else {
             log.error("[Herodotus] |- Weixin Mini App get user info failed!");
@@ -237,11 +225,32 @@ public class WxappProcessor implements InitializingBean {
         }
     }
 
-    public WxMaPhoneNumberInfo getPhoneNumberInfo(String appId, String sessionKey, String encryptedData, String iv) {
-        return this.getPhoneNumberInfo(appId, sessionKey, encryptedData, iv, null, null);
+    /**
+     * 解密手机号
+     * <p>
+     * 确认下前后端传递的参数有没有做UrlEncode/UrlDecode，因为encryptedData里会包含特殊字符在传递参数时被转义，可能服务器端实际拿到的参数encryptedData并不是前端实际获取到的值，导致SDK调用微信相应接口时无法解密而报错，只要保证前端实际获取到的encryptedData和服务器端调用SDK时传入的encryptedData一致就不会报错的，SDK中方法并无问题；建议让前后台都打印下日志，看下服务端最终使用的参数值是否还是前端获取到的原始值呢。PS：SpringBoot某些场景下form表单参数是会自动做UrlDecode的...
+     * <p>
+     * {@see :https://github.com/Wechat-Group/WxJava/issues/359}
+     *
+     * @param code    会话密钥
+     * @param wxMaService   微信小程序服务
+     * @return {@link WxMaPhoneNumberInfo}
+     */
+    private WxMaPhoneNumberInfo getPhoneNumberInfo(String code, WxMaService wxMaService) {
+        log.info("[Herodotus] |- Weixin Mini App get code： {}", code);
+
+        WxMaPhoneNumberInfo wxMaPhoneNumberInfo;
+        try {
+            wxMaPhoneNumberInfo = wxMaService.getUserService().getPhoneNumber(code);
+            log.debug("[Herodotus] |- Weixin Mini App get phone number successfully! WxMaPhoneNumberInfo : {}", wxMaPhoneNumberInfo.toString());
+            return wxMaPhoneNumberInfo;
+        } catch (Exception e) {
+            log.error("[Herodotus] |- Weixin Mini App get phone number failed!");
+            return null;
+        }
     }
 
-    public WxMaPhoneNumberInfo getPhoneNumberInfo(String appId, String sessionKey, String encryptedData, String iv, String rawData, String signature) {
+    public WxMaPhoneNumberInfo getPhoneNumberInfo(String appId, String sessionKey, String rawData, String signature, String code) {
 
         WxMaService wxMaService = getWxMaService(appId);
 
@@ -253,7 +262,7 @@ public class WxappProcessor implements InitializingBean {
                 }
             }
 
-            return this.getPhoneNumberInfo(sessionKey, encryptedData, iv, wxMaService);
+            return this.getPhoneNumberInfo(code, wxMaService);
         } else {
             log.error("[Herodotus] |- Weixin Mini App get phone number info failed!");
             return null;
@@ -284,7 +293,7 @@ public class WxappProcessor implements InitializingBean {
      * · 用户个人资料违规文字检测；
      * · 媒体新闻类用户发表文章，评论内容检测；
      * · 游戏类用户编辑上传的素材(如答题类小游戏用户上传的问题及答案)检测等。 频率限制：单个 appId 调用上限为 4000 次/分钟，2,000,000 次/天*
-     * · 详情请见: https://developers.weixin.qq.com/miniprogram/dev/api/open-api/sec-check/msgSecCheck.html
+     * · 详情请见: <a href="https://developers.weixin.qq.com/miniprogram/dev/api/open-api/sec-check/msgSecCheck.html">...</a>
      *
      * @param appId   小程序appId
      * @param message 需要检测的字符串
@@ -292,7 +301,7 @@ public class WxappProcessor implements InitializingBean {
      */
     public boolean checkMessage(String appId, String message) {
         try {
-            this.getWxMaService(appId).getSecCheckService().checkMessage(message);
+            this.getWxMaService(appId).getSecurityService().checkMessage(message);
             log.debug("[Herodotus] |- Check Message Successfully!");
             return true;
         } catch (WxErrorException e) {
@@ -310,11 +319,11 @@ public class WxappProcessor implements InitializingBean {
      */
     public boolean checkImage(String appId, String fileUrl) {
         try {
-            this.getWxMaService(appId).getSecCheckService().checkImage(fileUrl);
-            log.debug("[Herodotus] |- Check Image Successfully!");
+            this.getWxMaService(appId).getSecurityService().checkImage(fileUrl);
+            log.debug("[Herodotus] |- Check Image use fileUrl Successfully!");
             return true;
         } catch (WxErrorException e) {
-            log.debug("[Herodotus] |- Check Image Failed! Detail is ：{}", e.getMessage());
+            log.debug("[Herodotus] |- Check Image use fileUrl Failed! Detail is ：{}", e.getMessage());
             return false;
         }
     }
@@ -325,7 +334,7 @@ public class WxappProcessor implements InitializingBean {
      * 应用场景举例：
      * 1）图片智能鉴黄：涉及拍照的工具类应用(如美拍，识图类应用)用户拍照上传检测；电商类商品上架图片检测；媒体类用户文章里的图片检测等；
      * 2）敏感人脸识别：用户头像；媒体类用户文章里的图片检测；社交类用户上传的图片检测等。频率限制：单个 appId 调用上限为 1000 次/分钟，100,000 次/天
-     * 详情请见: https://developers.weixin.qq.com/miniprogram/dev/api/open-api/sec-check/imgSecCheck.html
+     * 详情请见: <a href="https://developers.weixin.qq.com/miniprogram/dev/api/open-api/sec-check/imgSecCheck.html">...</a>
      *
      * @param appId 小程序appId
      * @param file  图片文件
@@ -333,11 +342,11 @@ public class WxappProcessor implements InitializingBean {
      */
     public boolean checkImage(String appId, File file) {
         try {
-            this.getWxMaService(appId).getSecCheckService().checkImage(file);
-            log.debug("[Herodotus] |- Check Image Successfully!");
+            this.getWxMaService(appId).getSecurityService().checkImage(file);
+            log.debug("[Herodotus] |- Check Image use file Successfully!");
             return true;
         } catch (WxErrorException e) {
-            log.debug("[Herodotus] |- Check Image Failed! Detail is ：{}", e.getMessage());
+            log.debug("[Herodotus] |- Check Image use file Failed! Detail is ：{}", e.getMessage());
             return false;
         }
     }
@@ -351,7 +360,7 @@ public class WxappProcessor implements InitializingBean {
      * 频率限制：
      * 单个 appId 调用上限为 2000 次/分钟，200,000 次/天；文件大小限制：单个文件大小不超过10M
      * 详情请见:
-     * https://developers.weixin.qq.com/miniprogram/dev/api-backend/open-api/sec-check/security.mediaCheckAsync.html
+     * <a href="https://developers.weixin.qq.com/miniprogram/dev/api-backend/open-api/sec-check/security.mediaCheckAsync.html">...</a>
      *
      * @param appId     小程序appId
      * @param mediaUrl  要检测的多媒体url
@@ -361,7 +370,7 @@ public class WxappProcessor implements InitializingBean {
     public WxMaMediaAsyncCheckResult mediaAsyncCheck(String appId, String mediaUrl, int mediaType) {
         WxMaMediaAsyncCheckResult wxMaMediaAsyncCheckResult = null;
         try {
-            wxMaMediaAsyncCheckResult = this.getWxMaService(appId).getSecCheckService().mediaCheckAsync(mediaUrl, mediaType);
+            wxMaMediaAsyncCheckResult = this.getWxMaService(appId).getSecurityService().mediaCheckAsync(mediaUrl, mediaType);
             log.debug("[Herodotus] |- Media Async Check Successfully!");
         } catch (WxErrorException e) {
             log.debug("[Herodotus] |- Media Async Check Failed! Detail is ：{}", e.getMessage());

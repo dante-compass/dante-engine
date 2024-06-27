@@ -116,7 +116,7 @@
         <hutool.version>6.0.0-M13</hutool.version>
         <hutool5.version>5.8.28</hutool5.version>
         <okhttps.version>4.0.2</okhttps.version>
-        <weixin-java-sdk.version>4.6.0</weixin-java-sdk.version>
+        <weixin-java-sdk.version>4.6.2.B</weixin-java-sdk.version>
         <just-auth.verison>1.16.6</just-auth.verison>
         <!--第三方starter-->
         <jasypt-spring-boot-starter.version>3.0.5</jasypt-spring-boot-starter.version>

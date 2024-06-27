@@ -57,10 +57,8 @@ public class AccessWxappConfiguration {
     @Bean
     @ConditionalOnMissingBean
     public WxappProcessor wxappProcessor(WxappProperties wxappProperties) {
-        WxappProcessor wxappProcessor = new WxappProcessor();
-        wxappProcessor.setWxappProperties(wxappProperties);
-        wxappProcessor.setWxappLogHandler(new WxappLogHandler());
-        log.trace("[Herodotus] |- Bean [Wxapp Processor] Auto Configure.");
+        WxappProcessor wxappProcessor = new WxappProcessor(wxappProperties);
+        log.trace("[Herodotus] |- Bean [Wxapp Processor] Configure.");
         return wxappProcessor;
     }
 
