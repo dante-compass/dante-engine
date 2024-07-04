@@ -114,7 +114,7 @@
         <transmittable-thread-local.version>2.14.5</transmittable-thread-local.version>
         <!-- 国内开源通用组件 -->
         <hutool.version>6.0.0-M13</hutool.version>
-        <hutool5.version>5.8.28</hutool5.version>
+        <hutool5.version>5.8.29</hutool5.version>
         <okhttps.version>4.0.2</okhttps.version>
         <weixin-java-sdk.version>4.6.2.B</weixin-java-sdk.version>
         <just-auth.verison>1.16.6</just-auth.verison>
