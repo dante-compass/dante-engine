@@ -21,10 +21,12 @@
 
 package cn.herodotus.engine.data.jpa.autoconfigure;
 
+import cn.herodotus.engine.data.jpa.config.QueryDslConfiguration;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
+import org.springframework.context.annotation.Import;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 /**
@@ -35,6 +37,9 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
  */
 @AutoConfiguration
 @EnableJpaAuditing
+@Import({
+        QueryDslConfiguration.class
+})
 public class DataJpaAutoConfiguration {
 
     private static final Logger log = LoggerFactory.getLogger(DataJpaAutoConfiguration.class);

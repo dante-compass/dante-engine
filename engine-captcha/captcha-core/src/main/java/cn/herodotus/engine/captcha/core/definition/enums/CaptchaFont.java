@@ -37,8 +37,8 @@ public enum CaptchaFont {
     FRESNEL("Fresnel.ttf"),
     HEADACHE("Headache.ttf"),
     LEXOGRAPHER("Lexographer.ttf"),
-    PREFIX("Prefix"),
-    PROG_BOT("ProgBot"),
+    PREFIX("Prefix.ttf"),
+    PROG_BOT("ProgBot.ttf"),
     ROBOT_TEACHER("RobotTeacher.ttf"),
     SCANDAL("Scandal.ttf");
 

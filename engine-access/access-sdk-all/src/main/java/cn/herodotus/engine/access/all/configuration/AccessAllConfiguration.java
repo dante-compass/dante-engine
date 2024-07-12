@@ -24,6 +24,7 @@ package cn.herodotus.engine.access.all.configuration;
 import cn.herodotus.engine.access.all.controller.JustAuthAccessController;
 import cn.herodotus.engine.access.all.controller.PhoneNumberAccessController;
 import cn.herodotus.engine.access.all.controller.WxappAccessController;
+import cn.herodotus.engine.access.all.customizer.AccessErrorCodeMapperBuilderCustomizer;
 import cn.herodotus.engine.access.all.processor.AccessHandlerStrategyFactory;
 import cn.herodotus.engine.access.justauth.annotation.ConditionalOnJustAuthEnabled;
 import cn.herodotus.engine.access.justauth.configuration.AccessJustAuthConfiguration;
@@ -32,6 +33,7 @@ import cn.herodotus.engine.access.sms.configuration.AccessSmsConfiguration;
 import cn.herodotus.engine.access.wxapp.annotation.ConditionalOnWxappEnabled;
 import cn.herodotus.engine.access.wxapp.configuration.AccessWxappConfiguration;
 import cn.herodotus.engine.access.wxmpp.configuration.AccessWxmppConfiguration;
+import cn.herodotus.engine.assistant.definition.function.ErrorCodeMapperBuilderCustomizer;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -68,6 +70,13 @@ public class AccessAllConfiguration {
         AccessHandlerStrategyFactory accessHandlerStrategyFactory = new AccessHandlerStrategyFactory();
         log.trace("[Herodotus] |- Bean [Access Handler Strategy Factory] Auto Configure.");
         return accessHandlerStrategyFactory;
+    }
+
+    @Bean
+    public ErrorCodeMapperBuilderCustomizer accessErrorCodeMapperBuilderCustomizer() {
+        AccessErrorCodeMapperBuilderCustomizer customizer = new AccessErrorCodeMapperBuilderCustomizer();
+        log.debug("[Herodotus] |- Strategy [Access ErrorCodeMapper Builder Customizer] Auto Configure.");
+        return customizer;
     }
 
     @Configuration(proxyBeanMethods = false)

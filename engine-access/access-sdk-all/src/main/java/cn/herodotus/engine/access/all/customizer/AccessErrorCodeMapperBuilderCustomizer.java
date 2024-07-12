@@ -19,7 +19,7 @@
  * along with this program.  If not, see <https://www.herodotus.cn>.
  */
 
-package cn.herodotus.engine.access.autoconfigure.customizer;
+package cn.herodotus.engine.access.all.customizer;
 
 import cn.herodotus.engine.access.core.constants.AccessErrorCodes;
 import cn.herodotus.engine.assistant.definition.constants.ErrorCodeMapperBuilderOrdered;
