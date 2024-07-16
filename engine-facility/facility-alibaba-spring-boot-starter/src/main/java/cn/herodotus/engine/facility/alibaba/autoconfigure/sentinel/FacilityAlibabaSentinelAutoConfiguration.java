@@ -25,13 +25,12 @@ import cn.herodotus.engine.assistant.core.json.jackson2.utils.Jackson2Utils;
 import cn.herodotus.engine.assistant.definition.domain.Result;
 import cn.herodotus.engine.facility.alibaba.autoconfigure.sentinel.enhance.HerodotusSentinelFeign;
 import com.alibaba.csp.sentinel.adapter.spring.webflux.callback.BlockRequestHandler;
-import com.alibaba.csp.sentinel.adapter.spring.webmvc.callback.BlockExceptionHandler;
+import com.alibaba.csp.sentinel.adapter.spring.webmvc_v6x.callback.BlockExceptionHandler;
 import feign.Feign;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
@@ -75,9 +74,10 @@ public class FacilityAlibabaSentinelAutoConfiguration {
     public static class WebMvcHandler {
         @Bean
         public BlockExceptionHandler webmvcBlockExceptionHandler() {
-            return (request, response, e) -> {
+            return (request, response, resource, e) -> {
                 response.setStatus(HttpStatus.TOO_MANY_REQUESTS.value());
                 Result<String> result = Result.failure("Too many request, please retry later.");
+                result.path(resource);
                 response.getWriter().print(Jackson2Utils.toJson(result));
             };
         }
