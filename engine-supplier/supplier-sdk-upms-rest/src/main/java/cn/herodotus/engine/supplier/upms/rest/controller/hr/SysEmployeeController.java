@@ -39,6 +39,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
@@ -95,8 +96,8 @@ public class SysEmployeeController extends BaseWriteableRestController<SysEmploy
             @Parameter(name = "identity", description = "身份（索引数字值）"),
     })
     @GetMapping("/condition")
-    public Result<Map<String, Object>> findByCondition(@NotBlank @RequestParam("pageNumber") Integer pageNumber,
-                                                       @NotBlank @RequestParam("pageSize") Integer pageSize,
+    public Result<Map<String, Object>> findByCondition(@NotNull @RequestParam("pageNumber") Integer pageNumber,
+                                                       @NotNull @RequestParam("pageSize") Integer pageSize,
                                                        @RequestParam(value = "employeeName", required = false) String employeeName,
                                                        @RequestParam(value = "mobilePhoneNumber", required = false) String mobilePhoneNumber,
                                                        @RequestParam(value = "officePhoneNumber", required = false) String officePhoneNumber,
@@ -133,8 +134,8 @@ public class SysEmployeeController extends BaseWriteableRestController<SysEmploy
             @Parameter(name = "identity", description = "身份（索引数字值）"),
     })
     @GetMapping("/allocatable")
-    public Result<Map<String, Object>> findAllocatable(@NotBlank @RequestParam("pageNumber") Integer pageNumber,
-                                                       @NotBlank @RequestParam("pageSize") Integer pageSize,
+    public Result<Map<String, Object>> findAllocatable(@NotNull @RequestParam("pageNumber") Integer pageNumber,
+                                                       @NotNull @RequestParam("pageSize") Integer pageSize,
                                                        @NotBlank @RequestParam("organizationId") String organizationId,
                                                        @NotBlank @RequestParam("departmentId") String departmentId,
                                                        @RequestParam(value = "employeeName", required = false) String employeeName,
@@ -154,8 +155,8 @@ public class SysEmployeeController extends BaseWriteableRestController<SysEmploy
             @Parameter(name = "departmentId", required = true, description = "部门ID"),
     })
     @GetMapping("/assigned")
-    public Result<Map<String, Object>> findAssigned(@NotBlank @RequestParam("pageNumber") Integer pageNumber,
-                                                    @NotBlank @RequestParam("pageSize") Integer pageSize,
+    public Result<Map<String, Object>> findAssigned(@NotNull @RequestParam("pageNumber") Integer pageNumber,
+                                                    @NotNull @RequestParam("pageSize") Integer pageSize,
                                                     @NotBlank @RequestParam("departmentId") String departmentId) {
         Page<SysEmployee> pages = sysEmployeeService.findByDepartmentId(pageNumber, pageSize, departmentId);
         return result(pages);

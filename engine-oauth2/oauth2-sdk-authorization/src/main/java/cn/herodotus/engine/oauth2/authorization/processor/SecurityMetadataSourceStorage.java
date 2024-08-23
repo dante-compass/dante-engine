@@ -231,10 +231,14 @@ public class SecurityMetadataSourceStorage {
 
         for (HerodotusRequest matcher : matchers.keySet()) {
             for (HerodotusRequest item : configAttributes.keySet()) {
-                HerodotusRequestMatcher requestMatcher = new HerodotusRequestMatcher(matcher);
-                if (requestMatcher.matches(item)) {
-                    result.remove(item);
-                    log.trace("[Herodotus] |- Pattern [{}] is conflict with [{}], so remove it.", item.getPattern(), matcher.getPattern());
+                // 如果是修改的是占位符类型的接口的权限，同时 matchers 中也包含该占位符权限，那么就会因为配到而导致被删除，最终导致该接口的权限无法更新保存。
+                // 例如：被检测请求为 /iot/product-category/{id}，而 matchers 中也存在 /iot/product-category/{id}，那么就会被从 result 中删掉。而导致无法更新 /iot/product-category/{id} 的权限
+                if (!matcher.equals(item)) {
+                    HerodotusRequestMatcher requestMatcher = new HerodotusRequestMatcher(matcher);
+                    if (requestMatcher.matches(item)) {
+                        result.remove(item);
+                        log.trace("[Herodotus] |- Pattern [{}] is conflict with [{}], so remove it.", item.getPattern(), matcher.getPattern());
+                    }
                 }
             }
         }

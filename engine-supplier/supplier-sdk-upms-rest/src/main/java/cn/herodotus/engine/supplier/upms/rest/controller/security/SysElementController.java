@@ -37,7 +37,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.tags.Tags;
-import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import org.dromara.hutool.core.tree.MapTree;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
@@ -87,8 +87,8 @@ public class SysElementController extends BaseWriteableRestController<SysElement
             @Parameter(name = "title", description = "组件标题"),
     })
     @GetMapping("/condition")
-    public Result<Map<String, Object>> findByCondition(@NotBlank @RequestParam("pageNumber") Integer pageNumber,
-                                                       @NotBlank @RequestParam("pageSize") Integer pageSize,
+    public Result<Map<String, Object>> findByCondition(@NotNull @RequestParam("pageNumber") Integer pageNumber,
+                                                       @NotNull @RequestParam("pageSize") Integer pageSize,
                                                        @RequestParam(value = "path", required = false) String path,
                                                        @RequestParam(value = "title", required = false) String title) {
         Page<SysElement> pages = sysElementService.findByCondition(pageNumber, pageSize, path, title);

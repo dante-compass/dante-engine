@@ -34,7 +34,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.tags.Tags;
-import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -81,8 +81,8 @@ public class OAuth2ComplianceController extends BaseWriteableRestController<OAut
             @Parameter(name = "ip", description = "IP地址"),
     })
     @GetMapping("/condition")
-    public Result<Map<String, Object>> findByCondition(@NotBlank @RequestParam("pageNumber") Integer pageNumber,
-                                                       @NotBlank @RequestParam("pageSize") Integer pageSize,
+    public Result<Map<String, Object>> findByCondition(@NotNull @RequestParam("pageNumber") Integer pageNumber,
+                                                       @NotNull @RequestParam("pageSize") Integer pageSize,
                                                        @RequestParam(value = "principalName", required = false) String principalName,
                                                        @RequestParam(value = "clientId", required = false) String clientId,
                                                        @RequestParam(value = "ip", required = false) String ip) {
