@@ -33,7 +33,7 @@
 
     <groupId>cn.herodotus.engine</groupId>
     <artifactId>dependencies</artifactId>
-    <version>3.3.3.0</version>
+    <version>3.3.3.1</version>
     <packaging>pom</packaging>
 
     <description>基于 Spring Authorization Server 的 Dante Cloud Dependencies</description>
@@ -143,7 +143,7 @@
         <aliyun-java-sdk-core.version>4.7.1</aliyun-java-sdk-core.version>
         <aliyun-java-sdk-green.version>3.6.6</aliyun-java-sdk-green.version>
         <aliyun-sdk-oss.version>3.18.1</aliyun-sdk-oss.version>
-        <alipay-sdk-java.version>4.39.183.ALL</alipay-sdk-java.version>
+        <alipay-sdk-java.version>4.39.190.ALL</alipay-sdk-java.version>
         <com.baidu.aip.version>4.16.19</com.baidu.aip.version>
         <!--以下为特殊处理, 统一版本处理漏洞等-->
         <bcprov-jdk18on.version>1.78.1</bcprov-jdk18on.version>
