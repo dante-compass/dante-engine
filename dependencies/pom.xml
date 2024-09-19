@@ -27,13 +27,13 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.3.3</version>
+        <version>3.3.4</version>
         <relativePath/>
     </parent>
 
     <groupId>cn.herodotus.engine</groupId>
     <artifactId>dependencies</artifactId>
-    <version>3.3.3.2</version>
+    <version>3.3.4.0</version>
     <packaging>pom</packaging>
 
     <description>基于 Spring Authorization Server 的 Dante Cloud Dependencies</description>
@@ -77,7 +77,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <!--Spring 家族-->
-        <spring-boot-dependencies.version>3.3.3</spring-boot-dependencies.version>
+        <spring-boot-dependencies.version>3.3.4</spring-boot-dependencies.version>
         <spring-boot-admin-dependencies.version>3.3.3</spring-boot-admin-dependencies.version>
         <spring-cloud-dependencies.version>2023.0.3</spring-cloud-dependencies.version>
         <spring-cloud-alibaba-dependencies.version>2023.0.1.2</spring-cloud-alibaba-dependencies.version>
@@ -85,46 +85,46 @@
         <!--Maven Plugin 相关组件-->
         <apt-maven-plugin.version>1.1.3</apt-maven-plugin.version>
         <archetype-packaging.verison>3.2.1</archetype-packaging.verison>
-        <mapstruct-processor.version>1.6.0</mapstruct-processor.version>
+        <mapstruct-processor.version>1.6.2</mapstruct-processor.version>
         <maven-archetype-plugin.version>3.2.1</maven-archetype-plugin.version>
-        <maven-gpg-plugin.version>3.2.5</maven-gpg-plugin.version>
+        <maven-gpg-plugin.version>3.2.6</maven-gpg-plugin.version>
         <nexus-staging-maven-plugin.version>1.7.0</nexus-staging-maven-plugin.version>
         <!--开源通用工具包-->
         <animated-gif-lib.version>1.4</animated-gif-lib.version>
         <antisamy.version>1.7.6</antisamy.version>
         <commons-collections4.version>4.4</commons-collections4.version>
         <commons-fileupload.version>1.5</commons-fileupload.version>
-        <commons-io.version>2.16.1</commons-io.version>
+        <commons-io.version>2.17.0</commons-io.version>
         <commons-text.version>1.12.0</commons-text.version>
         <guava.version>33.3.0-jre</guava.version>
         <zxing.version>3.5.3</zxing.version>
         <!-- 应用开发辅助工具组件 -->
-        <redisson.version>3.35.0</redisson.version>
+        <redisson.version>3.36.0</redisson.version>
         <p6spy.version>3.9.1</p6spy.version>
         <springdoc.version>2.6.0</springdoc.version>
         <logstash-logback-encoder.version>8.0</logstash-logback-encoder.version>
         <skywalking.version>9.3.0</skywalking.version>
         <minio.version>8.5.12</minio.version>
-        <aws-java-sdk-s3.version>1.12.771</aws-java-sdk-s3.version>
+        <aws-java-sdk-s3.version>1.12.772</aws-java-sdk-s3.version>
         <org.eclipse.paho.version>1.2.5</org.eclipse.paho.version>
         <influxdb-client.version>7.2.0</influxdb-client.version>
         <!-- 阿里巴巴开源工具依赖 -->
-        <fastjson2.version>2.0.52</fastjson2.version>
-        <jetcache.version>2.7.6</jetcache.version>
-        <nacos.version>2.4.1</nacos.version>
+        <fastjson2.version>2.0.53</fastjson2.version>
+        <jetcache.version>2.7.7</jetcache.version>
+        <nacos.version>2.4.2</nacos.version>
         <transmittable-thread-local.version>2.14.5</transmittable-thread-local.version>
         <!-- 国内开源通用组件 -->
         <hutool.version>6.0.0-M16</hutool.version>
         <hutool5.version>5.8.32</hutool5.version>
         <okhttps.version>4.0.2</okhttps.version>
-        <weixin-java-sdk.version>4.6.4.B</weixin-java-sdk.version>
+        <weixin-java-sdk.version>4.6.5.B</weixin-java-sdk.version>
         <just-auth.verison>1.16.6</just-auth.verison>
         <!--第三方starter-->
         <jasypt-spring-boot-starter.version>3.0.5</jasypt-spring-boot-starter.version>
         <camunda-bpm-spring-boot-starter-rest.version>7.21.0</camunda-bpm-spring-boot-starter-rest.version>
         <sms4j-spring-boot-starter.version>3.3.3</sms4j-spring-boot-starter.version>
-        <mybatis-plus-boot-starter.version>3.5.7</mybatis-plus-boot-starter.version>
-        <mybatis-plus-generator.version>3.5.7</mybatis-plus-generator.version>
+        <mybatis-plus-boot-starter.version>3.5.8</mybatis-plus-boot-starter.version>
+        <mybatis-plus-generator.version>3.5.8</mybatis-plus-generator.version>
         <mybatis.version>3.5.16</mybatis.version>
         <velocity.version>2.3</velocity.version>
         <!--数据库-->
@@ -135,15 +135,15 @@
         <bootstrap.version>5.3.3</bootstrap.version>
         <jquery.version>3.7.1</jquery.version>
         <mdi__font.version>7.4.47</mdi__font.version>
-        <quasar.version>2.16.11</quasar.version>
+        <quasar.version>2.17.0</quasar.version>
         <sm-crypto.version>0.3.13</sm-crypto.version>
-        <sweetalert2.verison>11.13.3</sweetalert2.verison>
-        <vue.version>3.5.3</vue.version>
+        <sweetalert2.verison>11.14.0</sweetalert2.verison>
+        <vue.version>3.5.6</vue.version>
         <!--厂商应用集成-->
         <aliyun-java-sdk-core.version>4.7.1</aliyun-java-sdk-core.version>
         <aliyun-java-sdk-green.version>3.6.6</aliyun-java-sdk-green.version>
         <aliyun-sdk-oss.version>3.18.1</aliyun-sdk-oss.version>
-        <alipay-sdk-java.version>4.39.200.ALL</alipay-sdk-java.version>
+        <alipay-sdk-java.version>4.39.208.ALL</alipay-sdk-java.version>
         <com.baidu.aip.version>4.16.19</com.baidu.aip.version>
         <!--以下为特殊处理, 统一版本处理漏洞等-->
         <bcprov-jdk18on.version>1.78.1</bcprov-jdk18on.version>
@@ -154,8 +154,8 @@
         <httpclient.version>4.5.14</httpclient.version>
         <mysql.version>9.0.0</mysql.version>
         <org.json.version>20240303</org.json.version>
-        <okio.version>3.9.0</okio.version>
-        <snappy-java.version>1.1.10.6</snappy-java.version>
+        <okio.version>3.9.1</okio.version>
+        <snappy-java.version>1.1.10.7</snappy-java.version>
         <xnio.version>3.8.16.Final</xnio.version>
     </properties>
 
