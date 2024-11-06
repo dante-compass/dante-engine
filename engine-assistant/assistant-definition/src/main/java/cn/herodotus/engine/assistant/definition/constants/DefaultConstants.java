@@ -21,7 +21,7 @@
 
 package cn.herodotus.engine.assistant.definition.constants;
 
-import org.dromara.hutool.core.date.DatePattern;
+import org.dromara.hutool.core.date.DateFormatPool;
 
 /**
  * <p>Description: 默认常量合集 </p>
@@ -57,5 +57,5 @@ public interface DefaultConstants {
     /**
      * 默认的时间日期格式
      */
-    String DATE_TIME_FORMAT = DatePattern.NORM_DATETIME_PATTERN;
+    String DATE_TIME_FORMAT = DateFormatPool.NORM_DATETIME_PATTERN;
 }

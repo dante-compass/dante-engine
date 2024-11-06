@@ -28,7 +28,7 @@
     <parent>
         <artifactId>engine-data</artifactId>
         <groupId>cn.herodotus.engine</groupId>
-        <version>3.3.5.0</version>
+        <version>3.3.5.1</version>
     </parent>
 
     <artifactId>data-sdk-mybatis-plus</artifactId>
@@ -43,7 +43,7 @@
         </dependency>
         <dependency>
             <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <artifactId>mybatis-plus-spring-boot3-starter</artifactId>
         </dependency>
         <dependency>
             <groupId>com.baomidou</groupId>
