@@ -36,13 +36,13 @@
     <artifactId>dante-engine</artifactId>
     <packaging>pom</packaging>
 
-    <description>Herodotus Engine</description>
+    <description>Dante Engine</description>
 
     <url>https://github.com/dromara/dante-cloud</url>
     <licenses>
         <license>
-            <name>GNU LESSER GENERAL PUBLIC LICENSE Version 3</name>
-            <url>https://www.gnu.org/licenses/lgpl-3.0.html</url>
+            <name>Apache License Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0</url>
         </license>
     </licenses>
     <developers>
