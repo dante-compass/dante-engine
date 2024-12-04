@@ -39,7 +39,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import org.springframework.web.servlet.resource.WebJarsResourceResolver;
+import org.springframework.web.servlet.resource.LiteWebJarsResourceResolver;
 
 /**
  * <p>Description: WebMvcAutoConfiguration </p>
@@ -85,7 +85,7 @@ public class RestWebMvcAutoConfiguration implements WebMvcConfigurer {
         registry.addResourceHandler("/webjars/**")
                 .addResourceLocations("classpath:/META-INF/resources/webjars/")
                 .resourceChain(false)
-                .addResolver(new WebJarsResourceResolver());
+                .addResolver(new LiteWebJarsResourceResolver());
     }
 
 }
