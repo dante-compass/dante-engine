@@ -35,7 +35,6 @@ import feign.Retryer;
 import feign.codec.ErrorDecoder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.cloud.openfeign.AnnotatedParameterProcessor;
 import org.springframework.cloud.openfeign.FeignClientProperties;
@@ -43,7 +42,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.convert.ConversionService;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -60,17 +58,10 @@ public class FeignConfiguration {
 
     private static final Logger log = LoggerFactory.getLogger(FeignConfiguration.class);
 
-    @Autowired(required = false)
-    private List<AnnotatedParameterProcessor> parameterProcessors = new ArrayList<>();
-
-    @Autowired(required = false)
-    private FeignClientProperties feignClientProperties;
-
     @Bean
-    public Contract feignContract(ConversionService feignConversionService) {
-        boolean decodeSlash = feignClientProperties == null || feignClientProperties.isDecodeSlash();
-        log.info("[Herodotus] |- Bean [Herodotus FeignInnerContract] Auto Configure.");
-        return new FeignInnerContract(parameterProcessors, feignConversionService, decodeSlash);
+    public Contract feignContract(List<AnnotatedParameterProcessor> parameterProcessors, ConversionService feignConversionService, FeignClientProperties feignClientProperties) {
+        log.info("[Herodotus] |- Bean [Herodotus FeignInnerContract] Configure.");
+        return new FeignInnerContract(parameterProcessors, feignConversionService, feignClientProperties);
     }
 
     @Bean

@@ -32,6 +32,7 @@ import org.apache.commons.lang3.ObjectUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cloud.openfeign.AnnotatedParameterProcessor;
+import org.springframework.cloud.openfeign.FeignClientProperties;
 import org.springframework.cloud.openfeign.support.SpringMvcContract;
 import org.springframework.core.convert.ConversionService;
 
@@ -62,8 +63,8 @@ public class FeignInnerContract extends SpringMvcContract {
         super(annotatedParameterProcessors, conversionService);
     }
 
-    public FeignInnerContract(List<AnnotatedParameterProcessor> annotatedParameterProcessors, ConversionService conversionService, boolean decodeSlash) {
-        super(annotatedParameterProcessors, conversionService, decodeSlash);
+    public FeignInnerContract(List<AnnotatedParameterProcessor> annotatedParameterProcessors, ConversionService conversionService, FeignClientProperties feignClientProperties) {
+        super(annotatedParameterProcessors, conversionService, feignClientProperties);
     }
 
     @Override

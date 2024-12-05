@@ -55,14 +55,6 @@ public class RestPropertyFinder {
         return PropertyResolver.getBoolean(conditionContext, RestConstants.ITEM_SCAN_ENABLED, defaultValue);
     }
 
-    public static boolean isOpenFeignHttp2ClientEnabled(ConditionContext conditionContext) {
-        return PropertyResolver.getBoolean(conditionContext, RestConstants.ITEM_OPENFEIGN_HTTP2CLIENT_ENABLED);
-    }
-
-    public static boolean isOpenFeignHttpClient5Enabled(ConditionContext conditionContext) {
-        return PropertyResolver.getBoolean(conditionContext, RestConstants.ITEM_OPENFEIGN_HTTPCLIENT5_ENABLED);
-    }
-
     public static String getDataAccessStrategy(ConditionContext conditionContext, String defaultValue) {
         return PropertyResolver.getProperty(conditionContext, RestConstants.ITEM_PLATFORM_DATA_ACCESS_STRATEGY, defaultValue);
     }

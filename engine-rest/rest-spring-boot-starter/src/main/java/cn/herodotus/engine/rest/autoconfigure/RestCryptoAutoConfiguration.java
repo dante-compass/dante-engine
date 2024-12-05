@@ -53,7 +53,8 @@ import java.util.List;
 })
 public class RestCryptoAutoConfiguration {
 
-    private static final Logger log = LoggerFactory.getLogger(RestWebMvcAutoConfiguration.class);
+    private static final Logger log = LoggerFactory.getLogger(RestCryptoAutoConfiguration.class);
+
     private final RequestMappingHandlerAdapter requestMappingHandlerAdapter;
     private final DecryptRequestParamResolver decryptRequestParamResolver;
     private final DecryptRequestParamMapResolver decryptRequestParamMapResolver;
