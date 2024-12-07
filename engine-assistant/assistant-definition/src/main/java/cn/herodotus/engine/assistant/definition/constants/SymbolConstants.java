@@ -155,6 +155,8 @@ public interface SymbolConstants {
 
     String STAR = "*";
 
+    String DOUBLE_STAR = "**";
+
     String TAB = "\t";
 
     String TILDE = "~";

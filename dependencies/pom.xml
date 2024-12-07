@@ -785,6 +785,18 @@
                 <artifactId>xnio-nio</artifactId>
                 <version>${xnio.version}</version>
             </dependency>
+            <!--springdoc ui 相关的 jar 会莫名其妙的变成 2.2.0 版本，这会导致系统启动错误-->
+            <!--上面的 springdoc bom 控制其它依赖版本，下面的 springdoc ui 解决版本不同差异-->
+            <dependency>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+                <version>${springdoc.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-starter-webflux-ui</artifactId>
+                <version>${springdoc.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

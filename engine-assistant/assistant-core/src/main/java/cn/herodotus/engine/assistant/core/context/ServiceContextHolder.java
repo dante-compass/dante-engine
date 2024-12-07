@@ -553,7 +553,7 @@ public class ServiceContextHolder {
     }
 
     public String getOriginService() {
-        return getApplicationName() + SymbolConstants.COLON + getPort();
+        return getApplicationName() + SymbolConstants.COLON + SymbolConstants.DOUBLE_STAR;
     }
 
     public void publishEvent(ApplicationEvent applicationEvent) {
