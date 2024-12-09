@@ -26,7 +26,6 @@
 package cn.herodotus.engine.oauth2.authentication.provider;
 
 import cn.herodotus.engine.oauth2.authentication.properties.OAuth2AuthenticationProperties;
-import cn.herodotus.engine.oauth2.authentication.utils.OAuth2AuthenticationProviderUtils;
 import cn.herodotus.engine.oauth2.authentication.utils.OAuth2EndpointUtils;
 import cn.herodotus.engine.oauth2.core.constants.OAuth2ErrorKeys;
 import cn.herodotus.engine.oauth2.core.definition.service.EnhanceUserDetailsService;
@@ -137,7 +136,9 @@ public abstract class AbstractUserDetailsAuthenticationProvider extends Abstract
                     authorizations.forEach(authorization -> {
                         OAuth2Authorization.Token<OAuth2RefreshToken> refreshToken = authorization.getToken(OAuth2RefreshToken.class);
                         if (ObjectUtils.isNotEmpty(refreshToken)) {
-                            authorization = OAuth2AuthenticationProviderUtils.invalidate(authorization, refreshToken.getToken());
+                            authorization = OAuth2Authorization.from(authorization)
+                                    .invalidate(refreshToken.getToken())
+                                    .build();
                         }
                         log.debug("[Herodotus] |- Sign in user [{}] with token id [{}] will be kicked out.", user.getUsername(), authorization.getId());
                         jpaOAuth2AuthorizationService.save(authorization);

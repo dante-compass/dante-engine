@@ -121,8 +121,11 @@ public final class OAuth2AuthorizationCodeAuthenticationProvider extends Abstrac
 
         if (!registeredClient.getClientId().equals(authorizationRequest.getClientId())) {
             if (!authorizationCode.isInvalidated()) {
-                // Invalidate the authorization code given that a different client is attempting to use it
-                authorization = OAuth2AuthenticationProviderUtils.invalidate(authorization, authorizationCode.getToken());
+                // Invalidate the authorization code given that a different client is
+                // attempting to use it
+                authorization = OAuth2Authorization.from(authorization)
+                        .invalidate(authorizationCode.getToken())
+                        .build();
                 this.authorizationService.save(authorization);
                 if (this.logger.isWarnEnabled()) {
                     this.logger.warn(LogMessage.format("Invalidated authorization code used by registered client '%s'", registeredClient.getId()));
@@ -142,8 +145,9 @@ public final class OAuth2AuthorizationCodeAuthenticationProvider extends Abstrac
                         authorization.getRefreshToken() :
                         authorization.getAccessToken();
                 if (token != null) {
-                    // Invalidate the access (and refresh) token as the client is attempting to use the authorization code more than once
-                    authorization = OAuth2AuthenticationProviderUtils.invalidate(authorization, token.getToken());
+                    // Invalidate the access (and refresh) token as the client is
+                    // attempting to use the authorization code more than once
+                    authorization = OAuth2Authorization.from(authorization).invalidate(token.getToken()).build();
                     this.authorizationService.save(authorization);
                     if (this.logger.isWarnEnabled()) {
                         this.logger.warn(LogMessage.format("Invalidated authorization token(s) previously issued to registered client '%s'", registeredClient.getId()));
@@ -184,7 +188,7 @@ public final class OAuth2AuthorizationCodeAuthenticationProvider extends Abstrac
         authorization = authorizationBuilder.build();
 
         // Invalidate the authorization code as it can only be used once
-        authorization = OAuth2AuthenticationProviderUtils.invalidate(authorization, authorizationCode.getToken());
+        authorizationBuilder.invalidate(authorizationCode.getToken());
 
         this.authorizationService.save(authorization);
 
