@@ -16,7 +16,7 @@
  * Dante Engine 是 Dante Cloud 系统核心组件库，采用 APACHE LICENSE 2.0 开源协议，您在使用过程中，需要注意以下几点：
  *
  * 1. 请不要删除和修改根目录下的LICENSE文件。
- * 2. 请不要删除和修改 Dante Engine 源码头部的版权声明。
+ * 2. 请不要删除和修改 Dante OSS 源码头部的版权声明。
  * 3. 请保留源码和相关描述文件的项目出处，作者声明等。
  * 4. 分发源码时候，请注明软件出处 <https://gitee.com/dromara/dante-cloud>
  * 5. 在修改包名，模块名称，项目代码等时，请注明软件出处 <https://gitee.com/dromara/dante-cloud>
@@ -26,7 +26,6 @@
 package cn.herodotus.engine.oauth2.authentication.provider;
 
 import cn.herodotus.engine.oauth2.authentication.properties.OAuth2AuthenticationProperties;
-import cn.herodotus.engine.oauth2.authentication.utils.OAuth2AuthenticationProviderUtils;
 import cn.herodotus.engine.oauth2.authentication.utils.OAuth2EndpointUtils;
 import cn.herodotus.engine.oauth2.core.constants.OAuth2ErrorKeys;
 import cn.herodotus.engine.oauth2.core.definition.service.EnhanceUserDetailsService;
@@ -137,7 +136,9 @@ public abstract class AbstractUserDetailsAuthenticationProvider extends Abstract
                     authorizations.forEach(authorization -> {
                         OAuth2Authorization.Token<OAuth2RefreshToken> refreshToken = authorization.getToken(OAuth2RefreshToken.class);
                         if (ObjectUtils.isNotEmpty(refreshToken)) {
-                            authorization = OAuth2AuthenticationProviderUtils.invalidate(authorization, refreshToken.getToken());
+                            authorization = OAuth2Authorization.from(authorization)
+                                    .invalidate(refreshToken.getToken())
+                                    .build();
                         }
                         log.debug("[Herodotus] |- Sign in user [{}] with token id [{}] will be kicked out.", user.getUsername(), authorization.getId());
                         jpaOAuth2AuthorizationService.save(authorization);

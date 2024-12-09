@@ -16,7 +16,7 @@
  * Dante Engine 是 Dante Cloud 系统核心组件库，采用 APACHE LICENSE 2.0 开源协议，您在使用过程中，需要注意以下几点：
  *
  * 1. 请不要删除和修改根目录下的LICENSE文件。
- * 2. 请不要删除和修改 Dante Engine 源码头部的版权声明。
+ * 2. 请不要删除和修改 Dante OSS 源码头部的版权声明。
  * 3. 请保留源码和相关描述文件的项目出处，作者声明等。
  * 4. 分发源码时候，请注明软件出处 <https://gitee.com/dromara/dante-cloud>
  * 5. 在修改包名，模块名称，项目代码等时，请注明软件出处 <https://gitee.com/dromara/dante-cloud>
@@ -26,13 +26,11 @@
 package cn.herodotus.engine.oauth2.authentication.utils;
 
 import org.springframework.security.core.Authentication;
-import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
-import org.springframework.security.oauth2.core.OAuth2ErrorCodes;
-import org.springframework.security.oauth2.core.OAuth2RefreshToken;
-import org.springframework.security.oauth2.core.OAuth2Token;
+import org.springframework.security.oauth2.core.*;
 import org.springframework.security.oauth2.server.authorization.OAuth2Authorization;
-import org.springframework.security.oauth2.server.authorization.OAuth2AuthorizationCode;
 import org.springframework.security.oauth2.server.authorization.authentication.OAuth2ClientAuthenticationToken;
+import org.springframework.security.oauth2.server.authorization.settings.OAuth2TokenFormat;
+import org.springframework.security.oauth2.server.authorization.token.OAuth2TokenContext;
 
 /**
  * <p>Description: Utility methods for the OAuth 2.0 AuthenticationProvider's. </p>
@@ -56,32 +54,22 @@ public class OAuth2AuthenticationProviderUtils {
         throw new OAuth2AuthenticationException(OAuth2ErrorCodes.INVALID_CLIENT);
     }
 
-    public static <T extends OAuth2Token> OAuth2Authorization invalidate(
-            OAuth2Authorization authorization, T token) {
+    public static <T extends OAuth2Token> OAuth2AccessToken accessToken(OAuth2Authorization.Builder builder, T token,
+                                                                        OAuth2TokenContext accessTokenContext) {
 
-        // @formatter:off
-        OAuth2Authorization.Builder authorizationBuilder = OAuth2Authorization.from(authorization)
-                .token(token,
-                        (metadata) ->
-                                metadata.put(OAuth2Authorization.Token.INVALIDATED_METADATA_NAME, true));
-
-        if (OAuth2RefreshToken.class.isAssignableFrom(token.getClass())) {
-            authorizationBuilder.token(
-                    authorization.getAccessToken().getToken(),
-                    (metadata) ->
-                            metadata.put(OAuth2Authorization.Token.INVALIDATED_METADATA_NAME, true));
-
-            OAuth2Authorization.Token<OAuth2AuthorizationCode> authorizationCode =
-                    authorization.getToken(OAuth2AuthorizationCode.class);
-            if (authorizationCode != null && !authorizationCode.isInvalidated()) {
-                authorizationBuilder.token(
-                        authorizationCode.getToken(),
-                        (metadata) ->
-                                metadata.put(OAuth2Authorization.Token.INVALIDATED_METADATA_NAME, true));
+        OAuth2AccessToken accessToken = new OAuth2AccessToken(OAuth2AccessToken.TokenType.BEARER, token.getTokenValue(),
+                token.getIssuedAt(), token.getExpiresAt(), accessTokenContext.getAuthorizedScopes());
+        OAuth2TokenFormat accessTokenFormat = accessTokenContext.getRegisteredClient()
+                .getTokenSettings()
+                .getAccessTokenFormat();
+        builder.token(accessToken, (metadata) -> {
+            if (token instanceof ClaimAccessor claimAccessor) {
+                metadata.put(OAuth2Authorization.Token.CLAIMS_METADATA_NAME, claimAccessor.getClaims());
             }
-        }
-        // @formatter:on
+            metadata.put(OAuth2Authorization.Token.INVALIDATED_METADATA_NAME, false);
+            metadata.put(OAuth2TokenFormat.class.getName(), accessTokenFormat.getValue());
+        });
 
-        return authorizationBuilder.build();
+        return accessToken;
     }
 }

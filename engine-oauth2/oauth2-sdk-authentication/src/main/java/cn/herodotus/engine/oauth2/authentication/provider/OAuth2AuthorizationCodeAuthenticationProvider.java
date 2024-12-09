@@ -16,7 +16,7 @@
  * Dante Engine 是 Dante Cloud 系统核心组件库，采用 APACHE LICENSE 2.0 开源协议，您在使用过程中，需要注意以下几点：
  *
  * 1. 请不要删除和修改根目录下的LICENSE文件。
- * 2. 请不要删除和修改 Dante Engine 源码头部的版权声明。
+ * 2. 请不要删除和修改 Dante OSS 源码头部的版权声明。
  * 3. 请保留源码和相关描述文件的项目出处，作者声明等。
  * 4. 分发源码时候，请注明软件出处 <https://gitee.com/dromara/dante-cloud>
  * 5. 在修改包名，模块名称，项目代码等时，请注明软件出处 <https://gitee.com/dromara/dante-cloud>
@@ -121,8 +121,11 @@ public final class OAuth2AuthorizationCodeAuthenticationProvider extends Abstrac
 
         if (!registeredClient.getClientId().equals(authorizationRequest.getClientId())) {
             if (!authorizationCode.isInvalidated()) {
-                // Invalidate the authorization code given that a different client is attempting to use it
-                authorization = OAuth2AuthenticationProviderUtils.invalidate(authorization, authorizationCode.getToken());
+                // Invalidate the authorization code given that a different client is
+                // attempting to use it
+                authorization = OAuth2Authorization.from(authorization)
+                        .invalidate(authorizationCode.getToken())
+                        .build();
                 this.authorizationService.save(authorization);
                 if (this.logger.isWarnEnabled()) {
                     this.logger.warn(LogMessage.format("Invalidated authorization code used by registered client '%s'", registeredClient.getId()));
@@ -142,8 +145,9 @@ public final class OAuth2AuthorizationCodeAuthenticationProvider extends Abstrac
                         authorization.getRefreshToken() :
                         authorization.getAccessToken();
                 if (token != null) {
-                    // Invalidate the access (and refresh) token as the client is attempting to use the authorization code more than once
-                    authorization = OAuth2AuthenticationProviderUtils.invalidate(authorization, token.getToken());
+                    // Invalidate the access (and refresh) token as the client is
+                    // attempting to use the authorization code more than once
+                    authorization = OAuth2Authorization.from(authorization).invalidate(token.getToken()).build();
                     this.authorizationService.save(authorization);
                     if (this.logger.isWarnEnabled()) {
                         this.logger.warn(LogMessage.format("Invalidated authorization token(s) previously issued to registered client '%s'", registeredClient.getId()));
@@ -184,7 +188,7 @@ public final class OAuth2AuthorizationCodeAuthenticationProvider extends Abstrac
         authorization = authorizationBuilder.build();
 
         // Invalidate the authorization code as it can only be used once
-        authorization = OAuth2AuthenticationProviderUtils.invalidate(authorization, authorizationCode.getToken());
+        authorizationBuilder.invalidate(authorizationCode.getToken());
 
         this.authorizationService.save(authorization);
 
