@@ -74,6 +74,10 @@ public abstract class AbstractOAuth2RegisteredClient extends AbstractRegisteredC
     @Column(name = "signing_algorithm")
     @Enumerated(EnumType.ORDINAL)
     private AllJwsAlgorithm authenticationSigningAlgorithm;
+
+    @Schema(name = "X509证书DN")
+    @Column(name = "subject_dn")
+    private String x509CertificateSubjectDN;
     /* --- ClientSettings End --- */
 
 
@@ -107,6 +111,10 @@ public abstract class AbstractOAuth2RegisteredClient extends AbstractRegisteredC
     @Column(name = "signature_algorithm")
     @Enumerated(EnumType.ORDINAL)
     private SignatureJwsAlgorithm idTokenSignatureAlgorithmJwsAlgorithm = SignatureJwsAlgorithm.RS256;
+
+    @Schema(name = "X509证书是否绑定 AccessToken", title = "默认值 false")
+    @Column(name = "bound_access_token")
+    private Boolean x509CertificateBoundAccessTokens = Boolean.FALSE;
     /* --- TokenSettings End --- */
 
     public abstract Set<OAuth2Scope> getScopes();
@@ -215,5 +223,29 @@ public abstract class AbstractOAuth2RegisteredClient extends AbstractRegisteredC
 
     public void setIdTokenSignatureAlgorithm(SignatureJwsAlgorithm idTokenSignatureAlgorithmJwsAlgorithm) {
         this.idTokenSignatureAlgorithmJwsAlgorithm = idTokenSignatureAlgorithmJwsAlgorithm;
+    }
+
+    public String getX509CertificateSubjectDN() {
+        return x509CertificateSubjectDN;
+    }
+
+    public void setX509CertificateSubjectDN(String x509CertificateSubjectDN) {
+        this.x509CertificateSubjectDN = x509CertificateSubjectDN;
+    }
+
+    public SignatureJwsAlgorithm getIdTokenSignatureAlgorithmJwsAlgorithm() {
+        return idTokenSignatureAlgorithmJwsAlgorithm;
+    }
+
+    public void setIdTokenSignatureAlgorithmJwsAlgorithm(SignatureJwsAlgorithm idTokenSignatureAlgorithmJwsAlgorithm) {
+        this.idTokenSignatureAlgorithmJwsAlgorithm = idTokenSignatureAlgorithmJwsAlgorithm;
+    }
+
+    public Boolean getX509CertificateBoundAccessTokens() {
+        return x509CertificateBoundAccessTokens;
+    }
+
+    public void setX509CertificateBoundAccessTokens(Boolean x509CertificateBoundAccessTokens) {
+        this.x509CertificateBoundAccessTokens = x509CertificateBoundAccessTokens;
     }
 }

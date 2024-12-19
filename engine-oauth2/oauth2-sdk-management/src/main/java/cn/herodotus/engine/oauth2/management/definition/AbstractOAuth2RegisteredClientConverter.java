@@ -67,6 +67,7 @@ public abstract class AbstractOAuth2RegisteredClientConverter<T extends Abstract
         if (ObjectUtils.isNotEmpty(jwsAlgorithm)) {
             clientSettingsBuilder.tokenEndpointAuthenticationSigningAlgorithm(jwsAlgorithm);
         }
+        clientSettingsBuilder.x509CertificateSubjectDN(details.getX509CertificateSubjectDN());
         return clientSettingsBuilder.build();
     }
 
@@ -85,6 +86,7 @@ public abstract class AbstractOAuth2RegisteredClientConverter<T extends Abstract
         if (ObjectUtils.isNotEmpty(signatureAlgorithm)) {
             tokenSettingsBuilder.idTokenSignatureAlgorithm(signatureAlgorithm);
         }
+        tokenSettingsBuilder.x509CertificateBoundAccessTokens(details.getX509CertificateBoundAccessTokens());
         return tokenSettingsBuilder.build();
     }
 
