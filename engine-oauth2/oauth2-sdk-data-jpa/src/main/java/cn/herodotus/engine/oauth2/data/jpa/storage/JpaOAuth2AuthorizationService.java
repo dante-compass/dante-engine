@@ -120,7 +120,7 @@ public class JpaOAuth2AuthorizationService implements OAuth2AuthorizationService
 
         Optional<HerodotusAuthorization> result;
 
-        if (StringUtils.isNotBlank(tokenType.getValue())) {
+        if (ObjectUtils.isEmpty(tokenType)) {
             result = this.herodotusAuthorizationService.findByStateOrAuthorizationCodeValueOrAccessTokenValueOrRefreshTokenValueOrOidcIdTokenValueOrUserCodeValueOrDeviceCodeValue(token);
         } else {
             result = switch (tokenType.getValue()) {
