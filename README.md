@@ -5,15 +5,15 @@
 ---
 
 <p align="center">
-    <a href="https://github.com/spring-projects/spring-authorization-server" target="_blank"><img src="https://img.shields.io/badge/Spring%20Authorization%20Server-1.4.0-blue.svg?logo=spring" alt="Spring Authorization Server 1.4.0"></a>
-    <a href="https://spring.io/projects/spring-boot" target="_blank"><img src="https://shields.io/badge/Spring%20Boot-3.4.0-blue.svg?logo=spring" alt="Spring Boot 3.4.0"></a>
+    <a href="https://github.com/spring-projects/spring-authorization-server" target="_blank"><img src="https://img.shields.io/badge/Spring%20Authorization%20Server-1.4.1-blue.svg?logo=spring" alt="Spring Authorization Server 1.4.1"></a>
+    <a href="https://spring.io/projects/spring-boot" target="_blank"><img src="https://shields.io/badge/Spring%20Boot-3.4.1-blue.svg?logo=spring" alt="Spring Boot 3.4.1"></a>
     <a href="https://spring.io/projects/spring-cloud" target="_blank"><img src="https://shields.io/badge/Spring%20Cloud-2024.0.0-blue.svg?logo=spring" alt="Spring Cloud 2024.0.0"></a>
     <a href="https://github.com/alibaba/spring-cloud-alibaba" target="_blank"><img src="https://shields.io/badge/Spring%20Cloud%20Alibaba-2023.0.1.2-blue.svg?logo=alibabadotcom" alt="Spring Cloud Alibaba 2023.0.1.2"></a>
     <a href="https://github.com/Tencent/spring-cloud-tencent" target="_blank"><img src="https://img.shields.io/badge/Spring%20Cloud%20Tencent-1.13.2--2023.0.0-blue.svg?logo=tencentqq" alt="Spring Cloud Tencent 1.13.2-2023.0.0"></a>
     <a href="https://nacos.io/zh-cn/index.html" target="_blank"><img src="https://shields.io/badge/Nacos-2.4.3-brightgreen.svg?logo=alibabadotcom" alt="Nacos 2.4.3"></a>
 </p>
 <p align="center">
-    <a href="#" target="_blank"><img src="https://shields.io/badge/Version-3.4.0.1-red.svg?logo=spring" alt="Version 3.4.0.1"></a>
+    <a href="#" target="_blank"><img src="https://shields.io/badge/Version-3.4.1.0-red.svg?logo=spring" alt="Version 3.4.1.0"></a>
     <a href="https://bell-sw.com/pages/downloads/#downloads" target="_blank"><img src="https://img.shields.io/badge/JDK-17%2B-green.svg?logo=openjdk" alt="Java 17"></a>
     <a href="./LICENSE"><img src="https://shields.io/badge/License-Apache--2.0-blue.svg?logo=apache" alt="License Apache 2.0"></a>
     <a href="https://www.herodotus.cn"><img src="https://visitor-badge.laobi.icu/badge?page_id=dante-cloud&title=Total%20Visits" alt="Total Visits"></a>
@@ -26,7 +26,9 @@
 <p align="center">
     <a href="https://github.com/dromara/dante-cloud">Github 仓库</a> &nbsp; | &nbsp;
     <a href="https://gitee.com/dromara/dante-cloud">Gitee 仓库</a> &nbsp; | &nbsp;
-    <a href="https://www.herodotus.cn">文档</a>
+    <a href="https://dante-cloud.dromara.org">开源版本文档</a> &nbsp; | &nbsp;
+    <a href="https://www.herodotus.cn">开源备用文档</a> &nbsp; | &nbsp;
+    <a href="https://www.herodotus.vip">企业版本文档</a>
 </p>
 
 <h1 align="center"> 如果您觉得有帮助，请点右上角 "Star" 支持一下，谢谢！</h1>

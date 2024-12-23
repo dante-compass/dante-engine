@@ -31,13 +31,13 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.4.0</version>
+        <version>3.4.1</version>
         <relativePath/>
     </parent>
 
     <groupId>cn.herodotus.engine</groupId>
     <artifactId>dependencies</artifactId>
-    <version>3.4.0.1</version>
+    <version>3.4.1.0</version>
     <packaging>pom</packaging>
 
     <description>基于 Spring Authorization Server 的 Dante Cloud Dependencies</description>
@@ -83,7 +83,7 @@
 
         <aliyun-java-sdk-core.version>4.7.3</aliyun-java-sdk-core.version>
         <aliyun-java-sdk-green.version>3.6.6</aliyun-java-sdk-green.version>
-        <alipay-sdk-java.version>4.40.13.ALL</alipay-sdk-java.version>
+        <alipay-sdk-java.version>4.40.21.ALL</alipay-sdk-java.version>
         <aliyun-sdk-oss.version>3.18.1</aliyun-sdk-oss.version>
         <animated-gif-lib.version>1.4</animated-gif-lib.version>
         <antisamy.version>1.7.7</antisamy.version>
@@ -107,7 +107,7 @@
         <jasypt-spring-boot-starter.version>3.0.5</jasypt-spring-boot-starter.version>
         <jetcache.version>2.7.7</jetcache.version>
         <jquery.version>3.7.1</jquery.version>
-        <just-auth.verison>1.16.7</just-auth.verison>
+        <justauth.verison>1.16.7</justauth.verison>
         <logstash-logback-encoder.version>8.0</logstash-logback-encoder.version>
         <mapstruct-processor.version>1.6.3</mapstruct-processor.version>
         <maven-archetype-plugin.version>3.3.1</maven-archetype-plugin.version>
@@ -122,8 +122,8 @@
         <opengauss-jdbc.version>6.0.0-og</opengauss-jdbc.version>
         <org.eclipse.paho.version>1.2.5</org.eclipse.paho.version>
         <p6spy.version>3.9.1</p6spy.version>
-        <quasar.version>2.17.4</quasar.version>
-        <redisson.version>3.40.2</redisson.version>
+        <quasar.version>2.17.5</quasar.version>
+        <redisson.version>3.41.0</redisson.version>
         <skywalking.version>9.3.0</skywalking.version>
         <sm-crypto.version>0.3.13</sm-crypto.version>
         <sms4j-spring-boot-starter.version>3.3.3</sms4j-spring-boot-starter.version>
@@ -134,7 +134,7 @@
         <spring-cloud-dependencies.version>2024.0.0</spring-cloud-dependencies.version>
         <spring-cloud-tencent-dependencies.version>1.13.2-2023.0.0</spring-cloud-tencent-dependencies.version>
         <sqlite-jdbc.version>3.47.1.0</sqlite-jdbc.version>
-        <sweetalert2.verison>11.14.5</sweetalert2.verison>
+        <sweetalert2.verison>11.15.3</sweetalert2.verison>
         <transmittable-thread-local.version>2.14.5</transmittable-thread-local.version>
         <velocity.version>2.3</velocity.version>
         <vue.version>3.5.13</vue.version>
@@ -151,9 +151,11 @@
         <okio.version>3.9.1</okio.version>
         <org.json.version>20240303</org.json.version>
         <snappy-java.version>1.1.10.7</snappy-java.version>
-        <xmlunit2.version>2.10.0</xmlunit2.version>
         <xnio.version>3.8.16.Final</xnio.version>
-        <xstream.version>1.4.21</xstream.version>
+        <!--fix CVE-2024-47535-->
+        <lettuce.version>6.5.1.RELEASE</lettuce.version>
+        <!--fix CVE-2024-12798-->
+        <logback.version>1.5.15</logback.version>
     </properties>
 
     <dependencyManagement>
@@ -619,7 +621,7 @@
             <dependency>
                 <groupId>me.zhyd.oauth</groupId>
                 <artifactId>JustAuth</artifactId>
-                <version>${just-auth.verison}</version>
+                <version>${justauth.verison}</version>
             </dependency>
             <dependency>
                 <groupId>com.github.binarywang</groupId>
