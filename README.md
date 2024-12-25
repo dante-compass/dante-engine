@@ -22,6 +22,7 @@
     <a href="https://gitee.com/dromara/dante-cloud"><img src="https://img.shields.io/github/forks/herodotus-cloud/dante-cloud?style=flat&logo=github" alt="Github fork"></a>
     <a href="https://gitee.com/dromara/dante-cloud"><img src="https://gitee.com/dromara/dante-cloud/badge/star.svg?theme=dark" alt="Gitee star"></a>
     <a href="https://gitee.com/dromara/dante-cloud"><img src="https://gitee.com/dromara/dante-cloud/badge/fork.svg?theme=dark" alt="Gitee fork"></a>
+    <a href='https://gitcode.com/dromara/dante-cloud'><img src='https://gitcode.com/dromara/dante-cloud/star/badge.svg' alt='Gitee star'></a>
 </p>
 <p align="center">
     <a href="https://github.com/dromara/dante-cloud">Github 仓库</a> &nbsp; | &nbsp;
