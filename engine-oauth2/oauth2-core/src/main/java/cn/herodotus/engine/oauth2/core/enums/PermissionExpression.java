@@ -49,11 +49,11 @@ public enum PermissionExpression implements BaseUiEnum<String> {
      * 权限表达式
      */
     PERMIT_ALL("permitAll", "permitAll"),
-    ANONYMOUS("anonymous", "anonymous"),
-    REMEMBER_ME("rememberMe", "rememberMe"),
+    ANONYMOUS("isAnonymous", "isAnonymous"),
+    REMEMBER_ME("isRememberMe", "isRememberMe"),
     DENY_ALL("denyAll", "denyAll"),
-    AUTHENTICATED("authenticated", "authenticated"),
-    FULLY_AUTHENTICATED("fullyAuthenticated", "fullyAuthenticated");
+    AUTHENTICATED("isAuthenticated", "isAuthenticated"),
+    FULLY_AUTHENTICATED("isFullyAuthenticated", "isFullyAuthenticated");
 
     private static final Map<String, PermissionExpression> INDEX_MAP = new HashMap<>();
     private static final List<Map<String, Object>> JSON_STRUCTURE = new ArrayList<>();

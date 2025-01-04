@@ -37,7 +37,7 @@ import org.dromara.hutool.core.data.id.IdUtil;
 import org.dromara.hutool.core.io.IORuntimeException;
 import org.dromara.hutool.core.io.file.FileUtil;
 import org.dromara.hutool.extra.management.ManagementUtil;
-import org.dromara.hutool.swing.img.FontUtil;
+import org.dromara.hutool.swing.FontUtil;
 import org.dromara.hutool.swing.img.ImgUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
