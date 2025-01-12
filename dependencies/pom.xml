@@ -83,7 +83,7 @@
 
         <aliyun-java-sdk-core.version>4.7.3</aliyun-java-sdk-core.version>
         <aliyun-java-sdk-green.version>3.6.6</aliyun-java-sdk-green.version>
-        <alipay-sdk-java.version>4.40.30.ALL</alipay-sdk-java.version>
+        <alipay-sdk-java.version>4.40.33.ALL</alipay-sdk-java.version>
         <aliyun-sdk-oss.version>3.18.1</aliyun-sdk-oss.version>
         <animated-gif-lib.version>1.4</animated-gif-lib.version>
         <antisamy.version>1.7.7</antisamy.version>
@@ -95,12 +95,12 @@
         <blaze-persistence.version>1.6.14</blaze-persistence.version>
         <bootstrap.version>5.3.3</bootstrap.version>
         <camunda-bpm-spring-boot-starter-rest.version>7.22.0</camunda-bpm-spring-boot-starter-rest.version>
-        <central-publishing-maven-plugin.version>0.6.0</central-publishing-maven-plugin.version>
+        <central-publishing-maven-plugin.version>0.7.0</central-publishing-maven-plugin.version>
         <com.baidu.aip.version>4.16.19</com.baidu.aip.version>
         <commons-collections4.version>4.4</commons-collections4.version>
         <commons-io.version>2.18.0</commons-io.version>
         <commons-text.version>1.13.0</commons-text.version>
-        <fastjson2.version>2.0.53</fastjson2.version>
+        <fastjson2.version>2.0.54</fastjson2.version>
         <guava.version>33.4.0-jre</guava.version>
         <hutool.version>6.0.0-M19</hutool.version>
         <influxdb-client.version>7.2.0</influxdb-client.version>
@@ -113,9 +113,9 @@
         <maven-archetype-plugin.version>3.3.1</maven-archetype-plugin.version>
         <maven-gpg-plugin.version>3.2.7</maven-gpg-plugin.version>
         <mdi__font.version>7.4.47</mdi__font.version>
-        <minio.version>8.5.14</minio.version>
-        <mybatis.version>3.5.17</mybatis.version>
-        <mybatis-plus.version>3.5.9</mybatis-plus.version>
+        <minio.version>8.5.15</minio.version>
+        <mybatis.version>3.5.19</mybatis.version>
+        <mybatis-plus.version>3.5.10</mybatis-plus.version>
         <mysql.version>9.1.0</mysql.version>
         <nacos.version>2.4.3</nacos.version>
         <okhttps.version>4.0.3</okhttps.version>
@@ -123,11 +123,11 @@
         <org.eclipse.paho.version>1.2.5</org.eclipse.paho.version>
         <p6spy.version>3.9.1</p6spy.version>
         <quasar.version>2.17.6</quasar.version>
-        <redisson.version>3.41.0</redisson.version>
+        <redisson.version>3.42.0</redisson.version>
         <skywalking.version>9.3.0</skywalking.version>
         <sm-crypto.version>0.3.13</sm-crypto.version>
         <sms4j-spring-boot-starter.version>3.3.3</sms4j-spring-boot-starter.version>
-        <springdoc.version>2.8.0</springdoc.version>
+        <springdoc.version>2.8.2</springdoc.version>
         <spring-boot-dependencies.version>3.4.1</spring-boot-dependencies.version>
         <spring-boot-admin-dependencies.version>3.4.1</spring-boot-admin-dependencies.version>
         <spring-cloud-alibaba-dependencies.version>2023.0.1.2</spring-cloud-alibaba-dependencies.version>
@@ -148,14 +148,14 @@
         <fastjson.version>1.2.83</fastjson.version>
         <hutool5.version>5.8.35</hutool5.version>
         <httpclient.version>4.5.14</httpclient.version>
-        <okio.version>3.9.1</okio.version>
-        <org.json.version>20241224</org.json.version>
+        <okio.version>3.10.2</okio.version>
+        <org.json.version>20250107</org.json.version>
         <snappy-java.version>1.1.10.7</snappy-java.version>
         <xnio.version>3.8.16.Final</xnio.version>
         <!--fix CVE-2024-47535-->
         <lettuce.version>6.5.1.RELEASE</lettuce.version>
         <!--fix CVE-2024-12798-->
-        <logback.version>1.5.15</logback.version>
+        <logback.version>1.5.16</logback.version>
     </properties>
 
     <dependencyManagement>
