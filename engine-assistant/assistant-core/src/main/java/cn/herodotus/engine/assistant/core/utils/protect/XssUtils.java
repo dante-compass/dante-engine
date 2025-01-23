@@ -26,8 +26,11 @@
 package cn.herodotus.engine.assistant.core.utils.protect;
 
 import cn.herodotus.engine.assistant.core.utils.ResourceResolver;
+import cn.herodotus.engine.assistant.definition.constants.SymbolConstants;
 import org.apache.commons.lang3.ObjectUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.text.StringEscapeUtils;
+import org.dromara.hutool.json.JSONUtil;
 import org.owasp.validator.html.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -53,8 +56,8 @@ public class XssUtils {
     private XssUtils() {
         Policy policy = createPolicy();
         this.antiSamy = ObjectUtils.isNotEmpty(policy) ? new AntiSamy(policy) : new AntiSamy();
-        this.nbsp = cleanHtml("&nbsp;");
-        this.quot = cleanHtml("\"");
+        this.nbsp = cleanHtml(SymbolConstants.NBSP);
+        this.quot = cleanHtml(SymbolConstants.QUOTE);
     }
 
     private static XssUtils getInstance() {
@@ -72,10 +75,19 @@ public class XssUtils {
     public static String cleaning(String taintedHTML) {
         // 对转义的HTML特殊字符（<、>、"等）进行反转义，因为AntiSamy调用scan方法时会将特殊字符转义
         String cleanHtml = StringEscapeUtils.unescapeHtml4(getInstance().cleanHtml(taintedHTML));
-        //AntiSamy会把“&nbsp;”转换成乱码，把双引号转换成"&quot;" 先将&nbsp;的乱码替换为空，双引号的乱码替换为双引号
-        String temp = cleanHtml.replaceAll(getInstance().nbsp, "");
-        temp = temp.replaceAll(getInstance().quot, "\"");
-        String result = temp.replaceAll("\n", "");
+
+        if (StringUtils.startsWith(cleanHtml, SymbolConstants.NEW_LINE)) {
+            // StringEscapeUtils.unescapeHtml4 转换某些内容时，会在开头增加 \n。去除之后才好判断，否则下面判断是否是 json 会出错。
+            cleanHtml = StringUtils.removeStart(cleanHtml, SymbolConstants.NEW_LINE);
+        }
+
+        if (JSONUtil.isTypeJSON(cleanHtml) && StringUtils.contains(cleanHtml, SymbolConstants.NEW_LINE)) {
+            // AntiSamy会把“ ”转换 \n。如果出现时间字符串，中间包含空格就会出现错误"
+            cleanHtml = cleanHtml.replaceAll(SymbolConstants.NEW_LINE, SymbolConstants.SPACE);
+        }
+        // AntiSamy会把“&nbsp;”转换成乱码，把双引号转换成"&quot;" 先将&nbsp;的乱码替换为空，双引号的乱码替换为双引号
+        String temp = cleanHtml.replaceAll(getInstance().nbsp, SymbolConstants.BLANK);
+        String result = temp.replaceAll(getInstance().quot, SymbolConstants.QUOTE);
         log.trace("[Herodotus] |- Antisamy process value from [{}] to [{}]", taintedHTML, result);
         return result;
     }

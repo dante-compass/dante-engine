@@ -31,13 +31,13 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.4.1</version>
+        <version>3.4.2</version>
         <relativePath/>
     </parent>
 
     <groupId>cn.herodotus.engine</groupId>
     <artifactId>dependencies</artifactId>
-    <version>3.4.1.2</version>
+    <version>3.4.2.0</version>
     <packaging>pom</packaging>
 
     <description>基于 Spring Authorization Server 的 Dante Cloud Dependencies</description>
@@ -83,7 +83,7 @@
 
         <aliyun-java-sdk-core.version>4.7.3</aliyun-java-sdk-core.version>
         <aliyun-java-sdk-green.version>3.6.6</aliyun-java-sdk-green.version>
-        <alipay-sdk-java.version>4.40.33.ALL</alipay-sdk-java.version>
+        <alipay-sdk-java.version>4.40.49.ALL</alipay-sdk-java.version>
         <aliyun-sdk-oss.version>3.18.1</aliyun-sdk-oss.version>
         <animated-gif-lib.version>1.4</animated-gif-lib.version>
         <antisamy.version>1.7.7</antisamy.version>
@@ -116,19 +116,19 @@
         <minio.version>8.5.17</minio.version>
         <mybatis.version>3.5.19</mybatis.version>
         <mybatis-plus.version>3.5.10.1</mybatis-plus.version>
-        <mysql.version>9.1.0</mysql.version>
-        <nacos.version>2.4.3</nacos.version>
+        <mysql.version>9.2.0</mysql.version>
+        <nacos.version>2.5.0</nacos.version>
         <okhttps.version>4.0.3</okhttps.version>
         <opengauss-jdbc.version>6.0.0-og</opengauss-jdbc.version>
         <org.eclipse.paho.version>1.2.5</org.eclipse.paho.version>
         <p6spy.version>3.9.1</p6spy.version>
-        <quasar.version>2.17.6</quasar.version>
+        <quasar.version>2.17.7</quasar.version>
         <redisson.version>3.43.0</redisson.version>
         <skywalking.version>9.3.0</skywalking.version>
         <sm-crypto.version>0.3.13</sm-crypto.version>
         <sms4j-spring-boot-starter.version>3.3.3</sms4j-spring-boot-starter.version>
         <springdoc.version>2.8.3</springdoc.version>
-        <spring-boot-dependencies.version>3.4.1</spring-boot-dependencies.version>
+        <spring-boot-dependencies.version>3.4.2</spring-boot-dependencies.version>
         <spring-boot-admin-dependencies.version>3.4.1</spring-boot-admin-dependencies.version>
         <spring-cloud-alibaba-dependencies.version>2023.0.1.2</spring-cloud-alibaba-dependencies.version>
         <spring-cloud-dependencies.version>2024.0.0</spring-cloud-dependencies.version>
@@ -153,9 +153,7 @@
         <snappy-java.version>1.1.10.7</snappy-java.version>
         <xnio.version>3.8.16.Final</xnio.version>
         <!--fix CVE-2024-47535-->
-        <lettuce.version>6.5.1.RELEASE</lettuce.version>
-        <!--fix CVE-2024-12798-->
-        <logback.version>1.5.16</logback.version>
+        <lettuce.version>6.5.2.RELEASE</lettuce.version>
     </properties>
 
     <dependencyManagement>

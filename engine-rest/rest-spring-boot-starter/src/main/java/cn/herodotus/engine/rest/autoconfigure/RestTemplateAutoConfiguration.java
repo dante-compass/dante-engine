@@ -67,17 +67,7 @@ public class RestTemplateAutoConfiguration {
          * 如果不想中断对结果数据得解析，可以通过覆盖默认的 ResponseErrorHandler ，
          * 对hasError修改下，让他一直返回true，即是不检查状态码及抛异常了
          */
-        ResponseErrorHandler responseErrorHandler = new ResponseErrorHandler() {
-            @Override
-            public boolean hasError(ClientHttpResponse response) throws IOException {
-                return true;
-            }
-
-            @Override
-            public void handleError(ClientHttpResponse response) throws IOException {
-
-            }
-        };
+        ResponseErrorHandler responseErrorHandler = response -> true;
 
         RestTemplate restTemplate = restTemplateBuilder
                 .errorHandler(responseErrorHandler)
