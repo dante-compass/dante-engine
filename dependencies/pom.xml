@@ -119,7 +119,7 @@
         <mybatis-plus.version>3.5.10.1</mybatis-plus.version>
         <mysql.version>9.2.0</mysql.version>
         <nacos.version>2.5.0</nacos.version>
-        <okhttps.version>4.0.3</okhttps.version>
+        <okhttps.version>4.1.0</okhttps.version>
         <opengauss-jdbc.version>6.0.0-og</opengauss-jdbc.version>
         <org.eclipse.paho.version>1.2.5</org.eclipse.paho.version>
         <p6spy.version>3.9.1</p6spy.version>
