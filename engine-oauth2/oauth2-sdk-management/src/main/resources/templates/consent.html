@@ -45,7 +45,7 @@
             <q-page padding class="flex justify-center items-start q-pa-none">
                 <q-list class="column items-center" style="min-width: 500px">
                     <q-item>
-                        <img th:src="@{/herodotus/custom/images/logo.png}" height="240" width="320"/>
+                        <img th:src="@{/herodotus/images/herodotus-cloud.png}" height="240" width="320"/>
                     </q-item>
                     <q-item>
                         <div class="text-h5 text-weight-bold">
@@ -61,7 +61,7 @@
                                             <q-item-section avatar>
                                                 <q-avatar rounded th:with="condition=${logo ne null}">
                                                     <img th:if="${condition}" th:src="@{${logo}}"/>
-                                                    <img th:unless="${condition}" th:src="@{/herodotus/custom/images/boy-avatar.png}"/>
+                                                    <img th:unless="${condition}" th:src="@{/herodotus/images/boy-avatar.png}"/>
                                                 </q-avatar>
                                             </q-item-section>
 
