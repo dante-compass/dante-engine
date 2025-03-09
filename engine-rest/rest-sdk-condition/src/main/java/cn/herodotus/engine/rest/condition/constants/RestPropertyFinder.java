@@ -43,6 +43,10 @@ public class RestPropertyFinder {
         return PropertyResolver.getProperty(applicationContext.getEnvironment(), BaseConstants.ITEM_SPRING_APPLICATION_NAME);
     }
 
+    public static String getContextPath(ApplicationContext applicationContext) {
+        return PropertyResolver.getProperty(applicationContext.getEnvironment(), BaseConstants.ITEM_SERVLET_CONTEXT_PATH);
+    }
+
     public static String getCryptoStrategy(ConditionContext conditionContext, String defaultValue) {
         return PropertyResolver.getProperty(conditionContext, RestConstants.ITEM_PROTECT_CRYPTO_STRATEGY, defaultValue);
     }

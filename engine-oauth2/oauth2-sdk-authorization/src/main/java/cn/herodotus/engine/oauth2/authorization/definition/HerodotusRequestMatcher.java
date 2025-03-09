@@ -211,7 +211,9 @@ public final class HerodotusRequestMatcher implements RequestMatcher, Serializab
         if (this.urlPathHelper != null) {
             return this.urlPathHelper.getPathWithinApplication(request);
         }
-        String url = request.getServletPath();
+        String url = request.getRequestURI();
+        // request.getServletPath() 会去掉 ContextPath
+//        String url = request.getServletPath();
         String pathInfo = request.getPathInfo();
         if (pathInfo != null) {
             url = StringUtils.isNotBlank(url) ? url + pathInfo : pathInfo;

@@ -25,6 +25,7 @@
 
 package cn.herodotus.engine.rest.service.processor;
 
+import cn.herodotus.engine.assistant.core.utils.WellFormedUtils;
 import cn.herodotus.engine.assistant.definition.constants.SymbolConstants;
 import cn.herodotus.engine.message.core.logic.domain.RequestMapping;
 import cn.herodotus.engine.message.core.logic.strategy.RequestMappingScanEventManager;
@@ -83,6 +84,9 @@ public class RequestMappingScanner implements ApplicationListener<ApplicationRea
     }
 
     public void onApplicationEvent(ApplicationContext applicationContext) {
+
+        String contextPath = getContextPath(applicationContext);
+
         // 1、获取服务ID：该服务ID对于微服务是必需的。
         String serviceId = RestPropertyFinder.getApplicationName(applicationContext);
 
@@ -111,7 +115,7 @@ public class RequestMappingScanner implements ApplicationListener<ApplicationRea
                     }
 
                     // 4.2、拼装扫描信息
-                    RequestMapping requestMapping = createRequestMapping(serviceId, requestMappingInfo, handlerMethod);
+                    RequestMapping requestMapping = createRequestMapping(serviceId, requestMappingInfo, handlerMethod, contextPath);
                     if (ObjectUtils.isEmpty(requestMapping)) {
                         continue;
                     }
@@ -211,7 +215,7 @@ public class RequestMappingScanner implements ApplicationListener<ApplicationRea
         return result;
     }
 
-    private RequestMapping createRequestMapping(String serviceId, RequestMappingInfo info, HandlerMethod method) {
+    private RequestMapping createRequestMapping(String serviceId, RequestMappingInfo info, HandlerMethod method, String contextPath) {
         // 4.2.1、获取类名
         // method.getMethod().getDeclaringClass().getName() 取到的是注解实际所在类的名字，比如注解在父类叫BaseController，那么拿到的就是BaseController
         // method.getBeanType().getName() 取到的是注解实际Bean的名字，比如注解在在父类叫BaseController，而实际类是SysUserController，那么拿到的就是SysUserController
@@ -239,7 +243,9 @@ public class RequestMappingScanner implements ApplicationListener<ApplicationRea
             return null;
         }
 
-        String urls = StringUtils.join(patternValues, SymbolConstants.COMMA);
+        String urls = patternValues.stream()
+                .map(url -> toInterface(contextPath, url))
+                .collect(Collectors.joining(SymbolConstants.COMMA));
 
         // 5.2.8、根据serviceId, requestMethods, urls生成的MD5值，作为自定义主键
         String flag = serviceId + SymbolConstants.DASH + requestMethods + SymbolConstants.DASH + urls;
@@ -259,5 +265,33 @@ public class RequestMappingScanner implements ApplicationListener<ApplicationRea
         requestMapping.setClassName(className);
         requestMapping.setMethodName(methodName);
         return requestMapping;
+    }
+
+    /**
+     * 从 {@link ApplicationContext} 中读取 Context Path
+     * @param applicationContext 应用上下文 {@link ApplicationContext}
+     * @return 如果有 Context Path 就返回实际值，如果没有或者为 '/' 则返回空串。
+     */
+    private String getContextPath(ApplicationContext applicationContext) {
+        String contextPath = RestPropertyFinder.getContextPath(applicationContext);
+        if (StringUtils.isNotBlank(contextPath) && !StringUtils.equals(contextPath, SymbolConstants.FORWARD_SLASH)) {
+            return WellFormedUtils.robustness(contextPath, SymbolConstants.FORWARD_SLASH, false, false);
+        } else {
+            return StringUtils.EMPTY;
+        }
+    }
+
+    /**
+     * 拼接实际的 URL。
+     * @param contextPath 上下文路径
+     * @param url 实际的 Controller 地址。
+     * @return 实际的 URL。
+     */
+    private String toInterface(String contextPath, String url) {
+        if (StringUtils.isBlank(contextPath)) {
+            return url;
+        } else {
+            return contextPath + url;
+        }
     }
 }

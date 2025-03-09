@@ -27,16 +27,15 @@ package cn.herodotus.engine.assistant.core.utils;
 
 import cn.herodotus.engine.assistant.core.enums.Protocol;
 import cn.herodotus.engine.assistant.core.exception.properties.PropertyValueIsNotSetException;
+import cn.herodotus.engine.assistant.definition.constants.BaseConstants;
 import cn.herodotus.engine.assistant.definition.constants.DefaultConstants;
 import cn.herodotus.engine.assistant.definition.constants.SymbolConstants;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.core.ParameterizedTypeReference;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
-import java.util.Map;
 
 /**
  * <p>Description: 符合语法规则的工具类 </p>
@@ -48,9 +47,68 @@ import java.util.Map;
  */
 public class WellFormedUtils {
 
-    public static final ParameterizedTypeReference<Map<String, Object>> MAP_TYPE_REFERENCE = new ParameterizedTypeReference<>() {
-    };
     private static final Logger log = LoggerFactory.getLogger(WellFormedUtils.class);
+
+    /**
+     * 含字符的字符串鲁棒性校验。
+     *
+     * @param content      字符串内容
+     * @param symbol       指定的字符
+     * @param isStartsWith 开头还是结尾：true 字符串开头；false 字符串结尾
+     * @param isRetain     是否保留：true 保留，没有该字符就加上；false 去除，有该字符则去掉
+     * @return 健壮的字符串
+     */
+    public static String robustness(String content, String symbol, boolean isStartsWith, boolean isRetain) {
+        if (isStartsWith) {
+            if (isRetain) {
+                if (StringUtils.startsWith(content, symbol)) {
+                    return content;
+                } else {
+                    return symbol + content;
+                }
+            } else {
+                if (StringUtils.startsWith(content, symbol)) {
+                    return StringUtils.removeStart(content, symbol);
+                } else {
+                    return content;
+                }
+            }
+        } else {
+            if (isRetain) {
+                if (StringUtils.endsWith(content, symbol)) {
+                    return content;
+                } else {
+                    return content + symbol;
+                }
+            } else {
+                if (StringUtils.endsWith(content, symbol)) {
+                    return StringUtils.removeEnd(content, symbol);
+                } else {
+                    return content;
+                }
+            }
+        }
+    }
+
+    public static String forwardSlashRobustness(String content, boolean isStartsWith, boolean isRetain) {
+        return robustness(content, SymbolConstants.FORWARD_SLASH, isStartsWith, isRetain);
+    }
+
+    public static String startsWithForwardSlash(String content, boolean isRetain) {
+        return forwardSlashRobustness(content, true, isRetain);
+    }
+
+    public static String startsWithForwardSlash(String content) {
+        return startsWithForwardSlash(content, true);
+    }
+
+    public static String endsWithForwardSlash(String content, boolean isRetain) {
+        return forwardSlashRobustness(content, false, isRetain);
+    }
+
+    public static String endsWithForwardSlash(String content) {
+        return endsWithForwardSlash(content, true);
+    }
 
     /**
      * 符合语法规则的 URL
@@ -61,11 +119,7 @@ public class WellFormedUtils {
      * @return 结构合理的请求地址字符串
      */
     public static String url(String url) {
-        if (StringUtils.endsWith(url, SymbolConstants.FORWARD_SLASH)) {
-            return url;
-        } else {
-            return url + SymbolConstants.FORWARD_SLASH;
-        }
+        return endsWithForwardSlash(url);
     }
 
     /**
@@ -173,6 +227,14 @@ public class WellFormedUtils {
             } else {
                 return issuerUri + endpoint;
             }
+        }
+    }
+
+    public static boolean isToken(String token) {
+        if (StringUtils.isNotBlank(token)) {
+            return StringUtils.startsWith(token, BaseConstants.BEARER_TOKEN) || StringUtils.startsWith(token, BaseConstants.BASIC_TOKEN);
+        } else {
+            return true;
         }
     }
 }

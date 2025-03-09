@@ -39,9 +39,11 @@ public interface BaseConstants {
     /* ---------- 配置属性通用常量 ---------- */
 
     String PROPERTY_ENABLED = ".enabled";
+    String PROPERTY_PREFIX_SERVER = "server";
     String PROPERTY_PREFIX_SPRING = "spring";
     String PROPERTY_PREFIX_HERODOTUS = "herodotus";
 
+    String PROPERTY_SERVER_SERVLET = PROPERTY_PREFIX_SERVER + ".servlet";
     String PROPERTY_SPRING_DATA = PROPERTY_PREFIX_SPRING + ".data";
     String PROPERTY_SPRING_DATA_REDIS = PROPERTY_SPRING_DATA + ".redis";
     String PROPERTY_SPRING_JPA = PROPERTY_PREFIX_SPRING + ".jpa";
@@ -74,6 +76,7 @@ public interface BaseConstants {
 
     /* ---------- Spring 家族配置属性 ---------- */
 
+    String ITEM_SERVLET_CONTEXT_PATH = PROPERTY_SERVER_SERVLET + ".context-path";
     String ITEM_SWAGGER_ENABLED = PROPERTY_PREFIX_SWAGGER + PROPERTY_ENABLED;
     String ITEM_SPRING_APPLICATION_NAME = PROPERTY_PREFIX_SPRING + ".application.name";
     String ITEM_SPRING_SESSION_REDIS = PROPERTY_PREFIX_SPRING + ".session.redis.repository-type";
