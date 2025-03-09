@@ -71,7 +71,7 @@
     <h2 th:text="${status} + '     错误!'"></h2>
     <hr/>
     <h3 th:text="'请求地址： '+ ${path}"></h3>
-    <h3 th:text="'错误代码： '+ ${status}"></h3>
+    <h3 th:text="'错误代码： '+ ${code != null ? code : status}"></h3>
     <h3 th:text="'错误提示： '+ ${error != null ? error : ''}"></h3>
     <h3 th:text="'异常消息： '+ ${message}"></h3>
     <h3 th:text="'异常对象： '+ ${exception != null ? exception : ''}"></h3>
