@@ -39,6 +39,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.InsufficientAuthenticationException;
+import org.springframework.security.authentication.InternalAuthenticationServiceException;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
 import org.springframework.security.oauth2.core.OAuth2Error;
@@ -163,6 +164,20 @@ public class SecurityGlobalExceptionHandler {
         return GlobalExceptionHandler.resolveException(ex, path);
     }
 
+    private static Result<String> handleAuthenticationException(AuthenticationException authenticationException, String path) {
+        Throwable throwable = authenticationException.getCause();
+        if (ObjectUtils.isNotEmpty(throwable)) {
+            // 此处是判断 throwable.getClass() 的父类是不是 PlatformRuntimeException
+            // 注意：父类 PlatformRuntimeException.class 放左侧，子类放右侧。
+            if (PlatformRuntimeException.class.isAssignableFrom(throwable.getClass()) ) {
+                PlatformRuntimeException platformRuntimeException = (PlatformRuntimeException) throwable;
+                Result<String> result = platformRuntimeException.getResult();
+                return result.path(path);
+            }
+        }
+        return resolveException(authenticationException, path);
+    }
+
     /**
      * 静态解析认证异常
      *
@@ -182,14 +197,10 @@ public class SecurityGlobalExceptionHandler {
                 result.detail(exception.getMessage());
                 return result;
             }
-        } else if (exception instanceof InsufficientAuthenticationException) {
-            Throwable throwable = exception.getCause();
-            if (ObjectUtils.isNotEmpty(throwable)) {
-                reason = new Exception(throwable);
-            } else {
-                reason = exception;
-            }
-            log.debug("[Herodotus] |- InsufficientAuthenticationException cause content is [{}]", reason.getClass().getSimpleName());
+        } else if (exception instanceof InternalAuthenticationServiceException internalAuthenticationServiceException) {
+            return handleAuthenticationException(internalAuthenticationServiceException, path);
+        } else if (exception instanceof InsufficientAuthenticationException insufficientAuthenticationException) {
+            return handleAuthenticationException(insufficientAuthenticationException, path);
         } else {
             String exceptionName = exception.getClass().getSimpleName();
             if (StringUtils.isNotEmpty(exceptionName) && EXCEPTION_DICTIONARY.containsKey(exceptionName)) {
