@@ -31,13 +31,13 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.4.3</version>
+        <version>3.4.4</version>
         <relativePath/>
     </parent>
 
     <groupId>cn.herodotus.engine</groupId>
     <artifactId>dependencies</artifactId>
-    <version>3.4.3.3</version>
+    <version>3.4.4.0</version>
     <packaging>pom</packaging>
 
     <description>基于 Spring Authorization Server 的 Dante Cloud Dependencies</description>
@@ -83,7 +83,7 @@
 
         <aliyun-java-sdk-core.version>4.7.3</aliyun-java-sdk-core.version>
         <aliyun-java-sdk-green.version>3.6.6</aliyun-java-sdk-green.version>
-        <alipay-sdk-java.version>4.40.82.ALL</alipay-sdk-java.version>
+        <alipay-sdk-java.version>4.40.104.ALL</alipay-sdk-java.version>
         <aliyun-sdk-oss.version>3.18.1</aliyun-sdk-oss.version>
         <animated-gif-lib.version>1.4</animated-gif-lib.version>
         <antisamy.version>1.7.7</antisamy.version>
@@ -101,7 +101,7 @@
         <commons-io.version>2.18.0</commons-io.version>
         <commons-text.version>1.13.0</commons-text.version>
         <fastjson2.version>2.0.56</fastjson2.version>
-        <guava.version>33.4.0-jre</guava.version>
+        <guava.version>33.4.5-jre</guava.version>
         <hutool.version>6.0.0-M20</hutool.version>
         <hypersistence-utils-hibernate-63.version>3.9.5</hypersistence-utils-hibernate-63.version>
         <influxdb-client.version>7.2.0</influxdb-client.version>
@@ -124,12 +124,12 @@
         <org.eclipse.paho.version>1.2.5</org.eclipse.paho.version>
         <p6spy.version>3.9.1</p6spy.version>
         <quasar.version>2.18.1</quasar.version>
-        <redisson.version>3.45.0</redisson.version>
+        <redisson.version>3.45.1</redisson.version>
         <skywalking.version>9.3.0</skywalking.version>
         <sm-crypto.version>0.3.13</sm-crypto.version>
         <sms4j-spring-boot-starter.version>3.3.4</sms4j-spring-boot-starter.version>
         <springdoc.version>2.8.5</springdoc.version>
-        <spring-boot-dependencies.version>3.4.3</spring-boot-dependencies.version>
+        <spring-boot-dependencies.version>3.4.4</spring-boot-dependencies.version>
         <spring-boot-admin-dependencies.version>3.4.5</spring-boot-admin-dependencies.version>
         <spring-cloud-alibaba-dependencies.version>2023.0.1.2</spring-cloud-alibaba-dependencies.version>
         <spring-cloud-dependencies.version>2024.0.1</spring-cloud-dependencies.version>
@@ -147,7 +147,7 @@
         <commons-fileupload.version>1.5</commons-fileupload.version>
         <classgraph.version>4.8.179</classgraph.version>
         <dom4j.version>2.1.4</dom4j.version>
-        <error_prone_annotations.version>2.36.0</error_prone_annotations.version>
+        <error_prone_annotations.version>2.37.0</error_prone_annotations.version>
         <fastjson.version>1.2.83</fastjson.version>
         <hutool5.version>5.8.36</hutool5.version>
         <httpclient.version>4.5.14</httpclient.version>
