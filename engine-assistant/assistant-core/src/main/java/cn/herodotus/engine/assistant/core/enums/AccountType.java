@@ -63,7 +63,7 @@ public enum AccountType {
     TAOBAO(AuthDefaultSource.TAOBAO.name(), AccountType.JUST_AUTH_HANDLER, "淘宝"),
     ALIPAY(AuthDefaultSource.ALIPAY.name(), AccountType.JUST_AUTH_HANDLER, "支付宝"),
     TEAMBITION(AuthDefaultSource.TEAMBITION.name(), AccountType.JUST_AUTH_HANDLER, "Teambition"),
-    HUAWEI(AuthDefaultSource.HUAWEI_V3.name(), AccountType.JUST_AUTH_HANDLER, "华为"),
+    HUAWEI_V3(AuthDefaultSource.HUAWEI_V3.name(), AccountType.JUST_AUTH_HANDLER, "华为"),
     FEISHU(AuthDefaultSource.FEISHU.name(), AccountType.JUST_AUTH_HANDLER, "飞书"),
     JD(AuthDefaultSource.JD.name(), AccountType.JUST_AUTH_HANDLER, "京东"),
     DOUYIN(AuthDefaultSource.DOUYIN.name(), AccountType.JUST_AUTH_HANDLER, "抖音"),
