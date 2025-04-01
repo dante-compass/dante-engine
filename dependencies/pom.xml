@@ -37,7 +37,7 @@
 
     <groupId>cn.herodotus.engine</groupId>
     <artifactId>dependencies</artifactId>
-    <version>3.4.4.0</version>
+    <version>3.4.4.1</version>
     <packaging>pom</packaging>
 
     <description>基于 Spring Authorization Server 的 Dante Cloud Dependencies</description>
@@ -103,7 +103,7 @@
         <fastjson2.version>2.0.57</fastjson2.version>
         <guava.version>33.4.6-jre</guava.version>
         <hutool.version>6.0.0-M20</hutool.version>
-        <hypersistence-utils-hibernate-63.version>3.9.8</hypersistence-utils-hibernate-63.version>
+        <hypersistence-utils-hibernate-63.version>3.9.9</hypersistence-utils-hibernate-63.version>
         <influxdb-client.version>7.2.0</influxdb-client.version>
         <jasypt-spring-boot-starter.version>3.0.5</jasypt-spring-boot-starter.version>
         <jetcache.version>2.7.7</jetcache.version>
