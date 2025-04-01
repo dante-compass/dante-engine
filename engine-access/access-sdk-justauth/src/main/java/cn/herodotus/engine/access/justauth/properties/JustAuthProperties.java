@@ -26,6 +26,7 @@
 package cn.herodotus.engine.access.justauth.properties;
 
 import cn.herodotus.engine.access.core.constants.AccessConstants;
+import com.google.common.base.MoreObjects;
 import me.zhyd.oauth.config.AuthConfig;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
@@ -53,6 +54,10 @@ public class JustAuthProperties {
      * 第三方系统登录配置信息
      */
     private Map<String, AuthConfig> configs;
+    /**
+     * 支付宝登录 PublicKey
+     */
+    private String alipayPublicKey;
 
     public Boolean getEnabled() {
         return enabled;
@@ -76,5 +81,22 @@ public class JustAuthProperties {
 
     public void setConfigs(Map<String, AuthConfig> configs) {
         this.configs = configs;
+    }
+
+    public String getAlipayPublicKey() {
+        return alipayPublicKey;
+    }
+
+    public void setAlipayPublicKey(String alipayPublicKey) {
+        this.alipayPublicKey = alipayPublicKey;
+    }
+
+    @Override
+    public String toString() {
+        return MoreObjects.toStringHelper(this)
+                .add("enabled", enabled)
+                .add("timeout", timeout)
+                .add("alipayPublicKey", alipayPublicKey)
+                .toString();
     }
 }

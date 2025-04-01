@@ -130,81 +130,47 @@ public class JustAuthProcessor {
     }
 
     private AuthRequest getAuthRequest(AuthDefaultSource authDefaultSource, AuthConfig authConfig) {
-        switch (authDefaultSource) {
-            case GITHUB:
-                return new AuthGithubRequest(authConfig, this.getJustAuthStateRedisCache());
-            case WEIBO:
-                return new AuthWeiboRequest(authConfig, this.getJustAuthStateRedisCache());
-            case GITEE:
-                return new AuthGiteeRequest(authConfig, this.getJustAuthStateRedisCache());
-            case DINGTALK:
-                return new AuthDingTalkRequest(authConfig, this.getJustAuthStateRedisCache());
-            case BAIDU:
-                return new AuthBaiduRequest(authConfig, this.getJustAuthStateRedisCache());
-            case CSDN:
-                return new AuthCsdnRequest(authConfig, this.getJustAuthStateRedisCache());
-            case CODING:
-                return new AuthCodingRequest(authConfig, this.getJustAuthStateRedisCache());
-            case OSCHINA:
-                return new AuthOschinaRequest(authConfig, this.getJustAuthStateRedisCache());
-            case ALIPAY:
-                return new AuthAlipayRequest(authConfig, this.getJustAuthStateRedisCache());
-            case QQ:
-                return new AuthQqRequest(authConfig, this.getJustAuthStateRedisCache());
-            case WECHAT_MP:
-                return new AuthWeChatMpRequest(authConfig, this.getJustAuthStateRedisCache());
-            case WECHAT_OPEN:
-                return new AuthWeChatOpenRequest(authConfig, this.getJustAuthStateRedisCache());
-            case WECHAT_ENTERPRISE:
-                return new AuthWeChatEnterpriseQrcodeRequest(authConfig, this.getJustAuthStateRedisCache());
-            case WECHAT_ENTERPRISE_WEB:
-                return new AuthWeChatEnterpriseWebRequest(authConfig, this.getJustAuthStateRedisCache());
-            case TAOBAO:
-                return new AuthTaobaoRequest(authConfig, this.getJustAuthStateRedisCache());
-            case GOOGLE:
-                return new AuthGoogleRequest(authConfig, this.getJustAuthStateRedisCache());
-            case FACEBOOK:
-                return new AuthFacebookRequest(authConfig, this.getJustAuthStateRedisCache());
-            case DOUYIN:
-                return new AuthDouyinRequest(authConfig, this.getJustAuthStateRedisCache());
-            case LINKEDIN:
-                return new AuthLinkedinRequest(authConfig, this.getJustAuthStateRedisCache());
-            case MICROSOFT:
-                return new AuthMicrosoftRequest(authConfig, this.getJustAuthStateRedisCache());
-            case MI:
-                return new AuthMiRequest(authConfig, this.getJustAuthStateRedisCache());
-            case TOUTIAO:
-                return new AuthToutiaoRequest(authConfig, this.getJustAuthStateRedisCache());
-            case TEAMBITION:
-                return new AuthTeambitionRequest(authConfig, this.getJustAuthStateRedisCache());
-            case RENREN:
-                return new AuthRenrenRequest(authConfig, this.getJustAuthStateRedisCache());
-            case PINTEREST:
-                return new AuthPinterestRequest(authConfig, this.getJustAuthStateRedisCache());
-            case STACK_OVERFLOW:
-                return new AuthStackOverflowRequest(authConfig, this.getJustAuthStateRedisCache());
-            case HUAWEI:
-                return new AuthHuaweiRequest(authConfig, this.getJustAuthStateRedisCache());
-            case GITLAB:
-                return new AuthGitlabRequest(authConfig, this.getJustAuthStateRedisCache());
-            case KUJIALE:
-                return new AuthKujialeRequest(authConfig, this.getJustAuthStateRedisCache());
-            case ELEME:
-                return new AuthElemeRequest(authConfig, this.getJustAuthStateRedisCache());
-            case MEITUAN:
-                return new AuthMeituanRequest(authConfig, this.getJustAuthStateRedisCache());
-            case TWITTER:
-                return new AuthTwitterRequest(authConfig, this.getJustAuthStateRedisCache());
-            case FEISHU:
-                return new AuthFeishuRequest(authConfig, this.getJustAuthStateRedisCache());
-            case JD:
-                return new AuthJdRequest(authConfig, this.getJustAuthStateRedisCache());
-            case ALIYUN:
-                return new AuthAliyunRequest(authConfig, this.getJustAuthStateRedisCache());
-            case XMLY:
-                return new AuthXmlyRequest(authConfig, this.getJustAuthStateRedisCache());
-            default:
-                return null;
-        }
+        return switch (authDefaultSource) {
+            case GITHUB -> new AuthGithubRequest(authConfig, this.getJustAuthStateRedisCache());
+            case WEIBO -> new AuthWeiboRequest(authConfig, this.getJustAuthStateRedisCache());
+            case GITEE -> new AuthGiteeRequest(authConfig, this.getJustAuthStateRedisCache());
+            case DINGTALK -> new AuthDingTalkRequest(authConfig, this.getJustAuthStateRedisCache());
+            case BAIDU -> new AuthBaiduRequest(authConfig, this.getJustAuthStateRedisCache());
+//            case CSDN -> new AuthCsdnRequest(authConfig, this.getJustAuthStateRedisCache());
+            case CODING -> new AuthCodingRequest(authConfig, this.getJustAuthStateRedisCache());
+            case OSCHINA -> new AuthOschinaRequest(authConfig, this.getJustAuthStateRedisCache());
+            case ALIPAY ->
+                    new AuthAlipayRequest(authConfig, justAuthProperties.getAlipayPublicKey(), this.getJustAuthStateRedisCache());
+            case QQ -> new AuthQqRequest(authConfig, this.getJustAuthStateRedisCache());
+            case WECHAT_MP -> new AuthWeChatMpRequest(authConfig, this.getJustAuthStateRedisCache());
+            case WECHAT_OPEN -> new AuthWeChatOpenRequest(authConfig, this.getJustAuthStateRedisCache());
+            case WECHAT_ENTERPRISE ->
+                    new AuthWeChatEnterpriseQrcodeRequest(authConfig, this.getJustAuthStateRedisCache());
+            case WECHAT_ENTERPRISE_WEB ->
+                    new AuthWeChatEnterpriseWebRequest(authConfig, this.getJustAuthStateRedisCache());
+            case TAOBAO -> new AuthTaobaoRequest(authConfig, this.getJustAuthStateRedisCache());
+            case GOOGLE -> new AuthGoogleRequest(authConfig, this.getJustAuthStateRedisCache());
+            case FACEBOOK -> new AuthFacebookRequest(authConfig, this.getJustAuthStateRedisCache());
+            case DOUYIN -> new AuthDouyinRequest(authConfig, this.getJustAuthStateRedisCache());
+            case LINKEDIN -> new AuthLinkedinRequest(authConfig, this.getJustAuthStateRedisCache());
+            case MICROSOFT -> new AuthMicrosoftRequest(authConfig, this.getJustAuthStateRedisCache());
+            case MI -> new AuthMiRequest(authConfig, this.getJustAuthStateRedisCache());
+            case TOUTIAO -> new AuthToutiaoRequest(authConfig, this.getJustAuthStateRedisCache());
+            case TEAMBITION -> new AuthTeambitionRequest(authConfig, this.getJustAuthStateRedisCache());
+            case RENREN -> new AuthRenrenRequest(authConfig, this.getJustAuthStateRedisCache());
+            case PINTEREST -> new AuthPinterestRequest(authConfig, this.getJustAuthStateRedisCache());
+            case STACK_OVERFLOW -> new AuthStackOverflowRequest(authConfig, this.getJustAuthStateRedisCache());
+            case HUAWEI_V3 -> new AuthHuaweiV3Request(authConfig, this.getJustAuthStateRedisCache());
+            case GITLAB -> new AuthGitlabRequest(authConfig, this.getJustAuthStateRedisCache());
+            case KUJIALE -> new AuthKujialeRequest(authConfig, this.getJustAuthStateRedisCache());
+            case ELEME -> new AuthElemeRequest(authConfig, this.getJustAuthStateRedisCache());
+            case MEITUAN -> new AuthMeituanRequest(authConfig, this.getJustAuthStateRedisCache());
+            case TWITTER -> new AuthTwitterRequest(authConfig, this.getJustAuthStateRedisCache());
+            case FEISHU -> new AuthFeishuRequest(authConfig, this.getJustAuthStateRedisCache());
+            case JD -> new AuthJdRequest(authConfig, this.getJustAuthStateRedisCache());
+            case ALIYUN -> new AuthAliyunRequest(authConfig, this.getJustAuthStateRedisCache());
+            case XMLY -> new AuthXmlyRequest(authConfig, this.getJustAuthStateRedisCache());
+            default -> null;
+        };
     }
 }

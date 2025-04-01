@@ -37,7 +37,7 @@
 
     <groupId>cn.herodotus.engine</groupId>
     <artifactId>dependencies</artifactId>
-    <version>3.4.4.0</version>
+    <version>3.4.4.1</version>
     <packaging>pom</packaging>
 
     <description>基于 Spring Authorization Server 的 Dante Cloud Dependencies</description>
@@ -83,7 +83,7 @@
 
         <aliyun-java-sdk-core.version>4.7.3</aliyun-java-sdk-core.version>
         <aliyun-java-sdk-green.version>3.6.6</aliyun-java-sdk-green.version>
-        <alipay-sdk-java.version>4.40.104.ALL</alipay-sdk-java.version>
+        <alipay-sdk-java.version>4.40.112.ALL</alipay-sdk-java.version>
         <aliyun-sdk-oss.version>3.18.1</aliyun-sdk-oss.version>
         <animated-gif-lib.version>1.4</animated-gif-lib.version>
         <antisamy.version>1.7.7</antisamy.version>
@@ -92,7 +92,7 @@
         <aws-java-sdk-s3.version>1.12.782</aws-java-sdk-s3.version>
         <bcpkix-jdk18on.version>1.80</bcpkix-jdk18on.version>
         <bcprov-jdk18on.version>1.80</bcprov-jdk18on.version>
-        <blaze-persistence.version>1.6.14</blaze-persistence.version>
+        <blaze-persistence.version>1.6.15</blaze-persistence.version>
         <bootstrap.version>5.3.3</bootstrap.version>
         <camunda-bpm-spring-boot-starter-rest.version>7.22.0</camunda-bpm-spring-boot-starter-rest.version>
         <central-publishing-maven-plugin.version>0.7.0</central-publishing-maven-plugin.version>
@@ -100,10 +100,10 @@
         <commons-collections4.version>4.4</commons-collections4.version>
         <commons-io.version>2.18.0</commons-io.version>
         <commons-text.version>1.13.0</commons-text.version>
-        <fastjson2.version>2.0.56</fastjson2.version>
-        <guava.version>33.4.5-jre</guava.version>
+        <fastjson2.version>2.0.57</fastjson2.version>
+        <guava.version>33.4.6-jre</guava.version>
         <hutool.version>6.0.0-M20</hutool.version>
-        <hypersistence-utils-hibernate-63.version>3.9.5</hypersistence-utils-hibernate-63.version>
+        <hypersistence-utils-hibernate-63.version>3.9.9</hypersistence-utils-hibernate-63.version>
         <influxdb-client.version>7.2.0</influxdb-client.version>
         <jasypt-spring-boot-starter.version>3.0.5</jasypt-spring-boot-starter.version>
         <jetcache.version>2.7.7</jetcache.version>
@@ -116,7 +116,7 @@
         <mdi__font.version>7.4.47</mdi__font.version>
         <minio.version>8.5.17</minio.version>
         <mybatis.version>3.5.19</mybatis.version>
-        <mybatis-plus.version>3.5.10.1</mybatis-plus.version>
+        <mybatis-plus.version>3.5.11</mybatis-plus.version>
         <mysql.version>9.2.0</mysql.version>
         <nacos.version>2.5.1</nacos.version>
         <okhttps.version>4.1.0</okhttps.version>
@@ -125,10 +125,10 @@
         <p6spy.version>3.9.1</p6spy.version>
         <quasar.version>2.18.1</quasar.version>
         <redisson.version>3.45.1</redisson.version>
-        <skywalking.version>9.3.0</skywalking.version>
+        <skywalking.version>9.4.0</skywalking.version>
         <sm-crypto.version>0.3.13</sm-crypto.version>
         <sms4j-spring-boot-starter.version>3.3.4</sms4j-spring-boot-starter.version>
-        <springdoc.version>2.8.5</springdoc.version>
+        <springdoc.version>2.8.6</springdoc.version>
         <spring-boot-dependencies.version>3.4.4</spring-boot-dependencies.version>
         <spring-boot-admin-dependencies.version>3.4.5</spring-boot-admin-dependencies.version>
         <spring-cloud-alibaba-dependencies.version>2023.0.1.2</spring-cloud-alibaba-dependencies.version>
@@ -139,7 +139,7 @@
         <transmittable-thread-local.version>2.14.5</transmittable-thread-local.version>
         <velocity.version>2.3</velocity.version>
         <vue.version>3.5.13</vue.version>
-        <weixin-java-sdk.version>4.7.2.B</weixin-java-sdk.version>
+        <weixin-java-sdk.version>4.7.3.B</weixin-java-sdk.version>
         <zxing.version>3.5.3</zxing.version>
 
         <!--以下为特殊处理, 统一版本处理漏洞等-->
@@ -505,6 +505,11 @@
                 <groupId>com.aliyun.oss</groupId>
                 <artifactId>aliyun-sdk-oss</artifactId>
                 <version>${aliyun-sdk-oss.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alipay.sdk</groupId>
+                <artifactId>alipay-sdk-java</artifactId>
+                <version>${alipay-sdk-java.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.madgag</groupId>
