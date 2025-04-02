@@ -42,7 +42,7 @@ import org.hibernate.annotations.UuidGenerator;
  * @author : gengwei.zheng
  * @date : 2020/1/19 16:40
  */
-@Schema(title = "部门")
+@Schema(name = "部门")
 @Entity
 @Table(name = "sys_department", indexes = {@Index(name = "sys_department_id_idx", columnList = "department_id")})
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "departmentId")
@@ -50,53 +50,53 @@ import org.hibernate.annotations.UuidGenerator;
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = UpmsConstants.REGION_SYS_DEPARTMENT)
 public class SysDepartment extends BaseSysEntity {
 
-    @Schema(title = "部门ID")
+    @Schema(name = "部门ID")
     @Id
     @UuidGenerator
     @Column(name = "department_id", length = 64)
     private String departmentId;
 
-    @Schema(title = "部门名称")
+    @Schema(name = "部门名称")
     @Column(name = "department_name", length = 200)
     private String departmentName;
 
-    @Schema(title = "4A标准部门ID")
+    @Schema(name = "4A标准部门ID")
     @Column(name = "a4_biz_dept_id", length = 64)
     private String a4BizDeptId;
 
-    @Schema(title = "标准部门代码")
+    @Schema(name = "标准部门代码")
     @Column(name = "biz_dept_code", length = 60)
     private String bizDeptCode;
 
-    @Schema(title = "标准部门说明")
+    @Schema(name = "标准部门说明")
     @Column(name = "biz_dept_desc", length = 256)
     private String bizDeptDesc;
 
-    @Schema(title = "标准部门ID")
+    @Schema(name = "标准部门ID")
     @Column(name = "biz_dept_id", length = 64)
     private String bizDeptId;
 
-    @Schema(title = "标准部门名称")
+    @Schema(name = "标准部门名称")
     @Column(name = "biz_dept_name", length = 200)
     private String bizDeptName;
 
-    @Schema(title = "标准部门类型")
+    @Schema(name = "标准部门类型")
     @Column(name = "biz_dept_type", length = 30)
     private String bizDeptType;
 
-    @Schema(title = "分区代码")
+    @Schema(name = "分区代码")
     @Column(name = "partition_code", length = 256)
     private String partitionCode;
 
-    @Schema(title = "部门简称")
+    @Schema(name = "部门简称")
     @Column(name = "short_name", length = 200)
     private String shortName;
 
-    @Schema(title = "上级部门ID")
+    @Schema(name = "上级部门ID")
     @Column(name = "parent_id", length = 64)
     private String parentId;
 
-    @Schema(title = "所属单位ID")
+    @Schema(name = "所属单位ID")
     @Column(name = "organization_id", length = 64)
     private String organizationId;
 

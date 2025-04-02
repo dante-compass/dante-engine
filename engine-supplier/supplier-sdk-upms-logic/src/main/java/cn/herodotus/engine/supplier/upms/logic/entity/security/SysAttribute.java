@@ -44,19 +44,19 @@ import java.util.Set;
  * @author : gengwei.zheng
  * @date : 2021/8/4 3:18
  */
-@Schema(title = "系统安全属性数据")
+@Schema(name = "系统安全属性数据")
 @Entity
 @Table(name = "sys_attribute", indexes = {@Index(name = "sys_attribute_id_idx", columnList = "attribute_id")})
 @EntityListeners(value = {SysAttributeEntityListener.class})
 public class SysAttribute extends BaseSysEntity {
 
-    @Schema(title = "元数据ID")
+    @Schema(name = "元数据ID")
     @Id
     @SysAttributeIdGenerator
     @Column(name = "attribute_id", length = 64)
     private String attributeId;
 
-    @Schema(title = "默认权限代码")
+    @Schema(name = "默认权限代码")
     @Column(name = "attribute_code", length = 128)
     private String attributeCode;
 
@@ -80,7 +80,7 @@ public class SysAttribute extends BaseSysEntity {
     @Column(name = "url", length = 2048)
     private String url;
 
-    @Schema(title = "表达式", description = "Security表达式字符串，通过该值设置动态权限")
+    @Schema(name = "表达式", description = "Security表达式字符串，通过该值设置动态权限")
     @Column(name = "web_expression", length = 128)
     private String webExpression;
 

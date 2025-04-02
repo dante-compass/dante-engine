@@ -58,7 +58,7 @@ import java.util.Set;
  * @author : gengwei.zheng
  * @date : 2020/4/10 11:06
  */
-@Schema(title = "系统用户")
+@Schema(name = "系统用户")
 @Entity
 @Table(name = "sys_user", uniqueConstraints = {@UniqueConstraint(columnNames = {"user_name"})},
         indexes = {@Index(name = "sys_user_id_idx", columnList = "user_id"), @Index(name = "sys_user_unm_idx", columnList = "user_name")})
@@ -67,46 +67,46 @@ import java.util.Set;
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "userId")
 public class SysUser extends BaseSysEntity {
 
-    @Schema(title = "用户ID")
+    @Schema(name = "用户ID")
     @Id
     @UuidGenerator
     @Column(name = "user_id", length = 64)
     private String userId;
 
-    @Schema(title = "用户名")
+    @Schema(name = "用户名")
     @Column(name = "user_name", length = 128, unique = true)
     private String username;
 
-    @Schema(title = "密码", description = "BCryptPasswordEncoder")
+    @Schema(name = "密码", description = "BCryptPasswordEncoder")
     @Column(name = "password", length = 256)
     private String password;
 
-    @Schema(title = "昵称")
+    @Schema(name = "昵称")
     @Column(name = "nick_name", length = 64)
     private String nickname;
 
-    @Schema(title = "手机号码")
+    @Schema(name = "手机号码")
     @Column(name = "phone_number", length = 256)
     private String phoneNumber;
 
-    @Schema(title = "头像")
+    @Schema(name = "头像")
     @Column(name = "avatar", length = 1024)
     private String avatar;
 
-    @Schema(title = "EMAIL")
+    @Schema(name = "EMAIL")
     @Column(name = "email", length = 100)
     private String email;
 
-    @Schema(title = "账户过期日期")
+    @Schema(name = "账户过期日期")
     @Column(name = "account_expire_at")
     private LocalDateTime accountExpireAt;
 
-    @Schema(title = "密码过期日期")
+    @Schema(name = "密码过期日期")
     @Column(name = "credentials_expire_at")
     private LocalDateTime credentialsExpireAt;
 
     @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = UpmsConstants.REGION_SYS_ROLE)
-    @Schema(title = "用户角色")
+    @Schema(name = "用户角色")
     @ManyToMany(fetch = FetchType.EAGER)
     @Fetch(FetchMode.SUBSELECT)
     @JoinTable(name = "sys_user_role",
@@ -138,7 +138,7 @@ public class SysUser extends BaseSysEntity {
      */
     @JsonDeserialize(using = SysEmployeeEmptyToNull.class)
     @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = UpmsConstants.REGION_SYS_EMPLOYEE)
-    @Schema(title = "人员")
+    @Schema(name = "人员")
     @OneToOne(fetch = FetchType.LAZY)
     @JoinTable(name = "sys_user_employee",
             joinColumns = {@JoinColumn(name = "user_id")},

@@ -55,13 +55,13 @@ public class SysDefaultRole extends BaseSysEntity {
     @Column(name = "default_id", length = 64)
     private String defaultId;
 
-    @Schema(title = "场景")
+    @Schema(name = "场景")
     @Column(name = "scene", unique = true)
     @Enumerated(EnumType.STRING)
     private AccountType scene = AccountType.INSTITUTION;
 
     @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = UpmsConstants.REGION_SYS_ROLE)
-    @Schema(title = "角色ID")
+    @Schema(name = "角色ID")
     @ManyToOne
     @JoinColumn(name = "role_id", nullable = false)
     private SysRole role;

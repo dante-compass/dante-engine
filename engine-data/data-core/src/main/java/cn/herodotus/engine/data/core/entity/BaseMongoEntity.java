@@ -42,12 +42,12 @@ import java.util.Date;
  * @date : 2023/2/26 20:30
  */
 public abstract class BaseMongoEntity extends AbstractEntity {
-    @Schema(title = "数据创建时间")
+    @Schema(name = "数据创建时间")
     @Column(name = "create_time", updatable = false)
     @CreatedDate
     @JsonFormat(pattern = DefaultConstants.DATE_TIME_FORMAT)
     private Date createTime = new Date();
-    @Schema(title = "数据更新时间")
+    @Schema(name = "数据更新时间")
     @Column(name = "update_time")
     @LastModifiedDate
     @JsonFormat(pattern = DefaultConstants.DATE_TIME_FORMAT)

@@ -40,60 +40,60 @@ import org.hibernate.annotations.UuidGenerator;
  * @author : gengwei.zheng
  * @date : 2020/1/19 16:41
  */
-@Schema(title = "单位")
+@Schema(name = "单位")
 @Entity
 @Table(name = "sys_organization", indexes = {@Index(name = "sys_organization_id_idx", columnList = "organization_id")})
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = UpmsConstants.REGION_SYS_ORGANIZATION)
 public class SysOrganization extends BaseSysEntity {
 
-    @Schema(title = "单位ID")
+    @Schema(name = "单位ID")
     @Id
     @UuidGenerator
     @Column(name = "organization_id", length = 64)
     private String organizationId;
 
-    @Schema(title = "单位名称")
+    @Schema(name = "单位名称")
     @Column(name = "organization_name", length = 1000)
     private String organizationName;
 
-    @Schema(title = "4A标准单位ID")
+    @Schema(name = "4A标准单位ID")
     @Column(name = "a4_biz_org_id", length = 64)
     private String a4BizOrgId;
 
-    @Schema(title = "标准单位代码")
+    @Schema(name = "标准单位代码")
     @Column(name = "biz_org_code", length = 60)
     private String bizOrgCode;
 
-    @Schema(title = "标准单位说明")
+    @Schema(name = "标准单位说明")
     @Column(name = "biz_org_desc", length = 256)
     private String bizOrgDesc;
 
-    @Schema(title = "标准单位ID")
+    @Schema(name = "标准单位ID")
     @Column(name = "biz_org_id", length = 64)
     private String bizOrgId;
 
-    @Schema(title = "标准单位名称")
+    @Schema(name = "标准单位名称")
     @Column(name = "biz_org_name", length = 200)
     private String bizOrgName;
 
-    @Schema(title = "标准单位类型")
+    @Schema(name = "标准单位类型")
     @Column(name = "biz_org_type", length = 30)
     private String bizOrgType;
 
-    @Schema(title = "分区代码")
+    @Schema(name = "分区代码")
     @Column(name = "partition_code", length = 256)
     private String partitionCode;
 
-    @Schema(title = "单位简称")
+    @Schema(name = "单位简称")
     @Column(name = "short_name", length = 200)
     private String shortName;
 
-    @Schema(title = "上级单位ID")
+    @Schema(name = "上级单位ID")
     @Column(name = "parent_id", length = 64)
     private String parentId;
 
-    @Schema(title = "机构类别")
+    @Schema(name = "机构类别")
     @Column(name = "category")
     @Enumerated(EnumType.ORDINAL)
     private OrganizationCategory category = OrganizationCategory.ENTERPRISE;

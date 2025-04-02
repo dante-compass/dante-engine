@@ -42,7 +42,7 @@ import java.util.Map;
  * @author : gengwei.zheng
  * @date : 2021/9/21 11:39
  */
-@Schema(title = "机构类别")
+@Schema(name = "机构类别")
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum OrganizationCategory implements BaseUiEnum<Integer> {
 
@@ -69,9 +69,9 @@ public enum OrganizationCategory implements BaseUiEnum<Integer> {
         }
     }
 
-    @Schema(title = "枚举值")
+    @Schema(name = "枚举值")
     private final Integer value;
-    @Schema(title = "文字")
+    @Schema(name = "文字")
     private final String description;
 
     OrganizationCategory(Integer value, String description) {

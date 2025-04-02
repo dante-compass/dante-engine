@@ -42,7 +42,7 @@ import java.util.Map;
  * @author gengwei.zheng
  * @date 2019/2/15
  */
-@Schema(title = "人员身份")
+@Schema(name = "人员身份")
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum Identity implements BaseUiEnum<Integer> {
     /**
@@ -68,9 +68,9 @@ public enum Identity implements BaseUiEnum<Integer> {
         }
     }
 
-    @Schema(title = "索引")
+    @Schema(name = "索引")
     private final Integer value;
-    @Schema(title = "文字")
+    @Schema(name = "文字")
     private String description;
 
     Identity(Integer value, String description) {

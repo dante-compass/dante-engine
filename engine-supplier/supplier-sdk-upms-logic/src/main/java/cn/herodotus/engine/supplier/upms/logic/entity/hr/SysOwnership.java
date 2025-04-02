@@ -39,7 +39,7 @@ import org.hibernate.annotations.UuidGenerator;
  * @author : gengwei.zheng
  * @date : 2021/7/15 12:16
  */
-@Schema(title = "人事归属")
+@Schema(name = "人事归属")
 @Entity
 @Table(name = "sys_ownership", indexes = {
         @Index(name = "sys_ownership_id_idx", columnList = "ownership_id"),
@@ -51,17 +51,17 @@ import org.hibernate.annotations.UuidGenerator;
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = UpmsConstants.REGION_SYS_OWNERSHIP)
 public class SysOwnership extends BaseSysEntity {
 
-    @Schema(title = "人员ID")
+    @Schema(name = "人员ID")
     @Id
     @UuidGenerator
     @Column(name = "ownership_id", length = 64)
     private String ownershipId;
 
-    @Schema(title = "所属单位ID")
+    @Schema(name = "所属单位ID")
     @Column(name = "organization_id", length = 64)
     private String organizationId;
 
-    @Schema(title = "所属部门ID")
+    @Schema(name = "所属部门ID")
     @Column(name = "department_id", length = 64)
     private String departmentId;
 

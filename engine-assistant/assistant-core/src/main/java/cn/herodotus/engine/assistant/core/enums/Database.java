@@ -42,7 +42,7 @@ import java.util.Map;
  * @author : gengwei.zheng
  * @date : 2022/7/21 17:02
  */
-@Schema(title = "数据库类别")
+@Schema(name = "数据库类别")
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum Database implements BaseUiEnum<Integer> {
     /**
@@ -75,7 +75,7 @@ public enum Database implements BaseUiEnum<Integer> {
         }
     }
 
-    @Schema(title = "枚举值")
+    @Schema(name = "枚举值")
     private final Integer value;
     @Schema(name = "文字")
     private final String description;

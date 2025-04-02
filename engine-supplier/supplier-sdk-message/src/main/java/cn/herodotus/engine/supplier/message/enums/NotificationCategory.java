@@ -42,7 +42,7 @@ import java.util.Map;
  * @author : gengwei.zheng
  * @date : 2022/12/24 20:34
  */
-@Schema(title = "通知类别")
+@Schema(name = "通知类别")
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum NotificationCategory implements BaseUiEnum<Integer> {
 
@@ -68,9 +68,9 @@ public enum NotificationCategory implements BaseUiEnum<Integer> {
         }
     }
 
-    @Schema(title = "枚举值")
+    @Schema(name = "枚举值")
     private final Integer value;
-    @Schema(title = "说明")
+    @Schema(name = "说明")
     private final String description;
 
     NotificationCategory(Integer value, String description) {

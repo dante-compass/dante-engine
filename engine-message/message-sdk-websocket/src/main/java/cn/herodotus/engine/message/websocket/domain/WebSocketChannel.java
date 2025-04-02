@@ -45,9 +45,9 @@ public enum WebSocketChannel {
      */
     NOTICE("/notice", "个人通知");
 
-    @Schema(title = "消息端点")
+    @Schema(name = "消息端点")
     private final String destination;
-    @Schema(title = "说明")
+    @Schema(name = "说明")
     private final String description;
 
     private static final Map<String, WebSocketChannel> INDEX_MAP = new HashMap<>();

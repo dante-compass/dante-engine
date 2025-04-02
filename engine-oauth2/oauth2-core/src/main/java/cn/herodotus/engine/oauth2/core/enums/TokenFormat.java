@@ -71,11 +71,11 @@ public enum TokenFormat implements BaseUiEnum<Integer> {
         }
     }
 
-    @Schema(title = "枚举值")
+    @Schema(name = "枚举值")
     private final Integer value;
-    @Schema(title = "格式")
+    @Schema(name = "格式")
     private final String format;
-    @Schema(title = "文字")
+    @Schema(name = "文字")
     private final String description;
 
     TokenFormat(Integer value, String method, String description) {

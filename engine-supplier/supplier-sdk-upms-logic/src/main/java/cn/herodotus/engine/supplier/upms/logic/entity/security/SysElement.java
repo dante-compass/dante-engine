@@ -102,7 +102,7 @@ public class SysElement extends BaseSysEntity {
     private Boolean ignoreAuth = false;
 
     @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = UpmsConstants.REGION_SYS_ROLE)
-    @Schema(title = "元素角色")
+    @Schema(name = "元素角色")
     @ManyToMany(fetch = FetchType.EAGER)
     @Fetch(FetchMode.SUBSELECT)
     @JoinTable(name = "sys_element_role",

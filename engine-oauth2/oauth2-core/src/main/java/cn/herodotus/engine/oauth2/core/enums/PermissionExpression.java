@@ -42,7 +42,7 @@ import java.util.Map;
  * @author : gengwei.zheng
  * @date : 2021/8/14 3:49
  */
-@Schema(title = "Security 权限表达式")
+@Schema(name = "Security 权限表达式")
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum PermissionExpression implements BaseUiEnum<String> {
     /**
@@ -71,9 +71,9 @@ public enum PermissionExpression implements BaseUiEnum<String> {
         }
     }
 
-    @Schema(title = "索引")
+    @Schema(name = "索引")
     private final String value;
-    @Schema(title = "说明")
+    @Schema(name = "说明")
     private final String description;
 
     PermissionExpression(String value, String description) {

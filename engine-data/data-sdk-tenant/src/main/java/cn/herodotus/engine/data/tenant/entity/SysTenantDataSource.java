@@ -39,7 +39,7 @@ import org.hibernate.annotations.UuidGenerator;
  * @author : gengwei.zheng
  * @date : 2023/3/28 21:45
  */
-@Schema(title = "多租户数据源管理")
+@Schema(name = "多租户数据源管理")
 @Entity
 @Table(name = "sys_tenant_datasource",
         uniqueConstraints = {@UniqueConstraint(columnNames = {"tenant_id"})},

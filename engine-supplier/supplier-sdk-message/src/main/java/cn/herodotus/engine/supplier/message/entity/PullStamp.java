@@ -66,7 +66,7 @@ public class PullStamp extends AbstractEntity {
     @Column(name = "source", length = 50)
     private String source;
 
-    @Schema(title = "上次拉取时间")
+    @Schema(name = "上次拉取时间")
     @Column(name = "latest_pull_time", updatable = false)
     @JsonFormat(pattern = DefaultConstants.DATE_TIME_FORMAT)
     private Date latestPullTime = new Date();

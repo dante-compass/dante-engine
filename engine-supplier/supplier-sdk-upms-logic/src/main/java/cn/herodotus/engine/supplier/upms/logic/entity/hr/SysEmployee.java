@@ -56,7 +56,7 @@ import java.util.Set;
  * @author : gengwei.zheng
  * @date : 2020/1/19 16:41
  */
-@Schema(title = "人员")
+@Schema(name = "人员")
 @Entity
 @NamedEntityGraph(
         name = "SysEmployeeWithSysUser.Graph",
@@ -78,55 +78,55 @@ import java.util.Set;
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = UpmsConstants.REGION_SYS_EMPLOYEE)
 public class SysEmployee extends BaseSysEntity implements SocialUserDetails {
 
-    @Schema(title = "人员ID")
+    @Schema(name = "人员ID")
     @Id
     @UuidGenerator
     @Column(name = "employee_id", length = 64)
     private String employeeId;
 
-    @Schema(title = "姓名")
+    @Schema(name = "姓名")
     @Column(name = "employee_name", length = 50)
     private String employeeName;
 
-    @Schema(title = "工号")
+    @Schema(name = "工号")
     @Column(name = "employee_no", length = 50)
     private String employeeNo;
 
-    @Schema(title = "手机号码")
+    @Schema(name = "手机号码")
     @Column(name = "mobile_phone_number", length = 50)
     private String mobilePhoneNumber;
 
-    @Schema(title = "办公电话")
+    @Schema(name = "办公电话")
     @Column(name = "office_phone_number", length = 50)
     private String officePhoneNumber;
 
-    @Schema(title = "电子邮箱")
+    @Schema(name = "电子邮箱")
     @Column(name = "email", length = 100)
     private String email;
 
-    @Schema(title = "PKI电子邮箱")
+    @Schema(name = "PKI电子邮箱")
     @Column(name = "pki_email", length = 100)
     private String pkiEmail;
 
-    @Schema(title = "4A标准人员ID")
+    @Schema(name = "4A标准人员ID")
     @Column(name = "a4_biz_emp_id", length = 256)
     private String a4BizEmpId;
 
-    @Schema(title = "头像")
+    @Schema(name = "头像")
     @Column(name = "avatar", length = 1000)
     private String avatar;
 
-    @Schema(title = "生日")
+    @Schema(name = "生日")
     @Column(name = "birth_day")
     @Temporal(TemporalType.DATE)
     private Date birthday;
 
-    @Schema(title = "性别")
+    @Schema(name = "性别")
     @Column(name = "gender")
     @Enumerated(EnumType.ORDINAL)
     private Gender gender = Gender.MAN;
 
-    @Schema(title = "身份")
+    @Schema(name = "身份")
     @Column(name = "identity")
     @Enumerated(EnumType.ORDINAL)
     private Identity identity = Identity.STAFF;

@@ -36,18 +36,18 @@ import jakarta.validation.constraints.NotBlank;
  * @author : gengwei.zheng
  * @date : 2021/10/1 15:19
  */
-@Schema(title = "加密创建请求")
+@Schema(name = "加密创建请求")
 public class SessionCreate extends AbstractDto {
 
     @NotBlank(message = "客户端ID不能为空")
-    @Schema(title = "客户端ID")
+    @Schema(name = "客户端ID")
     private String clientId;
 
     @NotBlank(message = "客户端秘钥不能为空")
-    @Schema(title = "客户端秘钥")
+    @Schema(name = "客户端秘钥")
     private String clientSecret;
 
-    @Schema(title = "未登录前端身份标识")
+    @Schema(name = "未登录前端身份标识")
     private String sessionId;
 
     public String getClientId() {

@@ -35,7 +35,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
  * @author : gengwei.zheng
  * @date : 2022/7/9 15:04
  */
-@Schema(title = "排序参数BO对象")
+@Schema(name = "排序参数BO对象")
 public class Sorter extends AbstractDto {
 
     @EnumeratedValue(names = {"ASC", "DESC"}, message = "排序方式的值只能是大写 ASC 或者 DESC")

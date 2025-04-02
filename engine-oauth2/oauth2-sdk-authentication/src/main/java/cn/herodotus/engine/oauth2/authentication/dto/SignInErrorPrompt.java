@@ -35,7 +35,7 @@ import jakarta.validation.constraints.NotBlank;
  * @author : gengwei.zheng
  * @date : 2022/7/8 20:52
  */
-@Schema(title = "登录错误提示信息")
+@Schema(name = "登录错误提示信息")
 public class SignInErrorPrompt extends BaseDto {
 
     @NotBlank(message = "登录用户名不能为空")

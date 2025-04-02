@@ -62,7 +62,7 @@ public class DialogueContact extends BaseSenderEntity {
     private String receiverId;
 
     @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = MessageConstants.REGION_MESSAGE_DIALOGUE)
-    @Schema(title = "对话ID")
+    @Schema(name = "对话ID")
     @ManyToOne
     @JoinColumn(name = "dialogue_id", nullable = false)
     private Dialogue dialogue;

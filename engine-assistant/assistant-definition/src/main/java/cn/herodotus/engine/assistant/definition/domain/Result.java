@@ -47,25 +47,25 @@ import java.util.Map;
  * @author : gengwei.zheng
  * @date : 2020/2/29 14:50
  */
-@Schema(title = "统一响应返回实体", description = "所有Rest接口统一返回的实体定义", example = "new Result<T>().ok().message(\"XXX\")")
+@Schema(name = "统一响应返回实体", description = "所有Rest接口统一返回的实体定义", example = "new Result<T>().ok().message(\"XXX\")")
 public class Result<T> implements Serializable {
 
-    @Schema(title = "响应时间戳", pattern = DefaultConstants.DATE_TIME_FORMAT)
+    @Schema(name = "响应时间戳", pattern = DefaultConstants.DATE_TIME_FORMAT)
     @JsonFormat(pattern = DefaultConstants.DATE_TIME_FORMAT)
     private final Date timestamp = new Date();
-    @Schema(title = "校验错误信息")
+    @Schema(name = "校验错误信息")
     private final Error error = new Error();
-    @Schema(title = "自定义响应编码")
+    @Schema(name = "自定义响应编码")
     private int code = 0;
-    @Schema(title = "响应返回信息")
+    @Schema(name = "响应返回信息")
     private String message;
-    @Schema(title = "请求路径")
+    @Schema(name = "请求路径")
     private String path;
-    @Schema(title = "响应返回数据")
+    @Schema(name = "响应返回数据")
     private T data;
-    @Schema(title = "http状态码")
+    @Schema(name = "http状态码")
     private int status;
-    @Schema(title = "链路追踪TraceId")
+    @Schema(name = "链路追踪TraceId")
     private String traceId;
 
     public Result() {

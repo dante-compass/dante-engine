@@ -39,7 +39,7 @@ import java.util.Map;
 /**
  * @author gengwei.zheng
  */
-@Schema(title = "数据状态")
+@Schema(name = "数据状态")
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum DataItemStatus implements BaseUiEnum<Integer> {
 
@@ -75,9 +75,9 @@ public enum DataItemStatus implements BaseUiEnum<Integer> {
         }
     }
 
-    @Schema(title = "枚举值")
+    @Schema(name = "枚举值")
     private final Integer value;
-    @Schema(title = "文字")
+    @Schema(name = "文字")
     private final String description;
 
     DataItemStatus(Integer value, String description) {

@@ -43,7 +43,7 @@ import java.util.Map;
  * @author : gengwei.zheng
  * @date : 2021/10/16 14:39
  */
-@Schema(title = "OAuth2 认证模式")
+@Schema(name = "OAuth2 认证模式")
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum GrantType implements BaseUiEnum<String> {
 
@@ -75,9 +75,9 @@ public enum GrantType implements BaseUiEnum<String> {
         }
     }
 
-    @Schema(title = "认证模式")
+    @Schema(name = "认证模式")
     private final String value;
-    @Schema(title = "文字")
+    @Schema(name = "文字")
     private final String description;
 
     GrantType(String value, String description) {

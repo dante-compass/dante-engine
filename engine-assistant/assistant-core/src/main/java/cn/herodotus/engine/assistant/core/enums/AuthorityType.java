@@ -41,7 +41,7 @@ import java.util.Map;
  * @author : gengwei.zheng
  * @date : 2019/11/25 15:10
  */
-@Schema(title = "权限类型")
+@Schema(name = "权限类型")
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum AuthorityType {
 
@@ -68,9 +68,9 @@ public enum AuthorityType {
         }
     }
 
-    @Schema(title = "枚举值")
+    @Schema(name = "枚举值")
     private final Integer index;
-    @Schema(title = "文字")
+    @Schema(name = "文字")
     private final String text;
 
     AuthorityType(Integer index, String text) {

@@ -36,15 +36,15 @@ import jakarta.validation.constraints.NotBlank;
  * @author : gengwei.zheng
  * @date : 2021/10/2 16:29
  */
-@Schema(title = "机要传递实体")
+@Schema(name = "机要传递实体")
 public class SessionExchange extends AbstractDto {
 
     @NotBlank(message = "confidential参数不能为空")
-    @Schema(title = "用后端RSA/SM2 PublicKey加密的前端RSA/SM2 PublicKey")
+    @Schema(name = "用后端RSA/SM2 PublicKey加密的前端RSA/SM2 PublicKey")
     private String publicKey;
 
     @NotBlank(message = "Session Key不能为空")
-    @Schema(title = "未登录前端身份标识")
+    @Schema(name = "未登录前端身份标识")
     private String sessionId;
 
     public String getPublicKey() {

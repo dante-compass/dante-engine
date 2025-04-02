@@ -37,7 +37,7 @@ import jakarta.validation.constraints.NotNull;
  * @author : gengwei.zheng
  * @date : 2021/8/18 12:24
  */
-@Schema(title = "分页参数BO对象")
+@Schema(name = "分页参数BO对象")
 public class Pager extends Sorter {
 
     @NotNull(message = "页码不能为空")

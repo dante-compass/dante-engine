@@ -36,19 +36,19 @@ import io.swagger.v3.oas.annotations.media.Schema;
  */
 public class BaseSysDto extends BaseDto {
 
-    @Schema(title = "数据状态")
+    @Schema(name = "数据状态")
     private DataItemStatus status = DataItemStatus.ENABLE;
 
-    @Schema(title = "是否为保留数据", description = "True 为不能删，False为可以删除")
+    @Schema(name = "是否为保留数据", description = "True 为不能删，False为可以删除")
     private Boolean reserved = Boolean.FALSE;
 
-    @Schema(title = "版本号")
+    @Schema(name = "版本号")
     private Integer reversion = 0;
 
     /**
      * 角色描述,UI界面显示使用
      */
-    @Schema(title = "备注")
+    @Schema(name = "备注")
     private String description;
 
     public DataItemStatus getStatus() {

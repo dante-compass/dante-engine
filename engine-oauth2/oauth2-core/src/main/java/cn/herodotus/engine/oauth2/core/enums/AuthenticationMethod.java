@@ -42,7 +42,7 @@ import java.util.Map;
  * @author : gengwei.zheng
  * @date : 2022/3/17 14:49
  */
-@Schema(title = "OAuth2 Client 认证方式")
+@Schema(name = "OAuth2 Client 认证方式")
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum AuthenticationMethod implements BaseUiEnum<String> {
 
@@ -73,9 +73,9 @@ public enum AuthenticationMethod implements BaseUiEnum<String> {
         }
     }
 
-    @Schema(title = "认证方法")
+    @Schema(name = "认证方法")
     private final String value;
-    @Schema(title = "文字")
+    @Schema(name = "文字")
     private final String description;
 
     AuthenticationMethod(String value, String description) {

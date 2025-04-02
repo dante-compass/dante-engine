@@ -40,7 +40,7 @@ import java.util.Map;
  * @author gengwei.zheng
  * 登录类型:password-密码、mobile-手机号、email-邮箱、weixin-微信、weibo-微博、qq-等等
  */
-@Schema(title = "账号类型")
+@Schema(name = "账号类型")
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum AccountType {
 
@@ -119,11 +119,11 @@ public enum AccountType {
         }
     }
 
-    @Schema(title = "枚举值")
+    @Schema(name = "枚举值")
     private final String key;
-    @Schema(title = "处理器")
+    @Schema(name = "处理器")
     private final String handler;
-    @Schema(title = "文字")
+    @Schema(name = "文字")
     private final String description;
 
     AccountType(String key, String handler, String description) {

@@ -36,10 +36,10 @@ import io.swagger.v3.oas.annotations.media.Schema;
  */
 public abstract class Captcha extends AbstractDto {
 
-    @Schema(title = "验证码身份")
+    @Schema(name = "验证码身份")
     private String identity;
 
-    @Schema(title = "验证码类别")
+    @Schema(name = "验证码类别")
     private String category;
 
     public String getIdentity() {

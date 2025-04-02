@@ -40,7 +40,7 @@ import java.util.Map;
  * @author : gengwei.zheng
  * @date : 2021/12/14 14:39
  */
-@Schema(title = "验证码类别")
+@Schema(name = "验证码类别")
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum CaptchaCategory {
 
@@ -86,9 +86,9 @@ public enum CaptchaCategory {
         }
     }
 
-    @Schema(title = "常量值")
+    @Schema(name = "常量值")
     private final String constant;
-    @Schema(title = "文字")
+    @Schema(name = "文字")
     private final String description;
 
     CaptchaCategory(String constant, String description) {

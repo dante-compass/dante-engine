@@ -36,7 +36,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
  */
 public abstract class BaseDto extends AbstractDto {
 
-    @Schema(title = "排序值")
+    @Schema(name = "排序值")
     private Integer ranking = 0;
 
     public Integer getRanking() {
