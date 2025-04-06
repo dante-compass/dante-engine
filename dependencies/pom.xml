@@ -94,7 +94,7 @@
         <bcprov-jdk18on.version>1.80</bcprov-jdk18on.version>
         <blaze-persistence.version>1.6.15</blaze-persistence.version>
         <bootstrap.version>5.3.3</bootstrap.version>
-        <camunda-bpm-spring-boot-starter-rest.version>7.22.0</camunda-bpm-spring-boot-starter-rest.version>
+        <camunda-bpm-spring-boot-starter-rest.version>7.23.0</camunda-bpm-spring-boot-starter-rest.version>
         <central-publishing-maven-plugin.version>0.7.0</central-publishing-maven-plugin.version>
         <com.baidu.aip.version>4.16.19</com.baidu.aip.version>
         <commons-collections4.version>4.4</commons-collections4.version>
@@ -102,14 +102,14 @@
         <commons-text.version>1.13.0</commons-text.version>
         <fastjson2.version>2.0.57</fastjson2.version>
         <guava.version>33.4.6-jre</guava.version>
-        <hutool.version>6.0.0-M20</hutool.version>
+        <hutool.version>6.0.0-M21</hutool.version>
         <hypersistence-utils-hibernate-63.version>3.9.9</hypersistence-utils-hibernate-63.version>
         <influxdb-client.version>7.2.0</influxdb-client.version>
         <jasypt-spring-boot-starter.version>3.0.5</jasypt-spring-boot-starter.version>
         <jetcache.version>2.7.7</jetcache.version>
         <jquery.version>3.7.1</jquery.version>
         <justauth.verison>1.16.7</justauth.verison>
-        <logstash-logback-encoder.version>8.0</logstash-logback-encoder.version>
+        <logstash-logback-encoder.version>8.1</logstash-logback-encoder.version>
         <mapstruct-processor.version>1.6.3</mapstruct-processor.version>
         <maven-archetype-plugin.version>3.3.1</maven-archetype-plugin.version>
         <maven-gpg-plugin.version>3.2.7</maven-gpg-plugin.version>
@@ -143,13 +143,13 @@
         <zxing.version>3.5.3</zxing.version>
 
         <!--以下为特殊处理, 统一版本处理漏洞等-->
-        <checker-qual.version>3.49.1</checker-qual.version>
+        <checker-qual.version>3.49.2</checker-qual.version>
         <commons-fileupload.version>1.5</commons-fileupload.version>
         <classgraph.version>4.8.179</classgraph.version>
         <dom4j.version>2.1.4</dom4j.version>
         <error_prone_annotations.version>2.37.0</error_prone_annotations.version>
         <fastjson.version>1.2.83</fastjson.version>
-        <hutool5.version>5.8.36</hutool5.version>
+        <hutool5.version>5.8.37</hutool5.version>
         <httpclient.version>4.5.14</httpclient.version>
         <javassist.version>3.30.2-GA</javassist.version>
         <jaxb-impl.version>4.0.5</jaxb-impl.version>
