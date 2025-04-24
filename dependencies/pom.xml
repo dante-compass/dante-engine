@@ -31,13 +31,13 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.4.4</version>
+        <version>3.4.5</version>
         <relativePath/>
     </parent>
 
     <groupId>cn.herodotus.engine</groupId>
     <artifactId>dependencies</artifactId>
-    <version>3.4.4.2</version>
+    <version>3.4.5.0</version>
     <packaging>pom</packaging>
 
     <description>基于 Spring Authorization Server 的 Dante Cloud Dependencies</description>
@@ -81,9 +81,9 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <aliyun-java-sdk-core.version>4.7.3</aliyun-java-sdk-core.version>
+        <aliyun-java-sdk-core.version>4.7.5</aliyun-java-sdk-core.version>
         <aliyun-java-sdk-green.version>3.6.6</aliyun-java-sdk-green.version>
-        <alipay-sdk-java.version>4.40.133.ALL</alipay-sdk-java.version>
+        <alipay-sdk-java.version>4.40.165.ALL</alipay-sdk-java.version>
         <aliyun-sdk-oss.version>3.18.1</aliyun-sdk-oss.version>
         <animated-gif-lib.version>1.4</animated-gif-lib.version>
         <antisamy.version>1.7.7</antisamy.version>
@@ -93,15 +93,15 @@
         <bcpkix-jdk18on.version>1.80</bcpkix-jdk18on.version>
         <bcprov-jdk18on.version>1.80</bcprov-jdk18on.version>
         <blaze-persistence.version>1.6.15</blaze-persistence.version>
-        <bootstrap.version>5.3.3</bootstrap.version>
+        <bootstrap.version>5.3.5</bootstrap.version>
         <camunda-bpm-spring-boot-starter-rest.version>7.23.0</camunda-bpm-spring-boot-starter-rest.version>
         <central-publishing-maven-plugin.version>0.7.0</central-publishing-maven-plugin.version>
         <com.baidu.aip.version>4.16.19</com.baidu.aip.version>
-        <commons-collections4.version>4.4</commons-collections4.version>
-        <commons-io.version>2.18.0</commons-io.version>
-        <commons-text.version>1.13.0</commons-text.version>
+        <commons-collections4.version>4.5.0</commons-collections4.version>
+        <commons-io.version>2.19.0</commons-io.version>
+        <commons-text.version>1.13.1</commons-text.version>
         <fastjson2.version>2.0.57</fastjson2.version>
-        <guava.version>33.4.7-jre</guava.version>
+        <guava.version>33.4.8-jre</guava.version>
         <hutool.version>6.0.0-M21</hutool.version>
         <hypersistence-utils-hibernate-63.version>3.9.9</hypersistence-utils-hibernate-63.version>
         <influxdb-client.version>7.2.0</influxdb-client.version>
@@ -129,13 +129,13 @@
         <sm-crypto.version>0.3.13</sm-crypto.version>
         <sms4j-spring-boot-starter.version>3.3.4</sms4j-spring-boot-starter.version>
         <springdoc.version>2.8.6</springdoc.version>
-        <spring-boot-dependencies.version>3.4.4</spring-boot-dependencies.version>
+        <spring-boot-dependencies.version>3.4.5</spring-boot-dependencies.version>
         <spring-boot-admin-dependencies.version>3.4.5</spring-boot-admin-dependencies.version>
         <spring-cloud-alibaba-dependencies.version>2023.0.1.2</spring-cloud-alibaba-dependencies.version>
         <spring-cloud-dependencies.version>2024.0.1</spring-cloud-dependencies.version>
         <spring-cloud-tencent-dependencies.version>1.13.2-2023.0.0</spring-cloud-tencent-dependencies.version>
         <sqlite-jdbc.version>3.49.1.0</sqlite-jdbc.version>
-        <sweetalert2.verison>11.17.2</sweetalert2.verison>
+        <sweetalert2.verison>11.19.1</sweetalert2.verison>
         <transmittable-thread-local.version>2.14.5</transmittable-thread-local.version>
         <velocity.version>2.3</velocity.version>
         <vue.version>3.5.13</vue.version>
@@ -147,14 +147,14 @@
         <commons-fileupload.version>1.5</commons-fileupload.version>
         <classgraph.version>4.8.179</classgraph.version>
         <dom4j.version>2.1.4</dom4j.version>
-        <error_prone_annotations.version>2.37.0</error_prone_annotations.version>
+        <error_prone_annotations.version>2.38.0</error_prone_annotations.version>
         <fastjson.version>1.2.83</fastjson.version>
         <hutool5.version>5.8.37</hutool5.version>
         <httpclient.version>4.5.14</httpclient.version>
         <javassist.version>3.30.2-GA</javassist.version>
         <jaxb-impl.version>4.0.5</jaxb-impl.version>
         <kryo.version>5.6.2</kryo.version>
-        <okio.version>3.10.2</okio.version>
+        <okio.version>3.11.0</okio.version>
         <org.json.version>20250107</org.json.version>
         <snappy-java.version>1.1.10.7</snappy-java.version>
         <xnio.version>3.8.16.Final</xnio.version>
