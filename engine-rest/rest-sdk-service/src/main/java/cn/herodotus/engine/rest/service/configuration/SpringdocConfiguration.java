@@ -95,6 +95,6 @@ public class SpringdocConfiguration {
                         .license(new License().name("Apache 2.0").url("http://www.apache.org/licenses/")))
                 .externalDocs(new ExternalDocumentation()
                         .description("Herodotus Cloud Documentation")
-                        .url(" https://www.herodotus.cn"));
+                        .url(" https://www.herodotus.vip"));
     }
 }
