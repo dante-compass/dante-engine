@@ -167,7 +167,8 @@ public class Result<T> implements Serializable {
     }
 
     public static <T> Result<T> empty(String message, int code) {
-        return empty(message, code, ErrorCodes.NO_CONTENT.getStatus());
+        // 不再支持 204 No Content 状态码。204 用于 options 请求，放在其它类型请求时，Axios 会将其视为错误，并将请求 Cancel 状态
+        return empty(message, code, ErrorCodes.OK.getStatus());
     }
 
     public static <T> Result<T> empty(Feedback feedback) {
@@ -176,7 +177,8 @@ public class Result<T> implements Serializable {
     }
 
     public static <T> Result<T> empty(String message) {
-        return empty(message, ErrorCodes.NO_CONTENT.getSequence());
+        // 不再支持 204 No Content 状态码。204 用于 options 请求，放在其它类型请求时，Axios 会将其视为错误，并将请求 Cancel 状态
+        return empty(message, ErrorCodes.OK.getSequence());
     }
 
     public static <T> Result<T> empty() {
