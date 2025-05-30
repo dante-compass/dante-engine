@@ -125,6 +125,8 @@ public class ServiceContextHolderBuilder {
 
         serviceContextHolder.setAuthorizationUri(endpointProperties.getAuthorizationUri());
         serviceContextHolder.setAuthorizationEndpoint(endpointProperties.getAuthorizationEndpoint());
+        serviceContextHolder.setPushedAuthorizationRequestUri(endpointProperties.getPushedAuthorizationRequestUri());
+        serviceContextHolder.setPushedAuthorizationRequestEndpoint(endpointProperties.getPushedAuthorizationRequestEndpoint());
         serviceContextHolder.setAccessTokenUri(endpointProperties.getAccessTokenUri());
         serviceContextHolder.setAccessTokenEndpoint(endpointProperties.getAccessTokenEndpoint());
         serviceContextHolder.setJwkSetUri(endpointProperties.getJwkSetUri());
