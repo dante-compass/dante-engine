@@ -36,6 +36,7 @@ import org.dromara.hutool.core.date.DateFormatPool;
 public interface DefaultConstants {
 
     String AUTHORIZATION_ENDPOINT = "/oauth2/authorize";
+    String PUSHED_AUTHORIZATION_REQUEST_ENDPOINT = "/oauth2/par";
     String TOKEN_ENDPOINT = "/oauth2/token";
     String TOKEN_REVOCATION_ENDPOINT = "/oauth2/revoke";
     String TOKEN_INTROSPECTION_ENDPOINT = "/oauth2/introspect";

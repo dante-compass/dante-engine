@@ -37,6 +37,8 @@ import org.springframework.security.oauth2.core.endpoint.OAuth2ParameterNames;
 import org.springframework.util.MultiValueMap;
 import org.springframework.util.StringUtils;
 
+import java.util.Map;
+
 /**
  * <p>Description: 社交认证 Converter </p>
  *
@@ -86,6 +88,10 @@ public class OAuth2SocialCredentialsAuthenticationConverter extends AbstractAuth
             }
         }
 
-        return new OAuth2SocialCredentialsAuthenticationToken(getClientPrincipal(), getRequestedScopes(scope), getAdditionalParameters(request, parameters));
+        Map<String, Object> additionalParameters = getAdditionalParameters(request, parameters);
+        // Validate DPoP Proof HTTP Header (if available)
+        OAuth2EndpointUtils.validateAndAddDPoPParametersIfAvailable(request, additionalParameters);
+
+        return new OAuth2SocialCredentialsAuthenticationToken(getClientPrincipal(), getRequestedScopes(scope), additionalParameters);
     }
 }

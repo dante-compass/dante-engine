@@ -87,6 +87,14 @@ public class EndpointProperties {
      */
     private String authorizationEndpoint = DefaultConstants.AUTHORIZATION_ENDPOINT;
     /**
+     * OAuth2 Pushed Authorization Requests 模式认证端点，/oauth2/par uri 地址，可修改为自定义地址
+     */
+    private String pushedAuthorizationRequestUri;
+    /**
+     * OAuth2 Pushed Authorization Requests 模式认证端点，/oauth2/authorize端点地址，可修改为自定义地址
+     */
+    private String pushedAuthorizationRequestEndpoint = DefaultConstants.PUSHED_AUTHORIZATION_REQUEST_ENDPOINT;
+    /**
      * OAuth2 /oauth2/token 申请 Token uri 地址，可修改为自定义地址
      */
     private String accessTokenUri;
@@ -243,6 +251,14 @@ public class EndpointProperties {
         this.authorizationUri = authorizationUri;
     }
 
+    public String getPushedAuthorizationRequestUri() {
+        return WellFormedUtils.sasUri(pushedAuthorizationRequestUri, getPushedAuthorizationRequestEndpoint(), getIssuerUri());
+    }
+
+    public void setPushedAuthorizationRequestUri(String pushedAuthorizationRequestUri) {
+        this.pushedAuthorizationRequestUri = pushedAuthorizationRequestUri;
+    }
+
     public String getAccessTokenUri() {
         return WellFormedUtils.sasUri(accessTokenUri, getAccessTokenEndpoint(), getIssuerUri());
     }
@@ -329,6 +345,14 @@ public class EndpointProperties {
 
     public void setAuthorizationEndpoint(String authorizationEndpoint) {
         this.authorizationEndpoint = authorizationEndpoint;
+    }
+
+    public String getPushedAuthorizationRequestEndpoint() {
+        return pushedAuthorizationRequestEndpoint;
+    }
+
+    public void setPushedAuthorizationRequestEndpoint(String pushedAuthorizationRequestEndpoint) {
+        this.pushedAuthorizationRequestEndpoint = pushedAuthorizationRequestEndpoint;
     }
 
     public String getAccessTokenEndpoint() {

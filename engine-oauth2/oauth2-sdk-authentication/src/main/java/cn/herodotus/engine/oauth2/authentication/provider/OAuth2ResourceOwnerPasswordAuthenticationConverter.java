@@ -34,6 +34,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.core.endpoint.OAuth2ParameterNames;
 import org.springframework.util.MultiValueMap;
 
+import java.util.Map;
+
 /**
  * <p>Description: 自定义密码模式认证转换器 </p>
  * <p>
@@ -69,6 +71,10 @@ public final class OAuth2ResourceOwnerPasswordAuthenticationConverter extends Ab
         // password (REQUIRED)
         OAuth2EndpointUtils.checkRequiredParameter(parameters, OAuth2ParameterNames.PASSWORD);
 
-        return new OAuth2ResourceOwnerPasswordAuthenticationToken(getClientPrincipal(), getRequestedScopes(scope), getAdditionalParameters(request, parameters));
+        Map<String, Object> additionalParameters = getAdditionalParameters(request, parameters);
+        // Validate DPoP Proof HTTP Header (if available)
+        OAuth2EndpointUtils.validateAndAddDPoPParametersIfAvailable(request, additionalParameters);
+
+        return new OAuth2ResourceOwnerPasswordAuthenticationToken(getClientPrincipal(), getRequestedScopes(scope), additionalParameters);
     }
 }

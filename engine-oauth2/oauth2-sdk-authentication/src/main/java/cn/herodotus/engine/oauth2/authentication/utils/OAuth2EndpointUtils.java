@@ -26,18 +26,15 @@
 package cn.herodotus.engine.oauth2.authentication.utils;
 
 import jakarta.servlet.http.HttpServletRequest;
-import org.springframework.security.oauth2.core.AuthorizationGrantType;
+import org.springframework.security.oauth2.core.OAuth2AccessToken;
 import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
 import org.springframework.security.oauth2.core.OAuth2Error;
 import org.springframework.security.oauth2.core.OAuth2ErrorCodes;
-import org.springframework.security.oauth2.core.endpoint.OAuth2ParameterNames;
-import org.springframework.security.oauth2.core.endpoint.PkceParameterNames;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.util.StringUtils;
 
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -66,36 +63,6 @@ public class OAuth2EndpointUtils {
             }
         });
         return parameters;
-    }
-
-    public static Map<String, Object> getParametersIfMatchesAuthorizationCodeGrantRequest(HttpServletRequest request, String... exclusions) {
-        if (!matchesAuthorizationCodeGrantRequest(request)) {
-            return Collections.emptyMap();
-        }
-        return getParameters(request, exclusions);
-    }
-
-    public static Map<String, Object> getParameters(HttpServletRequest request, String... exclusions) {
-        Map<String, Object> parameters = new HashMap<>(getParameters(request).toSingleValueMap());
-        for (String exclusion : exclusions) {
-            parameters.remove(exclusion);
-        }
-        return parameters;
-    }
-
-    public static boolean matchesClientCredentialsGrantRequest(HttpServletRequest request) {
-        return AuthorizationGrantType.CLIENT_CREDENTIALS.getValue().equals(request.getParameter(OAuth2ParameterNames.GRANT_TYPE));
-    }
-
-    public static boolean matchesAuthorizationCodeGrantRequest(HttpServletRequest request) {
-        return AuthorizationGrantType.AUTHORIZATION_CODE.getValue().equals(
-                request.getParameter(OAuth2ParameterNames.GRANT_TYPE)) &&
-                request.getParameter(OAuth2ParameterNames.CODE) != null;
-    }
-
-    public static boolean matchesPkceTokenRequest(HttpServletRequest request) {
-        return matchesAuthorizationCodeGrantRequest(request) &&
-                request.getParameter(PkceParameterNames.CODE_VERIFIER) != null;
     }
 
     public static void throwError(String errorCode, String parameterName) {
@@ -152,5 +119,20 @@ public class OAuth2EndpointUtils {
 
     public static String checkOptionalParameter(MultiValueMap<String, String> parameters, String parameterName) {
         return checkOptionalParameter(parameters, parameterName, OAuth2ErrorCodes.INVALID_REQUEST);
+    }
+
+    public static void validateAndAddDPoPParametersIfAvailable(HttpServletRequest request,
+                                                               Map<String, Object> additionalParameters) {
+        final String dPoPProofHeaderName = OAuth2AccessToken.TokenType.DPOP.getValue();
+        String dPoPProof = request.getHeader(dPoPProofHeaderName);
+        if (StringUtils.hasText(dPoPProof)) {
+            if (Collections.list(request.getHeaders(dPoPProofHeaderName)).size() != 1) {
+                throwError(OAuth2ErrorCodes.INVALID_REQUEST, dPoPProofHeaderName, ACCESS_TOKEN_REQUEST_ERROR_URI);
+            } else {
+                additionalParameters.put("dpop_proof", dPoPProof);
+                additionalParameters.put("dpop_method", request.getMethod());
+                additionalParameters.put("dpop_target_uri", request.getRequestURL().toString());
+            }
+        }
     }
 }
