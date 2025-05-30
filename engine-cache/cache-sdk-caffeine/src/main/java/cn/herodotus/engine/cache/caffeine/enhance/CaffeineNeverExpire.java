@@ -26,8 +26,6 @@
 package cn.herodotus.engine.cache.caffeine.enhance;
 
 import com.github.benmanes.caffeine.cache.Expiry;
-import org.checkerframework.checker.index.qual.NonNegative;
-import org.checkerframework.checker.nullness.qual.NonNull;
 
 /**
  * <p>Description: Caffeine 缓存永不过期时间配置 </p>
@@ -38,17 +36,17 @@ import org.checkerframework.checker.nullness.qual.NonNull;
 public class CaffeineNeverExpire<K, V> implements Expiry<K, V> {
 
     @Override
-    public long expireAfterCreate(@NonNull K key, @NonNull V value, long currentTime) {
+    public long expireAfterCreate(K key, V value, long currentTime) {
         return Long.MAX_VALUE;
     }
 
     @Override
-    public long expireAfterUpdate(@NonNull K key, @NonNull V value, long currentTime, @NonNegative long currentDuration) {
+    public long expireAfterUpdate(K key, V value, long currentTime, long currentDuration) {
         return currentDuration;
     }
 
     @Override
-    public long expireAfterRead(@NonNull K key, @NonNull V value, long currentTime, @NonNegative long currentDuration) {
+    public long expireAfterRead(K key, V value, long currentTime, long currentDuration) {
         return currentDuration;
     }
 }

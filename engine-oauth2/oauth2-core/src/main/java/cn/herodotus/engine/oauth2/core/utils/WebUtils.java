@@ -32,7 +32,7 @@ import org.apache.commons.collections4.CollectionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.security.web.servlet.util.matcher.PathPatternRequestMatcher;
 import org.springframework.security.web.util.matcher.RequestMatcher;
 
 import java.io.IOException;
@@ -57,7 +57,7 @@ public class WebUtils extends org.springframework.web.util.WebUtils {
      */
     public static RequestMatcher[] toRequestMatchers(List<String> paths) {
         if (CollectionUtils.isNotEmpty(paths)) {
-            List<AntPathRequestMatcher> matchers = paths.stream().map(item -> new AntPathRequestMatcher(item, null, false)).toList();
+            List<PathPatternRequestMatcher> matchers = paths.stream().map(item -> PathPatternRequestMatcher.withDefaults().matcher(item)).toList();
             RequestMatcher[] result = new RequestMatcher[matchers.size()];
             return matchers.toArray(result);
         } else {

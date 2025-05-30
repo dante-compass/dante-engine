@@ -31,6 +31,9 @@ import org.springframework.security.oauth2.server.authorization.OAuth2Authorizat
 import org.springframework.security.oauth2.server.authorization.authentication.OAuth2ClientAuthenticationToken;
 import org.springframework.security.oauth2.server.authorization.settings.OAuth2TokenFormat;
 import org.springframework.security.oauth2.server.authorization.token.OAuth2TokenContext;
+import org.springframework.util.CollectionUtils;
+
+import java.util.Map;
 
 /**
  * <p>Description: Utility methods for the OAuth 2.0 AuthenticationProvider's. </p>
@@ -57,8 +60,15 @@ public class OAuth2AuthenticationProviderUtils {
     public static <T extends OAuth2Token> OAuth2AccessToken accessToken(OAuth2Authorization.Builder builder, T token,
                                                                         OAuth2TokenContext accessTokenContext) {
 
-        OAuth2AccessToken accessToken = new OAuth2AccessToken(OAuth2AccessToken.TokenType.BEARER, token.getTokenValue(),
-                token.getIssuedAt(), token.getExpiresAt(), accessTokenContext.getAuthorizedScopes());
+        OAuth2AccessToken.TokenType tokenType = OAuth2AccessToken.TokenType.BEARER;
+        if (token instanceof ClaimAccessor claimAccessor) {
+            Map<String, Object> cnfClaims = claimAccessor.getClaimAsMap("cnf");
+            if (!CollectionUtils.isEmpty(cnfClaims) && cnfClaims.containsKey("jkt")) {
+                tokenType = OAuth2AccessToken.TokenType.DPOP;
+            }
+        }
+        OAuth2AccessToken accessToken = new OAuth2AccessToken(tokenType, token.getTokenValue(), token.getIssuedAt(),
+                token.getExpiresAt(), accessTokenContext.getAuthorizedScopes());
         OAuth2TokenFormat accessTokenFormat = accessTokenContext.getRegisteredClient()
                 .getTokenSettings()
                 .getAccessTokenFormat();

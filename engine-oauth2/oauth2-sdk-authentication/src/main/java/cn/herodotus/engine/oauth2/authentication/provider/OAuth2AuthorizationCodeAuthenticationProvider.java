@@ -24,6 +24,7 @@
  */
 package cn.herodotus.engine.oauth2.authentication.provider;
 
+import cn.herodotus.engine.oauth2.authentication.utils.DPoPProofVerifier;
 import cn.herodotus.engine.oauth2.authentication.utils.OAuth2AuthenticationProviderUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -36,6 +37,7 @@ import org.springframework.security.oauth2.core.*;
 import org.springframework.security.oauth2.core.endpoint.OAuth2AuthorizationRequest;
 import org.springframework.security.oauth2.core.endpoint.OAuth2ParameterNames;
 import org.springframework.security.oauth2.core.oidc.OidcIdToken;
+import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.security.oauth2.server.authorization.OAuth2Authorization;
 import org.springframework.security.oauth2.server.authorization.OAuth2AuthorizationCode;
 import org.springframework.security.oauth2.server.authorization.OAuth2AuthorizationService;
@@ -47,6 +49,7 @@ import org.springframework.security.oauth2.server.authorization.authentication.O
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
 import org.springframework.security.oauth2.server.authorization.context.AuthorizationServerContextHolder;
 import org.springframework.security.oauth2.server.authorization.token.DefaultOAuth2TokenContext;
+import org.springframework.security.oauth2.server.authorization.token.OAuth2TokenContext;
 import org.springframework.security.oauth2.server.authorization.token.OAuth2TokenGenerator;
 import org.springframework.util.Assert;
 import org.springframework.util.StringUtils;
@@ -157,6 +160,9 @@ public final class OAuth2AuthorizationCodeAuthenticationProvider extends Abstrac
             throw new OAuth2AuthenticationException(OAuth2ErrorCodes.INVALID_GRANT);
         }
 
+        // Verify the DPoP Proof (if available)
+        Jwt dPoPProof = DPoPProofVerifier.verifyIfAvailable(authorizationCodeAuthentication);
+
         if (this.logger.isTraceEnabled()) {
             this.logger.trace("Validated token request parameters");
         }
@@ -173,6 +179,10 @@ public final class OAuth2AuthorizationCodeAuthenticationProvider extends Abstrac
                 .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
                 .authorizationGrant(authorizationCodeAuthentication);
         // @formatter:on
+
+        if (dPoPProof != null) {
+            tokenContextBuilder.put(OAuth2TokenContext.DPOP_PROOF_KEY, dPoPProof);
+        }
 
         OAuth2Authorization.Builder authorizationBuilder = OAuth2Authorization.from(authorization);
 
