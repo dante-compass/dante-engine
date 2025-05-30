@@ -35,6 +35,7 @@
     </parent>
 
     <artifactId>message-sdk-mqtt</artifactId>
+    <name>message-sdk-mqtt</name>
 
     <dependencies>
         <dependency>

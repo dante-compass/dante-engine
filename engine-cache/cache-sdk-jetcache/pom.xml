@@ -36,6 +36,7 @@
     </parent>
 
     <artifactId>cache-sdk-jetcache</artifactId>
+    <name>cache-sdk-jetcache</name>
 
     <description>基于 Spring Authorization Server 的 Dante Cloud JetCache 组件相关代码模块</description>
 

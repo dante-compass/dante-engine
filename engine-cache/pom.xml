@@ -36,6 +36,7 @@
     </parent>
 
     <artifactId>engine-cache</artifactId>
+    <name>engine-cache</name>
     <packaging>pom</packaging>
 
     <modules>

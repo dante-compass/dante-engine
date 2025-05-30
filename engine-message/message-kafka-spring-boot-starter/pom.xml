@@ -35,6 +35,7 @@
     </parent>
 
     <artifactId>message-kafka-spring-boot-starter</artifactId>
+    <name>message-kafka-spring-boot-starter</name>
 
 
     <dependencies>

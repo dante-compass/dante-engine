@@ -36,6 +36,7 @@
     </parent>
 
     <artifactId>access-sdk-wxmpp</artifactId>
+    <name>access-sdk-wxmpp</name>
 
     <description>基于 Spring Authorization Server 的微信公众号外部接入组件模块</description>
 

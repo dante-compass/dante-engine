@@ -36,6 +36,7 @@
     </parent>
 
     <artifactId>access-sdk-justauth</artifactId>
+    <name>access-sdk-justauth</name>
 
     <description>基于 Spring Authorization Server 的 JustAuth 外部接入组件模块</description>
 

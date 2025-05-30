@@ -37,6 +37,7 @@
     <description>Dante Cloud 在 Alibaba 环境下 Sentinel Gateway 配置模块</description>
 
     <artifactId>facility-gateway-spring-boot-starter</artifactId>
+    <name>facility-gateway-spring-boot-starter</name>
 
 
     <dependencies>

@@ -36,6 +36,7 @@
     </parent>
 
     <artifactId>oauth2-sdk-data-jpa</artifactId>
+    <name>oauth2-sdk-data-jpa</name>
 
 
     <description>基于 JPA 的 Spring Authorization Server 数据存储核心组件模块</description>

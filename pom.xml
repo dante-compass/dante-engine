@@ -38,6 +38,7 @@
     </parent>
 
     <artifactId>dante-engine</artifactId>
+    <name>dante-engine</name>
     <packaging>pom</packaging>
 
     <description>Dante Engine</description>

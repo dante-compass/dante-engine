@@ -36,6 +36,7 @@
     </parent>
 
     <artifactId>rest-sdk-service</artifactId>
+    <name>rest-sdk-service</name>
 
 
     <description>Dante Cloud 基于 REST 的服务基础内容配置代码模块</description>

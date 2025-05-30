@@ -36,6 +36,7 @@
     </parent>
 
     <artifactId>engine-oauth2</artifactId>
+    <name>engine-oauth2</name>
     <packaging>pom</packaging>
 
     <modules>

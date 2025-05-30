@@ -35,6 +35,7 @@
     </parent>
 
     <artifactId>rest-sdk-condition</artifactId>
+    <name>rest-sdk-condition</name>
 
     <dependencies>
         <dependency>

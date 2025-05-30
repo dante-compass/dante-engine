@@ -35,6 +35,7 @@
     </parent>
 
     <artifactId>rest-sdk-protect</artifactId>
+    <name>rest-sdk-protect</name>
 
     <dependencies>
         <dependency>

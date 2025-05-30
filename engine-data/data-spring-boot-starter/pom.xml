@@ -36,6 +36,7 @@
     </parent>
 
     <artifactId>data-spring-boot-starter</artifactId>
+    <name>data-spring-boot-starter</name>
 
 
     <description>基于 Spring Authorization Server 的 Dante Cloud 基础核心组件模块</description>

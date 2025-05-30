@@ -36,6 +36,7 @@
     </parent>
 
     <artifactId>assistant-definition</artifactId>
+    <name>assistant-definition</name>
     <description>基于 Spring Authorization Server 的 Dante Cloud 核心定义模块</description>
 
     <dependencies>

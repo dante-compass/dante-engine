@@ -36,6 +36,7 @@
     </parent>
 
     <artifactId>engine-facility</artifactId>
+    <name>engine-facility</name>
     <packaging>pom</packaging>
 
     <modules>

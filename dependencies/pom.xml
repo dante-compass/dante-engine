@@ -38,6 +38,7 @@
     <groupId>cn.herodotus.engine</groupId>
     <artifactId>dependencies</artifactId>
     <version>3.5.0.0</version>
+    <name>Dante Engine Dependencies</name>
     <packaging>pom</packaging>
 
     <description>基于 Spring Authorization Server 的 Dante Cloud Dependencies</description>

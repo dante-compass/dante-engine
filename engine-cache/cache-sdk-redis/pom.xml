@@ -37,6 +37,7 @@
     </parent>
 
     <artifactId>cache-sdk-redis</artifactId>
+    <name>cache-sdk-redis</name>
 
     <dependencies>
         <dependency>

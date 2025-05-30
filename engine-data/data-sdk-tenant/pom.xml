@@ -35,6 +35,7 @@
     </parent>
 
     <artifactId>data-sdk-tenant</artifactId>
+    <name>data-sdk-tenant</name>
 
 
     <description>Dante Cloud 基于 JPA 的多租户核心组件模块</description>

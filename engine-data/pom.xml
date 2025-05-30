@@ -36,6 +36,7 @@
     </parent>
 
     <artifactId>engine-data</artifactId>
+    <name>engine-data</name>
     <packaging>pom</packaging>
 
     <modules>

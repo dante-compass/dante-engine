@@ -36,6 +36,7 @@
     </parent>
 
     <artifactId>engine-assistant</artifactId>
+    <name>engine-assistant</name>
     <packaging>pom</packaging>
 
     <modules>

@@ -36,6 +36,7 @@
     </parent>
 
     <artifactId>engine-rest</artifactId>
+    <name>engine-rest</name>
     <packaging>pom</packaging>
 
     <modules>

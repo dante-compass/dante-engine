@@ -36,6 +36,7 @@
     </parent>
 
     <artifactId>assistant-spring-boot-starter</artifactId>
+    <name>assistant-spring-boot-starter</name>
 
     <description>基于 Spring Authorization Server 的 Dante Cloud Assistant 模块统一 Starter</description>
 

@@ -36,6 +36,7 @@
     </parent>
 
     <artifactId>access-sdk-all</artifactId>
+    <name>access-sdk-all</name>
 
     <description>基于 Spring Authorization Server 的外部接入统一处理逻辑业务组件模块</description>
 

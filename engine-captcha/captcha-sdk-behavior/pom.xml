@@ -36,6 +36,7 @@
     </parent>
 
     <artifactId>captcha-sdk-behavior</artifactId>
+    <name>captcha-sdk-behavior</name>
 
     <description>基于 Spring Authorization Server 的 Dante Cloud 基础核心组件模块</description>
 

@@ -36,6 +36,7 @@
     </parent>
 
     <artifactId>cache-sdk-redisson</artifactId>
+    <name>cache-sdk-redisson</name>
 
     <description>基于 Spring Authorization Server 的 Dante Cloud Redisson 组件相关代码模块</description>
 

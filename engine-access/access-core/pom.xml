@@ -38,6 +38,7 @@
     <description>基于 Spring Authorization Server 的外部访问接入通用组件模块模块</description>
 
     <artifactId>access-core</artifactId>
+    <name>access-core</name>
 
     <dependencies>
         <dependency>

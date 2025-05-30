@@ -36,6 +36,7 @@
     </parent>
 
     <artifactId>engine-supplier</artifactId>
+    <name>engine-supplier</name>
     <packaging>pom</packaging>
 
     <modules>

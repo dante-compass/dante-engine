@@ -66,7 +66,7 @@ public class SysRole extends BaseSysEntity {
      * 使用@Fetch(FetchMode.JOIN)需要注意的是：它在Join查询时是Full Join, 所以会有重复City出现
      * (4) 加上@Fetch(FetchMode.SUBSELECT), 那么Hibernate将强行设置为fetch=FetchType.EAGER, 用户设置fetch=FetchType.LAZY将不会生效 从输出可看出，在执行criteria.list()时通过两条sql分别获取City和Hotel
      * <p>
-     * {@link :https://www.jianshu.com/p/23bd82a7b96e}
+     * Refer: <a href="https://www.jianshu.com/p/23bd82a7b96e">...</a>
      */
 
     @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = UpmsConstants.REGION_SYS_PERMISSION)

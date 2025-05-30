@@ -35,6 +35,7 @@
     </parent>
 
     <artifactId>message-sdk-websocket</artifactId>
+    <name>message-sdk-websocket</name>
 
 
     <dependencies>

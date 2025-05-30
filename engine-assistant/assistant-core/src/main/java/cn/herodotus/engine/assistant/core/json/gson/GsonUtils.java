@@ -100,10 +100,6 @@ public class GsonUtils {
 
     /**
      * 将 json 转化为 对象
-     * <p>
-     * new TypeToken<List<T>>() {}.getType()
-     * new TypeToken<Map<String, T>>() {}.getType()
-     * new TypeToken<List<Map<String, T>>>() {}.getType()
      *
      * @param content json 字符串
      * @param typeOfT 目标对象类型

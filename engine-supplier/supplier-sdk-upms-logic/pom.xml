@@ -35,6 +35,7 @@
     </parent>
 
     <artifactId>supplier-sdk-upms-logic</artifactId>
+    <name>supplier-sdk-upms-logic</name>
 
     <description>基于 Spring Authorization Server 的 Dante Cloud UPMS 应用支持模块</description>
 

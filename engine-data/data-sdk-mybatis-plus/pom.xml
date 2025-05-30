@@ -36,6 +36,7 @@
     </parent>
 
     <artifactId>data-sdk-mybatis-plus</artifactId>
+    <name>data-sdk-mybatis-plus</name>
 
 
     <description>基于 Spring Authorization Server 的 Dante Cloud 基础核心组件模块</description>

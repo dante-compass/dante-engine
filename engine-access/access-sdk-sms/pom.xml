@@ -35,6 +35,7 @@
     </parent>
 
     <artifactId>access-sdk-sms</artifactId>
+    <name>access-sdk-sms</name>
 
     <dependencies>
         <dependency>
