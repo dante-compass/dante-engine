@@ -8,7 +8,7 @@
     <a href="https://github.com/spring-projects/spring-authorization-server" target="_blank"><img src="https://img.shields.io/badge/Spring%20Authorization%20Server-1.5.0-blue.svg?logo=spring" alt="Spring Authorization Server 1.5.0"></a>
     <a href="https://spring.io/projects/spring-boot" target="_blank"><img src="https://shields.io/badge/Spring%20Boot-3.5.0-blue.svg?logo=spring" alt="Spring Boot 3.5.0"></a>
     <a href="https://spring.io/projects/spring-cloud" target="_blank"><img src="https://shields.io/badge/Spring%20Cloud-2025.0.0-blue.svg?logo=spring" alt="Spring Cloud 2025.0.0"></a>
-    <a href="https://github.com/alibaba/spring-cloud-alibaba" target="_blank"><img src="https://shields.io/badge/Spring%20Cloud%20Alibaba-2023.0.1.2-blue.svg?logo=alibabadotcom" alt="Spring Cloud Alibaba 2023.0.1.2"></a>
+    <a href="https://github.com/alibaba/spring-cloud-alibaba" target="_blank"><img src="https://shields.io/badge/Spring%20Cloud%20Alibaba-2023.0.3.3-blue.svg?logo=alibabadotcom" alt="Spring Cloud Alibaba 2023.0.3.3"></a>
     <a href="https://github.com/Tencent/spring-cloud-tencent" target="_blank"><img src="https://img.shields.io/badge/Spring%20Cloud%20Tencent-2.0.1.0--2023.0.3-blue.svg?logo=qq" alt="Spring Cloud Tencent 2.0.1.0-2023.0.3"></a>
     <a href="https://nacos.io/zh-cn/index.html" target="_blank"><img src="https://shields.io/badge/Nacos-3.0.1-brightgreen.svg?logo=alibabadotcom" alt="Nacos 3.0.1"></a>
 </p>
