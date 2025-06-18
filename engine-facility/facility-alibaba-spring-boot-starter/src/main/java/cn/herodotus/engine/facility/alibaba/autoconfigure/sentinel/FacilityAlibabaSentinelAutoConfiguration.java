@@ -56,10 +56,6 @@ import org.springframework.web.reactive.function.server.ServerResponse;
  * @date : 2022/2/5 17:57
  */
 @AutoConfiguration
-@Import({
-        NacosConfigSpringCloudAutoConfiguration.class,
-        NacosConfigSpringCloudBootstrapConfiguration.class,
-})
 public class FacilityAlibabaSentinelAutoConfiguration {
 
     private static final Logger log = LoggerFactory.getLogger(FacilityAlibabaSentinelAutoConfiguration.class);
