@@ -60,7 +60,7 @@ public class RemoteSecurityMetadataSyncListener implements ApplicationListener<R
     public void onApplicationEvent(RemoteSecurityMetadataSyncEvent event) {
 
         if (!serviceMatcher.isFromSelf(event)) {
-            log.info("[Herodotus] |- Remote security metadata sync listener, response event!");
+            log.info("[Herodotus] |- Remote security metadata sync listener, response service [{}] event!", event.getOriginService());
 
             String data = event.getData();
             if (StringUtils.isNotBlank(data)) {
