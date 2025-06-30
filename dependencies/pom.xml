@@ -37,7 +37,7 @@
 
     <groupId>cn.herodotus.engine</groupId>
     <artifactId>dependencies</artifactId>
-    <version>3.5.3.0</version>
+    <version>3.5.3.1</version>
     <name>Dante Engine Dependencies</name>
     <packaging>pom</packaging>
 
@@ -84,7 +84,7 @@
 
         <aliyun-java-sdk-core.version>4.7.6</aliyun-java-sdk-core.version>
         <aliyun-java-sdk-green.version>3.6.6</aliyun-java-sdk-green.version>
-        <alipay-sdk-java.version>4.40.251.ALL</alipay-sdk-java.version>
+        <alipay-sdk-java.version>4.40.272.ALL</alipay-sdk-java.version>
         <aliyun-sdk-oss.version>3.18.2</aliyun-sdk-oss.version>
         <animated-gif-lib.version>1.4</animated-gif-lib.version>
         <antisamy.version>1.7.8</antisamy.version>
@@ -97,7 +97,7 @@
         <bootstrap.version>5.3.7</bootstrap.version>
         <camunda-bpm-spring-boot-starter-rest.version>7.23.0</camunda-bpm-spring-boot-starter-rest.version>
         <central-publishing-maven-plugin.version>0.8.0</central-publishing-maven-plugin.version>
-        <com.baidu.aip.version>4.16.21</com.baidu.aip.version>
+        <com.baidu.aip.version>4.16.22</com.baidu.aip.version>
         <commons-collections4.version>4.5.0</commons-collections4.version>
         <commons-io.version>2.19.0</commons-io.version>
         <commons-text.version>1.13.1</commons-text.version>
@@ -119,7 +119,7 @@
         <mybatis.version>3.5.19</mybatis.version>
         <mybatis-plus.version>3.5.12</mybatis-plus.version>
         <mysql.version>9.3.0</mysql.version>
-        <nacos.version>3.0.1</nacos.version>
+        <nacos.version>3.0.2</nacos.version>
         <okhttps.version>4.1.0</okhttps.version>
         <opengauss-jdbc.version>6.0.0-og</opengauss-jdbc.version>
         <org.eclipse.paho.version>1.2.5</org.eclipse.paho.version>
@@ -131,31 +131,31 @@
         <sms4j-spring-boot-starter.version>3.3.5</sms4j-spring-boot-starter.version>
         <springdoc.version>2.8.9</springdoc.version>
         <spring-boot-dependencies.version>3.5.3</spring-boot-dependencies.version>
-        <spring-boot-admin-dependencies.version>3.5.0</spring-boot-admin-dependencies.version>
+        <spring-boot-admin-dependencies.version>3.5.1</spring-boot-admin-dependencies.version>
         <spring-cloud-alibaba-dependencies.version>2023.0.3.3</spring-cloud-alibaba-dependencies.version>
         <spring-cloud-dependencies.version>2025.0.0</spring-cloud-dependencies.version>
         <spring-cloud-tencent-dependencies.version>2.0.1.0-2023.0.3</spring-cloud-tencent-dependencies.version>
-        <sqlite-jdbc.version>3.50.1.0</sqlite-jdbc.version>
-        <sweetalert2.verison>11.22.0</sweetalert2.verison>
+        <sqlite-jdbc.version>3.50.2.0</sqlite-jdbc.version>
+        <sweetalert2.verison>11.22.1</sweetalert2.verison>
         <transmittable-thread-local.version>2.14.5</transmittable-thread-local.version>
         <velocity.version>2.3</velocity.version>
         <vue.version>3.5.17</vue.version>
-        <weixin-java-sdk.version>4.7.6-20250609.143003</weixin-java-sdk.version>
+        <weixin-java-sdk.version>4.7.6-20250628.230828</weixin-java-sdk.version>
         <zxing.version>3.5.3</zxing.version>
 
         <!--以下为特殊处理, 统一版本处理漏洞等-->
         <checker-qual.version>3.49.4</checker-qual.version>
         <commons-fileupload.version>1.6.0</commons-fileupload.version>
-        <classgraph.version>4.8.179</classgraph.version>
+        <classgraph.version>4.8.180</classgraph.version>
         <dom4j.version>2.1.4</dom4j.version>
-        <error_prone_annotations.version>2.38.0</error_prone_annotations.version>
+        <error_prone_annotations.version>2.39.0</error_prone_annotations.version>
         <fastjson.version>1.2.83</fastjson.version>
-        <hutool5.version>5.8.38</hutool5.version>
+        <hutool5.version>5.8.39</hutool5.version>
         <httpclient.version>4.5.14</httpclient.version>
         <javassist.version>3.30.2-GA</javassist.version>
         <jaxb-impl.version>4.0.5</jaxb-impl.version>
         <kryo.version>5.6.2</kryo.version>
-        <okio.version>3.13.0</okio.version>
+        <okio.version>3.14.0</okio.version>
         <org.json.version>20250517</org.json.version>
         <snappy-java.version>1.1.10.7</snappy-java.version>
         <xnio.version>3.8.16.Final</xnio.version>
