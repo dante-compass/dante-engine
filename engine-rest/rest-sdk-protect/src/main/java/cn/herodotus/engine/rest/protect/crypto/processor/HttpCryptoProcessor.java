@@ -34,7 +34,7 @@ import cn.herodotus.engine.rest.core.definition.crypto.SymmetricCryptoProcessor;
 import cn.herodotus.engine.rest.core.exception.SessionInvalidException;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.dromara.hutool.core.data.id.IdUtil;
+import cn.hutool.v7.core.data.id.IdUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

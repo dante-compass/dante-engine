@@ -35,7 +35,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.dromara.hutool.core.codec.binary.Base64;
+import cn.hutool.v7.core.codec.binary.Base64;
 import org.springframework.boot.autoconfigure.session.SessionProperties;
 import org.springframework.http.ResponseCookie;
 import org.springframework.security.web.WebAttributes;

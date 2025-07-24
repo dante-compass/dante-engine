@@ -36,7 +36,7 @@ import com.alicp.jetcache.template.QuickConfig;
 import org.apache.commons.lang3.BooleanUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.dromara.hutool.crypto.SecureUtil;
+import cn.hutool.v7.crypto.SecureUtil;
 
 import java.time.Duration;
 

@@ -35,7 +35,7 @@ import me.zhyd.oauth.request.*;
 import me.zhyd.oauth.utils.AuthStateUtils;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.ObjectUtils;
-import org.dromara.hutool.core.util.EnumUtil;
+import cn.hutool.v7.core.util.EnumUtil;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Map;

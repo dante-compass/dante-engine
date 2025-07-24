@@ -33,7 +33,7 @@ import cn.herodotus.engine.oauth2.management.entity.OAuth2Scope;
 import cn.herodotus.engine.oauth2.management.service.OAuth2ScopeService;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.ObjectUtils;
-import org.dromara.hutool.core.date.DateUtil;
+import cn.hutool.v7.core.date.DateUtil;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.security.oauth2.core.AuthorizationGrantType;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;

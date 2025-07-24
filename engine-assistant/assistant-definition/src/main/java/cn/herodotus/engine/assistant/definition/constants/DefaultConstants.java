@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.assistant.definition.constants;
 
-import org.dromara.hutool.core.date.DateFormatPool;
+import cn.hutool.v7.core.date.DateFormatPool;
 
 /**
  * <p>Description: 默认常量合集 </p>

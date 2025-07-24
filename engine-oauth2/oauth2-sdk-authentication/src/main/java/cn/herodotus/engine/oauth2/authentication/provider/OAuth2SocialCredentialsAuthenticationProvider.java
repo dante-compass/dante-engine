@@ -33,7 +33,7 @@ import cn.herodotus.engine.oauth2.authentication.utils.OAuth2AuthenticationProvi
 import cn.herodotus.engine.oauth2.core.definition.HerodotusGrantType;
 import cn.herodotus.engine.oauth2.core.definition.service.EnhanceUserDetailsService;
 import cn.herodotus.engine.oauth2.core.exception.SocialCredentialsParameterBindingFailedException;
-import org.dromara.hutool.core.bean.BeanUtil;
+import cn.hutool.v7.core.bean.BeanUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.MutablePropertyValues;

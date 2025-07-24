@@ -41,7 +41,7 @@ import cn.herodotus.engine.captcha.core.provider.RandomProvider;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.dromara.hutool.core.data.id.IdUtil;
+import cn.hutool.v7.core.data.id.IdUtil;
 import org.springframework.stereotype.Component;
 
 import java.awt.*;

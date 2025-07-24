@@ -30,7 +30,7 @@ import cn.herodotus.engine.assistant.definition.domain.ErrorCodeMapper;
 import cn.herodotus.engine.assistant.definition.function.ErrorCodeMapperBuilderCustomizer;
 import cn.herodotus.engine.assistant.definition.support.ErrorCodeMapperBuilder;
 import jakarta.annotation.PostConstruct;
-import org.dromara.hutool.extra.spring.SpringUtil;
+import cn.hutool.v7.extra.spring.SpringUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;

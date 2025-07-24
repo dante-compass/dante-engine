@@ -26,8 +26,8 @@
 package cn.herodotus.engine.data.core.identifier;
 
 import cn.herodotus.engine.data.core.annotation.SnowflakeIdGenerator;
-import org.dromara.hutool.core.data.id.IdUtil;
-import org.dromara.hutool.core.data.id.Snowflake;
+import cn.hutool.v7.core.data.id.IdUtil;
+import cn.hutool.v7.core.data.id.Snowflake;
 import org.hibernate.engine.spi.SharedSessionContractImplementor;
 import org.hibernate.id.IdentifierGenerator;
 import org.hibernate.id.factory.spi.CustomIdGeneratorCreationContext;

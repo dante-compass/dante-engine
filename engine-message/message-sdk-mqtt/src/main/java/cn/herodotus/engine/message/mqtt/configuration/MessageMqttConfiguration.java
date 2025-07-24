@@ -31,7 +31,7 @@ import cn.herodotus.engine.message.core.constants.HerodotusChannels;
 import cn.herodotus.engine.message.mqtt.annotation.ConditionalOnMqttEnabled;
 import cn.herodotus.engine.message.mqtt.properties.MqttProperties;
 import jakarta.annotation.PostConstruct;
-import org.dromara.hutool.core.util.ByteUtil;
+import cn.hutool.v7.core.util.ByteUtil;
 import org.eclipse.paho.mqttv5.client.IMqttAsyncClient;
 import org.eclipse.paho.mqttv5.client.MqttConnectionOptions;
 import org.eclipse.paho.mqttv5.client.persist.MqttDefaultFilePersistence;

@@ -30,7 +30,7 @@ import cn.herodotus.engine.oauth2.authentication.dto.SignInErrorStatus;
 import cn.herodotus.engine.oauth2.authentication.properties.OAuth2AuthenticationProperties;
 import cn.herodotus.engine.oauth2.core.constants.OAuth2Constants;
 import org.apache.commons.lang3.ObjectUtils;
-import org.dromara.hutool.crypto.SecureUtil;
+import cn.hutool.v7.crypto.SecureUtil;
 
 /**
  * <p>Description: 登录失败次数限制签章管理 </p>

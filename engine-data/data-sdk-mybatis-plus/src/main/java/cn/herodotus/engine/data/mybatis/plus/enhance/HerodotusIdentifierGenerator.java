@@ -26,8 +26,8 @@
 package cn.herodotus.engine.data.mybatis.plus.enhance;
 
 import com.baomidou.mybatisplus.core.incrementer.IdentifierGenerator;
-import org.dromara.hutool.core.data.id.IdUtil;
-import org.dromara.hutool.core.data.id.Snowflake;
+import cn.hutool.v7.core.data.id.IdUtil;
+import cn.hutool.v7.core.data.id.Snowflake;
 import org.springframework.stereotype.Component;
 
 /**

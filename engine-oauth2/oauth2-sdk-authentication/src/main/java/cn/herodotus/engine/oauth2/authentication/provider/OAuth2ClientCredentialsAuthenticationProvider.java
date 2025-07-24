@@ -30,7 +30,7 @@ import cn.herodotus.engine.oauth2.core.definition.domain.HerodotusGrantedAuthori
 import cn.herodotus.engine.oauth2.core.definition.service.ClientDetailsService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.dromara.hutool.core.reflect.FieldUtil;
+import cn.hutool.v7.core.reflect.FieldUtil;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;

@@ -40,8 +40,8 @@ import cn.herodotus.engine.captcha.core.exception.CaptchaParameterIllegalExcepti
 import cn.herodotus.engine.captcha.core.provider.RandomProvider;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.dromara.hutool.core.data.id.IdUtil;
-import org.dromara.hutool.swing.img.ImgUtil;
+import cn.hutool.v7.core.data.id.IdUtil;
+import cn.hutool.v7.swing.img.ImgUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;

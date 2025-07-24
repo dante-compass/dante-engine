@@ -29,7 +29,7 @@ import cn.herodotus.engine.assistant.core.context.TenantContextHolder;
 import cn.herodotus.engine.assistant.definition.constants.SymbolConstants;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.dromara.hutool.crypto.SecureUtil;
+import cn.hutool.v7.crypto.SecureUtil;
 import org.hibernate.cache.spi.QueryKey;
 import org.hibernate.cache.spi.support.DomainDataStorageAccess;
 import org.hibernate.engine.spi.SharedSessionContractImplementor;

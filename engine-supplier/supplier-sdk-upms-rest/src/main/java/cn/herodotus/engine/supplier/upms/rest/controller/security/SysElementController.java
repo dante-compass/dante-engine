@@ -42,7 +42,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.tags.Tags;
 import jakarta.validation.constraints.NotNull;
-import org.dromara.hutool.core.tree.MapTree;
+import cn.hutool.v7.core.tree.MapTree;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 

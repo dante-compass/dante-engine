@@ -28,7 +28,7 @@ package cn.herodotus.engine.oauth2.authentication.stamp;
 import cn.herodotus.engine.cache.jetcache.stamp.AbstractStampManager;
 import cn.herodotus.engine.oauth2.authentication.properties.OAuth2AuthenticationProperties;
 import cn.herodotus.engine.oauth2.core.constants.OAuth2Constants;
-import org.dromara.hutool.core.data.id.IdUtil;
+import cn.hutool.v7.core.data.id.IdUtil;
 
 /**
  * <p>Description: 锁定账户签章管理 </p>

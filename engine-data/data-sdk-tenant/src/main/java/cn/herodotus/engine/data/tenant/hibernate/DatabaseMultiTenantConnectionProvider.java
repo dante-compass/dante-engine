@@ -28,7 +28,7 @@ package cn.herodotus.engine.data.tenant.hibernate;
 import cn.herodotus.engine.assistant.definition.constants.DefaultConstants;
 import cn.herodotus.engine.data.tenant.datasource.MultiTenantDataSourceFactory;
 import org.apache.commons.lang3.ObjectUtils;
-import org.dromara.hutool.extra.spring.SpringUtil;
+import cn.hutool.v7.extra.spring.SpringUtil;
 import org.hibernate.cfg.AvailableSettings;
 import org.hibernate.engine.jdbc.connections.spi.AbstractDataSourceBasedMultiTenantConnectionProviderImpl;
 import org.slf4j.Logger;

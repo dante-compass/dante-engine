@@ -28,7 +28,7 @@ package cn.herodotus.engine.cache.jetcache.stamp;
 import cn.herodotus.engine.cache.core.exception.MaximumLimitExceededException;
 import com.alicp.jetcache.anno.CacheType;
 import org.apache.commons.lang3.ObjectUtils;
-import org.dromara.hutool.crypto.SecureUtil;
+import cn.hutool.v7.crypto.SecureUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.Assert;

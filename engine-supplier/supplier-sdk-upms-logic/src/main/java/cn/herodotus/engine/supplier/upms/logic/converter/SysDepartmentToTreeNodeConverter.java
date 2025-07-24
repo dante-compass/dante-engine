@@ -27,7 +27,7 @@ package cn.herodotus.engine.supplier.upms.logic.converter;
 
 import cn.herodotus.engine.assistant.core.utils.WellFormedUtils;
 import cn.herodotus.engine.supplier.upms.logic.entity.hr.SysDepartment;
-import org.dromara.hutool.core.tree.TreeNode;
+import cn.hutool.v7.core.tree.TreeNode;
 import org.springframework.core.convert.converter.Converter;
 
 

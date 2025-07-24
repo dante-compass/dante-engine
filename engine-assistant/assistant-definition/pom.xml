@@ -32,7 +32,7 @@
     <parent>
         <artifactId>engine-assistant</artifactId>
         <groupId>cn.herodotus.engine</groupId>
-        <version>3.5.3.2</version>
+        <version>3.5.4.0</version>
     </parent>
 
     <artifactId>assistant-definition</artifactId>
@@ -97,7 +97,7 @@
             <artifactId>swagger-core-jakarta</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.dromara.hutool</groupId>
+            <groupId>cn.hutool.v7</groupId>
             <artifactId>hutool-all</artifactId>
         </dependency>
         <!--指定 bouncycastle 相关依赖，避免依赖第三方携带 bouncycastle 相关包，产生 hutool 不同版本 crypto 不兼容问题，以及抛出DefaultBufferedBlockCipher问题-->

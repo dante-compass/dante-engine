@@ -29,7 +29,7 @@ import cn.herodotus.engine.assistant.core.utils.http.SessionUtils;
 import cn.herodotus.engine.assistant.definition.constants.SymbolConstants;
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.commons.lang3.StringUtils;
-import org.dromara.hutool.crypto.SecureUtil;
+import cn.hutool.v7.crypto.SecureUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.HandlerInterceptor;

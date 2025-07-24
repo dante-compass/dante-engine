@@ -29,7 +29,7 @@ import cn.herodotus.engine.assistant.definition.constants.SymbolConstants;
 import cn.herodotus.engine.captcha.core.definition.domain.Metadata;
 import com.madgag.gif.fmsware.AnimatedGifEncoder;
 import org.apache.commons.lang3.StringUtils;
-import org.dromara.hutool.core.codec.binary.Base64;
+import cn.hutool.v7.core.codec.binary.Base64;
 
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;

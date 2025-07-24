@@ -28,7 +28,7 @@ package cn.herodotus.engine.rest.protect.secure.stamp;
 import cn.herodotus.engine.cache.jetcache.stamp.AbstractStampManager;
 import cn.herodotus.engine.rest.condition.constants.RestConstants;
 import cn.herodotus.engine.rest.condition.properties.SecureProperties;
-import org.dromara.hutool.core.data.id.IdUtil;
+import cn.hutool.v7.core.data.id.IdUtil;
 
 /**
  * <p>Description: 幂等Stamp管理 </p>

@@ -35,7 +35,7 @@ import cn.herodotus.engine.supplier.upms.logic.entity.security.SysRole;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.BooleanUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.dromara.hutool.core.tree.TreeNode;
+import cn.hutool.v7.core.tree.TreeNode;
 import org.springframework.core.convert.converter.Converter;
 
 import java.util.*;

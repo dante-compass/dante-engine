@@ -26,7 +26,7 @@
 package cn.herodotus.engine.captcha.core.provider;
 
 import cn.herodotus.engine.captcha.core.definition.enums.CaptchaCharacter;
-import org.dromara.hutool.core.util.RandomUtil;
+import cn.hutool.v7.core.util.RandomUtil;
 
 import java.awt.*;
 import java.util.Arrays;

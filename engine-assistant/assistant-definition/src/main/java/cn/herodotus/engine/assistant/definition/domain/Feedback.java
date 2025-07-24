@@ -26,7 +26,7 @@
 package cn.herodotus.engine.assistant.definition.domain;
 
 import com.google.common.base.Objects;
-import org.dromara.hutool.core.lang.Assert;
+import cn.hutool.v7.core.lang.Assert;
 
 import java.io.Serializable;
 

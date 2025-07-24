@@ -30,7 +30,7 @@ import cn.herodotus.engine.assistant.definition.constants.SymbolConstants;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.text.StringEscapeUtils;
-import org.dromara.hutool.json.JSONUtil;
+import cn.hutool.v7.json.JSONUtil;
 import org.owasp.validator.html.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

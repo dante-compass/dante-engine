@@ -29,9 +29,9 @@ import cn.herodotus.engine.assistant.definition.constants.SymbolConstants;
 import cn.herodotus.engine.oauth2.core.exception.IllegalSymmetricKeyException;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.dromara.hutool.core.util.RandomUtil;
-import org.dromara.hutool.crypto.SecureUtil;
-import org.dromara.hutool.crypto.symmetric.AES;
+import cn.hutool.v7.core.util.RandomUtil;
+import cn.hutool.v7.crypto.SecureUtil;
+import cn.hutool.v7.crypto.symmetric.AES;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

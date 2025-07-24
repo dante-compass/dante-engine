@@ -29,7 +29,7 @@ import cn.herodotus.engine.access.core.constants.AccessConstants;
 import cn.herodotus.engine.access.justauth.properties.JustAuthProperties;
 import cn.herodotus.engine.cache.jetcache.stamp.AbstractStampManager;
 import me.zhyd.oauth.cache.AuthStateCache;
-import org.dromara.hutool.core.data.id.IdUtil;
+import cn.hutool.v7.core.data.id.IdUtil;
 
 import java.util.concurrent.TimeUnit;
 

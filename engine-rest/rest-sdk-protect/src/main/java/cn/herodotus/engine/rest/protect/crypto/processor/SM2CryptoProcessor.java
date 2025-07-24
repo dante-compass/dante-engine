@@ -29,12 +29,12 @@ import cn.herodotus.engine.assistant.definition.domain.oauth2.SecretKey;
 import cn.herodotus.engine.rest.core.definition.crypto.AsymmetricCryptoProcessor;
 import org.bouncycastle.crypto.engines.SM2Engine;
 import org.bouncycastle.jcajce.provider.asymmetric.ec.BCECPublicKey;
-import org.dromara.hutool.core.codec.binary.HexUtil;
-import org.dromara.hutool.core.text.StrUtil;
-import org.dromara.hutool.crypto.asymmetric.KeyType;
-import org.dromara.hutool.crypto.asymmetric.SM2;
-import org.dromara.hutool.crypto.bc.ECKeyUtil;
-import org.dromara.hutool.crypto.bc.SmUtil;
+import cn.hutool.v7.core.codec.binary.HexUtil;
+import cn.hutool.v7.core.text.StrUtil;
+import cn.hutool.v7.crypto.asymmetric.KeyType;
+import cn.hutool.v7.crypto.asymmetric.SM2;
+import cn.hutool.v7.crypto.bc.ECKeyUtil;
+import cn.hutool.v7.crypto.bc.SmUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

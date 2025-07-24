@@ -26,12 +26,12 @@
 package cn.herodotus.engine.rest.protect.crypto.processor;
 
 import cn.herodotus.engine.rest.core.definition.crypto.SymmetricCryptoProcessor;
-import org.dromara.hutool.core.codec.binary.Base64;
-import org.dromara.hutool.core.text.StrUtil;
-import org.dromara.hutool.core.util.ByteUtil;
-import org.dromara.hutool.core.util.RandomUtil;
-import org.dromara.hutool.crypto.SecureUtil;
-import org.dromara.hutool.crypto.symmetric.AES;
+import cn.hutool.v7.core.codec.binary.Base64;
+import cn.hutool.v7.core.text.StrUtil;
+import cn.hutool.v7.core.util.ByteUtil;
+import cn.hutool.v7.core.util.RandomUtil;
+import cn.hutool.v7.crypto.SecureUtil;
+import cn.hutool.v7.crypto.symmetric.AES;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
