@@ -25,14 +25,9 @@
 
 package cn.herodotus.engine.data.jpa.config;
 
-import com.blazebit.persistence.Criteria;
-import com.blazebit.persistence.CriteriaBuilderFactory;
-import com.blazebit.persistence.querydsl.BlazeJPAQueryFactory;
-import com.blazebit.persistence.spi.CriteriaBuilderConfiguration;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.annotation.PostConstruct;
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
@@ -59,16 +54,5 @@ public class QueryDslConfiguration {
         JPAQueryFactory queryFactory = new JPAQueryFactory(entityManager);
         log.debug("[Herodotus] |- Bean [JPA Query Factory] Auto Configure.");
         return queryFactory;
-    }
-
-    @Bean
-    public CriteriaBuilderFactory criteriaBuilderFactory(EntityManagerFactory entityManagerFactory) {
-        CriteriaBuilderConfiguration config = Criteria.getDefault();
-        return config.createCriteriaBuilderFactory(entityManagerFactory);
-    }
-
-    @Bean
-    public BlazeJPAQueryFactory createCriteriaBuilderFactory(EntityManager entityManager, CriteriaBuilderFactory criteriaBuilderFactory) {
-        return new BlazeJPAQueryFactory(entityManager, criteriaBuilderFactory);
     }
 }
