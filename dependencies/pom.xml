@@ -37,7 +37,7 @@
 
     <groupId>cn.herodotus.engine</groupId>
     <artifactId>dependencies</artifactId>
-    <version>3.5.4.1</version>
+    <version>3.5.4.2</version>
     <name>Dante Engine Dependencies</name>
     <packaging>pom</packaging>
 
@@ -84,7 +84,7 @@
 
         <aliyun-java-sdk-core.version>4.7.6</aliyun-java-sdk-core.version>
         <aliyun-java-sdk-green.version>3.6.6</aliyun-java-sdk-green.version>
-        <alipay-sdk-java.version>4.40.354.ALL</alipay-sdk-java.version>
+        <alipay-sdk-java.version>4.40.382.ALL</alipay-sdk-java.version>
         <aliyun-sdk-oss.version>3.18.3</aliyun-sdk-oss.version>
         <animated-gif-lib.version>1.4</animated-gif-lib.version>
         <antisamy.version>1.7.8</antisamy.version>
@@ -116,7 +116,7 @@
         <minio.version>8.5.17</minio.version>
         <mybatis.version>3.5.19</mybatis.version>
         <mybatis-plus.version>3.5.12</mybatis-plus.version>
-        <mysql.version>9.3.0</mysql.version>
+        <mysql.version>9.4.0</mysql.version>
         <nacos.version>3.0.2</nacos.version>
         <okhttps.version>4.1.0</okhttps.version>
         <openfeign-querydsl.version>7.0</openfeign-querydsl.version>
@@ -135,11 +135,11 @@
         <spring-cloud-dependencies.version>2025.0.0</spring-cloud-dependencies.version>
         <spring-cloud-tencent-dependencies.version>2.0.2.2-2024.0.1</spring-cloud-tencent-dependencies.version>
         <sqlite-jdbc.version>3.50.3.0</sqlite-jdbc.version>
-        <sweetalert2.verison>11.22.2</sweetalert2.verison>
+        <sweetalert2.verison>11.22.3</sweetalert2.verison>
         <transmittable-thread-local.version>2.14.5</transmittable-thread-local.version>
         <velocity.version>2.3</velocity.version>
         <vue.version>3.5.18</vue.version>
-        <weixin-java-sdk.version>4.7.7-20250725.114118</weixin-java-sdk.version>
+        <weixin-java-sdk.version>4.7.7-20250808.182223</weixin-java-sdk.version>
         <zxing.version>3.5.3</zxing.version>
 
         <!--以下为特殊处理, 统一版本处理漏洞等-->
