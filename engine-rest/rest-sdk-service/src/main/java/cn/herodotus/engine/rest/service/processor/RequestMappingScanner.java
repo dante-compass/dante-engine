@@ -38,6 +38,7 @@ import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.Strings;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
@@ -275,7 +276,7 @@ public class RequestMappingScanner implements ApplicationListener<ApplicationRea
      */
     private String getContextPath(ApplicationContext applicationContext) {
         String contextPath = RestPropertyFinder.getContextPath(applicationContext);
-        if (StringUtils.isNotBlank(contextPath) && !StringUtils.equals(contextPath, SymbolConstants.FORWARD_SLASH)) {
+        if (StringUtils.isNotBlank(contextPath) && !Strings.CS.equals(contextPath, SymbolConstants.FORWARD_SLASH)) {
             return WellFormedUtils.robustness(contextPath, SymbolConstants.FORWARD_SLASH, false, false);
         } else {
             return StringUtils.EMPTY;

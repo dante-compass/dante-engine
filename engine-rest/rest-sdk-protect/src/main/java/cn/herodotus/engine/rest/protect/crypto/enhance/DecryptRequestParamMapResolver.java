@@ -32,7 +32,6 @@ import cn.herodotus.engine.rest.protect.crypto.processor.HttpCryptoProcessor;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.Part;
 import org.apache.commons.lang3.ObjectUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.Strings;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -105,7 +104,7 @@ public class DecryptRequestParamMapResolver implements HandlerMethodArgumentReso
      * @return 是否 Post /oauth/token 请求
      */
     private boolean isOauthTokenRequest(String uri, String method) {
-        return StringUtils.equals(uri, DefaultConstants.TOKEN_ENDPOINT) && Strings.CI.equals(method, HttpMethod.POST.name());
+        return Strings.CS.equals(uri, DefaultConstants.TOKEN_ENDPOINT) && Strings.CI.equals(method, HttpMethod.POST.name());
     }
 
     /**

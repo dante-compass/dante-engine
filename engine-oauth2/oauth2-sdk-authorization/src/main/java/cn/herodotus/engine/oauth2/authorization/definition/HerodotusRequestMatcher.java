@@ -192,7 +192,7 @@ public final class HerodotusRequestMatcher implements RequestMatcher, Serializab
             return true;
         }
 
-        if (StringUtils.equals(getPattern(), request.getPattern())) {
+        if (Strings.CS.equals(getPattern(), request.getPattern())) {
             return true;
         }
 

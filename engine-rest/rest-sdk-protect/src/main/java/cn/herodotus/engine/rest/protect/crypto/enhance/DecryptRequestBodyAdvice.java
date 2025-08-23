@@ -36,6 +36,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.TextNode;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.Strings;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.MethodParameter;
@@ -97,7 +98,7 @@ public class DecryptRequestBodyAdvice implements RequestBodyAdvice {
 
             if (StringUtils.isNotBlank(content)) {
                 String data = httpCryptoProcessor.decrypt(sessionId, content);
-                if (StringUtils.equals(data, content)) {
+                if (Strings.CS.equals(data, content)) {
                     data = decrypt(sessionId, content);
                 }
                 log.debug("[Herodotus] |- Decrypt request body for rest method [{}] in [{}] finished.", methodName, className);

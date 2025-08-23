@@ -27,7 +27,7 @@ package cn.herodotus.engine.message.core.definition.strategy;
 
 import cn.herodotus.engine.assistant.core.context.ServiceContextHolder;
 import cn.herodotus.engine.assistant.core.json.jackson2.utils.Jackson2Utils;
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.Strings;
 import org.springframework.context.ApplicationEvent;
 
 /**
@@ -64,7 +64,7 @@ public interface StrategyEventManager<T> {
      * @return false 远程事件，local 本地事件
      */
     default boolean isLocal(String destinationService) {
-        return !ServiceContextHolder.getInstance().isDistributedArchitecture() || StringUtils.equals(ServiceContextHolder.getInstance().getApplicationName(), destinationService);
+        return !ServiceContextHolder.getInstance().isDistributedArchitecture() || Strings.CS.equals(ServiceContextHolder.getInstance().getApplicationName(), destinationService);
     }
 
     /**
