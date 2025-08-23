@@ -27,7 +27,7 @@ package cn.herodotus.engine.cache.jetcache.enhance;
 
 import cn.herodotus.engine.assistant.definition.constants.SymbolConstants;
 import cn.herodotus.engine.cache.core.properties.CacheSetting;
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.Strings;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cache.Cache;
@@ -84,7 +84,7 @@ public class JetCacheSpringCacheManager implements CacheManager {
     }
 
     private String availableCacheName(String name) {
-        if (StringUtils.endsWith(name, SymbolConstants.COLON)) {
+        if (Strings.CS.endsWith(name, SymbolConstants.COLON)) {
             return name;
         } else {
             return name + SymbolConstants.COLON;

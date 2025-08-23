@@ -35,6 +35,7 @@ import cn.hutool.v7.crypto.asymmetric.KeyType;
 import cn.hutool.v7.crypto.asymmetric.RSA;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.Strings;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -67,7 +68,7 @@ public class RSACryptoProcessor implements AsymmetricCryptoProcessor {
      * @return 清楚格式后的 RSA KEY
      */
     private String removePkcs8Padding(String key) {
-        String result = StringUtils.replace(key, SymbolConstants.NEW_LINE, SymbolConstants.BLANK);
+        String result = Strings.CS.replace(key, SymbolConstants.NEW_LINE, SymbolConstants.BLANK);
         String[] values = StringUtils.split(result, "-----");
         if (ArrayUtils.isNotEmpty(values)) {
             return values[1];

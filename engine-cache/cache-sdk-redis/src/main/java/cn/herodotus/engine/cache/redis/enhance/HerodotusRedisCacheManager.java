@@ -29,7 +29,7 @@ import cn.herodotus.engine.assistant.definition.constants.SymbolConstants;
 import cn.herodotus.engine.cache.core.properties.CacheProperties;
 import cn.herodotus.engine.cache.core.properties.CacheSetting;
 import org.apache.commons.collections4.MapUtils;
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.Strings;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.redis.cache.RedisCache;
@@ -81,7 +81,7 @@ public class HerodotusRedisCacheManager extends RedisCacheManager {
     protected RedisCache createRedisCache(String name, RedisCacheConfiguration cacheConfig) {
         Map<String, CacheSetting> expires = cacheProperties.getInstances();
         if (MapUtils.isNotEmpty(expires)) {
-            String key = StringUtils.replace(name, SymbolConstants.COLON, cacheProperties.getSeparator());
+            String key = Strings.CS.replace(name, SymbolConstants.COLON, cacheProperties.getSeparator());
             if (expires.containsKey(key)) {
                 CacheSetting cacheSetting = expires.get(key);
                 log.debug("[Herodotus] |- CACHE - Redis cache [{}] is setted to use CUSTEM exprie.", name);

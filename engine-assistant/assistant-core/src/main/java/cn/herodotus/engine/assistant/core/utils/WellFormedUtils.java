@@ -76,13 +76,13 @@ public class WellFormedUtils {
             }
         } else {
             if (isRetain) {
-                if (StringUtils.endsWith(content, symbol)) {
+                if (Strings.CS.endsWith(content, symbol)) {
                     return content;
                 } else {
                     return content + symbol;
                 }
             } else {
-                if (StringUtils.endsWith(content, symbol)) {
+                if (Strings.CS.endsWith(content, symbol)) {
                     return Strings.CS.removeEnd(content, symbol);
                 } else {
                     return content;

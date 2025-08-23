@@ -82,13 +82,13 @@ public class FeignRequestInterceptor implements RequestInterceptor {
 
                 // 解决 UserAgent 信息被修改后，AppleWebKit/537.36 (KHTML,like Gecko)部分存在非法字符的问题
                 if (Strings.CI.equals(key, HttpHeaders.USER_AGENT)) {
-                    value = StringUtils.replace(value, SymbolConstants.NEW_LINE, SymbolConstants.BLANK);
+                    value = Strings.CS.replace(value, SymbolConstants.NEW_LINE, SymbolConstants.BLANK);
                     entry.setValue(value);
                 }
 
                 // 解决使用edge浏览器并使用feign，报错Unexpected char 0x0a at 25 in sec-ch-ua value: "Microsoft Edge";v="107...
                 if (Strings.CI.equals(key, HttpHeaders.SEC_CH_UA)) {
-                    value = StringUtils.replace(value, SymbolConstants.NEW_LINE, SymbolConstants.BLANK);
+                    value = Strings.CS.replace(value, SymbolConstants.NEW_LINE, SymbolConstants.BLANK);
                     entry.setValue(value);
                 }
 

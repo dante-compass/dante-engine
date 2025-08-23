@@ -34,6 +34,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.Strings;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -92,10 +93,10 @@ public class WebSocketAuthenticationHandshakeInterceptor implements HandshakeInt
     }
 
     private String determineToken(String protocol) {
-        if (StringUtils.contains(protocol, SymbolConstants.COMMA)) {
+        if (Strings.CS.contains(protocol, SymbolConstants.COMMA)) {
             String[] protocols = StringUtils.split(protocol, SymbolConstants.COMMA);
             for (String item : protocols) {
-                if (!StringUtils.endsWith(item, ".stomp")) {
+                if (!Strings.CS.endsWith(item, ".stomp")) {
                     return item;
                 }
             }

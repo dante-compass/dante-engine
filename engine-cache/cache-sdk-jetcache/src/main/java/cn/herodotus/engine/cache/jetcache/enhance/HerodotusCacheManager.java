@@ -29,7 +29,7 @@ import cn.herodotus.engine.assistant.definition.constants.SymbolConstants;
 import cn.herodotus.engine.cache.core.properties.CacheProperties;
 import cn.herodotus.engine.cache.core.properties.CacheSetting;
 import org.apache.commons.collections4.MapUtils;
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.Strings;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cache.Cache;
@@ -63,7 +63,7 @@ public class HerodotusCacheManager extends JetCacheSpringCacheManager {
     protected Cache createJetCache(String name) {
         Map<String, CacheSetting> instances = cacheProperties.getInstances();
         if (MapUtils.isNotEmpty(instances)) {
-            String key = StringUtils.replace(name, SymbolConstants.COLON, cacheProperties.getSeparator());
+            String key = Strings.CS.replace(name, SymbolConstants.COLON, cacheProperties.getSeparator());
             if (instances.containsKey(key)) {
                 CacheSetting cacheSetting = instances.get(key);
                 log.debug("[Herodotus] |- CACHE - Cache [{}] is set to use INSTANCE cache.", name);

@@ -31,7 +31,7 @@ import cn.herodotus.engine.cache.core.properties.CacheSetting;
 import com.github.benmanes.caffeine.cache.Cache;
 import com.github.benmanes.caffeine.cache.Caffeine;
 import org.apache.commons.collections4.MapUtils;
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.Strings;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cache.caffeine.CaffeineCacheManager;
@@ -67,7 +67,7 @@ public class HerodotusCaffeineCacheManager extends CaffeineCacheManager {
     protected Cache<Object, Object> createNativeCaffeineCache(String name) {
         Map<String, CacheSetting> instances = cacheProperties.getInstances();
         if (MapUtils.isNotEmpty(instances)) {
-            String key = StringUtils.replace(name, SymbolConstants.COLON, cacheProperties.getSeparator());
+            String key = Strings.CS.replace(name, SymbolConstants.COLON, cacheProperties.getSeparator());
             if (instances.containsKey(key)) {
                 CacheSetting cacheSetting = instances.get(key);
                 log.debug("[Herodotus] |- CACHE - Caffeine cache [{}] is set to use INSTANCE config.", name);
