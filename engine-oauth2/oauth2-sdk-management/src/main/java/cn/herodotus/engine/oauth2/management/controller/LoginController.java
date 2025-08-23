@@ -25,17 +25,19 @@
 
 package cn.herodotus.engine.oauth2.management.controller;
 
+import cn.herodotus.engine.assistant.core.enums.Protocol;
 import cn.herodotus.engine.assistant.core.utils.http.SessionUtils;
 import cn.herodotus.engine.assistant.definition.domain.oauth2.SecretKey;
 import cn.herodotus.engine.oauth2.authentication.properties.OAuth2AuthenticationProperties;
 import cn.herodotus.engine.rest.protect.crypto.processor.HttpCryptoProcessor;
+import cn.hutool.v7.core.codec.binary.Base64;
 import com.google.common.net.HttpHeaders;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
-import cn.hutool.v7.core.codec.binary.Base64;
+import org.apache.commons.lang3.Strings;
 import org.springframework.boot.autoconfigure.session.SessionProperties;
 import org.springframework.http.ResponseCookie;
 import org.springframework.security.web.WebAttributes;
@@ -111,7 +113,7 @@ public class LoginController {
             ResponseCookie cookie = ResponseCookie.from("SESSION", Base64.encode(secretKey.getIdentity()))
                     .path(request.getContextPath() + "/")
                     .httpOnly(true)
-                    .secure("https".equalsIgnoreCase(request.getScheme()))
+                    .secure(Strings.CI.equals(Protocol.HTTPS.getPrefix(), request.getScheme()))
                     .sameSite("Lax")
                     .maxAge(authenticationProperties.getFormLogin().getCookieMaxAge())
                     .build();

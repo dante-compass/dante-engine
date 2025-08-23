@@ -30,6 +30,7 @@ import cn.herodotus.engine.assistant.definition.constants.SymbolConstants;
 import cn.herodotus.engine.cache.core.constants.CacheConstants;
 import com.google.common.base.MoreObjects;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.Strings;
 import org.redisson.config.ClusterServersConfig;
 import org.redisson.config.SentinelServersConfig;
 import org.redisson.config.SingleServerConfig;
@@ -139,7 +140,7 @@ public class RedissonProperties {
 
     public boolean isYamlConfig() {
         if (this.isExternalConfig()) {
-            return StringUtils.endsWithIgnoreCase(this.getConfig(), SymbolConstants.SUFFIX_YAML);
+            return Strings.CI.endsWith(this.getConfig(), SymbolConstants.SUFFIX_YAML);
         } else {
             return false;
         }
@@ -147,7 +148,7 @@ public class RedissonProperties {
 
     public boolean isJsonConfig() {
         if (this.isExternalConfig()) {
-            return StringUtils.endsWithIgnoreCase(this.getConfig(), SymbolConstants.SUFFIX_JSON);
+            return Strings.CI.endsWith(this.getConfig(), SymbolConstants.SUFFIX_JSON);
         } else {
             return false;
         }

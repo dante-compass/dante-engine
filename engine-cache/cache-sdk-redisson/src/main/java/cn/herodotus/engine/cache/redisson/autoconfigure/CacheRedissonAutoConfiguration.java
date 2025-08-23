@@ -33,6 +33,7 @@ import jakarta.annotation.PostConstruct;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.Strings;
 import org.redisson.Redisson;
 import org.redisson.api.RedissonClient;
 import org.redisson.codec.JsonJacksonCodec;
@@ -91,7 +92,7 @@ public class CacheRedissonAutoConfiguration {
         try {
             File configFile = readConfigFile();
             if (ObjectUtils.isNotEmpty(configFile)) {
-                if (StringUtils.endsWithIgnoreCase(configFile.getName(), SymbolConstants.SUFFIX_YAML)) {
+                if (Strings.CI.endsWith(configFile.getName(), SymbolConstants.SUFFIX_YAML)) {
                     return Config.fromYAML(configFile);
                 }
             }
