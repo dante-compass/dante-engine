@@ -31,6 +31,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.Strings;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -71,7 +72,7 @@ public class Jackson2YamlUtils {
         try {
             String yaml = getObjectMapper().writeValueAsString(domain);
             if (StringUtils.isNotBlank(yaml) && removeQuote) {
-                return StringUtils.remove(yaml, SymbolConstants.QUOTE);
+                return Strings.CS.remove(yaml, SymbolConstants.QUOTE);
             } else {
                 return yaml;
             }

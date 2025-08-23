@@ -267,7 +267,7 @@ public class HeaderUtils {
     public static String getBearerToken(HttpServletRequest request) {
         String header = getAuthorization(request);
         if (StringUtils.isNotBlank(header) && Strings.CS.startsWith(header, BaseConstants.BEARER_TOKEN)) {
-            return StringUtils.remove(header, BaseConstants.BEARER_TOKEN);
+            return Strings.CS.remove(header, BaseConstants.BEARER_TOKEN);
         } else {
             return null;
         }
