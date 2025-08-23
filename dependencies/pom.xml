@@ -143,6 +143,8 @@
         <!--以下为特殊处理, 统一版本处理漏洞等-->
         <checker-qual.version>3.49.5</checker-qual.version>
         <commons-fileupload.version>1.6.0</commons-fileupload.version>
+        <!--fix CVE-2025-48924 -->
+        <commons-lang3.version>3.18.0</commons-lang3.version>
         <classgraph.version>4.8.181</classgraph.version>
         <dom4j.version>2.1.4</dom4j.version>
         <error_prone_annotations.version>2.41.0</error_prone_annotations.version>
@@ -154,6 +156,8 @@
         <okio.version>3.16.0</okio.version>
         <org.json.version>20250517</org.json.version>
         <snappy-java.version>1.1.10.8</snappy-java.version>
+        <!--fix CVE-2024-51504 -->
+        <zookeeper.verison>3.9.3</zookeeper.verison>
     </properties>
 
     <dependencyManagement>
@@ -812,6 +816,11 @@
                 <groupId>org.xerial.snappy</groupId>
                 <artifactId>snappy-java</artifactId>
                 <version>${snappy-java.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.zookeeper</groupId>
+                <artifactId>zookeeper</artifactId>
+                <version>${zookeeper.verison}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
