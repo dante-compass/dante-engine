@@ -32,6 +32,7 @@ import cn.herodotus.engine.oauth2.authorization.enums.Category;
 import cn.herodotus.engine.oauth2.core.definition.domain.SecurityAttribute;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.Strings;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.access.ConfigAttribute;
@@ -158,7 +159,7 @@ public class SecurityMetadataSourceAnalyzer {
             result.put(new HerodotusRequest(url), configAttributes);
         } else {
             // 如果methods是以逗号分隔的字符串，那么进行拆分处理
-            if (StringUtils.contains(methods, SymbolConstants.COMMA)) {
+            if (Strings.CS.contains(methods, SymbolConstants.COMMA)) {
                 String[] multiMethod = StringUtils.split(methods, SymbolConstants.COMMA);
                 for (String method : multiMethod) {
                     result.put(new HerodotusRequest(url, method), configAttributes);

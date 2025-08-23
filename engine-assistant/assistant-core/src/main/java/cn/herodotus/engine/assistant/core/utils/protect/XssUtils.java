@@ -29,7 +29,6 @@ import cn.herodotus.engine.assistant.core.utils.ResourceResolver;
 import cn.herodotus.engine.assistant.definition.constants.SymbolConstants;
 import cn.hutool.v7.json.JSONUtil;
 import org.apache.commons.lang3.ObjectUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.Strings;
 import org.apache.commons.text.StringEscapeUtils;
 import org.owasp.validator.html.*;
@@ -82,7 +81,7 @@ public class XssUtils {
             cleanHtml = Strings.CS.removeStart(cleanHtml, SymbolConstants.NEW_LINE);
         }
 
-        if (JSONUtil.isTypeJSON(cleanHtml) && StringUtils.contains(cleanHtml, SymbolConstants.NEW_LINE)) {
+        if (JSONUtil.isTypeJSON(cleanHtml) && Strings.CS.contains(cleanHtml, SymbolConstants.NEW_LINE)) {
             // AntiSamy会把“ ”转换 \n。如果出现时间字符串，中间包含空格就会出现错误"
             cleanHtml = cleanHtml.replaceAll(SymbolConstants.NEW_LINE, SymbolConstants.SPACE);
         }

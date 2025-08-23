@@ -29,6 +29,7 @@ import cn.herodotus.engine.assistant.definition.constants.SymbolConstants;
 import cn.herodotus.engine.oauth2.core.constants.OAuth2Constants;
 import cn.herodotus.engine.oauth2.management.compliance.OAuth2AccountStatusManager;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.Strings;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.redis.connection.Message;
@@ -57,7 +58,7 @@ public class AccountAutoEnableListener extends KeyExpirationEventMessageListener
     @Override
     public void onMessage(Message message, byte[] pattern) {
         String key = new String(message.getBody(), StandardCharsets.UTF_8);
-        if (StringUtils.contains(key, OAuth2Constants.CACHE_NAME_TOKEN_LOCKED_USER_DETAIL)) {
+        if (Strings.CS.contains(key, OAuth2Constants.CACHE_NAME_TOKEN_LOCKED_USER_DETAIL)) {
             String userId = StringUtils.substringAfterLast(key, SymbolConstants.COLON);
             log.info("[Herodotus] |- Parse the user [{}] at expired redis cache key [{}]", userId, key);
             if (StringUtils.isNotBlank(userId)) {

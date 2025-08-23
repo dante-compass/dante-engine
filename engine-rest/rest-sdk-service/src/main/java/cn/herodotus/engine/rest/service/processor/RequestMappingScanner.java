@@ -188,7 +188,7 @@ public class RequestMappingScanner implements ApplicationListener<ApplicationRea
     private boolean isLegalGroup(String className) {
         if (StringUtils.isNotEmpty(className)) {
             List<String> groupIds = restProperties.getScanGroupIds();
-            List<String> result = groupIds.stream().filter(groupId -> StringUtils.contains(className, groupId)).collect(Collectors.toList());
+            List<String> result = groupIds.stream().filter(groupId -> Strings.CS.contains(className, groupId)).collect(Collectors.toList());
             return !CollectionUtils.sizeIsEmpty(result);
         } else {
             return false;

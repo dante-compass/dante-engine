@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.oauth2.authorization.enums;
 
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.Strings;
 
 /**
  * <p>Description: URL 路径类别 </p>
@@ -50,11 +50,11 @@ public enum Category {
 
     public static Category getCategory(String url) {
 
-        if (StringUtils.containsAny(url, new String[]{"*", "?"})) {
+        if (Strings.CS.containsAny(url, new String[]{"*", "?"})) {
             return Category.WILDCARD;
         }
 
-        if (StringUtils.contains(url, "{")) {
+        if (Strings.CS.contains(url, "{")) {
             return Category.PLACEHOLDER;
         }
 

@@ -156,7 +156,7 @@ public final class HerodotusRequestMatcher implements RequestMatcher, Serializab
 
     private boolean containSpecialCharacters(String source) {
         if (StringUtils.isNotBlank(source)) {
-            return StringUtils.containsAny(source, new String[]{"*", "?", "{"});
+            return Strings.CS.containsAny(source, new String[]{"*", "?", "{"});
         }
         return false;
     }

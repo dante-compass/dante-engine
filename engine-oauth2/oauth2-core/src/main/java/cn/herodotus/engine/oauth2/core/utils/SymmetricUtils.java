@@ -32,6 +32,7 @@ import cn.hutool.v7.crypto.SecureUtil;
 import cn.hutool.v7.crypto.symmetric.AES;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.Strings;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -67,7 +68,7 @@ public class SymmetricUtils {
     }
 
     public static byte[] getDecryptedSymmetricKey(String key) {
-        if (!StringUtils.contains(key, SymbolConstants.FORWARD_SLASH)) {
+        if (!Strings.CS.contains(key, SymbolConstants.FORWARD_SLASH)) {
             throw new IllegalSymmetricKeyException("Parameter Illegal!");
         }
 

@@ -29,6 +29,7 @@ import cn.herodotus.engine.assistant.definition.constants.SymbolConstants;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.ser.std.StdSerializer;
+import org.apache.commons.lang3.Strings;
 import org.springframework.util.StringUtils;
 
 import java.io.IOException;
@@ -50,7 +51,7 @@ public class CommaDelimitedStringToSetSerializer extends StdSerializer<String> {
     public void serialize(String value, JsonGenerator gen, SerializerProvider provider) throws IOException {
         Set<String> collection = new HashSet<>();
         if (StringUtils.hasText(value)) {
-            if (org.apache.commons.lang3.StringUtils.contains(value, SymbolConstants.COMMA)) {
+            if (Strings.CS.contains(value, SymbolConstants.COMMA)) {
                 collection = StringUtils.commaDelimitedListToSet(value);
             } else {
                 collection.add(value);

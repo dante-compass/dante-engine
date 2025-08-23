@@ -29,6 +29,7 @@ import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.Strings;
 import org.springframework.http.HttpMethod;
 import org.springframework.util.Assert;
 
@@ -110,7 +111,7 @@ public final class HerodotusRequest implements Serializable {
 
     private boolean containSpecialCharacters(String source) {
         if (StringUtils.isNotBlank(source)) {
-            return StringUtils.containsAny(source, new String[]{"*", "?", "{"});
+            return Strings.CS.containsAny(source, new String[]{"*", "?", "{"});
         }
         return false;
     }
