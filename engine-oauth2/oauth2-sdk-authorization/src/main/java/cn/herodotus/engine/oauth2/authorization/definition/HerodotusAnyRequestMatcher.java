@@ -28,34 +28,49 @@ package cn.herodotus.engine.oauth2.authorization.definition;
 import cn.herodotus.engine.oauth2.authorization.processor.SecurityMetadataSourceStorage;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.security.web.servlet.util.matcher.PathPatternRequestMatcher;
-import org.springframework.security.web.util.matcher.RequestMatcher;
+import org.springframework.security.web.util.matcher.AnyRequestMatcher;
 
 /**
- * <p>Description: 自定义 {@link RequestMatcher} 接口扩展，在没有 {@link HttpServletRequest} 的环境下</p>
+ * <p>Description: 自定义任意请求匹配器 </p>
+ * <p>
+ * 拷贝自 {@link AnyRequestMatcher}。进行一定的修改以支持纯在没有 {@link HttpServletRequest} 的环境下进行路径的比较和匹配
  * <p>
  * 概扩展的目的，主要是为了实现 {@link SecurityMetadataSourceStorage} 代码中，使用 {@link PathPatternRequestMatcher} 逻辑进行高效请求路径去重分析。
  *
  * @author : gengwei.zheng
- * @date : 2025/8/24 0:27
+ * @date : 2025/8/24 0:21
  */
-public interface HerodotusRequestMatcher extends RequestMatcher {
+public class HerodotusAnyRequestMatcher implements HerodotusRequestMatcher {
 
-    /**
-     * 判断策略所实施的规则是否与提供的请求相匹配
-     *
-     * @param request 自定义请求对象 {@link HerodotusRequest}
-     * @return true 请求是否匹配，false 不匹配
-     */
-    boolean matches(HerodotusRequest request);
+    public static final HerodotusRequestMatcher INSTANCE = new HerodotusAnyRequestMatcher();
 
-    /**
-     * 判断策略所实施的规则是否与提供的请求相匹配
-     *
-     * @param request 自定义请求对象 {@link HerodotusRequest}
-     * @return 匹配结果 {@link MatchResult}
-     */
-    default MatchResult matcher(HerodotusRequest request) {
-        boolean match = matches(request);
-        return match ? MatchResult.match() : MatchResult.notMatch();
+    private HerodotusAnyRequestMatcher() {
     }
+
+    @Override
+    public boolean matches(HttpServletRequest request) {
+        return true;
+    }
+
+    @Override
+    public boolean matches(HerodotusRequest request) {
+        return true;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return obj instanceof HerodotusAnyRequestMatcher;
+    }
+
+    @Override
+    public int hashCode() {
+        return 1;
+    }
+
+    @Override
+    public String toString() {
+        return "any request";
+    }
+
+
 }

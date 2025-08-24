@@ -27,6 +27,7 @@ package cn.herodotus.engine.oauth2.authorization.processor;
 
 import cn.herodotus.engine.cache.jetcache.utils.JetCacheUtils;
 import cn.herodotus.engine.oauth2.authorization.definition.HerodotusConfigAttribute;
+import cn.herodotus.engine.oauth2.authorization.definition.HerodotusPathPatternRequestMatcher;
 import cn.herodotus.engine.oauth2.authorization.definition.HerodotusRequest;
 import cn.herodotus.engine.oauth2.authorization.definition.HerodotusRequestMatcher;
 import cn.herodotus.engine.oauth2.core.constants.OAuth2Constants;
@@ -35,7 +36,6 @@ import com.alicp.jetcache.anno.CacheType;
 import org.apache.commons.collections4.MapUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.security.access.ConfigAttribute;
 import org.springframework.security.web.util.matcher.RequestMatcher;
 
 import java.util.LinkedHashMap;
@@ -138,7 +138,7 @@ public class SecurityMetadataSourceStorage {
      * 如果缓存中存在以{@link RequestMatcher}为Key的数据，那么合并数据
      *
      * @param herodotusRequest 请求匹配对象 {@link HerodotusRequest}
-     * @param configAttributes 权限配置 {@link ConfigAttribute}
+     * @param configAttributes 权限配置 {@link HerodotusConfigAttribute}
      */
     private void appendToCompatible(HerodotusRequest herodotusRequest, List<HerodotusConfigAttribute> configAttributes) {
         LinkedHashMap<HerodotusRequest, List<HerodotusConfigAttribute>> compatible = this.getCompatible();
@@ -238,7 +238,7 @@ public class SecurityMetadataSourceStorage {
                 // 如果是修改的是占位符类型的接口的权限，同时 matchers 中也包含该占位符权限，那么就会因为配到而导致被删除，最终导致该接口的权限无法更新保存。
                 // 例如：被检测请求为 /iot/product-category/{id}，而 matchers 中也存在 /iot/product-category/{id}，那么就会被从 result 中删掉。而导致无法更新 /iot/product-category/{id} 的权限
                 if (!matcher.equals(item)) {
-                    HerodotusRequestMatcher requestMatcher = new HerodotusRequestMatcher(matcher);
+                    HerodotusRequestMatcher requestMatcher = HerodotusPathPatternRequestMatcher.withDefaults().matcher(matcher);
                     if (requestMatcher.matches(item)) {
                         result.remove(item);
                         log.trace("[Herodotus] |- Pattern [{}] is conflict with [{}], so remove it.", item.getPattern(), matcher.getPattern());

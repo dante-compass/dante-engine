@@ -27,10 +27,10 @@ package cn.herodotus.engine.oauth2.authorization.definition;
 
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
-import org.springframework.security.access.ConfigAttribute;
 import org.springframework.util.Assert;
 import org.springframework.util.StringUtils;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,7 +42,7 @@ import java.util.List;
  * @author : gengwei.zheng
  * @date : 2021/9/11 15:57
  */
-public class HerodotusConfigAttribute implements ConfigAttribute {
+public class HerodotusConfigAttribute implements Serializable {
 
     private String attribute;
 
@@ -59,13 +59,13 @@ public class HerodotusConfigAttribute implements ConfigAttribute {
         return new HerodotusConfigAttribute(attribute.trim());
     }
 
-    public static List<ConfigAttribute> createListFromCommaDelimitedString(String access) {
+    public static List<HerodotusConfigAttribute> createListFromCommaDelimitedString(String access) {
         return createList(StringUtils.commaDelimitedListToStringArray(access));
     }
 
-    public static List<ConfigAttribute> createList(String... attributeNames) {
+    public static List<HerodotusConfigAttribute> createList(String... attributeNames) {
         Assert.notNull(attributeNames, "You must supply an array of attribute names");
-        List<ConfigAttribute> attributes = new ArrayList<>(attributeNames.length);
+        List<HerodotusConfigAttribute> attributes = new ArrayList<>(attributeNames.length);
         for (String attribute : attributeNames) {
             attributes.add(new HerodotusConfigAttribute(attribute.trim()));
         }

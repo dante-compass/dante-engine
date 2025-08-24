@@ -28,18 +28,20 @@ package cn.herodotus.engine.oauth2.authorization.processor;
 import cn.herodotus.engine.assistant.core.utils.http.HeaderUtils;
 import cn.herodotus.engine.oauth2.authorization.definition.HerodotusConfigAttribute;
 import cn.herodotus.engine.oauth2.authorization.definition.HerodotusRequest;
-import cn.herodotus.engine.oauth2.authorization.definition.HerodotusRequestMatcher;
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authorization.AuthorizationDecision;
 import org.springframework.security.authorization.AuthorizationManager;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.access.expression.WebExpressionAuthorizationManager;
 import org.springframework.security.web.access.intercept.RequestAuthorizationContext;
+import org.springframework.security.web.servlet.util.matcher.PathPatternRequestMatcher;
+import org.springframework.security.web.util.matcher.RequestMatcher;
 
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -137,8 +139,8 @@ public class SecurityAuthorizationManager implements AuthorizationManager<Reques
             if (MapUtils.isNotEmpty(compatible)) {
                 // 支持含有**通配符的路径搜索
                 for (Map.Entry<HerodotusRequest, List<HerodotusConfigAttribute>> entry : compatible.entrySet()) {
-                    HerodotusRequestMatcher requestMatcher = new HerodotusRequestMatcher(entry.getKey());
-                    if (requestMatcher.matches(request)) {
+                    RequestMatcher.MatchResult matchResult = matches(request, entry.getKey());
+                    if (matchResult.isMatch()) {
                         log.debug("[Herodotus] |- Request match the wildcard [{}] - [{}]", entry.getKey(), entry.getValue());
                         return entry.getValue();
                     }
@@ -147,5 +149,15 @@ public class SecurityAuthorizationManager implements AuthorizationManager<Reques
         }
 
         return null;
+    }
+
+    private RequestMatcher.MatchResult matches(HttpServletRequest httpServletRequest, HerodotusRequest request) {
+        HttpMethod httpMethod = null;
+        if (StringUtils.isNotBlank(request.getHttpMethod())) {
+            httpMethod = HttpMethod.valueOf(request.getHttpMethod());
+        }
+
+        PathPatternRequestMatcher matcher = PathPatternRequestMatcher.withDefaults().matcher(httpMethod, request.getPattern());
+        return matcher.matcher(httpServletRequest);
     }
 }
