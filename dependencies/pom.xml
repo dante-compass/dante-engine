@@ -669,7 +669,7 @@
                 <version>${mybatis.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.webjars</groupId>
+                <groupId>org.webjars.npm</groupId>
                 <artifactId>jquery</artifactId>
                 <version>${jquery.version}</version>
             </dependency>
