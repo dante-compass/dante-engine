@@ -57,7 +57,7 @@ public class OAuth2Compliance extends BaseEntity {
     @Column(name = "client_id", length = 100)
     private String clientId;
 
-    @Column(name = "ip_address", length = 20)
+    @Column(name = "ip_address", length = 50)
     private String ip;
 
     @Column(name = "is_mobile")
