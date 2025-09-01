@@ -33,7 +33,7 @@
     <parent>
         <artifactId>engine-oauth2</artifactId>
         <groupId>cn.herodotus.engine</groupId>
-        <version>3.5.5.1</version>
+        <version>3.5.5.2</version>
     </parent>
 
     <artifactId>oauth2-sdk-management</artifactId>
@@ -54,11 +54,15 @@
         </dependency>
 
         <dependency>
-            <groupId>org.webjars</groupId>
+            <groupId>org.webjars.npm</groupId>
             <artifactId>bootstrap</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.webjars</groupId>
+            <groupId>org.webjars.npm</groupId>
+            <artifactId>inter-ui</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars.npm</groupId>
             <artifactId>jquery</artifactId>
         </dependency>
         <dependency>
@@ -72,6 +76,10 @@
         <dependency>
             <groupId>org.webjars.npm</groupId>
             <artifactId>quasar</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars.npm</groupId>
+            <artifactId>tabler__core</artifactId>
         </dependency>
         <dependency>
             <groupId>org.webjars.npm</groupId>

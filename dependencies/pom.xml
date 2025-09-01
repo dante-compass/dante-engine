@@ -37,7 +37,7 @@
 
     <groupId>cn.herodotus.engine</groupId>
     <artifactId>dependencies</artifactId>
-    <version>3.5.5.1</version>
+    <version>3.5.5.2</version>
     <name>Dante Engine Dependencies</name>
     <packaging>pom</packaging>
 
@@ -82,17 +82,22 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
+        <!--Maven Plugins-->
+        <archetype-packaging.verison>3.4.0</archetype-packaging.verison>
+        <mapstruct-processor.version>1.6.3</mapstruct-processor.version>
+        <maven-archetype-plugin.version>3.4.0</maven-archetype-plugin.version>
+        <maven-gpg-plugin.version>3.2.8</maven-gpg-plugin.version>
+        <protobuf-maven-plugin.version>3.8.1</protobuf-maven-plugin.version>
+
         <aliyun-java-sdk-core.version>4.7.6</aliyun-java-sdk-core.version>
         <aliyun-java-sdk-green.version>3.6.6</aliyun-java-sdk-green.version>
-        <alipay-sdk-java.version>4.40.411.ALL</alipay-sdk-java.version>
+        <alipay-sdk-java.version>4.40.427.ALL</alipay-sdk-java.version>
         <aliyun-sdk-oss.version>3.18.3</aliyun-sdk-oss.version>
         <animated-gif-lib.version>1.4</animated-gif-lib.version>
         <antisamy.version>1.7.8</antisamy.version>
-        <archetype-packaging.verison>3.4.0</archetype-packaging.verison>
         <aws-java-sdk-s3.version>1.12.788</aws-java-sdk-s3.version>
         <bcpkix-jdk18on.version>1.81</bcpkix-jdk18on.version>
         <bcprov-jdk18on.version>1.81</bcprov-jdk18on.version>
-        <bootstrap.version>5.3.7</bootstrap.version>
         <camunda-bpm-spring-boot-starter-rest.version>7.23.0</camunda-bpm-spring-boot-starter-rest.version>
         <central-publishing-maven-plugin.version>0.8.0</central-publishing-maven-plugin.version>
         <commons-collections4.version>4.5.0</commons-collections4.version>
@@ -105,16 +110,11 @@
         <influxdb-client.version>7.3.0</influxdb-client.version>
         <jasypt-spring-boot-starter.version>3.0.5</jasypt-spring-boot-starter.version>
         <jetcache.version>2.7.8</jetcache.version>
-        <jquery.version>3.7.1</jquery.version>
         <justauth.verison>1.16.7</justauth.verison>
         <logstash-logback-encoder.version>8.1</logstash-logback-encoder.version>
-        <mapstruct-processor.version>1.6.3</mapstruct-processor.version>
-        <maven-archetype-plugin.version>3.4.0</maven-archetype-plugin.version>
-        <maven-gpg-plugin.version>3.2.7</maven-gpg-plugin.version>
-        <mdi__font.version>7.4.47</mdi__font.version>
         <minio.version>8.5.17</minio.version>
         <mybatis.version>3.5.19</mybatis.version>
-        <mybatis-plus.version>3.5.12</mybatis-plus.version>
+        <mybatis-plus.version>3.5.14</mybatis-plus.version>
         <mysql.version>9.4.0</mysql.version>
         <nacos.version>3.0.3</nacos.version>
         <okhttps.version>4.1.0</okhttps.version>
@@ -122,10 +122,8 @@
         <opengauss-jdbc.version>6.0.0-og</opengauss-jdbc.version>
         <org.eclipse.paho.version>1.2.5</org.eclipse.paho.version>
         <p6spy.version>3.9.1</p6spy.version>
-        <quasar.version>2.18.2</quasar.version>
         <redisson.version>3.51.0</redisson.version>
         <skywalking.version>9.5.0</skywalking.version>
-        <sm-crypto.version>0.3.13</sm-crypto.version>
         <sms4j-spring-boot-starter.version>3.3.5</sms4j-spring-boot-starter.version>
         <springdoc.version>2.8.11</springdoc.version>
         <spring-boot-dependencies.version>3.5.5</spring-boot-dependencies.version>
@@ -134,21 +132,31 @@
         <spring-cloud-dependencies.version>2025.0.0</spring-cloud-dependencies.version>
         <spring-cloud-tencent-dependencies.version>2.0.2.2-2024.0.1</spring-cloud-tencent-dependencies.version>
         <sqlite-jdbc.version>3.50.3.0</sqlite-jdbc.version>
-        <sweetalert2.verison>11.22.4</sweetalert2.verison>
         <transmittable-thread-local.version>2.14.5</transmittable-thread-local.version>
-        <vue.version>3.5.20</vue.version>
-        <weixin-java-sdk.version>4.7.7-20250808.182223</weixin-java-sdk.version>
+        <weixin-java-sdk.version>4.7.7-20250831.214433</weixin-java-sdk.version>
         <zxing.version>3.5.3</zxing.version>
 
+        <!--Webjars 主要用于内置基于 thymeleaf 的自定义页面-->
+        <bootstrap.version>5.3.8</bootstrap.version>
+        <inter-ui.version>4.1.1</inter-ui.version>
+        <jquery.version>3.7.1</jquery.version>
+        <mdi__font.version>7.4.47</mdi__font.version>
+        <quasar.version>2.18.2</quasar.version>
+        <sm-crypto.version>0.3.13</sm-crypto.version>
+        <sweetalert2.verison>11.22.5</sweetalert2.verison>
+        <tabler.version>1.4.0</tabler.version>
+        <vue.version>3.5.20</vue.version>
+
         <!--以下为特殊处理, 统一版本处理漏洞等-->
-        <checker-qual.version>3.49.5</checker-qual.version>
+        <checker-qual.version>3.50.0</checker-qual.version>
         <commons-fileupload.version>1.6.0</commons-fileupload.version>
         <!--fix CVE-2025-48924 -->
         <commons-lang3.version>3.18.0</commons-lang3.version>
         <classgraph.version>4.8.181</classgraph.version>
         <dom4j.version>2.1.4</dom4j.version>
         <error_prone_annotations.version>2.41.0</error_prone_annotations.version>
-        <hutool5.version>5.8.39</hutool5.version>
+        <!--sms4j 依赖 hutool 5，但更新频率低，在此进行统一升级和版本控制-->
+        <hutool5.version>5.8.40</hutool5.version>
         <httpclient.version>4.5.14</httpclient.version>
         <javassist.version>3.30.2-GA</javassist.version>
         <jaxb-impl.version>4.0.5</jaxb-impl.version>
@@ -157,7 +165,7 @@
         <org.json.version>20250517</org.json.version>
         <snappy-java.version>1.1.10.8</snappy-java.version>
         <!--fix CVE-2024-51504 -->
-        <zookeeper.verison>3.9.3</zookeeper.verison>
+        <zookeeper.verison>3.9.4</zookeeper.verison>
     </properties>
 
     <dependencyManagement>
@@ -533,11 +541,6 @@
                 <version>${bcpkix-jdk18on.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.webjars</groupId>
-                <artifactId>bootstrap</artifactId>
-                <version>${bootstrap.version}</version>
-            </dependency>
-            <dependency>
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-collections4</artifactId>
                 <version>${commons-collections4.version}</version>
@@ -643,11 +646,6 @@
                 <version>${weixin-java-sdk.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.github.binarywang</groupId>
-                <artifactId>weixin-java-pay</artifactId>
-                <version>${weixin-java-sdk.version}</version>
-            </dependency>
-            <dependency>
                 <groupId>org.camunda.bpm.springboot</groupId>
                 <artifactId>camunda-bpm-spring-boot-starter-rest</artifactId>
                 <version>${camunda-bpm-spring-boot-starter-rest.version}</version>
@@ -666,36 +664,6 @@
                 <groupId>org.mybatis</groupId>
                 <artifactId>mybatis</artifactId>
                 <version>${mybatis.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.webjars</groupId>
-                <artifactId>jquery</artifactId>
-                <version>${jquery.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.webjars.npm</groupId>
-                <artifactId>mdi__font</artifactId>
-                <version>${mdi__font.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.webjars.npm</groupId>
-                <artifactId>quasar</artifactId>
-                <version>${quasar.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.webjars.npm</groupId>
-                <artifactId>sweetalert2</artifactId>
-                <version>${sweetalert2.verison}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.webjars.npm</groupId>
-                <artifactId>vue</artifactId>
-                <version>${vue.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.webjars.npm</groupId>
-                <artifactId>sm-crypto</artifactId>
-                <version>${sm-crypto.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.alibaba.fastjson2</groupId>
@@ -721,6 +689,53 @@
                 <groupId>io.hypersistence</groupId>
                 <artifactId>hypersistence-utils-hibernate-63</artifactId>
                 <version>${hypersistence-utils-hibernate-63.version}</version>
+            </dependency>
+
+            <!--Webjars 主要用于内置基于 thymeleaf 的自定义页面-->
+            <dependency>
+                <groupId>org.webjars.npm</groupId>
+                <artifactId>bootstrap</artifactId>
+                <version>${bootstrap.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.webjars.npm</groupId>
+                <artifactId>inter-ui</artifactId>
+                <version>${inter-ui.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.webjars.npm</groupId>
+                <artifactId>jquery</artifactId>
+                <version>${jquery.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.webjars.npm</groupId>
+                <artifactId>mdi__font</artifactId>
+                <version>${mdi__font.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.webjars.npm</groupId>
+                <artifactId>quasar</artifactId>
+                <version>${quasar.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.webjars.npm</groupId>
+                <artifactId>sm-crypto</artifactId>
+                <version>${sm-crypto.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.webjars.npm</groupId>
+                <artifactId>sweetalert2</artifactId>
+                <version>${sweetalert2.verison}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.webjars.npm</groupId>
+                <artifactId>tabler__core</artifactId>
+                <version>${tabler.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.webjars.npm</groupId>
+                <artifactId>vue</artifactId>
+                <version>${vue.version}</version>
             </dependency>
             <!--特殊处理, 防止被 sct 中的依赖影响版本控制-->
             <dependency>
@@ -760,11 +775,6 @@
                 <version>${hutool5.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
-            </dependency>
-            <dependency>
-                <groupId>cn.hutool</groupId>
-                <artifactId>hutool-all</artifactId>
-                <version>${hutool5.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.json</groupId>

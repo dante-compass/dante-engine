@@ -40,7 +40,6 @@ public class SecurityResources {
 
     public static final List<String> DEFAULT_IGNORED_STATIC_RESOURCES = Lists.newArrayList(
             "/error/**",
-            "/plugins/**",
             "/herodotus/**",
             "/static/**",
             "/webjars/**",
