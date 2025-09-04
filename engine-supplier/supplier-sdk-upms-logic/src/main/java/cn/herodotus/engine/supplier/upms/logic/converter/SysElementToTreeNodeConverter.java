@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.supplier.upms.logic.converter;
 
-import cn.herodotus.engine.assistant.core.utils.WellFormedUtils;
+import cn.herodotus.engine.core.definition.utils.WellFormedUtils;
 import cn.herodotus.engine.core.definition.domain.view.vue.BaseMeta;
 import cn.herodotus.engine.core.definition.domain.view.vue.ChildMeta;
 import cn.herodotus.engine.core.definition.domain.view.vue.ParentMeta;

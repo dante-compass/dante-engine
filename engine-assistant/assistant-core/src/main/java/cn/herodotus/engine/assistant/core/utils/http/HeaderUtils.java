@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.assistant.core.utils.http;
 
-import cn.herodotus.engine.assistant.definition.constants.BaseConstants;
+import cn.herodotus.engine.core.definition.constant.BaseConstants;
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;

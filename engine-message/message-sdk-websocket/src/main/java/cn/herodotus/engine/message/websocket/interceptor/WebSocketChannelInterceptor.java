@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.message.websocket.interceptor;
 
-import cn.herodotus.engine.assistant.definition.constants.BaseConstants;
+import cn.herodotus.engine.core.definition.constant.BaseConstants;
 import cn.herodotus.engine.message.websocket.domain.WebSocketPrincipal;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.ObjectUtils;

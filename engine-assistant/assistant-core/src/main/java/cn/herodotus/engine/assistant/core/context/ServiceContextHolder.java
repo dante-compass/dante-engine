@@ -26,9 +26,9 @@
 package cn.herodotus.engine.assistant.core.context;
 
 import cn.herodotus.engine.assistant.core.enums.Architecture;
-import cn.herodotus.engine.assistant.core.enums.Protocol;
+import cn.herodotus.engine.core.definition.enums.Protocol;
 import cn.herodotus.engine.assistant.core.enums.Target;
-import cn.herodotus.engine.assistant.core.utils.WellFormedUtils;
+import cn.herodotus.engine.core.definition.utils.WellFormedUtils;
 import cn.herodotus.engine.core.definition.constant.SystemConstants;
 import cn.herodotus.engine.core.definition.constant.SymbolConstants;
 import org.apache.commons.lang3.ObjectUtils;

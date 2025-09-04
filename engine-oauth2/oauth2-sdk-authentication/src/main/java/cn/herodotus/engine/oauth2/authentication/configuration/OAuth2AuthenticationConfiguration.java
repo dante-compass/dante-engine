@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.oauth2.authentication.configuration;
 
-import cn.herodotus.engine.assistant.definition.function.ErrorCodeMapperBuilderCustomizer;
+import cn.herodotus.engine.core.definition.function.ErrorCodeMapperBuilderCustomizer;
 import cn.herodotus.engine.oauth2.authentication.customizer.HerodotusJwtTokenCustomizer;
 import cn.herodotus.engine.oauth2.authentication.customizer.HerodotusOpaqueTokenCustomizer;
 import cn.herodotus.engine.oauth2.authentication.customizer.OAuth2ErrorCodeMapperBuilderCustomizer;

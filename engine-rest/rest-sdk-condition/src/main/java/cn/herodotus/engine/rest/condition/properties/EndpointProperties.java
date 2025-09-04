@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.rest.condition.properties;
 
-import cn.herodotus.engine.assistant.core.utils.WellFormedUtils;
+import cn.herodotus.engine.core.definition.utils.WellFormedUtils;
 import cn.herodotus.engine.core.definition.constant.SystemConstants;
 import cn.herodotus.engine.rest.condition.constants.RestConstants;
 import com.google.common.base.MoreObjects;

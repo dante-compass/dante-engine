@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.oauth2.authorization.configuration;
 
-import cn.herodotus.engine.assistant.core.support.BearerTokenResolver;
+import cn.herodotus.engine.core.identity.oauth2.BearerTokenResolver;
 import cn.herodotus.engine.oauth2.authorization.auditing.SecurityAuditorAware;
 import cn.herodotus.engine.oauth2.authorization.customizer.OAuth2AuthorizeHttpRequestsConfigurerCustomer;
 import cn.herodotus.engine.oauth2.authorization.customizer.OAuth2ResourceServerConfigurerCustomer;

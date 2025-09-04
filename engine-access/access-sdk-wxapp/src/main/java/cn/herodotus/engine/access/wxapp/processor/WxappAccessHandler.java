@@ -34,7 +34,7 @@ import cn.herodotus.engine.access.core.exception.AccessIdentityVerificationFaile
 import cn.herodotus.engine.access.core.exception.AccessPreProcessFailedException;
 import cn.herodotus.engine.assistant.core.enums.AccountType;
 import cn.herodotus.engine.core.definition.constant.SymbolConstants;
-import cn.herodotus.engine.assistant.definition.domain.oauth2.AccessPrincipal;
+import cn.herodotus.engine.core.identity.domain.AccessPrincipal;
 import org.apache.commons.lang3.ObjectUtils;
 
 /**

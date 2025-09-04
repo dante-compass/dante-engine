@@ -44,6 +44,11 @@
     <dependencies>
         <dependency>
             <groupId>cn.herodotus.engine</groupId>
+            <artifactId>core-identity</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.herodotus.engine</groupId>
             <artifactId>rest-core</artifactId>
         </dependency>
 

@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.rest.core.definition.crypto;
 
-import cn.herodotus.engine.assistant.definition.domain.oauth2.SecretKey;
+import cn.herodotus.engine.core.definition.domain.SecretKey;
 
 /**
  * <p>Description: 非对称加密 </p>

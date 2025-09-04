@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.oauth2.core.exception;
 
-import cn.herodotus.engine.assistant.core.exception.GlobalExceptionHandler;
+import cn.herodotus.engine.core.definition.exception.GlobalExceptionHandler;
 import cn.herodotus.engine.core.definition.constant.ErrorCodes;
 import cn.herodotus.engine.core.definition.domain.Feedback;
 import cn.herodotus.engine.core.definition.domain.Result;

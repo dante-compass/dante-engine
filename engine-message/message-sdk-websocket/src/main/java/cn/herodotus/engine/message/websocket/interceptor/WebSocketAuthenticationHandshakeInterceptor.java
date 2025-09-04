@@ -25,10 +25,10 @@
 
 package cn.herodotus.engine.message.websocket.interceptor;
 
-import cn.herodotus.engine.assistant.core.support.BearerTokenResolver;
-import cn.herodotus.engine.assistant.definition.constants.BaseConstants;
+import cn.herodotus.engine.core.identity.oauth2.BearerTokenResolver;
+import cn.herodotus.engine.core.definition.constant.BaseConstants;
 import cn.herodotus.engine.core.definition.constant.SymbolConstants;
-import cn.herodotus.engine.assistant.definition.domain.oauth2.PrincipalDetails;
+import cn.herodotus.engine.core.identity.domain.PrincipalDetails;
 import cn.herodotus.engine.message.websocket.utils.WebSocketUtils;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

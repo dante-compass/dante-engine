@@ -26,7 +26,7 @@
 package cn.herodotus.engine.assistant.core.conditon;
 
 import cn.herodotus.engine.assistant.core.context.PropertyResolver;
-import cn.herodotus.engine.assistant.definition.constants.BaseConstants;
+import cn.herodotus.engine.core.definition.constant.BaseConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Condition;

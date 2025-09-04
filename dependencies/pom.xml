@@ -261,6 +261,11 @@
             </dependency>
             <dependency>
                 <groupId>cn.herodotus.engine</groupId>
+                <artifactId>core-identity</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.herodotus.engine</groupId>
                 <artifactId>reactive-container-spring-boot-starter</artifactId>
                 <version>${project.version}</version>
             </dependency>
@@ -300,11 +305,6 @@
             <dependency>
                 <groupId>cn.herodotus.engine</groupId>
                 <artifactId>access-sdk-all</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.herodotus.engine</groupId>
-                <artifactId>assistant-definition</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

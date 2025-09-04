@@ -42,7 +42,6 @@
     <modules>
         <module>assistant-core</module>
         <module>assistant-spring-boot-starter</module>
-        <module>assistant-definition</module>
     </modules>
 
 </project>

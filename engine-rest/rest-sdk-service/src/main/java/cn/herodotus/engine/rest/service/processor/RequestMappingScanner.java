@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.rest.service.processor;
 
-import cn.herodotus.engine.assistant.core.utils.WellFormedUtils;
+import cn.herodotus.engine.core.definition.utils.WellFormedUtils;
 import cn.herodotus.engine.core.definition.constant.SymbolConstants;
 import cn.herodotus.engine.message.core.logic.domain.RequestMapping;
 import cn.herodotus.engine.message.core.logic.strategy.RequestMappingScanEventManager;

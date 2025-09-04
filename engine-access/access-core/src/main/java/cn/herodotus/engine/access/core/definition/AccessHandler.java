@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.access.core.definition;
 
-import cn.herodotus.engine.assistant.definition.domain.oauth2.AccessPrincipal;
+import cn.herodotus.engine.core.identity.domain.AccessPrincipal;
 
 /**
  * <p>Description: 外部应用接入处理器 </p>

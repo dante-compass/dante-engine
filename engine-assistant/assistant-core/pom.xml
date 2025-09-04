@@ -43,11 +43,7 @@
     <dependencies>
         <dependency>
             <groupId>cn.herodotus.engine</groupId>
-            <artifactId>core-definition</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>cn.herodotus.engine</groupId>
-            <artifactId>assistant-definition</artifactId>
+            <artifactId>core-foundation</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
