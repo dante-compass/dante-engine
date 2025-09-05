@@ -25,8 +25,8 @@
 
 package cn.herodotus.engine.data.core.entity;
 
-import cn.herodotus.engine.assistant.definition.constants.DefaultConstants;
-import cn.herodotus.engine.assistant.definition.domain.base.AbstractEntity;
+import cn.herodotus.engine.core.definition.constant.SystemConstants;
+import cn.herodotus.engine.core.definition.domain.AbstractEntity;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Column;
@@ -45,12 +45,12 @@ public abstract class BaseMongoEntity extends AbstractEntity {
     @Schema(name = "数据创建时间")
     @Column(name = "create_time", updatable = false)
     @CreatedDate
-    @JsonFormat(pattern = DefaultConstants.DATE_TIME_FORMAT)
+    @JsonFormat(pattern = SystemConstants.DATE_TIME_FORMAT)
     private Date createTime = new Date();
     @Schema(name = "数据更新时间")
     @Column(name = "update_time")
     @LastModifiedDate
-    @JsonFormat(pattern = DefaultConstants.DATE_TIME_FORMAT)
+    @JsonFormat(pattern = SystemConstants.DATE_TIME_FORMAT)
     private Date updateTime = new Date();
 
     public abstract String getId();

@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.rest.protect.secure.interceptor;
 
-import cn.herodotus.engine.rest.core.annotation.Idempotent;
+import cn.herodotus.engine.web.core.annotation.Idempotent;
 import cn.herodotus.engine.rest.core.definition.AbstractBaseHandlerInterceptor;
 import cn.herodotus.engine.rest.core.exception.RepeatSubmissionException;
 import cn.herodotus.engine.rest.protect.secure.stamp.IdempotentStampManager;

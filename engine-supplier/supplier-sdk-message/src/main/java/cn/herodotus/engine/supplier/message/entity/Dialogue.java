@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.supplier.message.entity;
 
-import cn.herodotus.engine.data.core.entity.BaseEntity;
+import cn.herodotus.engine.data.core.entity.AbstractAuditEntity;
 import cn.herodotus.engine.message.core.constants.MessageConstants;
 import com.google.common.base.MoreObjects;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -46,7 +46,7 @@ import org.hibernate.annotations.UuidGenerator;
 @Table(name = "msg_dialogue", indexes = {@Index(name = "msg_dialogue_id_idx", columnList = "dialogue_id")})
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = MessageConstants.REGION_MESSAGE_DIALOGUE)
-public class Dialogue extends BaseEntity {
+public class Dialogue extends AbstractAuditEntity {
 
     @Schema(name = "对话ID")
     @Id

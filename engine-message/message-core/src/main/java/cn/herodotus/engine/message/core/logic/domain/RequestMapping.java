@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.message.core.logic.domain;
 
-import cn.herodotus.engine.assistant.definition.domain.base.AbstractEntity;
+import cn.herodotus.engine.core.definition.domain.AbstractEntity;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 

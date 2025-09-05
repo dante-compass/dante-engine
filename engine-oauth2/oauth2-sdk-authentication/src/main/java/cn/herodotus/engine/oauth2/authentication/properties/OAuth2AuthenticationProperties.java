@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.oauth2.authentication.properties;
 
-import cn.herodotus.engine.assistant.definition.constants.SymbolConstants;
+import cn.herodotus.engine.core.definition.constant.SymbolConstants;
 import cn.herodotus.engine.oauth2.core.constants.OAuth2Constants;
 import com.google.common.base.MoreObjects;
 import org.apache.commons.lang3.StringUtils;

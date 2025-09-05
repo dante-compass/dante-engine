@@ -25,9 +25,9 @@
 
 package cn.herodotus.engine.rest.protect.tenant;
 
-import cn.herodotus.engine.assistant.core.context.TenantContextHolder;
-import cn.herodotus.engine.assistant.core.utils.http.HeaderUtils;
-import cn.herodotus.engine.assistant.definition.constants.DefaultConstants;
+import cn.herodotus.engine.core.foundation.context.TenantContextHolder;
+import cn.herodotus.engine.web.core.utils.HeaderUtils;
+import cn.herodotus.engine.core.definition.constant.SystemConstants;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.ServletRequest;
@@ -51,7 +51,7 @@ public class MultiTenantFilter extends GenericFilterBean {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
 
         String tenantId = HeaderUtils.getHerodotusTenantId(request);
-        TenantContextHolder.setTenantId(StringUtils.isBlank(tenantId) ? DefaultConstants.TENANT_ID : tenantId);
+        TenantContextHolder.setTenantId(StringUtils.isBlank(tenantId) ? SystemConstants.TENANT_ID : tenantId);
 
         filterChain.doFilter(servletRequest, servletResponse);
         TenantContextHolder.clear();

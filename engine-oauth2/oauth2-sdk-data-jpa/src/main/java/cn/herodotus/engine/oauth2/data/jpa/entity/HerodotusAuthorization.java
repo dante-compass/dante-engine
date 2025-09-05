@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.oauth2.data.jpa.entity;
 
-import cn.herodotus.engine.assistant.definition.domain.base.AbstractEntity;
+import cn.herodotus.engine.core.definition.domain.AbstractEntity;
 import cn.herodotus.engine.oauth2.core.constants.OAuth2Constants;
 import cn.herodotus.engine.oauth2.data.jpa.generator.HerodotusAuthorizationIdGenerator;
 import com.google.common.base.MoreObjects;

@@ -25,9 +25,9 @@
 
 package cn.herodotus.engine.supplier.upms.rest.controller.security;
 
-import cn.herodotus.engine.assistant.definition.domain.Result;
+import cn.herodotus.engine.core.definition.domain.Result;
 import cn.herodotus.engine.data.core.service.WriteableService;
-import cn.herodotus.engine.rest.core.annotation.Crypto;
+import cn.herodotus.engine.web.core.annotation.Crypto;
 import cn.herodotus.engine.rest.core.controller.BaseWriteableRestController;
 import cn.herodotus.engine.supplier.upms.logic.entity.security.SysUser;
 import cn.herodotus.engine.supplier.upms.logic.service.security.SysUserService;

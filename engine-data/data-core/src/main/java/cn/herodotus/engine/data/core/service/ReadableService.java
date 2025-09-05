@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.data.core.service;
 
-import cn.herodotus.engine.assistant.definition.domain.base.Entity;
+import cn.herodotus.engine.core.definition.domain.BaseEntity;
 import cn.herodotus.engine.data.core.repository.BaseRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -42,7 +42,7 @@ import java.util.List;
  * @author : gengwei.zheng
  * @date : 2020/2/15 11:56
  */
-public interface ReadableService<E extends Entity, ID extends Serializable> {
+public interface ReadableService<E extends BaseEntity, ID extends Serializable> {
 
     /**
      * 获取Repository

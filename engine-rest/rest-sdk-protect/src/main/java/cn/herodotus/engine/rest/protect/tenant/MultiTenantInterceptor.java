@@ -25,10 +25,10 @@
 
 package cn.herodotus.engine.rest.protect.tenant;
 
-import cn.herodotus.engine.assistant.core.context.TenantContextHolder;
-import cn.herodotus.engine.assistant.core.utils.http.HeaderUtils;
-import cn.herodotus.engine.assistant.core.utils.http.SessionUtils;
-import cn.herodotus.engine.assistant.definition.constants.DefaultConstants;
+import cn.herodotus.engine.core.foundation.context.TenantContextHolder;
+import cn.herodotus.engine.web.core.utils.HeaderUtils;
+import cn.herodotus.engine.web.core.utils.SessionUtils;
+import cn.herodotus.engine.core.definition.constant.SystemConstants;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.apache.commons.lang3.StringUtils;
@@ -51,7 +51,7 @@ public class MultiTenantInterceptor implements HandlerInterceptor {
 
         String tenantId = HeaderUtils.getHerodotusTenantId(request);
         if (StringUtils.isBlank(tenantId)) {
-            tenantId = DefaultConstants.TENANT_ID;
+            tenantId = SystemConstants.TENANT_ID;
         }
         TenantContextHolder.setTenantId(tenantId);
         log.debug("[Herodotus] |- TENANT ID is : [{}].", tenantId);

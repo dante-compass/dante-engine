@@ -25,8 +25,8 @@
 
 package cn.herodotus.engine.oauth2.authorization.customizer;
 
-import cn.herodotus.engine.assistant.core.enums.Target;
-import cn.herodotus.engine.assistant.core.support.BearerTokenResolver;
+import cn.herodotus.engine.core.foundation.enums.DataAccessStrategy;
+import cn.herodotus.engine.core.identity.oauth2.BearerTokenResolver;
 import cn.herodotus.engine.oauth2.authorization.converter.HerodotusJwtAuthenticationConverter;
 import cn.herodotus.engine.oauth2.authorization.introspector.HerodotusOpaqueTokenIntrospector;
 import cn.herodotus.engine.oauth2.authorization.properties.OAuth2AuthorizationProperties;
@@ -60,7 +60,7 @@ public class OAuth2ResourceServerConfigurerCustomer implements Customizer<OAuth2
     }
 
     private boolean isRemoteValidate() {
-        return this.authorizationProperties.getValidate() == Target.REMOTE;
+        return this.authorizationProperties.getValidate() == DataAccessStrategy.REMOTE;
     }
 
     @Override

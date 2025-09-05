@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.captcha.behavior.renderer;
 
-import cn.herodotus.engine.assistant.definition.constants.SymbolConstants;
+import cn.herodotus.engine.core.definition.constant.SymbolConstants;
 import cn.herodotus.engine.captcha.core.definition.domain.Coordinate;
 import org.apache.commons.lang3.StringUtils;
 import cn.hutool.v7.core.util.RandomUtil;

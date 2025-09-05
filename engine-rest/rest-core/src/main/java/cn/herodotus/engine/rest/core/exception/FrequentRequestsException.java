@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.rest.core.exception;
 
-import cn.herodotus.engine.assistant.definition.domain.Feedback;
+import cn.herodotus.engine.core.definition.domain.Feedback;
 import cn.herodotus.engine.rest.core.constants.RestErrorCodes;
 
 /**

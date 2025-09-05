@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.rest.core.constants;
 
-import cn.herodotus.engine.assistant.definition.feedback.NotAcceptableFeedback;
+import cn.herodotus.engine.core.definition.feedback.NotAcceptableFeedback;
 
 /**
  * <p>Description: Cache 相关错误代码 </p>

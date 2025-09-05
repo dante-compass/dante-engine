@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.oauth2.management.entity;
 
-import cn.herodotus.engine.data.core.entity.BaseEntity;
+import cn.herodotus.engine.data.core.entity.AbstractAuditEntity;
 import cn.herodotus.engine.oauth2.core.constants.OAuth2Constants;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
@@ -44,7 +44,7 @@ import org.hibernate.annotations.UuidGenerator;
         @Index(name = "oauth2_compliance_id_idx", columnList = "compliance_id")})
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = OAuth2Constants.REGION_OAUTH2_COMPLIANCE)
-public class OAuth2Compliance extends BaseEntity {
+public class OAuth2Compliance extends AbstractAuditEntity {
 
     @Id
     @UuidGenerator

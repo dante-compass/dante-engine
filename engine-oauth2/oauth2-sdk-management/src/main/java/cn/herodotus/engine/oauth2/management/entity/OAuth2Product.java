@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.oauth2.management.entity;
 
-import cn.herodotus.engine.data.core.entity.BaseEntity;
+import cn.herodotus.engine.data.core.entity.AbstractAuditEntity;
 import cn.herodotus.engine.oauth2.core.constants.OAuth2Constants;
 import com.google.common.base.MoreObjects;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -45,7 +45,7 @@ import org.hibernate.annotations.UuidGenerator;
         indexes = {@Index(name = "oauth2_product_pid_idx", columnList = "product_id"), @Index(name = "oauth2_product_ipk_idx", columnList = "product_key")})
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = OAuth2Constants.REGION_OAUTH2_PRODUCT)
-public class OAuth2Product extends BaseEntity {
+public class OAuth2Product extends AbstractAuditEntity {
 
     @Id
     @UuidGenerator

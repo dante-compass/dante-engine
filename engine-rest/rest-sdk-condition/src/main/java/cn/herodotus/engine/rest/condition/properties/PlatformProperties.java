@@ -25,10 +25,10 @@
 
 package cn.herodotus.engine.rest.condition.properties;
 
-import cn.herodotus.engine.assistant.core.enums.Architecture;
-import cn.herodotus.engine.assistant.core.enums.Protocol;
-import cn.herodotus.engine.assistant.core.enums.Target;
-import cn.herodotus.engine.rest.condition.constants.RestConstants;
+import cn.herodotus.engine.core.foundation.enums.Architecture;
+import cn.herodotus.engine.core.definition.enums.Protocol;
+import cn.herodotus.engine.core.foundation.enums.DataAccessStrategy;
+import cn.herodotus.engine.web.core.constant.WebConstants;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
@@ -37,7 +37,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * @author : gengwei.zheng
  * @date : 2019/11/17 15:22
  */
-@ConfigurationProperties(prefix = RestConstants.PROPERTY_PREFIX_PLATFORM)
+@ConfigurationProperties(prefix = WebConstants.PROPERTY_PREFIX_PLATFORM)
 public class PlatformProperties {
 
     /**
@@ -47,7 +47,7 @@ public class PlatformProperties {
     /**
      * 数据访问策略，默认：远程
      */
-    private Target dataAccessStrategy = Target.REMOTE;
+    private DataAccessStrategy dataAccessStrategy = DataAccessStrategy.REMOTE;
 
     /**
      * 接口地址默认采用的Http协议类型
@@ -62,11 +62,11 @@ public class PlatformProperties {
         this.architecture = architecture;
     }
 
-    public Target getDataAccessStrategy() {
+    public DataAccessStrategy getDataAccessStrategy() {
         return dataAccessStrategy;
     }
 
-    public void setDataAccessStrategy(Target dataAccessStrategy) {
+    public void setDataAccessStrategy(DataAccessStrategy dataAccessStrategy) {
         this.dataAccessStrategy = dataAccessStrategy;
     }
 

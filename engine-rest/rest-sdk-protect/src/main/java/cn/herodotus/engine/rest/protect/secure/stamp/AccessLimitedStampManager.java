@@ -26,7 +26,7 @@
 package cn.herodotus.engine.rest.protect.secure.stamp;
 
 import cn.herodotus.engine.cache.jetcache.stamp.AbstractStampManager;
-import cn.herodotus.engine.rest.condition.constants.RestConstants;
+import cn.herodotus.engine.web.core.constant.WebConstants;
 import cn.herodotus.engine.rest.condition.properties.SecureProperties;
 
 /**
@@ -42,7 +42,7 @@ public class AccessLimitedStampManager extends AbstractStampManager<String, Long
     private final SecureProperties secureProperties;
 
     public AccessLimitedStampManager(SecureProperties secureProperties) {
-        super(RestConstants.CACHE_NAME_TOKEN_ACCESS_LIMITED);
+        super(WebConstants.CACHE_NAME_TOKEN_ACCESS_LIMITED);
         this.secureProperties = secureProperties;
     }
 

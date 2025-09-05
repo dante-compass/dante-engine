@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.supplier.upms.logic.repository.security;
 
-import cn.herodotus.engine.assistant.core.enums.AccountType;
+import cn.herodotus.engine.core.identity.enums.AccountCategory;
 import cn.herodotus.engine.data.core.repository.BaseRepository;
 import cn.herodotus.engine.supplier.upms.logic.entity.security.SysDefaultRole;
 import jakarta.persistence.QueryHint;
@@ -43,11 +43,11 @@ public interface SysDefaultRoleRepository extends BaseRepository<SysDefaultRole,
     /**
      * 根据场景查询当前场景对应的默认角色
      *
-     * @param scene 场景 {@link AccountType}
+     * @param scene 场景 {@link AccountCategory}
      * @return {@link SysDefaultRole}
      */
     @QueryHints(@QueryHint(name = AvailableHints.HINT_CACHEABLE, value = "true"))
-    SysDefaultRole findByScene(AccountType scene);
+    SysDefaultRole findByScene(AccountCategory scene);
 
     /**
      * 根据默认角色ID查询默认角色

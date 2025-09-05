@@ -26,7 +26,7 @@
 package cn.herodotus.engine.rest.protect.secure.stamp;
 
 import cn.herodotus.engine.cache.jetcache.stamp.AbstractStampManager;
-import cn.herodotus.engine.rest.condition.constants.RestConstants;
+import cn.herodotus.engine.web.core.constant.WebConstants;
 import cn.herodotus.engine.rest.condition.properties.SecureProperties;
 import cn.hutool.v7.core.data.id.IdUtil;
 
@@ -41,7 +41,7 @@ public class IdempotentStampManager extends AbstractStampManager<String, String>
     private final SecureProperties secureProperties;
 
     public IdempotentStampManager(SecureProperties secureProperties) {
-        super(RestConstants.CACHE_NAME_TOKEN_IDEMPOTENT);
+        super(WebConstants.CACHE_NAME_TOKEN_IDEMPOTENT);
         this.secureProperties = secureProperties;
     }
 

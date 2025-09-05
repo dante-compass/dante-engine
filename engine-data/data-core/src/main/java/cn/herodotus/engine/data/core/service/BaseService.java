@@ -25,8 +25,8 @@
 
 package cn.herodotus.engine.data.core.service;
 
-import cn.herodotus.engine.assistant.definition.constants.SymbolConstants;
-import cn.herodotus.engine.assistant.definition.domain.base.Entity;
+import cn.herodotus.engine.core.definition.constant.SymbolConstants;
+import cn.herodotus.engine.core.definition.domain.BaseEntity;
 
 import java.io.Serializable;
 
@@ -36,7 +36,7 @@ import java.io.Serializable;
  * @author : gengwei.zheng
  * @date : 2021/7/14 14:32
  */
-public abstract class BaseService<E extends Entity, ID extends Serializable> implements WriteableService<E, ID> {
+public abstract class BaseService<E extends BaseEntity, ID extends Serializable> implements WriteableService<E, ID> {
 
     protected String like(String property) {
         return SymbolConstants.PERCENT + property + SymbolConstants.PERCENT;

@@ -25,8 +25,8 @@
 
 package cn.herodotus.engine.data.core.entity;
 
-import cn.herodotus.engine.assistant.definition.constants.DefaultConstants;
-import cn.herodotus.engine.assistant.definition.domain.base.AbstractEntity;
+import cn.herodotus.engine.core.definition.constant.SystemConstants;
+import cn.herodotus.engine.core.definition.domain.AbstractEntity;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Column;
 import jakarta.persistence.MappedSuperclass;
@@ -46,5 +46,5 @@ public abstract class BaseTenantEntity extends AbstractEntity {
 
     @Schema(name = "租户ID", description = "Partitioned 类型租户ID")
     @Column(name = "tenant_id", length = 20)
-    private String tenantId = DefaultConstants.TENANT_ID;
+    private String tenantId = SystemConstants.TENANT_ID;
 }

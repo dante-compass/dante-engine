@@ -37,7 +37,7 @@ import cn.herodotus.engine.access.sms.configuration.AccessSmsConfiguration;
 import cn.herodotus.engine.access.wxapp.annotation.ConditionalOnWxappEnabled;
 import cn.herodotus.engine.access.wxapp.configuration.AccessWxappConfiguration;
 import cn.herodotus.engine.access.wxmpp.configuration.AccessWxmppConfiguration;
-import cn.herodotus.engine.assistant.definition.function.ErrorCodeMapperBuilderCustomizer;
+import cn.herodotus.engine.core.definition.function.ErrorCodeMapperBuilderCustomizer;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

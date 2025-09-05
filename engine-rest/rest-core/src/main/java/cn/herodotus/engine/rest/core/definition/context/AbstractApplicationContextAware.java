@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.rest.core.definition.context;
 
-import cn.herodotus.engine.assistant.core.context.ServiceContextHolder;
+import cn.herodotus.engine.core.foundation.context.ServiceContextHolder;
 import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;

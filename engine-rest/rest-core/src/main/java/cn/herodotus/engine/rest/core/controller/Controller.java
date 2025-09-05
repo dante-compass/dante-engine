@@ -25,9 +25,9 @@
 
 package cn.herodotus.engine.rest.core.controller;
 
-import cn.herodotus.engine.assistant.definition.constants.DefaultConstants;
-import cn.herodotus.engine.assistant.definition.domain.Result;
-import cn.herodotus.engine.assistant.definition.domain.base.Entity;
+import cn.herodotus.engine.core.definition.constant.SystemConstants;
+import cn.herodotus.engine.core.definition.domain.Result;
+import cn.herodotus.engine.core.definition.domain.BaseEntity;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.ArrayUtils;
@@ -57,10 +57,10 @@ public interface Controller {
      * 数据实体转换为统一响应实体
      *
      * @param domain 数据实体
-     * @param <E>    {@link Entity} 子类型
+     * @param <E>    {@link BaseEntity} 子类型
      * @return {@link Result} Entity
      */
-    default <E extends Entity> Result<E> result(E domain) {
+    default <E extends BaseEntity> Result<E> result(E domain) {
         if (ObjectUtils.isNotEmpty(domain)) {
             return Result.content(domain);
         } else {
@@ -72,10 +72,10 @@ public interface Controller {
      * 数据列表转换为统一响应实体
      *
      * @param domains 数据实体 List
-     * @param <E>     {@link Entity} 子类型
+     * @param <E>     {@link BaseEntity} 子类型
      * @return {@link Result} List
      */
-    default <E extends Entity> Result<List<E>> result(List<E> domains) {
+    default <E extends BaseEntity> Result<List<E>> result(List<E> domains) {
 
         if (null == domains) {
             return Result.failure("查询数据失败！");
@@ -107,10 +107,10 @@ public interface Controller {
      * 数据分页对象转换为统一响应实体
      *
      * @param pages 分页查询结果 {@link Page}
-     * @param <E>   {@link Entity} 子类型
+     * @param <E>   {@link BaseEntity} 子类型
      * @return {@link Result} Map
      */
-    default <E extends Entity> Result<Map<String, Object>> result(Page<E> pages) {
+    default <E extends BaseEntity> Result<Map<String, Object>> result(Page<E> pages) {
         if (null == pages) {
             return Result.failure("查询数据失败！");
         }
@@ -169,10 +169,10 @@ public interface Controller {
         }
     }
 
-    default <E extends Entity> Result<List<MapTree<String>>> result(List<E> domains, Converter<E, TreeNode<String>> toTreeNode) {
+    default <E extends BaseEntity> Result<List<MapTree<String>>> result(List<E> domains, Converter<E, TreeNode<String>> toTreeNode) {
         if (ObjectUtils.isNotEmpty(domains)) {
             List<TreeNode<String>> treeNodes = domains.stream().map(toTreeNode::convert).collect(Collectors.toList());
-            return Result.success("查询数据成功", TreeUtil.build(treeNodes, DefaultConstants.TREE_ROOT_ID));
+            return Result.success("查询数据成功", TreeUtil.build(treeNodes, SystemConstants.TREE_ROOT_ID));
         } else {
             return Result.empty("未查询到数据！");
         }
@@ -182,10 +182,10 @@ public interface Controller {
      * Page 对象转换为 Map
      *
      * @param pages 分页查询结果 {@link Page}
-     * @param <E>   {@link Entity} 子类型
+     * @param <E>   {@link BaseEntity} 子类型
      * @return Map
      */
-    default <E extends Entity> Map<String, Object> getPageInfoMap(Page<E> pages) {
+    default <E extends BaseEntity> Map<String, Object> getPageInfoMap(Page<E> pages) {
         return getPageInfoMap(pages.getContent(), pages.getTotalPages(), pages.getTotalElements());
     }
 
@@ -195,10 +195,10 @@ public interface Controller {
      * @param content       数据实体 List
      * @param totalPages    分页总页数
      * @param totalElements 总的数据条目
-     * @param <E>           {@link Entity} 子类型
+     * @param <E>           {@link BaseEntity} 子类型
      * @return Map
      */
-    default <E extends Entity> Map<String, Object> getPageInfoMap(List<E> content, int totalPages, long totalElements) {
+    default <E extends BaseEntity> Map<String, Object> getPageInfoMap(List<E> content, int totalPages, long totalElements) {
         Map<String, Object> result = new HashMap<>(8);
         result.put("content", content);
         result.put("totalPages", totalPages);

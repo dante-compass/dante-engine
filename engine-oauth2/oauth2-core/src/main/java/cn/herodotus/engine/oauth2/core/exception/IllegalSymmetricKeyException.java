@@ -26,8 +26,8 @@
 package cn.herodotus.engine.oauth2.core.exception;
 
 
-import cn.herodotus.engine.assistant.definition.constants.ErrorCodes;
-import cn.herodotus.engine.assistant.definition.domain.Feedback;
+import cn.herodotus.engine.core.definition.constant.ErrorCodes;
+import cn.herodotus.engine.core.definition.domain.Feedback;
 
 /**
  * <p> Description : 非法加密Key HerodotusException </p>

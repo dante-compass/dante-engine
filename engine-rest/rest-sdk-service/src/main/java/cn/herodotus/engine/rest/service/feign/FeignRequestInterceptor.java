@@ -25,9 +25,9 @@
 
 package cn.herodotus.engine.rest.service.feign;
 
-import cn.herodotus.engine.assistant.core.context.TenantContextHolder;
-import cn.herodotus.engine.assistant.core.utils.http.HeaderUtils;
-import cn.herodotus.engine.assistant.definition.constants.SymbolConstants;
+import cn.herodotus.engine.core.foundation.context.TenantContextHolder;
+import cn.herodotus.engine.web.core.utils.HeaderUtils;
+import cn.herodotus.engine.core.definition.constant.SymbolConstants;
 import cn.hutool.v7.http.server.servlet.ServletUtil;
 import com.google.common.net.HttpHeaders;
 import feign.RequestInterceptor;

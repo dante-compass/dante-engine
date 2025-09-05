@@ -25,9 +25,9 @@
 
 package cn.herodotus.engine.rest.protect.crypto.enhance;
 
-import cn.herodotus.engine.assistant.core.utils.http.SessionUtils;
-import cn.herodotus.engine.assistant.definition.constants.DefaultConstants;
-import cn.herodotus.engine.rest.core.annotation.Crypto;
+import cn.herodotus.engine.web.core.utils.SessionUtils;
+import cn.herodotus.engine.core.definition.constant.SystemConstants;
+import cn.herodotus.engine.web.core.annotation.Crypto;
 import cn.herodotus.engine.rest.protect.crypto.processor.HttpCryptoProcessor;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.Part;
@@ -104,7 +104,7 @@ public class DecryptRequestParamMapResolver implements HandlerMethodArgumentReso
      * @return 是否 Post /oauth/token 请求
      */
     private boolean isOauthTokenRequest(String uri, String method) {
-        return Strings.CS.equals(uri, DefaultConstants.TOKEN_ENDPOINT) && Strings.CI.equals(method, HttpMethod.POST.name());
+        return Strings.CS.equals(uri, SystemConstants.TOKEN_ENDPOINT) && Strings.CI.equals(method, HttpMethod.POST.name());
     }
 
     /**

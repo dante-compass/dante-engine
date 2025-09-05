@@ -25,8 +25,8 @@
 
 package cn.herodotus.engine.rest.core.definition;
 
-import cn.herodotus.engine.assistant.core.utils.http.SessionUtils;
-import cn.herodotus.engine.assistant.definition.constants.SymbolConstants;
+import cn.herodotus.engine.web.core.utils.SessionUtils;
+import cn.herodotus.engine.core.definition.constant.SymbolConstants;
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.commons.lang3.StringUtils;
 import cn.hutool.v7.crypto.SecureUtil;

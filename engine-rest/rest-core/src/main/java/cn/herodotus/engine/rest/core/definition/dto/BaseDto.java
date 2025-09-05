@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.rest.core.definition.dto;
 
-import cn.herodotus.engine.assistant.definition.domain.base.AbstractDto;
+import cn.herodotus.engine.core.definition.domain.AbstractDto;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 /**

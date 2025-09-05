@@ -27,7 +27,7 @@ package cn.herodotus.engine.access.all.controller;
 
 import cn.herodotus.engine.access.all.event.AutomaticSignInEvent;
 import cn.herodotus.engine.access.justauth.processor.JustAuthProcessor;
-import cn.herodotus.engine.assistant.definition.domain.Result;
+import cn.herodotus.engine.core.definition.domain.Result;
 import com.google.common.collect.ImmutableMap;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;

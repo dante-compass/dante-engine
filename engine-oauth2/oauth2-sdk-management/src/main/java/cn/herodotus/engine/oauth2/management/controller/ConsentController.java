@@ -25,10 +25,10 @@
 
 package cn.herodotus.engine.oauth2.management.controller;
 
-import cn.herodotus.engine.assistant.core.context.ServiceContextHolder;
-import cn.herodotus.engine.assistant.definition.constants.DefaultConstants;
-import cn.herodotus.engine.assistant.definition.constants.SymbolConstants;
-import cn.herodotus.engine.assistant.definition.domain.view.vue.Option;
+import cn.herodotus.engine.core.foundation.context.ServiceContextHolder;
+import cn.herodotus.engine.core.definition.constant.SystemConstants;
+import cn.herodotus.engine.core.definition.constant.SymbolConstants;
+import cn.herodotus.engine.core.definition.domain.view.vue.Option;
 import cn.herodotus.engine.oauth2.management.entity.OAuth2Application;
 import cn.herodotus.engine.oauth2.management.entity.OAuth2Scope;
 import cn.herodotus.engine.oauth2.management.service.OAuth2ApplicationService;
@@ -82,7 +82,7 @@ public class ConsentController {
      * @param state     state参数
      * @return Consent页面
      */
-    @GetMapping(DefaultConstants.AUTHORIZATION_CONSENT_URI)
+    @GetMapping(SystemConstants.AUTHORIZATION_CONSENT_URI)
     public String consent(Principal principal, Model model,
                           @RequestParam(OAuth2ParameterNames.CLIENT_ID) String clientId,
                           @RequestParam(OAuth2ParameterNames.SCOPE) String scope,

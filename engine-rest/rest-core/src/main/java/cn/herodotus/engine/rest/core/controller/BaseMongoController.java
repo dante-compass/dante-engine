@@ -25,11 +25,11 @@
 
 package cn.herodotus.engine.rest.core.controller;
 
-import cn.herodotus.engine.assistant.definition.constants.BaseConstants;
-import cn.herodotus.engine.assistant.definition.domain.Result;
+import cn.herodotus.engine.core.definition.constant.BaseConstants;
+import cn.herodotus.engine.core.definition.domain.Result;
 import cn.herodotus.engine.data.core.entity.BaseMongoEntity;
-import cn.herodotus.engine.rest.core.annotation.AccessLimited;
-import cn.herodotus.engine.rest.core.annotation.Idempotent;
+import cn.herodotus.engine.web.core.annotation.AccessLimited;
+import cn.herodotus.engine.web.core.annotation.Idempotent;
 import cn.herodotus.engine.rest.core.definition.dto.Pager;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;

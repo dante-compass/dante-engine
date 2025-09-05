@@ -29,7 +29,7 @@ import cn.herodotus.engine.access.wxapp.annotation.ConditionalOnWxappEnabled;
 import cn.herodotus.engine.access.wxapp.processor.WxappAccessHandler;
 import cn.herodotus.engine.access.wxapp.processor.WxappProcessor;
 import cn.herodotus.engine.access.wxapp.properties.WxappProperties;
-import cn.herodotus.engine.assistant.core.enums.AccountType;
+import cn.herodotus.engine.core.identity.enums.AccountCategory;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -65,7 +65,7 @@ public class AccessWxappConfiguration {
         return wxappProcessor;
     }
 
-    @Bean(AccountType.WECHAT_MINI_APP_HANDLER)
+    @Bean(AccountCategory.WECHAT_MINI_APP_HANDLER)
     @ConditionalOnBean(WxappProcessor.class)
     @ConditionalOnMissingBean
     public WxappAccessHandler wxappAccessHandler(WxappProcessor wxappProcessor) {

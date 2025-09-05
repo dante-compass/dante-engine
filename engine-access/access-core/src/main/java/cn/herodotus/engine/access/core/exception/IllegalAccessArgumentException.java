@@ -26,8 +26,8 @@
 package cn.herodotus.engine.access.core.exception;
 
 import cn.herodotus.engine.access.core.constants.AccessErrorCodes;
-import cn.herodotus.engine.assistant.definition.domain.Feedback;
-import cn.herodotus.engine.assistant.definition.exception.PlatformRuntimeException;
+import cn.herodotus.engine.core.definition.domain.Feedback;
+import cn.herodotus.engine.core.definition.exception.PlatformRuntimeException;
 
 /**
  * <p>Description: 非法的访问参数错误 </p>

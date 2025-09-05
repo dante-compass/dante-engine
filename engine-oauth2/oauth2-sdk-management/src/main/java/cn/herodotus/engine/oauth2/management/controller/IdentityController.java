@@ -25,8 +25,8 @@
 
 package cn.herodotus.engine.oauth2.management.controller;
 
-import cn.herodotus.engine.assistant.definition.domain.Result;
-import cn.herodotus.engine.assistant.definition.domain.oauth2.SecretKey;
+import cn.herodotus.engine.core.definition.domain.Result;
+import cn.herodotus.engine.core.definition.domain.SecretKey;
 import cn.herodotus.engine.oauth2.authentication.dto.SignInErrorPrompt;
 import cn.herodotus.engine.oauth2.authentication.dto.SignInErrorStatus;
 import cn.herodotus.engine.oauth2.authentication.stamp.SignInFailureLimitedStampManager;
@@ -34,7 +34,7 @@ import cn.herodotus.engine.oauth2.management.dto.Session;
 import cn.herodotus.engine.oauth2.management.dto.SessionCreate;
 import cn.herodotus.engine.oauth2.management.dto.SessionExchange;
 import cn.herodotus.engine.oauth2.management.service.InterfaceSecurityService;
-import cn.herodotus.engine.rest.core.annotation.Crypto;
+import cn.herodotus.engine.web.core.annotation.Crypto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;

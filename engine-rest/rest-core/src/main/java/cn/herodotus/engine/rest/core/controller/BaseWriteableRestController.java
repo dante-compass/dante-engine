@@ -25,10 +25,10 @@
 
 package cn.herodotus.engine.rest.core.controller;
 
-import cn.herodotus.engine.assistant.definition.domain.Result;
-import cn.herodotus.engine.assistant.definition.domain.base.AbstractEntity;
+import cn.herodotus.engine.core.definition.domain.Result;
+import cn.herodotus.engine.core.definition.domain.AbstractEntity;
 import cn.herodotus.engine.data.core.service.ReadableService;
-import cn.herodotus.engine.rest.core.annotation.Idempotent;
+import cn.herodotus.engine.web.core.annotation.Idempotent;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;

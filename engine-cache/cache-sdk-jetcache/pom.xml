@@ -43,7 +43,7 @@
     <dependencies>
         <dependency>
             <groupId>cn.herodotus.engine</groupId>
-            <artifactId>assistant-spring-boot-starter</artifactId>
+            <artifactId>core-autoconfigure</artifactId>
         </dependency>
 
         <dependency>

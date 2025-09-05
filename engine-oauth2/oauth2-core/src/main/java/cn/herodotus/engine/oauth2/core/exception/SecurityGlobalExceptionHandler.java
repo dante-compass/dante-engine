@@ -25,12 +25,12 @@
 
 package cn.herodotus.engine.oauth2.core.exception;
 
-import cn.herodotus.engine.assistant.core.exception.GlobalExceptionHandler;
-import cn.herodotus.engine.assistant.definition.constants.ErrorCodes;
-import cn.herodotus.engine.assistant.definition.domain.Feedback;
-import cn.herodotus.engine.assistant.definition.domain.Result;
-import cn.herodotus.engine.assistant.definition.exception.PlatformException;
-import cn.herodotus.engine.assistant.definition.exception.PlatformRuntimeException;
+import cn.herodotus.engine.core.definition.exception.GlobalExceptionHandler;
+import cn.herodotus.engine.core.definition.constant.ErrorCodes;
+import cn.herodotus.engine.core.definition.domain.Feedback;
+import cn.herodotus.engine.core.definition.domain.Result;
+import cn.herodotus.engine.core.definition.exception.PlatformException;
+import cn.herodotus.engine.core.definition.exception.PlatformRuntimeException;
 import cn.herodotus.engine.oauth2.core.constants.OAuth2ErrorKeys;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.oauth2.authorization.autoconfigure.customizer;
 
-import cn.herodotus.engine.assistant.definition.constants.DefaultConstants;
+import cn.herodotus.engine.core.definition.constant.SystemConstants;
 import cn.herodotus.engine.oauth2.authentication.consumer.OAuth2TokenEndpointAuthenticationProviderConsumer;
 import cn.herodotus.engine.oauth2.authentication.oidc.HerodotusOidcUserInfoMapper;
 import cn.herodotus.engine.oauth2.authentication.provider.OAuth2ResourceOwnerPasswordAuthenticationConverter;
@@ -82,15 +82,15 @@ public class OAuth2AuthorizationServerConfigurerCustomizer implements Customizer
                 .clientAuthentication(endpoint -> endpoint.errorResponseHandler(oauth2AuthenticationFailureResponseHandler))
                 .authorizationEndpoint(endpoint -> {
                     endpoint.errorResponseHandler(oauth2AuthenticationFailureResponseHandler);
-                    endpoint.consentPage(DefaultConstants.AUTHORIZATION_CONSENT_URI);
+                    endpoint.consentPage(SystemConstants.AUTHORIZATION_CONSENT_URI);
                 })
                 .deviceAuthorizationEndpoint(endpoint -> {
                     endpoint.errorResponseHandler(oauth2AuthenticationFailureResponseHandler);
-                    endpoint.verificationUri(DefaultConstants.DEVICE_ACTIVATION_URI);
+                    endpoint.verificationUri(SystemConstants.DEVICE_ACTIVATION_URI);
                 })
                 .deviceVerificationEndpoint(endpoint -> {
                     endpoint.errorResponseHandler(oauth2AuthenticationFailureResponseHandler);
-                    endpoint.consentPage(DefaultConstants.AUTHORIZATION_CONSENT_URI);
+                    endpoint.consentPage(SystemConstants.AUTHORIZATION_CONSENT_URI);
                     endpoint.deviceVerificationResponseHandler(oauth2DeviceVerificationResponseHandler);
                 })
                 .tokenEndpoint(endpoint -> {

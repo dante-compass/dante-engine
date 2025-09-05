@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.message.core.logic.domain;
 
-import cn.herodotus.engine.data.core.entity.BaseEntity;
+import cn.herodotus.engine.data.core.entity.AbstractAuditEntity;
 import com.google.common.base.MoreObjects;
 import io.swagger.v3.oas.annotations.media.Schema;
 
@@ -35,7 +35,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
  * @author : gengwei.zheng
  * @date : 2023/3/11 18:38
  */
-public class DialogueMessage extends BaseEntity {
+public class DialogueMessage extends AbstractAuditEntity {
 
     @Schema(name = "对话详情ID")
     private String detailId;

@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.supplier.upms.logic.entity.security;
 
-import cn.herodotus.engine.assistant.core.enums.AccountType;
+import cn.herodotus.engine.core.identity.enums.AccountCategory;
 import cn.herodotus.engine.data.core.entity.BaseSysEntity;
 import cn.herodotus.engine.supplier.upms.logic.constants.UpmsConstants;
 import com.google.common.base.MoreObjects;
@@ -58,7 +58,7 @@ public class SysDefaultRole extends BaseSysEntity {
     @Schema(name = "场景")
     @Column(name = "scene", unique = true)
     @Enumerated(EnumType.STRING)
-    private AccountType scene = AccountType.INSTITUTION;
+    private AccountCategory scene = AccountCategory.INSTITUTION;
 
     @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = UpmsConstants.REGION_SYS_ROLE)
     @Schema(name = "角色ID")
@@ -74,11 +74,11 @@ public class SysDefaultRole extends BaseSysEntity {
         this.defaultId = defaultId;
     }
 
-    public AccountType getScene() {
+    public AccountCategory getScene() {
         return scene;
     }
 
-    public void setScene(AccountType scene) {
+    public void setScene(AccountCategory scene) {
         this.scene = scene;
     }
 

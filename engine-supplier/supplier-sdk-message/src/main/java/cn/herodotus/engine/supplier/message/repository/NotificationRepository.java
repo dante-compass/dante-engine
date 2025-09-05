@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.supplier.message.repository;
 
-import cn.herodotus.engine.assistant.core.exception.transaction.TransactionalRollbackException;
+import cn.herodotus.engine.core.foundation.exception.transaction.TransactionalRollbackException;
 import cn.herodotus.engine.data.core.repository.BaseRepository;
 import cn.herodotus.engine.supplier.message.entity.Notification;
 import org.springframework.data.jpa.repository.Modifying;

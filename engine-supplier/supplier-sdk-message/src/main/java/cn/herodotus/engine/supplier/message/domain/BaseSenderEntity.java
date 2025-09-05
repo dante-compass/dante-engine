@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.supplier.message.domain;
 
-import cn.herodotus.engine.data.core.entity.BaseEntity;
+import cn.herodotus.engine.data.core.entity.AbstractAuditEntity;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Column;
 import jakarta.persistence.MappedSuperclass;
@@ -37,7 +37,7 @@ import jakarta.persistence.MappedSuperclass;
  * @date : 2022/12/16 22:30
  */
 @MappedSuperclass
-public abstract class BaseSenderEntity extends BaseEntity {
+public abstract class BaseSenderEntity extends AbstractAuditEntity {
 
     @Schema(name = "发送人ID")
     @Column(name = "sender_id", length = 64)

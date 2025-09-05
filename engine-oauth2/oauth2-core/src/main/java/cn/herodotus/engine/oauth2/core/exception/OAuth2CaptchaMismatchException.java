@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.oauth2.core.exception;
 
-import cn.herodotus.engine.assistant.definition.domain.Feedback;
+import cn.herodotus.engine.core.definition.domain.Feedback;
 import cn.herodotus.engine.captcha.core.constants.CaptchaErrorCodes;
 
 /**

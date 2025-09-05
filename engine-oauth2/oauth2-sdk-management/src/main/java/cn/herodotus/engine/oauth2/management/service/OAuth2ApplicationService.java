@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.oauth2.management.service;
 
-import cn.herodotus.engine.assistant.core.exception.transaction.TransactionalRollbackException;
+import cn.herodotus.engine.core.foundation.exception.transaction.TransactionalRollbackException;
 import cn.herodotus.engine.data.core.repository.BaseRepository;
 import cn.herodotus.engine.data.core.service.BaseService;
 import cn.herodotus.engine.oauth2.data.jpa.repository.HerodotusRegisteredClientRepository;

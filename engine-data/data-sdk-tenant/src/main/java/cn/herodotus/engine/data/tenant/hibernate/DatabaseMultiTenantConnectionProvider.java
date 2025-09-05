@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.data.tenant.hibernate;
 
-import cn.herodotus.engine.assistant.definition.constants.DefaultConstants;
+import cn.herodotus.engine.core.definition.constant.SystemConstants;
 import cn.herodotus.engine.data.tenant.datasource.MultiTenantDataSourceFactory;
 import cn.hutool.v7.extra.spring.SpringUtil;
 import org.apache.commons.lang3.ObjectUtils;
@@ -56,7 +56,7 @@ public class DatabaseMultiTenantConnectionProvider extends AbstractDataSourceBas
 
     public DatabaseMultiTenantConnectionProvider(DataSource dataSource) {
         this.defaultDataSource = dataSource;
-        dataSources.put(DefaultConstants.TENANT_ID, dataSource);
+        dataSources.put(SystemConstants.TENANT_ID, dataSource);
     }
 
     private void initialize() {

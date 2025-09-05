@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.oauth2.management.dto;
 
-import cn.herodotus.engine.assistant.definition.domain.base.AbstractDto;
+import cn.herodotus.engine.core.definition.domain.AbstractDto;
 import com.google.common.base.MoreObjects;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;

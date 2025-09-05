@@ -25,10 +25,10 @@
 
 package cn.herodotus.engine.oauth2.management.response;
 
-import cn.herodotus.engine.assistant.core.json.jackson2.utils.Jackson2Utils;
-import cn.herodotus.engine.assistant.core.utils.http.SessionUtils;
-import cn.herodotus.engine.assistant.definition.constants.BaseConstants;
-import cn.herodotus.engine.assistant.definition.domain.oauth2.PrincipalDetails;
+import cn.herodotus.engine.core.definition.utils.Jackson2Utils;
+import cn.herodotus.engine.web.core.utils.SessionUtils;
+import cn.herodotus.engine.core.definition.constant.BaseConstants;
+import cn.herodotus.engine.core.identity.domain.PrincipalDetails;
 import cn.herodotus.engine.rest.protect.crypto.processor.HttpCryptoProcessor;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

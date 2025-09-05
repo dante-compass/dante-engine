@@ -38,7 +38,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
  */
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
-public abstract class BaseSysEntity extends BaseEntity {
+public abstract class BaseSysEntity extends AbstractAuditEntity {
 
     @Schema(name = "数据状态")
     @Column(name = "status")

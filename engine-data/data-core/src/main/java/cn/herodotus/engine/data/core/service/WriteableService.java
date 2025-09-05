@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.data.core.service;
 
-import cn.herodotus.engine.assistant.definition.domain.base.Entity;
+import cn.herodotus.engine.core.definition.domain.BaseEntity;
 
 import java.io.Serializable;
 import java.util.List;
@@ -36,7 +36,7 @@ import java.util.List;
  * @author : gengwei.zheng
  * @date : 2021/7/7 16:47
  */
-public interface WriteableService<E extends Entity, ID extends Serializable> extends ReadableService<E, ID> {
+public interface WriteableService<E extends BaseEntity, ID extends Serializable> extends ReadableService<E, ID> {
 
     /**
      * 删除数据
