@@ -23,47 +23,23 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.engine.core.foundation.enums;
+package cn.herodotus.engine.core.foundation.condition;
 
-import cn.herodotus.engine.core.definition.constant.BaseConstants;
-import cn.herodotus.engine.core.foundation.condition.ConditionEnum;
-import org.springframework.core.env.Environment;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
+
+import java.lang.annotation.*;
 
 /**
- * <p> Description : 用于区分是单体应用还是微服务应用 </p>
+ * <p>Description: Reactive 环境条件注解 </p>
+ * <p>
+ * 嵌套一层注解，方便今后统一修改
  *
  * @author : gengwei.zheng
- * @date : 2019/11/26 11:33
+ * @date : 2023/6/15 21:29
  */
-public enum Architecture implements ConditionEnum {
-
-    /**
-     * 分布式架构
-     */
-    DISTRIBUTED {
-        @Override
-        public boolean isActive(Environment environment) {
-            return isActive(environment, BaseConstants.ITEM_PLATFORM_ARCHITECTURE);
-        }
-
-        @Override
-        public String getConstant() {
-            return name();
-        }
-    },
-
-    /**
-     * 单体式架构
-     */
-    MONOCOQUE {
-        @Override
-        public boolean isActive(Environment environment) {
-            return !DISTRIBUTED.isActive(environment);
-        }
-
-        @Override
-        public String getConstant() {
-            return name();
-        }
-    };
+@Target({ElementType.TYPE, ElementType.METHOD})
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+@ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.REACTIVE)
+public @interface ConditionalOnReactiveApplication {
 }

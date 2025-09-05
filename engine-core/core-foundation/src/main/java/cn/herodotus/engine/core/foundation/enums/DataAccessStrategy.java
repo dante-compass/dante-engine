@@ -25,6 +25,10 @@
 
 package cn.herodotus.engine.core.foundation.enums;
 
+import cn.herodotus.engine.core.definition.constant.BaseConstants;
+import cn.herodotus.engine.core.foundation.condition.ConditionEnum;
+import org.springframework.core.env.Environment;
+
 /**
  * <p>Description: 目标枚举 </p>
  * <p>
@@ -33,15 +37,35 @@ package cn.herodotus.engine.core.foundation.enums;
  * @author : gengwei.zheng
  * @date : 2022/10/10 19:33
  */
-public enum DataAccessStrategy {
+public enum DataAccessStrategy implements ConditionEnum {
 
     /**
      * 目标为服务本地
      */
-    LOCAL,
+    LOCAL {
+        @Override
+        public boolean isActive(Environment environment) {
+            return isActive(environment, BaseConstants.ITEM_PLATFORM_DATA_ACCESS_STRATEGY);
+        }
+
+        @Override
+        public String getConstant() {
+            return name();
+        }
+    },
 
     /**
      * 目标为远程访问
      */
-    REMOTE;
+    REMOTE {
+        @Override
+        public boolean isActive(Environment environment) {
+            return !LOCAL.isActive(environment);
+        }
+
+        @Override
+        public String getConstant() {
+            return name();
+        }
+    };
 }

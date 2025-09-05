@@ -1,3 +1,4 @@
 cn.herodotus.engine.core.autoconfigure.ApplicationAutoConfiguration
+cn.herodotus.engine.core.autoconfigure.error.ReactiveWebExceptionAutoConfiguration
 cn.herodotus.engine.core.autoconfigure.error.ErrorCodeAutoConfiguration
 cn.herodotus.engine.core.autoconfigure.jackson2.Jackson2AutoConfiguration

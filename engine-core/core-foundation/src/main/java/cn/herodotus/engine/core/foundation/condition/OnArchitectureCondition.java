@@ -23,47 +23,23 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.engine.core.foundation.enums;
+package cn.herodotus.engine.core.foundation.condition;
 
-import cn.herodotus.engine.core.definition.constant.BaseConstants;
-import cn.herodotus.engine.core.foundation.condition.ConditionEnum;
-import org.springframework.core.env.Environment;
+import cn.herodotus.engine.core.foundation.enums.Architecture;
+import org.springframework.context.annotation.Condition;
+
+import java.lang.annotation.Annotation;
 
 /**
- * <p> Description : 用于区分是单体应用还是微服务应用 </p>
+ * <p>Description: {@link Condition} 用于检查所需的 {@link Architecture}. </p>
  *
  * @author : gengwei.zheng
- * @date : 2019/11/26 11:33
+ * @date : 2024/12/9 22:40
  */
-public enum Architecture implements ConditionEnum {
+class OnArchitectureCondition extends AbstractEnumSpringBootCondition<Architecture> {
 
-    /**
-     * 分布式架构
-     */
-    DISTRIBUTED {
-        @Override
-        public boolean isActive(Environment environment) {
-            return isActive(environment, BaseConstants.ITEM_PLATFORM_ARCHITECTURE);
-        }
-
-        @Override
-        public String getConstant() {
-            return name();
-        }
-    },
-
-    /**
-     * 单体式架构
-     */
-    MONOCOQUE {
-        @Override
-        public boolean isActive(Environment environment) {
-            return !DISTRIBUTED.isActive(environment);
-        }
-
-        @Override
-        public String getConstant() {
-            return name();
-        }
-    };
+    @Override
+    protected Class<? extends Annotation> getAnnotationClass() {
+        return ConditionalOnArchitecture.class;
+    }
 }

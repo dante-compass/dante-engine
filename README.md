@@ -147,9 +147,6 @@ dante-engine
 ├    ├── access-sdk-wxapp -- 微信小程序登录
 ├    ├── access-sdk-wxmpp -- 微信公众号登录
 ├    └── access-spring-boot-starter -- 外部登录  模块统一 Starter
-├── engine-assistant -- 核心通用代码包
-├    ├── assistant-core -- 核心通用代码
-├    └── assistant-autoconfigure -- Assistant  模块统一 Starter
 ├── engine-cache -- 缓存模块
 ├    ├── cache-core -- 缓存通用代码
 ├    ├── cache-sdk-caffeine -- Caffeine 缓存配置相关代码模块
@@ -157,6 +154,11 @@ dante-engine
 ├    ├── cache-sdk-redis -- Redis 缓存配置相关代码模块
 ├    ├── cache-sdk-redisson -- Redisson 相关代码模块
 ├    └── cache-spring-boot-starter -- Cache  模块统一 Starter
+├── engine-core -- 基础核心模块
+├    ├── core-autoconfigure -- 核心自动配置模块
+├    ├── core-definition -- 核心定义模块
+├    ├── core-foundation -- 基础通用模块
+├    └── core-identity -- 身份认证通用模块
 ├── engine-captcha -- 验证码模块
 ├    ├── captcha-core -- 验证码共性通用代码
 ├    ├── captcha-sdk-behavior -- 行为验证码（包括拼图滑块、文字点选）
@@ -193,12 +195,17 @@ dante-engine
 ├    ├── rest-sdk-condition -- 服务级 REST 相关自定义条件注解模块
 ├    ├── rest-sdk-protect -- 前后端数据加密、接口幂等、防刷、Xss 和 SQL 注入 Rest API 防护模块
 ├    ├── rest-sdk-service -- 基于 REST 的服务基础内容配置代码模块
-├    ├── rest-spring-boot-starter -- Rest 模块统一 Starter(包括通用CRUD代码)
-├    └── web-server-spring-boot-starter -- 基础 Web Server 配置模块
+├    └── rest-spring-boot-starter -- Rest 模块统一 Starter(包括通用CRUD代码)
 ├── engine-supplier -- 应用支持模块
 ├    ├── supplier-sdk-message -- 消息功能支持模块
 ├    ├── supplier-sdk-upms-logic -- UPMS 基础服务支持模块
 ├    └── supplier-sdk-upms-rest -- UPMS 基础服务 REST 模块
+├── engine-web -- Web 模块
+├    ├── web-core -- Web 通用代码模块
+├    ├── rest-sdk-condition -- 服务级 REST 相关自定义条件注解模块
+├    ├── rest-sdk-protect -- 前后端数据加密、接口幂等、防刷、Xss 和 SQL 注入 Rest API 防护模块
+├    ├── rest-sdk-service -- 基于 REST 的服务基础内容配置代码模块
+├    └── rest-spring-boot-starter -- Rest 模块统一 Starter(包括通用CRUD代码)
 └──  readme -- README 相关素材放置目录
 ```
 
