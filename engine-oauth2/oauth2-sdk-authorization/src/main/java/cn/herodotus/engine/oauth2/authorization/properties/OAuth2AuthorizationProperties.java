@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.oauth2.authorization.properties;
 
-import cn.herodotus.engine.assistant.core.enums.Target;
+import cn.herodotus.engine.core.foundation.enums.DataAccessStrategy;
 import cn.herodotus.engine.oauth2.core.constants.OAuth2Constants;
 import cn.herodotus.engine.oauth2.core.enums.Certificate;
 import com.google.common.base.MoreObjects;
@@ -47,7 +47,7 @@ public class OAuth2AuthorizationProperties {
     /**
      * Token 校验是采用远程方式还是本地方式。
      */
-    private Target validate = Target.REMOTE;
+    private DataAccessStrategy validate = DataAccessStrategy.REMOTE;
 
     /**
      * 是否使用严格模式。严格模式一定要求有权限，非严格模式没有权限管控的接口，只要认证通过也可以使用。
@@ -63,11 +63,11 @@ public class OAuth2AuthorizationProperties {
      */
     private Matcher matcher = new Matcher();
 
-    public Target getValidate() {
+    public DataAccessStrategy getValidate() {
         return validate;
     }
 
-    public void setValidate(Target validate) {
+    public void setValidate(DataAccessStrategy validate) {
         this.validate = validate;
     }
 

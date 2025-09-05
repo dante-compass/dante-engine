@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.oauth2.resource.autoconfigure.scan;
 
-import cn.herodotus.engine.assistant.core.context.ServiceContextHolder;
+import cn.herodotus.engine.core.foundation.context.ServiceContextHolder;
 import cn.herodotus.engine.message.core.logic.domain.RequestMapping;
 import cn.herodotus.engine.message.core.logic.event.RequestMappingGatherEvent;
 import cn.herodotus.engine.message.core.logic.strategy.RequestMappingScanEventManager;

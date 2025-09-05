@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.rest.condition.definition;
 
-import cn.herodotus.engine.assistant.core.enums.Target;
+import cn.herodotus.engine.core.foundation.enums.DataAccessStrategy;
 import cn.herodotus.engine.rest.condition.constants.RestPropertyFinder;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.Strings;
@@ -48,8 +48,8 @@ public class RemoteDataAccessCondition implements Condition {
     @SuppressWarnings("NullableProblems")
     @Override
     public boolean matches(ConditionContext conditionContext, AnnotatedTypeMetadata annotatedTypeMetadata) {
-        String property = RestPropertyFinder.getDataAccessStrategy(conditionContext, Target.REMOTE.name());
-        boolean result = StringUtils.isNotBlank(property) && Strings.CI.equals(property, Target.REMOTE.name());
+        String property = RestPropertyFinder.getDataAccessStrategy(conditionContext, DataAccessStrategy.REMOTE.name());
+        boolean result = StringUtils.isNotBlank(property) && Strings.CI.equals(property, DataAccessStrategy.REMOTE.name());
         log.debug("[Herodotus] |- Condition [Remote Data Access] value is [{}]", result);
         return result;
     }

@@ -25,8 +25,8 @@
 
 package cn.herodotus.engine.rest.service.configuration;
 
-import cn.herodotus.engine.assistant.core.annotation.ConditionalOnSwaggerEnabled;
-import cn.herodotus.engine.assistant.core.context.ServiceContextHolder;
+import cn.herodotus.engine.rest.service.annotation.ConditionalOnSwaggerEnabled;
+import cn.herodotus.engine.core.foundation.context.ServiceContextHolder;
 import cn.herodotus.engine.core.definition.constant.BaseConstants;
 import cn.herodotus.engine.rest.condition.properties.SwaggerProperties;
 import cn.herodotus.engine.rest.core.definition.OpenApiServerResolver;

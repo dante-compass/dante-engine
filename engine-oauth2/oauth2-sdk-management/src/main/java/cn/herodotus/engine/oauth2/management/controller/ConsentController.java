@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.oauth2.management.controller;
 
-import cn.herodotus.engine.assistant.core.context.ServiceContextHolder;
+import cn.herodotus.engine.core.foundation.context.ServiceContextHolder;
 import cn.herodotus.engine.core.definition.constant.SystemConstants;
 import cn.herodotus.engine.core.definition.constant.SymbolConstants;
 import cn.herodotus.engine.core.definition.domain.view.vue.Option;

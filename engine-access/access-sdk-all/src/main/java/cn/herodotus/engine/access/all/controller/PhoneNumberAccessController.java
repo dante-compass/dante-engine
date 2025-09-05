@@ -27,7 +27,7 @@ package cn.herodotus.engine.access.all.controller;
 
 import cn.herodotus.engine.access.all.processor.AccessHandlerStrategyFactory;
 import cn.herodotus.engine.access.core.definition.AccessResponse;
-import cn.herodotus.engine.assistant.core.enums.AccountType;
+import cn.herodotus.engine.core.identity.enums.AccountCategory;
 import cn.herodotus.engine.core.definition.domain.Result;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -58,7 +58,7 @@ public class PhoneNumberAccessController {
     })
     @PostMapping("/open/identity/verification-code")
     public Result<String> sendCode(@RequestParam("mobile") String mobile) {
-        AccessResponse response = accessHandlerStrategyFactory.preProcess(AccountType.SMS, mobile);
+        AccessResponse response = accessHandlerStrategyFactory.preProcess(AccountCategory.SMS, mobile);
         if (ObjectUtils.isNotEmpty(response)) {
             if (response.getSuccess()) {
                 return Result.success("短信发送成功！");

@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.captcha.core.provider;
 
-import cn.herodotus.engine.assistant.core.utils.ResourceResolver;
+import cn.herodotus.engine.core.foundation.utils.ResourceResolverUtils;
 import cn.herodotus.engine.captcha.core.definition.enums.CaptchaResource;
 import cn.herodotus.engine.captcha.core.definition.enums.FontStyle;
 import cn.herodotus.engine.captcha.core.properties.CaptchaProperties;
@@ -79,13 +79,13 @@ public class ResourceProvider implements InitializingBean {
     }
 
     private static Map<String, String> getImages(String location) {
-        if (ResourceResolver.isClasspathAllUrl(location)) {
+        if (ResourceResolverUtils.isClasspathAllUrl(location)) {
             try {
-                Resource[] resources = ResourceResolver.getResources(location);
+                Resource[] resources = ResourceResolverUtils.getResources(location);
                 Map<String, String> images = new ConcurrentHashMap<>();
                 if (ArrayUtils.isNotEmpty(resources)) {
                     Arrays.stream(resources).forEach(resource -> {
-                        String data = ResourceResolver.toBase64(resource);
+                        String data = ResourceResolverUtils.toBase64(resource);
                         if (StringUtils.isNotBlank(data)) {
                             images.put(IdUtil.fastSimpleUUID(), data);
                         }
@@ -142,9 +142,9 @@ public class ResourceProvider implements InitializingBean {
 
     private static Map<String, Font> getFonts(String location) {
 
-        if (ResourceResolver.isClasspathAllUrl(location)) {
+        if (ResourceResolverUtils.isClasspathAllUrl(location)) {
             try {
-                Resource[] resources = ResourceResolver.getResources(location);
+                Resource[] resources = ResourceResolverUtils.getResources(location);
                 Map<String, Font> fonts = new ConcurrentHashMap<>();
                 if (ArrayUtils.isNotEmpty(resources)) {
                     Arrays.stream(resources).forEach(resource -> {

@@ -25,8 +25,8 @@
 
 package cn.herodotus.engine.message.mqtt.configuration;
 
-import cn.herodotus.engine.assistant.core.utils.type.ListUtils;
-import cn.herodotus.engine.assistant.core.utils.type.NumberUtils;
+import cn.herodotus.engine.core.definition.utils.ListUtils;
+import cn.herodotus.engine.core.definition.utils.NumberUtils;
 import cn.herodotus.engine.message.core.constants.HerodotusChannels;
 import cn.herodotus.engine.message.mqtt.annotation.ConditionalOnMqttEnabled;
 import cn.herodotus.engine.message.mqtt.properties.MqttProperties;

@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.oauth2.management.compliance.condition;
 
-import cn.herodotus.engine.assistant.core.context.PropertyResolver;
+import cn.herodotus.engine.core.foundation.context.PropertyResolver;
 import cn.herodotus.engine.oauth2.core.constants.OAuth2Constants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

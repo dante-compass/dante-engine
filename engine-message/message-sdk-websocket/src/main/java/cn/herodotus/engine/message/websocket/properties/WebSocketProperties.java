@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.message.websocket.properties;
 
-import cn.herodotus.engine.assistant.core.utils.http.HeaderUtils;
+import cn.herodotus.engine.web.core.utils.HeaderUtils;
 import cn.herodotus.engine.core.definition.constant.SymbolConstants;
 import cn.herodotus.engine.message.core.constants.MessageConstants;
 import cn.herodotus.engine.message.websocket.enums.InstanceMode;

@@ -42,6 +42,10 @@
             <groupId>cn.herodotus.engine</groupId>
             <artifactId>core-definition</artifactId>
         </dependency>
+        <dependency>
+            <groupId>me.zhyd.oauth</groupId>
+            <artifactId>JustAuth</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

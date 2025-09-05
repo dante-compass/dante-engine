@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.oauth2.authentication.configurer;
 
-import cn.herodotus.engine.assistant.core.utils.http.SessionUtils;
+import cn.herodotus.engine.web.core.utils.SessionUtils;
 import cn.herodotus.engine.oauth2.authentication.provider.OAuth2FormLoginAuthenticationToken;
 import cn.herodotus.engine.rest.protect.crypto.processor.HttpCryptoProcessor;
 import jakarta.servlet.ServletException;

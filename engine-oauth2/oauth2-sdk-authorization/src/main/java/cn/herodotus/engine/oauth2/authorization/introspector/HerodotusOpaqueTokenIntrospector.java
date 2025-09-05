@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.oauth2.authorization.introspector;
 
-import cn.herodotus.engine.assistant.core.context.ServiceContextHolder;
+import cn.herodotus.engine.core.foundation.context.ServiceContextHolder;
 import cn.herodotus.engine.core.definition.constant.BaseConstants;
 import cn.herodotus.engine.oauth2.core.definition.domain.HerodotusGrantedAuthority;
 import org.apache.commons.lang3.StringUtils;

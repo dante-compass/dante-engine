@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.facility.alibaba.autoconfigure.sentinel;
 
-import cn.herodotus.engine.assistant.core.json.jackson2.utils.Jackson2Utils;
+import cn.herodotus.engine.core.definition.utils.Jackson2Utils;
 import cn.herodotus.engine.core.definition.domain.Result;
 import cn.herodotus.engine.facility.alibaba.autoconfigure.sentinel.enhance.HerodotusSentinelFeign;
 import com.alibaba.csp.sentinel.adapter.spring.webflux.callback.BlockRequestHandler;

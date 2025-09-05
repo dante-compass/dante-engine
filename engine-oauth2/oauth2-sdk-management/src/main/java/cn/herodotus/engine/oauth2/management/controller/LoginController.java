@@ -26,7 +26,7 @@
 package cn.herodotus.engine.oauth2.management.controller;
 
 import cn.herodotus.engine.core.definition.enums.Protocol;
-import cn.herodotus.engine.assistant.core.utils.http.SessionUtils;
+import cn.herodotus.engine.web.core.utils.SessionUtils;
 import cn.herodotus.engine.core.definition.domain.SecretKey;
 import cn.herodotus.engine.oauth2.authentication.properties.OAuth2AuthenticationProperties;
 import cn.herodotus.engine.rest.protect.crypto.processor.HttpCryptoProcessor;

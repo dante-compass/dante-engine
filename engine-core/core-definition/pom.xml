@@ -52,6 +52,14 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-pool2</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-text</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>com.fasterxml.jackson.dataformat</groupId>
@@ -94,7 +102,6 @@
             <groupId>cn.zhxu</groupId>
             <artifactId>okhttps-gson</artifactId>
         </dependency>
-
         <dependency>
             <groupId>cn.hutool.v7</groupId>
             <artifactId>hutool-all</artifactId>

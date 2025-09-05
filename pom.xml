@@ -105,8 +105,8 @@
 
     <modules>
         <module>dependencies</module>
-        <module>engine-assistant</module>
         <module>engine-cache</module>
+        <module>engine-core</module>
         <module>engine-data</module>
         <module>engine-rest</module>
         <module>engine-captcha</module>
@@ -115,8 +115,8 @@
         <module>engine-facility</module>
         <module>engine-access</module>
         <module>engine-supplier</module>
-        <module>engine-core</module>
         <module>engine-starter</module>
+        <module>engine-web</module>
     </modules>
 
 </project>

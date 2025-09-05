@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.rest.service.feign;
 
-import cn.herodotus.engine.assistant.core.utils.http.HeaderUtils;
+import cn.herodotus.engine.web.core.utils.HeaderUtils;
 import cn.herodotus.engine.rest.core.annotation.Inner;
 import feign.MethodMetadata;
 import org.apache.commons.lang3.ObjectUtils;

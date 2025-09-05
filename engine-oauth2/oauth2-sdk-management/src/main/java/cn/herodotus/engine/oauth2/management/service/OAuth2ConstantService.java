@@ -25,8 +25,9 @@
 
 package cn.herodotus.engine.oauth2.management.service;
 
-import cn.herodotus.engine.assistant.core.enums.Database;
-import cn.herodotus.engine.assistant.core.enums.ServerDevice;
+import cn.herodotus.engine.core.identity.enums.PermissionExpression;
+import cn.herodotus.engine.oauth2.core.enums.Database;
+import cn.herodotus.engine.oauth2.core.enums.ServerDevice;
 import cn.herodotus.engine.oauth2.core.enums.*;
 import org.springframework.stereotype.Service;
 

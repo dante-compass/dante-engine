@@ -32,7 +32,7 @@ import cn.herodotus.engine.access.core.definition.AccessResponse;
 import cn.herodotus.engine.access.core.definition.AccessUserDetails;
 import cn.herodotus.engine.access.core.exception.AccessIdentityVerificationFailedException;
 import cn.herodotus.engine.access.core.exception.AccessPreProcessFailedException;
-import cn.herodotus.engine.assistant.core.enums.AccountType;
+import cn.herodotus.engine.core.identity.enums.AccountCategory;
 import cn.herodotus.engine.core.definition.constant.SymbolConstants;
 import cn.herodotus.engine.core.identity.domain.AccessPrincipal;
 import org.apache.commons.lang3.ObjectUtils;
@@ -80,7 +80,7 @@ public class WxappAccessHandler implements AccessHandler {
         accessUserDetails.setNickname(wxMaUserInfo.getNickName());
         accessUserDetails.setAvatar(wxMaUserInfo.getAvatarUrl());
         accessUserDetails.setLocation(wxMaUserInfo.getCountry() + SymbolConstants.FORWARD_SLASH + wxMaUserInfo.getProvince() + SymbolConstants.FORWARD_SLASH + wxMaUserInfo.getCity());
-        accessUserDetails.setSource(AccountType.WXAPP.name());
+        accessUserDetails.setSource(AccountCategory.WXAPP.name());
         accessUserDetails.setOpenId(accessPrincipal.getOpenId());
         accessUserDetails.setUnionId(accessPrincipal.getUnionId());
         accessUserDetails.setAppId(wxMaUserInfo.getWatermark().getAppid());

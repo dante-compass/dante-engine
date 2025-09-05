@@ -25,12 +25,12 @@
 
 package cn.herodotus.engine.oauth2.authorization.processor;
 
-import cn.herodotus.engine.assistant.core.utils.type.ListUtils;
+import cn.herodotus.engine.core.definition.utils.ListUtils;
 import cn.herodotus.engine.oauth2.authorization.definition.HerodotusConfigAttribute;
 import cn.herodotus.engine.oauth2.authorization.definition.HerodotusRequest;
 import cn.herodotus.engine.oauth2.authorization.properties.OAuth2AuthorizationProperties;
 import cn.herodotus.engine.oauth2.core.constants.SecurityResources;
-import cn.herodotus.engine.oauth2.core.enums.PermissionExpression;
+import cn.herodotus.engine.core.identity.enums.PermissionExpression;
 import cn.herodotus.engine.oauth2.core.utils.WebUtils;
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.commons.collections4.CollectionUtils;

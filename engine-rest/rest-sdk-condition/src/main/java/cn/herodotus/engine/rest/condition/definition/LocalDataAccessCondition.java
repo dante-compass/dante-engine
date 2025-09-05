@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.rest.condition.definition;
 
-import cn.herodotus.engine.assistant.core.enums.Target;
+import cn.herodotus.engine.core.foundation.enums.DataAccessStrategy;
 import cn.herodotus.engine.rest.condition.constants.RestPropertyFinder;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.Strings;
@@ -49,7 +49,7 @@ public class LocalDataAccessCondition implements Condition {
     @Override
     public boolean matches(ConditionContext conditionContext, AnnotatedTypeMetadata annotatedTypeMetadata) {
         String property = RestPropertyFinder.getDataAccessStrategy(conditionContext);
-        boolean result = StringUtils.isNotBlank(property) && Strings.CI.equals(property, Target.LOCAL.name());
+        boolean result = StringUtils.isNotBlank(property) && Strings.CI.equals(property, DataAccessStrategy.LOCAL.name());
         log.debug("[Herodotus] |- Condition [Local Data Access] value is [{}]", result);
         return result;
     }

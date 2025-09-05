@@ -274,8 +274,11 @@
                 <artifactId>servlet-container-spring-boot-starter</artifactId>
                 <version>${project.version}</version>
             </dependency>
-
-
+            <dependency>
+                <groupId>cn.herodotus.engine</groupId>
+                <artifactId>web-core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
 
             <dependency>
                 <groupId>cn.herodotus.engine</groupId>
@@ -305,16 +308,6 @@
             <dependency>
                 <groupId>cn.herodotus.engine</groupId>
                 <artifactId>access-sdk-all</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.herodotus.engine</groupId>
-                <artifactId>assistant-core</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.herodotus.engine</groupId>
-                <artifactId>assistant-spring-boot-starter</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

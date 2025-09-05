@@ -25,8 +25,8 @@
 
 package cn.herodotus.engine.rest.autoconfigure.customizer;
 
-import cn.herodotus.engine.assistant.autoconfigure.customizer.BaseObjectMapperBuilderCustomizer;
-import cn.herodotus.engine.assistant.core.json.jackson2.Jackson2CustomizerOrder;
+import cn.herodotus.engine.core.foundation.support.BaseObjectMapperBuilderCustomizer;
+import cn.herodotus.engine.core.definition.constant.Jackson2CustomizerOrder;
 import cn.herodotus.engine.rest.protect.jackson2.XssStringJsonDeserializer;
 import com.fasterxml.jackson.databind.Module;
 import com.fasterxml.jackson.databind.module.SimpleModule;
