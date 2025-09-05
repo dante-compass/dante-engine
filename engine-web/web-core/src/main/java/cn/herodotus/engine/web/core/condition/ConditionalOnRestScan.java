@@ -23,19 +23,23 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.engine.rest.core.annotation;
+package cn.herodotus.engine.web.core.condition;
+
+import cn.herodotus.engine.core.definition.constant.BaseConstants;
+import cn.herodotus.engine.web.core.constant.WebConstants;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 
 import java.lang.annotation.*;
 
 /**
- * <p>Description: Feign 内部调用标记注解 </p>
+ * <p>Description: 分布式架构模式条件注解 </p>
  *
  * @author : gengwei.zheng
- * @date : 2022/5/31 12:10
+ * @date : 2022/1/10 14:54
  */
-@Target({ElementType.METHOD})
+@Target({ElementType.TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface Inner {
-
+@ConditionalOnProperty(prefix = WebConstants.PROPERTY_REST_SCAN, name = BaseConstants.PROPERTY_ENABLED, matchIfMissing = true)
+public @interface ConditionalOnRestScan {
 }

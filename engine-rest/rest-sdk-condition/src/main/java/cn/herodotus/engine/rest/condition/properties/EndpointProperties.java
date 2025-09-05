@@ -27,7 +27,7 @@ package cn.herodotus.engine.rest.condition.properties;
 
 import cn.herodotus.engine.core.definition.utils.WellFormedUtils;
 import cn.herodotus.engine.core.definition.constant.SystemConstants;
-import cn.herodotus.engine.rest.condition.constants.RestConstants;
+import cn.herodotus.engine.web.core.constant.WebConstants;
 import com.google.common.base.MoreObjects;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
@@ -37,7 +37,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * @author : gengwei.zheng
  * @date : 2022/3/6 12:00
  */
-@ConfigurationProperties(prefix = RestConstants.PROPERTY_PREFIX_ENDPOINT)
+@ConfigurationProperties(prefix = WebConstants.PROPERTY_PREFIX_ENDPOINT)
 public class EndpointProperties {
 
     /**

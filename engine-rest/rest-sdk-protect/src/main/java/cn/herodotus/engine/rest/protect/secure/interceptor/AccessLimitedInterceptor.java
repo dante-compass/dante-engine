@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.rest.protect.secure.interceptor;
 
-import cn.herodotus.engine.rest.core.annotation.AccessLimited;
+import cn.herodotus.engine.web.core.annotation.AccessLimited;
 import cn.herodotus.engine.rest.core.definition.AbstractBaseHandlerInterceptor;
 import cn.herodotus.engine.rest.core.exception.FrequentRequestsException;
 import cn.herodotus.engine.rest.protect.secure.stamp.AccessLimitedStampManager;

@@ -28,7 +28,7 @@ package cn.herodotus.engine.rest.condition.properties;
 import cn.herodotus.engine.core.foundation.enums.Architecture;
 import cn.herodotus.engine.core.definition.enums.Protocol;
 import cn.herodotus.engine.core.foundation.enums.DataAccessStrategy;
-import cn.herodotus.engine.rest.condition.constants.RestConstants;
+import cn.herodotus.engine.web.core.constant.WebConstants;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
@@ -37,7 +37,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * @author : gengwei.zheng
  * @date : 2019/11/17 15:22
  */
-@ConfigurationProperties(prefix = RestConstants.PROPERTY_PREFIX_PLATFORM)
+@ConfigurationProperties(prefix = WebConstants.PROPERTY_PREFIX_PLATFORM)
 public class PlatformProperties {
 
     /**

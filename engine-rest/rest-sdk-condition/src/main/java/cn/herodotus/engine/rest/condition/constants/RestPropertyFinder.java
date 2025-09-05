@@ -26,8 +26,9 @@
 package cn.herodotus.engine.rest.condition.constants;
 
 
-import cn.herodotus.engine.core.foundation.context.PropertyResolver;
 import cn.herodotus.engine.core.definition.constant.BaseConstants;
+import cn.herodotus.engine.core.foundation.context.PropertyResolver;
+import cn.herodotus.engine.web.core.constant.WebConstants;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ConditionContext;
 
@@ -48,30 +49,14 @@ public class RestPropertyFinder {
     }
 
     public static String getCryptoStrategy(ConditionContext conditionContext, String defaultValue) {
-        return PropertyResolver.getProperty(conditionContext, RestConstants.ITEM_PROTECT_CRYPTO_STRATEGY, defaultValue);
+        return PropertyResolver.getProperty(conditionContext, WebConstants.ITEM_PROTECT_CRYPTO_STRATEGY, defaultValue);
     }
 
     public static String getCryptoStrategy(ConditionContext conditionContext) {
-        return PropertyResolver.getProperty(conditionContext, RestConstants.ITEM_PROTECT_CRYPTO_STRATEGY);
+        return PropertyResolver.getProperty(conditionContext, WebConstants.ITEM_PROTECT_CRYPTO_STRATEGY);
     }
 
     public static boolean isScanEnabled(ConditionContext conditionContext, boolean defaultValue) {
-        return PropertyResolver.getBoolean(conditionContext, RestConstants.ITEM_SCAN_ENABLED, defaultValue);
-    }
-
-    public static String getDataAccessStrategy(ConditionContext conditionContext, String defaultValue) {
-        return PropertyResolver.getProperty(conditionContext, RestConstants.ITEM_PLATFORM_DATA_ACCESS_STRATEGY, defaultValue);
-    }
-
-    public static String getDataAccessStrategy(ConditionContext conditionContext) {
-        return PropertyResolver.getProperty(conditionContext, RestConstants.ITEM_PLATFORM_DATA_ACCESS_STRATEGY);
-    }
-
-    public static String getArchitecture(ConditionContext conditionContext, String defaultValue) {
-        return PropertyResolver.getProperty(conditionContext, RestConstants.ITEM_PLATFORM_ARCHITECTURE, defaultValue);
-    }
-
-    public static String getArchitecture(ConditionContext conditionContext) {
-        return PropertyResolver.getProperty(conditionContext, RestConstants.ITEM_PLATFORM_ARCHITECTURE);
+        return PropertyResolver.getBoolean(conditionContext, WebConstants.ITEM_SCAN_ENABLED, defaultValue);
     }
 }

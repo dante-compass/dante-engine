@@ -23,35 +23,25 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.engine.rest.core.annotation;
+package cn.herodotus.engine.web.core.constant;
 
-import org.springframework.web.bind.annotation.Mapping;
-
-import java.lang.annotation.*;
+import cn.herodotus.engine.core.definition.constant.BaseConstants;
 
 /**
- * <p>Description: 加密解密标记注解 </p>
+ * <p>Description: Rest 模块常量 </p>
  *
  * @author : gengwei.zheng
- * @date : 2021/10/4 11:48
+ * @date : 2022/1/19 23:13
  */
-@Target({ElementType.TYPE, ElementType.METHOD})
-@Retention(RetentionPolicy.RUNTIME)
-@Documented
-@Mapping
-public @interface Crypto {
+public interface WebConstants extends BaseConstants {
 
-    /**
-     * 请求参数记否解密，默认值 true
-     *
-     * @return true 请求参数解密；false 请求参数不解密
-     */
-    boolean requestDecrypt() default true;
+    String PROPERTY_PREFIX_SWAGGER = PROPERTY_PREFIX_HERODOTUS + ".swagger";
+    String PROPERTY_REST_SCAN = PROPERTY_PREFIX_REST + ".scan";
 
-    /**
-     * 响应体是否加密，默认值 true
-     *
-     * @return true 响应体加密；false 响应体不加密
-     */
-    boolean responseEncrypt() default true;
+    String ITEM_SCAN_ENABLED = PROPERTY_REST_SCAN + PROPERTY_ENABLED;
+    String ITEM_PROTECT_CRYPTO_STRATEGY = PROPERTY_PREFIX_CRYPTO + ".crypto-strategy";
+
+    String CACHE_NAME_TOKEN_IDEMPOTENT = CACHE_TOKEN_BASE_PREFIX + "idempotent:";
+    String CACHE_NAME_TOKEN_ACCESS_LIMITED = CACHE_TOKEN_BASE_PREFIX + "access_limited:";
+    String CACHE_NAME_TOKEN_SECURE_KEY = CACHE_TOKEN_BASE_PREFIX + "secure_key:";
 }

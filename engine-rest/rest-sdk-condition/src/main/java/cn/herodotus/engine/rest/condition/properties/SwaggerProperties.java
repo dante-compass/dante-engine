@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.rest.condition.properties;
 
-import cn.herodotus.engine.rest.condition.constants.RestConstants;
+import cn.herodotus.engine.web.core.constant.WebConstants;
 import com.google.common.base.MoreObjects;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
@@ -35,7 +35,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * @author : gengwei.zheng
  * @date : 2023/5/9 18:45
  */
-@ConfigurationProperties(prefix = RestConstants.PROPERTY_PREFIX_SWAGGER)
+@ConfigurationProperties(prefix = WebConstants.PROPERTY_PREFIX_SWAGGER)
 public class SwaggerProperties {
 
     /**

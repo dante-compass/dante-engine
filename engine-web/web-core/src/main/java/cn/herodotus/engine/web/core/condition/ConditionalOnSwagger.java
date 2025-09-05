@@ -23,22 +23,23 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.engine.rest.condition.annotation;
+package cn.herodotus.engine.web.core.condition;
 
-import cn.herodotus.engine.rest.condition.definition.RemoteDataAccessCondition;
-import org.springframework.context.annotation.Conditional;
+import cn.herodotus.engine.core.definition.constant.BaseConstants;
+import cn.herodotus.engine.web.core.constant.WebConstants;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 
 import java.lang.annotation.*;
 
 /**
- * <p>Description: 远程数据访问策略条件注解 </p>
+ * <p>Description: Swagger条件开启主机 </p>
  *
  * @author : gengwei.zheng
- * @date : 2021/8/6 21:30
+ * @date : 2021/8/20 11:58
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE, ElementType.METHOD})
 @Documented
-@Conditional(RemoteDataAccessCondition.class)
-public @interface ConditionalOnRemoteDataAccess {
+@ConditionalOnProperty(prefix = WebConstants.PROPERTY_PREFIX_SWAGGER, name = BaseConstants.PROPERTY_ENABLED, havingValue = "true")
+public @interface ConditionalOnSwagger {
 }

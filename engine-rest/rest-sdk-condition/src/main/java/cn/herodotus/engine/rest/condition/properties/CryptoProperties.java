@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.rest.condition.properties;
 
-import cn.herodotus.engine.rest.condition.constants.RestConstants;
+import cn.herodotus.engine.web.core.constant.WebConstants;
 import cn.herodotus.engine.rest.core.enums.CryptoStrategy;
 import com.google.common.base.MoreObjects;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -36,7 +36,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * @author : gengwei.zheng
  * @date : 2022/5/1 21:13
  */
-@ConfigurationProperties(prefix = RestConstants.PROPERTY_PREFIX_CRYPTO)
+@ConfigurationProperties(prefix = WebConstants.PROPERTY_PREFIX_CRYPTO)
 public class CryptoProperties {
 
     /**

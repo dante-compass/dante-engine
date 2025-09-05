@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.rest.condition.properties;
 
-import cn.herodotus.engine.rest.condition.constants.RestConstants;
+import cn.herodotus.engine.web.core.constant.WebConstants;
 import com.google.common.base.MoreObjects;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
@@ -38,7 +38,7 @@ import java.time.Duration;
  * @author : gengwei.zheng
  * @date : 2021/8/24 15:53
  */
-@ConfigurationProperties(prefix = RestConstants.PROPERTY_PREFIX_SECURE)
+@ConfigurationProperties(prefix = WebConstants.PROPERTY_PREFIX_SECURE)
 public class SecureProperties {
 
     private Idempotent idempotent = new Idempotent();

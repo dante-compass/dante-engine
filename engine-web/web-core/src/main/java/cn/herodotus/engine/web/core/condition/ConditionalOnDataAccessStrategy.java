@@ -23,22 +23,29 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.engine.rest.condition.annotation;
+package cn.herodotus.engine.web.core.condition;
 
-import cn.herodotus.engine.rest.condition.definition.LocalDataAccessCondition;
+import cn.herodotus.engine.core.foundation.enums.DataAccessStrategy;
 import org.springframework.context.annotation.Conditional;
 
 import java.lang.annotation.*;
 
 /**
- * <p>Description: 本地数据访问策略条件注解 </p>
+ * <p>Description: {@link Conditional @Conditional} 当指定的系统核心数据访问策略属性配置时条件匹配</p>
  *
  * @author : gengwei.zheng
- * @date : 2021/8/6 21:28
+ * @date : 2024/12/9 22:42
  */
-@Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE, ElementType.METHOD})
+@Retention(RetentionPolicy.RUNTIME)
 @Documented
-@Conditional(LocalDataAccessCondition.class)
-public @interface ConditionalOnLocalDataAccess {
+@Conditional(OnDataAccessStrategyCondition.class)
+public @interface ConditionalOnDataAccessStrategy {
+
+    /**
+     * {@link DataAccessStrategy} 属性必须配置.
+     *
+     * @return 预期的算法
+     */
+    DataAccessStrategy value();
 }

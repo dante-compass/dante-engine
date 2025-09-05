@@ -34,7 +34,7 @@ import cn.herodotus.engine.oauth2.management.dto.Session;
 import cn.herodotus.engine.oauth2.management.dto.SessionCreate;
 import cn.herodotus.engine.oauth2.management.dto.SessionExchange;
 import cn.herodotus.engine.oauth2.management.service.InterfaceSecurityService;
-import cn.herodotus.engine.rest.core.annotation.Crypto;
+import cn.herodotus.engine.web.core.annotation.Crypto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;

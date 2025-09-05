@@ -23,44 +23,36 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.engine.rest.core.validation;
+package cn.herodotus.engine.web.core.annotation;
 
-import cn.herodotus.engine.rest.core.annotation.EnumeratedValue;
-import jakarta.validation.ConstraintValidator;
-import jakarta.validation.ConstraintValidatorContext;
+import java.lang.annotation.*;
+import java.time.Duration;
 
 /**
- * <p>Description: 枚举值校验逻辑 </p>
+ * <p>Description: 接口防刷注解 </p>
  *
  * @author : gengwei.zheng
- * @date : 2022/6/13 15:58
+ * @date : 2021/8/25 21:45
  */
-public class EnumeratedValueValidator implements ConstraintValidator<EnumeratedValue, Object> {
+@Retention(RetentionPolicy.RUNTIME)
+@Target({ElementType.METHOD})
+@Documented
+public @interface AccessLimited {
 
-    private String[] names;
-    private int[] ordinals;
+    /**
+     * 单位时间内同一个接口可以访问的次数
+     *
+     * @return int
+     */
+    int maxTimes() default 0;
 
-    @Override
-    public void initialize(EnumeratedValue constraintAnnotation) {
-        names = constraintAnnotation.names();
-        ordinals = constraintAnnotation.ordinals();
-    }
-
-    @Override
-    public boolean isValid(Object value, ConstraintValidatorContext constraintValidatorContext) {
-        if (value instanceof String) {
-            for (String name : names) {
-                if (name.equals(value)) {
-                    return true;
-                }
-            }
-        } else if (value instanceof Integer) {
-            for (int ordinal : ordinals) {
-                if (ordinal == (Integer) value) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
+    /**
+     * 持续时间，即在多长时间内，限制访问多少次。具体单位根据TimeUnit的设置而定。
+     * <p>
+     * 使用Duration格式{@link Duration}
+     * <p>
+     * 默认为：0，即不设置该属性。那么就使用StampProperies中的配置进行设置。
+     * 如果设置了该值，就以该值进行设置。
+     */
+    String duration() default "";
 }

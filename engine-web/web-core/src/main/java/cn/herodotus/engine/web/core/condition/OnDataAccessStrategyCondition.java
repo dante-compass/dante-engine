@@ -23,22 +23,25 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.engine.rest.condition.annotation;
+package cn.herodotus.engine.web.core.condition;
 
-import cn.herodotus.engine.rest.condition.definition.DistributedArchitectureCondition;
-import org.springframework.context.annotation.Conditional;
+import cn.herodotus.engine.core.foundation.condition.AbstractEnumSpringBootCondition;
+import cn.herodotus.engine.core.foundation.enums.DataAccessStrategy;
+import org.springframework.context.annotation.Condition;
 
-import java.lang.annotation.*;
+import java.lang.annotation.Annotation;
 
 /**
- * <p>Description: 分布式架构模式条件注解 </p>
+ * <p>Description: {@link Condition} 用于检查所需的 {@link DataAccessStrategy}. </p>
  *
  * @author : gengwei.zheng
- * @date : 2022/1/10 14:54
+ * @date : 2024/12/9 22:40
  */
-@Retention(RetentionPolicy.RUNTIME)
-@Target({ElementType.TYPE, ElementType.METHOD})
-@Documented
-@Conditional(DistributedArchitectureCondition.class)
-public @interface ConditionalOnDistributedArchitecture {
+class OnDataAccessStrategyCondition extends AbstractEnumSpringBootCondition<DataAccessStrategy> {
+
+    @Override
+    protected Class<? extends Annotation> getAnnotationClass() {
+        return ConditionalOnDataAccessStrategy.class;
+    }
+
 }

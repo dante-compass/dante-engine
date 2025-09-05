@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.rest.service.configuration;
 
-import cn.herodotus.engine.rest.service.annotation.ConditionalOnSwaggerEnabled;
+import cn.herodotus.engine.web.core.condition.ConditionalOnSwagger;
 import cn.herodotus.engine.core.foundation.context.ServiceContextHolder;
 import cn.herodotus.engine.core.definition.constant.BaseConstants;
 import cn.herodotus.engine.rest.condition.properties.SwaggerProperties;
@@ -53,7 +53,7 @@ import org.springframework.context.annotation.Configuration;
  * @date : 2021/6/13 13:40
  */
 @Configuration(proxyBeanMethods = false)
-@ConditionalOnSwaggerEnabled
+@ConditionalOnSwagger
 @EnableConfigurationProperties(SwaggerProperties.class)
 @SecuritySchemes({
         @SecurityScheme(name = BaseConstants.OPEN_API_SECURITY_SCHEME_BEARER_NAME, type = SecuritySchemeType.OAUTH2, bearerFormat = "JWT", scheme = "bearer",

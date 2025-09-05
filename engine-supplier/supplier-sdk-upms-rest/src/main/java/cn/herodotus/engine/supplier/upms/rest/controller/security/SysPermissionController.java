@@ -27,7 +27,7 @@ package cn.herodotus.engine.supplier.upms.rest.controller.security;
 
 import cn.herodotus.engine.core.definition.domain.Result;
 import cn.herodotus.engine.data.core.service.WriteableService;
-import cn.herodotus.engine.rest.core.annotation.AccessLimited;
+import cn.herodotus.engine.web.core.annotation.AccessLimited;
 import cn.herodotus.engine.rest.core.controller.BaseWriteableRestController;
 import cn.herodotus.engine.supplier.upms.logic.entity.security.SysPermission;
 import cn.herodotus.engine.supplier.upms.logic.service.security.SysPermissionService;

@@ -23,26 +23,46 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.engine.rest.condition.constants;
+package cn.herodotus.engine.web.core.annotation;
 
-import cn.herodotus.engine.core.definition.constant.BaseConstants;
+import cn.herodotus.engine.web.core.validation.EnumeratedValueValidator;
+import jakarta.validation.Constraint;
+import jakarta.validation.Payload;
+
+import java.lang.annotation.*;
+
 
 /**
- * <p>Description: Rest 模块常量 </p>
+ * <p>Description: 枚举值校验注解 </p>
  *
  * @author : gengwei.zheng
- * @date : 2022/1/19 23:13
+ * @date : 2022/6/13 15:58
  */
-public interface RestConstants extends BaseConstants {
+@Target({ElementType.METHOD, ElementType.FIELD, ElementType.ANNOTATION_TYPE, ElementType.CONSTRUCTOR, ElementType.PARAMETER, ElementType.TYPE_USE})
+@Retention(RetentionPolicy.RUNTIME)
+@Repeatable(EnumeratedValue.List.class)
+@Documented
+@Constraint(validatedBy = {EnumeratedValueValidator.class})
+public @interface EnumeratedValue {
 
-    String PROPERTY_REST_SCAN = PROPERTY_PREFIX_REST + ".scan";
-    String ITEM_PLATFORM_DATA_ACCESS_STRATEGY = PROPERTY_PREFIX_PLATFORM + ".data-access-strategy";
-    String ITEM_PLATFORM_ARCHITECTURE = PROPERTY_PREFIX_PLATFORM + ".architecture";
+    // 默认错误消息
+    String message() default "必须为指定值";
 
-    String ITEM_SCAN_ENABLED = PROPERTY_REST_SCAN + PROPERTY_ENABLED;
-    String ITEM_PROTECT_CRYPTO_STRATEGY = PROPERTY_PREFIX_CRYPTO + ".crypto-strategy";
+    String[] names() default {};
 
-    String CACHE_NAME_TOKEN_IDEMPOTENT = CACHE_TOKEN_BASE_PREFIX + "idempotent:";
-    String CACHE_NAME_TOKEN_ACCESS_LIMITED = CACHE_TOKEN_BASE_PREFIX + "access_limited:";
-    String CACHE_NAME_TOKEN_SECURE_KEY = CACHE_TOKEN_BASE_PREFIX + "secure_key:";
+    int[] ordinals() default {};
+
+    // 分组
+    Class<?>[] groups() default {};
+
+    // 负载
+    Class<? extends Payload>[] payload() default {};
+
+    // 指定多个时使用
+    @Target({ElementType.METHOD, ElementType.FIELD, ElementType.ANNOTATION_TYPE, ElementType.CONSTRUCTOR, ElementType.PARAMETER, ElementType.TYPE_USE})
+    @Retention(RetentionPolicy.RUNTIME)
+    @Documented
+    @interface List {
+        EnumeratedValue[] value();
+    }
 }

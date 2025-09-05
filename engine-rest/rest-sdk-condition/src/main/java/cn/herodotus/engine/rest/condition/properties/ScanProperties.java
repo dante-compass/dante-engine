@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.rest.condition.properties;
 
-import cn.herodotus.engine.rest.condition.constants.RestConstants;
+import cn.herodotus.engine.web.core.constant.WebConstants;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
@@ -39,7 +39,7 @@ import java.util.stream.Stream;
  * @author : gengwei.zheng
  * @date : 2022/1/16 18:58
  */
-@ConfigurationProperties(prefix = RestConstants.PROPERTY_REST_SCAN)
+@ConfigurationProperties(prefix = WebConstants.PROPERTY_REST_SCAN)
 public class ScanProperties {
 
     /**

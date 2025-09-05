@@ -23,22 +23,19 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.engine.rest.condition.annotation;
-
-import cn.herodotus.engine.rest.condition.definition.MonocoqueArchitectureCondition;
-import org.springframework.context.annotation.Conditional;
+package cn.herodotus.engine.core.definition.annotation;
 
 import java.lang.annotation.*;
 
 /**
- * <p>Description: 单体架构模式条件注解 </p>
+ * <p>Description: Feign 内部调用标记注解 </p>
  *
  * @author : gengwei.zheng
- * @date : 2022/1/9 10:42
+ * @date : 2022/5/31 12:10
  */
+@Target({ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ElementType.TYPE, ElementType.METHOD})
 @Documented
-@Conditional(MonocoqueArchitectureCondition.class)
-public @interface ConditionalOnMonocoqueArchitecture {
+public @interface Inner {
+
 }

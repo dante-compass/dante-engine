@@ -28,7 +28,7 @@ package cn.herodotus.engine.rest.protect.crypto.processor;
 import cn.herodotus.engine.core.definition.domain.SecretKey;
 import cn.herodotus.engine.cache.core.exception.StampHasExpiredException;
 import cn.herodotus.engine.cache.jetcache.stamp.AbstractStampManager;
-import cn.herodotus.engine.rest.condition.constants.RestConstants;
+import cn.herodotus.engine.web.core.constant.WebConstants;
 import cn.herodotus.engine.rest.core.definition.crypto.AsymmetricCryptoProcessor;
 import cn.herodotus.engine.rest.core.definition.crypto.SymmetricCryptoProcessor;
 import cn.herodotus.engine.rest.core.exception.SessionInvalidException;
@@ -55,7 +55,7 @@ public class HttpCryptoProcessor extends AbstractStampManager<String, SecretKey>
     private final SymmetricCryptoProcessor symmetricCryptoProcessor;
 
     public HttpCryptoProcessor(AsymmetricCryptoProcessor asymmetricCryptoProcessor, SymmetricCryptoProcessor symmetricCryptoProcessor) {
-        super(RestConstants.CACHE_NAME_TOKEN_SECURE_KEY);
+        super(WebConstants.CACHE_NAME_TOKEN_SECURE_KEY);
         this.asymmetricCryptoProcessor = asymmetricCryptoProcessor;
         this.symmetricCryptoProcessor = symmetricCryptoProcessor;
     }

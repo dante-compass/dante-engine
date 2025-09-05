@@ -23,31 +23,44 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.engine.rest.service.conditon;
+package cn.herodotus.engine.web.core.validation;
 
-import cn.herodotus.engine.core.foundation.context.PropertyResolver;
-import cn.herodotus.engine.core.definition.constant.BaseConstants;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.context.annotation.Condition;
-import org.springframework.context.annotation.ConditionContext;
-import org.springframework.core.type.AnnotatedTypeMetadata;
+import cn.herodotus.engine.web.core.annotation.EnumeratedValue;
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
 
 /**
- * <p>Description: Swagger 开启条件 </p>
+ * <p>Description: 枚举值校验逻辑 </p>
  *
  * @author : gengwei.zheng
- * @date : 2022/3/17 14:34
+ * @date : 2022/6/13 15:58
  */
-public class SwaggerEnabledCondition implements Condition {
+public class EnumeratedValueValidator implements ConstraintValidator<EnumeratedValue, Object> {
 
-    private static final Logger log = LoggerFactory.getLogger(SwaggerEnabledCondition.class);
+    private String[] names;
+    private int[] ordinals;
 
-    @SuppressWarnings("NullableProblems")
     @Override
-    public boolean matches(ConditionContext conditionContext, AnnotatedTypeMetadata metadata) {
-        boolean result = PropertyResolver.getBoolean(conditionContext, BaseConstants.ITEM_SWAGGER_ENABLED);
-        log.debug("[Herodotus] |- Condition [Swagger Enabled] value is [{}]", result);
-        return result;
+    public void initialize(EnumeratedValue constraintAnnotation) {
+        names = constraintAnnotation.names();
+        ordinals = constraintAnnotation.ordinals();
+    }
+
+    @Override
+    public boolean isValid(Object value, ConstraintValidatorContext constraintValidatorContext) {
+        if (value instanceof String) {
+            for (String name : names) {
+                if (name.equals(value)) {
+                    return true;
+                }
+            }
+        } else if (value instanceof Integer) {
+            for (int ordinal : ordinals) {
+                if (ordinal == (Integer) value) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }

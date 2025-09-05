@@ -27,7 +27,7 @@ package cn.herodotus.engine.supplier.message.controller;
 
 import cn.herodotus.engine.core.definition.domain.Result;
 import cn.herodotus.engine.data.core.service.WriteableService;
-import cn.herodotus.engine.rest.core.annotation.Idempotent;
+import cn.herodotus.engine.web.core.annotation.Idempotent;
 import cn.herodotus.engine.rest.core.controller.BaseWriteableRestController;
 import cn.herodotus.engine.supplier.message.entity.DialogueDetail;
 import cn.herodotus.engine.supplier.message.service.DialogueDetailService;
