@@ -41,12 +41,12 @@
 
     <dependencies>
         <dependency>
-            <groupId>cn.herodotus.engine</groupId>
+            <groupId>cn.herodotus.stirrup</groupId>
             <artifactId>core-identity</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>cn.herodotus.engine</groupId>
+            <groupId>cn.herodotus.stirrup</groupId>
             <artifactId>web-core</artifactId>
         </dependency>
 
@@ -62,8 +62,8 @@
         </dependency>
 
         <dependency>
-            <groupId>cn.herodotus.engine</groupId>
-            <artifactId>cache-sdk-jetcache</artifactId>
+            <groupId>cn.herodotus.stirrup</groupId>
+            <artifactId>cache-module-jetcache</artifactId>
         </dependency>
 
         <dependency>

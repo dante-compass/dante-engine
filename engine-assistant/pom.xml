@@ -36,6 +36,7 @@
 
     <artifactId>engine-assistant</artifactId>
     <name>engine-assistant</name>
+
     <packaging>pom</packaging>
 
     <description>Dante Cloud 微服务基座辅助功能模块分组</description>
