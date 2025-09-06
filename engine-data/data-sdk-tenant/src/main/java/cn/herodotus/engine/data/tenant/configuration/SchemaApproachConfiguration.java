@@ -50,7 +50,7 @@ public class SchemaApproachConfiguration {
 
     @PostConstruct
     public void postConstruct() {
-        log.debug("[Herodotus] |- SDK [Schema Approach] Auto Configure.");
+        log.debug("[Herodotus] |- Module [Schema Approach] Auto Configure.");
     }
 
     @Bean

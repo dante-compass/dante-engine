@@ -46,7 +46,7 @@ public class DiscriminatorApproachConfiguration {
 
     @PostConstruct
     public void postConstruct() {
-        log.debug("[Herodotus] |- SDK [Discriminator Approach] Auto Configure.");
+        log.debug("[Herodotus] |- Module [Discriminator Approach] Auto Configure.");
     }
 
     @Bean

@@ -60,7 +60,7 @@ public class HttpCryptoConfiguration {
 
     @PostConstruct
     public void postConstruct() {
-        log.debug("[Herodotus] |- SDK [Protect Http Crypto] Auto Configure.");
+        log.debug("[Herodotus] |- Module [Protect Http Crypto] Auto Configure.");
     }
 
     @Bean

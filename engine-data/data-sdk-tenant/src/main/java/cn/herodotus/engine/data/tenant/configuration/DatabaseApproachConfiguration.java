@@ -78,7 +78,7 @@ public class DatabaseApproachConfiguration {
 
     @PostConstruct
     public void postConstruct() {
-        log.debug("[Herodotus] |- SDK [Database Approach] Auto Configure.");
+        log.debug("[Herodotus] |- Module [Database Approach] Auto Configure.");
     }
 
     @Bean

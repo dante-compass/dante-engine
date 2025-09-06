@@ -54,7 +54,7 @@ public class RestScanConfiguration {
 
     @PostConstruct
     public void postConstruct() {
-        log.debug("[Herodotus] |- SDK [Rest Scan] Auto Configure.");
+        log.debug("[Herodotus] |- Module [Rest Scan] Auto Configure.");
     }
 
     @Bean

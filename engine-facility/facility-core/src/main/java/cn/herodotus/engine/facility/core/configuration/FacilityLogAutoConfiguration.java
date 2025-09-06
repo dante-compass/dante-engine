@@ -61,7 +61,7 @@ public class FacilityLogAutoConfiguration {
 
     @PostConstruct
     public void postConstruct() {
-        log.debug("[Herodotus] |- SDK [Facility Log] Auto Configure.");
+        log.debug("[Herodotus] |- Module [Facility Log] Auto Configure.");
     }
 
 

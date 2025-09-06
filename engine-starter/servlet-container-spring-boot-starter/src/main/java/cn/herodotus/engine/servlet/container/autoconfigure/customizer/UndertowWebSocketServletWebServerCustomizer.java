@@ -45,7 +45,7 @@ public class UndertowWebSocketServletWebServerCustomizer implements WebServerFac
 
     @PostConstruct
     public void postConstruct() {
-        log.debug("[Herodotus] |- SDK [Undertow WebServer Factory Customizer] Auto Configure.");
+        log.debug("[Herodotus] |- Module [Undertow WebServer Factory Customizer] Auto Configure.");
     }
 
     @Override

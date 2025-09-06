@@ -60,7 +60,7 @@ public class CacheRedisConfiguration {
 
     @PostConstruct
     public void postConstruct() {
-        log.debug("[Herodotus] |- SDK [Cache Redis] Auto Configure.");
+        log.debug("[Herodotus] |- Module [Cache Redis] Auto Configure.");
     }
 
     private RedisSerializer<String> keySerializer() {
@@ -149,7 +149,7 @@ public class CacheRedisConfiguration {
 
         @PostConstruct
         public void postConstruct() {
-            log.debug("[Herodotus] |- SDK [Cache Redis Utils] Auto Configure.");
+            log.debug("[Herodotus] |- Module [Cache Redis Utils] Auto Configure.");
         }
     }
 }

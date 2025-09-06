@@ -69,7 +69,7 @@ public class OAuth2AuthorizationConfiguration {
 
     @PostConstruct
     public void postConstruct() {
-        log.debug("[Herodotus] |- SDK [OAuth2 Authorization] Auto Configure.");
+        log.debug("[Herodotus] |- Module [OAuth2 Authorization] Auto Configure.");
     }
 
     @Bean

@@ -83,7 +83,7 @@ public class MessageMqttConfiguration {
 
     @PostConstruct
     public void postConstruct() {
-        log.debug("[Herodotus] |- SDK [Message Mqtt] Auto Configure.");
+        log.debug("[Herodotus] |- Module [Message Mqtt] Auto Configure.");
     }
 
     @Bean(name = HerodotusChannels.MQTT_DEFAULT_INBOUND_CHANNEL)

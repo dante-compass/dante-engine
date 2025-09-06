@@ -67,7 +67,7 @@ public class OAuth2DataJpaConfiguration {
 
     @PostConstruct
     public void postConstruct() {
-        log.debug("[Herodotus] |- SDK [OAuth2 Data JPA] Auto Configure.");
+        log.debug("[Herodotus] |- Module [OAuth2 Data JPA] Auto Configure.");
     }
 
     @Bean

@@ -57,6 +57,6 @@ public class SupplierMessageConfiguration {
 
     @PostConstruct
     public void postConstruct() {
-        log.debug("[Herodotus] |- SDK [Supplier Message] Auto Configure.");
+        log.debug("[Herodotus] |- Module [Supplier Message] Auto Configure.");
     }
 }

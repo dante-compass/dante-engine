@@ -56,7 +56,7 @@ public class CacheCaffeineConfiguration {
 
     @PostConstruct
     public void postConstruct() {
-        log.debug("[Herodotus] |- SDK [Cache Caffeine] Auto Configure.");
+        log.debug("[Herodotus] |- Module [Cache Caffeine] Auto Configure.");
     }
 
     @Bean
