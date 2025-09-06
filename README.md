@@ -165,11 +165,10 @@ dante-engine
 ├    ├── logic-module-message -- 系统消息业务逻辑模块
 ├    └── logic-module-upms -- UPMS 业务逻辑模块
 ├── engine-message -- 消息模块
-├    ├── message-core -- 消息共性通用代码
-├    ├── message-kafka-spring-boot-starter -- 基础 Kafka 配置 Starter
-├    ├── message-rabbitmaq-spring-boot-starter -- 基础 RabbitMQ 配置 Starter
-├    ├── message-sdk-websocket -- 基于 WebSocket 的消息代码模块
-├    └── message-spring-boot-starter -- Message  模块统一 Starter
+├    ├── message-autoconfigure -- 消息自动配置模块
+├    ├── message-core -- 消息通用代码模块
+├    ├── message-module-emqx -- emqx 功能封装模块
+├    └── message-module-websocket-servlet -- 基于 Servlet 环境下的 Websocket 功能封装模块
 ├── engine-oauth2 -- OAuth2 认证模块
 ├    ├── oauth2-authorization-server-autoconfigure -- OAuth2 授权服务器基础内容自动配置模块
 ├    ├── oauth2-core -- OAuth2 共性通用代码模块

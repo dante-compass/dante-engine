@@ -37,6 +37,8 @@
     <artifactId>message-module-emqx</artifactId>
     <name>message-module-emqx</name>
 
+    <description>Dante Cloud 微服务基座组件库 Emqx 功能封装模块</description>
+
     <dependencies>
         <dependency>
             <groupId>cn.herodotus.engine</groupId>

@@ -37,6 +37,8 @@
     <artifactId>message-autoconfigure</artifactId>
     <name>message-autoconfigure</name>
 
+    <description>Dante Cloud 微服务基座组件库消息自动配置模块</description>
+
     <dependencies>
         <dependency>
             <groupId>cn.herodotus.engine</groupId>
