@@ -35,10 +35,10 @@
         <version>3.5.5.2</version>
     </parent>
 
-    <description>基于 Spring Authorization Server 的 Dante Cloud Caffeine 组件相关代码模块</description>
-
     <artifactId>cache-sdk-caffeine</artifactId>
     <name>cache-sdk-caffeine</name>
+
+    <description>Dante Cloud 微服务基座组件库 Caffeine 缓存功能封装模块</description>
 
     <dependencies>
         <dependency>

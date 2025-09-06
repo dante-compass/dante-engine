@@ -143,13 +143,12 @@ dante-engine
 ├── engine-assistant -- 辅助功能模块
 ├    ├── assistant-access -- 第三方登录接入辅助功能模块
 ├    └── assistant-captcha -- 验证码辅助功能模块
-├── engine-cache -- 缓存模块
-├    ├── cache-core -- 缓存通用代码
-├    ├── cache-sdk-caffeine -- Caffeine 缓存配置相关代码模块
-├    ├── cache-sdk-jetcache -- JetCache 相关代码模块
-├    ├── cache-sdk-redis -- Redis 缓存配置相关代码模块
-├    ├── cache-sdk-redisson -- Redisson 相关代码模块
-├    └── cache-spring-boot-starter -- Cache  模块统一 Starter
+├── engine-cache -- 缓存功能模块
+├    ├── cache-core -- 缓存通用代码模块
+├    ├── cache-module-caffeine -- Caffeine 缓存功能封装模块
+├    ├── cache-module-jetcache -- JetCache 缓存功能封装模块
+├    ├── cache-module-redis -- Redis 缓存功能封装模块
+├    └── cache-module-redisson -- Redisson 缓存功能封装模块
 ├── engine-core -- 基础核心模块
 ├    ├── core-autoconfigure -- 核心自动配置模块
 ├    ├── core-definition -- 核心定义模块

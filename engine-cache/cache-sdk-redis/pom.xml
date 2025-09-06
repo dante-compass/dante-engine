@@ -39,6 +39,8 @@
     <artifactId>cache-sdk-redis</artifactId>
     <name>cache-sdk-redis</name>
 
+    <description>Dante Cloud 微服务基座组件库 Redis 缓存功能封装模块</description>
+
     <dependencies>
         <dependency>
             <groupId>cn.herodotus.engine</groupId>
