@@ -160,11 +160,10 @@ dante-engine
 ├    ├── data-core-mongodb -- 以 MongoDB 作为数据访问层的通用代码模块
 ├    ├── data-module-hibernate -- Hibernate 扩展模块
 ├    └── data-module-tenant -- 基于 JPA 的多租户扩展配置模块
-├── engine-facility -- 微服务基础设施模块
-├    ├── facility-alibaba-spring-boot-starter -- 面向 Spring Cloud Alibaba 的微服务基础设施适配模块
-├    ├── facility-core -- 基础设施共性通用代码
-├    ├── facility-gateway-spring-boot-starter -- Alibaba Sentinel 在 Gateway 环境下基础设施适配模块
-├    └── facility-tencent-spring-boot-starter -- 面向 Spring Cloud Tencent 的微服务基础设施适配模块
+├── engine-logic -- 系统内置功能业务逻辑模块
+├    ├── logic-module-identity -- 身份认证功能业务逻辑模块
+├    ├── logic-module-message -- 系统消息业务逻辑模块
+├    └── logic-module-upms -- UPMS 业务逻辑模块
 ├── engine-message -- 消息模块
 ├    ├── message-core -- 消息共性通用代码
 ├    ├── message-kafka-spring-boot-starter -- 基础 Kafka 配置 Starter

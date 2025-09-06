@@ -35,11 +35,9 @@
     </parent>
 
     <artifactId>logic-module-identity</artifactId>
+    <name>logic-module-identity</name>
 
-    <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
+    <description>Dante Cloud 微服务基座组件库身份认证功能业务逻辑模块</description>
+
 
 </project>
