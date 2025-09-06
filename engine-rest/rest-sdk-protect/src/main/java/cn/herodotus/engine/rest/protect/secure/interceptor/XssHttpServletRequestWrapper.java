@@ -30,8 +30,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletRequestWrapper;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.Arrays;
 import java.util.List;
@@ -53,8 +51,6 @@ import java.util.stream.Collectors;
  */
 public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper {
 
-    private static final Logger log = LoggerFactory.getLogger(XssHttpServletRequestWrapper.class);
-
     public XssHttpServletRequestWrapper(HttpServletRequest request) {
         super(request);
     }
@@ -66,11 +62,11 @@ public class XssHttpServletRequestWrapper extends HttpServletRequestWrapper {
      * @return 清洗后的数据
      */
     private String cleaning(String value) {
-        return XssUtils.cleaning(value);
+        return XssUtils.process(value);
     }
 
     private String[] cleaning(String[] parameters) {
-        List<String> cleanParameters = Arrays.stream(parameters).map(XssUtils::cleaning).collect(Collectors.toList());
+        List<String> cleanParameters = Arrays.stream(parameters).map(XssUtils::process).toList();
         String[] results = new String[cleanParameters.size()];
         return cleanParameters.toArray(results);
     }

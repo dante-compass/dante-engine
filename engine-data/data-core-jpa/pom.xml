@@ -39,10 +39,60 @@
 
     <description>Dante Cloud 微服务基座组件库以 JPA 作为数据访问层的通用代码模块</description>
 
-    <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>cn.herodotus.engine</groupId>
+            <artifactId>data-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.herodotus.engine</groupId>
+            <artifactId>data-module-hibernate</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>io.github.openfeign.querydsl</groupId>
+            <artifactId>querydsl-jpa</artifactId>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <annotationProcessorPaths>
+                        <!-- Explicit opt-in required via annotationProcessors or
+                                annotationProcessorPaths on Java 22+, see https://bugs.openjdk.org/browse/JDK-8306819 -->
+                        <annotationProcessorPath>
+                            <groupId>io.github.openfeign.querydsl</groupId>
+                            <artifactId>querydsl-apt</artifactId>
+                            <version>${openfeign-querydsl.version}</version>
+                            <classifier>jpa</classifier>
+                        </annotationProcessorPath>
+                        <annotationProcessorPath>
+                            <groupId>jakarta.persistence</groupId>
+                            <artifactId>jakarta.persistence-api</artifactId>
+                        </annotationProcessorPath>
+                    </annotationProcessorPaths>
+                    <!-- Recommended: Some IDE's might require this configuration to include generated sources for IDE usage -->
+                    <generatedTestSourcesDirectory>target/generated-test-sources</generatedTestSourcesDirectory>
+                    <generatedSourcesDirectory>target/generated-sources</generatedSourcesDirectory>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

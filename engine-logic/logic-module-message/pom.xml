@@ -39,4 +39,16 @@
 
     <description>Dante Cloud 微服务基座组件库系统消息业务逻辑模块</description>
 
+    <dependencies>
+        <dependency>
+            <groupId>cn.herodotus.engine</groupId>
+            <artifactId>message-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.herodotus.engine</groupId>
+            <artifactId>data-core-jpa</artifactId>
+        </dependency>
+    </dependencies>
+
 </project>

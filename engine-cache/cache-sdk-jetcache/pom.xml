@@ -48,12 +48,12 @@
 
         <dependency>
             <groupId>cn.herodotus.engine</groupId>
-            <artifactId>cache-module-redis</artifactId>
+            <artifactId>cache-sdk-redis</artifactId>
         </dependency>
 
         <dependency>
             <groupId>cn.herodotus.engine</groupId>
-            <artifactId>cache-module-caffeine</artifactId>
+            <artifactId>cache-sdk-caffeine</artifactId>
         </dependency>
 
         <dependency>
