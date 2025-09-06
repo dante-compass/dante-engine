@@ -59,11 +59,6 @@
 
         <dependency>
             <groupId>cn.herodotus.engine</groupId>
-            <artifactId>access-core</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>cn.herodotus.engine</groupId>
             <artifactId>captcha-core</artifactId>
         </dependency>
 

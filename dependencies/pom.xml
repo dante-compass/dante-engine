@@ -448,38 +448,6 @@
 
             <dependency>
                 <groupId>cn.herodotus.engine</groupId>
-                <artifactId>access-core</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.herodotus.engine</groupId>
-                <artifactId>access-sdk-justauth</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.herodotus.engine</groupId>
-                <artifactId>access-sdk-sms</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.herodotus.engine</groupId>
-                <artifactId>access-sdk-wxapp</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.herodotus.engine</groupId>
-                <artifactId>access-sdk-wxmpp</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.herodotus.engine</groupId>
-                <artifactId>access-sdk-all</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
-
-            <dependency>
-                <groupId>cn.herodotus.engine</groupId>
                 <artifactId>captcha-core</artifactId>
                 <version>${project.version}</version>
             </dependency>
@@ -622,16 +590,6 @@
             <dependency>
                 <groupId>cn.herodotus.engine</groupId>
                 <artifactId>rest-spring-boot-starter</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.herodotus.engine</groupId>
-                <artifactId>supplier-sdk-upms-logic</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.herodotus.engine</groupId>
-                <artifactId>supplier-sdk-upms-rest</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

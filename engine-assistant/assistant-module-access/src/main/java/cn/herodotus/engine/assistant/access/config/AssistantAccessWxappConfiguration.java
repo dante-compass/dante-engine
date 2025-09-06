@@ -25,61 +25,52 @@
 
 package cn.herodotus.engine.assistant.access.config;
 
-/**
- * <p>Description: TODO </p>
- *
- * @author : gengwei.zheng
- * @date : 2025/9/6 16:22
- */
-
-import cn.herodotus.engine.assistant.access.customizer.AccessErrorCodeMapperBuilderCustomizer;
-import cn.herodotus.engine.assistant.access.definition.AccessHandler;
-import cn.herodotus.engine.assistant.access.factory.AccessHandlerStrategyFactory;
-import cn.herodotus.engine.core.definition.function.ErrorCodeMapperBuilderCustomizer;
+import cn.herodotus.engine.assistant.access.condition.ConditionalOnWxapp;
+import cn.herodotus.engine.assistant.access.processor.WxappAccessHandler;
+import cn.herodotus.engine.assistant.access.processor.WxappProcessor;
+import cn.herodotus.engine.assistant.access.properties.WxappProperties;
+import cn.herodotus.engine.core.identity.enums.AccountCategory;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
-
-import java.util.Map;
 
 /**
- * <p>Description: Access 业务模块配置 </p>
+ * <p>Description: 微信小程序后配置 </p>
  *
  * @author : gengwei.zheng
- * @date : 2022/1/26 14:59
+ * @date : 2021/3/29 9:27
  */
 @Configuration(proxyBeanMethods = false)
-@Import({
-        AssistantAccessJustAuthConfiguration.class,
-        AssistantAccessSmsConfiguration.class,
-        AssistantAccessWxappConfiguration.class,
-        AssistantAccessWxmppConfiguration.class
-})
-public class AssistantAccessConfiguration {
+@ConditionalOnWxapp
+@EnableConfigurationProperties(WxappProperties.class)
+public class AssistantAccessWxappConfiguration {
 
-    private static final Logger log = LoggerFactory.getLogger(AssistantAccessConfiguration.class);
+    private static final Logger log = LoggerFactory.getLogger(AssistantAccessWxappConfiguration.class);
 
     @PostConstruct
     public void init() {
-        log.debug("[Herodotus] |- Module [Assistant Access] Configure.");
+        log.debug("[Herodotus] |- Module [Assistant Access Wxapp] Configure.");
     }
 
     @Bean
     @ConditionalOnMissingBean
-    public AccessHandlerStrategyFactory accessHandlerStrategyFactory(Map<String, AccessHandler> handlers) {
-        AccessHandlerStrategyFactory accessHandlerStrategyFactory = new AccessHandlerStrategyFactory(handlers);
-        log.trace("[Herodotus] |- Bean [Access Handler Strategy Factory] Configure.");
-        return accessHandlerStrategyFactory;
+    public WxappProcessor wxappProcessor(WxappProperties wxappProperties) {
+        WxappProcessor wxappProcessor = new WxappProcessor(wxappProperties);
+        log.trace("[Herodotus] |- Bean [Wxapp Processor] Configure.");
+        return wxappProcessor;
     }
 
-    @Bean
-    public ErrorCodeMapperBuilderCustomizer accessErrorCodeMapperBuilderCustomizer() {
-        AccessErrorCodeMapperBuilderCustomizer customizer = new AccessErrorCodeMapperBuilderCustomizer();
-        log.debug("[Herodotus] |- Strategy [Access ErrorCodeMapper Builder Customizer] Auto Configure.");
-        return customizer;
+    @Bean(AccountCategory.WECHAT_MINI_APP_HANDLER)
+    @ConditionalOnBean(WxappProcessor.class)
+    @ConditionalOnMissingBean
+    public WxappAccessHandler wxappAccessHandler(WxappProcessor wxappProcessor) {
+        WxappAccessHandler wxappAccessHandler = new WxappAccessHandler(wxappProcessor);
+        log.debug("[Herodotus] |- Bean [Wxapp Access Handler] Auto Configure.");
+        return wxappAccessHandler;
     }
 }

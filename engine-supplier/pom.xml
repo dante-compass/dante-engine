@@ -40,8 +40,6 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>supplier-sdk-upms-logic</module>
-        <module>supplier-sdk-upms-rest</module>
         <module>supplier-sdk-message</module>
     </modules>
 </project>
