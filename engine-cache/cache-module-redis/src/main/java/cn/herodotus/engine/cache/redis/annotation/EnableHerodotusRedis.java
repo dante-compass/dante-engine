@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.cache.redis.annotation;
 
-import cn.herodotus.engine.cache.redis.configuration.CacheRedisConfiguration;
+import cn.herodotus.engine.cache.redis.config.CacheRedisConfiguration;
 import org.springframework.context.annotation.Import;
 
 import java.lang.annotation.*;

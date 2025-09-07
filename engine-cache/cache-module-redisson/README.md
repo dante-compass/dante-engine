@@ -7,7 +7,7 @@
 ```xml
 <dependency>
   <groupId>cn.herodotus.engine</groupId>
-  <artifactId>cache-sdk-redisson</artifactId>
+  <artifactId>cache-module-redisson</artifactId>
 </dependency>
 ```
 

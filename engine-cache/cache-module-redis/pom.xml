@@ -36,8 +36,8 @@
         <version>3.5.5.2</version>
     </parent>
 
-    <artifactId>cache-sdk-redis</artifactId>
-    <name>cache-sdk-redis</name>
+    <artifactId>cache-module-redis</artifactId>
+    <name>cache-module-redis</name>
 
     <description>Dante Cloud 微服务基座组件库 Redis 缓存功能封装模块</description>
 

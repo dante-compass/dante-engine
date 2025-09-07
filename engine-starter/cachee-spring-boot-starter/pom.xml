@@ -28,26 +28,37 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <parent>
-        <artifactId>dante-engine</artifactId>
         <groupId>cn.herodotus.engine</groupId>
+        <artifactId>engine-starter</artifactId>
         <version>3.5.5.2</version>
     </parent>
 
-    <artifactId>engine-cache</artifactId>
-    <name>engine-cache</name>
-    <packaging>pom</packaging>
+    <artifactId>cachee-spring-boot-starter</artifactId>
+    <name>cachee-spring-boot-starter</name>
 
-    <description>Dante Cloud 微服务基座组件库缓存功能封装模块分组</description>
+    <description>Dante Cloud 微服务基座组件库缓存自动配置 Starter</description>
 
-    <modules>
-        <module>cache-core</module>
-        <module>cache-module-caffeine</module>
-        <module>cache-module-jetcache</module>
-        <module>cache-module-redisson</module>
-        <module>cache-module-redis</module>
-        <module>cache-spring-boot-starter</module>
-    </modules>
+    <dependencies>
+        <dependency>
+            <groupId>cn.herodotus.engine</groupId>
+            <artifactId>core-autoconfigure</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.herodotus.engine</groupId>
+            <artifactId>cache-module-redisson</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.herodotus.engine</groupId>
+            <artifactId>cache-module-jetcache</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-cache</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>

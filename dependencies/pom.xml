@@ -266,7 +266,7 @@
             </dependency>
             <dependency>
                 <groupId>cn.herodotus.engine</groupId>
-                <artifactId>cache-sdk-redis</artifactId>
+                <artifactId>cache-module-redis</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

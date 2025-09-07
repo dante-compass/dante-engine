@@ -36,7 +36,7 @@
     </parent>
 
     <artifactId>cache-module-jetcache</artifactId>
-    <name>cache-sdk-jetcache</name>
+    <name>cache-module-jetcache</name>
 
     <description>Dante Cloud 微服务基座组件库 JetCache 缓存功能封装模块</description>
 
@@ -48,7 +48,7 @@
 
         <dependency>
             <groupId>cn.herodotus.engine</groupId>
-            <artifactId>cache-sdk-redis</artifactId>
+            <artifactId>cache-module-redis</artifactId>
         </dependency>
 
         <dependency>

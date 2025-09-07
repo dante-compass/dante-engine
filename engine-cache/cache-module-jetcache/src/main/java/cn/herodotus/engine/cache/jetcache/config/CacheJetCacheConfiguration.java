@@ -30,7 +30,7 @@ import cn.herodotus.engine.cache.core.properties.CacheProperties;
 import cn.herodotus.engine.cache.jetcache.enhance.HerodotusCacheManager;
 import cn.herodotus.engine.cache.jetcache.enhance.JetCacheCreateCacheFactory;
 import cn.herodotus.engine.cache.jetcache.utils.JetCacheUtils;
-import cn.herodotus.engine.cache.redis.configuration.CacheRedisConfiguration;
+import cn.herodotus.engine.cache.redis.config.CacheRedisConfiguration;
 import com.alicp.jetcache.CacheManager;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;

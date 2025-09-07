@@ -50,6 +50,7 @@
         <module>servlet-container-spring-boot-starter</module>
         <module>servlet-message-spring-boot-starter</module>
         <module>webmvc-spring-boot-starter</module>
+        <module>cachee-spring-boot-starter</module>
     </modules>
 
 </project>

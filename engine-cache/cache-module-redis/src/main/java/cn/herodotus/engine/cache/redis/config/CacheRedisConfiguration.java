@@ -23,7 +23,7 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.engine.cache.redis.configuration;
+package cn.herodotus.engine.cache.redis.config;
 
 import cn.herodotus.engine.cache.core.properties.CacheProperties;
 import cn.herodotus.engine.cache.redis.enhance.HerodotusRedisCacheManager;

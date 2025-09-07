@@ -36,7 +36,7 @@
     </parent>
 
     <artifactId>cache-module-redisson</artifactId>
-    <name>cache-sdk-redisson</name>
+    <name>cache-module-redisson</name>
 
     <description>Dante Cloud 微服务基座组件库 Redisson 缓存功能封装模块</description>
 
