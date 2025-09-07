@@ -30,8 +30,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <artifactId>engine-captcha</artifactId>
         <groupId>cn.herodotus.engine</groupId>
+        <artifactId>engine-starter</artifactId>
         <version>3.5.5.2</version>
     </parent>
 
