@@ -38,21 +38,12 @@
     <artifactId>captcha-spring-boot-starter</artifactId>
     <name>captcha-spring-boot-starter</name>
 
-
     <description>基于 Spring Authorization Server 的 Dante Cloud 基础核心组件模块</description>
 
     <dependencies>
         <dependency>
             <groupId>cn.herodotus.engine</groupId>
-            <artifactId>captcha-sdk-behavior</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>cn.herodotus.engine</groupId>
-            <artifactId>captcha-sdk-graphic</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>cn.herodotus.engine</groupId>
-            <artifactId>captcha-sdk-hutool</artifactId>
+            <artifactId>assistant-module-captcha</artifactId>
         </dependency>
     </dependencies>
 

@@ -25,11 +25,146 @@
 
 package cn.herodotus.engine.assistant.captcha.config;
 
+import cn.herodotus.engine.assistant.captcha.properties.CaptchaProperties;
+import cn.herodotus.engine.assistant.captcha.provider.ResourceProvider;
+import cn.herodotus.engine.assistant.captcha.renderer.behavior.JigsawCaptchaRenderer;
+import cn.herodotus.engine.assistant.captcha.renderer.behavior.WordClickCaptchaRenderer;
+import cn.herodotus.engine.assistant.captcha.renderer.graphic.*;
+import cn.herodotus.engine.assistant.captcha.renderer.hutool.CircleCaptchaRenderer;
+import cn.herodotus.engine.assistant.captcha.renderer.hutool.GifCaptchaRenderer;
+import cn.herodotus.engine.assistant.captcha.renderer.hutool.LineCaptchaRenderer;
+import cn.herodotus.engine.assistant.captcha.renderer.hutool.ShearCaptchaRenderer;
+import cn.herodotus.engine.core.foundation.enums.CaptchaCategory;
+import jakarta.annotation.PostConstruct;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
 /**
- * <p>Description: TODO </p>
+ * <p>Description: 辅助模块 Captcha 配置 </p>
  *
  * @author : gengwei.zheng
- * @date : 2025/9/6 16:24
+ * @date : 2024/7/21 10:02
  */
+@Configuration(proxyBeanMethods = false)
+@EnableConfigurationProperties(CaptchaProperties.class)
 public class AssistantCaptchaConfiguration {
+
+    private static final Logger log = LoggerFactory.getLogger(AssistantCaptchaConfiguration.class);
+
+    @PostConstruct
+    public void init() {
+        log.debug("[Herodotus] |- Module [Assistant Captcha] Configure.");
+    }
+
+    @Bean
+    @ConditionalOnMissingBean
+    public ResourceProvider resourceProvider(CaptchaProperties captchaProperties) {
+        ResourceProvider resourceProvider = new ResourceProvider(captchaProperties);
+        log.trace("[Herodotus] |- Bean [Resource Provider] Configure.");
+        return resourceProvider;
+    }
+
+    @Configuration(proxyBeanMethods = false)
+    static class BehaviorCaptchaConfiguration {
+
+        @Bean(CaptchaCategory.JIGSAW_CAPTCHA)
+        public JigsawCaptchaRenderer jigsawCaptchaRenderer(ResourceProvider resourceProvider) {
+            JigsawCaptchaRenderer jigsawCaptchaRenderer = new JigsawCaptchaRenderer();
+            jigsawCaptchaRenderer.setResourceProvider(resourceProvider);
+            log.trace("[Herodotus] |- Bean [Jigsaw Captcha Renderer] Configure.");
+            return jigsawCaptchaRenderer;
+        }
+
+        @Bean(CaptchaCategory.WORD_CLICK_CAPTCHA)
+        public WordClickCaptchaRenderer wordClickCaptchaRenderer(ResourceProvider resourceProvider) {
+            WordClickCaptchaRenderer wordClickCaptchaRenderer = new WordClickCaptchaRenderer();
+            wordClickCaptchaRenderer.setResourceProvider(resourceProvider);
+            log.trace("[Herodotus] |- Bean [Word Click Captcha Renderer] Configure.");
+            return wordClickCaptchaRenderer;
+        }
+    }
+
+    @Configuration(proxyBeanMethods = false)
+    static class GraphicCaptchaConfiguration {
+
+        @Bean(CaptchaCategory.ARITHMETIC_CAPTCHA)
+        public ArithmeticCaptchaRenderer arithmeticCaptchaRenderer(ResourceProvider resourceProvider) {
+            ArithmeticCaptchaRenderer arithmeticCaptchaRenderer = new ArithmeticCaptchaRenderer();
+            arithmeticCaptchaRenderer.setResourceProvider(resourceProvider);
+            log.trace("[Herodotus] |- Bean [Arithmetic Captcha Renderer] Configure.");
+            return arithmeticCaptchaRenderer;
+        }
+
+        @Bean(CaptchaCategory.CHINESE_CAPTCHA)
+        public ChineseCaptchaRenderer chineseCaptchaRenderer(ResourceProvider resourceProvider) {
+            ChineseCaptchaRenderer chineseCaptchaRenderer = new ChineseCaptchaRenderer();
+            chineseCaptchaRenderer.setResourceProvider(resourceProvider);
+            log.trace("[Herodotus] |- Bean [Chinese Captcha Renderer] Configure.");
+            return chineseCaptchaRenderer;
+        }
+
+        @Bean(CaptchaCategory.CHINESE_GIF_CAPTCHA)
+        public ChineseGifCaptchaRenderer chineseGifCaptchaRenderer(ResourceProvider resourceProvider) {
+            ChineseGifCaptchaRenderer chineseGifCaptchaRenderer = new ChineseGifCaptchaRenderer();
+            chineseGifCaptchaRenderer.setResourceProvider(resourceProvider);
+            log.trace("[Herodotus] |- Bean [Chinese Gif Captcha Renderer] Configure.");
+            return chineseGifCaptchaRenderer;
+        }
+
+        @Bean(CaptchaCategory.SPEC_GIF_CAPTCHA)
+        public SpecGifCaptchaRenderer specGifCaptchaRenderer(ResourceProvider resourceProvider) {
+            SpecGifCaptchaRenderer specGifCaptchaRenderer = new SpecGifCaptchaRenderer();
+            specGifCaptchaRenderer.setResourceProvider(resourceProvider);
+            log.trace("[Herodotus] |- Bean [Spec Gif Captcha Renderer] Configure.");
+            return specGifCaptchaRenderer;
+        }
+
+        @Bean(CaptchaCategory.SPEC_CAPTCHA)
+        public SpecCaptchaRenderer specCaptchaRenderer(ResourceProvider resourceProvider) {
+            SpecCaptchaRenderer specCaptchaRenderer = new SpecCaptchaRenderer();
+            specCaptchaRenderer.setResourceProvider(resourceProvider);
+            log.trace("[Herodotus] |- Bean [Spec Captcha Renderer] Configure.");
+            return specCaptchaRenderer;
+        }
+    }
+
+    @Configuration(proxyBeanMethods = false)
+    static class HutoolCaptchaConfiguration {
+
+        @Bean(CaptchaCategory.HUTOOL_LINE_CAPTCHA)
+        public LineCaptchaRenderer lineCaptchaRenderer(ResourceProvider resourceProvider) {
+            LineCaptchaRenderer lineCaptchaRenderer = new LineCaptchaRenderer();
+            lineCaptchaRenderer.setResourceProvider(resourceProvider);
+            log.trace("[Herodotus] |- Bean [Hutool Line Captcha Renderer] Configure.");
+            return lineCaptchaRenderer;
+        }
+
+        @Bean(CaptchaCategory.HUTOOL_CIRCLE_CAPTCHA)
+        public CircleCaptchaRenderer circleCaptchaRenderer(ResourceProvider resourceProvider) {
+            CircleCaptchaRenderer circleCaptchaRenderer = new CircleCaptchaRenderer();
+            circleCaptchaRenderer.setResourceProvider(resourceProvider);
+            log.trace("[Herodotus] |- Bean [Hutool Circle Captcha Renderer] Configure.");
+            return circleCaptchaRenderer;
+        }
+
+        @Bean(CaptchaCategory.HUTOOL_SHEAR_CAPTCHA)
+        public ShearCaptchaRenderer shearCaptchaRenderer(ResourceProvider resourceProvider) {
+            ShearCaptchaRenderer shearCaptchaRenderer = new ShearCaptchaRenderer();
+            shearCaptchaRenderer.setResourceProvider(resourceProvider);
+            log.trace("[Herodotus] |- Bean [Hutool Shear Captcha Renderer] Configure.");
+            return shearCaptchaRenderer;
+        }
+
+        @Bean(CaptchaCategory.HUTOOL_GIF_CAPTCHA)
+        public GifCaptchaRenderer gifCaptchaRenderer(ResourceProvider resourceProvider) {
+            GifCaptchaRenderer gifCaptchaRenderer = new GifCaptchaRenderer();
+            gifCaptchaRenderer.setResourceProvider(resourceProvider);
+            log.trace("[Herodotus] |- Bean [Hutool Gif Captcha Renderer] Configure.");
+            return gifCaptchaRenderer;
+        }
+    }
 }

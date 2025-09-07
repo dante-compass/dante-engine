@@ -446,26 +446,7 @@
             </dependency>
 
 
-            <dependency>
-                <groupId>cn.herodotus.engine</groupId>
-                <artifactId>captcha-core</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.herodotus.engine</groupId>
-                <artifactId>captcha-sdk-behavior</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.herodotus.engine</groupId>
-                <artifactId>captcha-sdk-graphic</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.herodotus.engine</groupId>
-                <artifactId>captcha-sdk-hutool</artifactId>
-                <version>${project.version}</version>
-            </dependency>
+
 
             <dependency>
                 <groupId>cn.herodotus.engine</groupId>

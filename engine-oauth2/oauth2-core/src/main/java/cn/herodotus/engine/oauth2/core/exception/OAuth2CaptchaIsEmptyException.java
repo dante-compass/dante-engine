@@ -25,8 +25,8 @@
 
 package cn.herodotus.engine.oauth2.core.exception;
 
+import cn.herodotus.engine.core.definition.constant.ErrorCodes;
 import cn.herodotus.engine.core.definition.domain.Feedback;
-import cn.herodotus.engine.captcha.core.constants.CaptchaErrorCodes;
 
 /**
  * <p>Description: 验证码为空 </p>
@@ -46,6 +46,6 @@ public class OAuth2CaptchaIsEmptyException extends OAuth2CaptchaException {
 
     @Override
     public Feedback getFeedback() {
-        return CaptchaErrorCodes.CAPTCHA_IS_EMPTY;
+        return ErrorCodes.CAPTCHA_IS_EMPTY;
     }
 }

@@ -42,8 +42,21 @@
     <dependencies>
         <dependency>
             <groupId>cn.herodotus.engine</groupId>
+            <artifactId>core-identity</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.herodotus.engine</groupId>
             <artifactId>core-foundation</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>cn.herodotus.engine</groupId>
+            <artifactId>assistant-module-captcha</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+
 
         <dependency>
             <groupId>org.springframework</groupId>
