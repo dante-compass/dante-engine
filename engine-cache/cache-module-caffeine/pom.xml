@@ -35,7 +35,7 @@
         <version>3.5.5.2</version>
     </parent>
 
-    <artifactId>cache-sdk-caffeine</artifactId>
+    <artifactId>cache-module-caffeine</artifactId>
     <name>cache-sdk-caffeine</name>
 
     <description>Dante Cloud 微服务基座组件库 Caffeine 缓存功能封装模块</description>

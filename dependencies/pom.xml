@@ -271,7 +271,7 @@
             </dependency>
             <dependency>
                 <groupId>cn.herodotus.engine</groupId>
-                <artifactId>cache-sdk-caffeine</artifactId>
+                <artifactId>cache-module-caffeine</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

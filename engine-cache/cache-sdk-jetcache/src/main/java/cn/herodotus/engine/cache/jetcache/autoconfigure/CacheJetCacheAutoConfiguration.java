@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.cache.jetcache.autoconfigure;
 
-import cn.herodotus.engine.cache.caffeine.configuration.CacheCaffeineConfiguration;
+import cn.herodotus.engine.cache.caffeine.config.CacheCaffeineConfiguration;
 import cn.herodotus.engine.cache.core.properties.CacheProperties;
 import cn.herodotus.engine.cache.jetcache.enhance.HerodotusCacheManager;
 import cn.herodotus.engine.cache.jetcache.enhance.JetCacheCreateCacheFactory;

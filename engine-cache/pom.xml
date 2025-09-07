@@ -43,7 +43,7 @@
 
     <modules>
         <module>cache-core</module>
-        <module>cache-sdk-caffeine</module>
+        <module>cache-module-caffeine</module>
         <module>cache-sdk-jetcache</module>
         <module>cache-sdk-redisson</module>
         <module>cache-sdk-redis</module>
