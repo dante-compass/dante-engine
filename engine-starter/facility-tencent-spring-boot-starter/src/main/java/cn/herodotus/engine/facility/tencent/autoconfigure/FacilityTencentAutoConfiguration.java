@@ -23,26 +23,26 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.engine.assistant.access.constant;
+package cn.herodotus.engine.facility.tencent.autoconfigure;
 
-import cn.herodotus.engine.core.definition.constant.BaseConstants;
+import jakarta.annotation.PostConstruct;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.boot.autoconfigure.AutoConfiguration;
 
 /**
- * <p>Description: 接入模块常量 </p>
+ * <p>Description: 基础设置自动配置 </p>
  *
  * @author : gengwei.zheng
- * @date : 2022/1/25 15:27
+ * @date : 2022/2/5 19:09
  */
-public interface AccessConstants extends BaseConstants {
+@AutoConfiguration
+public class FacilityTencentAutoConfiguration {
 
-    String PROPERTY_ASSISTANT_ACCESS = PROPERTY_PREFIX_ASSISTANT + ".access";
+    private static final Logger log = LoggerFactory.getLogger(FacilityTencentAutoConfiguration.class);
 
-    String PROPERTY_ACCESS_JUSTAUTH = PROPERTY_ASSISTANT_ACCESS + ".justauth";
-    String PROPERTY_ACCESS_WXAPP = PROPERTY_ASSISTANT_ACCESS + ".wxapp";
-    String PROPERTY_ACCESS_WXMPP = PROPERTY_ASSISTANT_ACCESS + ".wxmpp";
-    String PROPERTY_ACCESS_SMS = PROPERTY_ASSISTANT_ACCESS + ".sms";
-
-    String CACHE_NAME_TOKEN_VERIFICATION_CODE = CACHE_TOKEN_BASE_PREFIX + "verification:";
-
-    String CACHE_NAME_TOKEN_JUSTAUTH = CACHE_TOKEN_BASE_PREFIX + "justauth:";
+    @PostConstruct
+    public void postConstruct() {
+        log.info("[Herodotus] |- Starter [Facility Tencent] Configure.");
+    }
 }

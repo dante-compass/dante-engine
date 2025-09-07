@@ -26,7 +26,7 @@
 package cn.herodotus.engine.rest.service.configuration;
 
 import cn.herodotus.engine.message.core.logic.strategy.RequestMappingScanEventManager;
-import cn.herodotus.engine.web.core.condition.ConditionalOnRestScan;
+import cn.herodotus.engine.web.core.condition.ConditionalOnRestScanEnabled;
 import cn.herodotus.engine.rest.condition.properties.ScanProperties;
 import cn.herodotus.engine.rest.service.processor.RequestMappingScanner;
 import jakarta.annotation.PostConstruct;
@@ -46,7 +46,7 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration(proxyBeanMethods = false)
 @ConditionalOnClass(RequestMappingScanEventManager.class)
-@ConditionalOnRestScan
+@ConditionalOnRestScanEnabled
 @EnableConfigurationProperties(ScanProperties.class)
 public class RestScanConfiguration {
 

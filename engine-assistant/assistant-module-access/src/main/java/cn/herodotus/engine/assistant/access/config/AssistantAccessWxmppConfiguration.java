@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.assistant.access.config;
 
-import cn.herodotus.engine.assistant.access.condition.ConditionalOnWxmpp;
+import cn.herodotus.engine.assistant.access.condition.ConditionalOnWxmppEnabled;
 import cn.herodotus.engine.assistant.access.processor.WxmppLogHandler;
 import cn.herodotus.engine.assistant.access.processor.WxmppProcessor;
 import cn.herodotus.engine.assistant.access.properties.WxmppProperties;
@@ -45,7 +45,7 @@ import org.springframework.data.redis.core.StringRedisTemplate;
  * @date : 2021/4/7 13:25
  */
 @Configuration(proxyBeanMethods = false)
-@ConditionalOnWxmpp
+@ConditionalOnWxmppEnabled
 @EnableConfigurationProperties(WxmppProperties.class)
 public class AssistantAccessWxmppConfiguration {
 

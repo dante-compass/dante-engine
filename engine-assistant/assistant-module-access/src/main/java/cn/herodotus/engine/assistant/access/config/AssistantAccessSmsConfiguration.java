@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.assistant.access.config;
 
-import cn.herodotus.engine.assistant.access.condition.ConditionalOnSms;
+import cn.herodotus.engine.assistant.access.condition.ConditionalOnSmsEnabled;
 import cn.herodotus.engine.assistant.access.processor.PhoneNumberAccessHandler;
 import cn.herodotus.engine.assistant.access.properties.SmsProperties;
 import cn.herodotus.engine.assistant.access.stamp.VerificationCodeStampManager;
@@ -45,7 +45,7 @@ import org.springframework.context.annotation.Configuration;
  * @date : 2021/5/25 12:03
  */
 @Configuration(proxyBeanMethods = false)
-@ConditionalOnSms
+@ConditionalOnSmsEnabled
 @EnableConfigurationProperties({SmsProperties.class})
 public class AssistantAccessSmsConfiguration {
 

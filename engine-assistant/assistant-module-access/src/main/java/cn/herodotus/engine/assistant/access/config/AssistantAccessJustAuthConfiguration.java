@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.assistant.access.config;
 
-import cn.herodotus.engine.assistant.access.condition.ConditionalOnJustAuth;
+import cn.herodotus.engine.assistant.access.condition.ConditionalOnJustAuthEnabled;
 import cn.herodotus.engine.assistant.access.processor.JustAuthAccessHandler;
 import cn.herodotus.engine.assistant.access.processor.JustAuthProcessor;
 import cn.herodotus.engine.assistant.access.properties.JustAuthProperties;
@@ -49,7 +49,7 @@ import org.springframework.context.annotation.Configuration;
  * @date : 2021/5/22 11:25
  */
 @Configuration(proxyBeanMethods = false)
-@ConditionalOnJustAuth
+@ConditionalOnJustAuthEnabled
 @EnableConfigurationProperties(JustAuthProperties.class)
 public class AssistantAccessJustAuthConfiguration {
 

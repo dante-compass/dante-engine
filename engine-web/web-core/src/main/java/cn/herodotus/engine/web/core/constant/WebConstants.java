@@ -35,10 +35,10 @@ import cn.herodotus.engine.core.definition.constant.BaseConstants;
  */
 public interface WebConstants extends BaseConstants {
 
-    String PROPERTY_PREFIX_SWAGGER = PROPERTY_PREFIX_HERODOTUS + ".swagger";
-    String PROPERTY_REST_SCAN = PROPERTY_PREFIX_REST + ".scan";
+    String PROPERTY_PREFIX_SWAGGER = PROPERTY_PREFIX_PLATFORM + ".swagger";
+    String PROPERTY_SERVICE_REST_SCAN = PROPERTY_PREFIX_SERVICE + ".scan";
 
-    String ITEM_SCAN_ENABLED = PROPERTY_REST_SCAN + PROPERTY_ENABLED;
+    String ITEM_SCAN_ENABLED = PROPERTY_SERVICE_REST_SCAN + PROPERTY_ENABLED;
     String ITEM_PROTECT_CRYPTO_STRATEGY = PROPERTY_PREFIX_CRYPTO + ".crypto-strategy";
 
     String CACHE_NAME_TOKEN_IDEMPOTENT = CACHE_TOKEN_BASE_PREFIX + "idempotent:";

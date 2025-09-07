@@ -23,26 +23,55 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.engine.assistant.access.constant;
+package cn.herodotus.engine.core.autoconfigure.logging;
 
 import cn.herodotus.engine.core.definition.constant.BaseConstants;
+import com.google.common.base.MoreObjects;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.logging.LogLevel;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
- * <p>Description: 接入模块常量 </p>
+ * <p>Description: 日志通用配置参数 </p>
  *
  * @author : gengwei.zheng
- * @date : 2022/1/25 15:27
+ * @date : 2024/7/3 10:23
  */
-public interface AccessConstants extends BaseConstants {
+@ConfigurationProperties(prefix = BaseConstants.PROPERTY_PREFIX_LOG)
+public class LoggingProperties {
 
-    String PROPERTY_ASSISTANT_ACCESS = PROPERTY_PREFIX_ASSISTANT + ".access";
+    /**
+     * 日志级别，默认为INFO
+     */
+    private LogLevel level = LogLevel.INFO;
 
-    String PROPERTY_ACCESS_JUSTAUTH = PROPERTY_ASSISTANT_ACCESS + ".justauth";
-    String PROPERTY_ACCESS_WXAPP = PROPERTY_ASSISTANT_ACCESS + ".wxapp";
-    String PROPERTY_ACCESS_WXMPP = PROPERTY_ASSISTANT_ACCESS + ".wxmpp";
-    String PROPERTY_ACCESS_SMS = PROPERTY_ASSISTANT_ACCESS + ".sms";
+    /**
+     * 日志输出内容配置
+     */
+    private Map<String, LogLevel> loggers = new HashMap<>();
 
-    String CACHE_NAME_TOKEN_VERIFICATION_CODE = CACHE_TOKEN_BASE_PREFIX + "verification:";
+    public LogLevel getLevel() {
+        return level;
+    }
 
-    String CACHE_NAME_TOKEN_JUSTAUTH = CACHE_TOKEN_BASE_PREFIX + "justauth:";
+    public void setLevel(LogLevel level) {
+        this.level = level;
+    }
+
+    public Map<String, LogLevel> getLoggers() {
+        return loggers;
+    }
+
+    public void setLoggers(Map<String, LogLevel> loggers) {
+        this.loggers = loggers;
+    }
+
+    @Override
+    public String toString() {
+        return MoreObjects.toStringHelper(this)
+                .add("level", level)
+                .toString();
+    }
 }

@@ -30,31 +30,28 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>cn.herodotus.engine</groupId>
-        <artifactId>dante-engine</artifactId>
+        <artifactId>engine-starter</artifactId>
         <version>3.5.5.2</version>
     </parent>
 
-    <artifactId>engine-starter</artifactId>
-    <name>engine-starter</name>
+    <artifactId>facility-gateway-spring-boot-starter</artifactId>
+    <name>facility-gateway-spring-boot-starter</name>
 
-    <packaging>pom</packaging>
+    <description>Dante Cloud 微服务基座组件库 Alibaba Sentinel 在 Gateway 环境下基础设施适配 Starter</description>
 
-    <description>Dante Cloud 微服务基座组件库自动配置 Starters 分组</description>
-
-    <modules>
-        <module>cache-spring-boot-starter</module>
-        <module>captcha-spring-boot-starter</module>
-        <module>data-mongodb-spring-boot-starter</module>
-        <module>data-rdbms-spring-boot-starter</module>
-        <module>facility-alibaba-spring-boot-starter</module>
-        <module>facility-gateway-spring-boot-starter</module>
-        <module>facility-tencent-spring-boot-starter</module>
-        <module>logging-spring-boot-starter</module>
-        <module>message-mqtt-spring-boot-starter</module>
-        <module>reactive-container-spring-boot-starter</module>
-        <module>servlet-container-spring-boot-starter</module>
-        <module>servlet-message-spring-boot-starter</module>
-        <module>webmvc-spring-boot-starter</module>
-    </modules>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webflux</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-alibaba-sentinel-gateway</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.herodotus.engine</groupId>
+            <artifactId>cache-spring-boot-starter</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>

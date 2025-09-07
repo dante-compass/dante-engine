@@ -23,40 +23,57 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.engine.core.autoconfigure.captcha;
+package cn.herodotus.engine.facility.gateway.autoconfigure;
 
-import cn.herodotus.engine.assistant.captcha.provider.ResourceProvider;
-import cn.herodotus.engine.core.foundation.support.captcha.CaptchaRendererFactory;
+import com.alibaba.csp.sentinel.adapter.gateway.sc.SentinelGatewayFilter;
+import com.alibaba.csp.sentinel.adapter.gateway.sc.exception.SentinelGatewayBlockExceptionHandler;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
+import org.springframework.core.Ordered;
+import org.springframework.core.annotation.Order;
+import org.springframework.http.codec.ServerCodecConfigurer;
+import org.springframework.web.reactive.result.view.ViewResolver;
+
+import java.util.List;
 
 /**
- * <p>Description: Captcha 基础自动配置 </p>
+ * <p>Description: 基础设置自动配置 </p>
  *
  * @author : gengwei.zheng
- * @date : 2024/4/29 12:18
+ * @date : 2022/2/5 19:09
  */
 @AutoConfiguration
-@ConditionalOnClass(ResourceProvider.class)
-public class CaptchaAutoConfiguration {
+public class FacilityGatewayAutoConfiguration {
 
-    private static final Logger log = LoggerFactory.getLogger(CaptchaAutoConfiguration.class);
+    private static final Logger log = LoggerFactory.getLogger(FacilityGatewayAutoConfiguration.class);
+
+    private final List<ViewResolver> viewResolvers;
+    private final ServerCodecConfigurer serverCodecConfigurer;
+
+    public FacilityGatewayAutoConfiguration(List<ViewResolver> viewResolvers, ServerCodecConfigurer serverCodecConfigurer) {
+        this.viewResolvers = viewResolvers;
+        this.serverCodecConfigurer = serverCodecConfigurer;
+    }
 
     @PostConstruct
     public void postConstruct() {
-        log.info("[Herodotus] |- Auto [Captcha] Configure.");
+        log.info("[Herodotus] |- Starter [Facility Gateway] Configure.");
     }
 
     @Bean
-    @ConditionalOnMissingBean
-    public CaptchaRendererFactory captchaRendererFactory() {
-        CaptchaRendererFactory captchaRendererFactory = new CaptchaRendererFactory();
-        log.trace("[Herodotus] |- Bean [Captcha Renderer Factory] Configure.");
-        return captchaRendererFactory;
+    @Order(Ordered.HIGHEST_PRECEDENCE)
+    public SentinelGatewayBlockExceptionHandler sentinelGatewayBlockExceptionHandler() {
+        // Register the block exception handler for Spring Cloud Gateway.
+        return new SentinelGatewayBlockExceptionHandler(viewResolvers, serverCodecConfigurer);
+    }
+
+    @Bean
+    @ConditionalOnMissingBean(SentinelGatewayFilter.class)
+    public SentinelGatewayFilter sentinelGatewayFilter() {
+        return new SentinelGatewayFilter();
     }
 }

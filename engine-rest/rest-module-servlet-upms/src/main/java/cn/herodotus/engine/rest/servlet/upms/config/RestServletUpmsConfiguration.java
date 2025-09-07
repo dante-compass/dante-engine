@@ -25,9 +25,9 @@
 
 package cn.herodotus.engine.rest.servlet.upms.config;
 
-import cn.herodotus.engine.assistant.access.condition.ConditionalOnJustAuth;
-import cn.herodotus.engine.assistant.access.condition.ConditionalOnSms;
-import cn.herodotus.engine.assistant.access.condition.ConditionalOnWxapp;
+import cn.herodotus.engine.assistant.access.condition.ConditionalOnJustAuthEnabled;
+import cn.herodotus.engine.assistant.access.condition.ConditionalOnSmsEnabled;
+import cn.herodotus.engine.assistant.access.condition.ConditionalOnWxappEnabled;
 import cn.herodotus.engine.logic.upms.annotation.EnableHerodotusLogicUpms;
 import cn.herodotus.engine.rest.servlet.upms.controller.social.JustAuthAccessController;
 import cn.herodotus.engine.rest.servlet.upms.controller.social.PhoneNumberAccessController;
@@ -63,7 +63,7 @@ public class RestServletUpmsConfiguration {
     }
 
     @Bean
-    @ConditionalOnSms
+    @ConditionalOnSmsEnabled
     @ConditionalOnMissingBean
     public PhoneNumberAccessController phoneNumberAccessController() {
         PhoneNumberAccessController phoneNumberAuthenticationController = new PhoneNumberAccessController();
@@ -72,7 +72,7 @@ public class RestServletUpmsConfiguration {
     }
 
     @Bean
-    @ConditionalOnJustAuth
+    @ConditionalOnJustAuthEnabled
     @ConditionalOnMissingBean
     public JustAuthAccessController justAuthSignInController() {
         JustAuthAccessController justAuthAuthenticationController = new JustAuthAccessController();
@@ -81,7 +81,7 @@ public class RestServletUpmsConfiguration {
     }
 
     @Bean
-    @ConditionalOnWxapp
+    @ConditionalOnWxappEnabled
     @ConditionalOnMissingBean
     public WxappAccessController wxappAccessController() {
         WxappAccessController wxappAccessController = new WxappAccessController();

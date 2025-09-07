@@ -23,26 +23,23 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.engine.assistant.access.constant;
+package cn.herodotus.engine.assistant.access.condition;
 
+import cn.herodotus.engine.assistant.access.constant.AccessConstants;
 import cn.herodotus.engine.core.definition.constant.BaseConstants;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+
+import java.lang.annotation.*;
 
 /**
- * <p>Description: 接入模块常量 </p>
+ * <p>Description: JustAuth开启条件注解 </p>
  *
  * @author : gengwei.zheng
- * @date : 2022/1/25 15:27
+ * @date : 2022/1/24 14:40
  */
-public interface AccessConstants extends BaseConstants {
-
-    String PROPERTY_ASSISTANT_ACCESS = PROPERTY_PREFIX_ASSISTANT + ".access";
-
-    String PROPERTY_ACCESS_JUSTAUTH = PROPERTY_ASSISTANT_ACCESS + ".justauth";
-    String PROPERTY_ACCESS_WXAPP = PROPERTY_ASSISTANT_ACCESS + ".wxapp";
-    String PROPERTY_ACCESS_WXMPP = PROPERTY_ASSISTANT_ACCESS + ".wxmpp";
-    String PROPERTY_ACCESS_SMS = PROPERTY_ASSISTANT_ACCESS + ".sms";
-
-    String CACHE_NAME_TOKEN_VERIFICATION_CODE = CACHE_TOKEN_BASE_PREFIX + "verification:";
-
-    String CACHE_NAME_TOKEN_JUSTAUTH = CACHE_TOKEN_BASE_PREFIX + "justauth:";
+@Target({ElementType.TYPE, ElementType.METHOD})
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+@ConditionalOnProperty(prefix = AccessConstants.PROPERTY_ACCESS_JUSTAUTH, name = BaseConstants.PROPERTY_ENABLED, havingValue = "true")
+public @interface ConditionalOnJustAuthEnabled {
 }
