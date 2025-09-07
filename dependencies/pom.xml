@@ -376,7 +376,7 @@
             </dependency>
             <dependency>
                 <groupId>cn.herodotus.engine</groupId>
-                <artifactId>cache-spring-boot-starter</artifactId>
+                <artifactId>cachee-spring-boot-starter</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

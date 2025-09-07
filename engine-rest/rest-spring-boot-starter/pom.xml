@@ -55,7 +55,7 @@
 
         <dependency>
             <groupId>cn.herodotus.engine</groupId>
-            <artifactId>cache-spring-boot-starter</artifactId>
+            <artifactId>cachee-spring-boot-starter</artifactId>
         </dependency>
 
         <dependency>

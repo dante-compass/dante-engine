@@ -24,5 +24,3 @@
 #
 
 cn.herodotus.engine.cache.autoconfigure.CacheAutoConfiguration
-cn.herodotus.engine.cache.jetcache.config.CacheJetCacheConfiguration
-cn.herodotus.engine.cache.redisson.config.CacheRedissonConfiguration
