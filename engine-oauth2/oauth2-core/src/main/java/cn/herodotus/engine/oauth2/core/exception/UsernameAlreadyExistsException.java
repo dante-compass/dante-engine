@@ -25,8 +25,9 @@
 
 package cn.herodotus.engine.oauth2.core.exception;
 
+import cn.herodotus.engine.core.definition.constant.ErrorCodes;
 import cn.herodotus.engine.core.definition.domain.Feedback;
-import cn.herodotus.engine.oauth2.core.constants.OAuth2ErrorCodes;
+import cn.herodotus.engine.core.identity.exception.PlatformAuthenticationException;
 
 /**
  * <p>Description: UsernameAlreadyExistsException </p>
@@ -46,6 +47,6 @@ public class UsernameAlreadyExistsException extends PlatformAuthenticationExcept
 
     @Override
     public Feedback getFeedback() {
-        return OAuth2ErrorCodes.USERNAME_ALREADY_EXISTS;
+        return ErrorCodes.USERNAME_ALREADY_EXISTS;
     }
 }

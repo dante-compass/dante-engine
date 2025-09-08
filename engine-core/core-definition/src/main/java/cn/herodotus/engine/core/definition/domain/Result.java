@@ -48,25 +48,23 @@ import java.util.Map;
  * @date : 2020/2/29 14:50
  */
 @Schema(name = "统一响应返回实体", description = "所有Rest接口统一返回的实体定义", example = "new Result<T>().ok().message(\"XXX\")")
-public class Result<T> implements Serializable {
+public class Result<T> extends Response<T, Integer> {
 
     @Schema(name = "响应时间戳", pattern = SystemConstants.DATE_TIME_FORMAT)
     @JsonFormat(pattern = SystemConstants.DATE_TIME_FORMAT)
     private final Date timestamp = new Date();
-    @Schema(name = "校验错误信息")
-    private final cn.herodotus.engine.core.definition.domain.Error error = new cn.herodotus.engine.core.definition.domain.Error();
-    @Schema(name = "自定义响应编码")
-    private int code = 0;
-    @Schema(name = "响应返回信息")
-    private String message;
+
     @Schema(name = "请求路径")
     private String path;
-    @Schema(name = "响应返回数据")
-    private T data;
+
     @Schema(name = "http状态码")
     private int status;
+
     @Schema(name = "链路追踪TraceId")
     private String traceId;
+
+    @Schema(name = "校验错误信息")
+    private final Error error = new Error();
 
     public Result() {
         super();
@@ -140,8 +138,8 @@ public class Result<T> implements Serializable {
         return failure(message, message, code, data);
     }
 
-    public static <T> Result<T> failure(Feedback feedback) {
-        return failure(feedback, null);
+    public static Result<String> failure(Feedback feedback) {
+        return failure(feedback, "");
     }
 
     public static <T> Result<T> failure(Feedback feedback, T data) {
@@ -185,20 +183,8 @@ public class Result<T> implements Serializable {
         return empty("未查询到相关内容！");
     }
 
-    public int getCode() {
-        return code;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
     public String getPath() {
         return path;
-    }
-
-    public T getData() {
-        return data;
     }
 
     public int getStatus() {
@@ -218,17 +204,17 @@ public class Result<T> implements Serializable {
     }
 
     public Result<T> code(int code) {
-        this.code = code;
+        setCode(code);
         return this;
     }
 
     public Result<T> message(String message) {
-        this.message = message;
+        setMessage(message);
         return this;
     }
 
     public Result<T> data(T data) {
-        this.data = data;
+        setData(data);
         return this;
     }
 
@@ -238,8 +224,8 @@ public class Result<T> implements Serializable {
     }
 
     public Result<T> type(Feedback feedback) {
-        this.code = ErrorCodeMapper.get(feedback);
-        this.message = feedback.getMessage();
+        setCode(ErrorCodeMapper.get(feedback));
+        setMessage(feedback.getMessage());
         this.status = feedback.getStatus();
         return this;
     }
@@ -271,28 +257,41 @@ public class Result<T> implements Serializable {
         return this;
     }
 
+    private Map<String, Object> createModel() {
+        Map<String, Object> result = new HashMap<>(8);
+        result.put("code", getCode());
+        result.put("message", getMessage());
+        result.put("path", path);
+        result.put("status", status);
+        result.put("timestamp", timestamp);
+        return result;
+    }
+
+    public Map<String, Object> toModel() {
+        Map<String, Object> result = createModel();
+        result.put("data", getData());
+        result.put("error", error);
+        return result;
+    }
+
+    public Map<String, Object> toErrorModel() {
+        Map<String, Object> result = createModel();
+        result.put("exception", getData());
+        result.put("error", ObjectUtils.isNotEmpty(getError()) ? getError().getDetail() : StringUtils.EMPTY);
+//        result.put("trace", ObjectUtils.isNotEmpty(getError()) ? getError().getStackTrace() : null);
+        return result;
+    }
+
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("code", code)
-                .add("message", message)
+                .add("code", getCode())
+                .add("message", getMessage())
                 .add("path", path)
-                .add("data", data)
+                .add("data", getData())
                 .add("status", status)
                 .add("timestamp", timestamp)
                 .add("error", error)
                 .toString();
-    }
-
-    public Map<String, Object> toModel() {
-        Map<String, Object> result = new HashMap<>(8);
-        result.put("code", code);
-        result.put("message", message);
-        result.put("path", path);
-        result.put("data", data);
-        result.put("status", status);
-        result.put("timestamp", timestamp);
-        result.put("error", error);
-        return result;
     }
 }

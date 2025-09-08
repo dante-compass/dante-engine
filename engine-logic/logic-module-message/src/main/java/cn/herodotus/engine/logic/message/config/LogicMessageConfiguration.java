@@ -41,7 +41,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
  */
 @Configuration(proxyBeanMethods = false)
 @EntityScan(basePackages = {
-        "cn.herodotus.stirrup.logic.message.entity"
+        "cn.herodotus.engine.logic.message.entity"
 })
 @EnableJpaRepositories(basePackages = {
         "cn.herodotus.engine.logic.message.repository",

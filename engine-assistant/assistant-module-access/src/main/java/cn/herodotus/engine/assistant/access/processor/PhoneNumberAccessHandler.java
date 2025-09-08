@@ -33,7 +33,7 @@ import cn.herodotus.engine.assistant.access.stamp.VerificationCodeStampManager;
 import cn.herodotus.engine.cache.core.exception.StampHasExpiredException;
 import cn.herodotus.engine.cache.core.exception.StampMismatchException;
 import cn.herodotus.engine.cache.core.exception.StampParameterIllegalException;
-import cn.herodotus.engine.core.definition.constant.BaseConstants;
+import cn.herodotus.engine.core.definition.constant.SystemConstants;
 import cn.herodotus.engine.core.identity.domain.AccessPrincipal;
 import org.dromara.sms4j.api.SmsBlend;
 import org.dromara.sms4j.api.entity.SmsResponse;
@@ -64,7 +64,7 @@ public class PhoneNumberAccessHandler implements AccessHandler {
         } else {
             SmsBlend smsBlend = SmsFactory.getSmsBlend();
             LinkedHashMap<String, String> message = new LinkedHashMap<>();
-            message.put(BaseConstants.CODE, code);
+            message.put(SystemConstants.CODE, code);
             SmsResponse smsResponse = smsBlend.sendMessage(phone, verificationCodeStampManager.getVerificationCodeTemplateId(), message);
             result = smsResponse.isSuccess();
         }

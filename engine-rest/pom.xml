@@ -43,11 +43,6 @@
     <description>Dante Cloud 微服务基座组件库系统内置功能 REST 接口模块分组</description>
 
     <modules>
-        <module>rest-core</module>
-        <module>rest-sdk-protect</module>
-        <module>rest-sdk-service</module>
-        <module>rest-spring-boot-starter</module>
-        <module>rest-sdk-condition</module>
         <module>rest-module-servlet-message</module>
         <module>rest-module-servlet-identity</module>
         <module>rest-module-servlet-upms</module>

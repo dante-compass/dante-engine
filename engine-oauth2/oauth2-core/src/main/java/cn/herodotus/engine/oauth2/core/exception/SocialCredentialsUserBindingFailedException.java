@@ -25,6 +25,8 @@
 
 package cn.herodotus.engine.oauth2.core.exception;
 
+import cn.herodotus.engine.core.identity.exception.PlatformAuthenticationException;
+
 /**
  * <p>Description: 社交登录绑定用户出错 </p>
  *

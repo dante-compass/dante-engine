@@ -33,6 +33,7 @@ import cn.herodotus.engine.core.foundation.enums.Architecture;
 import cn.herodotus.engine.core.foundation.enums.DataAccessStrategy;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.Strings;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationEvent;
 
@@ -46,177 +47,10 @@ public class ServiceContextHolder {
 
     private static volatile ServiceContextHolder instance;
 
-    /**
-     * 平台架构类型，默认：DISTRIBUTED（分布式架构）
-     */
-    private Architecture architecture = Architecture.DISTRIBUTED;
-    /**
-     * 数据访问策略，默认：
-     */
-    private DataAccessStrategy dataAccessStrategy = DataAccessStrategy.REMOTE;
-
-    /**
-     * 协议头类型
-     */
-    private Protocol protocol = Protocol.HTTP;
-    /**
-     * 服务端口号
-     */
-    private String port;
-    /**
-     * 服务IP地址
-     */
-    private String ip;
-    /**
-     * 服务地址，格式：ip:port
-     */
-    private String address;
-    /**
-     * 服务Url，格式：http://ip:port
-     */
-    private String url;
-    /**
-     * 应用名称，与spring.application.name一致
-     */
-    private String applicationName;
-    /**
-     * 留存一份ApplicationContext
-     */
-    private ApplicationContext applicationContext;
-
-    /**
-     * 认证中心服务名称
-     */
-    private String uaaServiceName;
-    /**
-     * 用户中心服务名称
-     */
-    private String upmsServiceName;
-    /**
-     * 消息服务名称
-     */
-    private String messageServiceName;
-    /**
-     * 对象存储服务名称
-     */
-    private String ossServiceName;
-
-    /**
-     * 统一网关服务地址。可以是IP+端口，可以是域名
-     */
-    private String gatewayServiceUri;
-
-    /**
-     * 统一认证中心服务地址
-     */
-    private String uaaServiceUri;
-    /**
-     * 统一权限管理服务地址
-     */
-    private String upmsServiceUri;
-    /**
-     * 消息服务地址
-     */
-    private String messageServiceUri;
-    /**
-     * 对象存储服务地址
-     */
-    private String ossServiceUri;
-    /**
-     * OAuth2 Authorization Code 模式认证端点，/oauth2/authorize uri 地址，可修改为自定义地址
-     */
-    private String authorizationUri;
-    /**
-     * OAuth2 Authorization Code 模式认证端点，/oauth2/authorize端点地址，可修改为自定义地址
-     */
-    private String authorizationEndpoint = SystemConstants.OAUTH2_AUTHORIZATION_ENDPOINT;
-    /**
-     * OAuth2 Pushed Authorization Requests 模式认证端点，/oauth2/par uri 地址，可修改为自定义地址
-     */
-    private String pushedAuthorizationRequestUri;
-    /**
-     * OAuth2 Pushed Authorization Requests 模式认证端点，/oauth2/authorize端点地址，可修改为自定义地址
-     */
-    private String pushedAuthorizationRequestEndpoint = SystemConstants.OAUTH2_PUSHED_AUTHORIZATION_REQUEST_ENDPOINT;
-    /**
-     * OAuth2 /oauth2/token 申请 Token uri 地址，可修改为自定义地址
-     */
-    private String accessTokenUri;
-    /**
-     * OAuth2 /oauth2/token 申请 Token 端点地址，可修改为自定义地址
-     */
-    private String accessTokenEndpoint = SystemConstants.OAUTH2_TOKEN_ENDPOINT;
-    /**
-     * OAuth2 /oauth2/jwks uri 地址，可修改为自定义地址
-     */
-    private String jwkSetUri;
-    /**
-     * OAuth2 /oauth2/jwks 端点地址，可修改为自定义地址
-     */
-    private String jwkSetEndpoint = SystemConstants.OAUTH2_JWK_SET_ENDPOINT;
-    /**
-     * OAuth2 /oauth2/revoke 撤销 Token uri 地址，可修改为自定义地址
-     */
-    private String tokenRevocationUri;
-    /**
-     * OAuth2 /oauth2/revoke 撤销 Token 端点地址，可修改为自定义地址
-     */
-    private String tokenRevocationEndpoint = SystemConstants.OAUTH2_TOKEN_REVOCATION_ENDPOINT;
-    /**
-     * OAuth2 /oauth2/introspect 查看 Token uri地址，可修改为自定义地址
-     */
-    private String tokenIntrospectionUri;
-    /**
-     * OAuth2 /oauth2/introspect 查看 Token 端点地址，可修改为自定义地址
-     */
-    private String tokenIntrospectionEndpoint = SystemConstants.OAUTH2_TOKEN_INTROSPECTION_ENDPOINT;
-    /**
-     * OAuth2 /oauth2/device_authorization 设备授权认证 uri地址，可修改为自定义地址
-     */
-    private String deviceAuthorizationUri;
-    /**
-     * OAuth2 /oauth2/device_authorization 设备授权认证端点地址，可修改为自定义地址
-     */
-    private String deviceAuthorizationEndpoint = SystemConstants.OAUTH2_DEVICE_AUTHORIZATION_ENDPOINT;
-    /**
-     * OAuth2 /oauth2/device_verification 设备授权校验 uri地址，可修改为自定义地址
-     */
-    private String deviceVerificationUri;
-    /**
-     * OAuth2 /oauth2/device_verification 设备授权校验端点地址，可修改为自定义地址
-     */
-    private String deviceVerificationEndpoint = SystemConstants.OAUTH2_DEVICE_VERIFICATION_ENDPOINT;
-    /**
-     * OAuth2 OIDC /connect/register uri 地址，可修改为自定义地址
-     */
-    private String oidcClientRegistrationUri;
-    /**
-     * OAuth2 OIDC /connect/register 端点地址，可修改为自定义地址
-     */
-    private String oidcClientRegistrationEndpoint = SystemConstants.OIDC_CLIENT_REGISTRATION_ENDPOINT;
-    /**
-     * OAuth2 OIDC /connect/logout uri 地址，可修改为自定义地址
-     */
-    private String oidcLogoutUri;
-    /**
-     * OAuth2 OIDC /connect/logout 端点地址，可修改为自定义地址
-     */
-    private String oidcLogoutEndpoint = SystemConstants.OIDC_LOGOUT_ENDPOINT;
-    /**
-     * OAuth2 OIDC /userinfo uri 地址，可修改为自定义地址
-     */
-    private String oidcUserInfoUri;
-    /**
-     * OAuth2 OIDC /userinfo 端点地址，可修改为自定义地址
-     */
-    private String oidcUserInfoEndpoint = SystemConstants.OIDC_USER_INFO_ENDPOINT;
-    /**
-     * Spring Authorization Server Issuer Url
-     */
-    private String issuerUri;
+    private final ServiceContext serviceContext;
 
     private ServiceContextHolder() {
-
+        this.serviceContext = new ServiceContext();
     }
 
     public static ServiceContextHolder getInstance() {
@@ -231,356 +65,395 @@ public class ServiceContextHolder {
         return instance;
     }
 
-    public Architecture getArchitecture() {
-        return architecture;
+    private ServiceContext serviceContext() {
+        return serviceContext;
     }
 
-    public void setArchitecture(Architecture architecture) {
-        this.architecture = architecture;
+    private static ServiceContext getServiceContext() {
+        return getInstance().serviceContext();
     }
 
-    public DataAccessStrategy getDataAccessStrategy() {
-        return dataAccessStrategy;
+    public static Architecture getArchitecture() {
+        return getServiceContext().getArchitecture();
     }
 
-    public void setDataAccessStrategy(DataAccessStrategy dataAccessStrategy) {
-        this.dataAccessStrategy = dataAccessStrategy;
+    public static void setArchitecture(Architecture architecture) {
+        getServiceContext().setArchitecture(architecture);
     }
 
-    public Protocol getProtocol() {
-        return protocol;
+    public static DataAccessStrategy getDataAccessStrategy() {
+        return getServiceContext().getDataAccessStrategy();
     }
 
-    public void setProtocol(Protocol protocol) {
-        this.protocol = protocol;
+    public static void setDataAccessStrategy(DataAccessStrategy dataAccessStrategy) {
+        getServiceContext().setDataAccessStrategy(dataAccessStrategy);
     }
 
-    public String getPort() {
-        return port;
+    public static Protocol getProtocol() {
+        return getServiceContext().getProtocol();
     }
 
-    public void setPort(String port) {
-        this.port = port;
+    public static void setProtocol(Protocol protocol) {
+        getServiceContext().setProtocol(protocol);
     }
 
-    public String getIp() {
-        return ip;
+    public static String getPort() {
+        return getServiceContext().getPort();
     }
 
-    public void setIp(String ip) {
-        this.ip = ip;
+    public static void setPort(String port) {
+        getServiceContext().setPort(port);
     }
 
-    public String getAddress() {
+    public static String getIp() {
+        return getServiceContext().getIp();
+    }
+
+    public static void setIp(String ip) {
+        getServiceContext().setIp(ip);
+    }
+
+    public static String getAddress() {
         if (isDistributedArchitecture()) {
-            this.address = this.getGatewayServiceUri() + SymbolConstants.FORWARD_SLASH + this.getApplicationName();
+            return getGatewayServiceUri() + SymbolConstants.FORWARD_SLASH + getApplicationName();
         } else {
-            if (StringUtils.isNotBlank(this.ip) && StringUtils.isNotBlank(this.port)) {
-                this.address = this.ip + SymbolConstants.COLON + this.port;
+            if (StringUtils.isNotBlank(getIp()) && StringUtils.isNotBlank(getPort())) {
+                return getIp() + SymbolConstants.COLON + getPort();
             }
         }
-        return address;
+        return getServiceContext().getAddress();
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public static void setAddress(String address) {
+        getServiceContext().setAddress(address);
     }
 
-    public String getUrl() {
-        if (StringUtils.isBlank(this.url)) {
-            String address = this.getAddress();
+    public static String getUrl() {
+        if (StringUtils.isBlank(getServiceContext().getUrl())) {
+            String address = getAddress();
             if (StringUtils.isNotBlank(address)) {
                 return WellFormedUtils.addressToUri(address, getProtocol(), false);
             }
         }
-        return url;
+        return getServiceContext().getUrl();
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public static void setUrl(String url) {
+        getServiceContext().setUrl(url);
     }
 
-    public String getApplicationName() {
-        return applicationName;
+    public static String getApplicationName() {
+        return getServiceContext().getApplicationName();
     }
 
-    public void setApplicationName(String applicationName) {
-        this.applicationName = applicationName;
+    public static void setApplicationName(String applicationName) {
+        getServiceContext().setApplicationName(applicationName);
     }
 
-    public ApplicationContext getApplicationContext() {
-        return applicationContext;
+    public static ApplicationContext getApplicationContext() {
+        return getServiceContext().getApplicationContext();
     }
 
-    public void setApplicationContext(ApplicationContext applicationContext) {
-        this.applicationContext = applicationContext;
+    public static void setApplicationContext(ApplicationContext applicationContext) {
+        getServiceContext().setApplicationContext(applicationContext);
     }
 
-    public String getUaaServiceName() {
-        return uaaServiceName;
+    public static String getUaaServiceName() {
+        return getServiceContext().getUaaServiceName();
     }
 
-    public void setUaaServiceName(String uaaServiceName) {
-        this.uaaServiceName = uaaServiceName;
+    public static void setUaaServiceName(String uaaServiceName) {
+        getServiceContext().setUaaServiceName(uaaServiceName);
     }
 
-    public String getUpmsServiceName() {
-        return upmsServiceName;
+    public static String getUpmsServiceName() {
+        return getServiceContext().getUpmsServiceName();
     }
 
-    public void setUpmsServiceName(String upmsServiceName) {
-        this.upmsServiceName = upmsServiceName;
+    public static void setUpmsServiceName(String upmsServiceName) {
+        getServiceContext().setUpmsServiceName(upmsServiceName);
     }
 
-    public String getMessageServiceName() {
-        return messageServiceName;
+    public static String getMessageServiceName() {
+        return getServiceContext().getMessageServiceName();
     }
 
-    public void setMessageServiceName(String messageServiceName) {
-        this.messageServiceName = messageServiceName;
+    public static void setMessageServiceName(String messageServiceName) {
+        getServiceContext().setMessageServiceName(messageServiceName);
     }
 
-    public String getOssServiceName() {
-        return ossServiceName;
+    public static String getOssServiceName() {
+        return getServiceContext().getOssServiceName();
     }
 
-    public void setOssServiceName(String ossServiceName) {
-        this.ossServiceName = ossServiceName;
+    public static void setOssServiceName(String ossServiceName) {
+        getServiceContext().setOssServiceName(ossServiceName);
     }
 
-    public String getGatewayServiceUri() {
-        return gatewayServiceUri;
+    public static String getGatewayServiceUri() {
+        return getServiceContext().getGatewayServiceUri();
     }
 
-    public void setGatewayServiceUri(String gatewayServiceUri) {
-        this.gatewayServiceUri = gatewayServiceUri;
+    public static void setGatewayServiceUri(String gatewayServiceUri) {
+        getServiceContext().setGatewayServiceUri(gatewayServiceUri);
     }
 
-    public String getUaaServiceUri() {
-        return uaaServiceUri;
+    public static String getUaaServiceUri() {
+        return getServiceContext().getUaaServiceUri();
     }
 
-    public void setUaaServiceUri(String uaaServiceUri) {
-        this.uaaServiceUri = uaaServiceUri;
+    public static void setUaaServiceUri(String uaaServiceUri) {
+        getServiceContext().setUaaServiceUri(uaaServiceUri);
     }
 
-    public String getUpmsServiceUri() {
-        return upmsServiceUri;
+    public static String getUpmsServiceUri() {
+        return getServiceContext().getUpmsServiceUri();
     }
 
-    public void setUpmsServiceUri(String upmsServiceUri) {
-        this.upmsServiceUri = upmsServiceUri;
+    public static void setUpmsServiceUri(String upmsServiceUri) {
+        getServiceContext().setUpmsServiceUri(upmsServiceUri);
     }
 
-    public String getMessageServiceUri() {
-        return messageServiceUri;
+    public static String getMessageServiceUri() {
+        return getServiceContext().getMessageServiceUri();
     }
 
-    public void setMessageServiceUri(String messageServiceUri) {
-        this.messageServiceUri = messageServiceUri;
+    public static void setMessageServiceUri(String messageServiceUri) {
+        getServiceContext().setMessageServiceUri(messageServiceUri);
     }
 
-    public String getOssServiceUri() {
-        return ossServiceUri;
+    public static String getOssServiceUri() {
+        return getServiceContext().getOssServiceUri();
     }
 
-    public void setOssServiceUri(String ossServiceUri) {
-        this.ossServiceUri = ossServiceUri;
+    public static void setOssServiceUri(String ossServiceUri) {
+        getServiceContext().setOssServiceUri(ossServiceUri);
     }
 
-    public String getAuthorizationUri() {
-        return authorizationUri;
+    public static String getAuthorizationUri() {
+        return getServiceContext().getAuthorizationUri();
     }
 
-    public void setAuthorizationUri(String authorizationUri) {
-        this.authorizationUri = authorizationUri;
+    public static void setAuthorizationUri(String authorizationUri) {
+        getServiceContext().setAuthorizationUri(authorizationUri);
     }
 
-    public String getAuthorizationEndpoint() {
-        return authorizationEndpoint;
+    public static String getAuthorizationEndpoint() {
+        return getServiceContext().getAuthorizationEndpoint();
     }
 
-    public void setAuthorizationEndpoint(String authorizationEndpoint) {
-        this.authorizationEndpoint = authorizationEndpoint;
+    public static void setAuthorizationEndpoint(String authorizationEndpoint) {
+        getServiceContext().setAuthorizationEndpoint(authorizationEndpoint);
     }
 
-    public String getPushedAuthorizationRequestUri() {
-        return pushedAuthorizationRequestUri;
+    public static String getPushedAuthorizationRequestUri() {
+        return getServiceContext().getPushedAuthorizationRequestUri();
     }
 
-    public void setPushedAuthorizationRequestUri(String pushedAuthorizationRequestUri) {
-        this.pushedAuthorizationRequestUri = pushedAuthorizationRequestUri;
+    public static void setPushedAuthorizationRequestUri(String pushedAuthorizationRequestUri) {
+        getServiceContext().setPushedAuthorizationRequestUri(pushedAuthorizationRequestUri);
     }
 
-    public String getPushedAuthorizationRequestEndpoint() {
-        return pushedAuthorizationRequestEndpoint;
+    public static String getPushedAuthorizationRequestEndpoint() {
+        return getServiceContext().getPushedAuthorizationRequestEndpoint();
     }
 
-    public void setPushedAuthorizationRequestEndpoint(String pushedAuthorizationRequestEndpoint) {
-        this.pushedAuthorizationRequestEndpoint = pushedAuthorizationRequestEndpoint;
+    public static void setPushedAuthorizationRequestEndpoint(String pushedAuthorizationRequestEndpoint) {
+        getServiceContext().setPushedAuthorizationRequestEndpoint(pushedAuthorizationRequestEndpoint);
     }
 
-    public String getAccessTokenUri() {
-        return accessTokenUri;
+    public static String getAccessTokenUri() {
+        return getServiceContext().getAccessTokenUri();
     }
 
-    public void setAccessTokenUri(String accessTokenUri) {
-        this.accessTokenUri = accessTokenUri;
+    public static void setAccessTokenUri(String accessTokenUri) {
+        getServiceContext().setAccessTokenUri(accessTokenUri);
     }
 
-    public String getAccessTokenEndpoint() {
-        return accessTokenEndpoint;
+    public static String getAccessTokenEndpoint() {
+        return getServiceContext().getAccessTokenEndpoint();
     }
 
-    public void setAccessTokenEndpoint(String accessTokenEndpoint) {
-        this.accessTokenEndpoint = accessTokenEndpoint;
+    public static void setAccessTokenEndpoint(String accessTokenEndpoint) {
+        getServiceContext().setAccessTokenEndpoint(accessTokenEndpoint);
     }
 
-    public String getJwkSetUri() {
-        return jwkSetUri;
+    public static String getJwkSetUri() {
+        return getServiceContext().getJwkSetUri();
     }
 
-    public void setJwkSetUri(String jwkSetUri) {
-        this.jwkSetUri = jwkSetUri;
+    public static void setJwkSetUri(String jwkSetUri) {
+        getServiceContext().setJwkSetUri(jwkSetUri);
     }
 
-    public String getJwkSetEndpoint() {
-        return jwkSetEndpoint;
+    public static String getJwkSetEndpoint() {
+        return getServiceContext().getJwkSetEndpoint();
     }
 
-    public void setJwkSetEndpoint(String jwkSetEndpoint) {
-        this.jwkSetEndpoint = jwkSetEndpoint;
+    public static void setJwkSetEndpoint(String jwkSetEndpoint) {
+        getServiceContext().setJwkSetEndpoint(jwkSetEndpoint);
     }
 
-    public String getTokenRevocationUri() {
-        return tokenRevocationUri;
+    public static String getTokenRevocationUri() {
+        return getServiceContext().getTokenRevocationUri();
     }
 
-    public void setTokenRevocationUri(String tokenRevocationUri) {
-        this.tokenRevocationUri = tokenRevocationUri;
+    public static void setTokenRevocationUri(String tokenRevocationUri) {
+        getServiceContext().setTokenRevocationUri(tokenRevocationUri);
     }
 
-    public String getTokenRevocationEndpoint() {
-        return tokenRevocationEndpoint;
+    public static String getTokenRevocationEndpoint() {
+        return getServiceContext().getTokenRevocationEndpoint();
     }
 
-    public void setTokenRevocationEndpoint(String tokenRevocationEndpoint) {
-        this.tokenRevocationEndpoint = tokenRevocationEndpoint;
+    public static void setTokenRevocationEndpoint(String tokenRevocationEndpoint) {
+        getServiceContext().setTokenRevocationEndpoint(tokenRevocationEndpoint);
     }
 
-    public String getTokenIntrospectionUri() {
-        return tokenIntrospectionUri;
+    public static String getTokenIntrospectionUri() {
+        return getServiceContext().getTokenIntrospectionUri();
     }
 
-    public void setTokenIntrospectionUri(String tokenIntrospectionUri) {
-        this.tokenIntrospectionUri = tokenIntrospectionUri;
+    public static void setTokenIntrospectionUri(String tokenIntrospectionUri) {
+        getServiceContext().setTokenIntrospectionUri(tokenIntrospectionUri);
     }
 
-    public String getTokenIntrospectionEndpoint() {
-        return tokenIntrospectionEndpoint;
+    public static String getTokenIntrospectionEndpoint() {
+        return getServiceContext().getTokenIntrospectionEndpoint();
     }
 
-    public void setTokenIntrospectionEndpoint(String tokenIntrospectionEndpoint) {
-        this.tokenIntrospectionEndpoint = tokenIntrospectionEndpoint;
+    public static void setTokenIntrospectionEndpoint(String tokenIntrospectionEndpoint) {
+        getServiceContext().setTokenIntrospectionEndpoint(tokenIntrospectionEndpoint);
     }
 
-    public String getDeviceAuthorizationUri() {
-        return deviceAuthorizationUri;
+    public static String getDeviceAuthorizationUri() {
+        return getServiceContext().getDeviceAuthorizationUri();
     }
 
-    public void setDeviceAuthorizationUri(String deviceAuthorizationUri) {
-        this.deviceAuthorizationUri = deviceAuthorizationUri;
+    public static void setDeviceAuthorizationUri(String deviceAuthorizationUri) {
+        getServiceContext().setDeviceAuthorizationUri(deviceAuthorizationUri);
     }
 
-    public String getDeviceAuthorizationEndpoint() {
-        return deviceAuthorizationEndpoint;
+    public static String getDeviceAuthorizationEndpoint() {
+        return getServiceContext().getDeviceAuthorizationEndpoint();
     }
 
-    public void setDeviceAuthorizationEndpoint(String deviceAuthorizationEndpoint) {
-        this.deviceAuthorizationEndpoint = deviceAuthorizationEndpoint;
+    public static void setDeviceAuthorizationEndpoint(String deviceAuthorizationEndpoint) {
+        getServiceContext().setDeviceAuthorizationEndpoint(deviceAuthorizationEndpoint);
     }
 
-    public String getDeviceVerificationUri() {
-        return deviceVerificationUri;
+    public static String getDeviceVerificationUri() {
+        return getServiceContext().getDeviceVerificationUri();
     }
 
-    public void setDeviceVerificationUri(String deviceVerificationUri) {
-        this.deviceVerificationUri = deviceVerificationUri;
+    public static void setDeviceVerificationUri(String deviceVerificationUri) {
+        getServiceContext().setDeviceVerificationUri(deviceVerificationUri);
     }
 
-    public String getDeviceVerificationEndpoint() {
-        return deviceVerificationEndpoint;
+    public static String getDeviceVerificationEndpoint() {
+        return getServiceContext().getDeviceVerificationEndpoint();
     }
 
-    public void setDeviceVerificationEndpoint(String deviceVerificationEndpoint) {
-        this.deviceVerificationEndpoint = deviceVerificationEndpoint;
+    public static void setDeviceVerificationEndpoint(String deviceVerificationEndpoint) {
+        getServiceContext().setDeviceVerificationEndpoint(deviceVerificationEndpoint);
     }
 
-    public String getOidcClientRegistrationUri() {
-        return oidcClientRegistrationUri;
+    public static String getOidcClientRegistrationUri() {
+        return getServiceContext().getOidcClientRegistrationUri();
     }
 
-    public void setOidcClientRegistrationUri(String oidcClientRegistrationUri) {
-        this.oidcClientRegistrationUri = oidcClientRegistrationUri;
+    public static void setOidcClientRegistrationUri(String oidcClientRegistrationUri) {
+        getServiceContext().setOidcClientRegistrationUri(oidcClientRegistrationUri);
     }
 
-    public String getOidcClientRegistrationEndpoint() {
-        return oidcClientRegistrationEndpoint;
+    public static String getOidcClientRegistrationEndpoint() {
+        return getServiceContext().getOidcClientRegistrationEndpoint();
     }
 
-    public void setOidcClientRegistrationEndpoint(String oidcClientRegistrationEndpoint) {
-        this.oidcClientRegistrationEndpoint = oidcClientRegistrationEndpoint;
+    public static void setOidcClientRegistrationEndpoint(String oidcClientRegistrationEndpoint) {
+        getServiceContext().setOidcClientRegistrationEndpoint(oidcClientRegistrationEndpoint);
     }
 
-    public String getOidcLogoutUri() {
-        return oidcLogoutUri;
+    public static String getOidcLogoutUri() {
+        return getServiceContext().getOidcLogoutUri();
     }
 
-    public void setOidcLogoutUri(String oidcLogoutUri) {
-        this.oidcLogoutUri = oidcLogoutUri;
+    public static void setOidcLogoutUri(String oidcLogoutUri) {
+        getServiceContext().setOidcLogoutUri(oidcLogoutUri);
     }
 
-    public String getOidcLogoutEndpoint() {
-        return oidcLogoutEndpoint;
+    public static String getOidcLogoutEndpoint() {
+        return getServiceContext().getOidcLogoutEndpoint();
     }
 
-    public void setOidcLogoutEndpoint(String oidcLogoutEndpoint) {
-        this.oidcLogoutEndpoint = oidcLogoutEndpoint;
+    public static void setOidcLogoutEndpoint(String oidcLogoutEndpoint) {
+        getServiceContext().setOidcLogoutEndpoint(oidcLogoutEndpoint);
     }
 
-    public String getOidcUserInfoUri() {
-        return oidcUserInfoUri;
+    public static String getOidcUserInfoUri() {
+        return getServiceContext().getOidcUserInfoUri();
     }
 
-    public void setOidcUserInfoUri(String oidcUserInfoUri) {
-        this.oidcUserInfoUri = oidcUserInfoUri;
+    public static void setOidcUserInfoUri(String oidcUserInfoUri) {
+        getServiceContext().setOidcUserInfoUri(oidcUserInfoUri);
     }
 
-    public String getOidcUserInfoEndpoint() {
-        return oidcUserInfoEndpoint;
+    public static String getOidcUserInfoEndpoint() {
+        return getServiceContext().getOidcUserInfoEndpoint();
     }
 
-    public void setOidcUserInfoEndpoint(String oidcUserInfoEndpoint) {
-        this.oidcUserInfoEndpoint = oidcUserInfoEndpoint;
+    public static void setOidcUserInfoEndpoint(String oidcUserInfoEndpoint) {
+        getServiceContext().setOidcUserInfoEndpoint(oidcUserInfoEndpoint);
     }
 
-    public String getIssuerUri() {
-        return issuerUri;
+    public static String getIssuerUri() {
+        return getServiceContext().getIssuerUri();
     }
 
-    public void setIssuerUri(String issuerUri) {
-        this.issuerUri = issuerUri;
+    public static void setIssuerUri(String issuerUri) {
+        getServiceContext().setIssuerUri(issuerUri);
     }
 
-    public boolean isDistributedArchitecture() {
-        return this.getArchitecture() == Architecture.DISTRIBUTED;
+    public static boolean isDistributedArchitecture() {
+        return getServiceContext().getArchitecture() == Architecture.DISTRIBUTED;
     }
 
-    public String getOriginService() {
+    /**
+     * 用于 Spring Cloud BUS 发送信息使用。
+     * <p>
+     * Spring Cloud BUS 会使用 OriginService 作为 AntPathMatcher 的 pattern 来校验服务，所以这里使用了 “**”
+     * <p>
+     * 参见：
+     * <code>org.springframework.cloud.bus.RemoteApplicationEventListener</code>
+     * <code>org.springframework.cloud.bus.PathServiceMatcher#isFromSelf</code>
+     *
+     * @return 原始服务信息
+     */
+    public static String getOriginService() {
         return getApplicationName() + SymbolConstants.COLON + SymbolConstants.DOUBLE_STAR;
     }
 
-    public void publishEvent(ApplicationEvent applicationEvent) {
+    public static void publishEvent(ApplicationEvent applicationEvent) {
         getApplicationContext().publishEvent(applicationEvent);
+    }
+
+    public static String getId() {
+        return getApplicationName() + SymbolConstants.COLON + getPort();
+    }
+
+    /**
+     * 通过给定的 ServiceId 判断是否来自于自身。
+     * <p>
+     * 主要用于解决在消息队列场景，服务自身既是某个主题的生产者又是该主题消费者。那么在该服务多实例的情况下，很难判断“主从”关系。那么通过这个方法来判断。
+     *
+     * @param serviceId 格式为 spring.application.name : service.port
+     * @return true 来自于服务自己，false 来自于其它服务
+     */
+    public static boolean isFromSelf(String serviceId) {
+        if (Strings.CS.contains(serviceId, SymbolConstants.COLON)) {
+            return Strings.CS.equals(serviceId, getId());
+        }
+
+        return false;
     }
 }

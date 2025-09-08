@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.oauth2.core.utils;
 
-import cn.herodotus.engine.oauth2.core.definition.domain.HerodotusUser;
+import cn.herodotus.engine.core.identity.domain.HerodotusUser;
 import cn.hutool.v7.core.bean.BeanUtil;
 import cn.hutool.v7.core.bean.copier.CopyOptions;
 import org.apache.commons.lang3.ObjectUtils;

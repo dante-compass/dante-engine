@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.core.identity.oauth2;
 
-import cn.herodotus.engine.core.identity.domain.PrincipalDetails;
+import cn.herodotus.engine.core.identity.domain.UserPrincipal;
 
 /**
  * <p>Description: 身份信息解析器 </p>
@@ -35,5 +35,5 @@ import cn.herodotus.engine.core.identity.domain.PrincipalDetails;
  */
 public interface BearerTokenResolver {
 
-    PrincipalDetails resolve(String token);
+    UserPrincipal resolve(String token);
 }

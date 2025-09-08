@@ -27,7 +27,7 @@ package cn.herodotus.engine.logic.upms.domain.listener;
 
 import cn.herodotus.engine.logic.upms.domain.event.SysAttributeChangeEvent;
 import cn.herodotus.engine.logic.upms.entity.security.SysAttribute;
-import cn.herodotus.engine.rest.core.definition.context.AbstractApplicationContextAware;
+import cn.herodotus.engine.core.foundation.context.AbstractApplicationContextAware;
 import jakarta.persistence.PostUpdate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

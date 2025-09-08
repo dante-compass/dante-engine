@@ -25,11 +25,38 @@
 
 package cn.herodotus.engine.servlet.message.autoconfigure;
 
+import cn.herodotus.engine.core.definition.function.ErrorCodeMapperBuilderCustomizer;
+import cn.herodotus.engine.message.websocket.servlet.annotation.EnableHerodotusServletWebSocket;
+import cn.herodotus.engine.rest.servlet.message.annotation.EnableHerodotusRestServletMessage;
+import cn.herodotus.engine.servlet.message.autoconfigure.customizer.MessageErrorCodeMapperBuilderCustomizer;
+import jakarta.annotation.PostConstruct;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.boot.autoconfigure.AutoConfiguration;
+import org.springframework.context.annotation.Bean;
+
 /**
- * <p>Description: TODO </p>
+ * <p>Description: Servlet Message 自动配置 </p>
  *
  * @author : gengwei.zheng
- * @date : 2025/9/6 16:07
+ * @date : 2024/4/10 0:31
  */
+@AutoConfiguration
+@EnableHerodotusServletWebSocket
+@EnableHerodotusRestServletMessage
 public class ServletMessageAutoConfiguration {
+
+    private static final Logger log = LoggerFactory.getLogger(ServletMessageAutoConfiguration.class);
+
+    @PostConstruct
+    public void postConstruct() {
+        log.info("[Herodotus] |- Starter [Servlet Message] Configure.");
+    }
+
+    @Bean
+    public ErrorCodeMapperBuilderCustomizer messageErrorCodeMapperBuilderCustomizer() {
+        MessageErrorCodeMapperBuilderCustomizer customizer = new MessageErrorCodeMapperBuilderCustomizer();
+        log.debug("[Herodotus] |- Strategy [Message ErrorCodeMapper Builder Customizer] Auto Configure.");
+        return customizer;
+    }
 }

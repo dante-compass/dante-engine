@@ -24,3 +24,5 @@
 #
 
 cn.herodotus.engine.webmvc.autoconfigure.WebMvcAutoConfiguration
+cn.herodotus.engine.webmvc.autoconfigure.WebMvcCryptoAutoConfiguration
+cn.herodotus.engine.webmvc.autoconfigure.WebMvcRestMappingScanConfiguration

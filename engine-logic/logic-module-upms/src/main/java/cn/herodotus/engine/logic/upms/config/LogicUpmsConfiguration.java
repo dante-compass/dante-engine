@@ -58,6 +58,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
         "cn.herodotus.engine.logic.upms.repository.hr",
 })
 @ComponentScan(basePackages = {
+        "cn.herodotus.engine.logic.upms.service.assistant",
         "cn.herodotus.engine.logic.upms.service.security",
         "cn.herodotus.engine.logic.upms.service.hr",
 })

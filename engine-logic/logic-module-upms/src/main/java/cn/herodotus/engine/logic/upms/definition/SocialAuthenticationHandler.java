@@ -26,7 +26,7 @@
 package cn.herodotus.engine.logic.upms.definition;
 
 import cn.herodotus.engine.core.identity.domain.AccessPrincipal;
-import cn.herodotus.engine.oauth2.core.definition.domain.HerodotusUser;
+import cn.herodotus.engine.core.identity.domain.HerodotusUser;
 import org.springframework.security.core.AuthenticationException;
 
 /**

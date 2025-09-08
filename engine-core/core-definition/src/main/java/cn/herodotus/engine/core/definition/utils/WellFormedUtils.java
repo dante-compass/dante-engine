@@ -25,7 +25,6 @@
 
 package cn.herodotus.engine.core.definition.utils;
 
-import cn.herodotus.engine.core.definition.constant.BaseConstants;
 import cn.herodotus.engine.core.definition.constant.SymbolConstants;
 import cn.herodotus.engine.core.definition.constant.SystemConstants;
 import cn.herodotus.engine.core.definition.enums.Protocol;
@@ -233,7 +232,7 @@ public class WellFormedUtils {
 
     public static boolean isToken(String token) {
         if (StringUtils.isNotBlank(token)) {
-            return Strings.CS.startsWith(token, BaseConstants.BEARER_TOKEN) || Strings.CS.startsWith(token, BaseConstants.BASIC_TOKEN);
+            return Strings.CS.startsWith(token, SystemConstants.BEARER_TOKEN) || Strings.CS.startsWith(token, SystemConstants.BASIC_TOKEN);
         } else {
             return true;
         }

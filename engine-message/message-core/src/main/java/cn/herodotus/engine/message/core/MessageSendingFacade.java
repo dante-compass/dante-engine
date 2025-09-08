@@ -25,13 +25,13 @@
 
 package cn.herodotus.engine.message.core;
 
+import cn.herodotus.engine.core.foundation.context.AbstractApplicationEvent;
 import cn.herodotus.engine.core.foundation.context.ServiceContextHolder;
-import cn.herodotus.engine.message.core.definition.domain.StreamMessage;
-import cn.herodotus.engine.message.core.definition.domain.TemplateMessage;
-import cn.herodotus.engine.message.core.definition.domain.WebSocketMessage;
-import cn.herodotus.engine.message.core.definition.event.AbstractApplicationEvent;
-import cn.herodotus.engine.message.core.definition.event.StreamMessageSendingEvent;
-import cn.herodotus.engine.message.core.definition.event.TemplateMessageSendingEvent;
+import cn.herodotus.engine.message.core.domain.StreamMessage;
+import cn.herodotus.engine.message.core.domain.TemplateMessage;
+import cn.herodotus.engine.message.core.domain.WebSocketMessage;
+import cn.herodotus.engine.message.core.event.StreamMessageSendingEvent;
+import cn.herodotus.engine.message.core.event.TemplateMessageSendingEvent;
 import org.apache.commons.lang3.StringUtils;
 
 /**
@@ -80,7 +80,7 @@ class MessageSendingFacade {
      * @param <T>     继承 {@link StreamMessage} 类型消息实体
      */
     public static <T extends StreamMessage> void stream(T message) {
-        postProcess(new StreamMessageSendingEvent<>(message));
+        postProcess(new StreamMessageSendingEvent(message));
     }
 
     /**

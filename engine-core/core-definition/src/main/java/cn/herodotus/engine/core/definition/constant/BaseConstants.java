@@ -33,15 +33,13 @@ package cn.herodotus.engine.core.definition.constant;
  */
 public interface BaseConstants {
 
-    String NONE = "none";
-    String CODE = "code";
-
     /* ---------- 配置属性通用常量 ---------- */
     String PROPERTY_NAME_ENABLED = "enabled";
     String PROPERTY_ENABLED = SymbolConstants.PERIOD + PROPERTY_NAME_ENABLED;
     String PROPERTY_PREFIX_SERVER = "server";
     String PROPERTY_PREFIX_SPRING = "spring";
     String PROPERTY_PREFIX_HERODOTUS = "herodotus";
+    String PROPERTY_PREFIX_REACTIVE = PROPERTY_PREFIX_HERODOTUS + ".reactive";
 
     String PROPERTY_SERVER_SERVLET = PROPERTY_PREFIX_SERVER + ".servlet";
     String PROPERTY_SPRING_DATA = PROPERTY_PREFIX_SPRING + ".data";
@@ -69,6 +67,7 @@ public interface BaseConstants {
     String PROPERTY_LOG_LOGSTASH = PROPERTY_PREFIX_LOG + ".logstash";
     String PROPERTY_OAUTH2_AUTHENTICATION = PROPERTY_PREFIX_OAUTH2 + ".authentication";
     String PROPERTY_OAUTH2_AUTHORIZATION = PROPERTY_PREFIX_OAUTH2 + ".authorization";
+    String PROPERTY_REACTIVE_WEBCLIENT = PROPERTY_PREFIX_REACTIVE + ".web-client";
 
     /* ---------- Spring 家族配置属性 ---------- */
 
@@ -90,28 +89,4 @@ public interface BaseConstants {
 
     String AREA_PREFIX = "data:";
 
-
-    /* ---------- Oauth2 和 Security 通用缓存常量 ---------- */
-
-    /**
-     * Oauth2 模式类型
-     */
-    String PASSWORD = "password";
-    String SOCIAL_CREDENTIALS = "social_credentials";
-
-    String OPEN_API_SECURITY_SCHEME_BEARER_NAME = "HERODOTUS_AUTH";
-
-    String BEARER_TYPE = "Bearer";
-    String BEARER_TOKEN = BEARER_TYPE + SymbolConstants.SPACE;
-    String BASIC_TYPE = "Basic";
-    String BASIC_TOKEN = BASIC_TYPE + SymbolConstants.SPACE;
-    String AUTHORITIES = "authorities";
-    String AVATAR = "avatar";
-    String EMPLOYEE_ID = "employeeId";
-    String LICENSE = "license";
-    String OPEN_ID = "openid";
-    String PRINCIPAL = "principal";
-    String ROLES = "roles";
-    String SOURCE = "source";
-    String USERNAME = "username";
 }

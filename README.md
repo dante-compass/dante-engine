@@ -167,7 +167,6 @@ dante-engine
 ├── engine-message -- 消息模块
 ├    ├── message-autoconfigure -- 消息自动配置模块
 ├    ├── message-core -- 消息通用代码模块
-├    ├── message-module-emqx -- emqx 功能封装模块
 ├    └── message-module-websocket-servlet -- 基于 Servlet 环境下的 Websocket 功能封装模块
 ├── engine-oauth2 -- OAuth2 认证模块
 ├    ├── oauth2-authorization-server-autoconfigure -- OAuth2 授权服务器基础内容自动配置模块
