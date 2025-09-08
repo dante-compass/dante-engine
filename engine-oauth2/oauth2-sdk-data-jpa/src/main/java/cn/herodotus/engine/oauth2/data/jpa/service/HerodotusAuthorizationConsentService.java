@@ -25,8 +25,8 @@
 
 package cn.herodotus.engine.oauth2.data.jpa.service;
 
-import cn.herodotus.engine.data.core.repository.BaseRepository;
-import cn.herodotus.engine.data.core.service.BaseService;
+import cn.herodotus.engine.data.core.jpa.repository.BaseJpaRepository;
+import cn.herodotus.engine.data.core.jpa.service.AbstractJpaService;
 import cn.herodotus.engine.oauth2.data.jpa.entity.HerodotusAuthorizationConsent;
 import cn.herodotus.engine.oauth2.data.jpa.generator.HerodotusAuthorizationConsentId;
 import cn.herodotus.engine.oauth2.data.jpa.repository.HerodotusAuthorizationConsentRepository;
@@ -46,7 +46,7 @@ import java.util.Optional;
  * @date : 2022/2/25 21:02
  */
 @Service
-public class HerodotusAuthorizationConsentService extends BaseService<HerodotusAuthorizationConsent, HerodotusAuthorizationConsentId> {
+public class HerodotusAuthorizationConsentService extends AbstractJpaService<HerodotusAuthorizationConsent, HerodotusAuthorizationConsentId> {
 
     private static final Logger log = LoggerFactory.getLogger(HerodotusAuthorizationConsentService.class);
 
@@ -58,7 +58,7 @@ public class HerodotusAuthorizationConsentService extends BaseService<HerodotusA
     }
 
     @Override
-    public BaseRepository<HerodotusAuthorizationConsent, HerodotusAuthorizationConsentId> getRepository() {
+    public BaseJpaRepository<HerodotusAuthorizationConsent, HerodotusAuthorizationConsentId> getRepository() {
         return this.authorizationConsentRepository;
     }
 

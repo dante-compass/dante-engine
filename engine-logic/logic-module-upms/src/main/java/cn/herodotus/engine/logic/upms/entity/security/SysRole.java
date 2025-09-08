@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.logic.upms.entity.security;
 
-import cn.herodotus.engine.data.core.entity.BaseSysEntity;
+import cn.herodotus.engine.data.core.jpa.entity.AbstractSysEntity;
 import cn.herodotus.engine.logic.upms.constants.LogicUpmsConstants;
 import com.google.common.base.MoreObjects;
 import jakarta.persistence.*;
@@ -44,7 +44,7 @@ import java.util.Set;
         indexes = {@Index(name = "sys_role_rid_idx", columnList = "role_id"), @Index(name = "sys_role_rcd_idx", columnList = "role_code")})
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = LogicUpmsConstants.REGION_SYS_ROLE)
-public class SysRole extends BaseSysEntity {
+public class SysRole extends AbstractSysEntity {
 
     @Id
     @UuidGenerator

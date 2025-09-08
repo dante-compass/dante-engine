@@ -25,8 +25,8 @@
 
 package cn.herodotus.engine.oauth2.data.jpa.service;
 
-import cn.herodotus.engine.data.core.repository.BaseRepository;
-import cn.herodotus.engine.data.core.service.BaseService;
+import cn.herodotus.engine.data.core.jpa.repository.BaseJpaRepository;
+import cn.herodotus.engine.data.core.jpa.service.AbstractJpaService;
 import cn.herodotus.engine.oauth2.data.jpa.entity.HerodotusRegisteredClient;
 import cn.herodotus.engine.oauth2.data.jpa.repository.HerodotusRegisteredClientRepository;
 import org.slf4j.Logger;
@@ -45,7 +45,7 @@ import java.util.Optional;
  * @date : 2022/2/25 21:06
  */
 @Service
-public class HerodotusRegisteredClientService extends BaseService<HerodotusRegisteredClient, String> {
+public class HerodotusRegisteredClientService extends AbstractJpaService<HerodotusRegisteredClient, String> {
 
     private static final Logger log = LoggerFactory.getLogger(HerodotusRegisteredClientService.class);
 
@@ -57,7 +57,7 @@ public class HerodotusRegisteredClientService extends BaseService<HerodotusRegis
     }
 
     @Override
-    public BaseRepository<HerodotusRegisteredClient, String> getRepository() {
+    public BaseJpaRepository<HerodotusRegisteredClient, String> getRepository() {
         return registeredClientRepository;
     }
 

@@ -25,8 +25,8 @@
 
 package cn.herodotus.engine.oauth2.management.service;
 
-import cn.herodotus.engine.data.core.repository.BaseRepository;
-import cn.herodotus.engine.data.core.service.BaseService;
+import cn.herodotus.engine.data.core.jpa.repository.BaseJpaRepository;
+import cn.herodotus.engine.data.core.jpa.service.AbstractJpaService;
 import cn.herodotus.engine.oauth2.management.entity.OAuth2Compliance;
 import cn.herodotus.engine.oauth2.management.repository.OAuth2ComplianceRepository;
 import com.google.common.net.HttpHeaders;
@@ -55,7 +55,7 @@ import java.util.List;
  * @date : 2022/7/7 20:37
  */
 @Service
-public class OAuth2ComplianceService extends BaseService<OAuth2Compliance, String> {
+public class OAuth2ComplianceService extends AbstractJpaService<OAuth2Compliance, String> {
 
     private static final Logger log = LoggerFactory.getLogger(OAuth2ComplianceService.class);
 
@@ -66,7 +66,7 @@ public class OAuth2ComplianceService extends BaseService<OAuth2Compliance, Strin
     }
 
     @Override
-    public BaseRepository<OAuth2Compliance, String> getRepository() {
+    public BaseJpaRepository<OAuth2Compliance, String> getRepository() {
         return complianceRepository;
     }
 

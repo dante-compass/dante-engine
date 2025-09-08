@@ -25,8 +25,8 @@
 
 package cn.herodotus.engine.logic.upms.service.security;
 
-import cn.herodotus.engine.data.core.repository.BaseRepository;
-import cn.herodotus.engine.data.core.service.BaseService;
+import cn.herodotus.engine.data.core.jpa.repository.BaseJpaRepository;
+import cn.herodotus.engine.data.core.jpa.service.AbstractJpaService;
 import cn.herodotus.engine.logic.upms.entity.security.SysAttribute;
 import cn.herodotus.engine.logic.upms.entity.security.SysPermission;
 import cn.herodotus.engine.logic.upms.repository.security.SysAttributeRepository;
@@ -34,6 +34,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 /**
@@ -43,7 +44,7 @@ import java.util.Set;
  * @date : 2021/8/4 6:48
  */
 @Service
-public class SysAttributeService extends BaseService<SysAttribute, String> {
+public class SysAttributeService extends AbstractJpaService<SysAttribute, String> {
 
     private final SysAttributeRepository sysAttributeRepository;
 
@@ -52,7 +53,7 @@ public class SysAttributeService extends BaseService<SysAttribute, String> {
     }
 
     @Override
-    public BaseRepository<SysAttribute, String> getRepository() {
+    public BaseJpaRepository<SysAttribute, String> getRepository() {
         return this.sysAttributeRepository;
     }
 
@@ -65,10 +66,13 @@ public class SysAttributeService extends BaseService<SysAttribute, String> {
             sysPermissions.add(sysPermission);
         }
 
-        SysAttribute sysAttribute = findById(attributeId);
-        sysAttribute.setPermissions(sysPermissions);
-
-        return saveAndFlush(sysAttribute);
+        Optional<SysAttribute> sysAttribute = findById(attributeId);
+        return sysAttribute.map(data -> {
+                    data.setPermissions(sysPermissions);
+                    return data;
+                })
+                .map(this::saveAndFlush)
+                .orElse(null);
     }
 
     public List<SysAttribute> findAllByServiceId(String serviceId) {

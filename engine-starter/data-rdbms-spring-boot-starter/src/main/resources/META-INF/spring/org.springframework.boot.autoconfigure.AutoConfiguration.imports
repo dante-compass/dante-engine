@@ -23,4 +23,6 @@
 # 6. 若您的项目无法满足以上几点，可申请商业授权
 #
 
-cn.herodotus.engine.data.rdbms.autoconfigure
+cn.herodotus.engine.data.rdbms.autoconfigure.DataJpaAutoConfiguration
+cn.herodotus.engine.data.rdbms.autoconfigure.DataQueryDslAutoConfiguration
+cn.herodotus.engine.data.rdbms.autoconfigure.DataMybatisPlusAutoConfiguration

@@ -26,7 +26,7 @@
 package cn.herodotus.engine.logic.upms.repository.hr;
 
 import cn.herodotus.engine.core.foundation.exception.transaction.TransactionalRollbackException;
-import cn.herodotus.engine.data.core.repository.BaseRepository;
+import cn.herodotus.engine.data.core.jpa.repository.BaseJpaRepository;
 import cn.herodotus.engine.logic.upms.entity.hr.SysOwnership;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -38,7 +38,7 @@ import org.springframework.transaction.annotation.Transactional;
  * @author : gengwei.zheng
  * @date : 2021/7/15 16:28
  */
-public interface SysOwnershipRepository extends BaseRepository<SysOwnership, String> {
+public interface SysOwnershipRepository extends BaseJpaRepository<SysOwnership, String> {
 
     /**
      * 根据单位ID删除人事归属

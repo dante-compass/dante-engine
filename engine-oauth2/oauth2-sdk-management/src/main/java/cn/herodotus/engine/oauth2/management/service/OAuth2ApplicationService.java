@@ -26,8 +26,8 @@
 package cn.herodotus.engine.oauth2.management.service;
 
 import cn.herodotus.engine.core.foundation.exception.transaction.TransactionalRollbackException;
-import cn.herodotus.engine.data.core.repository.BaseRepository;
-import cn.herodotus.engine.data.core.service.BaseService;
+import cn.herodotus.engine.data.core.jpa.repository.BaseJpaRepository;
+import cn.herodotus.engine.data.core.jpa.service.AbstractJpaService;
 import cn.herodotus.engine.oauth2.data.jpa.repository.HerodotusRegisteredClientRepository;
 import cn.herodotus.engine.oauth2.management.converter.OAuth2ApplicationToRegisteredClientConverter;
 import cn.herodotus.engine.oauth2.management.entity.OAuth2Application;
@@ -43,6 +43,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 /**
@@ -52,7 +53,7 @@ import java.util.Set;
  * @date : 2022/3/1 18:06
  */
 @Service
-public class OAuth2ApplicationService extends BaseService<OAuth2Application, String> {
+public class OAuth2ApplicationService extends AbstractJpaService<OAuth2Application, String> {
 
     private static final Logger log = LoggerFactory.getLogger(OAuth2ApplicationService.class);
 
@@ -69,7 +70,7 @@ public class OAuth2ApplicationService extends BaseService<OAuth2Application, Str
     }
 
     @Override
-    public BaseRepository<OAuth2Application, String> getRepository() {
+    public BaseJpaRepository<OAuth2Application, String> getRepository() {
         return this.applicationRepository;
     }
 
@@ -103,10 +104,13 @@ public class OAuth2ApplicationService extends BaseService<OAuth2Application, Str
             scopes.add(scope);
         }
 
-        OAuth2Application oldApplication = findById(applicationId);
-        oldApplication.setScopes(scopes);
-
-        return saveAndFlush(oldApplication);
+        Optional<OAuth2Application> oldApplication = findById(applicationId);
+        return oldApplication.map(entity -> {
+                    entity.setScopes(scopes);
+                    return entity;
+                })
+                .map(this::saveAndFlush)
+                .orElse(null);
     }
 
     public OAuth2Application findByClientId(String clientId) {

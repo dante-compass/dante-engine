@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.logic.upms.entity.hr;
 
-import cn.herodotus.engine.data.core.entity.BaseSysEntity;
+import cn.herodotus.engine.data.core.jpa.entity.AbstractSysEntity;
 import cn.herodotus.engine.logic.upms.constants.LogicUpmsConstants;
 import com.google.common.base.MoreObjects;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -49,7 +49,7 @@ import org.hibernate.annotations.UuidGenerator;
 })
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = LogicUpmsConstants.REGION_SYS_OWNERSHIP)
-public class SysOwnership extends BaseSysEntity {
+public class SysOwnership extends AbstractSysEntity {
 
     @Schema(name = "人员ID")
     @Id

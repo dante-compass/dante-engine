@@ -30,11 +30,12 @@ import cn.herodotus.engine.oauth2.data.jpa.converter.OAuth2ToHerodotusRegistered
 import cn.herodotus.engine.oauth2.data.jpa.entity.HerodotusRegisteredClient;
 import cn.herodotus.engine.oauth2.data.jpa.jackson2.OAuth2JacksonProcessor;
 import cn.herodotus.engine.oauth2.data.jpa.service.HerodotusRegisteredClientService;
-import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClientRepository;
+
+import java.util.Optional;
 
 /**
  * <p>Description: 基于Jpa 的 RegisteredClient服务 </p>
@@ -62,11 +63,8 @@ public class JpaRegisteredClientRepository implements RegisteredClientRepository
 
     @Override
     public RegisteredClient findById(String id) {
-        HerodotusRegisteredClient herodotusRegisteredClient = this.herodotusRegisteredClientService.findById(id);
-        if (ObjectUtils.isNotEmpty(herodotusRegisteredClient)) {
-            return toObject(herodotusRegisteredClient);
-        }
-        return null;
+        Optional<HerodotusRegisteredClient> herodotusRegisteredClient = this.herodotusRegisteredClientService.findById(id);
+        return herodotusRegisteredClient.map(this::toObject).orElse(null);
     }
 
     @Override

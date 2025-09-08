@@ -25,14 +25,15 @@
 
 package cn.herodotus.engine.oauth2.management.service;
 
-import cn.herodotus.engine.data.core.repository.BaseRepository;
-import cn.herodotus.engine.data.core.service.BaseService;
+import cn.herodotus.engine.data.core.jpa.repository.BaseJpaRepository;
+import cn.herodotus.engine.data.core.jpa.service.AbstractJpaService;
 import cn.herodotus.engine.oauth2.management.entity.OAuth2Permission;
 import cn.herodotus.engine.oauth2.management.entity.OAuth2Scope;
 import cn.herodotus.engine.oauth2.management.repository.OAuth2ScopeRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 /**
@@ -42,7 +43,7 @@ import java.util.Set;
  * @date : 2020/3/19 17:00
  */
 @Service
-public class OAuth2ScopeService extends BaseService<OAuth2Scope, String> {
+public class OAuth2ScopeService extends AbstractJpaService<OAuth2Scope, String> {
 
     private final OAuth2ScopeRepository oauthScopesRepository;
 
@@ -51,16 +52,19 @@ public class OAuth2ScopeService extends BaseService<OAuth2Scope, String> {
     }
 
     @Override
-    public BaseRepository<OAuth2Scope, String> getRepository() {
+    public BaseJpaRepository<OAuth2Scope, String> getRepository() {
         return oauthScopesRepository;
     }
 
     public OAuth2Scope assigned(String scopeId, Set<OAuth2Permission> permissions) {
 
-        OAuth2Scope oldScope = findById(scopeId);
-        oldScope.setPermissions(permissions);
+        Optional<OAuth2Scope> oldScope = findById(scopeId);
 
-        return saveAndFlush(oldScope);
+        return oldScope.map(entity -> {
+                    entity.setPermissions(permissions);
+                    return entity;
+                }).map(this::saveAndFlush)
+                .orElse(null);
     }
 
     public OAuth2Scope findByScopeCode(String scopeCode) {

@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.logic.upms.entity.security;
 
-import cn.herodotus.engine.data.core.entity.BaseSysEntity;
+import cn.herodotus.engine.data.core.jpa.entity.AbstractSysEntity;
 import cn.herodotus.engine.logic.upms.constants.LogicUpmsConstants;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.base.MoreObjects;
@@ -50,7 +50,7 @@ import java.util.Set;
 @Table(name = "sys_element", indexes = {@Index(name = "sys_element_id_idx", columnList = "element_id")})
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = LogicUpmsConstants.REGION_SYS_ELEMENT)
-public class SysElement extends BaseSysEntity {
+public class SysElement extends AbstractSysEntity {
 
     @Id
     @UuidGenerator

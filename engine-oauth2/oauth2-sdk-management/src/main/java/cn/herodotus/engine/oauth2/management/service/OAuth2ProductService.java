@@ -25,8 +25,8 @@
 
 package cn.herodotus.engine.oauth2.management.service;
 
-import cn.herodotus.engine.data.core.repository.BaseRepository;
-import cn.herodotus.engine.data.core.service.BaseService;
+import cn.herodotus.engine.data.core.jpa.repository.BaseJpaRepository;
+import cn.herodotus.engine.data.core.jpa.service.AbstractJpaService;
 import cn.herodotus.engine.oauth2.management.entity.OAuth2Product;
 import cn.herodotus.engine.oauth2.management.repository.OAuth2ProductRepository;
 import org.springframework.stereotype.Service;
@@ -38,7 +38,7 @@ import org.springframework.stereotype.Service;
  * @date : 2023/5/15 16:33
  */
 @Service
-public class OAuth2ProductService extends BaseService<OAuth2Product, String> {
+public class OAuth2ProductService extends AbstractJpaService<OAuth2Product, String> {
 
     private final OAuth2ProductRepository productRepository;
 
@@ -47,7 +47,7 @@ public class OAuth2ProductService extends BaseService<OAuth2Product, String> {
     }
 
     @Override
-    public BaseRepository<OAuth2Product, String> getRepository() {
+    public BaseJpaRepository<OAuth2Product, String> getRepository() {
         return productRepository;
     }
 }

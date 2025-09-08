@@ -26,10 +26,10 @@
 package cn.herodotus.engine.oauth2.authorization.autoconfigure.tenant;
 
 import cn.herodotus.engine.core.definition.domain.Result;
-import cn.herodotus.engine.data.core.service.WriteableService;
+import cn.herodotus.engine.data.core.jpa.service.BaseJpaWriteableService;
 import cn.herodotus.engine.data.tenant.entity.SysTenantDataSource;
 import cn.herodotus.engine.web.core.annotation.AccessLimited;
-import cn.herodotus.engine.rest.core.controller.BaseWriteableRestController;
+import cn.herodotus.engine.web.api.servlet.AbstractJpaWriteableController;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
@@ -56,7 +56,7 @@ import org.springframework.web.bind.annotation.RestController;
         @Tag(name = "系统安全管理接口"),
         @Tag(name = "多租户数据源接口")
 })
-public class SysTenantDataSourceController extends BaseWriteableRestController<SysTenantDataSource, String> {
+public class SysTenantDataSourceController extends AbstractJpaWriteableController<SysTenantDataSource, String> {
 
     private final SysTenantDataSourceService sysTenantDataSourceService;
 
@@ -65,7 +65,7 @@ public class SysTenantDataSourceController extends BaseWriteableRestController<S
     }
 
     @Override
-    public WriteableService<SysTenantDataSource, String> getWriteableService() {
+    public BaseJpaWriteableService<SysTenantDataSource, String> getService() {
         return sysTenantDataSourceService;
     }
 

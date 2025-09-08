@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.oauth2.management.repository;
 
-import cn.herodotus.engine.data.core.repository.BaseRepository;
+import cn.herodotus.engine.data.core.jpa.repository.BaseJpaRepository;
 import cn.herodotus.engine.oauth2.management.entity.OAuth2Scope;
 
 import java.util.List;
@@ -36,7 +36,7 @@ import java.util.List;
  * @author : gengwei.zheng
  * @date : 2020/3/19 16:57
  */
-public interface OAuth2ScopeRepository extends BaseRepository<OAuth2Scope, String> {
+public interface OAuth2ScopeRepository extends BaseJpaRepository<OAuth2Scope, String> {
 
     /**
      * 根据范围代码查询应用范围

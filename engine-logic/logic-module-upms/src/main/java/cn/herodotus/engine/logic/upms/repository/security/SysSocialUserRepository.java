@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.logic.upms.repository.security;
 
-import cn.herodotus.engine.data.core.repository.BaseRepository;
+import cn.herodotus.engine.data.core.jpa.repository.BaseJpaRepository;
 import cn.herodotus.engine.logic.upms.entity.security.SysSocialUser;
 import jakarta.persistence.QueryHint;
 import org.hibernate.jpa.AvailableHints;
@@ -37,7 +37,7 @@ import org.springframework.data.jpa.repository.QueryHints;
  * @author : gengwei.zheng
  * @date : 2021/5/16 16:25
  */
-public interface SysSocialUserRepository extends BaseRepository<SysSocialUser, String> {
+public interface SysSocialUserRepository extends BaseJpaRepository<SysSocialUser, String> {
 
     /**
      * 通过 uuid 和 source查询用户

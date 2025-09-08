@@ -82,15 +82,15 @@ public class OAuth2AuthorizationServerConfigurerCustomizer implements Customizer
                 .clientAuthentication(endpoint -> endpoint.errorResponseHandler(oauth2AuthenticationFailureResponseHandler))
                 .authorizationEndpoint(endpoint -> {
                     endpoint.errorResponseHandler(oauth2AuthenticationFailureResponseHandler);
-                    endpoint.consentPage(SystemConstants.AUTHORIZATION_CONSENT_URI);
+                    endpoint.consentPage(SystemConstants.OAUTH2_AUTHORIZATION_CONSENT_URI);
                 })
                 .deviceAuthorizationEndpoint(endpoint -> {
                     endpoint.errorResponseHandler(oauth2AuthenticationFailureResponseHandler);
-                    endpoint.verificationUri(SystemConstants.DEVICE_ACTIVATION_URI);
+                    endpoint.verificationUri(SystemConstants.OAUTH2_DEVICE_ACTIVATION_URI);
                 })
                 .deviceVerificationEndpoint(endpoint -> {
                     endpoint.errorResponseHandler(oauth2AuthenticationFailureResponseHandler);
-                    endpoint.consentPage(SystemConstants.AUTHORIZATION_CONSENT_URI);
+                    endpoint.consentPage(SystemConstants.OAUTH2_AUTHORIZATION_CONSENT_URI);
                     endpoint.deviceVerificationResponseHandler(oauth2DeviceVerificationResponseHandler);
                 })
                 .tokenEndpoint(endpoint -> {

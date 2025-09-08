@@ -82,7 +82,7 @@ public class ConsentController {
      * @param state     state参数
      * @return Consent页面
      */
-    @GetMapping(SystemConstants.AUTHORIZATION_CONSENT_URI)
+    @GetMapping(SystemConstants.OAUTH2_AUTHORIZATION_CONSENT_URI)
     public String consent(Principal principal, Model model,
                           @RequestParam(OAuth2ParameterNames.CLIENT_ID) String clientId,
                           @RequestParam(OAuth2ParameterNames.SCOPE) String scope,

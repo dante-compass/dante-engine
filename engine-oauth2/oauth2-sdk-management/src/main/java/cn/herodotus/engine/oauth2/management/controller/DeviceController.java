@@ -42,15 +42,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class DeviceController {
 
-    @GetMapping(SystemConstants.DEVICE_ACTIVATION_URI)
+    @GetMapping(SystemConstants.OAUTH2_DEVICE_ACTIVATION_URI)
     public String activate(@RequestParam(value = OAuth2ParameterNames.USER_CODE, required = false) String userCode) {
         if (StringUtils.isNotBlank(userCode)) {
-            return "redirect:" + SystemConstants.DEVICE_VERIFICATION_ENDPOINT + SymbolConstants.QUESTION + OAuth2ParameterNames.USER_CODE + SymbolConstants.EQUAL + userCode;
+            return "redirect:" + SystemConstants.OAUTH2_DEVICE_VERIFICATION_ENDPOINT + SymbolConstants.QUESTION + OAuth2ParameterNames.USER_CODE + SymbolConstants.EQUAL + userCode;
         }
         return "activation";
     }
 
-    @GetMapping(value = SystemConstants.DEVICE_VERIFICATION_SUCCESS_URI)
+    @GetMapping(value = SystemConstants.OAUTH2_DEVICE_VERIFICATION_SUCCESS_URI)
     public String activated() {
         return "activation-allowed";
     }

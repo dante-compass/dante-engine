@@ -25,10 +25,10 @@
 
 package cn.herodotus.engine.rest.servlet.upms.controller.hr;
 
-import cn.herodotus.engine.data.core.service.WriteableService;
-import cn.herodotus.engine.rest.core.controller.BaseWriteableRestController;
+import cn.herodotus.engine.data.core.jpa.service.BaseJpaWriteableService;
 import cn.herodotus.engine.logic.upms.entity.hr.SysOwnership;
 import cn.herodotus.engine.logic.upms.service.hr.SysOwnershipService;
+import cn.herodotus.engine.web.api.servlet.AbstractJpaWriteableController;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -42,7 +42,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/hr/ownership")
 @Tag(name = "人事归属管理接口")
-public class SysOwnershipController extends BaseWriteableRestController<SysOwnership, String> {
+public class SysOwnershipController extends AbstractJpaWriteableController<SysOwnership, String> {
 
     private final SysOwnershipService sysOwnershipService;
 
@@ -51,7 +51,7 @@ public class SysOwnershipController extends BaseWriteableRestController<SysOwner
     }
 
     @Override
-    public WriteableService<SysOwnership, String> getWriteableService() {
+    public BaseJpaWriteableService<SysOwnership, String> getService() {
         return this.sysOwnershipService;
     }
 }

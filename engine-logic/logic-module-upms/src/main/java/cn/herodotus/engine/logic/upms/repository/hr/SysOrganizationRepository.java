@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.logic.upms.repository.hr;
 
-import cn.herodotus.engine.data.core.repository.BaseRepository;
+import cn.herodotus.engine.data.core.jpa.repository.BaseJpaRepository;
 import cn.herodotus.engine.logic.upms.entity.hr.SysOrganization;
 import cn.herodotus.engine.logic.upms.enums.OrganizationCategory;
 
@@ -37,7 +37,7 @@ import java.util.List;
  * @author : gengwei.zheng
  * @date : 2020/1/20 11:37
  */
-public interface SysOrganizationRepository extends BaseRepository<SysOrganization, String> {
+public interface SysOrganizationRepository extends BaseJpaRepository<SysOrganization, String> {
 
     /**
      * 根据组织分类查询组织

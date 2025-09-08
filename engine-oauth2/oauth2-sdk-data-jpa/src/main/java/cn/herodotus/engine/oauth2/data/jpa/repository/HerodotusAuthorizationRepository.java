@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.oauth2.data.jpa.repository;
 
-import cn.herodotus.engine.data.core.repository.BaseRepository;
+import cn.herodotus.engine.data.core.jpa.repository.BaseJpaRepository;
 import cn.herodotus.engine.oauth2.data.jpa.entity.HerodotusAuthorization;
 import jakarta.persistence.QueryHint;
 import org.hibernate.jpa.AvailableHints;
@@ -43,7 +43,7 @@ import java.util.Optional;
  * @author : gengwei.zheng
  * @date : 2022/2/25 21:05
  */
-public interface HerodotusAuthorizationRepository extends BaseRepository<HerodotusAuthorization, String> {
+public interface HerodotusAuthorizationRepository extends BaseJpaRepository<HerodotusAuthorization, String> {
 
     /**
      * 根据 State 查询 OAuth2 认证信息

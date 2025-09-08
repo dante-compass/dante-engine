@@ -25,7 +25,8 @@
 
 package cn.herodotus.engine.oauth2.authorization.autoconfigure;
 
-import cn.herodotus.engine.data.tenant.annotation.ConditionalOnDatabaseApproach;
+import cn.herodotus.engine.data.tenant.condition.ConditionalOnMultiTenant;
+import cn.herodotus.engine.data.tenant.enums.MultiTenant;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,7 +40,7 @@ import org.springframework.context.annotation.ComponentScan;
  * @date : 2023/3/29 21:18
  */
 @AutoConfiguration
-@ConditionalOnDatabaseApproach
+@ConditionalOnMultiTenant(MultiTenant.DATABASE)
 @ComponentScan(basePackages = {
         "cn.herodotus.engine.oauth2.authorization.autoconfigure.tenant",
 })
@@ -49,6 +50,6 @@ public class TenantDataSourceAutoConfiguration {
 
     @PostConstruct
     public void postConstruct() {
-        log.info("[Herodotus] |- Module [Tenant Data Source] Auto Configure.");
+        log.debug("[Herodotus] |- Auto [Tenant Data Source] Configure.");
     }
 }

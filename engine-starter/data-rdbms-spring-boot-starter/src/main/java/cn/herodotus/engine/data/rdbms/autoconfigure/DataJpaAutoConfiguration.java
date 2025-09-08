@@ -25,11 +25,31 @@
 
 package cn.herodotus.engine.data.rdbms.autoconfigure;
 
+import cn.herodotus.engine.data.tenant.config.DataTenantConfiguration;
+import jakarta.annotation.PostConstruct;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.boot.autoconfigure.AutoConfiguration;
+import org.springframework.context.annotation.Import;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
+
 /**
- * <p>Description: TODO </p>
+ * <p>Description: 多租户模块统一配置 </p>
  *
  * @author : gengwei.zheng
  * @date : 2025/9/6 15:52
  */
+@AutoConfiguration
+@Import({
+        DataTenantConfiguration.class,
+})
+@EnableJpaAuditing
 public class DataJpaAutoConfiguration {
+
+    private static final Logger log = LoggerFactory.getLogger(DataJpaAutoConfiguration.class);
+
+    @PostConstruct
+    public void postConstruct() {
+        log.info("[Herodotus] |- Auto [Data Jpa] Configure.");
+    }
 }

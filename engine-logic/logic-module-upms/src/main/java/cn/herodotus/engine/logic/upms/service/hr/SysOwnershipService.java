@@ -25,8 +25,8 @@
 
 package cn.herodotus.engine.logic.upms.service.hr;
 
-import cn.herodotus.engine.data.core.repository.BaseRepository;
-import cn.herodotus.engine.data.core.service.BaseService;
+import cn.herodotus.engine.data.core.jpa.repository.BaseJpaRepository;
+import cn.herodotus.engine.data.core.jpa.service.AbstractJpaService;
 import cn.herodotus.engine.logic.upms.entity.hr.SysOwnership;
 import cn.herodotus.engine.logic.upms.repository.hr.SysOwnershipRepository;
 import org.slf4j.Logger;
@@ -40,7 +40,7 @@ import org.springframework.stereotype.Service;
  * @date : 2021/7/15 16:30
  */
 @Service
-public class SysOwnershipService extends BaseService<SysOwnership, String> {
+public class SysOwnershipService extends AbstractJpaService<SysOwnership, String> {
 
     private static final Logger log = LoggerFactory.getLogger(SysOwnershipService.class);
 
@@ -51,7 +51,7 @@ public class SysOwnershipService extends BaseService<SysOwnership, String> {
     }
 
     @Override
-    public BaseRepository<SysOwnership, String> getRepository() {
+    public BaseJpaRepository<SysOwnership, String> getRepository() {
         return this.sysOwnershipRepository;
     }
 

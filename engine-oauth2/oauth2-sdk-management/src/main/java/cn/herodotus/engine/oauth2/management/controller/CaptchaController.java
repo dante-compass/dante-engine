@@ -32,7 +32,7 @@ import cn.herodotus.engine.core.foundation.support.captcha.CaptchaRendererFactor
 import cn.herodotus.engine.web.core.annotation.AccessLimited;
 import cn.herodotus.engine.web.core.annotation.Crypto;
 import cn.herodotus.engine.web.core.annotation.Idempotent;
-import cn.herodotus.engine.rest.core.controller.Controller;
+import cn.herodotus.engine.web.api.servlet.PaginationController;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
@@ -64,7 +64,7 @@ import java.util.Map;
         @Tag(name = "OAuth2 认证服务器开放接口"),
         @Tag(name = "验证码接口")
 })
-public class CaptchaController implements Controller {
+public class CaptchaController implements PaginationController {
 
     private final CaptchaRendererFactory captchaRendererFactory;
 

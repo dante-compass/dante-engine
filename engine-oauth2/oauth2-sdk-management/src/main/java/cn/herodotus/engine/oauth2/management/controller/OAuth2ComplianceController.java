@@ -26,10 +26,10 @@
 package cn.herodotus.engine.oauth2.management.controller;
 
 import cn.herodotus.engine.core.definition.domain.Result;
-import cn.herodotus.engine.data.core.service.WriteableService;
+import cn.herodotus.engine.data.core.jpa.service.BaseJpaWriteableService;
 import cn.herodotus.engine.oauth2.management.entity.OAuth2Compliance;
 import cn.herodotus.engine.oauth2.management.service.OAuth2ComplianceService;
-import cn.herodotus.engine.rest.core.controller.BaseWriteableRestController;
+import cn.herodotus.engine.web.api.servlet.AbstractJpaWriteableController;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
@@ -61,7 +61,7 @@ import java.util.Map;
         @Tag(name = "OAuth2 应用安全合规接口"),
         @Tag(name = "OAuth2 审计管理接口")
 })
-public class OAuth2ComplianceController extends BaseWriteableRestController<OAuth2Compliance, String> {
+public class OAuth2ComplianceController extends AbstractJpaWriteableController<OAuth2Compliance, String> {
 
     private final OAuth2ComplianceService complianceService;
 
@@ -71,7 +71,7 @@ public class OAuth2ComplianceController extends BaseWriteableRestController<OAut
     }
 
     @Override
-    public WriteableService<OAuth2Compliance, String> getWriteableService() {
+    public BaseJpaWriteableService<OAuth2Compliance, String> getService() {
         return complianceService;
     }
 
@@ -91,6 +91,6 @@ public class OAuth2ComplianceController extends BaseWriteableRestController<OAut
                                                        @RequestParam(value = "clientId", required = false) String clientId,
                                                        @RequestParam(value = "ip", required = false) String ip) {
         Page<OAuth2Compliance> pages = complianceService.findByCondition(pageNumber, pageSize, principalName, clientId, ip);
-        return result(pages);
+        return resultFromPage(pages);
     }
 }

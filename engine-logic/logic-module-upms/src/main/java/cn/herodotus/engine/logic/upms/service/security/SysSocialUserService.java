@@ -25,8 +25,8 @@
 
 package cn.herodotus.engine.logic.upms.service.security;
 
-import cn.herodotus.engine.data.core.repository.BaseRepository;
-import cn.herodotus.engine.data.core.service.BaseService;
+import cn.herodotus.engine.data.core.jpa.repository.BaseJpaRepository;
+import cn.herodotus.engine.data.core.jpa.service.AbstractJpaService;
 import cn.herodotus.engine.logic.upms.entity.security.SysSocialUser;
 import cn.herodotus.engine.logic.upms.repository.security.SysSocialUserRepository;
 import org.springframework.stereotype.Service;
@@ -38,7 +38,7 @@ import org.springframework.stereotype.Service;
  * @date : 2021/5/16 16:29
  */
 @Service
-public class SysSocialUserService extends BaseService<SysSocialUser, String> {
+public class SysSocialUserService extends AbstractJpaService<SysSocialUser, String> {
 
     private final SysSocialUserRepository sysSocialUserRepository;
 
@@ -47,7 +47,7 @@ public class SysSocialUserService extends BaseService<SysSocialUser, String> {
     }
 
     @Override
-    public BaseRepository<SysSocialUser, String> getRepository() {
+    public BaseJpaRepository<SysSocialUser, String> getRepository() {
         return sysSocialUserRepository;
     }
 

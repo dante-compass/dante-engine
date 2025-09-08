@@ -52,7 +52,7 @@ public class OAuth2DeviceVerificationResponseHandler extends SimpleUrlAuthentica
     private final OAuth2DeviceService deviceService;
 
     public OAuth2DeviceVerificationResponseHandler(OAuth2DeviceService deviceService) {
-        super(SystemConstants.DEVICE_VERIFICATION_SUCCESS_URI);
+        super(SystemConstants.OAUTH2_DEVICE_VERIFICATION_SUCCESS_URI);
         this.deviceService = deviceService;
     }
 

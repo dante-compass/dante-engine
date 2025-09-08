@@ -27,8 +27,8 @@ package cn.herodotus.engine.logic.upms.service.security;
 
 import cn.herodotus.engine.core.identity.enums.AccountCategory;
 import cn.herodotus.engine.data.core.enums.DataItemStatus;
-import cn.herodotus.engine.data.core.repository.BaseRepository;
-import cn.herodotus.engine.data.core.service.BaseService;
+import cn.herodotus.engine.data.core.jpa.repository.BaseJpaRepository;
+import cn.herodotus.engine.data.core.jpa.service.AbstractJpaService;
 import cn.herodotus.engine.logic.upms.converter.SysUserToHerodotusUserConverter;
 import cn.herodotus.engine.logic.upms.entity.security.SysDefaultRole;
 import cn.herodotus.engine.logic.upms.entity.security.SysRole;
@@ -56,7 +56,7 @@ import java.util.Set;
  * @date : 2019/11/9 10:03
  */
 @Service
-public class SysUserService extends BaseService<SysUser, String> {
+public class SysUserService extends AbstractJpaService<SysUser, String> {
 
     private static final Logger log = LoggerFactory.getLogger(SysUserService.class);
 
@@ -72,7 +72,7 @@ public class SysUserService extends BaseService<SysUser, String> {
     }
 
     @Override
-    public BaseRepository<SysUser, String> getRepository() {
+    public BaseJpaRepository<SysUser, String> getRepository() {
         return sysUserRepository;
     }
 

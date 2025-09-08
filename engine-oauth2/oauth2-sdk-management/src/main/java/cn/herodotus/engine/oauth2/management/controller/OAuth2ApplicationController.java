@@ -26,10 +26,10 @@
 package cn.herodotus.engine.oauth2.management.controller;
 
 import cn.herodotus.engine.core.definition.domain.Result;
-import cn.herodotus.engine.data.core.service.WriteableService;
+import cn.herodotus.engine.data.core.jpa.service.BaseJpaWriteableService;
 import cn.herodotus.engine.oauth2.management.entity.OAuth2Application;
 import cn.herodotus.engine.oauth2.management.service.OAuth2ApplicationService;
-import cn.herodotus.engine.rest.core.controller.BaseWriteableRestController;
+import cn.herodotus.engine.web.api.servlet.AbstractJpaWriteableController;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
@@ -52,7 +52,7 @@ import org.springframework.web.bind.annotation.RestController;
         @Tag(name = "OAuth2 认证服务接口"),
         @Tag(name = "OAuth2 应用管理接口")
 })
-public class OAuth2ApplicationController extends BaseWriteableRestController<OAuth2Application, String> {
+public class OAuth2ApplicationController extends AbstractJpaWriteableController<OAuth2Application, String> {
 
     private final OAuth2ApplicationService applicationService;
 
@@ -61,7 +61,7 @@ public class OAuth2ApplicationController extends BaseWriteableRestController<OAu
     }
 
     @Override
-    public WriteableService<OAuth2Application, String> getWriteableService() {
+    public BaseJpaWriteableService<OAuth2Application, String> getService() {
         return this.applicationService;
     }
 

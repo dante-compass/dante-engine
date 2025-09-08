@@ -35,22 +35,6 @@ import cn.hutool.v7.core.date.DateFormatPool;
  */
 public interface SystemConstants {
 
-    String AUTHORIZATION_ENDPOINT = "/oauth2/authorize";
-    String PUSHED_AUTHORIZATION_REQUEST_ENDPOINT = "/oauth2/par";
-    String TOKEN_ENDPOINT = "/oauth2/token";
-    String TOKEN_REVOCATION_ENDPOINT = "/oauth2/revoke";
-    String TOKEN_INTROSPECTION_ENDPOINT = "/oauth2/introspect";
-    String DEVICE_AUTHORIZATION_ENDPOINT = "/oauth2/device_authorization";
-    String DEVICE_VERIFICATION_ENDPOINT = "/oauth2/device_verification";
-    String JWK_SET_ENDPOINT = "/oauth2/jwks";
-    String OIDC_CLIENT_REGISTRATION_ENDPOINT = "/connect/register";
-    String OIDC_LOGOUT_ENDPOINT = "/connect/logout";
-    String OIDC_USER_INFO_ENDPOINT = "/userinfo";
-
-    String AUTHORIZATION_CONSENT_URI = "/oauth2/consent";
-    String DEVICE_ACTIVATION_URI = "/oauth2/device_activation";
-    String DEVICE_VERIFICATION_SUCCESS_URI = "/device_activated";
-
     /**
      * 默认租户ID
      */
@@ -63,4 +47,29 @@ public interface SystemConstants {
      * 默认的时间日期格式
      */
     String DATE_TIME_FORMAT = DateFormatPool.NORM_DATETIME_PATTERN;
+
+    /* ---------- 系统信息 ---------- */
+    String OPEN_API_SECURITY_SCHEME_BEARER_NAME = "HERODOTUS_AUTH";
+
+
+    /**
+     * OAuth2 Default Endpoint
+     */
+    String OAUTH2_AUTHORIZATION_ENDPOINT = "/oauth2/authorize";
+    String OAUTH2_PUSHED_AUTHORIZATION_REQUEST_ENDPOINT = "/oauth2/par";
+    String OAUTH2_TOKEN_ENDPOINT = "/oauth2/token";
+    String OAUTH2_TOKEN_REVOCATION_ENDPOINT = "/oauth2/revoke";
+    String OAUTH2_TOKEN_INTROSPECTION_ENDPOINT = "/oauth2/introspect";
+    String OAUTH2_DEVICE_AUTHORIZATION_ENDPOINT = "/oauth2/device_authorization";
+    String OAUTH2_DEVICE_VERIFICATION_ENDPOINT = "/oauth2/device_verification";
+    String OAUTH2_JWK_SET_ENDPOINT = "/oauth2/jwks";
+    String OIDC_CLIENT_REGISTRATION_ENDPOINT = "/connect/register";
+    String OIDC_LOGOUT_ENDPOINT = "/connect/logout";
+    String OIDC_USER_INFO_ENDPOINT = "/userinfo";
+
+    String OAUTH2_AUTHORIZATION_CONSENT_URI = "/oauth2/consent";
+    String OAUTH2_DEVICE_ACTIVATION_URI = "/oauth2/device_activation";
+    String OAUTH2_DEVICE_VERIFICATION_SUCCESS_URI = "/device_activated";
+
+
 }

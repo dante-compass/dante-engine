@@ -26,7 +26,7 @@
 package cn.herodotus.engine.logic.upms.entity.security;
 
 import cn.herodotus.engine.core.identity.enums.AccountCategory;
-import cn.herodotus.engine.data.core.entity.BaseSysEntity;
+import cn.herodotus.engine.data.core.jpa.entity.AbstractSysEntity;
 import cn.herodotus.engine.logic.upms.constants.LogicUpmsConstants;
 import com.google.common.base.MoreObjects;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -48,7 +48,7 @@ import org.hibernate.annotations.UuidGenerator;
 )
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = LogicUpmsConstants.REGION_SYS_DEFAULT_ROLE)
-public class SysDefaultRole extends BaseSysEntity {
+public class SysDefaultRole extends AbstractSysEntity {
 
     @Id
     @UuidGenerator

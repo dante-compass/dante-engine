@@ -468,21 +468,7 @@
                 <artifactId>data-sdk-jpa</artifactId>
                 <version>${project.version}</version>
             </dependency>
-            <dependency>
-                <groupId>cn.herodotus.engine</groupId>
-                <artifactId>data-sdk-tenant</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.herodotus.engine</groupId>
-                <artifactId>data-sdk-mybatis-plus</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.herodotus.engine</groupId>
-                <artifactId>data-spring-boot-starter</artifactId>
-                <version>${project.version}</version>
-            </dependency>
+
 
             <dependency>
                 <groupId>cn.herodotus.engine</groupId>
@@ -564,11 +550,7 @@
                 <artifactId>rest-spring-boot-starter</artifactId>
                 <version>${project.version}</version>
             </dependency>
-            <dependency>
-                <groupId>cn.herodotus.engine</groupId>
-                <artifactId>supplier-sdk-message</artifactId>
-                <version>${project.version}</version>
-            </dependency>
+
             <!--第三方依赖组件-->
             <dependency>
                 <groupId>com.aliyun</groupId>

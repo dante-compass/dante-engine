@@ -45,8 +45,8 @@ public interface BaseConstants {
 
     String PROPERTY_SERVER_SERVLET = PROPERTY_PREFIX_SERVER + ".servlet";
     String PROPERTY_SPRING_DATA = PROPERTY_PREFIX_SPRING + ".data";
-    String ANNOTATION_PREFIX = "${";
-    String ANNOTATION_SUFFIX = "}";
+    String PLACEHOLDER_PREFIX = "${";
+    String PLACEHOLDER_SUFFIX = "}";
 
     /* ---------- Herodotus 自定义配置属性 ---------- */
     String PROPERTY_PREFIX_ASSISTANT = PROPERTY_PREFIX_HERODOTUS + ".assistant";
@@ -74,11 +74,13 @@ public interface BaseConstants {
 
     String ITEM_SERVLET_CONTEXT_PATH = PROPERTY_SERVER_SERVLET + ".context-path";
     String ITEM_SPRING_APPLICATION_NAME = PROPERTY_PREFIX_SPRING + ".application.name";
+    String ITEM_SPRING_SQL_INIT_PLATFORM = PROPERTY_PREFIX_SPRING + ".sql.init.platform";
     String ITEM_PLATFORM_DATA_ACCESS_STRATEGY = PROPERTY_PREFIX_PLATFORM + ".data-access-strategy";
     String ITEM_PLATFORM_ARCHITECTURE = PROPERTY_PREFIX_PLATFORM + ".architecture";
     String ITEM_AUTHORIZATION_TOKEN_FORMAT = PROPERTY_OAUTH2_AUTHORIZATION + ".token-format";
     String ITEM_CRYPTO_STRATEGY = PROPERTY_PREFIX_CRYPTO + ".strategy";
 
+    String ANNOTATION_SQL_INIT_PLATFORM = PLACEHOLDER_PREFIX + ITEM_SPRING_SQL_INIT_PLATFORM + PLACEHOLDER_SUFFIX;
 
     /* ---------- 通用缓存常量 ---------- */
 

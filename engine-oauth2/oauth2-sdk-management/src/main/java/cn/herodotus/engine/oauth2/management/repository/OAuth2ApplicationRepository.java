@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.oauth2.management.repository;
 
-import cn.herodotus.engine.data.core.repository.BaseRepository;
+import cn.herodotus.engine.data.core.jpa.repository.BaseJpaRepository;
 import cn.herodotus.engine.oauth2.management.entity.OAuth2Application;
 
 /**
@@ -34,7 +34,7 @@ import cn.herodotus.engine.oauth2.management.entity.OAuth2Application;
  * @author : gengwei.zheng
  * @date : 2022/3/1 18:05
  */
-public interface OAuth2ApplicationRepository extends BaseRepository<OAuth2Application, String> {
+public interface OAuth2ApplicationRepository extends BaseJpaRepository<OAuth2Application, String> {
 
     /**
      * 根据 Client ID 查询 OAuth2Application

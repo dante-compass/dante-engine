@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.oauth2.data.jpa.entity;
 
-import cn.herodotus.engine.core.definition.domain.AbstractEntity;
+import cn.herodotus.engine.core.definition.domain.BaseEntity;
 import cn.herodotus.engine.oauth2.core.constants.OAuth2Constants;
 import cn.herodotus.engine.oauth2.data.jpa.generator.HerodotusAuthorizationConsentId;
 import com.google.common.base.MoreObjects;
@@ -46,7 +46,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 @IdClass(HerodotusAuthorizationConsentId.class)
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = OAuth2Constants.REGION_OAUTH2_AUTHORIZATION_CONSENT)
-public class HerodotusAuthorizationConsent extends AbstractEntity {
+public class HerodotusAuthorizationConsent implements BaseEntity {
 
     @Id
     @Column(name = "registered_client_id", nullable = false, length = 100)

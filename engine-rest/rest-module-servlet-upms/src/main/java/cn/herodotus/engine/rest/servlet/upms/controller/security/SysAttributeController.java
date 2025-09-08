@@ -26,10 +26,10 @@
 package cn.herodotus.engine.rest.servlet.upms.controller.security;
 
 import cn.herodotus.engine.core.definition.domain.Result;
-import cn.herodotus.engine.data.core.service.WriteableService;
-import cn.herodotus.engine.rest.core.controller.BaseWriteableRestController;
+import cn.herodotus.engine.data.core.jpa.service.BaseJpaWriteableService;
 import cn.herodotus.engine.logic.upms.entity.security.SysAttribute;
 import cn.herodotus.engine.logic.upms.service.security.SysAttributeService;
+import cn.herodotus.engine.web.api.servlet.AbstractJpaWriteableController;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
@@ -54,7 +54,7 @@ import org.springframework.web.bind.annotation.RestController;
         @Tag(name = "用户安全管理接口"),
         @Tag(name = "系统属性管理接口")
 })
-public class SysAttributeController extends BaseWriteableRestController<SysAttribute, String> {
+public class SysAttributeController extends AbstractJpaWriteableController<SysAttribute, String> {
 
     private final SysAttributeService sysAttributeService;
 
@@ -63,7 +63,7 @@ public class SysAttributeController extends BaseWriteableRestController<SysAttri
     }
 
     @Override
-    public WriteableService<SysAttribute, String> getWriteableService() {
+    public BaseJpaWriteableService<SysAttribute, String> getService() {
         return this.sysAttributeService;
     }
 

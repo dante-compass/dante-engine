@@ -25,8 +25,8 @@
 
 package cn.herodotus.engine.logic.upms.service.hr;
 
-import cn.herodotus.engine.data.core.repository.BaseRepository;
-import cn.herodotus.engine.data.core.service.BaseService;
+import cn.herodotus.engine.data.core.jpa.repository.BaseJpaRepository;
+import cn.herodotus.engine.data.core.jpa.service.AbstractJpaService;
 import cn.herodotus.engine.logic.upms.entity.hr.SysDepartment;
 import cn.herodotus.engine.logic.upms.repository.hr.SysDepartmentRepository;
 import jakarta.persistence.criteria.Predicate;
@@ -47,7 +47,7 @@ import java.util.List;
  * @date : 2020/1/20 11:50
  */
 @Service
-public class SysDepartmentService extends BaseService<SysDepartment, String> {
+public class SysDepartmentService extends AbstractJpaService<SysDepartment, String> {
 
     private final SysDepartmentRepository sysDepartmentRepository;
     private final SysOwnershipService sysOwnershipService;
@@ -58,7 +58,7 @@ public class SysDepartmentService extends BaseService<SysDepartment, String> {
     }
 
     @Override
-    public BaseRepository<SysDepartment, String> getRepository() {
+    public BaseJpaRepository<SysDepartment, String> getRepository() {
         return sysDepartmentRepository;
     }
 

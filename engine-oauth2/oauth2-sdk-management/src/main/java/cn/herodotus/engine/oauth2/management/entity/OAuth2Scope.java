@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.oauth2.management.entity;
 
-import cn.herodotus.engine.data.core.entity.BaseSysEntity;
+import cn.herodotus.engine.data.core.jpa.entity.AbstractSysEntity;
 import cn.herodotus.engine.oauth2.core.constants.OAuth2Constants;
 import com.google.common.base.MoreObjects;
 import jakarta.persistence.*;
@@ -51,7 +51,7 @@ import java.util.Set;
         @Index(name = "oauth2_scope_code_idx", columnList = "scope_code")})
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = OAuth2Constants.REGION_OAUTH2_SCOPE)
-public class OAuth2Scope extends BaseSysEntity {
+public class OAuth2Scope extends AbstractSysEntity {
 
     @Id
     @UuidGenerator

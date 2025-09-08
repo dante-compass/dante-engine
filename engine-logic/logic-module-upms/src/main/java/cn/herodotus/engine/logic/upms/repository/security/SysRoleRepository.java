@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.logic.upms.repository.security;
 
-import cn.herodotus.engine.data.core.repository.BaseRepository;
+import cn.herodotus.engine.data.core.jpa.repository.BaseJpaRepository;
 import cn.herodotus.engine.logic.upms.entity.security.SysRole;
 import jakarta.persistence.QueryHint;
 import org.hibernate.jpa.AvailableHints;
@@ -37,7 +37,7 @@ import org.springframework.data.jpa.repository.QueryHints;
  * @author : gengwei.zheng
  * @date : 2021/10/11 21:27
  */
-public interface SysRoleRepository extends BaseRepository<SysRole, String> {
+public interface SysRoleRepository extends BaseJpaRepository<SysRole, String> {
 
     /**
      * 根据用户名查找SysUser

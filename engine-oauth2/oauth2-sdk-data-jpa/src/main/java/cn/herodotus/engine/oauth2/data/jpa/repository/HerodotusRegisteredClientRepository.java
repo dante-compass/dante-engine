@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.oauth2.data.jpa.repository;
 
-import cn.herodotus.engine.data.core.repository.BaseRepository;
+import cn.herodotus.engine.data.core.jpa.repository.BaseJpaRepository;
 import cn.herodotus.engine.oauth2.data.jpa.entity.HerodotusRegisteredClient;
 import jakarta.persistence.QueryHint;
 import org.hibernate.jpa.AvailableHints;
@@ -39,7 +39,7 @@ import java.util.Optional;
  * @author : gengwei.zheng
  * @date : 2022/2/25 21:05
  */
-public interface HerodotusRegisteredClientRepository extends BaseRepository<HerodotusRegisteredClient, String> {
+public interface HerodotusRegisteredClientRepository extends BaseJpaRepository<HerodotusRegisteredClient, String> {
 
     /**
      * 根据 ClientId 查询 RegisteredClient

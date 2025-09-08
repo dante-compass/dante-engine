@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.oauth2.data.jpa.entity;
 
-import cn.herodotus.engine.core.definition.domain.AbstractEntity;
+import cn.herodotus.engine.core.definition.domain.BaseEntity;
 import cn.herodotus.engine.oauth2.core.constants.OAuth2Constants;
 import cn.herodotus.engine.oauth2.data.jpa.generator.HerodotusAuthorizationIdGenerator;
 import com.google.common.base.MoreObjects;
@@ -48,7 +48,7 @@ import java.time.LocalDateTime;
 )
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = OAuth2Constants.REGION_OAUTH2_AUTHORIZATION)
-public class HerodotusAuthorization extends AbstractEntity {
+public class HerodotusAuthorization implements BaseEntity {
 
     @Id
     @HerodotusAuthorizationIdGenerator

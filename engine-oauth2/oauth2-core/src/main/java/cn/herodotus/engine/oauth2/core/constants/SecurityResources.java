@@ -53,5 +53,5 @@ public class SecurityResources {
             "/favicon.ico");
     public static final List<String> DEFAULT_PERMIT_ALL_RESOURCES = Lists.newArrayList("/open/**", "/stomp/ws", "/oauth2/sign-out", "/login*");
 
-    public static final List<String> DEFAULT_HAS_AUTHENTICATED_RESOURCES = Lists.newArrayList("/engine-rest/**", SystemConstants.DEVICE_VERIFICATION_SUCCESS_URI, SystemConstants.AUTHORIZATION_CONSENT_URI);
+    public static final List<String> DEFAULT_HAS_AUTHENTICATED_RESOURCES = Lists.newArrayList("/engine-rest/**", SystemConstants.OAUTH2_DEVICE_VERIFICATION_SUCCESS_URI, SystemConstants.OAUTH2_AUTHORIZATION_CONSENT_URI);
 }

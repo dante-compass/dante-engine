@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.oauth2.management.entity;
 
-import cn.herodotus.engine.data.core.entity.BaseSysEntity;
+import cn.herodotus.engine.data.core.jpa.entity.AbstractSysEntity;
 import cn.herodotus.engine.oauth2.core.constants.OAuth2Constants;
 import cn.herodotus.engine.oauth2.management.generator.OAuth2PermissionIdGenerator;
 import com.google.common.base.MoreObjects;
@@ -42,7 +42,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 @Table(name = "oauth2_permission", indexes = {@Index(name = "oauth2_permission_id_idx", columnList = "permission_id")})
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = OAuth2Constants.REGION_OAUTH2_PERMISSION)
-public class OAuth2Permission extends BaseSysEntity {
+public class OAuth2Permission extends AbstractSysEntity {
 
     @Id
     @OAuth2PermissionIdGenerator

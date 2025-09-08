@@ -25,8 +25,8 @@
 
 package cn.herodotus.engine.oauth2.management.service;
 
-import cn.herodotus.engine.data.core.repository.BaseRepository;
-import cn.herodotus.engine.data.core.service.BaseService;
+import cn.herodotus.engine.data.core.jpa.repository.BaseJpaRepository;
+import cn.herodotus.engine.data.core.jpa.service.AbstractJpaService;
 import cn.herodotus.engine.oauth2.management.entity.OAuth2Permission;
 import cn.herodotus.engine.oauth2.management.repository.OAuth2PermissionRepository;
 import org.springframework.stereotype.Service;
@@ -38,7 +38,7 @@ import org.springframework.stereotype.Service;
  * @date : 2022/4/1 13:53
  */
 @Service
-public class OAuth2PermissionService extends BaseService<OAuth2Permission, String> {
+public class OAuth2PermissionService extends AbstractJpaService<OAuth2Permission, String> {
 
     private final OAuth2PermissionRepository authorityRepository;
 
@@ -47,7 +47,7 @@ public class OAuth2PermissionService extends BaseService<OAuth2Permission, Strin
     }
 
     @Override
-    public BaseRepository<OAuth2Permission, String> getRepository() {
+    public BaseJpaRepository<OAuth2Permission, String> getRepository() {
         return authorityRepository;
     }
 }

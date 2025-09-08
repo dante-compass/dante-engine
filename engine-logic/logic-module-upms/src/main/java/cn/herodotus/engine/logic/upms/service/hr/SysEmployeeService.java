@@ -26,8 +26,8 @@
 package cn.herodotus.engine.logic.upms.service.hr;
 
 import cn.herodotus.engine.core.foundation.exception.transaction.TransactionalRollbackException;
-import cn.herodotus.engine.data.core.repository.BaseRepository;
-import cn.herodotus.engine.data.core.service.BaseService;
+import cn.herodotus.engine.data.core.jpa.repository.BaseJpaRepository;
+import cn.herodotus.engine.data.core.jpa.service.AbstractJpaService;
 import cn.herodotus.engine.logic.upms.entity.hr.SysDepartment;
 import cn.herodotus.engine.logic.upms.entity.hr.SysEmployee;
 import cn.herodotus.engine.logic.upms.entity.hr.SysOwnership;
@@ -51,6 +51,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * <p>Description: 人员 服务 </p>
@@ -59,7 +60,7 @@ import java.util.List;
  * @date : 2020/1/20 11:54
  */
 @Service
-public class SysEmployeeService extends BaseService<SysEmployee, String> {
+public class SysEmployeeService extends AbstractJpaService<SysEmployee, String> {
 
     private static final Logger log = LoggerFactory.getLogger(SysEmployeeService.class);
 
@@ -74,7 +75,7 @@ public class SysEmployeeService extends BaseService<SysEmployee, String> {
     }
 
     @Override
-    public BaseRepository<SysEmployee, String> getRepository() {
+    public BaseJpaRepository<SysEmployee, String> getRepository() {
         return sysEmployeeRepository;
     }
 
@@ -240,17 +241,19 @@ public class SysEmployeeService extends BaseService<SysEmployee, String> {
 
     @Transactional(rollbackFor = TransactionalRollbackException.class)
     public SysEmployee authorize(String employeeId) {
-        SysEmployee sysEmployee = this.findById(employeeId);
-        SysUser sysUser = sysUserService.register(sysEmployee);
-        if (ObjectUtils.isNotEmpty(sysUser) && ObjectUtils.isNotEmpty(sysEmployee)) {
-            sysUser.setEmployee(sysEmployee);
-            SysUser newUser = sysUserService.saveAndFlush(sysUser);
-            if (ObjectUtils.isNotEmpty(newUser)) {
-                return newUser.getEmployee();
-            }
-        }
+        Optional<SysEmployee> sysEmployee = this.findById(employeeId);
 
-        return null;
+        return sysEmployee.map(entity -> {
+                    SysUser sysUser = sysUserService.register(entity);
+                    return Optional.ofNullable(sysUser)
+                            .map(item -> {
+                                item.setEmployee(entity);
+                                return item;
+                            }).orElse(null);
+                })
+                .map(sysUserService::saveAndFlush)
+                .map(SysUser::getEmployee)
+                .orElse(null);
     }
 
     @Transactional(rollbackFor = TransactionalRollbackException.class)
@@ -275,19 +278,16 @@ public class SysEmployeeService extends BaseService<SysEmployee, String> {
 
     @Transactional(rollbackFor = TransactionalRollbackException.class)
     public boolean removeAllocatable(String organizationId, String departmentId, String employeeId) {
-        SysEmployee sysEmployee = super.findById(employeeId);
-        if (ObjectUtils.isNotEmpty(sysEmployee)) {
+        Optional<SysEmployee> sysEmployee = super.findById(employeeId);
+        return sysEmployee.map(entity -> {
             SysDepartment sysDepartment = new SysDepartment();
             sysDepartment.setDepartmentId(departmentId);
-            sysEmployee.getDepartments().remove(sysDepartment);
-            SysEmployee result = super.save(sysEmployee);
-            if (ObjectUtils.isNotEmpty(result)) {
-                sysOwnershipService.delete(organizationId, departmentId, employeeId);
-                return true;
-            }
-        }
-
-        return false;
+            entity.getDepartments().remove(sysDepartment);
+            return super.save(entity);
+        }).map(result -> {
+            sysOwnershipService.delete(organizationId, departmentId, employeeId);
+            return true;
+        }).orElse(false);
     }
 
     public SysEmployee findByEmployeeName(String employeeName) {

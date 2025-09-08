@@ -60,7 +60,7 @@
 
         <dependency>
             <groupId>cn.herodotus.engine</groupId>
-            <artifactId>data-spring-boot-starter</artifactId>
+            <artifactId>webmvc-spring-boot-starter</artifactId>
         </dependency>
 
         <dependency>

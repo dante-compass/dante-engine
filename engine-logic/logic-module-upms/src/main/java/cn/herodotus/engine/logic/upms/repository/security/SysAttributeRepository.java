@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.logic.upms.repository.security;
 
-import cn.herodotus.engine.data.core.repository.BaseRepository;
+import cn.herodotus.engine.data.core.jpa.repository.BaseJpaRepository;
 import cn.herodotus.engine.logic.upms.entity.security.SysAttribute;
 import jakarta.persistence.QueryHint;
 import org.hibernate.jpa.AvailableHints;
@@ -39,7 +39,7 @@ import java.util.List;
  * @author : gengwei.zheng
  * @date : 2021/8/4 6:48
  */
-public interface SysAttributeRepository extends BaseRepository<SysAttribute, String> {
+public interface SysAttributeRepository extends BaseJpaRepository<SysAttribute, String> {
 
     @QueryHints(@QueryHint(name = AvailableHints.HINT_CACHEABLE, value = "true"))
     List<SysAttribute> findByAttributeIdIn(List<String> ids);

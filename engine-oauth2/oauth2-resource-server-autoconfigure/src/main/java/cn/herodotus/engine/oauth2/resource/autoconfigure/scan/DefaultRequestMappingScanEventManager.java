@@ -26,7 +26,7 @@
 package cn.herodotus.engine.oauth2.resource.autoconfigure.scan;
 
 import cn.herodotus.engine.core.foundation.context.ServiceContextHolder;
-import cn.herodotus.engine.message.core.logic.domain.RequestMapping;
+import cn.herodotus.engine.message.core.domain.RestMapping;
 import cn.herodotus.engine.message.core.logic.event.RequestMappingGatherEvent;
 import cn.herodotus.engine.message.core.logic.strategy.RequestMappingScanEventManager;
 import cn.herodotus.engine.oauth2.authorization.processor.SecurityMetadataSourceAnalyzer;
@@ -63,12 +63,12 @@ public class DefaultRequestMappingScanEventManager implements RequestMappingScan
     }
 
     @Override
-    public void postLocalStorage(List<RequestMapping> requestMappings) {
+    public void postLocalStorage(List<RestMapping> restMappings) {
         securityMetadataSourceAnalyzer.processRequestMatchers();
     }
 
     @Override
-    public void postLocalProcess(List<RequestMapping> data) {
+    public void postLocalProcess(List<RestMapping> data) {
         publishEvent(new RequestMappingGatherEvent(data));
     }
 

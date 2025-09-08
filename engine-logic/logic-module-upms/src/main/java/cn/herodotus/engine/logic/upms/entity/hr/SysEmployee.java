@@ -26,7 +26,7 @@
 package cn.herodotus.engine.logic.upms.entity.hr;
 
 import cn.herodotus.engine.core.identity.enums.AccountCategory;
-import cn.herodotus.engine.data.core.entity.BaseSysEntity;
+import cn.herodotus.engine.data.core.jpa.entity.AbstractSysEntity;
 import cn.herodotus.engine.logic.upms.constants.LogicUpmsConstants;
 import cn.herodotus.engine.logic.upms.domain.deserializer.SysUserEmptyToNull;
 import cn.herodotus.engine.logic.upms.entity.security.SysUser;
@@ -76,7 +76,7 @@ import java.util.Set;
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "employeeId")
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = LogicUpmsConstants.REGION_SYS_EMPLOYEE)
-public class SysEmployee extends BaseSysEntity implements SocialUserDetails {
+public class SysEmployee extends AbstractSysEntity implements SocialUserDetails {
 
     @Schema(name = "人员ID")
     @Id

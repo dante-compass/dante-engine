@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.logic.upms.entity.security;
 
-import cn.herodotus.engine.data.core.entity.BaseSysEntity;
+import cn.herodotus.engine.data.core.jpa.entity.AbstractSysEntity;
 import cn.herodotus.engine.logic.upms.constants.LogicUpmsConstants;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
@@ -45,7 +45,7 @@ import org.hibernate.annotations.UuidGenerator;
 @Table(name = "sys_permission", indexes = {@Index(name = "sys_permission_id_idx", columnList = "permission_id")})
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = LogicUpmsConstants.REGION_SYS_PERMISSION)
-public class SysPermission extends BaseSysEntity {
+public class SysPermission extends AbstractSysEntity {
 
     @Schema(name = "权限ID")
     @Id

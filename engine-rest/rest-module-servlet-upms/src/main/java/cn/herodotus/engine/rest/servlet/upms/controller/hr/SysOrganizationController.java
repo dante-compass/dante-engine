@@ -26,12 +26,13 @@
 package cn.herodotus.engine.rest.servlet.upms.controller.hr;
 
 import cn.herodotus.engine.core.definition.domain.Result;
-import cn.herodotus.engine.data.core.service.WriteableService;
-import cn.herodotus.engine.rest.core.controller.BaseWriteableRestController;
+import cn.herodotus.engine.data.core.jpa.service.BaseJpaWriteableService;
 import cn.herodotus.engine.logic.upms.converter.SysOrganizationToTreeNodeConverter;
 import cn.herodotus.engine.logic.upms.entity.hr.SysOrganization;
 import cn.herodotus.engine.logic.upms.enums.OrganizationCategory;
 import cn.herodotus.engine.logic.upms.service.hr.SysOrganizationService;
+import cn.herodotus.engine.web.api.servlet.AbstractJpaWriteableController;
+import cn.hutool.v7.core.tree.MapTree;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
@@ -41,7 +42,6 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.constraints.NotNull;
 import org.apache.commons.lang3.ObjectUtils;
-import cn.hutool.v7.core.tree.MapTree;
 import org.springframework.data.domain.Page;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -59,7 +59,7 @@ import java.util.Map;
 @RequestMapping("/hr/organization")
 @Tag(name = "单位管理接口")
 @Validated
-public class SysOrganizationController extends BaseWriteableRestController<SysOrganization, String> {
+public class SysOrganizationController extends AbstractJpaWriteableController<SysOrganization, String> {
 
     private final SysOrganizationService sysOrganizationService;
 
@@ -68,7 +68,7 @@ public class SysOrganizationController extends BaseWriteableRestController<SysOr
     }
 
     @Override
-    public WriteableService<SysOrganization, String> getWriteableService() {
+    public BaseJpaWriteableService<SysOrganization, String> getService() {
         return this.sysOrganizationService;
     }
 
@@ -96,7 +96,7 @@ public class SysOrganizationController extends BaseWriteableRestController<SysOr
                                                        @NotNull @RequestParam("pageSize") Integer pageSize,
                                                        @RequestParam(value = "category", required = false) Integer category) {
         Page<SysOrganization> pages = sysOrganizationService.findByCondition(pageNumber, pageSize, parseOrganizationCategory(category));
-        return result(pages);
+        return resultFromPage(pages);
     }
 
     @Operation(summary = "获取全部单位", description = "获取全部单位数据",

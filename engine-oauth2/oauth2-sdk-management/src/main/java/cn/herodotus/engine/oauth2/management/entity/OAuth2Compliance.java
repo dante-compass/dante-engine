@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.oauth2.management.entity;
 
-import cn.herodotus.engine.data.core.entity.AbstractAuditEntity;
+import cn.herodotus.engine.data.core.jpa.entity.AbstractAuditEntity;
 import cn.herodotus.engine.oauth2.core.constants.OAuth2Constants;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
