@@ -25,10 +25,10 @@
 
 package cn.herodotus.engine.oauth2.management.controller;
 
-import cn.herodotus.engine.data.core.service.WriteableService;
+import cn.herodotus.engine.data.core.jpa.service.BaseJpaWriteableService;
 import cn.herodotus.engine.oauth2.data.jpa.entity.HerodotusAuthorization;
 import cn.herodotus.engine.oauth2.data.jpa.service.HerodotusAuthorizationService;
-import cn.herodotus.engine.rest.core.controller.BaseWriteableRestController;
+import cn.herodotus.engine.web.api.servlet.AbstractJpaWriteableController;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.tags.Tags;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,7 +47,7 @@ import org.springframework.web.bind.annotation.RestController;
         @Tag(name = "OAuth2 认证服务接口"),
         @Tag(name = "OAuth2 认证管理接口")
 })
-public class OAuth2AuthorizationController extends BaseWriteableRestController<HerodotusAuthorization, String> {
+public class OAuth2AuthorizationController extends AbstractJpaWriteableController<HerodotusAuthorization, String> {
 
     private final HerodotusAuthorizationService herodotusAuthorizationService;
 
@@ -57,7 +57,7 @@ public class OAuth2AuthorizationController extends BaseWriteableRestController<H
     }
 
     @Override
-    public WriteableService<HerodotusAuthorization, String> getWriteableService() {
+    public BaseJpaWriteableService<HerodotusAuthorization, String> getService() {
         return this.herodotusAuthorizationService;
     }
 }

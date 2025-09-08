@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.logic.upms.entity.security;
 
-import cn.herodotus.engine.data.core.entity.BaseSysEntity;
+import cn.herodotus.engine.data.core.jpa.entity.AbstractSysEntity;
 import cn.herodotus.engine.logic.upms.domain.generator.SysInterfaceIdGenerator;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
@@ -41,7 +41,7 @@ import jakarta.persistence.*;
 @Schema(name = "系统应用接口")
 @Entity
 @Table(name = "sys_interface", indexes = {@Index(name = "sys_interface_id_idx", columnList = "interface_id")})
-public class SysInterface extends BaseSysEntity {
+public class SysInterface extends AbstractSysEntity {
 
     @Schema(name = "接口ID")
     @Id

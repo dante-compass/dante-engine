@@ -26,7 +26,7 @@
 package cn.herodotus.engine.logic.upms.repository.security;
 
 import cn.herodotus.engine.core.identity.enums.AccountCategory;
-import cn.herodotus.engine.data.core.repository.BaseRepository;
+import cn.herodotus.engine.data.core.jpa.repository.BaseJpaRepository;
 import cn.herodotus.engine.logic.upms.entity.security.SysDefaultRole;
 import jakarta.persistence.QueryHint;
 import org.hibernate.jpa.AvailableHints;
@@ -38,7 +38,7 @@ import org.springframework.data.jpa.repository.QueryHints;
  * @author : gengwei.zheng
  * @date : 2021/7/21 16:08
  */
-public interface SysDefaultRoleRepository extends BaseRepository<SysDefaultRole, String> {
+public interface SysDefaultRoleRepository extends BaseJpaRepository<SysDefaultRole, String> {
 
     /**
      * 根据场景查询当前场景对应的默认角色

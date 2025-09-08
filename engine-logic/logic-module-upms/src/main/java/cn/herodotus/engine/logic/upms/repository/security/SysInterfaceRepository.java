@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.logic.upms.repository.security;
 
-import cn.herodotus.engine.data.core.repository.BaseRepository;
+import cn.herodotus.engine.data.core.jpa.repository.BaseJpaRepository;
 import cn.herodotus.engine.logic.upms.entity.security.SysInterface;
 
 /**
@@ -34,5 +34,5 @@ import cn.herodotus.engine.logic.upms.entity.security.SysInterface;
  * @author : gengwei.zheng
  * @date : 2023/3/7 11:09
  */
-public interface SysInterfaceRepository extends BaseRepository<SysInterface, String> {
+public interface SysInterfaceRepository extends BaseJpaRepository<SysInterface, String> {
 }

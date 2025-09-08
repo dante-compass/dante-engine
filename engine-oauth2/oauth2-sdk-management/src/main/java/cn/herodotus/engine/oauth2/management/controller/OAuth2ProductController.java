@@ -25,10 +25,10 @@
 
 package cn.herodotus.engine.oauth2.management.controller;
 
-import cn.herodotus.engine.data.core.service.WriteableService;
+import cn.herodotus.engine.data.core.jpa.service.BaseJpaWriteableService;
 import cn.herodotus.engine.oauth2.management.entity.OAuth2Product;
 import cn.herodotus.engine.oauth2.management.service.OAuth2ProductService;
-import cn.herodotus.engine.rest.core.controller.BaseWriteableRestController;
+import cn.herodotus.engine.web.api.servlet.AbstractJpaWriteableController;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.tags.Tags;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -47,7 +47,7 @@ import org.springframework.web.bind.annotation.RestController;
         @Tag(name = "物联网管理接口"),
         @Tag(name = "物联网产品接口")
 })
-public class OAuth2ProductController extends BaseWriteableRestController<OAuth2Product, String> {
+public class OAuth2ProductController extends AbstractJpaWriteableController<OAuth2Product, String> {
 
     private final OAuth2ProductService iotProductService;
 
@@ -56,7 +56,7 @@ public class OAuth2ProductController extends BaseWriteableRestController<OAuth2P
     }
 
     @Override
-    public WriteableService<OAuth2Product, String> getWriteableService() {
+    public BaseJpaWriteableService<OAuth2Product, String> getService() {
         return iotProductService;
     }
 }

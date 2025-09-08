@@ -25,14 +25,15 @@
 
 package cn.herodotus.engine.logic.upms.service.security;
 
-import cn.herodotus.engine.data.core.repository.BaseRepository;
-import cn.herodotus.engine.data.core.service.BaseService;
+import cn.herodotus.engine.data.core.jpa.repository.BaseJpaRepository;
+import cn.herodotus.engine.data.core.jpa.service.AbstractJpaService;
 import cn.herodotus.engine.logic.upms.entity.security.SysPermission;
 import cn.herodotus.engine.logic.upms.entity.security.SysRole;
 import cn.herodotus.engine.logic.upms.repository.security.SysRoleRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 /**
@@ -42,7 +43,7 @@ import java.util.Set;
  * @date : 2019/11/25 11:07
  */
 @Service
-public class SysRoleService extends BaseService<SysRole, String> {
+public class SysRoleService extends AbstractJpaService<SysRole, String> {
 
     private final SysRoleRepository sysRoleRepository;
 
@@ -51,7 +52,7 @@ public class SysRoleService extends BaseService<SysRole, String> {
     }
 
     @Override
-    public BaseRepository<SysRole, String> getRepository() {
+    public BaseJpaRepository<SysRole, String> getRepository() {
         return this.sysRoleRepository;
     }
 
@@ -64,10 +65,14 @@ public class SysRoleService extends BaseService<SysRole, String> {
             sysPermissions.add(sysPermission);
         }
 
-        SysRole sysRole = findById(roleId);
-        sysRole.setPermissions(sysPermissions);
+        Optional<SysRole> sysRole = findById(roleId);
 
-        return saveAndFlush(sysRole);
+        return sysRole.map(data -> {
+                    data.setPermissions(sysPermissions);
+                    return data;
+                })
+                .map(this::saveAndFlush)
+                .orElse(null);
     }
 
     public SysRole findByRoleCode(String roleCode) {

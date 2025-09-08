@@ -30,16 +30,14 @@ import cn.herodotus.engine.assistant.access.definition.domain.AccessResponse;
 import cn.herodotus.engine.assistant.access.definition.domain.AccessUserDetails;
 import cn.herodotus.engine.assistant.access.exception.AccessHandlerNotFoundException;
 import cn.herodotus.engine.assistant.access.exception.IllegalAccessArgumentException;
-import cn.herodotus.engine.core.identity.enums.AccountCategory;
 import cn.herodotus.engine.core.identity.domain.AccessPrincipal;
+import cn.herodotus.engine.core.identity.enums.AccountCategory;
 import org.apache.commons.lang3.ObjectUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * <p>Description: Access Handler 工厂 </p>

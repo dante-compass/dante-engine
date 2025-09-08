@@ -25,8 +25,8 @@
 
 package cn.herodotus.engine.logic.upms.service.security;
 
-import cn.herodotus.engine.data.core.repository.BaseRepository;
-import cn.herodotus.engine.data.core.service.BaseService;
+import cn.herodotus.engine.data.core.jpa.repository.BaseJpaRepository;
+import cn.herodotus.engine.data.core.jpa.service.AbstractJpaService;
 import cn.herodotus.engine.logic.upms.entity.security.SysElement;
 import cn.herodotus.engine.logic.upms.entity.security.SysRole;
 import cn.herodotus.engine.logic.upms.repository.security.SysElementRepository;
@@ -38,10 +38,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * <p>Description: SysMenuService </p>
@@ -50,7 +47,7 @@ import java.util.Set;
  * @date : 2022/7/14 15:55
  */
 @Service
-public class SysElementService extends BaseService<SysElement, String> {
+public class SysElementService extends AbstractJpaService<SysElement, String> {
 
     private final SysElementRepository sysElementRepository;
 
@@ -59,7 +56,7 @@ public class SysElementService extends BaseService<SysElement, String> {
     }
 
     @Override
-    public BaseRepository<SysElement, String> getRepository() {
+    public BaseJpaRepository<SysElement, String> getRepository() {
         return sysElementRepository;
     }
 
@@ -95,9 +92,13 @@ public class SysElementService extends BaseService<SysElement, String> {
             sysRoles.add(sysRole);
         }
 
-        SysElement sysElement = findById(elementId);
-        sysElement.setRoles(sysRoles);
+        Optional<SysElement> sysElement = findById(elementId);
 
-        return saveAndFlush(sysElement);
+        return sysElement.map(data -> {
+                    data.setRoles(sysRoles);
+                    return data;
+                })
+                .map(this::saveAndFlush)
+                .orElse(null);
     }
 }

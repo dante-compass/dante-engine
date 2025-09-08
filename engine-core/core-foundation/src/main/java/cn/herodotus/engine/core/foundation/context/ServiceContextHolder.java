@@ -129,7 +129,7 @@ public class ServiceContextHolder {
     /**
      * OAuth2 Authorization Code 模式认证端点，/oauth2/authorize端点地址，可修改为自定义地址
      */
-    private String authorizationEndpoint = SystemConstants.AUTHORIZATION_ENDPOINT;
+    private String authorizationEndpoint = SystemConstants.OAUTH2_AUTHORIZATION_ENDPOINT;
     /**
      * OAuth2 Pushed Authorization Requests 模式认证端点，/oauth2/par uri 地址，可修改为自定义地址
      */
@@ -137,7 +137,7 @@ public class ServiceContextHolder {
     /**
      * OAuth2 Pushed Authorization Requests 模式认证端点，/oauth2/authorize端点地址，可修改为自定义地址
      */
-    private String pushedAuthorizationRequestEndpoint = SystemConstants.PUSHED_AUTHORIZATION_REQUEST_ENDPOINT;
+    private String pushedAuthorizationRequestEndpoint = SystemConstants.OAUTH2_PUSHED_AUTHORIZATION_REQUEST_ENDPOINT;
     /**
      * OAuth2 /oauth2/token 申请 Token uri 地址，可修改为自定义地址
      */
@@ -145,7 +145,7 @@ public class ServiceContextHolder {
     /**
      * OAuth2 /oauth2/token 申请 Token 端点地址，可修改为自定义地址
      */
-    private String accessTokenEndpoint = SystemConstants.TOKEN_ENDPOINT;
+    private String accessTokenEndpoint = SystemConstants.OAUTH2_TOKEN_ENDPOINT;
     /**
      * OAuth2 /oauth2/jwks uri 地址，可修改为自定义地址
      */
@@ -153,7 +153,7 @@ public class ServiceContextHolder {
     /**
      * OAuth2 /oauth2/jwks 端点地址，可修改为自定义地址
      */
-    private String jwkSetEndpoint = SystemConstants.JWK_SET_ENDPOINT;
+    private String jwkSetEndpoint = SystemConstants.OAUTH2_JWK_SET_ENDPOINT;
     /**
      * OAuth2 /oauth2/revoke 撤销 Token uri 地址，可修改为自定义地址
      */
@@ -161,7 +161,7 @@ public class ServiceContextHolder {
     /**
      * OAuth2 /oauth2/revoke 撤销 Token 端点地址，可修改为自定义地址
      */
-    private String tokenRevocationEndpoint = SystemConstants.TOKEN_REVOCATION_ENDPOINT;
+    private String tokenRevocationEndpoint = SystemConstants.OAUTH2_TOKEN_REVOCATION_ENDPOINT;
     /**
      * OAuth2 /oauth2/introspect 查看 Token uri地址，可修改为自定义地址
      */
@@ -169,7 +169,7 @@ public class ServiceContextHolder {
     /**
      * OAuth2 /oauth2/introspect 查看 Token 端点地址，可修改为自定义地址
      */
-    private String tokenIntrospectionEndpoint = SystemConstants.TOKEN_INTROSPECTION_ENDPOINT;
+    private String tokenIntrospectionEndpoint = SystemConstants.OAUTH2_TOKEN_INTROSPECTION_ENDPOINT;
     /**
      * OAuth2 /oauth2/device_authorization 设备授权认证 uri地址，可修改为自定义地址
      */
@@ -177,7 +177,7 @@ public class ServiceContextHolder {
     /**
      * OAuth2 /oauth2/device_authorization 设备授权认证端点地址，可修改为自定义地址
      */
-    private String deviceAuthorizationEndpoint = SystemConstants.DEVICE_AUTHORIZATION_ENDPOINT;
+    private String deviceAuthorizationEndpoint = SystemConstants.OAUTH2_DEVICE_AUTHORIZATION_ENDPOINT;
     /**
      * OAuth2 /oauth2/device_verification 设备授权校验 uri地址，可修改为自定义地址
      */
@@ -185,7 +185,7 @@ public class ServiceContextHolder {
     /**
      * OAuth2 /oauth2/device_verification 设备授权校验端点地址，可修改为自定义地址
      */
-    private String deviceVerificationEndpoint = SystemConstants.DEVICE_VERIFICATION_ENDPOINT;
+    private String deviceVerificationEndpoint = SystemConstants.OAUTH2_DEVICE_VERIFICATION_ENDPOINT;
     /**
      * OAuth2 OIDC /connect/register uri 地址，可修改为自定义地址
      */

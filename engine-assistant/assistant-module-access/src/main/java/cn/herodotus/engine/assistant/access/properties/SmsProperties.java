@@ -37,7 +37,7 @@ import java.time.Duration;
  * @author : gengwei.zheng
  * @date : 2021/5/26 17:02
  */
-@ConfigurationProperties(prefix = AccessConstants.PROPERTY_PREFIX_SMS)
+@ConfigurationProperties(prefix = AccessConstants.PROPERTY_ACCESS_SMS)
 public class SmsProperties {
 
     /**

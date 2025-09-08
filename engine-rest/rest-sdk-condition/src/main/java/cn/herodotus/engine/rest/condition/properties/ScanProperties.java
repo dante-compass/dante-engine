@@ -39,7 +39,7 @@ import java.util.stream.Stream;
  * @author : gengwei.zheng
  * @date : 2022/1/16 18:58
  */
-@ConfigurationProperties(prefix = WebConstants.PROPERTY_REST_SCAN)
+@ConfigurationProperties(prefix = WebConstants.PROPERTY_SERVICE_REST_SCAN)
 public class ScanProperties {
 
     /**

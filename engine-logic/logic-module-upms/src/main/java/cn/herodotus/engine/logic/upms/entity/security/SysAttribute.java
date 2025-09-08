@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.logic.upms.entity.security;
 
-import cn.herodotus.engine.data.core.entity.BaseSysEntity;
+import cn.herodotus.engine.data.core.jpa.entity.AbstractSysEntity;
 import cn.herodotus.engine.logic.upms.domain.generator.SysAttributeIdGenerator;
 import cn.herodotus.engine.logic.upms.domain.listener.SysAttributeEntityListener;
 import com.google.common.base.MoreObjects;
@@ -48,7 +48,7 @@ import java.util.Set;
 @Entity
 @Table(name = "sys_attribute", indexes = {@Index(name = "sys_attribute_id_idx", columnList = "attribute_id")})
 @EntityListeners(value = {SysAttributeEntityListener.class})
-public class SysAttribute extends BaseSysEntity {
+public class SysAttribute extends AbstractSysEntity {
 
     @Schema(name = "元数据ID")
     @Id

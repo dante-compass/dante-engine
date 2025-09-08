@@ -104,7 +104,7 @@ public class DecryptRequestParamMapResolver implements HandlerMethodArgumentReso
      * @return 是否 Post /oauth/token 请求
      */
     private boolean isOauthTokenRequest(String uri, String method) {
-        return Strings.CS.equals(uri, SystemConstants.TOKEN_ENDPOINT) && Strings.CI.equals(method, HttpMethod.POST.name());
+        return Strings.CS.equals(uri, SystemConstants.OAUTH2_TOKEN_ENDPOINT) && Strings.CI.equals(method, HttpMethod.POST.name());
     }
 
     /**

@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.logic.upms.entity.hr;
 
-import cn.herodotus.engine.data.core.entity.BaseSysEntity;
+import cn.herodotus.engine.data.core.jpa.entity.AbstractSysEntity;
 import cn.herodotus.engine.logic.upms.constants.LogicUpmsConstants;
 import cn.herodotus.engine.logic.upms.enums.OrganizationCategory;
 import com.google.common.base.MoreObjects;
@@ -45,7 +45,7 @@ import org.hibernate.annotations.UuidGenerator;
 @Table(name = "sys_organization", indexes = {@Index(name = "sys_organization_id_idx", columnList = "organization_id")})
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = LogicUpmsConstants.REGION_SYS_ORGANIZATION)
-public class SysOrganization extends BaseSysEntity {
+public class SysOrganization extends AbstractSysEntity {
 
     @Schema(name = "单位ID")
     @Id

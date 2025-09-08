@@ -26,8 +26,8 @@
 package cn.herodotus.engine.oauth2.management.service;
 
 import cn.herodotus.engine.core.foundation.exception.transaction.TransactionalRollbackException;
-import cn.herodotus.engine.data.core.repository.BaseRepository;
-import cn.herodotus.engine.data.core.service.BaseService;
+import cn.herodotus.engine.data.core.jpa.repository.BaseJpaRepository;
+import cn.herodotus.engine.data.core.jpa.service.AbstractJpaService;
 import cn.herodotus.engine.oauth2.data.jpa.repository.HerodotusRegisteredClientRepository;
 import cn.herodotus.engine.oauth2.management.converter.OAuth2DeviceToRegisteredClientConverter;
 import cn.herodotus.engine.oauth2.management.converter.RegisteredClientToOAuth2DeviceConverter;
@@ -45,6 +45,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 /**
@@ -54,7 +55,7 @@ import java.util.Set;
  * @date : 2023/5/15 16:36
  */
 @Service
-public class OAuth2DeviceService extends BaseService<OAuth2Device, String> {
+public class OAuth2DeviceService extends AbstractJpaService<OAuth2Device, String> {
 
     private static final Logger log = LoggerFactory.getLogger(OAuth2ApplicationService.class);
 
@@ -73,7 +74,7 @@ public class OAuth2DeviceService extends BaseService<OAuth2Device, String> {
     }
 
     @Override
-    public BaseRepository<OAuth2Device, String> getRepository() {
+    public BaseJpaRepository<OAuth2Device, String> getRepository() {
         return deviceRepository;
     }
 
@@ -107,10 +108,14 @@ public class OAuth2DeviceService extends BaseService<OAuth2Device, String> {
             scopes.add(scope);
         }
 
-        OAuth2Device oldDevice = findById(deviceId);
-        oldDevice.setScopes(scopes);
+        Optional<OAuth2Device> oldDevice = findById(deviceId);
 
-        return saveAndFlush(oldDevice);
+        return oldDevice.map(entity -> {
+                    entity.setScopes(scopes);
+                    return entity;
+                })
+                .map(this::saveAndFlush)
+                .orElse(null);
     }
 
     /**

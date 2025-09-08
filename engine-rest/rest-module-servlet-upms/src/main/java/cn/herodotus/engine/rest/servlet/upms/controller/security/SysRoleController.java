@@ -26,11 +26,11 @@
 package cn.herodotus.engine.rest.servlet.upms.controller.security;
 
 import cn.herodotus.engine.core.definition.domain.Result;
-import cn.herodotus.engine.data.core.service.WriteableService;
-import cn.herodotus.engine.web.core.annotation.AccessLimited;
-import cn.herodotus.engine.rest.core.controller.BaseWriteableRestController;
+import cn.herodotus.engine.data.core.jpa.service.BaseJpaWriteableService;
 import cn.herodotus.engine.logic.upms.entity.security.SysRole;
 import cn.herodotus.engine.logic.upms.service.security.SysRoleService;
+import cn.herodotus.engine.web.api.servlet.AbstractJpaWriteableController;
+import cn.herodotus.engine.web.core.annotation.AccessLimited;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
@@ -56,7 +56,7 @@ import java.util.List;
         @Tag(name = "用户安全管理接口"),
         @Tag(name = "系统角色管理接口")
 })
-public class SysRoleController extends BaseWriteableRestController<SysRole, String> {
+public class SysRoleController extends AbstractJpaWriteableController<SysRole, String> {
 
     private final SysRoleService sysRoleService;
 
@@ -65,7 +65,7 @@ public class SysRoleController extends BaseWriteableRestController<SysRole, Stri
     }
 
     @Override
-    public WriteableService<SysRole, String> getWriteableService() {
+    public BaseJpaWriteableService<SysRole, String> getService() {
         return this.sysRoleService;
     }
 

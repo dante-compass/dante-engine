@@ -26,11 +26,12 @@
 package cn.herodotus.engine.rest.servlet.upms.controller.hr;
 
 import cn.herodotus.engine.core.definition.domain.Result;
-import cn.herodotus.engine.data.core.service.WriteableService;
-import cn.herodotus.engine.rest.core.controller.BaseWriteableRestController;
+import cn.herodotus.engine.data.core.jpa.service.BaseJpaWriteableService;
 import cn.herodotus.engine.logic.upms.converter.SysDepartmentToTreeNodeConverter;
 import cn.herodotus.engine.logic.upms.entity.hr.SysDepartment;
 import cn.herodotus.engine.logic.upms.service.hr.SysDepartmentService;
+import cn.herodotus.engine.web.api.servlet.AbstractJpaWriteableController;
+import cn.hutool.v7.core.tree.MapTree;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
@@ -39,7 +40,6 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.constraints.NotNull;
-import cn.hutool.v7.core.tree.MapTree;
 import org.springframework.data.domain.Page;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -60,7 +60,7 @@ import java.util.Map;
 @RequestMapping("/hr/department")
 @Tag(name = "部门管理接口")
 @Validated
-public class SysDepartmentController extends BaseWriteableRestController<SysDepartment, String> {
+public class SysDepartmentController extends AbstractJpaWriteableController<SysDepartment, String> {
 
     private final SysDepartmentService sysDepartmentService;
 
@@ -69,7 +69,7 @@ public class SysDepartmentController extends BaseWriteableRestController<SysDepa
     }
 
     @Override
-    public WriteableService<SysDepartment, String> getWriteableService() {
+    public BaseJpaWriteableService<SysDepartment, String> getService() {
         return this.sysDepartmentService;
     }
 
@@ -89,7 +89,7 @@ public class SysDepartmentController extends BaseWriteableRestController<SysDepa
                                                        @NotNull @RequestParam("pageSize") Integer pageSize,
                                                        @RequestParam(value = "organizationId", required = false) String organizationId) {
         Page<SysDepartment> pages = sysDepartmentService.findByCondition(pageNumber, pageSize, organizationId);
-        return result(pages);
+        return resultFromPage(pages);
     }
 
     @Operation(summary = "获取部门列表", description = "根据单位ID获取部门信息列表",

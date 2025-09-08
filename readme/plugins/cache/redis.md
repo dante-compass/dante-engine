@@ -5,7 +5,7 @@
 ```xml
 <dependency>
   <groupId>cn.herodotus.engine</groupId>
-  <artifactId>cache-sdk-redis</artifactId>
+  <artifactId>cache-module-redis</artifactId>
 </dependency>
 ```
 2. 配置说明
@@ -38,7 +38,7 @@ herodotus:
 ```xml
 <dependency>
   <groupId>cn.herodotus.engine</groupId>
-  <artifactId>cache-sdk-redisson</artifactId>
+  <artifactId>cache-module-redisson</artifactId>
 </dependency>
 ```
 

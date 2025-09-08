@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.oauth2.authentication.dto;
 
-import cn.herodotus.engine.core.definition.domain.AbstractEntity;
+import cn.herodotus.engine.core.definition.domain.BaseDomain;
 
 /**
  * <p>Description: 用户错误状态信息 </p>
@@ -33,7 +33,7 @@ import cn.herodotus.engine.core.definition.domain.AbstractEntity;
  * @author : gengwei.zheng
  * @date : 2022/7/10 16:46
  */
-public class SignInErrorStatus extends AbstractEntity {
+public class SignInErrorStatus implements BaseDomain {
 
     private int errorTimes;
     private int remainTimes;

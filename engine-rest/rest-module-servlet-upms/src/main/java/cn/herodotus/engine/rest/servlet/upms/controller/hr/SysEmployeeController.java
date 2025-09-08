@@ -26,14 +26,14 @@
 package cn.herodotus.engine.rest.servlet.upms.controller.hr;
 
 import cn.herodotus.engine.core.definition.domain.Result;
-import cn.herodotus.engine.data.core.service.WriteableService;
-import cn.herodotus.engine.rest.core.controller.BaseWriteableRestController;
+import cn.herodotus.engine.data.core.jpa.service.BaseJpaWriteableService;
 import cn.herodotus.engine.logic.upms.entity.hr.SysEmployee;
 import cn.herodotus.engine.logic.upms.enums.Gender;
 import cn.herodotus.engine.logic.upms.enums.Identity;
 import cn.herodotus.engine.logic.upms.service.hr.SysEmployeeService;
 import cn.herodotus.engine.rest.servlet.upms.dto.AllocatableDeploy;
 import cn.herodotus.engine.rest.servlet.upms.dto.AllocatableRemove;
+import cn.herodotus.engine.web.api.servlet.AbstractJpaWriteableController;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
@@ -59,7 +59,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/hr/employee")
 @Tag(name = "人员管理接口")
-public class SysEmployeeController extends BaseWriteableRestController<SysEmployee, String> {
+public class SysEmployeeController extends AbstractJpaWriteableController<SysEmployee, String> {
 
     private final SysEmployeeService sysEmployeeService;
 
@@ -82,7 +82,7 @@ public class SysEmployeeController extends BaseWriteableRestController<SysEmploy
     }
 
     @Override
-    public WriteableService<SysEmployee, String> getWriteableService() {
+    public BaseJpaWriteableService<SysEmployee, String> getService() {
         return this.sysEmployeeService;
     }
 
@@ -110,7 +110,7 @@ public class SysEmployeeController extends BaseWriteableRestController<SysEmploy
                                                        @RequestParam(value = "gender", required = false) Integer gender,
                                                        @RequestParam(value = "identity", required = false) Integer identity) {
         Page<SysEmployee> pages = sysEmployeeService.findByCondition(pageNumber, pageSize, employeeName, mobilePhoneNumber, officePhoneNumber, email, pkiEmail, parseGender(gender), parseIdentity(identity));
-        return result(pages);
+        return resultFromPage(pages);
     }
 
     @Operation(summary = "给人员分配用户", description = "为人员创建用户，生成默认用户信息，让人员可以进入系统",
@@ -148,7 +148,7 @@ public class SysEmployeeController extends BaseWriteableRestController<SysEmploy
                                                        @RequestParam(value = "gender", required = false) Integer gender,
                                                        @RequestParam(value = "identity", required = false) Integer identity) {
         Page<SysEmployee> pages = sysEmployeeService.findAllocatable(pageNumber, pageSize, organizationId, departmentId, employeeName, mobilePhoneNumber, email, parseGender(gender), parseIdentity(identity));
-        return result(pages);
+        return resultFromPage(pages);
     }
 
     @Operation(summary = "查询已设置归属关系的人员", description = "根据输入的部门，分页查询当前部门下已设置人事归属的人员信息",
@@ -163,7 +163,7 @@ public class SysEmployeeController extends BaseWriteableRestController<SysEmploy
                                                     @NotNull @RequestParam("pageSize") Integer pageSize,
                                                     @NotBlank @RequestParam("departmentId") String departmentId) {
         Page<SysEmployee> pages = sysEmployeeService.findByDepartmentId(pageNumber, pageSize, departmentId);
-        return result(pages);
+        return resultFromPage(pages);
     }
 
     @Operation(summary = "设置人事归属", description = "根据输入的单位和部门，设置当前部门下未设置人事归属的人员信息，排除了已经设置的人员信息",

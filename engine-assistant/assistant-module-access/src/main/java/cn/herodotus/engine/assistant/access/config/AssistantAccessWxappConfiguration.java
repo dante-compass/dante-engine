@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.assistant.access.config;
 
-import cn.herodotus.engine.assistant.access.condition.ConditionalOnWxapp;
+import cn.herodotus.engine.assistant.access.condition.ConditionalOnWxappEnabled;
 import cn.herodotus.engine.assistant.access.processor.WxappAccessHandler;
 import cn.herodotus.engine.assistant.access.processor.WxappProcessor;
 import cn.herodotus.engine.assistant.access.properties.WxappProperties;
@@ -46,7 +46,7 @@ import org.springframework.context.annotation.Configuration;
  * @date : 2021/3/29 9:27
  */
 @Configuration(proxyBeanMethods = false)
-@ConditionalOnWxapp
+@ConditionalOnWxappEnabled
 @EnableConfigurationProperties(WxappProperties.class)
 public class AssistantAccessWxappConfiguration {
 

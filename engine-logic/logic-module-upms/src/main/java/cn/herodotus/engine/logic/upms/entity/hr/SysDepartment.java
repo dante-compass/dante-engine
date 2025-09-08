@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.logic.upms.entity.hr;
 
-import cn.herodotus.engine.data.core.entity.BaseSysEntity;
+import cn.herodotus.engine.data.core.jpa.entity.AbstractSysEntity;
 import cn.herodotus.engine.logic.upms.constants.LogicUpmsConstants;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
@@ -48,7 +48,7 @@ import org.hibernate.annotations.UuidGenerator;
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "departmentId")
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = LogicUpmsConstants.REGION_SYS_DEPARTMENT)
-public class SysDepartment extends BaseSysEntity {
+public class SysDepartment extends AbstractSysEntity {
 
     @Schema(name = "部门ID")
     @Id

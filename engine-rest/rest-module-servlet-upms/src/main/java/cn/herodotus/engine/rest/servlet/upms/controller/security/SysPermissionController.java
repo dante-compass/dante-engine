@@ -26,11 +26,11 @@
 package cn.herodotus.engine.rest.servlet.upms.controller.security;
 
 import cn.herodotus.engine.core.definition.domain.Result;
-import cn.herodotus.engine.data.core.service.WriteableService;
-import cn.herodotus.engine.web.core.annotation.AccessLimited;
-import cn.herodotus.engine.rest.core.controller.BaseWriteableRestController;
+import cn.herodotus.engine.data.core.jpa.service.BaseJpaWriteableService;
 import cn.herodotus.engine.logic.upms.entity.security.SysPermission;
 import cn.herodotus.engine.logic.upms.service.security.SysPermissionService;
+import cn.herodotus.engine.web.api.servlet.AbstractJpaWriteableController;
+import cn.herodotus.engine.web.core.annotation.AccessLimited;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -55,7 +55,7 @@ import java.util.List;
         @Tag(name = "用户安全管理接口"),
         @Tag(name = "系统权限管理接口")
 })
-public class SysPermissionController extends BaseWriteableRestController<SysPermission, String> {
+public class SysPermissionController extends AbstractJpaWriteableController<SysPermission, String> {
 
     private final SysPermissionService sysPermissionService;
 
@@ -64,7 +64,7 @@ public class SysPermissionController extends BaseWriteableRestController<SysPerm
     }
 
     @Override
-    public WriteableService<SysPermission, String> getWriteableService() {
+    public BaseJpaWriteableService<SysPermission, String> getService() {
         return this.sysPermissionService;
     }
 

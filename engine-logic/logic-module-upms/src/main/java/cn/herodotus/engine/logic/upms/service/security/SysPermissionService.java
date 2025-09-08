@@ -25,8 +25,8 @@
 
 package cn.herodotus.engine.logic.upms.service.security;
 
-import cn.herodotus.engine.data.core.repository.BaseRepository;
-import cn.herodotus.engine.data.core.service.BaseService;
+import cn.herodotus.engine.data.core.jpa.repository.BaseJpaRepository;
+import cn.herodotus.engine.data.core.jpa.service.AbstractJpaService;
 import cn.herodotus.engine.logic.upms.entity.security.SysPermission;
 import cn.herodotus.engine.logic.upms.repository.security.SysPermissionRepository;
 import org.springframework.stereotype.Service;
@@ -38,7 +38,7 @@ import org.springframework.stereotype.Service;
  * @date : 2019/11/25 16:11
  */
 @Service
-public class SysPermissionService extends BaseService<SysPermission, String> {
+public class SysPermissionService extends AbstractJpaService<SysPermission, String> {
 
     private final SysPermissionRepository sysPermissionRepository;
 
@@ -47,7 +47,7 @@ public class SysPermissionService extends BaseService<SysPermission, String> {
     }
 
     @Override
-    public BaseRepository<SysPermission, String> getRepository() {
+    public BaseJpaRepository<SysPermission, String> getRepository() {
         return this.sysPermissionRepository;
     }
 }

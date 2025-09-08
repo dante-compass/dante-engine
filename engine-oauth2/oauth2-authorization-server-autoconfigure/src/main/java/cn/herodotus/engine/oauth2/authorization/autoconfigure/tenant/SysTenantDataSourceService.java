@@ -25,8 +25,8 @@
 
 package cn.herodotus.engine.oauth2.authorization.autoconfigure.tenant;
 
-import cn.herodotus.engine.data.core.repository.BaseRepository;
-import cn.herodotus.engine.data.core.service.BaseService;
+import cn.herodotus.engine.data.core.jpa.repository.BaseJpaRepository;
+import cn.herodotus.engine.data.core.jpa.service.AbstractJpaService;
 import cn.herodotus.engine.data.tenant.entity.SysTenantDataSource;
 import cn.herodotus.engine.data.tenant.repository.SysTenantDataSourceRepository;
 import org.slf4j.Logger;
@@ -40,7 +40,7 @@ import org.springframework.stereotype.Service;
  * @date : 2023/3/29 21:20
  */
 @Service
-public class SysTenantDataSourceService extends BaseService<SysTenantDataSource, String> {
+public class SysTenantDataSourceService extends AbstractJpaService<SysTenantDataSource, String> {
 
     private static final Logger log = LoggerFactory.getLogger(SysTenantDataSourceService.class);
 
@@ -51,7 +51,7 @@ public class SysTenantDataSourceService extends BaseService<SysTenantDataSource,
     }
 
     @Override
-    public BaseRepository<SysTenantDataSource, String> getRepository() {
+    public BaseJpaRepository<SysTenantDataSource, String> getRepository() {
         return sysTenantDataSourceRepository;
     }
 

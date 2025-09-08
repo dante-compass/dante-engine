@@ -26,12 +26,13 @@
 package cn.herodotus.engine.rest.servlet.upms.controller.security;
 
 import cn.herodotus.engine.core.definition.domain.Result;
-import cn.herodotus.engine.data.core.service.WriteableService;
-import cn.herodotus.engine.web.core.annotation.AccessLimited;
-import cn.herodotus.engine.rest.core.controller.BaseWriteableRestController;
+import cn.herodotus.engine.data.core.jpa.service.BaseJpaWriteableService;
 import cn.herodotus.engine.logic.upms.converter.SysElementToTreeNodeConverter;
 import cn.herodotus.engine.logic.upms.entity.security.SysElement;
 import cn.herodotus.engine.logic.upms.service.security.SysElementService;
+import cn.herodotus.engine.web.api.servlet.AbstractJpaWriteableController;
+import cn.herodotus.engine.web.core.annotation.AccessLimited;
+import cn.hutool.v7.core.tree.MapTree;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
@@ -42,7 +43,6 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.tags.Tags;
 import jakarta.validation.constraints.NotNull;
-import cn.hutool.v7.core.tree.MapTree;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
@@ -61,7 +61,7 @@ import java.util.Map;
         @Tag(name = "用户安全管理接口"),
         @Tag(name = "系统菜单管理接口")
 })
-public class SysElementController extends BaseWriteableRestController<SysElement, String> {
+public class SysElementController extends AbstractJpaWriteableController<SysElement, String> {
 
     private final SysElementService sysElementService;
 
@@ -70,7 +70,7 @@ public class SysElementController extends BaseWriteableRestController<SysElement
     }
 
     @Override
-    public WriteableService<SysElement, String> getWriteableService() {
+    public BaseJpaWriteableService<SysElement, String> getService() {
         return sysElementService;
     }
 
@@ -96,7 +96,7 @@ public class SysElementController extends BaseWriteableRestController<SysElement
                                                        @RequestParam(value = "path", required = false) String path,
                                                        @RequestParam(value = "title", required = false) String title) {
         Page<SysElement> pages = sysElementService.findByCondition(pageNumber, pageSize, path, title);
-        return result(pages);
+        return resultFromPage(pages);
     }
 
     @Operation(summary = "给前端元素分配角色", description = "给前端元素分配角色")

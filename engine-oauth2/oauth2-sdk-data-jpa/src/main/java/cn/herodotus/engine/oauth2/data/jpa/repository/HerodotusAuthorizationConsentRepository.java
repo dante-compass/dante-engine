@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.oauth2.data.jpa.repository;
 
-import cn.herodotus.engine.data.core.repository.BaseRepository;
+import cn.herodotus.engine.data.core.jpa.repository.BaseJpaRepository;
 import cn.herodotus.engine.oauth2.data.jpa.entity.HerodotusAuthorizationConsent;
 import cn.herodotus.engine.oauth2.data.jpa.generator.HerodotusAuthorizationConsentId;
 import jakarta.persistence.QueryHint;
@@ -40,7 +40,7 @@ import java.util.Optional;
  * @author : gengwei.zheng
  * @date : 2022/2/25 20:54
  */
-public interface HerodotusAuthorizationConsentRepository extends BaseRepository<HerodotusAuthorizationConsent, HerodotusAuthorizationConsentId> {
+public interface HerodotusAuthorizationConsentRepository extends BaseJpaRepository<HerodotusAuthorizationConsent, HerodotusAuthorizationConsentId> {
 
     /**
      * 根据 client id 和 principalName 查询 OAuth2 确认信息

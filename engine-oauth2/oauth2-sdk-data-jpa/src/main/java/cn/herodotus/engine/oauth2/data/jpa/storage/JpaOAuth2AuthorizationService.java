@@ -32,7 +32,6 @@ import cn.herodotus.engine.oauth2.data.jpa.jackson2.OAuth2JacksonProcessor;
 import cn.herodotus.engine.oauth2.data.jpa.service.HerodotusAuthorizationService;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.ObjectUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.convert.converter.Converter;
@@ -91,12 +90,8 @@ public class JpaOAuth2AuthorizationService implements OAuth2AuthorizationService
 
     @Override
     public OAuth2Authorization findById(String id) {
-        HerodotusAuthorization herodotusAuthorization = this.herodotusAuthorizationService.findById(id);
-        if (ObjectUtils.isNotEmpty(herodotusAuthorization)) {
-            return toObject(herodotusAuthorization);
-        } else {
-            return null;
-        }
+        Optional<HerodotusAuthorization> herodotusAuthorization = this.herodotusAuthorizationService.findById(id);
+        return herodotusAuthorization.map(this::toObject).orElse(null);
     }
 
     public int findAuthorizationCount(String registeredClientId, String principalName) {

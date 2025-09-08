@@ -25,10 +25,10 @@
 
 package cn.herodotus.engine.oauth2.data.jpa.definition.domain;
 
+import cn.herodotus.engine.core.definition.constant.SystemConstants;
 import cn.herodotus.engine.core.foundation.jackson2.ArrayToCommaDelimitedStringDeserializer;
 import cn.herodotus.engine.core.foundation.jackson2.CommaDelimitedStringToSetSerializer;
-import cn.herodotus.engine.core.definition.constant.SystemConstants;
-import cn.herodotus.engine.data.core.entity.BaseSysEntity;
+import cn.herodotus.engine.data.core.jpa.entity.AbstractSysEntity;
 import cn.herodotus.engine.oauth2.core.definition.domain.RegisteredClientDetails;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -47,7 +47,7 @@ import java.time.LocalDateTime;
  * @date : 2023/5/21 17:30
  */
 @MappedSuperclass
-public abstract class AbstractRegisteredClient extends BaseSysEntity implements RegisteredClientDetails {
+public abstract class AbstractRegisteredClient extends AbstractSysEntity implements RegisteredClientDetails {
 
     @Schema(name = "客户端ID发布日期", title = "客户端发布日期")
     @JsonFormat(pattern = SystemConstants.DATE_TIME_FORMAT, locale = "GMT+8", shape = JsonFormat.Shape.STRING)

@@ -26,8 +26,8 @@
 package cn.herodotus.engine.logic.upms.service.hr;
 
 import cn.herodotus.engine.core.foundation.exception.transaction.TransactionalRollbackException;
-import cn.herodotus.engine.data.core.repository.BaseRepository;
-import cn.herodotus.engine.data.core.service.BaseService;
+import cn.herodotus.engine.data.core.jpa.repository.BaseJpaRepository;
+import cn.herodotus.engine.data.core.jpa.service.AbstractJpaService;
 import cn.herodotus.engine.logic.upms.entity.hr.SysDepartment;
 import cn.herodotus.engine.logic.upms.entity.hr.SysOrganization;
 import cn.herodotus.engine.logic.upms.enums.OrganizationCategory;
@@ -52,7 +52,7 @@ import java.util.List;
  * @date : 2020/1/20 11:39
  */
 @Service
-public class SysOrganizationService extends BaseService<SysOrganization, String> {
+public class SysOrganizationService extends AbstractJpaService<SysOrganization, String> {
 
     private final SysOrganizationRepository sysOrganizationRepository;
     private final SysOwnershipService sysOwnershipService;
@@ -65,7 +65,7 @@ public class SysOrganizationService extends BaseService<SysOrganization, String>
     }
 
     @Override
-    public BaseRepository<SysOrganization, String> getRepository() {
+    public BaseJpaRepository<SysOrganization, String> getRepository() {
         return sysOrganizationRepository;
     }
 

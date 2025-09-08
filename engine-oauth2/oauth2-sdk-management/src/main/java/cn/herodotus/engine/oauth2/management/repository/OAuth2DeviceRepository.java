@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.oauth2.management.repository;
 
-import cn.herodotus.engine.data.core.repository.BaseRepository;
+import cn.herodotus.engine.data.core.jpa.repository.BaseJpaRepository;
 import cn.herodotus.engine.oauth2.management.entity.OAuth2Device;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.Modifying;
@@ -37,7 +37,7 @@ import org.springframework.data.jpa.repository.Query;
  * @author : gengwei.zheng
  * @date : 2023/5/15 16:14
  */
-public interface OAuth2DeviceRepository extends BaseRepository<OAuth2Device, String> {
+public interface OAuth2DeviceRepository extends BaseJpaRepository<OAuth2Device, String> {
 
     /**
      * 根据 Client ID 查询 OAuth2Device

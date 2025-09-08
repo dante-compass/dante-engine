@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.logic.upms.repository.hr;
 
-import cn.herodotus.engine.data.core.repository.BaseRepository;
+import cn.herodotus.engine.data.core.jpa.repository.BaseJpaRepository;
 import cn.herodotus.engine.logic.upms.entity.hr.SysDepartment;
 import jakarta.persistence.QueryHint;
 import org.hibernate.jpa.AvailableHints;
@@ -39,7 +39,7 @@ import java.util.List;
  * @author : gengwei.zheng
  * @date : 2020/1/20 11:47
  */
-public interface SysDepartmentRepository extends BaseRepository<SysDepartment, String> {
+public interface SysDepartmentRepository extends BaseJpaRepository<SysDepartment, String> {
 
     @QueryHints(@QueryHint(name = AvailableHints.HINT_CACHEABLE, value = "true"))
     List<SysDepartment> findByOrganizationId(String organizationId);

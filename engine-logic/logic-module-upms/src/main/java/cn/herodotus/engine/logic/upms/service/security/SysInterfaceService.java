@@ -25,13 +25,13 @@
 
 package cn.herodotus.engine.logic.upms.service.security;
 
-import cn.herodotus.engine.data.core.repository.BaseRepository;
-import cn.herodotus.engine.data.core.service.BaseService;
+import cn.herodotus.engine.data.core.jpa.repository.BaseJpaRepository;
+import cn.herodotus.engine.data.core.jpa.service.AbstractJpaService;
 import cn.herodotus.engine.logic.upms.converter.RequestMappingToSysInterfaceConverter;
 import cn.herodotus.engine.logic.upms.entity.security.SysAttribute;
 import cn.herodotus.engine.logic.upms.entity.security.SysInterface;
 import cn.herodotus.engine.logic.upms.repository.security.SysInterfaceRepository;
-import cn.herodotus.engine.message.core.logic.domain.RequestMapping;
+import cn.herodotus.engine.message.core.domain.RestMapping;
 import jakarta.persistence.criteria.Predicate;
 import jakarta.persistence.criteria.Root;
 import jakarta.persistence.criteria.Subquery;
@@ -52,10 +52,10 @@ import java.util.stream.Collectors;
  * @date : 2023/3/7 11:11
  */
 @Service
-public class SysInterfaceService extends BaseService<SysInterface, String> {
+public class SysInterfaceService extends AbstractJpaService<SysInterface, String> {
 
     private final SysInterfaceRepository sysInterfaceRepository;
-    private final Converter<RequestMapping, SysInterface> toSysInterface;
+    private final Converter<RestMapping, SysInterface> toSysInterface;
 
     public SysInterfaceService(SysInterfaceRepository sysInterfaceRepository) {
         this.sysInterfaceRepository = sysInterfaceRepository;
@@ -63,7 +63,7 @@ public class SysInterfaceService extends BaseService<SysInterface, String> {
     }
 
     @Override
-    public BaseRepository<SysInterface, String> getRepository() {
+    public BaseJpaRepository<SysInterface, String> getRepository() {
         return sysInterfaceRepository;
     }
 
@@ -98,14 +98,14 @@ public class SysInterfaceService extends BaseService<SysInterface, String> {
         return this.findAll(specification);
     }
 
-    public List<SysInterface> storeRequestMappings(Collection<RequestMapping> requestMappings) {
-        List<SysInterface> sysAuthorities = toSysInterfaces(requestMappings);
+    public List<SysInterface> storeRequestMappings(Collection<RestMapping> restMappings) {
+        List<SysInterface> sysAuthorities = toSysInterfaces(restMappings);
         return saveAllAndFlush(sysAuthorities);
     }
 
-    private List<SysInterface> toSysInterfaces(Collection<RequestMapping> requestMappings) {
-        if (CollectionUtils.isNotEmpty(requestMappings)) {
-            return requestMappings.stream().map(toSysInterface::convert).collect(Collectors.toList());
+    private List<SysInterface> toSysInterfaces(Collection<RestMapping> restMappings) {
+        if (CollectionUtils.isNotEmpty(restMappings)) {
+            return restMappings.stream().map(toSysInterface::convert).collect(Collectors.toList());
         }
         return new ArrayList<>();
     }

@@ -41,7 +41,7 @@
     <dependencies>
         <dependency>
             <groupId>cn.herodotus.engine</groupId>
-            <artifactId>data-sdk-tenant</artifactId>
+            <artifactId>data-module-tenant</artifactId>
         </dependency>
 
         <dependency>

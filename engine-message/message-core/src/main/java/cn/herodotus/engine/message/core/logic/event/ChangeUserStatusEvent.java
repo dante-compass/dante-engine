@@ -26,7 +26,7 @@
 package cn.herodotus.engine.message.core.logic.event;
 
 import cn.herodotus.engine.message.core.definition.event.AbstractApplicationEvent;
-import cn.herodotus.engine.message.core.logic.domain.UserStatus;
+import cn.herodotus.engine.message.core.domain.UserStatus;
 
 import java.time.Clock;
 

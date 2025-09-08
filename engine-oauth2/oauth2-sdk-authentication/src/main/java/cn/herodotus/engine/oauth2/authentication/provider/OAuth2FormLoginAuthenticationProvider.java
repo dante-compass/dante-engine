@@ -25,12 +25,12 @@
 
 package cn.herodotus.engine.oauth2.authentication.provider;
 
-import cn.herodotus.engine.captcha.core.dto.Verification;
-import cn.herodotus.engine.captcha.core.exception.CaptchaHasExpiredException;
-import cn.herodotus.engine.captcha.core.exception.CaptchaIsEmptyException;
-import cn.herodotus.engine.captcha.core.exception.CaptchaMismatchException;
-import cn.herodotus.engine.captcha.core.exception.CaptchaParameterIllegalException;
-import cn.herodotus.engine.captcha.core.processor.CaptchaRendererFactory;
+import cn.herodotus.engine.core.definition.domain.captcha.Verification;
+import cn.herodotus.engine.core.foundation.exception.captcha.CaptchaHasExpiredException;
+import cn.herodotus.engine.core.foundation.exception.captcha.CaptchaIsEmptyException;
+import cn.herodotus.engine.core.foundation.exception.captcha.CaptchaMismatchException;
+import cn.herodotus.engine.core.foundation.exception.captcha.CaptchaParameterIllegalException;
+import cn.herodotus.engine.core.foundation.support.captcha.CaptchaRendererFactory;
 import cn.herodotus.engine.oauth2.core.definition.details.FormLoginWebAuthenticationDetails;
 import cn.herodotus.engine.oauth2.core.exception.OAuth2CaptchaArgumentIllegalException;
 import cn.herodotus.engine.oauth2.core.exception.OAuth2CaptchaHasExpiredException;

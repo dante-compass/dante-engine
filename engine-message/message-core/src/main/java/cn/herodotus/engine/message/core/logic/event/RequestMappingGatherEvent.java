@@ -26,7 +26,7 @@
 package cn.herodotus.engine.message.core.logic.event;
 
 import cn.herodotus.engine.message.core.definition.event.AbstractApplicationEvent;
-import cn.herodotus.engine.message.core.logic.domain.RequestMapping;
+import cn.herodotus.engine.message.core.domain.RestMapping;
 
 import java.time.Clock;
 import java.util.List;
@@ -37,13 +37,13 @@ import java.util.List;
  * @author : gengwei.zheng
  * @date : 2021/8/8 21:55
  */
-public class RequestMappingGatherEvent extends AbstractApplicationEvent<List<RequestMapping>> {
+public class RequestMappingGatherEvent extends AbstractApplicationEvent<List<RestMapping>> {
 
-    public RequestMappingGatherEvent(List<RequestMapping> data) {
+    public RequestMappingGatherEvent(List<RestMapping> data) {
         super(data);
     }
 
-    public RequestMappingGatherEvent(List<RequestMapping> data, Clock clock) {
+    public RequestMappingGatherEvent(List<RestMapping> data, Clock clock) {
         super(data, clock);
     }
 }

@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.logic.upms.entity.security;
 
-import cn.herodotus.engine.data.core.entity.BaseSysEntity;
+import cn.herodotus.engine.data.core.jpa.entity.AbstractSysEntity;
 import cn.herodotus.engine.logic.upms.constants.LogicUpmsConstants;
 import cn.herodotus.engine.oauth2.core.definition.domain.SocialUserDetails;
 import com.google.common.base.MoreObjects;
@@ -51,7 +51,7 @@ import java.util.Set;
 @Table(name = "sys_social_user", indexes = {@Index(name = "sys_social_user_id_idx", columnList = "social_id")})
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = LogicUpmsConstants.REGION_SYS_SOCIAL_USER)
-public class SysSocialUser extends BaseSysEntity implements SocialUserDetails {
+public class SysSocialUser extends AbstractSysEntity implements SocialUserDetails {
 
     @Schema(name = "社会用户ID")
     @Id

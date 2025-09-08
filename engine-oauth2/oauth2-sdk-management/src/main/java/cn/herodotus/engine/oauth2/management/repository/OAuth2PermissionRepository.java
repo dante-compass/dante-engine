@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.oauth2.management.repository;
 
-import cn.herodotus.engine.data.core.repository.BaseRepository;
+import cn.herodotus.engine.data.core.jpa.repository.BaseJpaRepository;
 import cn.herodotus.engine.oauth2.management.entity.OAuth2Permission;
 
 /**
@@ -34,5 +34,5 @@ import cn.herodotus.engine.oauth2.management.entity.OAuth2Permission;
  * @author : gengwei.zheng
  * @date : 2022/4/1 13:52
  */
-public interface OAuth2PermissionRepository extends BaseRepository<OAuth2Permission, String> {
+public interface OAuth2PermissionRepository extends BaseJpaRepository<OAuth2Permission, String> {
 }

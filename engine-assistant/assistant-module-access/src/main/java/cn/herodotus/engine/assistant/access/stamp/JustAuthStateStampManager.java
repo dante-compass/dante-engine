@@ -28,8 +28,8 @@ package cn.herodotus.engine.assistant.access.stamp;
 import cn.herodotus.engine.assistant.access.constant.AccessConstants;
 import cn.herodotus.engine.assistant.access.properties.JustAuthProperties;
 import cn.herodotus.engine.cache.jetcache.stamp.AbstractStampManager;
-import me.zhyd.oauth.cache.AuthStateCache;
 import cn.hutool.v7.core.data.id.IdUtil;
+import me.zhyd.oauth.cache.AuthStateCache;
 
 import java.util.concurrent.TimeUnit;
 

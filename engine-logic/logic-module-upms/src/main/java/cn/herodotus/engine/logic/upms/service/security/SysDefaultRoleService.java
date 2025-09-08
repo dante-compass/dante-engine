@@ -26,8 +26,8 @@
 package cn.herodotus.engine.logic.upms.service.security;
 
 import cn.herodotus.engine.core.identity.enums.AccountCategory;
-import cn.herodotus.engine.data.core.repository.BaseRepository;
-import cn.herodotus.engine.data.core.service.BaseService;
+import cn.herodotus.engine.data.core.jpa.repository.BaseJpaRepository;
+import cn.herodotus.engine.data.core.jpa.service.AbstractJpaService;
 import cn.herodotus.engine.logic.upms.entity.security.SysDefaultRole;
 import cn.herodotus.engine.logic.upms.entity.security.SysRole;
 import cn.herodotus.engine.logic.upms.repository.security.SysDefaultRoleRepository;
@@ -41,7 +41,7 @@ import org.springframework.stereotype.Service;
  * @date : 2021/7/21 16:09
  */
 @Service
-public class SysDefaultRoleService extends BaseService<SysDefaultRole, String> {
+public class SysDefaultRoleService extends AbstractJpaService<SysDefaultRole, String> {
 
     private final SysDefaultRoleRepository sysDefaultRoleRepository;
     private final SysRoleService sysRoleService;
@@ -52,7 +52,7 @@ public class SysDefaultRoleService extends BaseService<SysDefaultRole, String> {
     }
 
     @Override
-    public BaseRepository<SysDefaultRole, String> getRepository() {
+    public BaseJpaRepository<SysDefaultRole, String> getRepository() {
         return this.sysDefaultRoleRepository;
     }
 

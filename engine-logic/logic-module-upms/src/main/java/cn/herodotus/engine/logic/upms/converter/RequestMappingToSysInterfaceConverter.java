@@ -26,7 +26,7 @@
 package cn.herodotus.engine.logic.upms.converter;
 
 import cn.herodotus.engine.logic.upms.entity.security.SysInterface;
-import cn.herodotus.engine.message.core.logic.domain.RequestMapping;
+import cn.herodotus.engine.message.core.domain.RestMapping;
 import org.springframework.core.convert.converter.Converter;
 
 /**
@@ -35,19 +35,19 @@ import org.springframework.core.convert.converter.Converter;
  * @author : gengwei.zheng
  * @date : 2023/5/23 17:15
  */
-public class RequestMappingToSysInterfaceConverter implements Converter<RequestMapping, SysInterface> {
+public class RequestMappingToSysInterfaceConverter implements Converter<RestMapping, SysInterface> {
 
     @Override
-    public SysInterface convert(RequestMapping requestMapping) {
+    public SysInterface convert(RestMapping restMapping) {
         SysInterface sysInterface = new SysInterface();
-        sysInterface.setInterfaceId(requestMapping.getMappingId());
-        sysInterface.setInterfaceCode(requestMapping.getMappingCode());
-        sysInterface.setRequestMethod(requestMapping.getRequestMethod());
-        sysInterface.setServiceId(requestMapping.getServiceId());
-        sysInterface.setClassName(requestMapping.getClassName());
-        sysInterface.setMethodName(requestMapping.getMethodName());
-        sysInterface.setUrl(requestMapping.getUrl());
-        sysInterface.setDescription(requestMapping.getDescription());
+        sysInterface.setInterfaceId(restMapping.getMappingId());
+        sysInterface.setInterfaceCode(restMapping.getMappingCode());
+        sysInterface.setRequestMethod(restMapping.getRequestMethod());
+        sysInterface.setServiceId(restMapping.getServiceId());
+        sysInterface.setClassName(restMapping.getClassName());
+        sysInterface.setMethodName(restMapping.getMethodName());
+        sysInterface.setUrl(restMapping.getUrl());
+        sysInterface.setDescription(restMapping.getDescription());
         return sysInterface;
     }
 }

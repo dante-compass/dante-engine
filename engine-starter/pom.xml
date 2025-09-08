@@ -42,8 +42,13 @@
     <description>Dante Cloud 微服务基座组件库自动配置 Starters 分组</description>
 
     <modules>
+        <module>cache-spring-boot-starter</module>
+        <module>captcha-spring-boot-starter</module>
         <module>data-mongodb-spring-boot-starter</module>
         <module>data-rdbms-spring-boot-starter</module>
+        <module>facility-alibaba-spring-boot-starter</module>
+        <module>facility-gateway-spring-boot-starter</module>
+        <module>facility-tencent-spring-boot-starter</module>
         <module>logging-spring-boot-starter</module>
         <module>message-mqtt-spring-boot-starter</module>
         <module>reactive-container-spring-boot-starter</module>

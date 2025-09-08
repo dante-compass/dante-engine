@@ -25,10 +25,10 @@
 
 package cn.herodotus.engine.rest.servlet.upms.controller.security;
 
-import cn.herodotus.engine.data.core.service.WriteableService;
-import cn.herodotus.engine.rest.core.controller.BaseWriteableRestController;
+import cn.herodotus.engine.data.core.jpa.service.BaseJpaWriteableService;
 import cn.herodotus.engine.logic.upms.entity.security.SysInterface;
 import cn.herodotus.engine.logic.upms.service.security.SysInterfaceService;
+import cn.herodotus.engine.web.api.servlet.AbstractJpaWriteableController;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.tags.Tags;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -46,7 +46,7 @@ import org.springframework.web.bind.annotation.RestController;
         @Tag(name = "用户安全管理接口"),
         @Tag(name = "系统接口管理接口")
 })
-public class SysInterfaceController extends BaseWriteableRestController<SysInterface, String> {
+public class SysInterfaceController extends AbstractJpaWriteableController<SysInterface, String> {
 
     private final SysInterfaceService sysInterfaceService;
 
@@ -55,7 +55,7 @@ public class SysInterfaceController extends BaseWriteableRestController<SysInter
     }
 
     @Override
-    public WriteableService<SysInterface, String> getWriteableService() {
+    public BaseJpaWriteableService<SysInterface, String> getService() {
         return sysInterfaceService;
     }
 }

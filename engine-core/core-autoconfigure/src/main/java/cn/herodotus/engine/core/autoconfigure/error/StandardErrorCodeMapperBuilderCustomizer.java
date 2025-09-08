@@ -56,7 +56,15 @@ public class StandardErrorCodeMapperBuilderCustomizer implements ErrorCodeMapper
                         ErrorCodes.SESSION_EXPIRED)
                 .forbidden(ErrorCodes.INSUFFICIENT_SCOPE, ErrorCodes.SQL_INJECTION_REQUEST)
                 .methodNotAllowed(ErrorCodes.HTTP_REQUEST_METHOD_NOT_SUPPORTED)
-                .notAcceptable(ErrorCodes.UNSUPPORTED_GRANT_TYPE, ErrorCodes.UNSUPPORTED_RESPONSE_TYPE, ErrorCodes.UNSUPPORTED_TOKEN_TYPE)
+                .notAcceptable(ErrorCodes.UNSUPPORTED_GRANT_TYPE,
+                        ErrorCodes.UNSUPPORTED_RESPONSE_TYPE,
+                        ErrorCodes.UNSUPPORTED_TOKEN_TYPE,
+                        ErrorCodes.CAPTCHA_CATEGORY_IS_INCORRECT,
+                        ErrorCodes.CAPTCHA_HANDLER_NOT_EXIST,
+                        ErrorCodes.CAPTCHA_HAS_EXPIRED,
+                        ErrorCodes.CAPTCHA_IS_EMPTY,
+                        ErrorCodes.CAPTCHA_MISMATCH,
+                        ErrorCodes.CAPTCHA_PARAMETER_ILLEGAL)
                 .preconditionFailed(ErrorCodes.INVALID_REDIRECT_URI, ErrorCodes.INVALID_REQUEST, ErrorCodes.INVALID_SCOPE, ErrorCodes.METHOD_ARGUMENT_NOT_VALID)
                 .unsupportedMediaType(ErrorCodes.HTTP_MEDIA_TYPE_NOT_ACCEPTABLE)
                 .internalServerError(ErrorCodes.SERVER_ERROR,

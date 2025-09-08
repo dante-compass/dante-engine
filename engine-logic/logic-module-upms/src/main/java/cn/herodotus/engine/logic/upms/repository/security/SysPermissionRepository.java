@@ -25,9 +25,9 @@
 
 package cn.herodotus.engine.logic.upms.repository.security;
 
-import cn.herodotus.engine.data.core.repository.BaseRepository;
+import cn.herodotus.engine.data.core.jpa.repository.BaseJpaRepository;
 import cn.herodotus.engine.logic.upms.entity.security.SysPermission;
 
-public interface SysPermissionRepository extends BaseRepository<SysPermission, String> {
+public interface SysPermissionRepository extends BaseJpaRepository<SysPermission, String> {
 
 }

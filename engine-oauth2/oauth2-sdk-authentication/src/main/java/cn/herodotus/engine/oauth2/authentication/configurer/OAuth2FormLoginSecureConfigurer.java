@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.oauth2.authentication.configurer;
 
-import cn.herodotus.engine.captcha.core.processor.CaptchaRendererFactory;
+import cn.herodotus.engine.core.foundation.support.captcha.CaptchaRendererFactory;
 import cn.herodotus.engine.oauth2.authentication.properties.OAuth2AuthenticationProperties;
 import cn.herodotus.engine.oauth2.authentication.provider.OAuth2FormLoginAuthenticationProvider;
 import cn.herodotus.engine.oauth2.authentication.response.OAuth2FormLoginAuthenticationFailureHandler;

@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.logic.upms.repository.hr;
 
-import cn.herodotus.engine.data.core.repository.BaseRepository;
+import cn.herodotus.engine.data.core.jpa.repository.BaseJpaRepository;
 import cn.herodotus.engine.logic.upms.entity.hr.SysEmployee;
 import jakarta.persistence.QueryHint;
 import org.hibernate.jpa.AvailableHints;
@@ -40,7 +40,7 @@ import org.springframework.data.jpa.repository.QueryHints;
  * @author : gengwei.zheng
  * @date : 2020/1/20 11:47
  */
-public interface SysEmployeeRepository extends BaseRepository<SysEmployee, String> {
+public interface SysEmployeeRepository extends BaseJpaRepository<SysEmployee, String> {
 
     /**
      * 根据人员性名查找SysEmployee

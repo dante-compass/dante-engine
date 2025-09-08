@@ -26,9 +26,9 @@
 package cn.herodotus.engine.rest.service.configuration;
 
 import cn.herodotus.engine.message.core.logic.strategy.RequestMappingScanEventManager;
-import cn.herodotus.engine.web.core.condition.ConditionalOnRestScan;
+import cn.herodotus.engine.web.core.condition.ConditionalOnRestScanEnabled;
 import cn.herodotus.engine.rest.condition.properties.ScanProperties;
-import cn.herodotus.engine.rest.service.processor.RequestMappingScanner;
+import cn.herodotus.engine.rest.service.processor.RestMappingScanner;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -46,7 +46,7 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration(proxyBeanMethods = false)
 @ConditionalOnClass(RequestMappingScanEventManager.class)
-@ConditionalOnRestScan
+@ConditionalOnRestScanEnabled
 @EnableConfigurationProperties(ScanProperties.class)
 public class RestScanConfiguration {
 
@@ -59,9 +59,9 @@ public class RestScanConfiguration {
 
     @Bean
     @ConditionalOnMissingBean
-    public RequestMappingScanner requestMappingScanner(ScanProperties scanProperties, RequestMappingScanEventManager requestMappingScanManager) {
-        RequestMappingScanner requestMappingScanner = new RequestMappingScanner(scanProperties, requestMappingScanManager);
+    public RestMappingScanner requestMappingScanner(ScanProperties scanProperties, RequestMappingScanEventManager requestMappingScanManager) {
+        RestMappingScanner restMappingScanner = new RestMappingScanner(scanProperties, requestMappingScanManager);
         log.trace("[Herodotus] |- Bean [Request Mapping Scanner] Auto Configure.");
-        return requestMappingScanner;
+        return restMappingScanner;
     }
 }

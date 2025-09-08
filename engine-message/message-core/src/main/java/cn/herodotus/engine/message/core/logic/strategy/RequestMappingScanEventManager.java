@@ -27,7 +27,7 @@ package cn.herodotus.engine.message.core.logic.strategy;
 
 import cn.herodotus.engine.core.foundation.context.ServiceContextHolder;
 import cn.herodotus.engine.message.core.definition.strategy.ApplicationStrategyEventManager;
-import cn.herodotus.engine.message.core.logic.domain.RequestMapping;
+import cn.herodotus.engine.message.core.domain.RestMapping;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.ObjectUtils;
 
@@ -41,7 +41,7 @@ import java.util.Map;
  * @author : gengwei.zheng
  * @date : 2022/1/16 18:42
  */
-public interface RequestMappingScanEventManager extends ApplicationStrategyEventManager<List<RequestMapping>> {
+public interface RequestMappingScanEventManager extends ApplicationStrategyEventManager<List<RestMapping>> {
 
     /**
      * 获取是否执行扫描的标记注解。
@@ -53,19 +53,19 @@ public interface RequestMappingScanEventManager extends ApplicationStrategyEvent
     /**
      * 执行本地数据存储
      *
-     * @param requestMappings 扫描到的RequestMapping
+     * @param restMappings 扫描到的RequestMapping
      */
-    void postLocalStorage(List<RequestMapping> requestMappings);
+    void postLocalStorage(List<RestMapping> restMappings);
 
     /**
      * 发布远程事件，传送RequestMapping
      *
-     * @param requestMappings 扫描到的RequestMapping
+     * @param restMappings 扫描到的RequestMapping
      */
     @Override
-    default void postProcess(List<RequestMapping> requestMappings) {
-        postLocalStorage(requestMappings);
-        ApplicationStrategyEventManager.super.postProcess(requestMappings);
+    default void postProcess(List<RestMapping> restMappings) {
+        postLocalStorage(restMappings);
+        ApplicationStrategyEventManager.super.postProcess(restMappings);
     }
 
     /**

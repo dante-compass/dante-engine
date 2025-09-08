@@ -26,14 +26,14 @@
 package cn.herodotus.engine.oauth2.management.controller;
 
 import cn.herodotus.engine.core.definition.domain.Result;
-import cn.herodotus.engine.data.core.service.WriteableService;
+import cn.herodotus.engine.data.core.jpa.service.BaseJpaWriteableService;
 import cn.herodotus.engine.oauth2.management.dto.OAuth2PermissionDto;
 import cn.herodotus.engine.oauth2.management.dto.OAuth2ScopeDto;
 import cn.herodotus.engine.oauth2.management.entity.OAuth2Permission;
 import cn.herodotus.engine.oauth2.management.entity.OAuth2Scope;
 import cn.herodotus.engine.oauth2.management.service.OAuth2ScopeService;
 import cn.herodotus.engine.web.core.annotation.AccessLimited;
-import cn.herodotus.engine.rest.core.controller.BaseWriteableRestController;
+import cn.herodotus.engine.web.api.servlet.AbstractJpaWriteableController;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
@@ -63,7 +63,7 @@ import java.util.stream.Collectors;
         @Tag(name = "OAuth2 认证服务接口"),
         @Tag(name = "OAuth2 权限范围管理接口")
 })
-public class OAuth2ScopeController extends BaseWriteableRestController<OAuth2Scope, String> {
+public class OAuth2ScopeController extends AbstractJpaWriteableController<OAuth2Scope, String> {
 
     private final OAuth2ScopeService scopeService;
 
@@ -73,7 +73,7 @@ public class OAuth2ScopeController extends BaseWriteableRestController<OAuth2Sco
     }
 
     @Override
-    public WriteableService<OAuth2Scope, String> getWriteableService() {
+    public BaseJpaWriteableService<OAuth2Scope, String> getService() {
         return this.scopeService;
     }
 
