@@ -29,9 +29,10 @@ import cn.herodotus.engine.core.identity.enums.PermissionExpression;
 import cn.herodotus.engine.logic.identity.enums.ApplicationType;
 import cn.herodotus.engine.logic.identity.enums.AuthenticationMethod;
 import cn.herodotus.engine.logic.identity.enums.GrantType;
+import cn.herodotus.engine.oauth2.core.enums.AllJwsAlgorithm;
 import cn.herodotus.engine.oauth2.core.enums.Database;
 import cn.herodotus.engine.oauth2.core.enums.ServerDevice;
-import cn.herodotus.engine.oauth2.core.enums.*;
+import cn.herodotus.engine.oauth2.core.enums.SignatureJwsAlgorithm;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;

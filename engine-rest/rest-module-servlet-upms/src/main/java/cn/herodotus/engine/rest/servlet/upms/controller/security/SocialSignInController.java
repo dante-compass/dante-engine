@@ -27,9 +27,9 @@ package cn.herodotus.engine.rest.servlet.upms.controller.security;
 
 import cn.herodotus.engine.core.definition.domain.Result;
 import cn.herodotus.engine.core.identity.domain.AccessPrincipal;
+import cn.herodotus.engine.core.identity.domain.HerodotusUser;
 import cn.herodotus.engine.logic.upms.definition.AbstractSocialAuthenticationHandler;
 import cn.herodotus.engine.logic.upms.definition.SocialAuthenticationHandler;
-import cn.herodotus.engine.core.identity.domain.HerodotusUser;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;

@@ -25,11 +25,11 @@
 
 package cn.herodotus.engine.oauth2.authorization.servlet;
 
+import cn.herodotus.engine.core.autoconfigure.oauth2.domain.HerodotusRequest;
 import cn.herodotus.engine.core.autoconfigure.oauth2.servlet.ServletOAuth2ResourceMatcherConfigurer;
+import cn.herodotus.engine.core.identity.domain.HerodotusSecurityAttribute;
 import cn.herodotus.engine.oauth2.authorization.processor.SecurityAttributeStorage;
 import cn.herodotus.engine.web.core.servlet.utils.HeaderUtils;
-import cn.herodotus.engine.core.identity.domain.HerodotusSecurityAttribute;
-import cn.herodotus.engine.core.autoconfigure.oauth2.domain.HerodotusRequest;
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.collections4.MapUtils;

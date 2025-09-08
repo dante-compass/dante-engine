@@ -25,8 +25,8 @@
 
 package cn.herodotus.engine.rest.servlet.identity.controller;
 
-import cn.herodotus.engine.core.definition.constant.SystemConstants;
 import cn.herodotus.engine.core.definition.constant.SymbolConstants;
+import cn.herodotus.engine.core.definition.constant.SystemConstants;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.security.oauth2.core.endpoint.OAuth2ParameterNames;
 import org.springframework.stereotype.Controller;

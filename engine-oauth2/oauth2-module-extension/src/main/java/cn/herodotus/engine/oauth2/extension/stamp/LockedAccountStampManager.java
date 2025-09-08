@@ -26,8 +26,8 @@
 package cn.herodotus.engine.oauth2.extension.stamp;
 
 import cn.herodotus.engine.cache.jetcache.stamp.AbstractStampManager;
-import cn.herodotus.engine.oauth2.core.properties.OAuth2AuthenticationProperties;
 import cn.herodotus.engine.oauth2.core.constants.OAuth2Constants;
+import cn.herodotus.engine.oauth2.core.properties.OAuth2AuthenticationProperties;
 import cn.hutool.v7.core.data.id.IdUtil;
 
 /**

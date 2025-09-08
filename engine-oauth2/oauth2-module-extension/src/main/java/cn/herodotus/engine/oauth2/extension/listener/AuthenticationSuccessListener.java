@@ -25,14 +25,9 @@
 
 package cn.herodotus.engine.oauth2.extension.listener;
 
-import cn.herodotus.engine.core.identity.domain.UserPrincipal;
 import cn.herodotus.engine.oauth2.extension.manager.OAuth2ComplianceManager;
-import cn.herodotus.engine.oauth2.extension.stamp.SignInFailureLimitedStampManager;
-import cn.herodotus.engine.oauth2.extension.service.OAuth2UserLoggingService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.commons.lang3.ObjectUtils;
-import org.apache.commons.lang3.StringUtils;
-import cn.hutool.v7.crypto.SecureUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationListener;

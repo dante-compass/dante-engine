@@ -25,8 +25,8 @@
 
 package cn.herodotus.engine.core.definition.support;
 
-import cn.herodotus.engine.core.definition.domain.captcha.Metadata;
 import cn.herodotus.engine.core.definition.domain.captcha.Captcha;
+import cn.herodotus.engine.core.definition.domain.captcha.Metadata;
 import cn.herodotus.engine.core.definition.domain.captcha.Verification;
 
 /**

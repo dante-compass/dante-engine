@@ -73,9 +73,9 @@ public class SecurityAttributeAnalyzer {
     /**
      * 将解析后的数据添加对应的分组中
      *
-     * @param container 分组结果数据容器
-     * @param urlCategory  分组类别
-     * @param resources 权限数据
+     * @param container   分组结果数据容器
+     * @param urlCategory 分组类别
+     * @param resources   权限数据
      */
     private void appendToGroup(Map<UrlCategory, LinkedHashMap<HerodotusRequest, List<HerodotusSecurityAttribute>>> container, UrlCategory urlCategory, LinkedHashMap<HerodotusRequest, List<HerodotusSecurityAttribute>> resources) {
         LinkedHashMap<HerodotusRequest, List<HerodotusSecurityAttribute>> value = new LinkedHashMap<>();

@@ -26,11 +26,11 @@
 package cn.herodotus.engine.oauth2.authorization.autoconfigure.strategy;
 
 import cn.herodotus.engine.core.foundation.context.ServiceContextHolder;
+import cn.herodotus.engine.message.core.definition.strategy.RestMappingScanEventManager;
 import cn.herodotus.engine.message.core.domain.RestMapping;
 import cn.herodotus.engine.message.core.event.RestMappingGatherEvent;
-import cn.herodotus.engine.message.core.definition.strategy.RestMappingScanEventManager;
-import cn.herodotus.engine.oauth2.authorization.processor.SecurityAttributeAnalyzer;
 import cn.herodotus.engine.oauth2.authorization.autoconfigure.bus.RemoteRestMappingGatherEvent;
+import cn.herodotus.engine.oauth2.authorization.processor.SecurityAttributeAnalyzer;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.stereotype.Component;
 

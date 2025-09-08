@@ -25,10 +25,10 @@
 
 package cn.herodotus.engine.core.foundation.support.captcha;
 
-import cn.herodotus.engine.core.definition.support.CaptchaRenderer;
-import cn.herodotus.engine.core.foundation.enums.CaptchaCategory;
 import cn.herodotus.engine.core.definition.domain.captcha.Captcha;
 import cn.herodotus.engine.core.definition.domain.captcha.Verification;
+import cn.herodotus.engine.core.definition.support.CaptchaRenderer;
+import cn.herodotus.engine.core.foundation.enums.CaptchaCategory;
 import cn.herodotus.engine.core.foundation.exception.captcha.CaptchaCategoryIsIncorrectException;
 import cn.herodotus.engine.core.foundation.exception.captcha.CaptchaHandlerNotExistException;
 import org.apache.commons.lang3.ObjectUtils;

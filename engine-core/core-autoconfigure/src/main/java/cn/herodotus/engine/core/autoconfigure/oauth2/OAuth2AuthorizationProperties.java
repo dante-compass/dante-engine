@@ -27,7 +27,6 @@ package cn.herodotus.engine.core.autoconfigure.oauth2;
 
 import cn.herodotus.engine.core.autoconfigure.oauth2.constant.TokenFormat;
 import cn.herodotus.engine.core.definition.constant.BaseConstants;
-import cn.herodotus.engine.core.foundation.enums.DataAccessStrategy;
 import cn.herodotus.engine.core.foundation.enums.Certificate;
 import com.google.common.base.MoreObjects;
 import org.springframework.boot.context.properties.ConfigurationProperties;

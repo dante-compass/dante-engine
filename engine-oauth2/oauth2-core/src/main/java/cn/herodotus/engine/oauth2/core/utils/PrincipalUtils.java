@@ -26,8 +26,8 @@
 package cn.herodotus.engine.oauth2.core.utils;
 
 import cn.herodotus.engine.core.definition.constant.SystemConstants;
-import cn.herodotus.engine.core.identity.domain.UserPrincipal;
 import cn.herodotus.engine.core.identity.domain.HerodotusUser;
+import cn.herodotus.engine.core.identity.domain.UserPrincipal;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.security.oauth2.core.OAuth2AuthenticatedPrincipal;
 import org.springframework.security.oauth2.jwt.Jwt;

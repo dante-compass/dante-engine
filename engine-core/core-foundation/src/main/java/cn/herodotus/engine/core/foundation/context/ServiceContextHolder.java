@@ -26,7 +26,6 @@
 package cn.herodotus.engine.core.foundation.context;
 
 import cn.herodotus.engine.core.definition.constant.SymbolConstants;
-import cn.herodotus.engine.core.definition.constant.SystemConstants;
 import cn.herodotus.engine.core.definition.enums.Protocol;
 import cn.herodotus.engine.core.definition.utils.WellFormedUtils;
 import cn.herodotus.engine.core.foundation.enums.Architecture;

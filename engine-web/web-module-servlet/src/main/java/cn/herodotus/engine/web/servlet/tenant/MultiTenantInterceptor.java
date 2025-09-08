@@ -25,10 +25,10 @@
 
 package cn.herodotus.engine.web.servlet.tenant;
 
+import cn.herodotus.engine.core.definition.constant.SystemConstants;
 import cn.herodotus.engine.core.foundation.context.TenantContextHolder;
 import cn.herodotus.engine.web.core.servlet.utils.HeaderUtils;
 import cn.herodotus.engine.web.core.servlet.utils.SessionUtils;
-import cn.herodotus.engine.core.definition.constant.SystemConstants;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.apache.commons.lang3.StringUtils;

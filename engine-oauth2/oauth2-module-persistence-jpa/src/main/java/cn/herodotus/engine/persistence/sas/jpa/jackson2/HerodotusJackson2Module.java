@@ -25,9 +25,9 @@
 
 package cn.herodotus.engine.persistence.sas.jpa.jackson2;
 
-import cn.herodotus.engine.oauth2.core.domain.FormLoginWebAuthenticationDetails;
 import cn.herodotus.engine.core.identity.domain.HerodotusGrantedAuthority;
 import cn.herodotus.engine.core.identity.domain.HerodotusUser;
+import cn.herodotus.engine.oauth2.core.domain.FormLoginWebAuthenticationDetails;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import org.springframework.security.jackson2.SecurityJackson2Modules;
 

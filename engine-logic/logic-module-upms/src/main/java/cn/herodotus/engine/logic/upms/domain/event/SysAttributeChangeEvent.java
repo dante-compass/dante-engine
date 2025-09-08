@@ -25,8 +25,8 @@
 
 package cn.herodotus.engine.logic.upms.domain.event;
 
-import cn.herodotus.engine.logic.upms.entity.security.SysAttribute;
 import cn.herodotus.engine.core.foundation.context.AbstractApplicationEvent;
+import cn.herodotus.engine.logic.upms.entity.security.SysAttribute;
 
 import java.time.Clock;
 

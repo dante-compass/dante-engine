@@ -27,10 +27,10 @@ package cn.herodotus.engine.logic.upms.config;
 
 import cn.herodotus.engine.assistant.access.config.AssistantAccessConfiguration;
 import cn.herodotus.engine.assistant.access.factory.AccessHandlerStrategyFactory;
+import cn.herodotus.engine.logic.upms.definition.SocialAuthenticationHandler;
 import cn.herodotus.engine.logic.upms.handler.DefaultSocialAuthenticationHandler;
 import cn.herodotus.engine.logic.upms.service.security.SysSocialUserService;
 import cn.herodotus.engine.logic.upms.service.security.SysUserService;
-import cn.herodotus.engine.logic.upms.definition.SocialAuthenticationHandler;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -25,12 +25,12 @@
 
 package cn.herodotus.engine.oauth2.authorization.autoconfigure;
 
-import cn.herodotus.engine.message.core.definition.strategy.RestMappingScanEventManager;
-import cn.herodotus.engine.oauth2.authorization.config.OAuth2ServletAuthorizationConfiguration;
-import cn.herodotus.engine.oauth2.authorization.processor.SecurityAttributeAnalyzer;
 import cn.herodotus.engine.core.autoconfigure.oauth2.definition.SecurityGlobalExceptionHandler;
+import cn.herodotus.engine.message.core.definition.strategy.RestMappingScanEventManager;
 import cn.herodotus.engine.oauth2.authorization.autoconfigure.listener.RemoteAttributeTransmitterSyncListener;
 import cn.herodotus.engine.oauth2.authorization.autoconfigure.strategy.DefaultRestMappingScanEventManager;
+import cn.herodotus.engine.oauth2.authorization.config.OAuth2ServletAuthorizationConfiguration;
+import cn.herodotus.engine.oauth2.authorization.processor.SecurityAttributeAnalyzer;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

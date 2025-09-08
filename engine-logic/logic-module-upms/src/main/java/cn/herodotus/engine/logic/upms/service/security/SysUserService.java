@@ -25,17 +25,17 @@
 
 package cn.herodotus.engine.logic.upms.service.security;
 
+import cn.herodotus.engine.core.identity.domain.HerodotusUser;
 import cn.herodotus.engine.core.identity.enums.AccountCategory;
 import cn.herodotus.engine.data.core.enums.DataItemStatus;
 import cn.herodotus.engine.data.core.jpa.repository.BaseJpaRepository;
 import cn.herodotus.engine.data.core.jpa.service.AbstractJpaService;
 import cn.herodotus.engine.logic.upms.converter.SysUserToHerodotusUserConverter;
+import cn.herodotus.engine.logic.upms.definition.SocialUserDetails;
 import cn.herodotus.engine.logic.upms.entity.security.SysDefaultRole;
 import cn.herodotus.engine.logic.upms.entity.security.SysRole;
 import cn.herodotus.engine.logic.upms.entity.security.SysUser;
 import cn.herodotus.engine.logic.upms.repository.security.SysUserRepository;
-import cn.herodotus.engine.core.identity.domain.HerodotusUser;
-import cn.herodotus.engine.logic.upms.definition.SocialUserDetails;
 import cn.herodotus.engine.oauth2.core.utils.SecurityUtils;
 import cn.hutool.v7.core.data.id.IdUtil;
 import org.apache.commons.collections4.CollectionUtils;

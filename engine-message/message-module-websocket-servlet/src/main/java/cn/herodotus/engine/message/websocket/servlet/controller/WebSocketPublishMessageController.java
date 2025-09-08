@@ -25,13 +25,13 @@
 
 package cn.herodotus.engine.message.websocket.servlet.controller;
 
+import cn.herodotus.engine.core.foundation.context.AbstractApplicationContextAware;
 import cn.herodotus.engine.message.core.constants.MessageConstants;
-import cn.herodotus.engine.message.core.domain.WebSocketMessage;
 import cn.herodotus.engine.message.core.domain.DialogueMessage;
+import cn.herodotus.engine.message.core.domain.WebSocketMessage;
 import cn.herodotus.engine.message.core.event.SendDialogueMessageEvent;
 import cn.herodotus.engine.message.websocket.servlet.definition.WebSocketMessageSender;
 import cn.herodotus.engine.message.websocket.servlet.domain.WebSocketPrincipal;
-import cn.herodotus.engine.core.foundation.context.AbstractApplicationContextAware;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
