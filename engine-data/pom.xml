@@ -44,7 +44,6 @@
 
     <modules>
         <module>data-core</module>
-        <module>data-sdk-jpa</module>
         <module>data-core-jpa</module>
         <module>data-core-mongodb</module>
         <module>data-module-tenant</module>

@@ -462,14 +462,6 @@
 
 
 
-
-            <dependency>
-                <groupId>cn.herodotus.engine</groupId>
-                <artifactId>data-sdk-jpa</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
-
             <dependency>
                 <groupId>cn.herodotus.engine</groupId>
                 <artifactId>message-sdk-mqtt</artifactId>
