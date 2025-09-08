@@ -28,7 +28,7 @@ package cn.herodotus.engine.oauth2.authentication.consumer;
 import cn.herodotus.engine.oauth2.authentication.provider.OAuth2AuthorizationCodeAuthenticationProvider;
 import cn.herodotus.engine.oauth2.authentication.provider.OAuth2ClientCredentialsAuthenticationProvider;
 import cn.herodotus.engine.oauth2.authentication.utils.OAuth2ConfigurerUtils;
-import cn.herodotus.engine.oauth2.core.definition.service.ClientDetailsService;
+import cn.herodotus.engine.core.identity.service.ClientDetailsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.AuthenticationProvider;

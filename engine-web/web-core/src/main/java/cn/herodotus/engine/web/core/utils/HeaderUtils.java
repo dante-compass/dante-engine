@@ -27,6 +27,7 @@ package cn.herodotus.engine.web.core.utils;
 
 import cn.herodotus.engine.core.definition.constant.HerodotusHeaders;
 import cn.herodotus.engine.core.definition.constant.SystemConstants;
+import cn.hutool.v7.http.server.servlet.ServletUtil;
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -35,6 +36,8 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpInputMessage;
 import org.springframework.http.server.ServerHttpRequest;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.List;
 
 /**
@@ -279,5 +282,36 @@ public class HeaderUtils {
         return getHeader(httpServletRequest, HttpHeaders.ORIGIN);
     }
 
+    /**
+     * 获取 ACCEPT 请求头内容
+     *
+     * @param httpServletRequest {@link HttpServletRequest}
+     * @return ACCEPT 请求头或者为空
+     */
+    public static String getAccept(HttpServletRequest httpServletRequest) {
+        return getHeader(httpServletRequest, HttpHeaders.ACCEPT);
+    }
 
+    /**
+     * 获取 CONTENT_TYPE 请求头内容
+     *
+     * @param httpServletRequest {@link HttpServletRequest}
+     * @return CONTENT_TYPE 请求头或者为空
+     */
+    public static String getContentType(HttpServletRequest httpServletRequest) {
+        return getHeader(httpServletRequest, HttpHeaders.CONTENT_TYPE);
+    }
+
+    public static String getIp(HttpServletRequest httpServletRequest) {
+        String ip = ServletUtil.getClientIP(httpServletRequest, "");
+        if (Strings.CS.equals(ip, "0:0:0:0:0:0:0:1")) {
+            try {
+                return InetAddress.getLocalHost().getHostAddress();
+            } catch (UnknownHostException e) {
+                return "127.0.0.1";
+            }
+        } else {
+            return ip;
+        }
+    }
 }

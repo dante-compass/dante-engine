@@ -489,7 +489,12 @@
             </dependency>
             <dependency>
                 <groupId>cn.herodotus.engine</groupId>
-                <artifactId>oauth2-sdk-data-jpa</artifactId>
+                <artifactId>oauth2-module-extension</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.herodotus.engine</groupId>
+                <artifactId>oauth2-module-persistence-jpa</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -500,11 +505,6 @@
             <dependency>
                 <groupId>cn.herodotus.engine</groupId>
                 <artifactId>oauth2-sdk-authorization</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.herodotus.engine</groupId>
-                <artifactId>oauth2-sdk-management</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

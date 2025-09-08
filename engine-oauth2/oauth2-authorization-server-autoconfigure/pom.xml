@@ -46,7 +46,7 @@
 
         <dependency>
             <groupId>cn.herodotus.engine</groupId>
-            <artifactId>oauth2-sdk-management</artifactId>
+            <artifactId>oauth2-module-extension</artifactId>
         </dependency>
 
         <dependency>

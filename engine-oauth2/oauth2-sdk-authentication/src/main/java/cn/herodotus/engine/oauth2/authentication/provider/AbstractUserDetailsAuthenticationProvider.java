@@ -25,12 +25,12 @@
 
 package cn.herodotus.engine.oauth2.authentication.provider;
 
-import cn.herodotus.engine.oauth2.authentication.properties.OAuth2AuthenticationProperties;
+import cn.herodotus.engine.oauth2.core.properties.OAuth2AuthenticationProperties;
 import cn.herodotus.engine.oauth2.authentication.utils.OAuth2EndpointUtils;
 import cn.herodotus.engine.core.identity.constant.OAuth2ErrorKeys;
-import cn.herodotus.engine.oauth2.core.definition.service.EnhanceUserDetailsService;
+import cn.herodotus.engine.core.identity.service.EnhanceUserDetailsService;
 import cn.herodotus.engine.oauth2.core.exception.AccountEndpointLimitedException;
-import cn.herodotus.engine.oauth2.data.jpa.storage.JpaOAuth2AuthorizationService;
+import cn.herodotus.engine.persistence.sas.jpa.storage.JpaOAuth2AuthorizationService;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.slf4j.Logger;

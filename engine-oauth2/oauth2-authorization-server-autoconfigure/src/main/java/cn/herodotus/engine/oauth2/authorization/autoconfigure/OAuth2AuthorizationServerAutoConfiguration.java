@@ -25,9 +25,9 @@
 
 package cn.herodotus.engine.oauth2.authorization.autoconfigure;
 
-import cn.herodotus.engine.message.core.logic.strategy.AccountStatusEventManager;
-import cn.herodotus.engine.oauth2.authorization.autoconfigure.status.DefaultAccountStatusEventManager;
-import cn.herodotus.engine.oauth2.management.configuration.OAuth2ManagementConfiguration;
+import cn.herodotus.engine.message.core.definition.strategy.AccountStatusChangedEventManager;
+import cn.herodotus.engine.oauth2.authorization.autoconfigure.status.DefaultAccountStatusChangedEventManager;
+import cn.herodotus.engine.oauth2.extension.config.OAuth2ExtensionConfiguration;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -43,7 +43,7 @@ import org.springframework.context.annotation.Import;
  */
 @AutoConfiguration
 @Import({
-        OAuth2ManagementConfiguration.class
+        OAuth2ExtensionConfiguration.class
 })
 public class OAuth2AuthorizationServerAutoConfiguration {
 
@@ -55,8 +55,8 @@ public class OAuth2AuthorizationServerAutoConfiguration {
     }
 
     @Bean
-    public AccountStatusEventManager accountStatusEventManager() {
-        DefaultAccountStatusEventManager manager = new DefaultAccountStatusEventManager();
+    public AccountStatusChangedEventManager accountStatusEventManager() {
+        DefaultAccountStatusChangedEventManager manager = new DefaultAccountStatusChangedEventManager();
         log.trace("[Herodotus] |- Bean [Herodotus Account Status Event Manager] Auto Configure.");
         return manager;
     }

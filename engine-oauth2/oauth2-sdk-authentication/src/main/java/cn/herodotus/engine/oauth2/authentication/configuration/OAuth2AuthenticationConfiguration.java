@@ -30,9 +30,7 @@ import cn.herodotus.engine.oauth2.authentication.customizer.HerodotusJwtTokenCus
 import cn.herodotus.engine.oauth2.authentication.customizer.HerodotusOpaqueTokenCustomizer;
 import cn.herodotus.engine.oauth2.authentication.customizer.OAuth2ErrorCodeMapperBuilderCustomizer;
 import cn.herodotus.engine.oauth2.authentication.customizer.OAuth2FormLoginConfigurerCustomizer;
-import cn.herodotus.engine.oauth2.authentication.properties.OAuth2AuthenticationProperties;
-import cn.herodotus.engine.oauth2.authentication.stamp.LockedUserDetailsStampManager;
-import cn.herodotus.engine.oauth2.authentication.stamp.SignInFailureLimitedStampManager;
+import cn.herodotus.engine.oauth2.core.properties.OAuth2AuthenticationProperties;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -59,20 +57,6 @@ public class OAuth2AuthenticationConfiguration {
     @PostConstruct
     public void postConstruct() {
         log.debug("[Herodotus] |- Module [OAuth2 Authentication] Auto Configure.");
-    }
-
-    @Bean
-    public LockedUserDetailsStampManager lockedUserDetailsStampManager(OAuth2AuthenticationProperties authenticationProperties) {
-        LockedUserDetailsStampManager manager = new LockedUserDetailsStampManager(authenticationProperties);
-        log.trace("[Herodotus] |- Bean [Locked UserDetails Stamp Manager] Auto Configure.");
-        return manager;
-    }
-
-    @Bean
-    public SignInFailureLimitedStampManager signInFailureLimitedStampManager(OAuth2AuthenticationProperties authenticationProperties) {
-        SignInFailureLimitedStampManager manager = new SignInFailureLimitedStampManager(authenticationProperties);
-        log.trace("[Herodotus] |- Bean [SignIn Failure Limited Stamp Manager] Auto Configure.");
-        return manager;
     }
 
     @Bean

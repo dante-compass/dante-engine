@@ -39,5 +39,11 @@
 
     <description>Dante Cloud 微服务基座组件库身份认证功能业务逻辑模块</description>
 
+    <dependencies>
+        <dependency>
+            <groupId>cn.herodotus.engine</groupId>
+            <artifactId>oauth2-module-persistence-jpa</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>

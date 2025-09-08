@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.oauth2.authentication.configurer;
 
-import cn.herodotus.engine.oauth2.authentication.properties.OAuth2AuthenticationProperties;
+import cn.herodotus.engine.oauth2.core.properties.OAuth2AuthenticationProperties;
 import cn.herodotus.engine.oauth2.authentication.provider.OAuth2ResourceOwnerPasswordAuthenticationProvider;
 import cn.herodotus.engine.oauth2.authentication.provider.OAuth2SocialCredentialsAuthenticationProvider;
 import cn.herodotus.engine.oauth2.authentication.utils.OAuth2ConfigurerUtils;

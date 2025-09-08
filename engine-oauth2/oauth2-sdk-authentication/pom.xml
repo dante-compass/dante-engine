@@ -46,7 +46,7 @@
 
         <dependency>
             <groupId>cn.herodotus.engine</groupId>
-            <artifactId>oauth2-sdk-data-jpa</artifactId>
+            <artifactId>oauth2-module-persistence-jpa</artifactId>
         </dependency>
 
         <dependency>

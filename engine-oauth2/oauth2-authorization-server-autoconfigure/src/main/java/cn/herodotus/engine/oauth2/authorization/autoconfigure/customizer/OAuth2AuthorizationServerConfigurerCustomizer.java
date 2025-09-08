@@ -31,10 +31,10 @@ import cn.herodotus.engine.oauth2.authentication.oidc.HerodotusOidcUserInfoMappe
 import cn.herodotus.engine.oauth2.authentication.provider.OAuth2ResourceOwnerPasswordAuthenticationConverter;
 import cn.herodotus.engine.oauth2.authentication.provider.OAuth2SocialCredentialsAuthenticationConverter;
 import cn.herodotus.engine.oauth2.authentication.response.OAuth2AuthenticationFailureResponseHandler;
-import cn.herodotus.engine.oauth2.core.definition.service.ClientDetailsService;
-import cn.herodotus.engine.oauth2.management.response.OAuth2AccessTokenResponseHandler;
-import cn.herodotus.engine.oauth2.management.response.OAuth2DeviceVerificationResponseHandler;
-import cn.herodotus.engine.oauth2.management.response.OidcClientRegistrationResponseHandler;
+import cn.herodotus.engine.core.identity.service.ClientDetailsService;
+import cn.herodotus.engine.oauth2.authorization.autoconfigure.response.OAuth2AccessTokenResponseHandler;
+import cn.herodotus.engine.oauth2.authorization.autoconfigure.response.OAuth2DeviceVerificationResponseHandler;
+import cn.herodotus.engine.oauth2.authorization.autoconfigure.response.OidcClientRegistrationResponseHandler;
 import cn.herodotus.engine.web.servlet.crypto.HttpCryptoProcessor;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;

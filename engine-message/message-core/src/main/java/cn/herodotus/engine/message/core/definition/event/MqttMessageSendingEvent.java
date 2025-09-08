@@ -25,6 +25,7 @@
 
 package cn.herodotus.engine.message.core.definition.event;
 
+import cn.herodotus.engine.core.foundation.context.AbstractApplicationEvent;
 import cn.herodotus.engine.message.core.definition.domain.MqttMessage;
 
 import java.time.Clock;

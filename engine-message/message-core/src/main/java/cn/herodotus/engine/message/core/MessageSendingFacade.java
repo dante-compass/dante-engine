@@ -29,7 +29,7 @@ import cn.herodotus.engine.core.foundation.context.ServiceContextHolder;
 import cn.herodotus.engine.message.core.definition.domain.StreamMessage;
 import cn.herodotus.engine.message.core.definition.domain.TemplateMessage;
 import cn.herodotus.engine.message.core.definition.domain.WebSocketMessage;
-import cn.herodotus.engine.message.core.definition.event.AbstractApplicationEvent;
+import cn.herodotus.engine.core.foundation.context.AbstractApplicationEvent;
 import cn.herodotus.engine.message.core.definition.event.StreamMessageSendingEvent;
 import cn.herodotus.engine.message.core.definition.event.TemplateMessageSendingEvent;
 import org.apache.commons.lang3.StringUtils;

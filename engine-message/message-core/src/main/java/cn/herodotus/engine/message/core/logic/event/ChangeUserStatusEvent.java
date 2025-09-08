@@ -25,8 +25,8 @@
 
 package cn.herodotus.engine.message.core.logic.event;
 
-import cn.herodotus.engine.message.core.definition.event.AbstractApplicationEvent;
-import cn.herodotus.engine.message.core.domain.UserStatus;
+import cn.herodotus.engine.core.foundation.context.AbstractApplicationEvent;
+import cn.herodotus.engine.message.core.domain.AccountStatus;
 
 import java.time.Clock;
 
@@ -36,13 +36,13 @@ import java.time.Clock;
  * @author : gengwei.zheng
  * @date : 2022/7/10 16:15
  */
-public class ChangeUserStatusEvent extends AbstractApplicationEvent<UserStatus> {
+public class ChangeUserStatusEvent extends AbstractApplicationEvent<AccountStatus> {
 
-    public ChangeUserStatusEvent(UserStatus data) {
+    public ChangeUserStatusEvent(AccountStatus data) {
         super(data);
     }
 
-    public ChangeUserStatusEvent(UserStatus data, Clock clock) {
+    public ChangeUserStatusEvent(AccountStatus data, Clock clock) {
         super(data, clock);
     }
 }

@@ -26,7 +26,7 @@
 package cn.herodotus.engine.message.core.definition;
 
 import cn.herodotus.engine.message.core.definition.domain.Message;
-import cn.herodotus.engine.message.core.definition.event.AbstractApplicationEvent;
+import cn.herodotus.engine.core.foundation.context.AbstractApplicationEvent;
 import org.springframework.context.ApplicationListener;
 
 /**

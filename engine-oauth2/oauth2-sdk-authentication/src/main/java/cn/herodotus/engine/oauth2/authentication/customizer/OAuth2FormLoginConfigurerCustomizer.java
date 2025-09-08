@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.oauth2.authentication.customizer;
 
-import cn.herodotus.engine.oauth2.authentication.properties.OAuth2AuthenticationProperties;
+import cn.herodotus.engine.oauth2.core.properties.OAuth2AuthenticationProperties;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
