@@ -26,7 +26,7 @@
 package cn.herodotus.engine.persistence.sas.jpa.jackson2;
 
 import cn.herodotus.engine.core.identity.jackson2.JsonNodeUtils;
-import cn.herodotus.engine.oauth2.core.definition.details.FormLoginWebAuthenticationDetails;
+import cn.herodotus.engine.oauth2.core.domain.FormLoginWebAuthenticationDetails;
 import com.fasterxml.jackson.core.JacksonException;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;

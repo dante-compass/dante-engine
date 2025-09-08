@@ -31,7 +31,7 @@ import cn.herodotus.engine.core.foundation.exception.captcha.CaptchaIsEmptyExcep
 import cn.herodotus.engine.core.foundation.exception.captcha.CaptchaMismatchException;
 import cn.herodotus.engine.core.foundation.exception.captcha.CaptchaParameterIllegalException;
 import cn.herodotus.engine.core.foundation.support.captcha.CaptchaRendererFactory;
-import cn.herodotus.engine.oauth2.core.definition.details.FormLoginWebAuthenticationDetails;
+import cn.herodotus.engine.oauth2.core.domain.FormLoginWebAuthenticationDetails;
 import cn.herodotus.engine.oauth2.core.exception.OAuth2CaptchaArgumentIllegalException;
 import cn.herodotus.engine.oauth2.core.exception.OAuth2CaptchaHasExpiredException;
 import cn.herodotus.engine.oauth2.core.exception.OAuth2CaptchaIsEmptyException;

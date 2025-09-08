@@ -23,8 +23,7 @@ package cn.herodotus.engine.oauth2.extension.converter;
 
 import cn.herodotus.engine.oauth2.extension.entity.OAuth2UserLogging;
 import cn.herodotus.engine.oauth2.core.utils.OAuth2AuthenticationUtils;
-import cn.herodotus.engine.web.core.utils.HeaderUtils;
-import cn.hutool.v7.http.server.servlet.ServletUtil;
+import cn.herodotus.engine.web.core.servlet.utils.HeaderUtils;
 import cn.hutool.v7.http.useragent.UserAgent;
 import cn.hutool.v7.http.useragent.UserAgentUtil;
 import com.google.common.net.HttpHeaders;

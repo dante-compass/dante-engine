@@ -25,11 +25,11 @@
 
 package cn.herodotus.engine.oauth2.authentication.provider;
 
-import cn.herodotus.engine.web.core.utils.SessionUtils;
 import cn.herodotus.engine.core.definition.utils.ListUtils;
-import cn.herodotus.engine.oauth2.authentication.utils.OAuth2EndpointUtils;
 import cn.herodotus.engine.core.identity.constant.OAuth2ErrorKeys;
+import cn.herodotus.engine.oauth2.authentication.utils.OAuth2EndpointUtils;
 import cn.herodotus.engine.web.core.exception.SessionInvalidException;
+import cn.herodotus.engine.web.core.servlet.utils.SessionUtils;
 import cn.herodotus.engine.web.servlet.crypto.HttpCryptoProcessor;
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.commons.collections4.CollectionUtils;

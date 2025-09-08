@@ -25,9 +25,9 @@
 
 package cn.herodotus.engine.oauth2.authentication.provider;
 
-import cn.herodotus.engine.oauth2.authentication.utils.OAuth2AuthenticationProviderUtils;
 import cn.herodotus.engine.core.identity.domain.HerodotusGrantedAuthority;
 import cn.herodotus.engine.core.identity.service.ClientDetailsService;
+import cn.herodotus.engine.oauth2.authentication.utils.OAuth2AuthenticationProviderUtils;
 import cn.hutool.v7.core.reflect.FieldUtil;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;

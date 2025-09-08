@@ -25,10 +25,10 @@
 
 package cn.herodotus.engine.oauth2.authentication.configurer;
 
-import cn.herodotus.engine.oauth2.core.properties.OAuth2AuthenticationProperties;
 import cn.herodotus.engine.oauth2.authentication.provider.OAuth2ResourceOwnerPasswordAuthenticationProvider;
 import cn.herodotus.engine.oauth2.authentication.provider.OAuth2SocialCredentialsAuthenticationProvider;
 import cn.herodotus.engine.oauth2.authentication.utils.OAuth2ConfigurerUtils;
+import cn.herodotus.engine.oauth2.core.properties.OAuth2AuthenticationProperties;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.core.session.SessionRegistry;

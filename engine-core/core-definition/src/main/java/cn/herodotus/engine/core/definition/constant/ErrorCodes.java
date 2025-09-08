@@ -156,6 +156,7 @@ public interface ErrorCodes {
     NotAcceptableFeedback UNSUPPORTED_GRANT_TYPE = new NotAcceptableFeedback("授权服务器不支持授权授予类型");
     NotAcceptableFeedback UNSUPPORTED_RESPONSE_TYPE = new NotAcceptableFeedback("授权服务器不支持使用此方法获取授权代码或访问令牌");
     NotAcceptableFeedback UNSUPPORTED_TOKEN_TYPE = new NotAcceptableFeedback("授权服务器不支持撤销提供的令牌类型");
+    NotAcceptableFeedback USERNAME_ALREADY_EXISTS = new NotAcceptableFeedback("用户名已经存在");
     NotAcceptableFeedback FEIGN_DECODER_IO_EXCEPTION = new NotAcceptableFeedback("Feign 解析 Fallback 错误信息出错");
     NotAcceptableFeedback CAPTCHA_CATEGORY_IS_INCORRECT = new NotAcceptableFeedback("验证码分类错误");
     NotAcceptableFeedback CAPTCHA_HANDLER_NOT_EXIST = new NotAcceptableFeedback("验证码处理器不存在");

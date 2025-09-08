@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.web.servlet.crypto;
 
-import cn.herodotus.engine.web.core.utils.SessionUtils;
+import cn.herodotus.engine.web.core.servlet.utils.SessionUtils;
 import cn.herodotus.engine.web.core.annotation.Crypto;
 import cn.herodotus.engine.web.core.exception.SessionInvalidException;
 import jakarta.servlet.http.HttpServletRequest;

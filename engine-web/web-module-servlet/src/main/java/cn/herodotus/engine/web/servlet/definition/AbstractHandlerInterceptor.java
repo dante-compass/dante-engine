@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.web.servlet.definition;
 
-import cn.herodotus.engine.web.core.utils.SessionUtils;
+import cn.herodotus.engine.web.core.servlet.utils.SessionUtils;
 import cn.herodotus.engine.core.definition.constant.SymbolConstants;
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.commons.lang3.StringUtils;

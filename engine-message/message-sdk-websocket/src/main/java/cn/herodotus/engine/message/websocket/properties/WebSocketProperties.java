@@ -43,7 +43,7 @@ import java.util.List;
  * @author : gengwei.zheng
  * @date : 2021/10/24 18:38
  */
-@ConfigurationProperties(prefix = MessageConstants.PROPERTY_PREFIX_WEBSOCKET)
+@ConfigurationProperties(prefix = MessageConstants.PROPERTY_MESSAGE_WEBSOCKET)
 public class WebSocketProperties {
 
     /**

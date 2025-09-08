@@ -26,9 +26,9 @@
 package cn.herodotus.engine.oauth2.authentication.configurer;
 
 import cn.herodotus.engine.core.foundation.support.captcha.CaptchaRendererFactory;
-import cn.herodotus.engine.oauth2.core.properties.OAuth2AuthenticationProperties;
 import cn.herodotus.engine.oauth2.authentication.provider.OAuth2FormLoginAuthenticationProvider;
 import cn.herodotus.engine.oauth2.authentication.response.OAuth2FormLoginAuthenticationFailureHandler;
+import cn.herodotus.engine.oauth2.core.properties.OAuth2AuthenticationProperties;
 import cn.herodotus.engine.web.servlet.crypto.HttpCryptoProcessor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.HttpSecurityBuilder;

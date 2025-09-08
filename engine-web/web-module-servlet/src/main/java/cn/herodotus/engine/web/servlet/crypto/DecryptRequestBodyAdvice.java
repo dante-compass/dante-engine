@@ -26,7 +26,7 @@
 package cn.herodotus.engine.web.servlet.crypto;
 
 import cn.herodotus.engine.core.definition.utils.Jackson2Utils;
-import cn.herodotus.engine.web.core.utils.SessionUtils;
+import cn.herodotus.engine.web.core.servlet.utils.SessionUtils;
 import cn.herodotus.engine.web.core.annotation.Crypto;
 import cn.herodotus.engine.web.core.exception.SessionInvalidException;
 import cn.hutool.v7.core.io.IoUtil;

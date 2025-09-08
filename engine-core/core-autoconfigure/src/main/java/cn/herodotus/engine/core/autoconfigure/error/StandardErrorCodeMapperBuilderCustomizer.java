@@ -59,6 +59,8 @@ public class StandardErrorCodeMapperBuilderCustomizer implements ErrorCodeMapper
                 .notAcceptable(ErrorCodes.UNSUPPORTED_GRANT_TYPE,
                         ErrorCodes.UNSUPPORTED_RESPONSE_TYPE,
                         ErrorCodes.UNSUPPORTED_TOKEN_TYPE,
+                        ErrorCodes.USERNAME_ALREADY_EXISTS,
+                        ErrorCodes.FEIGN_DECODER_IO_EXCEPTION,
                         ErrorCodes.FEIGN_DECODER_IO_EXCEPTION,
                         ErrorCodes.CAPTCHA_CATEGORY_IS_INCORRECT,
                         ErrorCodes.CAPTCHA_HANDLER_NOT_EXIST,

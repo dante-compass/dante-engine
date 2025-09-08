@@ -46,7 +46,6 @@
         <module>message-core</module>
         <module>message-sdk-websocket</module>
         <module>message-spring-boot-starter</module>
-        <module>message-kafka-spring-boot-starter</module>
         <module>message-sdk-mqtt</module>
         <module>message-module-emqx</module>
         <module>message-module-websocket-servlet</module>

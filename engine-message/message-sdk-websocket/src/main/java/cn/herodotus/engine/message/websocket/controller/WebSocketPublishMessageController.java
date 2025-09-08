@@ -28,7 +28,7 @@ package cn.herodotus.engine.message.websocket.controller;
 import cn.herodotus.engine.message.core.constants.MessageConstants;
 import cn.herodotus.engine.message.core.definition.domain.WebSocketMessage;
 import cn.herodotus.engine.message.core.domain.DialogueMessage;
-import cn.herodotus.engine.message.core.logic.event.SendDialogueMessageEvent;
+import cn.herodotus.engine.message.core.event.SendDialogueMessageEvent;
 import cn.herodotus.engine.message.websocket.definition.WebSocketMessageSender;
 import cn.herodotus.engine.message.websocket.domain.WebSocketPrincipal;
 import cn.herodotus.engine.core.foundation.context.AbstractApplicationContextAware;

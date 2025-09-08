@@ -406,6 +406,11 @@
             </dependency>
             <dependency>
                 <groupId>cn.herodotus.engine</groupId>
+                <artifactId>facility-kafka-spring-boot-starter</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.herodotus.engine</groupId>
                 <artifactId>facility-tencent-spring-boot-starter</artifactId>
                 <version>${project.version}</version>
             </dependency>
@@ -479,11 +484,6 @@
             </dependency>
             <dependency>
                 <groupId>cn.herodotus.engine</groupId>
-                <artifactId>message-kafka-spring-boot-starter</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.herodotus.engine</groupId>
                 <artifactId>oauth2-core</artifactId>
                 <version>${project.version}</version>
             </dependency>
@@ -504,17 +504,17 @@
             </dependency>
             <dependency>
                 <groupId>cn.herodotus.engine</groupId>
-                <artifactId>oauth2-sdk-authorization</artifactId>
+                <artifactId>oauth2-module-authorization</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>cn.herodotus.engine</groupId>
-                <artifactId>oauth2-resource-server-autoconfigure</artifactId>
+                <artifactId>oauth2-authorization-autoconfigure</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>cn.herodotus.engine</groupId>
-                <artifactId>oauth2-authorization-server-autoconfigure</artifactId>
+                <artifactId>oauth2-authentication-autoconfigure</artifactId>
                 <version>${project.version}</version>
             </dependency>
 

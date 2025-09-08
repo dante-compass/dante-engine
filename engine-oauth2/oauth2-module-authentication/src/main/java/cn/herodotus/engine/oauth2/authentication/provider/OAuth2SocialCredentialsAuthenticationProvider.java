@@ -27,12 +27,12 @@ package cn.herodotus.engine.oauth2.authentication.provider;
 
 import cn.herodotus.engine.core.definition.constant.SystemConstants;
 import cn.herodotus.engine.core.identity.domain.AccessPrincipal;
-import cn.herodotus.engine.oauth2.core.properties.OAuth2AuthenticationProperties;
+import cn.herodotus.engine.core.identity.service.EnhanceUserDetailsService;
+import cn.herodotus.engine.oauth2.authentication.customizer.HerodotusGrantType;
 import cn.herodotus.engine.oauth2.authentication.utils.DPoPProofVerifier;
 import cn.herodotus.engine.oauth2.authentication.utils.OAuth2AuthenticationProviderUtils;
-import cn.herodotus.engine.oauth2.core.definition.HerodotusGrantType;
-import cn.herodotus.engine.core.identity.service.EnhanceUserDetailsService;
 import cn.herodotus.engine.oauth2.core.exception.SocialCredentialsParameterBindingFailedException;
+import cn.herodotus.engine.oauth2.core.properties.OAuth2AuthenticationProperties;
 import cn.hutool.v7.core.bean.BeanUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

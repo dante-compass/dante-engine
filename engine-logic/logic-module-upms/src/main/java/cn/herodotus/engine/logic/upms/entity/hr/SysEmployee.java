@@ -32,7 +32,7 @@ import cn.herodotus.engine.logic.upms.domain.deserializer.SysUserEmptyToNull;
 import cn.herodotus.engine.logic.upms.entity.security.SysUser;
 import cn.herodotus.engine.logic.upms.enums.Gender;
 import cn.herodotus.engine.logic.upms.enums.Identity;
-import cn.herodotus.engine.oauth2.core.definition.domain.SocialUserDetails;
+import cn.herodotus.engine.logic.upms.definition.SocialUserDetails;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;

@@ -25,6 +25,7 @@
 
 package cn.herodotus.engine.core.autoconfigure.oauth2;
 
+import cn.herodotus.engine.core.autoconfigure.oauth2.constant.TokenFormat;
 import cn.herodotus.engine.core.definition.constant.BaseConstants;
 import cn.herodotus.engine.core.foundation.enums.DataAccessStrategy;
 import cn.herodotus.engine.core.foundation.enums.Certificate;
@@ -47,7 +48,7 @@ public class OAuth2AuthorizationProperties {
     /**
      * Token 校验是采用远程方式还是本地方式。
      */
-    private DataAccessStrategy validate = DataAccessStrategy.REMOTE;
+    private TokenFormat tokenFormat = TokenFormat.OPAQUE;
 
     /**
      * 是否使用严格模式。严格模式一定要求有权限，非严格模式没有权限管控的接口，只要认证通过也可以使用。
@@ -63,12 +64,12 @@ public class OAuth2AuthorizationProperties {
      */
     private Matcher matcher = new Matcher();
 
-    public DataAccessStrategy getValidate() {
-        return validate;
+    public TokenFormat getTokenFormat() {
+        return tokenFormat;
     }
 
-    public void setValidate(DataAccessStrategy validate) {
-        this.validate = validate;
+    public void setTokenFormat(TokenFormat tokenFormat) {
+        this.tokenFormat = tokenFormat;
     }
 
     public Boolean getStrict() {

@@ -38,7 +38,7 @@ import java.util.List;
  * @author : gengwei.zheng
  * @date : 2023/9/10 17:16
  */
-@ConfigurationProperties(prefix = MessageConstants.PROPERTY_PREFIX_MQTT)
+@ConfigurationProperties(prefix = MessageConstants.PROPERTY_MESSAGE_MQTT)
 public class MqttProperties {
 
     /**

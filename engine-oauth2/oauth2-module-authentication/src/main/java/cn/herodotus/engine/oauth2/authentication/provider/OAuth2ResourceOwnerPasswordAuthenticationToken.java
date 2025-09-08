@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.oauth2.authentication.provider;
 
-import cn.herodotus.engine.oauth2.core.definition.HerodotusGrantType;
+import cn.herodotus.engine.oauth2.authentication.customizer.HerodotusGrantType;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.lang.Nullable;
 import org.springframework.security.core.Authentication;
