@@ -50,6 +50,6 @@ public class DataJpaAutoConfiguration {
 
     @PostConstruct
     public void postConstruct() {
-        log.info("[Herodotus] |- Auto [Data Jpa] Configure.");
+        log.info("[Herodotus] |- Starter [Data Jpa] Configure.");
     }
 }

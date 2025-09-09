@@ -191,7 +191,6 @@ dante-engine
 ├    ├── facility-original-spring-boot-starter -- 面向 Spring Cloud 原生全家桶的微服务基础设施适配 Starter
 ├    ├── facility-tencent-spring-boot-starter -- 面向 Spring Cloud Tencent 的微服务基础设施适配模块 Starter
 ├    ├── logging-spring-boot-starter -- 日志收集和聚合自动配置 Starter
-├    ├── message-mqtt-spring-boot-starter -- 基于 Mqtt 消息自动配置 Starter
 ├    ├── micrometer-spring-boot-starter -- 链路追踪及度量配置自动配置 Starter
 ├    ├── reactive-container-spring-boot-starter -- Reactive 容器基础配置自动配置 Starter
 ├    ├── servlet-container-spring-boot-starter -- Servlet 容器基础配置自动配置 Starter

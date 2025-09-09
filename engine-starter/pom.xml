@@ -50,7 +50,6 @@
         <module>facility-gateway-spring-boot-starter</module>
         <module>facility-tencent-spring-boot-starter</module>
         <module>logging-spring-boot-starter</module>
-        <module>message-mqtt-spring-boot-starter</module>
         <module>reactive-container-spring-boot-starter</module>
         <module>servlet-container-spring-boot-starter</module>
         <module>servlet-message-spring-boot-starter</module>

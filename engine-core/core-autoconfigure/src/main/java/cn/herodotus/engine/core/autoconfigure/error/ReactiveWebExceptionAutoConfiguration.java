@@ -26,6 +26,9 @@
 package cn.herodotus.engine.core.autoconfigure.error;
 
 import cn.herodotus.engine.core.foundation.condition.ConditionalOnReactiveApplication;
+import jakarta.annotation.PostConstruct;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
@@ -58,6 +61,13 @@ import org.springframework.web.reactive.result.view.ViewResolver;
 @ConditionalOnClass(WebFluxConfigurer.class)
 @EnableConfigurationProperties({ServerProperties.class, WebProperties.class})
 public class ReactiveWebExceptionAutoConfiguration {
+
+    private static final Logger log = LoggerFactory.getLogger(ReactiveWebExceptionAutoConfiguration.class);
+
+    @PostConstruct
+    public void postConstruct() {
+        log.info("[Herodotus] |- Auto [Reactive Web Exception] Configure.");
+    }
 
     @Bean
     @Order(-2)

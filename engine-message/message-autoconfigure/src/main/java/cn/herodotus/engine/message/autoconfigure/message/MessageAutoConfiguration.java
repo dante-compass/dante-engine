@@ -45,7 +45,7 @@ public class MessageAutoConfiguration {
 
     @PostConstruct
     public void postConstruct() {
-        log.info("[Herodotus] |- Auto [Unified Message] Configure.");
+        log.info("[Herodotus] |- Auto [Message] Configure.");
     }
 
     @Bean

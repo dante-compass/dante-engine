@@ -46,7 +46,7 @@ public class DataQueryDslAutoConfiguration {
 
     @PostConstruct
     public void postConstruct() {
-        log.debug("[Herodotus] |- Module [Data Query Dsl] Auto Configure.");
+        log.debug("[Herodotus] |- Auto [Data Query Dsl] Auto Configure.");
     }
 
     @Bean

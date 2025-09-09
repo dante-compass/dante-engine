@@ -25,11 +25,34 @@
 
 package cn.herodotus.engine.data.mongodb.autoconfigure;
 
+import cn.herodotus.engine.core.foundation.condition.ConditionalOnServletApplication;
+import jakarta.annotation.PostConstruct;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.boot.autoconfigure.AutoConfiguration;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.data.mongodb.config.EnableMongoAuditing;
+
 /**
- * <p>Description: TODO </p>
+ * <p>Description: MongoDB 数据模块 Starter </p>
  *
  * @author : gengwei.zheng
- * @date : 2025/9/6 15:50
+ * @date : 2024/12/17 23:36
  */
+@AutoConfiguration
 public class DataMongodbAutoConfiguration {
+
+    private static final Logger log = LoggerFactory.getLogger(DataMongodbAutoConfiguration.class);
+
+    @PostConstruct
+    public void postConstruct() {
+        log.info("[Herodotus] |- Starter [Data MongoDB] Configure.");
+    }
+
+    @Configuration(proxyBeanMethods = false)
+    @ConditionalOnServletApplication
+    @EnableMongoAuditing
+    static class ServletMongoDBConfiguration {
+
+    }
 }

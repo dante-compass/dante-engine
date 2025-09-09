@@ -5,8 +5,8 @@ cn.herodotus.engine.core.autoconfigure.client.servlet.RestClientAutoConfiguratio
 cn.herodotus.engine.core.autoconfigure.client.servlet.RestTemplateAutoConfiguration
 cn.herodotus.engine.core.autoconfigure.client.servlet.feign.FeignAutoConfiguration
 cn.herodotus.engine.core.autoconfigure.crypto.CryptoAutoConfiguration
-cn.herodotus.engine.core.autoconfigure.error.ReactiveWebExceptionAutoConfiguration
 cn.herodotus.engine.core.autoconfigure.error.ErrorCodeAutoConfiguration
+cn.herodotus.engine.core.autoconfigure.error.ReactiveWebExceptionAutoConfiguration
 cn.herodotus.engine.core.autoconfigure.jackson2.Jackson2AutoConfiguration
 cn.herodotus.engine.core.autoconfigure.logging.LoggingAutoConfiguration
 cn.herodotus.engine.core.autoconfigure.oauth2.OAuth2AuthorizationAutoConfiguration

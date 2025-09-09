@@ -59,7 +59,7 @@ public class FeignAutoConfiguration {
 
     @PostConstruct
     public void postConstruct() {
-        log.info("[Herodotus] |- Starter [Feign] Configure.");
+        log.info("[Herodotus] |- Auto [Feign] Configure.");
     }
 
     @Bean
