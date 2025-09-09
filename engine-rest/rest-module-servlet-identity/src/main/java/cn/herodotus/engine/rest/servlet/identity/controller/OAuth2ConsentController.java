@@ -127,9 +127,9 @@ public class OAuth2ConsentController {
         model.addAttribute("logo", application.getLogo());
         model.addAttribute("redirectUri", redirectUris.iterator().next());
         model.addAttribute("userCode", userCode);
-        String action = ServiceContextHolder.getInstance().getAuthorizationEndpoint();
+        String action = ServiceContextHolder.getAuthorizationEndpoint();
         if (StringUtils.hasText(userCode)) {
-            action = ServiceContextHolder.getInstance().getDeviceVerificationEndpoint();
+            action = ServiceContextHolder.getDeviceVerificationEndpoint();
         }
         model.addAttribute("action", action);
         return "consent";

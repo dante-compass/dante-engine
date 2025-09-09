@@ -62,10 +62,10 @@ public class MultipleInstanceMessageSender extends SingleInstanceMessageSender {
     private void syncMessageToOtherInstants(WebSocketMessage webSocketMessage) {
         StreamMessage streamMessage = new StreamMessage();
         streamMessage.setBindingName(MessageConstants.MULTIPLE_INSTANCE_OUTPUT);
-        streamMessage.setData(webSocketMessage);
+        streamMessage.setPayload(webSocketMessage);
 
         log.debug("[Herodotus] |- Sync message to other WebSocket instance.");
-        ServiceContextHolder.getInstance().publishEvent(new StreamMessageSendingEvent(streamMessage));
+        ServiceContextHolder.publishEvent(new StreamMessageSendingEvent(streamMessage));
     }
 
     private void syncToUserMessage(String user, String destination, Object payload) {

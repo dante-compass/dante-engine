@@ -59,7 +59,7 @@ public class DefaultRestMappingScanEventManager implements RestMappingScanEventM
 
     @Override
     public String getDestinationServiceName() {
-        return ServiceContextHolder.getInstance().getUpmsServiceName();
+        return ServiceContextHolder.getUpmsServiceName();
     }
 
     @Override

@@ -76,12 +76,12 @@ public interface RestMappingScanEventManager extends ApplicationStrategyEventMan
      * @return true 执行， false 不执行
      */
     default boolean isPerformScan() {
-        if (ServiceContextHolder.getInstance().isDistributedArchitecture()) {
+        if (ServiceContextHolder.isDistributedArchitecture()) {
             if (ObjectUtils.isEmpty(getScanAnnotationClass())) {
                 return false;
             }
 
-            Map<String, Object> content = ServiceContextHolder.getInstance().getApplicationContext().getBeansWithAnnotation(getScanAnnotationClass());
+            Map<String, Object> content = ServiceContextHolder.getApplicationContext().getBeansWithAnnotation(getScanAnnotationClass());
             return !MapUtils.isEmpty(content);
         }
 

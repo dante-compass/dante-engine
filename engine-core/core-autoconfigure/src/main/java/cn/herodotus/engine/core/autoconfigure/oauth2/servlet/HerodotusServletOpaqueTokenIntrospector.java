@@ -112,7 +112,7 @@ public class HerodotusServletOpaqueTokenIntrospector implements OpaqueTokenIntro
     }
 
     private static String getIntrospectionUri(OAuth2ResourceServerProperties resourceServerProperties) {
-        String introspectionUri = ServiceContextHolder.getInstance().getTokenIntrospectionUri();
+        String introspectionUri = ServiceContextHolder.getTokenIntrospectionUri();
         String configIntrospectionUri = resourceServerProperties.getOpaquetoken().getIntrospectionUri();
         if (StringUtils.isNotBlank(configIntrospectionUri)) {
             introspectionUri = configIntrospectionUri;

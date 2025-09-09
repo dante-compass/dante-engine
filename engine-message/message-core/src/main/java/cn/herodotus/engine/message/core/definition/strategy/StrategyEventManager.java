@@ -64,7 +64,7 @@ public interface StrategyEventManager<T> {
      * @return false 远程事件，local 本地事件
      */
     default boolean isLocal(String destinationService) {
-        return !ServiceContextHolder.getInstance().isDistributedArchitecture() || Strings.CS.equals(ServiceContextHolder.getInstance().getApplicationName(), destinationService);
+        return !ServiceContextHolder.isDistributedArchitecture() || Strings.CS.equals(ServiceContextHolder.getApplicationName(), destinationService);
     }
 
     /**
@@ -74,7 +74,7 @@ public interface StrategyEventManager<T> {
      * @param destinationService 接收远程事件目的地
      */
     default void postProcess(String destinationService, T data) {
-        postProcess(ServiceContextHolder.getInstance().getOriginService(), destinationService, data);
+        postProcess(ServiceContextHolder.getOriginService(), destinationService, data);
     }
 
     /**
@@ -98,6 +98,6 @@ public interface StrategyEventManager<T> {
      * @param event 自定义 Spring Event
      */
     default void publishEvent(ApplicationEvent event) {
-        ServiceContextHolder.getInstance().publishEvent(event);
+        ServiceContextHolder.publishEvent(event);
     }
 }

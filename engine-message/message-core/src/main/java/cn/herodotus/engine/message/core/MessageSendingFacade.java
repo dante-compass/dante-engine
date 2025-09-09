@@ -50,7 +50,7 @@ class MessageSendingFacade {
      * @param event {@link AbstractApplicationEvent}
      */
     private static <T> void postProcess(AbstractApplicationEvent<T> event) {
-        ServiceContextHolder.getInstance().publishEvent(event);
+        ServiceContextHolder.publishEvent(event);
     }
 
     /**
