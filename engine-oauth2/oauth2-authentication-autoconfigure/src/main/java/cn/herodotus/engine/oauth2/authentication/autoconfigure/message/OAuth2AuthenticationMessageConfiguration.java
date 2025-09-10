@@ -23,41 +23,37 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.engine.oauth2.authorization.autoconfigure.tenant;
+package cn.herodotus.engine.oauth2.authentication.autoconfigure.message;
 
-import cn.herodotus.engine.data.core.jpa.repository.BaseJpaRepository;
-import cn.herodotus.engine.data.core.jpa.service.AbstractJpaService;
-import cn.herodotus.engine.data.tenant.entity.SysTenantDataSource;
-import cn.herodotus.engine.data.tenant.repository.SysTenantDataSourceRepository;
+import cn.herodotus.engine.message.core.definition.strategy.AccountStatusChangedEventManager;
+import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Service;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
 /**
- * <p>Description: 多租户数据源 </p>
+ * <p>Description: 认证服务器 OAuth2 消息配置 </p>
+ * <p>
+ * 本配置类中，仅配置认证服务器 UAA 所需要的相关信息内容
  *
  * @author : gengwei.zheng
- * @date : 2023/3/29 21:20
+ * @date : 2024/8/21 17:54
  */
-@Service
-public class SysTenantDataSourceService extends AbstractJpaService<SysTenantDataSource, String> {
+@Configuration(proxyBeanMethods = false)
+public class OAuth2AuthenticationMessageConfiguration {
 
-    private static final Logger log = LoggerFactory.getLogger(SysTenantDataSourceService.class);
+    private static final Logger log = LoggerFactory.getLogger(OAuth2AuthenticationMessageConfiguration.class);
 
-    private final SysTenantDataSourceRepository sysTenantDataSourceRepository;
-
-    public SysTenantDataSourceService(SysTenantDataSourceRepository sysTenantDataSourceRepository) {
-        this.sysTenantDataSourceRepository = sysTenantDataSourceRepository;
+    @PostConstruct
+    public void postConstruct() {
+        log.debug("[Herodotus] |- Module [Authentication Server Message] Configure.");
     }
 
-    @Override
-    public BaseJpaRepository<SysTenantDataSource, String> getRepository() {
-        return sysTenantDataSourceRepository;
-    }
-
-    public SysTenantDataSource findByTenantId(String tenantId) {
-        SysTenantDataSource sysRole = sysTenantDataSourceRepository.findByTenantId(tenantId);
-        log.debug("[Herodotus] |- SysTenantDataSource Service findByTenantId.");
-        return sysRole;
+    @Bean
+    public AccountStatusChangedEventManager accountStatusChangedEventManager() {
+        DefaultAccountStatusChangedEventManager manager = new DefaultAccountStatusChangedEventManager();
+        log.trace("[Herodotus] |- Bean [Herodotus Account Status Event Manager] Configure.");
+        return manager;
     }
 }

@@ -23,38 +23,41 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.engine.oauth2.authorization.autoconfigure;
+package cn.herodotus.engine.oauth2.authentication.autoconfigure.tenant;
 
-import cn.herodotus.engine.oauth2.authentication.config.OAuth2AuthenticationConfiguration;
-import cn.herodotus.engine.oauth2.authorization.autoconfigure.message.OAuth2AuthenticationMessageConfiguration;
-import cn.herodotus.engine.oauth2.core.properties.OAuth2AuthenticationProperties;
-import cn.herodotus.engine.oauth2.persistence.sas.jpa.config.OAuth2PersistenceSasJpaConfiguration;
-import jakarta.annotation.PostConstruct;
+import cn.herodotus.engine.data.core.jpa.repository.BaseJpaRepository;
+import cn.herodotus.engine.data.core.jpa.service.AbstractJpaService;
+import cn.herodotus.engine.data.tenant.entity.SysTenantDataSource;
+import cn.herodotus.engine.data.tenant.repository.SysTenantDataSourceRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.autoconfigure.AutoConfiguration;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.context.annotation.Import;
+import org.springframework.stereotype.Service;
 
 /**
- * <p>Description: OAuth2 授权服务器自动配置模块 </p>
+ * <p>Description: 多租户数据源 </p>
  *
  * @author : gengwei.zheng
- * @date : 2023/10/29 10:19
+ * @date : 2023/3/29 21:20
  */
-@AutoConfiguration
-@EnableConfigurationProperties({OAuth2AuthenticationProperties.class})
-@Import({
-        OAuth2PersistenceSasJpaConfiguration.class,
-        OAuth2AuthenticationConfiguration.class,
-        OAuth2AuthenticationMessageConfiguration.class
-})
-public class OAuth2AuthorizationServerAutoConfiguration {
+@Service
+public class SysTenantDataSourceService extends AbstractJpaService<SysTenantDataSource, String> {
 
-    private static final Logger log = LoggerFactory.getLogger(OAuth2AuthorizationServerAutoConfiguration.class);
+    private static final Logger log = LoggerFactory.getLogger(SysTenantDataSourceService.class);
 
-    @PostConstruct
-    public void postConstruct() {
-        log.debug("[Herodotus] |- Auto [OAuth2 Authentication] Configure.");
+    private final SysTenantDataSourceRepository sysTenantDataSourceRepository;
+
+    public SysTenantDataSourceService(SysTenantDataSourceRepository sysTenantDataSourceRepository) {
+        this.sysTenantDataSourceRepository = sysTenantDataSourceRepository;
+    }
+
+    @Override
+    public BaseJpaRepository<SysTenantDataSource, String> getRepository() {
+        return sysTenantDataSourceRepository;
+    }
+
+    public SysTenantDataSource findByTenantId(String tenantId) {
+        SysTenantDataSource sysRole = sysTenantDataSourceRepository.findByTenantId(tenantId);
+        log.debug("[Herodotus] |- SysTenantDataSource Service findByTenantId.");
+        return sysRole;
     }
 }

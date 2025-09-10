@@ -23,7 +23,7 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.engine.oauth2.authorization.autoconfigure;
+package cn.herodotus.engine.oauth2.authentication.autoconfigure;
 
 import cn.herodotus.engine.data.tenant.condition.ConditionalOnMultiTenant;
 import cn.herodotus.engine.data.tenant.enums.MultiTenant;
@@ -42,7 +42,7 @@ import org.springframework.context.annotation.ComponentScan;
 @AutoConfiguration
 @ConditionalOnMultiTenant(MultiTenant.DATABASE)
 @ComponentScan(basePackages = {
-        "cn.herodotus.engine.oauth2.authorization.autoconfigure.tenant",
+        "cn.herodotus.engine.oauth2.authentication.autoconfigure.tenant",
 })
 public class TenantDataSourceAutoConfiguration {
 

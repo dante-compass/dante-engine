@@ -23,37 +23,33 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.engine.oauth2.authorization.autoconfigure.message;
+package cn.herodotus.engine.oauth2.authentication.autoconfigure;
 
-import cn.herodotus.engine.message.core.definition.strategy.AccountStatusChangedEventManager;
+import cn.herodotus.engine.logic.identity.config.LogicIdentityConfiguration;
+import cn.herodotus.engine.oauth2.extension.config.OAuth2ExtensionConfiguration;
+import cn.herodotus.engine.rest.servlet.identity.config.RestServletIdentityConfiguration;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.boot.autoconfigure.AutoConfiguration;
+import org.springframework.context.annotation.Import;
 
 /**
- * <p>Description: 认证服务器 OAuth2 消息配置 </p>
- * <p>
- * 本配置类中，仅配置认证服务器 UAA 所需要的相关信息内容
+ * <p>Description: OAuth2 身份认证自动配置 </p>
  *
  * @author : gengwei.zheng
- * @date : 2024/8/21 17:54
+ * @date : 2024/3/15 22:32
  */
-@Configuration(proxyBeanMethods = false)
-public class OAuth2AuthenticationMessageConfiguration {
+@AutoConfiguration(after = OAuth2AuthenticationAutoConfiguration.class)
+@Import({
+        OAuth2ExtensionConfiguration.class, LogicIdentityConfiguration.class, RestServletIdentityConfiguration.class
+})
+public class OAuth2IdentityAutoConfiguration {
 
-    private static final Logger log = LoggerFactory.getLogger(OAuth2AuthenticationMessageConfiguration.class);
+    private static final Logger log = LoggerFactory.getLogger(OAuth2IdentityAutoConfiguration.class);
 
     @PostConstruct
     public void postConstruct() {
-        log.debug("[Herodotus] |- Module [Authentication Server Message] Configure.");
-    }
-
-    @Bean
-    public AccountStatusChangedEventManager accountStatusChangedEventManager() {
-        DefaultAccountStatusChangedEventManager manager = new DefaultAccountStatusChangedEventManager();
-        log.trace("[Herodotus] |- Bean [Herodotus Account Status Event Manager] Configure.");
-        return manager;
+        log.info("[Herodotus] |- Auto [OAuth2 Identity] Configure.");
     }
 }

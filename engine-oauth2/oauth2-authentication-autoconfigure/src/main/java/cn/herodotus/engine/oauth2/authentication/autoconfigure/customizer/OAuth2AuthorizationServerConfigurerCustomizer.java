@@ -23,7 +23,7 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.engine.oauth2.authorization.autoconfigure.customizer;
+package cn.herodotus.engine.oauth2.authentication.autoconfigure.customizer;
 
 import cn.herodotus.engine.core.definition.constant.SystemConstants;
 import cn.herodotus.engine.core.identity.service.ClientDetailsService;

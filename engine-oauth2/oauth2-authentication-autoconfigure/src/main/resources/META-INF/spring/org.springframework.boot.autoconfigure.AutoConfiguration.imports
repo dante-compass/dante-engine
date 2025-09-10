@@ -23,6 +23,6 @@
 # 6. 若您的项目无法满足以上几点，可申请商业授权
 #
 
-cn.herodotus.engine.oauth2.authorization.autoconfigure.OAuth2AuthorizationServerAutoConfiguration
-cn.herodotus.engine.oauth2.authorization.autoconfigure.OAuth2IdentityAutoConfiguration
-cn.herodotus.engine.oauth2.authorization.autoconfigure.TenantDataSourceAutoConfiguration
+cn.herodotus.engine.oauth2.authentication.autoconfigure.OAuth2AuthenticationAutoConfiguration
+cn.herodotus.engine.oauth2.authentication.autoconfigure.OAuth2IdentityAutoConfiguration
+cn.herodotus.engine.oauth2.authentication.autoconfigure.TenantDataSourceAutoConfiguration

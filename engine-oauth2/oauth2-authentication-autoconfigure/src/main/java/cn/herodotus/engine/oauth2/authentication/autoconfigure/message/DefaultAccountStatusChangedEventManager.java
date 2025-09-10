@@ -23,7 +23,7 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.engine.oauth2.authorization.autoconfigure.message;
+package cn.herodotus.engine.oauth2.authentication.autoconfigure.message;
 
 import cn.herodotus.engine.core.foundation.context.ServiceContextHolder;
 import cn.herodotus.engine.message.core.definition.strategy.AccountStatusChangedEventManager;

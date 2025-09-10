@@ -23,33 +23,38 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.engine.oauth2.authorization.autoconfigure;
+package cn.herodotus.engine.oauth2.authentication.autoconfigure;
 
-import cn.herodotus.engine.logic.identity.config.LogicIdentityConfiguration;
-import cn.herodotus.engine.oauth2.extension.config.OAuth2ExtensionConfiguration;
-import cn.herodotus.engine.rest.servlet.identity.config.RestServletIdentityConfiguration;
+import cn.herodotus.engine.oauth2.authentication.config.OAuth2AuthenticationConfiguration;
+import cn.herodotus.engine.oauth2.authentication.autoconfigure.message.OAuth2AuthenticationMessageConfiguration;
+import cn.herodotus.engine.oauth2.core.properties.OAuth2AuthenticationProperties;
+import cn.herodotus.engine.oauth2.persistence.sas.jpa.config.OAuth2PersistenceSasJpaConfiguration;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Import;
 
 /**
- * <p>Description: OAuth2 身份认证自动配置 </p>
+ * <p>Description: OAuth2 授权服务器自动配置模块 </p>
  *
  * @author : gengwei.zheng
- * @date : 2024/3/15 22:32
+ * @date : 2023/10/29 10:19
  */
-@AutoConfiguration(after = OAuth2AuthorizationServerAutoConfiguration.class)
+@AutoConfiguration
+@EnableConfigurationProperties({OAuth2AuthenticationProperties.class})
 @Import({
-        OAuth2ExtensionConfiguration.class, LogicIdentityConfiguration.class, RestServletIdentityConfiguration.class
+        OAuth2PersistenceSasJpaConfiguration.class,
+        OAuth2AuthenticationConfiguration.class,
+        OAuth2AuthenticationMessageConfiguration.class
 })
-public class OAuth2IdentityAutoConfiguration {
+public class OAuth2AuthenticationAutoConfiguration {
 
-    private static final Logger log = LoggerFactory.getLogger(OAuth2IdentityAutoConfiguration.class);
+    private static final Logger log = LoggerFactory.getLogger(OAuth2AuthenticationAutoConfiguration.class);
 
     @PostConstruct
     public void postConstruct() {
-        log.info("[Herodotus] |- Auto [OAuth2 Identity] Configure.");
+        log.debug("[Herodotus] |- Auto [OAuth2 Authentication] Configure.");
     }
 }

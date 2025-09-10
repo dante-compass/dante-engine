@@ -23,7 +23,7 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.engine.oauth2.authorization.autoconfigure.tenant;
+package cn.herodotus.engine.oauth2.authentication.autoconfigure.tenant;
 
 import cn.herodotus.engine.core.definition.domain.Result;
 import cn.herodotus.engine.data.core.jpa.service.BaseJpaWriteableService;
