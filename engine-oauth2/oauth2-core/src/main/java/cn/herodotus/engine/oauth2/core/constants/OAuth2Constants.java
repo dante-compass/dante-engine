@@ -35,9 +35,9 @@ import cn.herodotus.engine.core.definition.constant.BaseConstants;
  */
 public interface OAuth2Constants extends BaseConstants {
 
-    String PROPERTY_OAUTH2_AUTHENTICATION = PROPERTY_PREFIX_OAUTH2 + ".authentication";
-    String PROPERTY_OAUTH2_AUTHORIZATION = PROPERTY_PREFIX_OAUTH2 + ".authorization";
-    String ITEM_COMPLIANCE_AUTO_UNLOCK = PROPERTY_OAUTH2_AUTHENTICATION + ".auto-unlock";
+    String PROPERTY_SIGN_IN_FAILURE_LIMITED = PROPERTY_OAUTH2_AUTHENTICATION + ".sign-in-failure-limited";
+
+    String ITEM_SIGN_IN_FAILURE_LIMITED_AUTO_UNLOCK = PROPERTY_SIGN_IN_FAILURE_LIMITED + ".auto-unlock";
 
     String REGION_OAUTH2_AUTHORIZATION = AREA_PREFIX + "oauth2:authorization";
     String REGION_OAUTH2_AUTHORIZATION_CONSENT = AREA_PREFIX + "oauth2:authorization:consent";
@@ -56,8 +56,6 @@ public interface OAuth2Constants extends BaseConstants {
     String CACHE_SECURITY_PREFIX = CACHE_PREFIX + "security:";
     String CACHE_SECURITY_METADATA_PREFIX = CACHE_SECURITY_PREFIX + "metadata:";
 
-    String CACHE_NAME_SECURITY_METADATA_ATTRIBUTES = CACHE_SECURITY_METADATA_PREFIX + "attributes:";
-    String CACHE_NAME_SECURITY_METADATA_INDEXES = CACHE_SECURITY_METADATA_PREFIX + "indexes:";
     String CACHE_NAME_SECURITY_METADATA_INDEXABLE = CACHE_SECURITY_METADATA_PREFIX + "indexable:";
     String CACHE_NAME_SECURITY_METADATA_COMPATIBLE = CACHE_SECURITY_METADATA_PREFIX + "compatible:";
 }

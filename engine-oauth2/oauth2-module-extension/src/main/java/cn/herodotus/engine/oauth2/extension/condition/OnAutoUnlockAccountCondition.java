@@ -46,7 +46,7 @@ public class OnAutoUnlockAccountCondition implements Condition {
     @SuppressWarnings("NullableProblems")
     @Override
     public boolean matches(ConditionContext conditionContext, AnnotatedTypeMetadata metadata) {
-        boolean result = PropertyResolver.getBoolean(conditionContext, OAuth2Constants.ITEM_COMPLIANCE_AUTO_UNLOCK, true);
+        boolean result = PropertyResolver.getBoolean(conditionContext, OAuth2Constants.ITEM_SIGN_IN_FAILURE_LIMITED_AUTO_UNLOCK, true);
         log.debug("[Herodotus] |- Condition [Auto Unlock User Account] value is [{}]", result);
         return result;
     }
