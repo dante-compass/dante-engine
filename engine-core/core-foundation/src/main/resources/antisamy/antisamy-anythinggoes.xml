@@ -1127,9 +1127,9 @@
 
         <!-- Begin simple properties -->
         <property name="border-collapse" default="collapse" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <literal-list>
                 <literal value="collapse" />
                 <literal value="separate" />
@@ -1137,9 +1137,9 @@
             </literal-list>
         </property>
         <property name="border-color" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <literal-list>
                 <literal value="transparent" />
                 <literal value="inherit" />
@@ -1152,9 +1152,9 @@
             </regexp-list>
         </property>
         <property name="border-top-color" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <literal-list>
                 <literal value="inherit" />
             </literal-list>
@@ -1166,9 +1166,9 @@
             </regexp-list>
         </property>
         <property name="border-right-color" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <literal-list>
                 <literal value="inherit" />
             </literal-list>
@@ -1180,9 +1180,9 @@
             </regexp-list>
         </property>
         <property name="border-bottom-color" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <literal-list>
                 <literal value="inherit" />
             </literal-list>
@@ -1194,9 +1194,9 @@
             </regexp-list>
         </property>
         <property name="border-left-color" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <literal-list>
                 <literal value="inherit" />
             </literal-list>
@@ -1208,9 +1208,9 @@
             </regexp-list>
         </property>
         <property name="bottom" default="auto" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <literal-list>
                 <literal value="auto" />
                 <literal value="inherit" />
@@ -1221,9 +1221,9 @@
             </regexp-list>
         </property>
         <property name="caption-side" default="top" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <literal-list>
                 <literal value="top" />
                 <literal value="bottom" />
@@ -1233,9 +1233,9 @@
             </literal-list>
         </property>
         <property name="clear" default="none" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <literal-list>
                 <literal value="none" />
                 <literal value="left" />
@@ -1245,9 +1245,9 @@
             </literal-list>
         </property>
         <property name="color" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <literal-list>
                 <literal value="inherit" />
             </literal-list>
@@ -1259,9 +1259,9 @@
             </regexp-list>
         </property>
         <property name="cue-after" default="none" description="">
-            <urlCategory-list>
-                <urlCategory value="aural" />
-            </urlCategory-list>
+            <category-list>
+                <category value="aural" />
+            </category-list>
             <literal-list>
                 <literal value="none" />
                 <literal value="inherit" />
@@ -1272,9 +1272,9 @@
             </regexp-list>
         </property>
         <property name="cue-before" default="none" description="">
-            <urlCategory-list>
-                <urlCategory value="aural" />
-            </urlCategory-list>
+            <category-list>
+                <category value="aural" />
+            </category-list>
             <literal-list>
                 <literal value="none" />
                 <literal value="inherit" />
@@ -1285,9 +1285,9 @@
             </regexp-list>
         </property>
         <property name="direction" default="ltr" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <literal-list>
                 <literal value="ltr" />
                 <literal value="rtl" />
@@ -1295,9 +1295,9 @@
             </literal-list>
         </property>
         <property name="display" default="inline" description="">
-            <urlCategory-list>
-                <urlCategory value="all" />
-            </urlCategory-list>
+            <category-list>
+                <category value="all" />
+            </category-list>
             <literal-list>
                 <literal value="inline" />
                 <literal value="block" />
@@ -1320,9 +1320,9 @@
             </literal-list>
         </property>
         <property name="elevation" default="level" description="">
-            <urlCategory-list>
-                <urlCategory value="aural" />
-            </urlCategory-list>
+            <category-list>
+                <category value="aural" />
+            </category-list>
             <literal-list>
                 <literal value="below" />
                 <literal value="level" />
@@ -1336,9 +1336,9 @@
             </regexp-list>
         </property>
         <property name="empty-cells" default="show" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <literal-list>
                 <literal value="show" />
                 <literal value="hide" />
@@ -1346,9 +1346,9 @@
             </literal-list>
         </property>
         <property name="float" default="none" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <literal-list>
                 <literal value="left" />
                 <literal value="right" />
@@ -1357,9 +1357,9 @@
             </literal-list>
         </property>
         <property name="font-size" default="medium" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <literal-list>
                 <literal value="inherit" />
             </literal-list>
@@ -1371,9 +1371,9 @@
             </regexp-list>
         </property>
         <property name="font-size-adjust" default="none" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <literal-list>
                 <literal value="none" />
                 <literal value="inherit" />
@@ -1383,9 +1383,9 @@
             </regexp-list>
         </property>
         <property name="font-stretch" default="normal" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <literal-list>
                 <literal value="normal" />
                 <literal value="wider" />
@@ -1402,9 +1402,9 @@
             </literal-list>
         </property>
         <property name="font-style" default="normal" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <literal-list>
                 <literal value="normal" />
                 <literal value="italic" />
@@ -1413,9 +1413,9 @@
             </literal-list>
         </property>
         <property name="font-variant" default="normal" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <literal-list>
                 <literal value="normal" />
                 <literal value="small-caps" />
@@ -1423,9 +1423,9 @@
             </literal-list>
         </property>
         <property name="font-weight" default="normal" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <literal-list>
                 <literal value="normal" />
                 <literal value="bold" />
@@ -1444,9 +1444,9 @@
             </literal-list>
         </property>
         <property name="height" default="auto" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <literal-list>
                 <literal value="auto" />
                 <literal value="inherit" />
@@ -1457,9 +1457,9 @@
             </regexp-list>
         </property>
         <property name="left" default="auto" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <literal-list>
                 <literal value="auto" />
                 <literal value="inherit" />
@@ -1470,9 +1470,9 @@
             </regexp-list>
         </property>
         <property name="letter-spacing" default="normal" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <literal-list>
                 <literal value="normal" />
                 <literal value="inherit" />
@@ -1482,9 +1482,9 @@
             </regexp-list>
         </property>
         <property name="line-height" default="normal" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <literal-list>
                 <literal value="normal" />
                 <literal value="inherit" />
@@ -1496,9 +1496,9 @@
             </regexp-list>
         </property>
         <property name="list-style-image" default="none" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <literal-list>
                 <literal value="none" />
                 <literal value="inherit" />
@@ -1509,9 +1509,9 @@
             </regexp-list>
         </property>
         <property name="list-style-position" default="outside" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <literal-list>
                 <literal value="inside" />
                 <literal value="outside" />
@@ -1519,9 +1519,9 @@
             </literal-list>
         </property>
         <property name="list-style-type" default="disc" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <literal-list>
                 <literal value="disc" />
                 <literal value="circle" />
@@ -1548,9 +1548,9 @@
             </literal-list>
         </property>
         <property name="marker-offset" default="auto" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <literal-list>
                 <literal value="auto" />
                 <literal value="inherit" />
@@ -1560,9 +1560,9 @@
             </regexp-list>
         </property>
         <property name="max-height" default="none" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <literal-list>
                 <literal value="none" />
                 <literal value="inherit" />
@@ -1573,9 +1573,9 @@
             </regexp-list>
         </property>
         <property name="max-width" default="none" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <literal-list>
                 <literal value="none" />
                 <literal value="inherit" />
@@ -1586,9 +1586,9 @@
             </regexp-list>
         </property>
         <property name="min-height" default="0" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <literal-list>
                 <literal value="inherit" />
             </literal-list>
@@ -1598,9 +1598,9 @@
             </regexp-list>
         </property>
         <property name="min-width" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <literal-list>
                 <literal value="inherit" />
             </literal-list>
@@ -1610,10 +1610,10 @@
             </regexp-list>
         </property>
         <property name="orphans" default="2" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-                <urlCategory value="paged" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+                <category value="paged" />
+            </category-list>
             <literal-list>
                 <literal value="inherit" />
             </literal-list>
@@ -1622,10 +1622,10 @@
             </regexp-list>
         </property>
         <property name="outline-color" default="invert" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-                <urlCategory value="interactive" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+                <category value="interactive" />
+            </category-list>
             <literal-list>
                 <literal value="invert" />
                 <literal value="inherit" />
@@ -1638,9 +1638,9 @@
             </regexp-list>
         </property>
         <property name="overflow" default="visible" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <literal-list>
                 <literal value="visible" />
                 <literal value="hidden" />
@@ -1650,10 +1650,10 @@
             </literal-list>
         </property>
         <property name="page-break-after" default="auto" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-                <urlCategory value="paged" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+                <category value="paged" />
+            </category-list>
             <literal-list>
                 <literal value="auto" />
                 <literal value="always" />
@@ -1664,10 +1664,10 @@
             </literal-list>
         </property>
         <property name="page-break-before" default="auto" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-                <urlCategory value="paged" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+                <category value="paged" />
+            </category-list>
             <literal-list>
                 <literal value="auto" />
                 <literal value="always" />
@@ -1678,10 +1678,10 @@
             </literal-list>
         </property>
         <property name="page-break-inside" default="auto" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-                <urlCategory value="paged" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+                <category value="paged" />
+            </category-list>
             <literal-list>
                 <literal value="avoid" />
                 <literal value="auto" />
@@ -1689,9 +1689,9 @@
             </literal-list>
         </property>
         <property name="pause-after" description="">
-            <urlCategory-list>
-                <urlCategory value="aural" />
-            </urlCategory-list>
+            <category-list>
+                <category value="aural" />
+            </category-list>
             <literal-list>
                 <literal value="inherit" />
             </literal-list>
@@ -1701,9 +1701,9 @@
             </regexp-list>
         </property>
         <property name="pause-before" description="">
-            <urlCategory-list>
-                <urlCategory value="aural" />
-            </urlCategory-list>
+            <category-list>
+                <category value="aural" />
+            </category-list>
             <literal-list>
                 <literal value="inherit" />
             </literal-list>
@@ -1713,9 +1713,9 @@
             </regexp-list>
         </property>
         <property name="pitch" default="medium" description="">
-            <urlCategory-list>
-                <urlCategory value="aural" />
-            </urlCategory-list>
+            <category-list>
+                <category value="aural" />
+            </category-list>
             <literal-list>
                 <literal value="x-low" />
                 <literal value="low" />
@@ -1729,9 +1729,9 @@
             </regexp-list>
         </property>
         <property name="pitch-range" default="50" description="">
-            <urlCategory-list>
-                <urlCategory value="aural" />
-            </urlCategory-list>
+            <category-list>
+                <category value="aural" />
+            </category-list>
             <literal-list>
                 <literal value="inherit" />
             </literal-list>
@@ -1740,9 +1740,9 @@
             </regexp-list>
         </property>
         <property name="position" default="static" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <literal-list>
                 <literal value="static" />
                 <!-- possible to perform phishing attacks with the following -->
@@ -1751,9 +1751,9 @@
             </literal-list>
         </property>
         <property name="richness" default="50" description="">
-            <urlCategory-list>
-                <urlCategory value="aural" />
-            </urlCategory-list>
+            <category-list>
+                <category value="aural" />
+            </category-list>
             <literal-list>
                 <literal value="inherit" />
             </literal-list>
@@ -1762,9 +1762,9 @@
             </regexp-list>
         </property>
         <property name="right" default="auto" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <literal-list>
                 <literal value="auto" />
                 <literal value="inherit" />
@@ -1775,10 +1775,10 @@
             </regexp-list>
         </property>
         <property name="size" default="auto" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-                <urlCategory value="paged" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+                <category value="paged" />
+            </category-list>
             <literal-list>
                 <literal value="auto" />
                 <literal value="portrait" />
@@ -1790,9 +1790,9 @@
             </regexp-list>
         </property>
         <property name="speak" default="normal" description="">
-            <urlCategory-list>
-                <urlCategory value="aural" />
-            </urlCategory-list>
+            <category-list>
+                <category value="aural" />
+            </category-list>
             <literal-list>
                 <literal value="normal" />
                 <literal value="none" />
@@ -1801,9 +1801,9 @@
             </literal-list>
         </property>
         <property name="speak-header" default="once" description="">
-            <urlCategory-list>
-                <urlCategory value="aural" />
-            </urlCategory-list>
+            <category-list>
+                <category value="aural" />
+            </category-list>
             <literal-list>
                 <literal value="once" />
                 <literal value="always" />
@@ -1811,9 +1811,9 @@
             </literal-list>
         </property>
         <property name="speak-numeral" default="continuous" description="">
-            <urlCategory-list>
-                <urlCategory value="aural" />
-            </urlCategory-list>
+            <category-list>
+                <category value="aural" />
+            </category-list>
             <literal-list>
                 <literal value="digits" />
                 <literal value="continuous" />
@@ -1821,9 +1821,9 @@
             </literal-list>
         </property>
         <property name="speak-punctuation" default="none" description="">
-            <urlCategory-list>
-                <urlCategory value="aural" />
-            </urlCategory-list>
+            <category-list>
+                <category value="aural" />
+            </category-list>
             <literal-list>
                 <literal value="code" />
                 <literal value="none" />
@@ -1831,9 +1831,9 @@
             </literal-list>
         </property>
         <property name="speech-rate" default="medium" description="">
-            <urlCategory-list>
-                <urlCategory value="aural" />
-            </urlCategory-list>
+            <category-list>
+                <category value="aural" />
+            </category-list>
             <literal-list>
                 <literal value="x-slow" />
                 <literal value="slow" />
@@ -1849,9 +1849,9 @@
             </regexp-list>
         </property>
         <property name="stress" default="50" description="">
-            <urlCategory-list>
-                <urlCategory value="aural" />
-            </urlCategory-list>
+            <category-list>
+                <category value="aural" />
+            </category-list>
             <literal-list>
                 <literal value="inherit" />
             </literal-list>
@@ -1860,9 +1860,9 @@
             </regexp-list>
         </property>
         <property name="table-layout" default="auto" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <literal-list>
                 <literal value="auto" />
                 <literal value="fixed" />
@@ -1870,9 +1870,9 @@
             </literal-list>
         </property>
         <property name="text-indent" default="0" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <literal-list>
                 <literal value="inherit" />
             </literal-list>
@@ -1882,9 +1882,9 @@
             </regexp-list>
         </property>
         <property name="text-transform" default="none" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <literal-list>
                 <literal value="capitalize" />
                 <literal value="uppercase" />
@@ -1894,9 +1894,9 @@
             </literal-list>
         </property>
         <property name="top" default="auto" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <literal-list>
                 <literal value="auto" />
                 <literal value="inherit" />
@@ -1907,9 +1907,9 @@
             </regexp-list>
         </property>
         <property name="unicode-bidi" default="normal" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <literal-list>
                 <literal value="normal" />
                 <literal value="embed" />
@@ -1918,9 +1918,9 @@
             </literal-list>
         </property>
         <property name="vertical-align" default="baseline" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <literal-list>
                 <literal value="baseline" />
                 <literal value="sub" />
@@ -1938,9 +1938,9 @@
             </regexp-list>
         </property>
         <property name="visibility" default="inherit" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <literal-list>
                 <literal value="visible" />
                 <literal value="hidden" />
@@ -1949,9 +1949,9 @@
             </literal-list>
         </property>
         <property name="volume" default="medium" description="">
-            <urlCategory-list>
-                <urlCategory value="aural" />
-            </urlCategory-list>
+            <category-list>
+                <category value="aural" />
+            </category-list>
             <literal-list>
                 <literal value="silent" />
                 <literal value="x-soft" />
@@ -1967,9 +1967,9 @@
             </regexp-list>
         </property>
         <property name="white-space" default="normal" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <literal-list>
                 <literal value="normal" />
                 <literal value="pre" />
@@ -1978,10 +1978,10 @@
             </literal-list>
         </property>
         <property name="widows" default="2" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-                <urlCategory value="paged" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+                <category value="paged" />
+            </category-list>
             <literal-list>
                 <literal value="inherit" />
             </literal-list>
@@ -1990,9 +1990,9 @@
             </regexp-list>
         </property>
         <property name="width" default="auto" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <literal-list>
                 <literal value="auto" />
                 <literal value="inherit" />
@@ -2003,9 +2003,9 @@
             </regexp-list>
         </property>
         <property name="word-spacing" default="normal" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <literal-list>
                 <literal value="normal" />
                 <literal value="inherit" />
@@ -2019,9 +2019,9 @@
 
         <!-- begin medium properties -->
         <property name="border-style" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <literal-list>
                 <literal value="inherit" />
                 <literal value="none" />
@@ -2037,17 +2037,17 @@
             </literal-list>
         </property>
         <property name="border-top-style" default="none" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <literal-list>
                 <literal value="inherit" />
             </literal-list>
         </property>
         <property name="border-right-style" default="none" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <literal-list>
                 <literal value="inherit" />
             </literal-list>
@@ -2056,9 +2056,9 @@
             </shorthand-list>
         </property>
         <property name="border-bottom-style" default="none" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <literal-list>
                 <literal value="inherit" />
             </literal-list>
@@ -2067,9 +2067,9 @@
             </shorthand-list>
         </property>
         <property name="border-left-style" default="none" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <literal-list>
                 <literal value="inherit" />
             </literal-list>
@@ -2078,9 +2078,9 @@
             </shorthand-list>
         </property>
         <property name="border-top-width" default="medium" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <literal-list>
                 <literal value="inherit" />
             </literal-list>
@@ -2089,9 +2089,9 @@
             </shorthand-list>
         </property>
         <property name="border-right-width" default="medium" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <literal-list>
                 <literal value="inherit" />
             </literal-list>
@@ -2100,9 +2100,9 @@
             </shorthand-list>
         </property>
         <property name="border-bottom-width" default="medium" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <literal-list>
                 <literal value="inherit" />
             </literal-list>
@@ -2111,9 +2111,9 @@
             </shorthand-list>
         </property>
         <property name="border-left-width" default="medium" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <literal-list>
                 <literal value="inherit" />
             </literal-list>
@@ -2122,9 +2122,9 @@
             </shorthand-list>
         </property>
         <property name="border-width" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <literal-list>
                 <literal value="inherit" />
                 <literal value="thin" />
@@ -2136,9 +2136,9 @@
             </regexp-list>
         </property>
         <property name="margin" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <literal-list>
                 <literal value="inherit" />
                 <literal value="auto" />
@@ -2149,9 +2149,9 @@
             </regexp-list>
         </property>
         <property name="margin-top" default="0" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <literal-list>
                 <literal value="inherit" />
             </literal-list>
@@ -2160,9 +2160,9 @@
             </shorthand-list>
         </property>
         <property name="margin-right" default="0" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <literal-list>
                 <literal value="inherit" />
             </literal-list>
@@ -2171,9 +2171,9 @@
             </shorthand-list>
         </property>
         <property name="margin-bottom" default="0" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
 
             <literal-list>
                 <literal value="inherit" />
@@ -2183,9 +2183,9 @@
             </shorthand-list>
         </property>
         <property name="margin-left" default="0" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <literal-list>
                 <literal value="inherit" />
             </literal-list>
@@ -2194,10 +2194,10 @@
             </shorthand-list>
         </property>
         <property name="outline-style" default="none" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-                <urlCategory value="interactive" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+                <category value="interactive" />
+            </category-list>
 
             <literal-list>
                 <literal value="inherit" />
@@ -2207,10 +2207,10 @@
             </shorthand-list>
         </property>
         <property name="outline-width" default="medium" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-                <urlCategory value="interactive" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+                <category value="interactive" />
+            </category-list>
             <literal-list>
                 <literal value="inherit" />
             </literal-list>
@@ -2219,9 +2219,9 @@
             </shorthand-list>
         </property>
         <property name="padding" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <literal-list>
                 <literal value="inherit" />
             </literal-list>
@@ -2231,9 +2231,9 @@
             </regexp-list>
         </property>
         <property name="padding-top" default="0" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <literal-list>
                 <literal value="inherit" />
             </literal-list>
@@ -2242,9 +2242,9 @@
             </shorthand-list>
         </property>
         <property name="padding-right" default="0" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <literal-list>
                 <literal value="inherit" />
             </literal-list>
@@ -2253,9 +2253,9 @@
             </shorthand-list>
         </property>
         <property name="padding-bottom" default="0" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <literal-list>
                 <literal value="inherit" />
             </literal-list>
@@ -2264,9 +2264,9 @@
             </shorthand-list>
         </property>
         <property name="padding-left" default="0" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <literal-list>
                 <literal value="inherit" />
             </literal-list>
@@ -2278,9 +2278,9 @@
 
         <!-- begin hard properties -->
         <property name="border" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
 
             <literal-list>
                 <literal value="inherit" />
@@ -2297,9 +2297,9 @@
             </shorthand-list>
         </property>
         <property name="border-top" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <literal-list>
                 <literal value="inherit" />
             </literal-list>
@@ -2315,9 +2315,9 @@
             </shorthand-list>
         </property>
         <property name="border-right" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <literal-list>
                 <literal value="inherit" />
             </literal-list>
@@ -2333,9 +2333,9 @@
             </shorthand-list>
         </property>
         <property name="border-bottom" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <literal-list>
                 <literal value="inherit" />
             </literal-list>
@@ -2351,9 +2351,9 @@
             </shorthand-list>
         </property>
         <property name="border-left" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <literal-list>
                 <literal value="inherit" />
             </literal-list>
@@ -2369,9 +2369,9 @@
             </shorthand-list>
         </property>
         <property name="cue" description="">
-            <urlCategory-list>
-                <urlCategory value="aural" />
-            </urlCategory-list>
+            <category-list>
+                <category value="aural" />
+            </category-list>
             <literal-list>
                 <literal value="inherit" />
             </literal-list>
@@ -2381,9 +2381,9 @@
             </shorthand-list>
         </property>
         <property name="list-style" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <literal-list>
                 <literal value="inherit" />
             </literal-list>
@@ -2394,10 +2394,10 @@
             </shorthand-list>
         </property>
         <property name="marks" default="none" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-                <urlCategory value="paged" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+                <category value="paged" />
+            </category-list>
             <literal-list>
                 <literal value="crop" />
                 <literal value="cross" />
@@ -2406,10 +2406,10 @@
             </literal-list>
         </property>
         <property name="outline" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-                <urlCategory value="interactive" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+                <category value="interactive" />
+            </category-list>
             <literal-list>
                 <literal value="inherit" />
             </literal-list>
@@ -2420,9 +2420,9 @@
             </shorthand-list>
         </property>
         <property name="pause" description="">
-            <urlCategory-list>
-                <urlCategory value="aural" />
-            </urlCategory-list>
+            <category-list>
+                <category value="aural" />
+            </category-list>
             <literal-list>
                 <literal value="inherit" />
             </literal-list>
@@ -2432,9 +2432,9 @@
             </regexp-list>
         </property>
         <property name="text-decoration" default="none" description="">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <literal-list>
                 <literal value="none" />
                 <literal value="underline" />
@@ -2448,9 +2448,9 @@
         <!-- begin manual properties -->
         <property name="border-spacing" default="0"
             description="The lengths specify the distance that separates adjacent cell borders. If one length is specified, it gives both the horizontal and vertical spacing. If two are specified, the first gives the horizontal spacing and the second the vertical spacing. Lengths may not be negative.">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <literal-list>
                 <literal value="inherit" />
             </literal-list>
@@ -2460,9 +2460,9 @@
         </property>
         <property name="clip" default="auto"
             description="The 'clip' property applies to elements that have a 'overflow' property with a value other than 'visible'.">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <literal-list>
                 <literal value="auto" />
                 <literal value="inherit" />
@@ -2473,9 +2473,9 @@
         </property>
         <property name="counter-increment" default="none"
             description="The 'counter-increment' property accepts one or more names of counters (identifiers), each one optionally followed by an integer.">
-            <urlCategory-list>
-                <urlCategory value="all" />
-            </urlCategory-list>
+            <category-list>
+                <category value="all" />
+            </category-list>
             <literal-list>
                 <literal value="none" />
                 <literal value="inherit" />
@@ -2487,10 +2487,10 @@
         </property>
         <property name="cursor" default="auto"
             description="This property specifies the type of cursor to be displayed for the pointing device.">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-                <urlCategory value="interactive" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+                <category value="interactive" />
+            </category-list>
             <literal-list>
                 <literal value="auto" />
                 <literal value="inherit" />
@@ -2517,9 +2517,9 @@
 
         <property name="text-shadow" default="none"
             description="This property accepts a comma-separated list of shadow effects to be applied to the text of the element.">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <literal-list>
                 <literal value="none" />
                 <literal value="inherit" />
@@ -2535,9 +2535,9 @@
 
         <property name="font"
             description="The 'font' property is, except as described below, a shorthand property for setting 'font-style', 'font-variant', 'font-weight', 'font-size', 'line-height', and 'font-family', at the same place in the style sheet.">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <literal-list>
                 <literal value="/" />
                 <literal value="caption" />
@@ -2560,9 +2560,9 @@
 
         <property name="font-family"
             description="This property specifies a prioritized list of font family names and/or generic family names.">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <!-- allowing only generic font families -->
             <literal-list>
                 <literal value="serif" />
@@ -2583,10 +2583,10 @@
         </property>
         <property name="page"
             description="The 'page' property can be used to specify a particular type of page where an element should be displayed.">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-                <urlCategory value="paged" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+                <category value="paged" />
+            </category-list>
             <literal-list>
                 <literal value="auto" />
             </literal-list>
@@ -2596,9 +2596,9 @@
         </property>
         <property name="play-during" default="auto"
             description="Similar to the 'cue-before' and 'cue-after' properties, this property specifies a sound to be played as a background while an element's content is spoken.">
-            <urlCategory-list>
-                <urlCategory value="aural" />
-            </urlCategory-list>
+            <category-list>
+                <category value="aural" />
+            </category-list>
             <literal-list>
                 <literal value="mix" />
                 <literal value="repeat" />
@@ -2612,9 +2612,9 @@
             </regexp-list>
         </property>
         <property name="text-align" description="This property describes how inline content of a block is aligned.">
-            <urlCategory-list>
-                <urlCategory value="visual" />
-            </urlCategory-list>
+            <category-list>
+                <category value="visual" />
+            </category-list>
             <!-- For safety, ignoring string alignment which can be used to line table cells on characters -->
             <literal-list>
                 <literal value="left" />
@@ -2626,9 +2626,9 @@
         </property>
         <property name="voice-family"
             description="The value is a comma-separated, prioritized list of voice family names (compare with 'font-family').">
-            <urlCategory-list>
-                <urlCategory value="aural" />
-            </urlCategory-list>
+            <category-list>
+                <category value="aural" />
+            </category-list>
             <!-- Allowing only generic voice family -->
             <literal-list>
                 <literal value="male" />
@@ -2639,16 +2639,16 @@
         </property>
 
         <property name="_mediafeature_any-hover" description="Does any available input mechanism allow the user to hover over elements?">
-            <urlCategory-list>
-                <urlCategory value="mediafeature"/>
-            </urlCategory-list>
+            <category-list>
+                <category value="mediafeature"/>
+            </category-list>
             <literal-list>
                 <literal value="none"/>
                 <literal value="hover"/>
             </literal-list>
         </property>
 
-        <property name="_mediatype" description="Describes the general urlCategory of a device">
+        <property name="_mediatype" description="Describes the general category of a device">
             <literal-list>
                 <literal value="all"/>
                 <literal value="print"/>
@@ -2658,9 +2658,9 @@
         </property>
 
         <property name="_mediafeature_any-pointer" description="Is any available input mechanism a pointing device, and if so, how accurate is it?">
-            <urlCategory-list>
-                <urlCategory value="mediafeature"/>
-            </urlCategory-list>
+            <category-list>
+                <category value="mediafeature"/>
+            </category-list>
             <literal-list>
                 <literal value="none"/>
                 <literal value="coarse"/>
@@ -2669,9 +2669,9 @@
         </property>
 
         <property name="_mediafeature_aspect-ratio" description="Width-to-height aspect ratio of the viewport.">
-            <urlCategory-list>
-                <urlCategory value="mediafeature"/>
-            </urlCategory-list>
+            <category-list>
+                <category value="mediafeature"/>
+            </category-list>
             <regexp-list>
                 <regexp name="ratio"/>
                 <regexp name="number"/>
@@ -2679,9 +2679,9 @@
         </property>
 
         <property name="_mediafeature_color" description="Number of bits per color component of the output device, or zero if the device isn't color.">
-            <urlCategory-list>
-                <urlCategory value="mediafeature"/>
-            </urlCategory-list>
+            <category-list>
+                <category value="mediafeature"/>
+            </category-list>
             <literal-list>
                 <literal value=""/>
             </literal-list>
@@ -2690,26 +2690,26 @@
             </regexp-list>
         </property>
         <property name="_mediafeature_min-color" description="">
-            <urlCategory-list>
-                <urlCategory value="mediafeature"/>
-            </urlCategory-list>
+            <category-list>
+                <category value="mediafeature"/>
+            </category-list>
             <regexp-list>
                 <regexp name="integer"/>
             </regexp-list>
         </property>
         <property name="_mediafeature_max-color" description="">
-            <urlCategory-list>
-                <urlCategory value="mediafeature"/>
-            </urlCategory-list>
+            <category-list>
+                <category value="mediafeature"/>
+            </category-list>
             <regexp-list>
                 <regexp name="integer"/>
             </regexp-list>
         </property>
 
         <property name="_mediafeature_color-gamut" description="Approximate range of colors that are supported by the user agent and output device.">
-            <urlCategory-list>
-                <urlCategory value="mediafeature"/>
-            </urlCategory-list>
+            <category-list>
+                <category value="mediafeature"/>
+            </category-list>
             <literal-list>
                 <literal value="srgb"/>
                 <literal value="p3"/>
@@ -2718,9 +2718,9 @@
         </property>
 
         <property name="_mediafeature_color-index" description="Number of entries in the output device's color lookup table, or zero if the device does not use such a table.">
-            <urlCategory-list>
-                <urlCategory value="mediafeature"/>
-            </urlCategory-list>
+            <category-list>
+                <category value="mediafeature"/>
+            </category-list>
             <literal-list>
                 <literal value=""/>
             </literal-list>
@@ -2729,26 +2729,26 @@
             </regexp-list>
         </property>
         <property name="_mediafeature_min-color-index" description="">
-            <urlCategory-list>
-                <urlCategory value="mediafeature"/>
-            </urlCategory-list>
+            <category-list>
+                <category value="mediafeature"/>
+            </category-list>
             <regexp-list>
                 <regexp name="integer"/>
             </regexp-list>
         </property>
         <property name="_mediafeature_max-color-index" description="">
-            <urlCategory-list>
-                <urlCategory value="mediafeature"/>
-            </urlCategory-list>
+            <category-list>
+                <category value="mediafeature"/>
+            </category-list>
             <regexp-list>
                 <regexp name="integer"/>
             </regexp-list>
         </property>
 
         <property name="_mediafeature_device-aspect-ratio" description="Width-to-height aspect ratio of the output device. Deprecated in Media Queries Level 4.">
-            <urlCategory-list>
-                <urlCategory value="mediafeature"/>
-            </urlCategory-list>
+            <category-list>
+                <category value="mediafeature"/>
+            </category-list>
             <regexp-list>
                 <regexp name="ratio"/>
                 <regexp name="number"/>
@@ -2756,59 +2756,59 @@
         </property>
 
         <property name="_mediafeature_device-height" description="Height of the rendering surface of the output device. Deprecated in Media Queries Level 4.">
-            <urlCategory-list>
-                <urlCategory value="mediafeature"/>
-            </urlCategory-list>
+            <category-list>
+                <category value="mediafeature"/>
+            </category-list>
             <regexp-list>
                 <regexp name="positiveLength"/>
             </regexp-list>
         </property>
         <property name="_mediafeature_min-device-height" description="">
-            <urlCategory-list>
-                <urlCategory value="mediafeature"/>
-            </urlCategory-list>
+            <category-list>
+                <category value="mediafeature"/>
+            </category-list>
             <regexp-list>
                 <regexp name="positiveLength"/>
             </regexp-list>
         </property>
         <property name="_mediafeature_max-device-height" description="">
-            <urlCategory-list>
-                <urlCategory value="mediafeature"/>
-            </urlCategory-list>
+            <category-list>
+                <category value="mediafeature"/>
+            </category-list>
             <regexp-list>
                 <regexp name="positiveLength"/>
             </regexp-list>
         </property>
 
         <property name="_mediafeature_device-width" description="Width of the rendering surface of the output device. Deprecated in Media Queries Level 4.">
-            <urlCategory-list>
-                <urlCategory value="mediafeature"/>
-            </urlCategory-list>
+            <category-list>
+                <category value="mediafeature"/>
+            </category-list>
             <regexp-list>
                 <regexp name="positiveLength"/>
             </regexp-list>
         </property>
         <property name="_mediafeature_min-device-width" description="">
-            <urlCategory-list>
-                <urlCategory value="mediafeature"/>
-            </urlCategory-list>
+            <category-list>
+                <category value="mediafeature"/>
+            </category-list>
             <regexp-list>
                 <regexp name="positiveLength"/>
             </regexp-list>
         </property>
         <property name="_mediafeature_max-device-width" description="">
-            <urlCategory-list>
-                <urlCategory value="mediafeature"/>
-            </urlCategory-list>
+            <category-list>
+                <category value="mediafeature"/>
+            </category-list>
             <regexp-list>
                 <regexp name="positiveLength"/>
             </regexp-list>
         </property>
 
         <property name="_mediafeature_display-mode" description="The mode in which an application is being displayed: for example, fullscreen or picture-in-picture mode. Added in Media Queries Level 5.">
-            <urlCategory-list>
-                <urlCategory value="mediafeature"/>
-            </urlCategory-list>
+            <category-list>
+                <category value="mediafeature"/>
+            </category-list>
             <literal-list>
                 <literal value="browser"/>
                 <literal value="fullscreen"/>
@@ -2820,9 +2820,9 @@
         </property>
 
         <property name="_mediafeature_dynamic-range" description="Combination of brightness, contrast ratio, and color depth that are supported by the user agent and the output device. Added in Media Queries Level 5.">
-            <urlCategory-list>
-                <urlCategory value="mediafeature"/>
-            </urlCategory-list>
+            <category-list>
+                <category value="mediafeature"/>
+            </category-list>
             <literal-list>
                 <literal value="standard"/>
                 <literal value="high"/>
@@ -2830,9 +2830,9 @@
         </property>
 
         <property name="_mediafeature_forced-colors" description="Detect whether user agent restricts color palette. Added in Media Queries Level 5.">
-            <urlCategory-list>
-                <urlCategory value="mediafeature"/>
-            </urlCategory-list>
+            <category-list>
+                <category value="mediafeature"/>
+            </category-list>
             <literal-list>
                 <literal value="none"/>
                 <literal value="active"/>
@@ -2840,9 +2840,9 @@
         </property>
 
         <property name="_mediafeature_grid" description="Does the device use a grid or bitmap screen?">
-            <urlCategory-list>
-                <urlCategory value="mediafeature"/>
-            </urlCategory-list>
+            <category-list>
+                <category value="mediafeature"/>
+            </category-list>
             <literal-list>
                 <literal value=""/>
                 <literal value="-0"/>
@@ -2852,34 +2852,34 @@
         </property>
 
         <property name="_mediafeature_height" description="Height of the viewport.">
-            <urlCategory-list>
-                <urlCategory value="mediafeature"/>
-            </urlCategory-list>
+            <category-list>
+                <category value="mediafeature"/>
+            </category-list>
             <regexp-list>
                 <regexp name="positiveLength"/>
             </regexp-list>
         </property>
         <property name="_mediafeature_min-height" description="">
-            <urlCategory-list>
-                <urlCategory value="mediafeature"/>
-            </urlCategory-list>
+            <category-list>
+                <category value="mediafeature"/>
+            </category-list>
             <regexp-list>
                 <regexp name="positiveLength"/>
             </regexp-list>
         </property>
         <property name="_mediafeature_max-height" description="">
-            <urlCategory-list>
-                <urlCategory value="mediafeature"/>
-            </urlCategory-list>
+            <category-list>
+                <category value="mediafeature"/>
+            </category-list>
             <regexp-list>
                 <regexp name="positiveLength"/>
             </regexp-list>
         </property>
 
         <property name="_mediafeature_hover" description="Does the primary input mechanism allow the user to hover over elements?">
-            <urlCategory-list>
-                <urlCategory value="mediafeature"/>
-            </urlCategory-list>
+            <category-list>
+                <category value="mediafeature"/>
+            </category-list>
             <literal-list>
                 <literal value="none"/>
                 <literal value="hover"/>
@@ -2887,9 +2887,9 @@
         </property>
 
         <property name="_mediafeature_inverted-colors" description="Is the user agent or underlying OS inverting colors? Added in Media Queries Level 5.">
-            <urlCategory-list>
-                <urlCategory value="mediafeature"/>
-            </urlCategory-list>
+            <category-list>
+                <category value="mediafeature"/>
+            </category-list>
             <literal-list>
                 <literal value="none"/>
                 <literal value="inverted"/>
@@ -2897,9 +2897,9 @@
         </property>
 
         <property name="_mediafeature_monochrome" description="Bits per pixel in the output device's monochrome frame buffer, or zero if the device isn't monochrome.">
-            <urlCategory-list>
-                <urlCategory value="mediafeature"/>
-            </urlCategory-list>
+            <category-list>
+                <category value="mediafeature"/>
+            </category-list>
             <literal-list>
                 <literal value=""/>
             </literal-list>
@@ -2908,26 +2908,26 @@
             </regexp-list>
         </property>
         <property name="_mediafeature_min-monochrome" description="">
-            <urlCategory-list>
-                <urlCategory value="mediafeature"/>
-            </urlCategory-list>
+            <category-list>
+                <category value="mediafeature"/>
+            </category-list>
             <regexp-list>
                 <regexp name="integer"/>
             </regexp-list>
         </property>
         <property name="_mediafeature_max-monochrome" description="">
-            <urlCategory-list>
-                <urlCategory value="mediafeature"/>
-            </urlCategory-list>
+            <category-list>
+                <category value="mediafeature"/>
+            </category-list>
             <regexp-list>
                 <regexp name="integer"/>
             </regexp-list>
         </property>
 
         <property name="_mediafeature_orientation" description="Orientation of the viewport.">
-            <urlCategory-list>
-                <urlCategory value="mediafeature"/>
-            </urlCategory-list>
+            <category-list>
+                <category value="mediafeature"/>
+            </category-list>
             <literal-list>
                 <literal value="portrait"/>
                 <literal value="landscape"/>
@@ -2935,9 +2935,9 @@
         </property>
 
         <property name="_mediafeature_overflow-block" description="How does the output device handle content that overflows the viewport along the block axis?">
-            <urlCategory-list>
-                <urlCategory value="mediafeature"/>
-            </urlCategory-list>
+            <category-list>
+                <category value="mediafeature"/>
+            </category-list>
             <literal-list>
                 <literal value="none"/>
                 <literal value="scroll"/>
@@ -2947,9 +2947,9 @@
         </property>
 
         <property name="_mediafeature_overflow-inline" description="Can content that overflows the viewport along the inline axis be scrolled?">
-            <urlCategory-list>
-                <urlCategory value="mediafeature"/>
-            </urlCategory-list>
+            <category-list>
+                <category value="mediafeature"/>
+            </category-list>
             <literal-list>
                 <literal value="none"/>
                 <literal value="scroll"/>
@@ -2957,9 +2957,9 @@
         </property>
 
         <property name="_mediafeature_pointer" description="Is the primary input mechanism a pointing device, and if so, how accurate is it?">
-            <urlCategory-list>
-                <urlCategory value="mediafeature"/>
-            </urlCategory-list>
+            <category-list>
+                <category value="mediafeature"/>
+            </category-list>
             <literal-list>
                 <literal value="none"/>
                 <literal value="coarse"/>
@@ -2968,9 +2968,9 @@
         </property>
 
         <property name="_mediafeature_prefers-color-scheme" description="Detect if the user prefers a light or dark color scheme. Added in Media Queries Level 5.">
-            <urlCategory-list>
-                <urlCategory value="mediafeature"/>
-            </urlCategory-list>
+            <category-list>
+                <category value="mediafeature"/>
+            </category-list>
             <literal-list>
                 <literal value="light"/>
                 <literal value="dark"/>
@@ -2978,9 +2978,9 @@
         </property>
 
         <property name="_mediafeature_prefers-contrast" description="Detects if the user has requested the system increase or decrease the amount of contrast between adjacent colors. Added in Media Queries Level 5.">
-            <urlCategory-list>
-                <urlCategory value="mediafeature"/>
-            </urlCategory-list>
+            <category-list>
+                <category value="mediafeature"/>
+            </category-list>
             <literal-list>
                 <literal value="no-preference"/>
                 <literal value="more"/>
@@ -2990,9 +2990,9 @@
         </property>
 
         <property name="_mediafeature_prefers-reduced-motion" description="Detects if the user has requested the web content that consumes less internet traffic.">
-            <urlCategory-list>
-                <urlCategory value="mediafeature"/>
-            </urlCategory-list>
+            <category-list>
+                <category value="mediafeature"/>
+            </category-list>
             <literal-list>
                 <literal value="no-preference"/>
                 <literal value="reduce"/>
@@ -3000,9 +3000,9 @@
         </property>
 
         <property name="_mediafeature_prefers-reduced-transparency" description="The user prefers less motion on the page. Added in Media Queries Level 5.">
-            <urlCategory-list>
-                <urlCategory value="mediafeature"/>
-            </urlCategory-list>
+            <category-list>
+                <category value="mediafeature"/>
+            </category-list>
             <literal-list>
                 <literal value="no-preference"/>
                 <literal value="reduce"/>
@@ -3010,34 +3010,34 @@
         </property>
 
         <property name="_mediafeature_resolution" description="Detects if a user has enabled a setting on their device to reduce the transparent or translucent layer effects used on the device.">
-            <urlCategory-list>
-                <urlCategory value="mediafeature"/>
-            </urlCategory-list>
+            <category-list>
+                <category value="mediafeature"/>
+            </category-list>
             <regexp-list>
                 <regexp name="resolution"/>
             </regexp-list>
         </property>
         <property name="_mediafeature_min-resolution" description="">
-            <urlCategory-list>
-                <urlCategory value="mediafeature"/>
-            </urlCategory-list>
+            <category-list>
+                <category value="mediafeature"/>
+            </category-list>
             <regexp-list>
                 <regexp name="resolution"/>
             </regexp-list>
         </property>
         <property name="_mediafeature_max-resolution" description="">
-            <urlCategory-list>
-                <urlCategory value="mediafeature"/>
-            </urlCategory-list>
+            <category-list>
+                <category value="mediafeature"/>
+            </category-list>
             <regexp-list>
                 <regexp name="resolution"/>
             </regexp-list>
         </property>
 
         <property name="_mediafeature_scan" description="Whether display output is progressive or interlaced.">
-            <urlCategory-list>
-                <urlCategory value="mediafeature"/>
-            </urlCategory-list>
+            <category-list>
+                <category value="mediafeature"/>
+            </category-list>
             <literal-list>
                 <literal value="interlace"/>
                 <literal value="progressive"/>
@@ -3045,9 +3045,9 @@
         </property>
 
         <property name="_mediafeature_scripting" description="Detects whether scripting (i.e. JavaScript) is available. Added in Media Queries Level 5.">
-            <urlCategory-list>
-                <urlCategory value="mediafeature"/>
-            </urlCategory-list>
+            <category-list>
+                <category value="mediafeature"/>
+            </category-list>
             <literal-list>
                 <literal value="none"/>
                 <literal value="initial-only"/>
@@ -3056,9 +3056,9 @@
         </property>
 
         <property name="_mediafeature_shape" description="Detects the shape of the device to distinguish rectangular and round displays.">
-            <urlCategory-list>
-                <urlCategory value="mediafeature"/>
-            </urlCategory-list>
+            <category-list>
+                <category value="mediafeature"/>
+            </category-list>
             <literal-list>
                 <literal value="rect"/>
                 <literal value="round"/>
@@ -3066,9 +3066,9 @@
         </property>
 
         <property name="_mediafeature_update" description="How frequently the output device can modify the appearance of content.">
-            <urlCategory-list>
-                <urlCategory value="mediafeature"/>
-            </urlCategory-list>
+            <category-list>
+                <category value="mediafeature"/>
+            </category-list>
             <literal-list>
                 <literal value="none"/>
                 <literal value="slow"/>
@@ -3077,9 +3077,9 @@
         </property>
 
         <property name="_mediafeature_video-dynamic-range" description="Combination of brightness, contrast ratio, and color depth that are supported by the video plane of user agent and the output device. Added in Media Queries Level 5.">
-            <urlCategory-list>
-                <urlCategory value="mediafeature"/>
-            </urlCategory-list>
+            <category-list>
+                <category value="mediafeature"/>
+            </category-list>
             <literal-list>
                 <literal value="standard"/>
                 <literal value="high"/>
@@ -3087,25 +3087,25 @@
         </property>
 
         <property name="_mediafeature_width" description="Width of the viewport including width of scrollbar.">
-            <urlCategory-list>
-                <urlCategory value="mediafeature"/>
-            </urlCategory-list>
+            <category-list>
+                <category value="mediafeature"/>
+            </category-list>
             <regexp-list>
                 <regexp name="positiveLength"/>
             </regexp-list>
         </property>
         <property name="_mediafeature_min-width" description="">
-            <urlCategory-list>
-                <urlCategory value="mediafeature"/>
-            </urlCategory-list>
+            <category-list>
+                <category value="mediafeature"/>
+            </category-list>
             <regexp-list>
                 <regexp name="positiveLength"/>
             </regexp-list>
         </property>
         <property name="_mediafeature_max-width" description="">
-            <urlCategory-list>
-                <urlCategory value="mediafeature"/>
-            </urlCategory-list>
+            <category-list>
+                <category value="mediafeature"/>
+            </category-list>
             <regexp-list>
                 <regexp name="positiveLength"/>
             </regexp-list>

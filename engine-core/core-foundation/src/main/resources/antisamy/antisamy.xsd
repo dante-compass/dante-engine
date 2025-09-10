@@ -111,7 +111,7 @@
 
 	<xsd:complexType name="Property">
 		<xsd:sequence>
-			<xsd:element name="urlCategory-list" type="CategoryList" minOccurs="0"/>
+			<xsd:element name="category-list" type="CategoryList" minOccurs="0"/>
 			<xsd:element name="literal-list" type="LiteralList" minOccurs="0"/>
 			<xsd:element name="regexp-list" type="RegexpList" minOccurs="0"/>
 			<xsd:element name="shorthand-list" type="ShorthandList" minOccurs="0"/>
@@ -133,7 +133,7 @@
 
 	<xsd:complexType name="CategoryList">
 		<xsd:sequence maxOccurs="unbounded">
-			<xsd:element name="urlCategory" type="Category" minOccurs="0"/>
+			<xsd:element name="category" type="Category" minOccurs="0"/>
 		</xsd:sequence>
 	</xsd:complexType>
 

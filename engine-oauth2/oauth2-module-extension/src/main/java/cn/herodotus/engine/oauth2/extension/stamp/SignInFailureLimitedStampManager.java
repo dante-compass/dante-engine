@@ -31,6 +31,7 @@ import cn.herodotus.engine.oauth2.core.properties.OAuth2AuthenticationProperties
 import cn.herodotus.engine.oauth2.extension.dto.SignInErrorStatus;
 import cn.hutool.v7.crypto.SecureUtil;
 import org.apache.commons.lang3.ObjectUtils;
+import org.springframework.stereotype.Component;
 
 /**
  * <p>Description: 登录失败次数限制签章管理 </p>
@@ -38,6 +39,7 @@ import org.apache.commons.lang3.ObjectUtils;
  * @author : gengwei.zheng
  * @date : 2022/7/6 23:36
  */
+@Component
 public class SignInFailureLimitedStampManager extends AbstractCountStampManager {
 
     private final OAuth2AuthenticationProperties authenticationProperties;

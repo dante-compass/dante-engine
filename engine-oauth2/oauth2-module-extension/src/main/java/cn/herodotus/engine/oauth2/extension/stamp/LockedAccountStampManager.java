@@ -29,6 +29,7 @@ import cn.herodotus.engine.cache.jetcache.stamp.AbstractStampManager;
 import cn.herodotus.engine.oauth2.core.constants.OAuth2Constants;
 import cn.herodotus.engine.oauth2.core.properties.OAuth2AuthenticationProperties;
 import cn.hutool.v7.core.data.id.IdUtil;
+import org.springframework.stereotype.Component;
 
 /**
  * <p>Description: 锁定账户签章管理 </p>
@@ -36,6 +37,7 @@ import cn.hutool.v7.core.data.id.IdUtil;
  * @author : gengwei.zheng
  * @date : 2022/7/8 21:27
  */
+@Component
 public class LockedAccountStampManager extends AbstractStampManager<String, String> {
 
     private final OAuth2AuthenticationProperties authenticationProperties;
