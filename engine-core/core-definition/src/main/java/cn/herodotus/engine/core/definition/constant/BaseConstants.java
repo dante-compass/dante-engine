@@ -50,7 +50,6 @@ public interface BaseConstants {
     /* ---------- Herodotus 自定义配置属性 ---------- */
     String PROPERTY_PREFIX_ASSISTANT = PROPERTY_PREFIX_HERODOTUS + ".assistant";
     String PROPERTY_PREFIX_CACHE = PROPERTY_PREFIX_HERODOTUS + ".cache";
-    String PROPERTY_PREFIX_CAPTCHA = PROPERTY_PREFIX_HERODOTUS + ".captcha";
     String PROPERTY_PREFIX_CRYPTO = PROPERTY_PREFIX_HERODOTUS + ".crypto";
     String PROPERTY_PREFIX_DATA = PROPERTY_PREFIX_HERODOTUS + ".data";
     String PROPERTY_PREFIX_ENDPOINT = PROPERTY_PREFIX_HERODOTUS + ".endpoint";

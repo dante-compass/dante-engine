@@ -35,6 +35,8 @@ import cn.herodotus.engine.core.definition.constant.BaseConstants;
  */
 public interface CaptchaConstants extends BaseConstants {
 
+    String PROPERTY_ASSISTANT_CAPTCHA = PROPERTY_PREFIX_ASSISTANT + ".captcha";
+
     String CACHE_NAME_TOKEN_CAPTCHA = CACHE_TOKEN_BASE_PREFIX + "captcha:";
 
     String CACHE_NAME_CAPTCHA_JIGSAW = CACHE_NAME_TOKEN_CAPTCHA + "jigsaw:";

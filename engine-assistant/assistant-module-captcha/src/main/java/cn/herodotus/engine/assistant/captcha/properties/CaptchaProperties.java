@@ -37,7 +37,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * @author : gengwei.zheng
  * @date : 2021/12/11 12:25
  */
-@ConfigurationProperties(prefix = CaptchaConstants.PROPERTY_PREFIX_CAPTCHA)
+@ConfigurationProperties(prefix = CaptchaConstants.PROPERTY_ASSISTANT_CAPTCHA)
 public class CaptchaProperties {
 
     private Graphics graphics = new Graphics();
