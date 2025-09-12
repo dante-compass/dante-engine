@@ -152,7 +152,7 @@
         <!--fix CVE-2025-48924 -->
         <commons-lang3.version>3.18.0</commons-lang3.version>
         <classgraph.version>4.8.181</classgraph.version>
-        <dom4j.version>2.1.4</dom4j.version>
+        <dom4j.version>2.2.0</dom4j.version>
         <error_prone_annotations.version>2.41.0</error_prone_annotations.version>
         <!--sms4j 依赖 hutool 5，但更新频率低，在此进行统一升级和版本控制-->
         <hutool5.version>5.8.40</hutool5.version>
