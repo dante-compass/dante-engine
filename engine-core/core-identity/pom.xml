@@ -46,7 +46,7 @@
         </dependency>
 
         <dependency>
-            <groupId>me.zhyd.oauth</groupId>
+            <groupId>cn.herodotus.opensteward.justauth</groupId>
             <artifactId>JustAuth</artifactId>
         </dependency>
 
