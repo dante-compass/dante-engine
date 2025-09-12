@@ -57,7 +57,7 @@
             <artifactId>spring-cloud-starter-tencent-polaris-config</artifactId>
             <exclusions>
                 <exclusion>
-                    <artifactId>bcpkix-jdk15on</artifactId>
+                    <artifactId>bcpkix-jdk15to18</artifactId>
                     <groupId>org.bouncycastle</groupId>
                 </exclusion>
             </exclusions>

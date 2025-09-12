@@ -152,14 +152,14 @@
         <classgraph.version>4.8.181</classgraph.version>
         <dom4j.version>2.2.0</dom4j.version>
         <error_prone_annotations.version>2.41.0</error_prone_annotations.version>
+        <jaxb-impl.version>4.0.5</jaxb-impl.version>
+        <javassist.version>3.30.2-GA</javassist.version>
+        <objenesis.version>3.4</objenesis.version>
         <!--sms4j 依赖 hutool 5，但更新频率低，在此进行统一升级和版本控制-->
         <hutool5.version>5.8.40</hutool5.version>
         <httpclient.version>4.5.14</httpclient.version>
-        <javassist.version>3.30.2-GA</javassist.version>
-        <jaxb-impl.version>4.0.5</jaxb-impl.version>
         <kryo.version>5.6.2</kryo.version>
         <okio.version>3.16.0</okio.version>
-        <org.json.version>20250517</org.json.version>
         <snappy-java.version>1.1.10.8</snappy-java.version>
         <!--fix CVE-2024-51504 -->
         <zookeeper.verison>3.9.4</zookeeper.verison>
@@ -754,11 +754,6 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <dependency>
-                <groupId>org.json</groupId>
-                <artifactId>json</artifactId>
-                <version>${org.json.version}</version>
-            </dependency>
             <!--统一控制kryo版本，减少不必要的低版本组件引入-->
             <dependency>
                 <groupId>com.esotericsoftware</groupId>
@@ -799,6 +794,12 @@
                 <groupId>org.javassist</groupId>
                 <artifactId>javassist</artifactId>
                 <version>${javassist.version}</version>
+            </dependency>
+            <!--统一控制objenesis版本，去除重复版本依赖-->
+            <dependency>
+                <groupId>org.objenesis</groupId>
+                <artifactId>objenesis</artifactId>
+                <version>${objenesis.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.xerial.snappy</groupId>
