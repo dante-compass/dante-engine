@@ -88,8 +88,6 @@
         <maven-archetype-plugin.version>3.4.0</maven-archetype-plugin.version>
         <maven-gpg-plugin.version>3.2.8</maven-gpg-plugin.version>
 
-        <aliyun-java-sdk-core.version>4.7.6</aliyun-java-sdk-core.version>
-        <aliyun-java-sdk-green.version>3.6.6</aliyun-java-sdk-green.version>
         <alipay-sdk-java.version>4.40.440.ALL</alipay-sdk-java.version>
         <aliyun-sdk-oss.version>3.18.3</aliyun-sdk-oss.version>
         <animated-gif-lib.version>1.4</animated-gif-lib.version>
@@ -490,16 +488,6 @@
             </dependency>
 
             <!--第三方依赖组件-->
-            <dependency>
-                <groupId>com.aliyun</groupId>
-                <artifactId>aliyun-java-sdk-core</artifactId>
-                <version>${aliyun-java-sdk-core.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.aliyun</groupId>
-                <artifactId>aliyun-java-sdk-green</artifactId>
-                <version>${aliyun-java-sdk-green.version}</version>
-            </dependency>
             <dependency>
                 <groupId>com.aliyun.oss</groupId>
                 <artifactId>aliyun-sdk-oss</artifactId>
