@@ -42,6 +42,7 @@ import io.swagger.v3.oas.annotations.tags.Tags;
 import jakarta.validation.constraints.NotNull;
 import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.data.domain.Page;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -72,7 +73,7 @@ public class NotificationController extends AbstractJpaWriteableController<Notif
     }
 
     @Operation(summary = "条件查询通知信息分页数据", description = "根据输入的字段条件查询通知信息",
-            responses = {@ApiResponse(description = "详情列表", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Map.class)))})
+            responses = {@ApiResponse(description = "详情列表", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = Map.class)))})
     @Parameters({
             @Parameter(name = "pageNumber", required = true, description = "当前页码", schema = @Schema(type = "integer")),
             @Parameter(name = "pageSize", required = true, description = "每页显示数量", schema = @Schema(type = "integer")),
@@ -81,11 +82,12 @@ public class NotificationController extends AbstractJpaWriteableController<Notif
             @Parameter(name = "read", description = "是否已读", schema = @Schema(type = "boolean")),
     })
     @GetMapping("/condition")
-    public Result<Map<String, Object>> findByCondition(@NotNull @RequestParam(value = "pageNumber") Integer pageNumber,
-                                                       @NotNull @RequestParam(value = "pageSize") Integer pageSize,
-                                                       @NotNull @RequestParam(value = "userId") String userId,
-                                                       @RequestParam(value = "category", required = false) Integer category,
-                                                       @RequestParam(value = "read", required = false) Boolean read) {
+    public Result<Map<String, Object>> findByCondition(
+            @NotNull @RequestParam(value = "pageNumber") Integer pageNumber,
+            @NotNull @RequestParam(value = "pageSize") Integer pageSize,
+            @NotNull @RequestParam(value = "userId") String userId,
+            @RequestParam(value = "category", required = false) Integer category,
+            @RequestParam(value = "read", required = false) Boolean read) {
         NotificationCategory notificationCategory = NotificationCategory.get(category);
         if (ObjectUtils.isNotEmpty(notificationCategory)) {
             if (notificationCategory == NotificationCategory.ANNOUNCEMENT) {
@@ -98,7 +100,7 @@ public class NotificationController extends AbstractJpaWriteableController<Notif
     }
 
     @Operation(summary = "全部通知已读", description = "根据用户ID设置该用户的全部通知为已读",
-            responses = {@ApiResponse(description = "影响数据条目数", content = @Content(mediaType = "application/json"))})
+            responses = {@ApiResponse(description = "影响数据条目数", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE))})
     @Parameters({
             @Parameter(name = "userId", description = "用户ID")
     })

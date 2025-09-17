@@ -39,6 +39,7 @@ import io.swagger.v3.oas.annotations.tags.Tags;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.constraints.NotBlank;
 import org.apache.commons.lang3.ObjectUtils;
+import org.springframework.http.MediaType;
 import org.springframework.security.oauth2.server.authorization.OAuth2Authorization;
 import org.springframework.security.oauth2.server.authorization.OAuth2AuthorizationService;
 import org.springframework.security.oauth2.server.authorization.OAuth2TokenType;
@@ -68,8 +69,8 @@ public class OAuth2SignOutController {
     }
 
     @Operation(summary = "注销OAuth2应用", description = "根据接收到的AccessToken,删除后端存储的Token信息,起到注销效果",
-            requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(content = @Content(mediaType = "application/x-www-form-urlencoded")),
-            responses = {@ApiResponse(description = "是否成功", content = @Content(mediaType = "application/json"))})
+            requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(content = @Content(mediaType = MediaType.APPLICATION_FORM_URLENCODED_VALUE)),
+            responses = {@ApiResponse(description = "是否成功", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE))})
     @Parameters({
             @Parameter(name = "accessToken", required = true, description = "Access Token"),
             @Parameter(name = "Authorization", in = ParameterIn.HEADER, required = true, description = "Basic Token"),

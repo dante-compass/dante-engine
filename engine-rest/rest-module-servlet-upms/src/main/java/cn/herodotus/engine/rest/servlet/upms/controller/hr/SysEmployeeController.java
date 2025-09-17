@@ -46,6 +46,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.data.domain.Page;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -87,7 +88,7 @@ public class SysEmployeeController extends AbstractJpaWriteableController<SysEmp
     }
 
     @Operation(summary = "模糊条件查询人员", description = "根据动态输入的字段模糊查询人员信息",
-            responses = {@ApiResponse(description = "人员分页列表", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Map.class)))})
+            responses = {@ApiResponse(description = "人员分页列表", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = Map.class)))})
     @Parameters({
             @Parameter(name = "pageNumber", required = true, description = "当前页码"),
             @Parameter(name = "pageSize", required = true, description = "每页显示数量"),
@@ -100,21 +101,22 @@ public class SysEmployeeController extends AbstractJpaWriteableController<SysEmp
             @Parameter(name = "identity", description = "身份（索引数字值）"),
     })
     @GetMapping("/condition")
-    public Result<Map<String, Object>> findByCondition(@NotNull @RequestParam("pageNumber") Integer pageNumber,
-                                                       @NotNull @RequestParam("pageSize") Integer pageSize,
-                                                       @RequestParam(value = "employeeName", required = false) String employeeName,
-                                                       @RequestParam(value = "mobilePhoneNumber", required = false) String mobilePhoneNumber,
-                                                       @RequestParam(value = "officePhoneNumber", required = false) String officePhoneNumber,
-                                                       @RequestParam(value = "email", required = false) String email,
-                                                       @RequestParam(value = "pkiEmail", required = false) String pkiEmail,
-                                                       @RequestParam(value = "gender", required = false) Integer gender,
-                                                       @RequestParam(value = "identity", required = false) Integer identity) {
+    public Result<Map<String, Object>> findByCondition(
+            @NotNull @RequestParam("pageNumber") Integer pageNumber,
+            @NotNull @RequestParam("pageSize") Integer pageSize,
+            @RequestParam(value = "employeeName", required = false) String employeeName,
+            @RequestParam(value = "mobilePhoneNumber", required = false) String mobilePhoneNumber,
+            @RequestParam(value = "officePhoneNumber", required = false) String officePhoneNumber,
+            @RequestParam(value = "email", required = false) String email,
+            @RequestParam(value = "pkiEmail", required = false) String pkiEmail,
+            @RequestParam(value = "gender", required = false) Integer gender,
+            @RequestParam(value = "identity", required = false) Integer identity) {
         Page<SysEmployee> pages = sysEmployeeService.findByCondition(pageNumber, pageSize, employeeName, mobilePhoneNumber, officePhoneNumber, email, pkiEmail, parseGender(gender), parseIdentity(identity));
         return resultFromPage(pages);
     }
 
     @Operation(summary = "给人员分配用户", description = "为人员创建用户，生成默认用户信息，让人员可以进入系统",
-            responses = {@ApiResponse(description = "已分配用户的人员信息", content = @Content(mediaType = "application/json", schema = @Schema(implementation = SysEmployee.class)))})
+            responses = {@ApiResponse(description = "已分配用户的人员信息", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = SysEmployee.class)))})
     @Parameters({
             @Parameter(name = "employeeId", description = "人员ID")
     })
@@ -125,7 +127,7 @@ public class SysEmployeeController extends AbstractJpaWriteableController<SysEmp
     }
 
     @Operation(summary = "查询可设置人事归属的人员", description = "根据输入的单位和部门，分页查询当前部门下未设置人事归属的人员信息，排除了已经设置的人员信息",
-            responses = {@ApiResponse(description = "可配置人员分页列表", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Map.class)))})
+            responses = {@ApiResponse(description = "可配置人员分页列表", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = Map.class)))})
     @Parameters({
             @Parameter(name = "pageNumber", required = true, description = "当前页码"),
             @Parameter(name = "pageSize", required = true, description = "每页显示数量"),
@@ -152,7 +154,7 @@ public class SysEmployeeController extends AbstractJpaWriteableController<SysEmp
     }
 
     @Operation(summary = "查询已设置归属关系的人员", description = "根据输入的部门，分页查询当前部门下已设置人事归属的人员信息",
-            responses = {@ApiResponse(description = "可配置人员分页列表", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Map.class)))})
+            responses = {@ApiResponse(description = "可配置人员分页列表", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = Map.class)))})
     @Parameters({
             @Parameter(name = "pageNumber", required = true, description = "当前页码"),
             @Parameter(name = "pageSize", required = true, description = "每页显示数量"),
@@ -167,8 +169,8 @@ public class SysEmployeeController extends AbstractJpaWriteableController<SysEmp
     }
 
     @Operation(summary = "设置人事归属", description = "根据输入的单位和部门，设置当前部门下未设置人事归属的人员信息，排除了已经设置的人员信息",
-            requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(content = @Content(mediaType = "application/json")),
-            responses = {@ApiResponse(description = "是否设置成功", content = @Content(mediaType = "application/json"))})
+            requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE)),
+            responses = {@ApiResponse(description = "是否设置成功", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE))})
     @Parameters({
             @Parameter(name = "allocatableDeploy", required = true, description = "当前页码", schema = @Schema(implementation = AllocatableDeploy.class)),
     })
@@ -185,8 +187,8 @@ public class SysEmployeeController extends AbstractJpaWriteableController<SysEmp
     }
 
     @Operation(summary = "删除人员归属关系", description = "根据归属关系、部门和人员的ID，删除归属关系以及人员与部门之间的关联关系",
-            requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(content = @Content(mediaType = "application/json")),
-            responses = {@ApiResponse(description = "是否删除成功", content = @Content(mediaType = "application/json"))})
+            requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE)),
+            responses = {@ApiResponse(description = "是否删除成功", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE))})
     @Parameters({
             @Parameter(name = "allocatableRemove", required = true, description = "增加人员归属参数BO对象", schema = @Schema(implementation = AllocatableRemove.class)),
     })
@@ -204,7 +206,7 @@ public class SysEmployeeController extends AbstractJpaWriteableController<SysEmp
 
     @Operation(summary = "根据姓名查询人员", description = "根据输入的人员姓名，分页查询当前部门下已设置人事归属的人员信息",
             responses = {
-                    @ApiResponse(description = "查询到的人员", content = @Content(mediaType = "application/json", schema = @Schema(implementation = SysEmployee.class))),
+                    @ApiResponse(description = "查询到的人员", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = SysEmployee.class))),
                     @ApiResponse(responseCode = "204", description = "查询成功，未查到数据"),
                     @ApiResponse(responseCode = "500", description = "查询失败")
             }

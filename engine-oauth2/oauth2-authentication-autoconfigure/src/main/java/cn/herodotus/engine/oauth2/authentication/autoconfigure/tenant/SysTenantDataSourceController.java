@@ -39,6 +39,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.tags.Tags;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -72,8 +73,7 @@ public class SysTenantDataSourceController extends AbstractJpaWriteableControlle
     @AccessLimited
     @Operation(summary = "根据租户代码查询数据源", description = "根据输入的租户代码，查询对应的数据源",
             responses = {
-                    @ApiResponse(description = "查询到的数据源", content = @Content(mediaType = "application/json", schema = @Schema(implementation = SysTenantDataSource.class))),
-                    @ApiResponse(responseCode = "204", description = "查询成功，未查到数据"),
+                    @ApiResponse(description = "查询到的数据源", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = SysTenantDataSource.class))),
                     @ApiResponse(responseCode = "500", description = "查询失败")
             }
     )

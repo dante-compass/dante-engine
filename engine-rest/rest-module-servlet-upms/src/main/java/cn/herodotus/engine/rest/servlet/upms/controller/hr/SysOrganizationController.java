@@ -43,6 +43,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.constraints.NotNull;
 import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.data.domain.Page;
+import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -85,7 +86,7 @@ public class SysOrganizationController extends AbstractJpaWriteableController<Sy
     }
 
     @Operation(summary = "条件分页查询单位", description = "根据动态输入的字段查询单位分页信息",
-            responses = {@ApiResponse(description = "单位列表", content = @Content(mediaType = "application/json", schema = @Schema(implementation = SysOrganization.class)))})
+            responses = {@ApiResponse(description = "单位列表", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = SysOrganization.class)))})
     @Parameters({
             @Parameter(name = "pageNumber", required = true, description = "当前页码"),
             @Parameter(name = "pageSize", required = true, description = "每页显示数量"),
@@ -100,7 +101,7 @@ public class SysOrganizationController extends AbstractJpaWriteableController<Sy
     }
 
     @Operation(summary = "获取全部单位", description = "获取全部单位数据",
-            responses = {@ApiResponse(description = "单位列表", content = @Content(mediaType = "application/json", schema = @Schema(implementation = SysOrganization.class)))})
+            responses = {@ApiResponse(description = "单位列表", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = SysOrganization.class)))})
     @Parameters({
             @Parameter(name = "category", description = "机构分类 （索引数字值）"),
     })
@@ -111,7 +112,7 @@ public class SysOrganizationController extends AbstractJpaWriteableController<Sy
     }
 
     @Operation(summary = "获取单位树", description = "获取全部单位数据，转换为树形结构",
-            responses = {@ApiResponse(description = "单位树", content = @Content(mediaType = "application/json", schema = @Schema(implementation = SysOrganization.class)))})
+            responses = {@ApiResponse(description = "单位树", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = SysOrganization.class)))})
     @Parameters({
             @Parameter(name = "category", description = "机构分类 （索引数字值）"),
     })

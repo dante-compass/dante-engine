@@ -44,6 +44,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.tags.Tags;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.data.domain.Page;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -75,7 +76,7 @@ public class SysElementController extends AbstractJpaWriteableController<SysElem
     }
 
     @Operation(summary = "获取菜单树", description = "获取系统菜单树",
-            responses = {@ApiResponse(description = "单位列表", content = @Content(mediaType = "application/json", schema = @Schema(implementation = List.class)))})
+            responses = {@ApiResponse(description = "单位列表", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = List.class)))})
     @GetMapping("/tree")
     public Result<List<MapTree<String>>> findTree() {
         List<SysElement> sysMenus = sysElementService.findAll();
@@ -83,7 +84,7 @@ public class SysElementController extends AbstractJpaWriteableController<SysElem
     }
 
     @Operation(summary = "模糊条件查询前端元素", description = "根据动态输入的字段模糊查询前端元素",
-            responses = {@ApiResponse(description = "前端元素列表", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Map.class)))})
+            responses = {@ApiResponse(description = "前端元素列表", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = Map.class)))})
     @Parameters({
             @Parameter(name = "pageNumber", required = true, description = "当前页码"),
             @Parameter(name = "pageSize", required = true, description = "每页显示数量"),
@@ -112,7 +113,7 @@ public class SysElementController extends AbstractJpaWriteableController<SysElem
 
     @AccessLimited
     @Operation(summary = "获取全部前端元素接口", description = "获取全部前端元素接口",
-            responses = {@ApiResponse(description = "元素列表", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Result.class)))})
+            responses = {@ApiResponse(description = "元素列表", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = Result.class)))})
     @GetMapping("/list")
     public Result<List<SysElement>> findAll() {
         List<SysElement> sysElements = sysElementService.findAll();
@@ -121,8 +122,8 @@ public class SysElementController extends AbstractJpaWriteableController<SysElem
 
     @AccessLimited
     @Operation(summary = "根据ID查询元素", description = "根据ID查询元素",
-            requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(content = @Content(mediaType = "application/json")),
-            responses = {@ApiResponse(description = "操作消息", content = @Content(mediaType = "application/json"))})
+            requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE)),
+            responses = {@ApiResponse(description = "操作消息", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE))})
     @Parameters({
             @Parameter(name = "id", required = true, in = ParameterIn.PATH, description = "实体ID，@Id注解对应的实体属性")
     })

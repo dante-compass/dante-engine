@@ -44,6 +44,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.tags.Tags;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashSet;
@@ -79,7 +80,7 @@ public class OAuth2ScopeController extends AbstractJpaWriteableController<OAuth2
 
     @Operation(summary = "给Scope分配权限", description = "给Scope分配权限",
             responses = {
-                    @ApiResponse(description = "查询到的角色", content = @Content(mediaType = "application/json", schema = @Schema(implementation = OAuth2ScopeDto.class))),
+                    @ApiResponse(description = "查询到的角色", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = OAuth2ScopeDto.class))),
             })
     @Parameters({
             @Parameter(name = "scope", required = true, description = "范围请求参数"),
@@ -98,7 +99,7 @@ public class OAuth2ScopeController extends AbstractJpaWriteableController<OAuth2
 
     @AccessLimited
     @Operation(summary = "获取全部范围", description = "获取全部范围", responses = {
-            @ApiResponse(description = "全部数据列表", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Result.class))),
+            @ApiResponse(description = "全部数据列表", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = Result.class))),
             @ApiResponse(responseCode = "204", description = "查询成功，未查到数据"),
             @ApiResponse(responseCode = "500", description = "查询失败")
     })
@@ -111,7 +112,7 @@ public class OAuth2ScopeController extends AbstractJpaWriteableController<OAuth2
     @AccessLimited
     @Operation(summary = "根据范围代码查询应用范围", description = "根据范围代码查询应用范围",
             responses = {
-                    @ApiResponse(description = "查询到的应用范围", content = @Content(mediaType = "application/json", schema = @Schema(implementation = OAuth2Scope.class))),
+                    @ApiResponse(description = "查询到的应用范围", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = OAuth2Scope.class))),
                     @ApiResponse(responseCode = "204", description = "查询成功，未查到数据"),
                     @ApiResponse(responseCode = "500", description = "查询失败")
             }

@@ -41,6 +41,7 @@ import io.swagger.v3.oas.annotations.tags.Tags;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -76,7 +77,7 @@ public class OAuth2ComplianceController extends AbstractJpaWriteableController<O
     }
 
     @Operation(summary = "模糊条件查询合规信息", description = "根据动态输入的字段模糊查询合规信息",
-            responses = {@ApiResponse(description = "人员分页列表", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Map.class)))})
+            responses = {@ApiResponse(description = "人员分页列表", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = Map.class)))})
     @Parameters({
             @Parameter(name = "pageNumber", required = true, description = "当前页码"),
             @Parameter(name = "pageSize", required = true, description = "每页显示数量"),
@@ -85,7 +86,8 @@ public class OAuth2ComplianceController extends AbstractJpaWriteableController<O
             @Parameter(name = "ip", description = "IP地址"),
     })
     @GetMapping("/condition")
-    public Result<Map<String, Object>> findByCondition(@NotNull @RequestParam("pageNumber") Integer pageNumber,
+    public Result<Map<String, Object>> findByCondition(
+            @NotNull @RequestParam("pageNumber") Integer pageNumber,
                                                        @NotNull @RequestParam("pageSize") Integer pageSize,
                                                        @RequestParam(value = "principalName", required = false) String principalName,
                                                        @RequestParam(value = "clientId", required = false) String clientId,

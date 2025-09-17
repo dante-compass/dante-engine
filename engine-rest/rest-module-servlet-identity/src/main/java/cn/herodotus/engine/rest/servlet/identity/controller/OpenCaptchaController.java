@@ -45,6 +45,7 @@ import io.swagger.v3.oas.annotations.tags.Tags;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import org.apache.commons.lang3.ObjectUtils;
+import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -74,7 +75,7 @@ public class OpenCaptchaController implements PaginationController {
 
     @AccessLimited
     @Operation(summary = "获取验证码", description = "通过传递身份信息（类似于Session标识）",
-            responses = {@ApiResponse(description = "验证码图形信息", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Map.class)))})
+            responses = {@ApiResponse(description = "验证码图形信息", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = Map.class)))})
     @Parameters({
             @Parameter(name = "identity", required = true, in = ParameterIn.QUERY, description = "身份信息"),
             @Parameter(name = "category", required = true, in = ParameterIn.QUERY, description = "验证码类型")
@@ -92,8 +93,8 @@ public class OpenCaptchaController implements PaginationController {
     @Idempotent
     @Crypto(responseEncrypt = false)
     @Operation(summary = "验证码验证", description = "验证验证码返回数据是否正确。使用加密信息",
-            requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(content = @Content(mediaType = "application/json")),
-            responses = {@ApiResponse(description = "验证结果", content = @Content(mediaType = "application/json"))})
+            requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE)),
+            responses = {@ApiResponse(description = "验证结果", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE))})
     @Parameters({
             @Parameter(name = "jigsawVerification", required = true, description = "验证码验证参数", schema = @Schema(implementation = Verification.class))
     })

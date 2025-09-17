@@ -41,6 +41,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.data.domain.Page;
+import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -78,7 +79,7 @@ public class SysDepartmentController extends AbstractJpaWriteableController<SysD
     }
 
     @Operation(summary = "条件查询部门分页数据", description = "根据输入的字段条件查询部门信息",
-            responses = {@ApiResponse(description = "单位列表", content = @Content(mediaType = "application/json", schema = @Schema(implementation = SysDepartment.class)))})
+            responses = {@ApiResponse(description = "单位列表", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = SysDepartment.class)))})
     @Parameters({
             @Parameter(name = "pageNumber", required = true, description = "当前页码"),
             @Parameter(name = "pageSize", required = true, description = "每页显示数量"),
@@ -93,7 +94,7 @@ public class SysDepartmentController extends AbstractJpaWriteableController<SysD
     }
 
     @Operation(summary = "获取部门列表", description = "根据单位ID获取部门信息列表",
-            responses = {@ApiResponse(description = "单位列表", content = @Content(mediaType = "application/json", schema = @Schema(implementation = SysDepartment.class)))})
+            responses = {@ApiResponse(description = "单位列表", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = SysDepartment.class)))})
     @Parameters({
             @Parameter(name = "organizationId", required = true, description = "单位ID"),
     })
@@ -104,7 +105,7 @@ public class SysDepartmentController extends AbstractJpaWriteableController<SysD
     }
 
     @Operation(summary = "获取部门树", description = "根据单位ID获取部门数据，转换为树形结构",
-            responses = {@ApiResponse(description = "单位列表", content = @Content(mediaType = "application/json", schema = @Schema(implementation = SysDepartment.class)))})
+            responses = {@ApiResponse(description = "单位列表", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = SysDepartment.class)))})
     @Parameters({
             @Parameter(name = "organizationId", required = true, description = "单位ID"),
     })

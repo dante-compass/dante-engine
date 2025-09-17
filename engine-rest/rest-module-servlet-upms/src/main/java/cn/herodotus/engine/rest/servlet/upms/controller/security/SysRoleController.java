@@ -40,6 +40,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.tags.Tags;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -72,7 +73,7 @@ public class SysRoleController extends AbstractJpaWriteableController<SysRole, S
     @AccessLimited
     @Operation(summary = "根据角色代码查询角色", description = "根据输入的角色代码，查询对应的角色",
             responses = {
-                    @ApiResponse(description = "查询到的角色", content = @Content(mediaType = "application/json", schema = @Schema(implementation = SysRole.class))),
+                    @ApiResponse(description = "查询到的角色", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = SysRole.class))),
                     @ApiResponse(responseCode = "204", description = "查询成功，未查到数据"),
                     @ApiResponse(responseCode = "500", description = "查询失败")
             }
@@ -89,7 +90,7 @@ public class SysRoleController extends AbstractJpaWriteableController<SysRole, S
     @AccessLimited
     @Operation(summary = "获取全部角色", description = "获取全部角色数据列表",
             responses = {
-                    @ApiResponse(description = "全部数据列表", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Result.class))),
+                    @ApiResponse(description = "全部数据列表", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = Result.class))),
                     @ApiResponse(responseCode = "204", description = "查询成功，未查到数据"),
                     @ApiResponse(responseCode = "500", description = "查询失败")
             })
@@ -100,8 +101,8 @@ public class SysRoleController extends AbstractJpaWriteableController<SysRole, S
     }
 
     @Operation(summary = "给角色赋予权限", description = "为角色赋予权限",
-            requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(content = @Content(mediaType = "application/x-www-form-urlencoded")),
-            responses = {@ApiResponse(description = "已分配权限的角色数据", content = @Content(mediaType = "application/json"))})
+            requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(content = @Content(mediaType = MediaType.APPLICATION_FORM_URLENCODED_VALUE)),
+            responses = {@ApiResponse(description = "已分配权限的角色数据", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE))})
     @Parameters({
             @Parameter(name = "roleId", required = true, description = "角色ID"),
             @Parameter(name = "permissions[]", required = true, description = "权限对象组成的数组")
