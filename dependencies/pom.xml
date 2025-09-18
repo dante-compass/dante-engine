@@ -31,13 +31,13 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.5.5</version>
+        <version>3.5.6</version>
         <relativePath/>
     </parent>
 
     <groupId>cn.herodotus.engine</groupId>
     <artifactId>dependencies</artifactId>
-    <version>3.5.5.3</version>
+    <version>3.5.6.0</version>
     <name>Dante Engine Dependencies</name>
     <packaging>pom</packaging>
 
@@ -88,7 +88,7 @@
         <maven-archetype-plugin.version>3.4.0</maven-archetype-plugin.version>
         <maven-gpg-plugin.version>3.2.8</maven-gpg-plugin.version>
 
-        <alipay-sdk-java.version>4.40.445.ALL</alipay-sdk-java.version>
+        <alipay-sdk-java.version>4.40.452.ALL</alipay-sdk-java.version>
         <aliyun-sdk-oss.version>3.18.3</aliyun-sdk-oss.version>
         <animated-gif-lib.version>1.4</animated-gif-lib.version>
         <antisamy.version>1.7.8</antisamy.version>
@@ -101,7 +101,7 @@
         <commons-io.version>2.20.0</commons-io.version>
         <commons-text.version>1.14.0</commons-text.version>
         <fastjson2.version>2.0.58</fastjson2.version>
-        <guava.version>33.4.8-jre</guava.version>
+        <guava.version>33.5.0-jre</guava.version>
         <hutool.version>7.0.0-M1</hutool.version>
         <hypersistence-utils-hibernate-63.version>3.11.0</hypersistence-utils-hibernate-63.version>
         <influxdb-client.version>7.3.0</influxdb-client.version>
@@ -122,8 +122,8 @@
         <skywalking.version>9.5.0</skywalking.version>
         <sms4j-spring-boot-starter.version>3.3.5</sms4j-spring-boot-starter.version>
         <springdoc.version>2.8.13</springdoc.version>
-        <spring-boot-dependencies.version>3.5.5</spring-boot-dependencies.version>
-        <spring-boot-admin-dependencies.version>3.5.4</spring-boot-admin-dependencies.version>
+        <spring-boot-dependencies.version>3.5.6</spring-boot-dependencies.version>
+        <spring-boot-admin-dependencies.version>3.5.5</spring-boot-admin-dependencies.version>
         <spring-cloud-alibaba-dependencies.version>2023.0.3.3</spring-cloud-alibaba-dependencies.version>
         <spring-cloud-dependencies.version>2025.0.0</spring-cloud-dependencies.version>
         <spring-cloud-tencent-dependencies.version>2.0.2.2-2024.0.1</spring-cloud-tencent-dependencies.version>
@@ -137,7 +137,7 @@
         <inter-ui.version>4.1.1</inter-ui.version>
         <jquery.version>3.7.1</jquery.version>
         <mdi__font.version>7.4.47</mdi__font.version>
-        <quasar.version>2.18.3</quasar.version>
+        <quasar.version>2.18.5</quasar.version>
         <sm-crypto.version>0.3.13</sm-crypto.version>
         <sweetalert2.verison>11.23.0</sweetalert2.verison>
         <tabler.version>1.4.0</tabler.version>

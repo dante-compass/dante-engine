@@ -33,7 +33,7 @@
     <parent>
         <groupId>cn.herodotus.engine</groupId>
         <artifactId>dependencies</artifactId>
-        <version>3.5.5.3</version>
+        <version>3.5.6.0</version>
         <relativePath>dependencies/pom.xml</relativePath>
     </parent>
 
@@ -52,16 +52,16 @@
     </licenses>
     <developers>
         <developer>
-            <id>herodotus-cloud</id>
+            <id>herodotus-ecosystem</id>
             <name>码匠君</name>
             <email>herodotus@aliyun.com</email>
-            <organization>Dromara</organization>
-            <organizationUrl>https://dromara.org.cn</organizationUrl>
+            <organization>dromara</organization>
+            <organizationUrl>https://dromara.org</organizationUrl>
             <timezone>+8</timezone>
         </developer>
     </developers>
     <scm>
-        <url>https://github.com/dromara/dante-cloud</url>
+        <url>https://github.com/dromara/dante-cloud.git</url>
     </scm>
 
     <profiles>
