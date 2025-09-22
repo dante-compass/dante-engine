@@ -113,7 +113,7 @@
         <mybatis.version>3.5.19</mybatis.version>
         <mybatis-plus.version>3.5.14</mybatis-plus.version>
         <mysql.version>9.4.0</mysql.version>
-        <nacos.version>3.0.3</nacos.version>
+        <nacos.version>3.1.0</nacos.version>
         <openfeign-querydsl.version>7.0</openfeign-querydsl.version>
         <opengauss-jdbc.version>6.0.0-og</opengauss-jdbc.version>
         <org.eclipse.paho.version>1.2.5</org.eclipse.paho.version>
