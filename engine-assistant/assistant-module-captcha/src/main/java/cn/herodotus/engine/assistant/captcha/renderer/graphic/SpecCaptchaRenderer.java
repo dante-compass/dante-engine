@@ -25,8 +25,8 @@
 
 package cn.herodotus.engine.assistant.captcha.renderer.graphic;
 
+import cn.herodotus.engine.assistant.captcha.provider.ResourceProvider;
 import cn.herodotus.engine.core.foundation.enums.CaptchaCategory;
-import org.springframework.stereotype.Component;
 
 /**
  * <p>Description: 类型验证码绘制器 </p>
@@ -34,8 +34,11 @@ import org.springframework.stereotype.Component;
  * @author : gengwei.zheng
  * @date : 2021/12/20 20:39
  */
-@Component
 public class SpecCaptchaRenderer extends AbstractPngGraphicRenderer {
+
+    public SpecCaptchaRenderer(ResourceProvider resourceProvider) {
+        super(resourceProvider);
+    }
 
     @Override
     public String getCategory() {

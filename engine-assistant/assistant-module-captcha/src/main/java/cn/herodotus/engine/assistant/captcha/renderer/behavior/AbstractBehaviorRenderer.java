@@ -26,11 +26,10 @@
 package cn.herodotus.engine.assistant.captcha.renderer.behavior;
 
 import cn.herodotus.engine.assistant.captcha.definition.AbstractRenderer;
-import com.alicp.jetcache.anno.CacheType;
+import cn.herodotus.engine.assistant.captcha.provider.ResourceProvider;
 
 import java.awt.*;
 import java.nio.charset.StandardCharsets;
-import java.time.Duration;
 
 /**
  * <p>Description: 验证码通用基础类 </p>
@@ -42,16 +41,8 @@ import java.time.Duration;
  */
 public abstract class AbstractBehaviorRenderer<K, V> extends AbstractRenderer<K, V> {
 
-    public AbstractBehaviorRenderer(String cacheName) {
-        super(cacheName);
-    }
-
-    public AbstractBehaviorRenderer(String cacheName, CacheType cacheType) {
-        super(cacheName, cacheType);
-    }
-
-    public AbstractBehaviorRenderer(String cacheName, CacheType cacheType, Duration expire) {
-        super(cacheName, cacheType, expire);
+    protected AbstractBehaviorRenderer(ResourceProvider resourceProvider, String cacheName) {
+        super(resourceProvider, cacheName);
     }
 
     protected int getEnOrZhLength(String s) {

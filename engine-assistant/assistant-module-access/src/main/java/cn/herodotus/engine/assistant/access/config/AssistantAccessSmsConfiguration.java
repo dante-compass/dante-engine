@@ -59,8 +59,7 @@ public class AssistantAccessSmsConfiguration {
     @Bean
     @ConditionalOnMissingBean
     public VerificationCodeStampManager verificationCodeStampManager(SmsProperties smsProperties) {
-        VerificationCodeStampManager verificationCodeStampManager = new VerificationCodeStampManager();
-        verificationCodeStampManager.setSmsProperties(smsProperties);
+        VerificationCodeStampManager verificationCodeStampManager = new VerificationCodeStampManager(smsProperties);
         log.trace("[Herodotus] |- Bean [Verification Code Stamp Manager] Configure.");
         return verificationCodeStampManager;
     }

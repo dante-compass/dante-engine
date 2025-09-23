@@ -41,7 +41,7 @@ public class IdempotentStampManager extends AbstractStampManager<String, String>
     private final SecureProperties secureProperties;
 
     public IdempotentStampManager(SecureProperties secureProperties) {
-        super(WebConstants.CACHE_NAME_TOKEN_IDEMPOTENT);
+        super(WebConstants.CACHE_NAME_TOKEN_IDEMPOTENT, secureProperties.getIdempotent().getExpire());
         this.secureProperties = secureProperties;
     }
 
@@ -52,10 +52,5 @@ public class IdempotentStampManager extends AbstractStampManager<String, String>
     @Override
     public String nextStamp(String key) {
         return IdUtil.fastSimpleUUID();
-    }
-
-    @Override
-    public void afterPropertiesSet() throws Exception {
-        super.setExpire(secureProperties.getIdempotent().getExpire());
     }
 }

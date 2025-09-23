@@ -46,7 +46,7 @@
         </dependency>
 
         <dependency>
-            <groupId>cn.herodotus.opensteward.justauth</groupId>
+            <groupId>cn.herodotus.opensteward</groupId>
             <artifactId>JustAuth</artifactId>
         </dependency>
 

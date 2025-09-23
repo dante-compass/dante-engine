@@ -41,19 +41,8 @@ import java.util.concurrent.TimeUnit;
  */
 public class JustAuthStateStampManager extends AbstractStampManager<String, String> implements AuthStateCache {
 
-    public JustAuthStateStampManager() {
-        super(AccessConstants.CACHE_NAME_TOKEN_JUSTAUTH);
-    }
-
-    private JustAuthProperties justAuthProperties;
-
-    public void setJustAuthProperties(JustAuthProperties justAuthProperties) {
-        this.justAuthProperties = justAuthProperties;
-    }
-
-    @Override
-    public void afterPropertiesSet() throws Exception {
-        super.setExpire(justAuthProperties.getTimeout());
+    public JustAuthStateStampManager(JustAuthProperties justAuthProperties) {
+        super(AccessConstants.CACHE_NAME_TOKEN_JUSTAUTH, justAuthProperties.getTimeout());
     }
 
     @Override

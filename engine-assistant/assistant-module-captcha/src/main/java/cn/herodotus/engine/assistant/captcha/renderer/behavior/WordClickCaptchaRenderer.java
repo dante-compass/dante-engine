@@ -28,6 +28,7 @@ package cn.herodotus.engine.assistant.captcha.renderer.behavior;
 import cn.herodotus.engine.assistant.captcha.constant.CaptchaConstants;
 import cn.herodotus.engine.assistant.captcha.enums.FontStyle;
 import cn.herodotus.engine.assistant.captcha.provider.RandomProvider;
+import cn.herodotus.engine.assistant.captcha.provider.ResourceProvider;
 import cn.herodotus.engine.core.definition.domain.captcha.Captcha;
 import cn.herodotus.engine.core.definition.domain.captcha.Coordinate;
 import cn.herodotus.engine.core.definition.domain.captcha.Metadata;
@@ -40,7 +41,6 @@ import cn.hutool.v7.core.data.id.IdUtil;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.stereotype.Component;
 
 import java.awt.*;
 import java.awt.geom.AffineTransform;
@@ -55,13 +55,12 @@ import java.util.stream.IntStream;
  * @author : gengwei.zheng
  * @date : 2021/12/14 9:31
  */
-@Component
 public class WordClickCaptchaRenderer extends AbstractBehaviorRenderer<String, List<Coordinate>> {
 
     private WordClickCaptcha wordClickCaptcha;
 
-    public WordClickCaptchaRenderer() {
-        super(CaptchaConstants.CACHE_NAME_CAPTCHA_WORD_CLICK);
+    public WordClickCaptchaRenderer(ResourceProvider resourceProvider) {
+        super(resourceProvider, CaptchaConstants.CACHE_NAME_CAPTCHA_WORD_CLICK);
     }
 
     private Font getFont() {

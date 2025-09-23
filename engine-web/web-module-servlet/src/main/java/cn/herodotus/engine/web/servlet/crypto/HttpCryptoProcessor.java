@@ -37,6 +37,7 @@ import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.autoconfigure.web.ServerProperties;
 
 import java.time.Duration;
 
@@ -54,8 +55,8 @@ public class HttpCryptoProcessor extends AbstractStampManager<String, SecretKey>
 
     private final SymmetricCryptoProcessor symmetricCryptoProcessor;
 
-    public HttpCryptoProcessor(AsymmetricCryptoProcessor asymmetricCryptoProcessor, SymmetricCryptoProcessor symmetricCryptoProcessor) {
-        super(WebConstants.CACHE_NAME_TOKEN_SECURE_KEY);
+    public HttpCryptoProcessor(AsymmetricCryptoProcessor asymmetricCryptoProcessor, SymmetricCryptoProcessor symmetricCryptoProcessor, ServerProperties serverProperties) {
+        super(WebConstants.CACHE_NAME_TOKEN_SECURE_KEY, serverProperties.getServlet().getSession().getTimeout());
         this.asymmetricCryptoProcessor = asymmetricCryptoProcessor;
         this.symmetricCryptoProcessor = symmetricCryptoProcessor;
     }
@@ -193,11 +194,6 @@ public class HttpCryptoProcessor extends AbstractStampManager<String, SecretKey>
         } catch (StampHasExpiredException e) {
             throw new SessionInvalidException();
         }
-
-    }
-
-    @Override
-    public void afterPropertiesSet() throws Exception {
 
     }
 }

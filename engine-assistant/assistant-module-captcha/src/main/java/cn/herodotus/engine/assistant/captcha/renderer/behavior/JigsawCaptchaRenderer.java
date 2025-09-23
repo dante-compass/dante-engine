@@ -27,6 +27,7 @@ package cn.herodotus.engine.assistant.captcha.renderer.behavior;
 
 import cn.herodotus.engine.assistant.captcha.constant.CaptchaConstants;
 import cn.herodotus.engine.assistant.captcha.provider.RandomProvider;
+import cn.herodotus.engine.assistant.captcha.provider.ResourceProvider;
 import cn.herodotus.engine.core.definition.domain.captcha.Captcha;
 import cn.herodotus.engine.core.definition.domain.captcha.Coordinate;
 import cn.herodotus.engine.core.definition.domain.captcha.Metadata;
@@ -41,7 +42,6 @@ import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Component;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -53,7 +53,6 @@ import java.util.Objects;
  * @author : gengwei.zheng
  * @date : 2021/12/11 15:29
  */
-@Component
 public class JigsawCaptchaRenderer extends AbstractBehaviorRenderer<String, Coordinate> {
 
     private static final Logger log = LoggerFactory.getLogger(JigsawCaptchaRenderer.class);
@@ -64,8 +63,8 @@ public class JigsawCaptchaRenderer extends AbstractBehaviorRenderer<String, Coor
     private static final int OFFSET = 100;
     private JigsawCaptcha jigsawCaptcha;
 
-    public JigsawCaptchaRenderer() {
-        super(CaptchaConstants.CACHE_NAME_CAPTCHA_JIGSAW);
+    public JigsawCaptchaRenderer(ResourceProvider resourceProvider) {
+        super(resourceProvider, CaptchaConstants.CACHE_NAME_CAPTCHA_JIGSAW);
     }
 
     @Override

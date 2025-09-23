@@ -26,11 +26,11 @@
 package cn.herodotus.engine.assistant.captcha.renderer.hutool;
 
 import cn.herodotus.engine.assistant.captcha.definition.AbstractGraphicRenderer;
+import cn.herodotus.engine.assistant.captcha.provider.ResourceProvider;
 import cn.herodotus.engine.core.definition.domain.captcha.Metadata;
 import cn.herodotus.engine.core.foundation.enums.CaptchaCategory;
 import cn.hutool.v7.swing.captcha.CaptchaUtil;
 import cn.hutool.v7.swing.captcha.LineCaptcha;
-import org.springframework.stereotype.Component;
 
 /**
  * <p>Description: Hutool Line Captcha </p>
@@ -38,8 +38,11 @@ import org.springframework.stereotype.Component;
  * @author : gengwei.zheng
  * @date : 2021/12/23 22:44
  */
-@Component
 public class LineCaptchaRenderer extends AbstractGraphicRenderer {
+
+    public LineCaptchaRenderer(ResourceProvider resourceProvider) {
+        super(resourceProvider);
+    }
 
     @Override
     public Metadata draw() {

@@ -25,6 +25,7 @@
 
 package cn.herodotus.engine.assistant.captcha.renderer.graphic;
 
+import cn.herodotus.engine.assistant.captcha.provider.ResourceProvider;
 import cn.herodotus.engine.core.definition.constant.SymbolConstants;
 import cn.herodotus.engine.core.definition.domain.captcha.Metadata;
 import cn.hutool.v7.core.codec.binary.Base64;
@@ -42,6 +43,10 @@ import java.util.stream.IntStream;
  * @date : 2021/12/21 23:25
  */
 public abstract class AbstractGifGraphicRenderer extends AbstractBaseGraphicRenderer {
+
+    protected AbstractGifGraphicRenderer(ResourceProvider resourceProvider) {
+        super(resourceProvider);
+    }
 
     @Override
     protected String getBase64ImagePrefix() {

@@ -28,6 +28,7 @@ package cn.herodotus.engine.assistant.captcha.renderer.graphic;
 import cn.herodotus.engine.assistant.captcha.definition.AbstractGraphicRenderer;
 import cn.herodotus.engine.assistant.captcha.enums.CaptchaCharacter;
 import cn.herodotus.engine.assistant.captcha.provider.RandomProvider;
+import cn.herodotus.engine.assistant.captcha.provider.ResourceProvider;
 
 import java.awt.*;
 import java.awt.geom.CubicCurve2D;
@@ -42,6 +43,10 @@ import java.util.List;
  * @date : 2021/12/23 22:46
  */
 public abstract class AbstractBaseGraphicRenderer extends AbstractGraphicRenderer {
+
+    protected AbstractBaseGraphicRenderer(ResourceProvider resourceProvider) {
+        super(resourceProvider);
+    }
 
     protected String[] getWordCharacters() {
         int number = this.getCaptchaProperties().getGraphics().getLength();

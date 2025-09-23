@@ -30,10 +30,8 @@ import cn.herodotus.engine.assistant.captcha.provider.ResourceProvider;
 import cn.herodotus.engine.cache.jetcache.stamp.AbstractStampManager;
 import cn.herodotus.engine.core.definition.support.CaptchaRenderer;
 import cn.hutool.v7.swing.img.ImgUtil;
-import com.alicp.jetcache.anno.CacheType;
 
 import java.awt.image.BufferedImage;
-import java.time.Duration;
 
 /**
  * <p>Description: 基础绘制器 </p>
@@ -46,26 +44,15 @@ public abstract class AbstractRenderer<K, V> extends AbstractStampManager<K, V> 
     protected static final String BASE64_PNG_IMAGE_PREFIX = "data:image/png;base64,";
     protected static final String BASE64_GIF_IMAGE_PREFIX = "data:image/gif;base64,";
 
-    private ResourceProvider resourceProvider;
+    private final ResourceProvider resourceProvider;
 
-    public AbstractRenderer(String cacheName) {
+    protected AbstractRenderer(ResourceProvider resourceProvider, String cacheName) {
         super(cacheName);
-    }
-
-    public AbstractRenderer(String cacheName, CacheType cacheType) {
-        super(cacheName, cacheType);
-    }
-
-    public AbstractRenderer(String cacheName, CacheType cacheType, Duration expire) {
-        super(cacheName, cacheType, expire);
-    }
-
-    public ResourceProvider getResourceProvider() {
-        return resourceProvider;
-    }
-
-    public void setResourceProvider(ResourceProvider resourceProvider) {
         this.resourceProvider = resourceProvider;
+    }
+
+    protected ResourceProvider getResourceProvider() {
+        return resourceProvider;
     }
 
     protected CaptchaProperties getCaptchaProperties() {
@@ -79,10 +66,5 @@ public abstract class AbstractRenderer<K, V> extends AbstractStampManager<K, V> 
     protected String toBase64(BufferedImage bufferedImage) {
         String image = ImgUtil.toBase64(bufferedImage, ImgUtil.IMAGE_TYPE_PNG);
         return getBase64ImagePrefix() + image;
-    }
-
-    @Override
-    public void afterPropertiesSet() throws Exception {
-
     }
 }

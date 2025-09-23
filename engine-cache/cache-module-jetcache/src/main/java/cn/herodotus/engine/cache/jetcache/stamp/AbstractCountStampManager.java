@@ -27,7 +27,6 @@ package cn.herodotus.engine.cache.jetcache.stamp;
 
 import cn.herodotus.engine.cache.core.exception.MaximumLimitExceededException;
 import cn.hutool.v7.crypto.SecureUtil;
-import com.alicp.jetcache.anno.CacheType;
 import org.apache.commons.lang3.ObjectUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -51,16 +50,8 @@ public abstract class AbstractCountStampManager extends AbstractStampManager<Str
 
     private static final Logger log = LoggerFactory.getLogger(AbstractCountStampManager.class);
 
-    public AbstractCountStampManager(String cacheName) {
-        super(cacheName);
-    }
-
-    public AbstractCountStampManager(String cacheName, CacheType cacheType) {
-        super(cacheName, cacheType);
-    }
-
-    public AbstractCountStampManager(String cacheName, CacheType cacheType, Duration expire) {
-        super(cacheName, cacheType, expire);
+    protected AbstractCountStampManager(String cacheName, Duration expire) {
+        super(cacheName, expire);
     }
 
     /**

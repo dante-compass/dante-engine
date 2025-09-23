@@ -26,12 +26,12 @@
 package cn.herodotus.engine.assistant.captcha.renderer.graphic;
 
 import cn.herodotus.engine.assistant.captcha.provider.RandomProvider;
+import cn.herodotus.engine.assistant.captcha.provider.ResourceProvider;
 import cn.herodotus.engine.core.definition.constant.RegexPool;
 import cn.herodotus.engine.core.definition.domain.captcha.Metadata;
 import cn.herodotus.engine.core.foundation.enums.CaptchaCategory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Component;
 
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
@@ -44,16 +44,20 @@ import java.awt.image.BufferedImage;
  * @author : gengwei.zheng
  * @date : 2021/12/20 22:55
  */
-@Component
 public class ArithmeticCaptchaRenderer extends AbstractBaseGraphicRenderer {
 
     private static final Logger log = LoggerFactory.getLogger(ArithmeticCaptchaRenderer.class);
 
-    private int complexity = 2;
+    private final int complexity;
     /**
      * 计算结果
      */
     private String computedResult;
+
+    public ArithmeticCaptchaRenderer(ResourceProvider resourceProvider) {
+        super(resourceProvider);
+        this.complexity = this.getCaptchaProperties().getGraphics().getComplexity();
+    }
 
     @Override
     public String getCategory() {
@@ -100,10 +104,5 @@ public class ArithmeticCaptchaRenderer extends AbstractBaseGraphicRenderer {
         metadata.setGraphicImageBase64(toBase64(bufferedImage));
         metadata.setCharacters(this.computedResult);
         return metadata;
-    }
-
-    @Override
-    public void afterPropertiesSet() throws Exception {
-        this.complexity = this.getCaptchaProperties().getGraphics().getComplexity();
     }
 }

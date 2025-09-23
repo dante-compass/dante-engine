@@ -25,8 +25,8 @@
 
 package cn.herodotus.engine.assistant.captcha.renderer.graphic;
 
+import cn.herodotus.engine.assistant.captcha.provider.ResourceProvider;
 import cn.herodotus.engine.core.foundation.enums.CaptchaCategory;
-import org.springframework.stereotype.Component;
 
 import java.awt.*;
 
@@ -36,8 +36,11 @@ import java.awt.*;
  * @author : gengwei.zheng
  * @date : 2021/12/20 22:55
  */
-@Component
 public class ChineseCaptchaRenderer extends AbstractPngGraphicRenderer {
+
+    public ChineseCaptchaRenderer(ResourceProvider resourceProvider) {
+        super(resourceProvider);
+    }
 
     @Override
     public String getCategory() {

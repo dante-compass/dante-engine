@@ -26,6 +26,7 @@
 package cn.herodotus.engine.assistant.captcha.definition;
 
 import cn.herodotus.engine.assistant.captcha.constant.CaptchaConstants;
+import cn.herodotus.engine.assistant.captcha.provider.ResourceProvider;
 import cn.herodotus.engine.core.definition.domain.captcha.Captcha;
 import cn.herodotus.engine.core.definition.domain.captcha.GraphicCaptcha;
 import cn.herodotus.engine.core.definition.domain.captcha.Metadata;
@@ -51,8 +52,8 @@ public abstract class AbstractGraphicRenderer extends AbstractRenderer<String, S
 
     private GraphicCaptcha graphicCaptcha;
 
-    public AbstractGraphicRenderer() {
-        super(CaptchaConstants.CACHE_NAME_CAPTCHA_GRAPHIC);
+    protected AbstractGraphicRenderer(ResourceProvider resourceProvider) {
+        super(resourceProvider, CaptchaConstants.CACHE_NAME_CAPTCHA_GRAPHIC);
     }
 
     protected Font getFont() {

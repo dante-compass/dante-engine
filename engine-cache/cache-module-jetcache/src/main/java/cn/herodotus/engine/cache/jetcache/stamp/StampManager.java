@@ -30,7 +30,6 @@ import cn.herodotus.engine.cache.core.exception.StampMismatchException;
 import cn.herodotus.engine.cache.core.exception.StampParameterIllegalException;
 import com.alicp.jetcache.AutoReleaseLock;
 import org.apache.commons.lang3.ObjectUtils;
-import org.springframework.beans.factory.InitializingBean;
 
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
@@ -46,7 +45,7 @@ import java.util.concurrent.TimeUnit;
  * @author : gengwei.zheng
  * @date : 2021/8/22 15:00
  */
-public interface StampManager<K, V> extends InitializingBean {
+public interface StampManager<K, V> {
 
     /**
      * 过期时间

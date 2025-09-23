@@ -63,8 +63,7 @@ public class AssistantAccessJustAuthConfiguration {
     @Bean
     @ConditionalOnMissingBean
     public JustAuthStateStampManager justAuthStateStampManager(JustAuthProperties justAuthProperties) {
-        JustAuthStateStampManager justAuthStateStampManager = new JustAuthStateStampManager();
-        justAuthStateStampManager.setJustAuthProperties(justAuthProperties);
+        JustAuthStateStampManager justAuthStateStampManager = new JustAuthStateStampManager(justAuthProperties);
         log.trace("[Herodotus] |- Bean [Just Auth State Redis Cache] Configure.");
         return justAuthStateStampManager;
     }

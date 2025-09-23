@@ -40,20 +40,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class LockedAccountStampManager extends AbstractStampManager<String, String> {
 
-    private final OAuth2AuthenticationProperties authenticationProperties;
-
     public LockedAccountStampManager(OAuth2AuthenticationProperties authenticationProperties) {
-        super(OAuth2Constants.CACHE_NAME_TOKEN_LOCKED_USER_DETAIL);
-        this.authenticationProperties = authenticationProperties;
+        super(OAuth2Constants.CACHE_NAME_TOKEN_LOCKED_USER_DETAIL, authenticationProperties.getSignInFailureLimited().getExpire());
     }
 
     @Override
     public String nextStamp(String key) {
         return IdUtil.fastSimpleUUID();
-    }
-
-    @Override
-    public void afterPropertiesSet() throws Exception {
-        super.setExpire(authenticationProperties.getSignInFailureLimited().getExpire());
     }
 }

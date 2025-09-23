@@ -73,16 +73,14 @@ public class AssistantCaptchaConfiguration {
 
         @Bean(CaptchaCategory.JIGSAW_CAPTCHA)
         public JigsawCaptchaRenderer jigsawCaptchaRenderer(ResourceProvider resourceProvider) {
-            JigsawCaptchaRenderer jigsawCaptchaRenderer = new JigsawCaptchaRenderer();
-            jigsawCaptchaRenderer.setResourceProvider(resourceProvider);
+            JigsawCaptchaRenderer jigsawCaptchaRenderer = new JigsawCaptchaRenderer(resourceProvider);
             log.trace("[Herodotus] |- Bean [Jigsaw Captcha Renderer] Configure.");
             return jigsawCaptchaRenderer;
         }
 
         @Bean(CaptchaCategory.WORD_CLICK_CAPTCHA)
         public WordClickCaptchaRenderer wordClickCaptchaRenderer(ResourceProvider resourceProvider) {
-            WordClickCaptchaRenderer wordClickCaptchaRenderer = new WordClickCaptchaRenderer();
-            wordClickCaptchaRenderer.setResourceProvider(resourceProvider);
+            WordClickCaptchaRenderer wordClickCaptchaRenderer = new WordClickCaptchaRenderer(resourceProvider);
             log.trace("[Herodotus] |- Bean [Word Click Captcha Renderer] Configure.");
             return wordClickCaptchaRenderer;
         }
@@ -93,40 +91,35 @@ public class AssistantCaptchaConfiguration {
 
         @Bean(CaptchaCategory.ARITHMETIC_CAPTCHA)
         public ArithmeticCaptchaRenderer arithmeticCaptchaRenderer(ResourceProvider resourceProvider) {
-            ArithmeticCaptchaRenderer arithmeticCaptchaRenderer = new ArithmeticCaptchaRenderer();
-            arithmeticCaptchaRenderer.setResourceProvider(resourceProvider);
+            ArithmeticCaptchaRenderer arithmeticCaptchaRenderer = new ArithmeticCaptchaRenderer(resourceProvider);
             log.trace("[Herodotus] |- Bean [Arithmetic Captcha Renderer] Configure.");
             return arithmeticCaptchaRenderer;
         }
 
         @Bean(CaptchaCategory.CHINESE_CAPTCHA)
         public ChineseCaptchaRenderer chineseCaptchaRenderer(ResourceProvider resourceProvider) {
-            ChineseCaptchaRenderer chineseCaptchaRenderer = new ChineseCaptchaRenderer();
-            chineseCaptchaRenderer.setResourceProvider(resourceProvider);
+            ChineseCaptchaRenderer chineseCaptchaRenderer = new ChineseCaptchaRenderer(resourceProvider);
             log.trace("[Herodotus] |- Bean [Chinese Captcha Renderer] Configure.");
             return chineseCaptchaRenderer;
         }
 
         @Bean(CaptchaCategory.CHINESE_GIF_CAPTCHA)
         public ChineseGifCaptchaRenderer chineseGifCaptchaRenderer(ResourceProvider resourceProvider) {
-            ChineseGifCaptchaRenderer chineseGifCaptchaRenderer = new ChineseGifCaptchaRenderer();
-            chineseGifCaptchaRenderer.setResourceProvider(resourceProvider);
+            ChineseGifCaptchaRenderer chineseGifCaptchaRenderer = new ChineseGifCaptchaRenderer(resourceProvider);
             log.trace("[Herodotus] |- Bean [Chinese Gif Captcha Renderer] Configure.");
             return chineseGifCaptchaRenderer;
         }
 
         @Bean(CaptchaCategory.SPEC_GIF_CAPTCHA)
         public SpecGifCaptchaRenderer specGifCaptchaRenderer(ResourceProvider resourceProvider) {
-            SpecGifCaptchaRenderer specGifCaptchaRenderer = new SpecGifCaptchaRenderer();
-            specGifCaptchaRenderer.setResourceProvider(resourceProvider);
+            SpecGifCaptchaRenderer specGifCaptchaRenderer = new SpecGifCaptchaRenderer(resourceProvider);
             log.trace("[Herodotus] |- Bean [Spec Gif Captcha Renderer] Configure.");
             return specGifCaptchaRenderer;
         }
 
         @Bean(CaptchaCategory.SPEC_CAPTCHA)
         public SpecCaptchaRenderer specCaptchaRenderer(ResourceProvider resourceProvider) {
-            SpecCaptchaRenderer specCaptchaRenderer = new SpecCaptchaRenderer();
-            specCaptchaRenderer.setResourceProvider(resourceProvider);
+            SpecCaptchaRenderer specCaptchaRenderer = new SpecCaptchaRenderer(resourceProvider);
             log.trace("[Herodotus] |- Bean [Spec Captcha Renderer] Configure.");
             return specCaptchaRenderer;
         }
@@ -137,32 +130,28 @@ public class AssistantCaptchaConfiguration {
 
         @Bean(CaptchaCategory.HUTOOL_LINE_CAPTCHA)
         public LineCaptchaRenderer lineCaptchaRenderer(ResourceProvider resourceProvider) {
-            LineCaptchaRenderer lineCaptchaRenderer = new LineCaptchaRenderer();
-            lineCaptchaRenderer.setResourceProvider(resourceProvider);
+            LineCaptchaRenderer lineCaptchaRenderer = new LineCaptchaRenderer(resourceProvider);
             log.trace("[Herodotus] |- Bean [Hutool Line Captcha Renderer] Configure.");
             return lineCaptchaRenderer;
         }
 
         @Bean(CaptchaCategory.HUTOOL_CIRCLE_CAPTCHA)
         public CircleCaptchaRenderer circleCaptchaRenderer(ResourceProvider resourceProvider) {
-            CircleCaptchaRenderer circleCaptchaRenderer = new CircleCaptchaRenderer();
-            circleCaptchaRenderer.setResourceProvider(resourceProvider);
+            CircleCaptchaRenderer circleCaptchaRenderer = new CircleCaptchaRenderer(resourceProvider);
             log.trace("[Herodotus] |- Bean [Hutool Circle Captcha Renderer] Configure.");
             return circleCaptchaRenderer;
         }
 
         @Bean(CaptchaCategory.HUTOOL_SHEAR_CAPTCHA)
         public ShearCaptchaRenderer shearCaptchaRenderer(ResourceProvider resourceProvider) {
-            ShearCaptchaRenderer shearCaptchaRenderer = new ShearCaptchaRenderer();
-            shearCaptchaRenderer.setResourceProvider(resourceProvider);
+            ShearCaptchaRenderer shearCaptchaRenderer = new ShearCaptchaRenderer(resourceProvider);
             log.trace("[Herodotus] |- Bean [Hutool Shear Captcha Renderer] Configure.");
             return shearCaptchaRenderer;
         }
 
         @Bean(CaptchaCategory.HUTOOL_GIF_CAPTCHA)
         public GifCaptchaRenderer gifCaptchaRenderer(ResourceProvider resourceProvider) {
-            GifCaptchaRenderer gifCaptchaRenderer = new GifCaptchaRenderer();
-            gifCaptchaRenderer.setResourceProvider(resourceProvider);
+            GifCaptchaRenderer gifCaptchaRenderer = new GifCaptchaRenderer(resourceProvider);
             log.trace("[Herodotus] |- Bean [Hutool Gif Captcha Renderer] Configure.");
             return gifCaptchaRenderer;
         }

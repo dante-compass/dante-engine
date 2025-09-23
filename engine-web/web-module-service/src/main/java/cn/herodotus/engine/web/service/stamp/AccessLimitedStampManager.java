@@ -48,7 +48,7 @@ public class AccessLimitedStampManager extends AbstractStampManager<String, Long
     private final SecureProperties secureProperties;
 
     public AccessLimitedStampManager(SecureProperties secureProperties) {
-        super(WebConstants.CACHE_NAME_TOKEN_ACCESS_LIMITED);
+        super(WebConstants.CACHE_NAME_TOKEN_ACCESS_LIMITED, secureProperties.getAccessLimited().getExpire());
         this.secureProperties = secureProperties;
     }
 
@@ -59,11 +59,6 @@ public class AccessLimitedStampManager extends AbstractStampManager<String, Long
     @Override
     public Long nextStamp(String key) {
         return 1L;
-    }
-
-    @Override
-    public void afterPropertiesSet() throws Exception {
-        super.setExpire(secureProperties.getAccessLimited().getExpire());
     }
 
     /**

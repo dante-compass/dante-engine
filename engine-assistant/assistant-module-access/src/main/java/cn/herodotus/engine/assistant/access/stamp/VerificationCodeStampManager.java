@@ -40,8 +40,8 @@ public class VerificationCodeStampManager extends AbstractStampManager<String, S
 
     private SmsProperties smsProperties;
 
-    public VerificationCodeStampManager() {
-        super(AccessConstants.CACHE_NAME_TOKEN_VERIFICATION_CODE);
+    public VerificationCodeStampManager(SmsProperties smsProperties) {
+        super(AccessConstants.CACHE_NAME_TOKEN_VERIFICATION_CODE, smsProperties.getExpire());
     }
 
     public void setSmsProperties(SmsProperties smsProperties) {
@@ -55,11 +55,6 @@ public class VerificationCodeStampManager extends AbstractStampManager<String, S
         } else {
             return RandomUtil.randomNumbers(smsProperties.getLength());
         }
-    }
-
-    @Override
-    public void afterPropertiesSet() throws Exception {
-        super.setExpire(smsProperties.getExpire());
     }
 
     public Boolean getSandbox() {

@@ -51,20 +51,24 @@ public abstract class AbstractStampManager<K, V> implements StampManager<K, V> {
 
     private static final Logger log = LoggerFactory.getLogger(AbstractStampManager.class);
 
-    private static final Duration DEFAULT_EXPIRE = Duration.ofMinutes(30);
+    private static final Duration DEFAULT_EXPIRE = Duration.ofMinutes(5);
 
     private Duration expire;
     private final Cache<K, V> cache;
 
-    public AbstractStampManager(String cacheName) {
+    protected AbstractStampManager(String cacheName) {
         this(cacheName, CacheType.BOTH);
     }
 
-    public AbstractStampManager(String cacheName, CacheType cacheType) {
+    protected AbstractStampManager(String cacheName, CacheType cacheType) {
         this(cacheName, cacheType, DEFAULT_EXPIRE);
     }
 
-    public AbstractStampManager(String cacheName, CacheType cacheType, Duration expire) {
+    protected AbstractStampManager(String cacheName, Duration expire) {
+        this(cacheName, CacheType.BOTH, expire);
+    }
+
+    protected AbstractStampManager(String cacheName, CacheType cacheType, Duration expire) {
         this.expire = expire;
         this.cache = JetCacheUtils.create(cacheName, cacheType, this.expire);
     }

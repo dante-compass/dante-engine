@@ -25,6 +25,7 @@
 
 package cn.herodotus.engine.assistant.captcha.renderer.graphic;
 
+import cn.herodotus.engine.assistant.captcha.provider.ResourceProvider;
 import cn.herodotus.engine.core.definition.constant.SymbolConstants;
 import cn.herodotus.engine.core.definition.domain.captcha.Metadata;
 import org.apache.commons.lang3.StringUtils;
@@ -38,6 +39,10 @@ import java.awt.image.BufferedImage;
  * @date : 2021/12/21 23:17
  */
 public abstract class AbstractPngGraphicRenderer extends AbstractBaseGraphicRenderer {
+
+    protected AbstractPngGraphicRenderer(ResourceProvider resourceProvider) {
+        super(resourceProvider);
+    }
 
     @Override
     public Metadata draw() {
