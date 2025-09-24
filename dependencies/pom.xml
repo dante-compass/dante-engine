@@ -88,7 +88,7 @@
         <maven-archetype-plugin.version>3.4.0</maven-archetype-plugin.version>
         <maven-gpg-plugin.version>3.2.8</maven-gpg-plugin.version>
 
-        <alipay-sdk-java.version>4.40.452.ALL</alipay-sdk-java.version>
+        <alipay-sdk-java.version>4.40.461.ALL</alipay-sdk-java.version>
         <aliyun-sdk-oss.version>3.18.3</aliyun-sdk-oss.version>
         <animated-gif-lib.version>1.4</animated-gif-lib.version>
         <antisamy.version>1.7.8</antisamy.version>
@@ -96,7 +96,7 @@
         <bcpkix-jdk18on.version>1.82</bcpkix-jdk18on.version>
         <bcprov-jdk18on.version>1.82</bcprov-jdk18on.version>
         <camunda-bpm-spring-boot-starter-rest.version>7.24.0-alpha2</camunda-bpm-spring-boot-starter-rest.version>
-        <central-publishing-maven-plugin.version>0.8.0</central-publishing-maven-plugin.version>
+        <central-publishing-maven-plugin.version>0.9.0</central-publishing-maven-plugin.version>
         <commons-collections4.version>4.5.0</commons-collections4.version>
         <commons-io.version>2.20.0</commons-io.version>
         <commons-text.version>1.14.0</commons-text.version>
@@ -129,7 +129,7 @@
         <spring-cloud-tencent-dependencies.version>2.0.2.2-2024.0.1</spring-cloud-tencent-dependencies.version>
         <sqlite-jdbc.version>3.50.3.0</sqlite-jdbc.version>
         <transmittable-thread-local.version>2.14.5</transmittable-thread-local.version>
-        <weixin-java-sdk.version>4.7.7-20250915.094526</weixin-java-sdk.version>
+        <weixin-java-sdk.version>4.7.7-20250923.105322</weixin-java-sdk.version>
         <zxing.version>3.5.3</zxing.version>
 
         <!--Webjars 主要用于内置基于 thymeleaf 的自定义页面-->
@@ -151,7 +151,7 @@
         <classgraph.version>4.8.181</classgraph.version>
         <dom4j.version>2.2.0</dom4j.version>
         <error_prone_annotations.version>2.42.0</error_prone_annotations.version>
-        <jaxb-impl.version>4.0.5</jaxb-impl.version>
+        <jaxb-impl.version>4.0.6</jaxb-impl.version>
         <javassist.version>3.30.2-GA</javassist.version>
         <objenesis.version>3.4</objenesis.version>
         <!--sms4j 依赖 hutool 5，但更新频率低，在此进行统一升级和版本控制-->
