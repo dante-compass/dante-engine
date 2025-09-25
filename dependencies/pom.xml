@@ -37,7 +37,7 @@
 
     <groupId>cn.herodotus.engine</groupId>
     <artifactId>dependencies</artifactId>
-    <version>3.5.6.0</version>
+    <version>3.5.6.1</version>
     <name>Dante Engine Dependencies</name>
     <packaging>pom</packaging>
 
@@ -129,7 +129,7 @@
         <spring-cloud-tencent-dependencies.version>2.0.2.2-2024.0.1</spring-cloud-tencent-dependencies.version>
         <sqlite-jdbc.version>3.50.3.0</sqlite-jdbc.version>
         <transmittable-thread-local.version>2.14.5</transmittable-thread-local.version>
-        <weixin-java-sdk.version>4.7.7-20250923.105322</weixin-java-sdk.version>
+        <weixin-java-sdk.version>4.7.8.B</weixin-java-sdk.version>
         <zxing.version>3.5.3</zxing.version>
 
         <!--Webjars 主要用于内置基于 thymeleaf 的自定义页面-->
@@ -141,13 +141,13 @@
         <sm-crypto.version>0.3.13</sm-crypto.version>
         <sweetalert2.verison>11.23.0</sweetalert2.verison>
         <tabler.version>1.4.0</tabler.version>
-        <vue.version>3.5.21</vue.version>
+        <vue.version>3.5.22</vue.version>
 
         <!--以下为特殊处理, 统一版本处理漏洞等-->
         <checker-qual.version>3.51.0</checker-qual.version>
         <commons-fileupload.version>1.6.0</commons-fileupload.version>
         <!--fix CVE-2025-48924 -->
-        <commons-lang3.version>3.18.0</commons-lang3.version>
+        <commons-lang3.version>3.19.0</commons-lang3.version>
         <classgraph.version>4.8.181</classgraph.version>
         <dom4j.version>2.2.0</dom4j.version>
         <error_prone_annotations.version>2.42.0</error_prone_annotations.version>

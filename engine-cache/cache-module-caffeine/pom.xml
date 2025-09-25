@@ -32,7 +32,7 @@
     <parent>
         <artifactId>engine-cache</artifactId>
         <groupId>cn.herodotus.engine</groupId>
-        <version>3.5.6.0</version>
+        <version>3.5.6.1</version>
     </parent>
 
     <artifactId>cache-module-caffeine</artifactId>
