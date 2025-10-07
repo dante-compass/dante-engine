@@ -122,7 +122,7 @@ public class WebClientAutoConfiguration {
         public WebClient.Builder webClientBuilder(ObjectProvider<WebClientCustomizer> customizerProvider) {
             WebClient.Builder builder = WebClient.builder();
             customizerProvider.orderedStream().forEach((customizer) -> customizer.customize(builder));
-            log.debug("[Herodotus] |- Bean [LoadBalanced WebClient Builder] Configure.");
+            log.trace("[Herodotus] |- Bean [LoadBalanced WebClient Builder] Configure.");
             return builder;
         }
     }

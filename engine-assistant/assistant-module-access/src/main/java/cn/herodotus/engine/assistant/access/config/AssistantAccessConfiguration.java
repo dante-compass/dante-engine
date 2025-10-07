@@ -64,7 +64,7 @@ public class AssistantAccessConfiguration {
     private static final Logger log = LoggerFactory.getLogger(AssistantAccessConfiguration.class);
 
     @PostConstruct
-    public void init() {
+    public void postConstruct() {
         log.debug("[Herodotus] |- Module [Assistant Access] Configure.");
     }
 

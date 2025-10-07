@@ -46,13 +46,13 @@ public class DataQueryDslAutoConfiguration {
 
     @PostConstruct
     public void postConstruct() {
-        log.debug("[Herodotus] |- Auto [Data Query Dsl] Configure.");
+        log.info("[Herodotus] |- Auto [Data Query Dsl] Configure.");
     }
 
     @Bean
     public JPAQueryFactory jpaQueryFactory(EntityManager entityManager) {
         JPAQueryFactory queryFactory = new JPAQueryFactory(entityManager);
-        log.debug("[Herodotus] |- Bean [JPA Query Factory] Configure.");
+        log.trace("[Herodotus] |- Bean [JPA Query Factory] Configure.");
         return queryFactory;
     }
 }

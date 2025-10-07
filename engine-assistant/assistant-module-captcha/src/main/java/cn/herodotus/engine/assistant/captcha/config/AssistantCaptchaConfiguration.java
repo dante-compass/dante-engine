@@ -56,7 +56,7 @@ public class AssistantCaptchaConfiguration {
     private static final Logger log = LoggerFactory.getLogger(AssistantCaptchaConfiguration.class);
 
     @PostConstruct
-    public void init() {
+    public void postConstruct() {
         log.debug("[Herodotus] |- Module [Assistant Captcha] Configure.");
     }
 

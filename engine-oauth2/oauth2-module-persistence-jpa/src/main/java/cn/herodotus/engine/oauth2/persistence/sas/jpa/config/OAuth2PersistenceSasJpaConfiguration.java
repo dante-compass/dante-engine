@@ -74,7 +74,7 @@ public class OAuth2PersistenceSasJpaConfiguration {
     @ConditionalOnMissingBean
     public RegisteredClientRepository registeredClientRepository(HerodotusRegisteredClientService herodotusRegisteredClientService, PasswordEncoder passwordEncoder) {
         JpaRegisteredClientRepository jpaRegisteredClientRepository = new JpaRegisteredClientRepository(herodotusRegisteredClientService, passwordEncoder);
-        log.debug("[Herodotus] |- Bean [Jpa Registered Client Repository] Configure.");
+        log.trace("[Herodotus] |- Bean [Jpa Registered Client Repository] Configure.");
         return jpaRegisteredClientRepository;
     }
 
@@ -82,7 +82,7 @@ public class OAuth2PersistenceSasJpaConfiguration {
     @ConditionalOnMissingBean
     public OAuth2AuthorizationService authorizationService(HerodotusAuthorizationService herodotusAuthorizationService, RegisteredClientRepository registeredClientRepository) {
         JpaOAuth2AuthorizationService jpaOAuth2AuthorizationService = new JpaOAuth2AuthorizationService(herodotusAuthorizationService, registeredClientRepository);
-        log.debug("[Herodotus] |- Bean [Jpa OAuth2 Authorization Service] Configure.");
+        log.trace("[Herodotus] |- Bean [Jpa OAuth2 Authorization Service] Configure.");
         return jpaOAuth2AuthorizationService;
     }
 
@@ -90,7 +90,7 @@ public class OAuth2PersistenceSasJpaConfiguration {
     @ConditionalOnMissingBean
     public OAuth2AuthorizationConsentService authorizationConsentService(HerodotusAuthorizationConsentService herodotusAuthorizationConsentService, RegisteredClientRepository registeredClientRepository) {
         JpaOAuth2AuthorizationConsentService jpaOAuth2AuthorizationConsentService = new JpaOAuth2AuthorizationConsentService(herodotusAuthorizationConsentService, registeredClientRepository);
-        log.debug("[Herodotus] |- Bean [Jpa OAuth2 Authorization Consent Service] Configure.");
+        log.trace("[Herodotus] |- Bean [Jpa OAuth2 Authorization Consent Service] Configure.");
         return jpaOAuth2AuthorizationConsentService;
     }
 }

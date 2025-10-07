@@ -67,7 +67,7 @@ public class LogicIdentityConfiguration {
     @ConditionalOnMissingBean
     public ClientDetailsService clientDetailsService(OAuth2ApplicationService applicationService) {
         HerodotusClientDetailsService herodotusClientDetailsService = new HerodotusClientDetailsService(applicationService);
-        log.debug("[Herodotus] |- Bean [Herodotus Client Details Service] Configure.");
+        log.trace("[Herodotus] |- Bean [Herodotus Client Details Service] Configure.");
         return herodotusClientDetailsService;
     }
 }

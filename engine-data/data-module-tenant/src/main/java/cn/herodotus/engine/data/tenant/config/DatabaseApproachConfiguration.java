@@ -85,7 +85,7 @@ class DatabaseApproachConfiguration {
     @Bean
     public HibernatePropertiesCustomizer databaseMultiTenantConnectionProvider(DataSource dataSource) {
         DatabaseMultiTenantConnectionProvider provider = new DatabaseMultiTenantConnectionProvider(dataSource);
-        log.debug("[Herodotus] |- Bean [Multi Tenant Connection Provider] Configure.");
+        log.trace("[Herodotus] |- Bean [Multi Tenant Connection Provider] Configure.");
         return provider;
     }
 
@@ -124,7 +124,7 @@ class DatabaseApproachConfiguration {
     @ConditionalOnClass({LocalContainerEntityManagerFactoryBean.class})
     public MultiTenantDataSourceFactory multiTenantDataSourceFactory() {
         MultiTenantDataSourceFactory multiTenantDataSourceFactory = new MultiTenantDataSourceFactory();
-        log.debug("[Herodotus] |- Bean [Multi Tenant DataSource Factory] Configure.");
+        log.trace("[Herodotus] |- Bean [Multi Tenant DataSource Factory] Configure.");
         return multiTenantDataSourceFactory;
     }
 }

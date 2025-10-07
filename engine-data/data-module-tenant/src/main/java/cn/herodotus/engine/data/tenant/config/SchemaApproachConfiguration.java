@@ -57,7 +57,7 @@ class SchemaApproachConfiguration {
     @Bean
     public HibernatePropertiesCustomizer schemaMultiTenantConnectionProvider(DataSource dataSource) {
         SchemaMultiTenantConnectionProvider provider = new SchemaMultiTenantConnectionProvider(dataSource);
-        log.debug("[Herodotus] |- Bean [Multi Tenant Connection Provider] Configure.");
+        log.trace("[Herodotus] |- Bean [Multi Tenant Connection Provider] Configure.");
         return provider;
     }
 }

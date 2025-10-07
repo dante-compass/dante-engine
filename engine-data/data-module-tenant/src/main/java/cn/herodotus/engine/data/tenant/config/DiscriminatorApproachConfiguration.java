@@ -52,7 +52,7 @@ class DiscriminatorApproachConfiguration {
     @Bean
     public HibernatePropertiesCustomizer herodotusTenantIdentifierResolver() {
         HerodotusTenantIdentifierResolver resolver = new HerodotusTenantIdentifierResolver();
-        log.debug("[Herodotus] |- Bean [Current Tenant Identifier Resolver] Configure.");
+        log.trace("[Herodotus] |- Bean [Current Tenant Identifier Resolver] Configure.");
         return resolver;
     }
 }

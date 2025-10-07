@@ -55,6 +55,6 @@ public class OAuth2AuthenticationAutoConfiguration {
 
     @PostConstruct
     public void postConstruct() {
-        log.debug("[Herodotus] |- Auto [OAuth2 Authentication] Configure.");
+        log.info("[Herodotus] |- Auto [OAuth2 Authentication] Configure.");
     }
 }

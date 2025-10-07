@@ -53,7 +53,7 @@ public class AssistantAccessWxappConfiguration {
     private static final Logger log = LoggerFactory.getLogger(AssistantAccessWxappConfiguration.class);
 
     @PostConstruct
-    public void init() {
+    public void postConstruct() {
         log.debug("[Herodotus] |- Module [Assistant Access Wxapp] Configure.");
     }
 
@@ -70,7 +70,7 @@ public class AssistantAccessWxappConfiguration {
     @ConditionalOnMissingBean
     public WxappAccessHandler wxappAccessHandler(WxappProcessor wxappProcessor) {
         WxappAccessHandler wxappAccessHandler = new WxappAccessHandler(wxappProcessor);
-        log.debug("[Herodotus] |- Bean [Wxapp Access Handler] Configure.");
+        log.trace("[Herodotus] |- Bean [Wxapp Access Handler] Configure.");
         return wxappAccessHandler;
     }
 }

@@ -111,7 +111,7 @@ public class ServletOAuth2AuthorizationAutoConfiguration {
     @ConditionalOnMissingBean
     public AuditorAware<String> auditorAware() {
         ServletSecurityAuditorAware aware = new ServletSecurityAuditorAware();
-        log.debug("[Herodotus] |- Bean [Servlet Security Auditor Aware] Configure.");
+        log.trace("[Herodotus] |- Bean [Servlet Security Auditor Aware] Configure.");
         return aware;
     }
 }

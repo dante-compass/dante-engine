@@ -66,7 +66,7 @@ public class OAuth2AuthenticationConfiguration {
         DefaultOAuth2AuthenticationEventPublisher publisher = new DefaultOAuth2AuthenticationEventPublisher(applicationContext);
         // 设置默认的错误 Event 类型。在遇到默认字典中没有的错误时，默认抛出。
         publisher.setDefaultAuthenticationFailureEvent(AuthenticationFailureBadCredentialsEvent.class);
-        log.debug("[Herodotus] |- Bean [Authentication Event Publisher] Configure.");
+        log.trace("[Herodotus] |- Bean [Authentication Event Publisher] Configure.");
         return publisher;
     }
 

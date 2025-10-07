@@ -50,6 +50,6 @@ public class TenantDataSourceAutoConfiguration {
 
     @PostConstruct
     public void postConstruct() {
-        log.debug("[Herodotus] |- Auto [Tenant Data Source] Configure.");
+        log.info("[Herodotus] |- Auto [Tenant Data Source] Configure.");
     }
 }

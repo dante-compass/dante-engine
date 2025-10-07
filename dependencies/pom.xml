@@ -88,14 +88,14 @@
         <maven-archetype-plugin.version>3.4.0</maven-archetype-plugin.version>
         <maven-gpg-plugin.version>3.2.8</maven-gpg-plugin.version>
 
-        <alipay-sdk-java.version>4.40.461.ALL</alipay-sdk-java.version>
+        <alipay-sdk-java.version>4.40.465.ALL</alipay-sdk-java.version>
         <aliyun-sdk-oss.version>3.18.3</aliyun-sdk-oss.version>
         <animated-gif-lib.version>1.4</animated-gif-lib.version>
         <antisamy.version>1.7.8</antisamy.version>
         <aws-java-sdk-s3.version>1.12.791</aws-java-sdk-s3.version>
         <bcpkix-jdk18on.version>1.82</bcpkix-jdk18on.version>
         <bcprov-jdk18on.version>1.82</bcprov-jdk18on.version>
-        <camunda-bpm-spring-boot-starter-rest.version>7.24.0-alpha2</camunda-bpm-spring-boot-starter-rest.version>
+        <camunda-bpm-spring-boot-starter-rest.version>7.24.0-alpha3</camunda-bpm-spring-boot-starter-rest.version>
         <central-publishing-maven-plugin.version>0.9.0</central-publishing-maven-plugin.version>
         <commons-collections4.version>4.5.0</commons-collections4.version>
         <commons-io.version>2.20.0</commons-io.version>
@@ -115,7 +115,7 @@
         <mysql.version>9.4.0</mysql.version>
         <nacos.version>3.1.0</nacos.version>
         <openfeign-querydsl.version>7.0</openfeign-querydsl.version>
-        <opengauss-jdbc.version>6.0.0-og</opengauss-jdbc.version>
+        <opengauss-jdbc.version>6.0.1-og</opengauss-jdbc.version>
         <org.eclipse.paho.version>1.2.5</org.eclipse.paho.version>
         <p6spy.version>3.9.1</p6spy.version>
         <redisson.version>3.51.0</redisson.version>
@@ -129,7 +129,7 @@
         <spring-cloud-tencent-dependencies.version>2.0.2.2-2024.0.1</spring-cloud-tencent-dependencies.version>
         <sqlite-jdbc.version>3.50.3.0</sqlite-jdbc.version>
         <transmittable-thread-local.version>2.14.5</transmittable-thread-local.version>
-        <weixin-java-sdk.version>4.7.8-20250927.171143</weixin-java-sdk.version>
+        <weixin-java-sdk.version>4.7.8-20251004.014820</weixin-java-sdk.version>
         <zxing.version>3.5.3</zxing.version>
 
         <!--Webjars 主要用于内置基于 thymeleaf 的自定义页面-->
@@ -144,7 +144,7 @@
         <vue.version>3.5.22</vue.version>
 
         <!--以下为特殊处理, 统一版本处理漏洞等-->
-        <checker-qual.version>3.51.0</checker-qual.version>
+        <checker-qual.version>3.51.1</checker-qual.version>
         <commons-fileupload.version>1.6.0</commons-fileupload.version>
         <!--fix CVE-2025-48924 -->
         <commons-lang3.version>3.19.0</commons-lang3.version>

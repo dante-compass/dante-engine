@@ -55,7 +55,7 @@ public class WebMvcRestMappingScanConfiguration {
 
     @PostConstruct
     public void postConstruct() {
-        log.debug("[Herodotus] |- Auto [Servlet Rest Mapping Scan] Configure.");
+        log.info("[Herodotus] |- Auto [Servlet Rest Mapping Scan] Configure.");
     }
 
     @Bean

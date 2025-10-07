@@ -86,7 +86,7 @@ public class RestTemplateAutoConfiguration {
         RestTemplate restTemplate = restTemplateBuilder
                 .errorHandler(responseErrorHandler)
                 .build();
-        log.debug("[Herodotus] |- Bean [LoadBalanced Rest Template] Configure.");
+        log.trace("[Herodotus] |- Bean [LoadBalanced Rest Template] Configure.");
         return restTemplate;
     }
 }

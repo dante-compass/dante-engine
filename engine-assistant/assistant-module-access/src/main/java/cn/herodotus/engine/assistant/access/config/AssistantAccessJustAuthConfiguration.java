@@ -56,7 +56,7 @@ public class AssistantAccessJustAuthConfiguration {
     private static final Logger log = LoggerFactory.getLogger(AssistantAccessJustAuthConfiguration.class);
 
     @PostConstruct
-    public void init() {
+    public void postConstruct() {
         log.debug("[Herodotus] |- Module [Assistant Access JustAuth] Configure.");
     }
 
@@ -84,7 +84,7 @@ public class AssistantAccessJustAuthConfiguration {
     @ConditionalOnMissingBean
     public JustAuthAccessHandler justAuthAccessHandler(JustAuthProcessor justAuthProcessor) {
         JustAuthAccessHandler justAuthAccessHandler = new JustAuthAccessHandler(justAuthProcessor);
-        log.debug("[Herodotus] |- Bean [Just Auth Access Handler] Configure.");
+        log.trace("[Herodotus] |- Bean [Just Auth Access Handler] Configure.");
         return justAuthAccessHandler;
     }
 }

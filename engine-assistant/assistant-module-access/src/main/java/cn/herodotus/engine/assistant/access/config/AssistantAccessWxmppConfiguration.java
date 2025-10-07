@@ -52,7 +52,7 @@ public class AssistantAccessWxmppConfiguration {
     private static final Logger log = LoggerFactory.getLogger(AssistantAccessWxmppConfiguration.class);
 
     @PostConstruct
-    public void init() {
+    public void postConstruct() {
         log.debug("[Herodotus] |- Module [Assistant Access Wxmpp] Configure.");
     }
 
