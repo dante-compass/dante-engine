@@ -37,7 +37,7 @@
 
     <groupId>cn.herodotus.engine</groupId>
     <artifactId>dependencies</artifactId>
-    <version>3.5.6.1</version>
+    <version>3.5.6.2</version>
     <name>Dante Engine Dependencies</name>
     <packaging>pom</packaging>
 
@@ -83,16 +83,16 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
         <!--Maven Plugins-->
-        <archetype-packaging.verison>3.4.0</archetype-packaging.verison>
+        <archetype-packaging.verison>3.4.1</archetype-packaging.verison>
         <mapstruct-processor.version>1.6.3</mapstruct-processor.version>
-        <maven-archetype-plugin.version>3.4.0</maven-archetype-plugin.version>
+        <maven-archetype-plugin.version>3.4.1</maven-archetype-plugin.version>
         <maven-gpg-plugin.version>3.2.8</maven-gpg-plugin.version>
 
         <alipay-sdk-java.version>4.40.465.ALL</alipay-sdk-java.version>
         <aliyun-sdk-oss.version>3.18.3</aliyun-sdk-oss.version>
         <animated-gif-lib.version>1.4</animated-gif-lib.version>
         <antisamy.version>1.7.8</antisamy.version>
-        <aws-java-sdk-s3.version>1.12.791</aws-java-sdk-s3.version>
+        <aws-java-sdk-s3.version>1.12.792</aws-java-sdk-s3.version>
         <bcpkix-jdk18on.version>1.82</bcpkix-jdk18on.version>
         <bcprov-jdk18on.version>1.82</bcprov-jdk18on.version>
         <camunda-bpm-spring-boot-starter-rest.version>7.24.0-alpha3</camunda-bpm-spring-boot-starter-rest.version>
@@ -107,7 +107,7 @@
         <influxdb-client.version>7.3.0</influxdb-client.version>
         <jasypt-spring-boot-starter.version>3.0.5</jasypt-spring-boot-starter.version>
         <jetcache.version>2.7.8</jetcache.version>
-        <justauth.verison>1.18.0</justauth.verison>
+        <justauth.verison>1.18.1</justauth.verison>
         <logstash-logback-encoder.version>8.1</logstash-logback-encoder.version>
         <minio.version>8.6.0</minio.version>
         <mybatis.version>3.5.19</mybatis.version>
@@ -139,7 +139,7 @@
         <mdi__font.version>7.4.47</mdi__font.version>
         <quasar.version>2.18.5</quasar.version>
         <sm-crypto.version>0.3.13</sm-crypto.version>
-        <sweetalert2.verison>11.23.0</sweetalert2.verison>
+        <sweetalert2.verison>11.24.0</sweetalert2.verison>
         <tabler.version>1.4.0</tabler.version>
         <vue.version>3.5.22</vue.version>
 
