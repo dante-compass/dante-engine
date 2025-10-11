@@ -26,6 +26,7 @@
 package cn.herodotus.engine.oauth2.core.properties;
 
 import cn.herodotus.engine.core.definition.constant.SymbolConstants;
+import cn.herodotus.engine.core.foundation.enums.Certificate;
 import cn.herodotus.engine.oauth2.core.constants.OAuth2Constants;
 import com.google.common.base.MoreObjects;
 import org.apache.commons.lang3.StringUtils;
@@ -59,6 +60,11 @@ public class OAuth2AuthenticationProperties {
      * 账户踢出限制
      */
     private SignInKickOutLimited signInKickOutLimited = new SignInKickOutLimited();
+
+    /**
+     * JWT的密钥或者密钥对(JSON Web Key) 配置
+     */
+    private Jwk jwk = new Jwk();
 
     private FormLogin formLogin = new FormLogin();
 
@@ -94,13 +100,102 @@ public class OAuth2AuthenticationProperties {
         this.formLogin = formLogin;
     }
 
+    public Jwk getJwk() {
+        return jwk;
+    }
+
+    public void setJwk(Jwk jwk) {
+        this.jwk = jwk;
+    }
+
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("signInEndpointLimited", signInEndpointLimited)
                 .add("signInFailureLimited", signInFailureLimited)
+                .add("signInEndpointLimited", signInEndpointLimited)
                 .add("signInKickOutLimited", signInKickOutLimited)
+                .add("jwk", jwk)
+                .add("formLogin", formLogin)
                 .toString();
+    }
+
+    public static class Jwk {
+
+        /**
+         * 证书策略：standard OAuth2 标准证书模式；custom 自定义证书模式
+         */
+        private Certificate certificate = Certificate.CUSTOM;
+        /**
+         * jks证书文件路径
+         */
+        private String jksKeyStore = "classpath*:certificate/herodotus-cloud.jks";
+        /**
+         * jks证书密码
+         */
+        private String jksKeyPassword = "Herodotus-Cloud";
+        /**
+         * jks证书密钥库密码
+         */
+        private String jksStorePassword = "Herodotus-Cloud";
+        /**
+         * jks证书别名
+         */
+        private String jksKeyAlias = "herodotus-cloud";
+
+        public Certificate getCertificate() {
+            return certificate;
+        }
+
+        public void setCertificate(Certificate certificate) {
+            this.certificate = certificate;
+        }
+
+        public String getJksKeyStore() {
+            return jksKeyStore;
+        }
+
+        public void setJksKeyStore(String jksKeyStore) {
+            this.jksKeyStore = jksKeyStore;
+        }
+
+        public String getJksKeyPassword() {
+            return jksKeyPassword;
+        }
+
+        public void setJksKeyPassword(String jksKeyPassword) {
+            this.jksKeyPassword = jksKeyPassword;
+        }
+
+        public String getJksStorePassword() {
+            return jksStorePassword;
+        }
+
+        public void setJksStorePassword(String jksStorePassword) {
+            this.jksStorePassword = jksStorePassword;
+        }
+
+        public String getJksKeyAlias() {
+            return jksKeyAlias;
+        }
+
+        public void setJksKeyAlias(String jksKeyAlias) {
+            this.jksKeyAlias = jksKeyAlias;
+        }
+
+        @Override
+        public String toString() {
+            return MoreObjects.toStringHelper(this)
+                    .add("certificate", certificate)
+                    .add("jksKeyStore", jksKeyStore)
+                    .add("jksKeyPassword", jksKeyPassword)
+                    .add("jksStorePassword", jksStorePassword)
+                    .add("jksKeyAlias", jksKeyAlias)
+                    .toString();
+        }
+
+        private enum Strategy {
+            STANDARD, CUSTOM
+        }
     }
 
     public static class SignInFailureLimited {

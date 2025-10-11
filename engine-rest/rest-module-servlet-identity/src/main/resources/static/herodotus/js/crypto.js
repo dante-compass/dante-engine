@@ -24,27 +24,28 @@
  */
 
 $.sm2 = {
+    cipherMode: 1,
     createKeyPair: () => {
-        return sm2.generateKeyPairHex();
+        return SmCryptoV2.sm2.generateKeyPairHex();
     },
 
     encrypt: (content, publicKey) => {
-        return '04' + sm2.doEncrypt(content, publicKey, this.cipherMode);
+        return '04' + SmCryptoV2.sm2.doEncrypt(content, publicKey, this.cipherMode);
     },
 
     decrypt: (content, privateKey) => {
         let data = content.substring(2).toLocaleLowerCase();
-        return sm2.doDecrypt(data, privateKey, this.cipherMode);
+        return SmCryptoV2.sm2.doDecrypt(data, privateKey, this.cipherMode, { output: 'string' });
     }
 }
 
 $.sm4 = {
     encrypt: (content, publicKey) => {
-        return sm4.encrypt(content, publicKey);
+        return SmCryptoV2.sm4.encrypt(content, publicKey, { output: 'string' });
     },
 
     decrypt: (content, privateKey) => {
-        return sm4.decrypt(content, privateKey);
+        return SmCryptoV2.sm4.decrypt(content, privateKey, { output: 'string' });
     }
 }
 

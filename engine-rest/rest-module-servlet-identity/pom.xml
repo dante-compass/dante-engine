@@ -95,7 +95,7 @@
         </dependency>
         <dependency>
             <groupId>org.webjars.npm</groupId>
-            <artifactId>sm-crypto</artifactId>
+            <artifactId>sm-crypto-v2</artifactId>
         </dependency>
     </dependencies>
 

@@ -27,8 +27,6 @@ package cn.herodotus.engine.core.autoconfigure.oauth2;
 
 import cn.herodotus.engine.core.autoconfigure.oauth2.constant.TokenFormat;
 import cn.herodotus.engine.core.definition.constant.BaseConstants;
-import cn.herodotus.engine.core.foundation.enums.Certificate;
-import com.google.common.base.MoreObjects;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 import java.util.List;
@@ -55,10 +53,6 @@ public class OAuth2AuthorizationProperties {
     private Boolean strict = true;
 
     /**
-     * JWT的密钥或者密钥对(JSON Web Key) 配置
-     */
-    private Jwk jwk = new Jwk();
-    /**
      * 指定 Request Matcher 静态安全规则
      */
     private Matcher matcher = new Matcher();
@@ -79,99 +73,12 @@ public class OAuth2AuthorizationProperties {
         this.strict = strict;
     }
 
-    public Jwk getJwk() {
-        return jwk;
-    }
-
-    public void setJwk(Jwk jwk) {
-        this.jwk = jwk;
-    }
-
     public Matcher getMatcher() {
         return matcher;
     }
 
     public void setMatcher(Matcher matcher) {
         this.matcher = matcher;
-    }
-
-    public static class Jwk {
-
-        /**
-         * 证书策略：standard OAuth2 标准证书模式；custom 自定义证书模式
-         */
-        private Certificate certificate = Certificate.CUSTOM;
-        /**
-         * jks证书文件路径
-         */
-        private String jksKeyStore = "classpath*:certificate/herodotus-cloud.jks";
-        /**
-         * jks证书密码
-         */
-        private String jksKeyPassword = "Herodotus-Cloud";
-        /**
-         * jks证书密钥库密码
-         */
-        private String jksStorePassword = "Herodotus-Cloud";
-        /**
-         * jks证书别名
-         */
-        private String jksKeyAlias = "herodotus-cloud";
-
-        public Certificate getCertificate() {
-            return certificate;
-        }
-
-        public void setCertificate(Certificate certificate) {
-            this.certificate = certificate;
-        }
-
-        public String getJksKeyStore() {
-            return jksKeyStore;
-        }
-
-        public void setJksKeyStore(String jksKeyStore) {
-            this.jksKeyStore = jksKeyStore;
-        }
-
-        public String getJksKeyPassword() {
-            return jksKeyPassword;
-        }
-
-        public void setJksKeyPassword(String jksKeyPassword) {
-            this.jksKeyPassword = jksKeyPassword;
-        }
-
-        public String getJksStorePassword() {
-            return jksStorePassword;
-        }
-
-        public void setJksStorePassword(String jksStorePassword) {
-            this.jksStorePassword = jksStorePassword;
-        }
-
-        public String getJksKeyAlias() {
-            return jksKeyAlias;
-        }
-
-        public void setJksKeyAlias(String jksKeyAlias) {
-            this.jksKeyAlias = jksKeyAlias;
-        }
-
-        @Override
-        public String toString() {
-            return MoreObjects.toStringHelper(this)
-                    .add("certificate", certificate)
-                    .add("jksKeyStore", jksKeyStore)
-                    .add("jksKeyPassword", jksKeyPassword)
-                    .add("jksStorePassword", jksStorePassword)
-                    .add("jksKeyAlias", jksKeyAlias)
-                    .toString();
-        }
-
-        private enum Strategy {
-            STANDARD, CUSTOM
-        }
     }
 
     /**
