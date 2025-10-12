@@ -37,7 +37,7 @@
 
     <groupId>cn.herodotus.engine</groupId>
     <artifactId>dependencies</artifactId>
-    <version>3.5.6.2</version>
+    <version>3.5.6.3</version>
     <name>Dante Engine Dependencies</name>
     <packaging>pom</packaging>
 
@@ -107,7 +107,7 @@
         <influxdb-client.version>7.3.0</influxdb-client.version>
         <jasypt-spring-boot-starter.version>3.0.5</jasypt-spring-boot-starter.version>
         <jetcache.version>2.7.8</jetcache.version>
-        <justauth.verison>1.18.1</justauth.verison>
+        <justauth.verison>1.18.2</justauth.verison>
         <logstash-logback-encoder.version>8.1</logstash-logback-encoder.version>
         <minio.version>8.6.0</minio.version>
         <mybatis.version>3.5.19</mybatis.version>
