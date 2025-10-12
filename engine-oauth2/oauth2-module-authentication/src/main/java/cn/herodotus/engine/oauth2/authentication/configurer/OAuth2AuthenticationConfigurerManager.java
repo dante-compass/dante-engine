@@ -25,6 +25,7 @@
 
 package cn.herodotus.engine.oauth2.authentication.configurer;
 
+import cn.herodotus.engine.oauth2.authentication.customizer.OAuth2ExceptionHandlingConfigurerCustomizer;
 import cn.herodotus.engine.oauth2.authentication.customizer.OAuth2FormLoginConfigurerCustomizer;
 import cn.herodotus.engine.oauth2.authentication.response.OAuth2AccessTokenResponseHandler;
 import cn.herodotus.engine.oauth2.authentication.response.OAuth2AuthenticationFailureHandler;
@@ -46,6 +47,7 @@ public class OAuth2AuthenticationConfigurerManager {
 
     private final OAuth2AuthenticationProperties oauth2AuthenticationProperties;
     private final OAuth2FormLoginConfigurerCustomizer oauth2FormLoginConfigurerCustomizer;
+    private final OAuth2ExceptionHandlingConfigurerCustomizer oauth2ExceptionHandlingConfigurerCustomizer;
     private final OAuth2AccessTokenResponseHandler oauth2AccessTokenResponseHandler;
     private final OAuth2AuthenticationFailureHandler oauth2AuthenticationFailureHandler;
 
@@ -56,6 +58,7 @@ public class OAuth2AuthenticationConfigurerManager {
         this.httpCryptoProcessor = httpCryptoProcessor;
         this.oauth2AuthenticationProperties = oauth2AuthenticationProperties;
         this.oauth2FormLoginConfigurerCustomizer = new OAuth2FormLoginConfigurerCustomizer(oauth2AuthenticationProperties);
+        this.oauth2ExceptionHandlingConfigurerCustomizer = new  OAuth2ExceptionHandlingConfigurerCustomizer(oauth2AuthenticationProperties);
         this.oauth2AccessTokenResponseHandler = new OAuth2AccessTokenResponseHandler(httpCryptoProcessor);
         this.oauth2AuthenticationFailureHandler = new OAuth2AuthenticationFailureHandler(thymeleafTemplateHandler);
     }
@@ -70,6 +73,10 @@ public class OAuth2AuthenticationConfigurerManager {
 
     public OAuth2FormLoginConfigurerCustomizer getOAuth2FormLoginConfigurerCustomizer() {
         return oauth2FormLoginConfigurerCustomizer;
+    }
+
+    public OAuth2ExceptionHandlingConfigurerCustomizer getOAuth2ExceptionHandlingConfigurerCustomizer() {
+        return oauth2ExceptionHandlingConfigurerCustomizer;
     }
 
     public OAuth2AccessTokenResponseHandler getOAuth2AccessTokenResponseHandler() {

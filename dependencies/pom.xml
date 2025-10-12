@@ -37,7 +37,7 @@
 
     <groupId>cn.herodotus.engine</groupId>
     <artifactId>dependencies</artifactId>
-    <version>3.5.6.2</version>
+    <version>3.5.6.3</version>
     <name>Dante Engine Dependencies</name>
     <packaging>pom</packaging>
 
@@ -88,7 +88,7 @@
         <maven-archetype-plugin.version>3.4.1</maven-archetype-plugin.version>
         <maven-gpg-plugin.version>3.2.8</maven-gpg-plugin.version>
 
-        <alipay-sdk-java.version>4.40.465.ALL</alipay-sdk-java.version>
+        <alipay-sdk-java.version>4.40.467.ALL</alipay-sdk-java.version>
         <aliyun-sdk-oss.version>3.18.3</aliyun-sdk-oss.version>
         <animated-gif-lib.version>1.4</animated-gif-lib.version>
         <antisamy.version>1.7.8</antisamy.version>
@@ -107,7 +107,7 @@
         <influxdb-client.version>7.3.0</influxdb-client.version>
         <jasypt-spring-boot-starter.version>3.0.5</jasypt-spring-boot-starter.version>
         <jetcache.version>2.7.8</jetcache.version>
-        <justauth.verison>1.18.1</justauth.verison>
+        <justauth.verison>1.18.2</justauth.verison>
         <logstash-logback-encoder.version>8.1</logstash-logback-encoder.version>
         <minio.version>8.6.0</minio.version>
         <mybatis.version>3.5.19</mybatis.version>
@@ -115,7 +115,7 @@
         <mysql.version>9.4.0</mysql.version>
         <nacos.version>3.1.0</nacos.version>
         <openfeign-querydsl.version>7.0</openfeign-querydsl.version>
-        <opengauss-jdbc.version>6.0.1-og</opengauss-jdbc.version>
+        <opengauss-jdbc.version>6.0.2-og</opengauss-jdbc.version>
         <org.eclipse.paho.version>1.2.5</org.eclipse.paho.version>
         <p6spy.version>3.9.1</p6spy.version>
         <redisson.version>3.51.0</redisson.version>
@@ -138,8 +138,8 @@
         <jquery.version>3.7.1</jquery.version>
         <mdi__font.version>7.4.47</mdi__font.version>
         <quasar.version>2.18.5</quasar.version>
-        <sm-crypto.version>0.3.13</sm-crypto.version>
-        <sweetalert2.verison>11.24.0</sweetalert2.verison>
+        <sm-crypto-v2.version>1.15.0</sm-crypto-v2.version>
+        <sweetalert2.verison>11.26.1</sweetalert2.verison>
         <tabler.version>1.4.0</tabler.version>
         <vue.version>3.5.22</vue.version>
 
@@ -148,7 +148,7 @@
         <commons-fileupload.version>1.6.0</commons-fileupload.version>
         <!--fix CVE-2025-48924 -->
         <commons-lang3.version>3.19.0</commons-lang3.version>
-        <classgraph.version>4.8.181</classgraph.version>
+        <classgraph.version>4.8.184</classgraph.version>
         <dom4j.version>2.2.0</dom4j.version>
         <error_prone_annotations.version>2.42.0</error_prone_annotations.version>
         <jaxb-impl.version>4.0.6</jaxb-impl.version>
@@ -158,7 +158,7 @@
         <hutool5.version>5.8.40</hutool5.version>
         <httpclient.version>4.5.14</httpclient.version>
         <kryo.version>5.6.2</kryo.version>
-        <okio.version>3.16.0</okio.version>
+        <okio.version>3.16.1</okio.version>
         <snappy-java.version>1.1.10.8</snappy-java.version>
         <!--fix CVE-2024-51504 -->
         <zookeeper.verison>3.9.4</zookeeper.verison>
@@ -686,8 +686,8 @@
             </dependency>
             <dependency>
                 <groupId>org.webjars.npm</groupId>
-                <artifactId>sm-crypto</artifactId>
-                <version>${sm-crypto.version}</version>
+                <artifactId>sm-crypto-v2</artifactId>
+                <version>${sm-crypto-v2.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.webjars.npm</groupId>
