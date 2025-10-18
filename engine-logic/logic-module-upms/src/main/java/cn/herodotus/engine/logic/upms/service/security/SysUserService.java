@@ -36,7 +36,7 @@ import cn.herodotus.engine.logic.upms.entity.security.SysDefaultRole;
 import cn.herodotus.engine.logic.upms.entity.security.SysRole;
 import cn.herodotus.engine.logic.upms.entity.security.SysUser;
 import cn.herodotus.engine.logic.upms.repository.security.SysUserRepository;
-import cn.herodotus.engine.oauth2.core.utils.SecurityUtils;
+import cn.herodotus.engine.oauth2.core.utils.OAuth2Utils;
 import cn.hutool.v7.core.data.id.IdUtil;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.ObjectUtils;
@@ -86,7 +86,7 @@ public class SysUserService extends AbstractJpaService<SysUser, String> {
 
     public SysUser changePassword(String userId, String password) {
         SysUser sysUser = findByUserId(userId);
-        sysUser.setPassword(SecurityUtils.encrypt(password));
+        sysUser.setPassword(OAuth2Utils.encrypt(password));
         return saveAndFlush(sysUser);
     }
 
@@ -156,7 +156,7 @@ public class SysUserService extends AbstractJpaService<SysUser, String> {
 
         String phoneNumber = socialUserDetails.getPhoneNumber();
         if (StringUtils.isNotBlank(phoneNumber)) {
-            sysUser.setPhoneNumber(SecurityUtils.encrypt(phoneNumber));
+            sysUser.setPhoneNumber(OAuth2Utils.encrypt(phoneNumber));
         }
 
         String avatar = socialUserDetails.getAvatar();
@@ -164,7 +164,7 @@ public class SysUserService extends AbstractJpaService<SysUser, String> {
             sysUser.setAvatar(avatar);
         }
 
-        sysUser.setPassword(SecurityUtils.encrypt("herodotus-cloud"));
+        sysUser.setPassword(OAuth2Utils.encrypt("herodotus-cloud"));
 
         return register(sysUser, AccountCategory.getAccountType(socialUserDetails.getSource()));
     }

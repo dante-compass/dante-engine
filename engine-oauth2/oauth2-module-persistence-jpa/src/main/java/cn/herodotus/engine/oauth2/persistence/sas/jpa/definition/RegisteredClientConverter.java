@@ -26,7 +26,7 @@
 package cn.herodotus.engine.oauth2.persistence.sas.jpa.definition;
 
 import cn.herodotus.engine.core.identity.domain.RegisteredClientDetails;
-import cn.herodotus.engine.oauth2.core.utils.OAuth2AuthenticationUtils;
+import cn.herodotus.engine.oauth2.core.utils.OAuth2Utils;
 import cn.hutool.v7.core.date.DateUtil;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
@@ -69,10 +69,10 @@ public interface RegisteredClientConverter<S extends RegisteredClientDetails> ex
                 .clientName(details.getId())
                 .clientAuthenticationMethods(authenticationMethods ->
                         clientAuthenticationMethods.forEach(authenticationMethod ->
-                                authenticationMethods.add(OAuth2AuthenticationUtils.resolveClientAuthenticationMethod(authenticationMethod))))
+                                authenticationMethods.add(OAuth2Utils.resolveClientAuthenticationMethod(authenticationMethod))))
                 .authorizationGrantTypes((grantTypes) ->
                         authorizationGrantTypes.forEach(grantType ->
-                                grantTypes.add(OAuth2AuthenticationUtils.resolveAuthorizationGrantType(grantType))))
+                                grantTypes.add(OAuth2Utils.resolveAuthorizationGrantType(grantType))))
                 .redirectUris((uris) -> uris.addAll(redirectUris))
                 .postLogoutRedirectUris((uris) -> uris.addAll(postLogoutRedirectUris))
                 .scopes((scopes) -> scopes.addAll(clientScopes))

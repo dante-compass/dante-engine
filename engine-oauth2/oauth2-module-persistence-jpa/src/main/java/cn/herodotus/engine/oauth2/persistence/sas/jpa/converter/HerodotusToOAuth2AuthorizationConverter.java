@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.oauth2.persistence.sas.jpa.converter;
 
-import cn.herodotus.engine.oauth2.core.utils.OAuth2AuthenticationUtils;
+import cn.herodotus.engine.oauth2.core.utils.OAuth2Utils;
 import cn.herodotus.engine.oauth2.persistence.sas.jpa.definition.AbstractOAuth2EntityConverter;
 import cn.herodotus.engine.oauth2.persistence.sas.jpa.entity.HerodotusAuthorization;
 import cn.herodotus.engine.oauth2.persistence.sas.jpa.jackson2.OAuth2JacksonProcessor;
@@ -69,7 +69,7 @@ public class HerodotusToOAuth2AuthorizationConverter extends AbstractOAuth2Entit
         OAuth2Authorization.Builder builder = OAuth2Authorization.withRegisteredClient(registeredClient)
                 .id(entity.getId())
                 .principalName(entity.getPrincipalName())
-                .authorizationGrantType(OAuth2AuthenticationUtils.resolveAuthorizationGrantType(entity.getAuthorizationGrantType()))
+                .authorizationGrantType(OAuth2Utils.resolveAuthorizationGrantType(entity.getAuthorizationGrantType()))
                 .authorizedScopes(StringUtils.commaDelimitedListToSet(entity.getAuthorizedScopes()))
                 .attributes(attributes -> attributes.putAll(parseMap(entity.getAttributes())));
         if (entity.getState() != null) {

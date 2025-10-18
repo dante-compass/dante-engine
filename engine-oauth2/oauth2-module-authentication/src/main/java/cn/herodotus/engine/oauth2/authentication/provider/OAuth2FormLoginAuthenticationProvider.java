@@ -44,6 +44,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 /**
  * <p>Description: OAuth2 (Security) 表单登录 Provider </p>
@@ -60,8 +61,8 @@ public class OAuth2FormLoginAuthenticationProvider extends DaoAuthenticationProv
 
     private final CaptchaRendererFactory captchaRendererFactory;
 
-    public OAuth2FormLoginAuthenticationProvider(CaptchaRendererFactory captchaRendererFactory) {
-        super();
+    public OAuth2FormLoginAuthenticationProvider(CaptchaRendererFactory captchaRendererFactory, UserDetailsService userDetailsService) {
+        super(userDetailsService);
         this.captchaRendererFactory = captchaRendererFactory;
     }
 

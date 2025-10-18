@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.oauth2.extension.converter;
 
-import cn.herodotus.engine.oauth2.core.utils.OAuth2AuthenticationUtils;
+import cn.herodotus.engine.oauth2.core.utils.OAuth2Utils;
 import cn.herodotus.engine.oauth2.extension.entity.OAuth2UserLogging;
 import cn.herodotus.engine.web.core.servlet.utils.HeaderUtils;
 import cn.hutool.v7.http.useragent.UserAgent;
@@ -50,7 +50,7 @@ public class RequestToUserLoggingConverter implements Converter<HttpServletReque
     private final String operation;
 
     public RequestToUserLoggingConverter(OAuth2AccessTokenAuthenticationToken token) {
-        this(OAuth2AuthenticationUtils.getUsername(token), token.getRegisteredClient().getId(), "登录系统");
+        this(OAuth2Utils.getUsername(token), token.getRegisteredClient().getId(), "登录系统");
     }
 
     public RequestToUserLoggingConverter(OAuth2Authorization authorization) {

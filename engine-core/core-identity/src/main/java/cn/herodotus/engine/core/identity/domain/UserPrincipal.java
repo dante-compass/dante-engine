@@ -28,6 +28,7 @@ package cn.herodotus.engine.core.identity.domain;
 import cn.herodotus.engine.core.definition.constant.SystemConstants;
 import com.google.common.base.MoreObjects;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -39,7 +40,7 @@ import java.util.Set;
  * @author : gengwei.zheng
  * @date : 2022/7/13 14:31
  */
-public class UserPrincipal implements HerodotusPrincipal {
+public class UserPrincipal implements HerodotusPrincipal, Serializable {
 
     private String id;
 

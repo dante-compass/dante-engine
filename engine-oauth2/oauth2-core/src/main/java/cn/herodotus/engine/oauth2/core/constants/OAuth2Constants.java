@@ -35,6 +35,8 @@ import cn.herodotus.engine.core.definition.constant.BaseConstants;
  */
 public interface OAuth2Constants extends BaseConstants {
 
+    String KEY_USER_PRINCIPAL = "USER_PRINCIPAL";
+
     String PROPERTY_SIGN_IN_FAILURE_LIMITED = PROPERTY_OAUTH2_AUTHENTICATION + ".sign-in-failure-limited";
 
     String ITEM_SIGN_IN_FAILURE_LIMITED_AUTO_UNLOCK = PROPERTY_SIGN_IN_FAILURE_LIMITED + ".auto-unlock";

@@ -28,12 +28,14 @@ package cn.herodotus.engine.oauth2.authentication.response;
 import cn.herodotus.engine.core.definition.constant.SystemConstants;
 import cn.herodotus.engine.core.definition.utils.Jackson2Utils;
 import cn.herodotus.engine.core.identity.domain.UserPrincipal;
-import cn.herodotus.engine.oauth2.core.utils.OAuth2AuthenticationUtils;
+import cn.herodotus.engine.oauth2.core.constants.OAuth2Constants;
+import cn.herodotus.engine.oauth2.core.utils.OAuth2Utils;
 import cn.herodotus.engine.web.core.servlet.utils.SessionUtils;
 import cn.herodotus.engine.web.servlet.crypto.HttpCryptoProcessor;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -98,11 +100,14 @@ public class OAuth2AccessTokenResponseHandler implements AuthenticationSuccessHa
             builder.refreshToken(refreshToken.getTokenValue());
         }
 
+        String sessionId = SessionUtils.analyseSessionId(request);
+        UserPrincipal userPrincipal = OAuth2Utils.getUserPrincipal(accessTokenAuthentication);
+
+        // 如果包含 ID_TOKEN，那么前端直接解析 ID_TOKEN，从中获取用户基本信息
         if (isOidcUserInfoPattern(additionalParameters)) {
             builder.additionalParameters(additionalParameters);
         } else {
-            String sessionId = SessionUtils.analyseSessionId(request);
-            UserPrincipal userPrincipal = OAuth2AuthenticationUtils.getUserPrincipal(accessTokenAuthentication);
+            // 如果不包含 ID_TOKEN, 那么需要利用 SessionId 将用户信息加密传递给前端，前端解密后获取用户基本信息
             if (isHerodotusUserInfoPattern(sessionId, userPrincipal)) {
                 String data = Jackson2Utils.toJson(userPrincipal);
                 String encryptData = httpCryptoProcessor.encrypt(sessionId, data);
@@ -111,6 +116,15 @@ public class OAuth2AccessTokenResponseHandler implements AuthenticationSuccessHa
                 builder.additionalParameters(parameters);
             } else {
                 log.warn("[Herodotus] |- OAuth2 authentication can not get use info.");
+            }
+        }
+
+        // 如果 UserPrincipal 存在，则放入 Session 中方便后端直接读取
+        if (isHerodotusUserInfoPattern(sessionId, userPrincipal)) {
+            HttpSession session = request.getSession(false);
+            if (ObjectUtils.isNotEmpty(session)) {
+                log.debug("[Herodotus] |- Adding user principal to session [{}].", sessionId);
+                session.setAttribute(OAuth2Constants.KEY_USER_PRINCIPAL, userPrincipal);
             }
         }
 

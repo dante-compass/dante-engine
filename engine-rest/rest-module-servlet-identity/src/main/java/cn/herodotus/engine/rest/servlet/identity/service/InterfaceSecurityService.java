@@ -26,7 +26,7 @@
 package cn.herodotus.engine.rest.servlet.identity.service;
 
 import cn.herodotus.engine.core.definition.domain.SecretKey;
-import cn.herodotus.engine.oauth2.core.utils.SecurityUtils;
+import cn.herodotus.engine.oauth2.core.utils.OAuth2Utils;
 import cn.herodotus.engine.web.servlet.crypto.HttpCryptoProcessor;
 import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
@@ -63,7 +63,7 @@ public class InterfaceSecurityService {
 
         boolean isMatch = false;
         if (ObjectUtils.isNotEmpty(registeredClient)) {
-            isMatch = SecurityUtils.matches(clientSecret, registeredClient.getClientSecret());
+            isMatch = OAuth2Utils.matches(clientSecret, registeredClient.getClientSecret());
         }
 
         if (!isMatch) {

@@ -31,7 +31,7 @@ import cn.herodotus.engine.data.core.enums.DataItemStatus;
 import cn.herodotus.engine.logic.upms.entity.security.SysPermission;
 import cn.herodotus.engine.logic.upms.entity.security.SysRole;
 import cn.herodotus.engine.logic.upms.entity.security.SysUser;
-import cn.herodotus.engine.oauth2.core.utils.SecurityUtils;
+import cn.herodotus.engine.oauth2.core.utils.OAuth2Utils;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.core.convert.converter.Converter;
@@ -55,7 +55,7 @@ public class SysUserToHerodotusUserConverter implements Converter<SysUser, Herod
         Set<String> roles = new HashSet<>();
         for (SysRole sysRole : sysUser.getRoles()) {
             roles.add(sysRole.getRoleCode());
-            authorities.add(new HerodotusGrantedAuthority(SecurityUtils.wellFormRolePrefix(sysRole.getRoleCode())));
+            authorities.add(new HerodotusGrantedAuthority(OAuth2Utils.wellFormRolePrefix(sysRole.getRoleCode())));
             Set<SysPermission> sysPermissions = sysRole.getPermissions();
             if (CollectionUtils.isNotEmpty(sysPermissions)) {
                 sysPermissions.forEach(sysAuthority -> authorities.add(new HerodotusGrantedAuthority((sysAuthority.getPermissionCode()))));
