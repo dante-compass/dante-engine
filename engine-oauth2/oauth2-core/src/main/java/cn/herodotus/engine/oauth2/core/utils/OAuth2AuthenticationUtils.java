@@ -25,76 +25,16 @@
 
 package cn.herodotus.engine.oauth2.core.utils;
 
-import cn.herodotus.engine.core.identity.domain.UserPrincipal;
-import org.apache.commons.lang3.ObjectUtils;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.core.AuthenticationMethod;
 import org.springframework.security.oauth2.core.AuthorizationGrantType;
 import org.springframework.security.oauth2.core.ClientAuthenticationMethod;
 
+
 /**
- * <p>Description: OAuth2 存储通用工具类 </p>
- *
- * @author : gengwei.zheng
- * @date : 2022/2/25 23:12
- */
+ * @author gengwei.zheng
+ * @date 2018-3-8
+ **/
 public class OAuth2AuthenticationUtils {
-
-    /**
-     * 从 {@link Authentication} 读取用户信息 {@link UserPrincipal}
-     *
-     * @param authentication {@link Authentication}
-     * @return 用户信息 {@link UserPrincipal}
-     */
-    public static UserPrincipal getUserPrincipal(Authentication authentication) {
-        Object details = authentication.getDetails();
-        if (ObjectUtils.isNotEmpty(details) && details instanceof UserPrincipal userPrincipal) {
-            return userPrincipal;
-        }
-        return null;
-    }
-
-    /**
-     * 从 {@link Authentication} 读取用户标识信息
-     *
-     * @param authentication {@link Authentication}
-     * @return 用户名
-     */
-    public static String getUsername(Authentication authentication) {
-        UserPrincipal principal = getUserPrincipal(authentication);
-        if (ObjectUtils.isNotEmpty(principal)) {
-            return principal.getName();
-        }
-        return null;
-    }
-
-    /**
-     * 从 {@link Authentication} 读取用户Id
-     *
-     * @param authentication {@link Authentication}
-     * @return 用户ID
-     */
-    public static String getUserId(Authentication authentication) {
-        UserPrincipal principal = getUserPrincipal(authentication);
-        if (ObjectUtils.isNotEmpty(principal)) {
-            return principal.getId();
-        }
-        return null;
-    }
-
-    /**
-     * 从 {@link Authentication} 读取用户Email
-     *
-     * @param authentication {@link Authentication}
-     * @return 用户Email
-     */
-    public static String getEmail(Authentication authentication) {
-        UserPrincipal principal = getUserPrincipal(authentication);
-        if (ObjectUtils.isNotEmpty(principal)) {
-            return principal.getEmail();
-        }
-        return null;
-    }
 
     public static AuthorizationGrantType resolveAuthorizationGrantType(String authorizationGrantType) {
         if (AuthorizationGrantType.AUTHORIZATION_CODE.getValue().equals(authorizationGrantType)) {
@@ -143,4 +83,5 @@ public class OAuth2AuthenticationUtils {
         }
         return new AuthenticationMethod(authenticationMethod);
     }
+
 }

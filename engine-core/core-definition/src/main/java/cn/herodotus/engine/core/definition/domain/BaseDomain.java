@@ -40,5 +40,5 @@ import java.io.Serializable;
  * @author : gengwei.zheng
  * @date : 2025/3/29 16:39
  */
-public interface BaseDomain extends Serializable {
+public sealed interface BaseDomain extends Serializable permits BaseDto, BaseEntity, BaseModel, Feedback, Pagination, Response {
 }

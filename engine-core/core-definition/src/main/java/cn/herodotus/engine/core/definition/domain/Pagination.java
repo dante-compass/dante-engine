@@ -35,7 +35,7 @@ import java.util.Map;
  * @author : gengwei.zheng
  * @date : 2024/5/4 10:49
  */
-public interface Pagination extends BaseDomain {
+public non-sealed interface Pagination extends BaseDomain {
 
     /**
      * Page 对象转换为 Map

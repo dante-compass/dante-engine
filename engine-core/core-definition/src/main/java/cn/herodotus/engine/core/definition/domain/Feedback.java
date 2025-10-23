@@ -41,7 +41,7 @@ import java.io.Serializable;
  * @author : gengwei.zheng
  * @date : 2023/9/26 8:37
  */
-public class Feedback implements Serializable {
+public non-sealed class Feedback implements Serializable, BaseDomain {
 
     private static final int IS_NOT_CUSTOMIZED = 0;
 

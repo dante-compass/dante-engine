@@ -87,6 +87,8 @@ public interface SystemConstants {
     String OAUTH2_DEVICE_VERIFICATION_SUCCESS_URI = "/device_activated";
     String OAUTH2_DEVICE_VERIFICATION_FAILURE_URI = "/device_activation_failure";
 
+    String KEY__USER_PRINCIPAL = "USER_PRINCIPAL";
+
     /**
      * Oauth2 模式类型
      */

@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.message.core.domain;
 
-import cn.herodotus.engine.core.definition.domain.AbstractRest;
+import cn.herodotus.engine.core.identity.domain.AbstractRest;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 

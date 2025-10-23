@@ -37,7 +37,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
  * @author : gengwei.zheng
  * @date : 2025/3/29 22:28
  */
-public abstract class Response<D, C> implements BaseDomain {
+public abstract non-sealed class Response<D, C> implements BaseDomain {
 
     @Schema(name = "响应代码")
     @JsonProperty("code")

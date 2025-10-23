@@ -58,7 +58,7 @@ public class OAuth2AuthenticationConfigurerManager {
         this.httpCryptoProcessor = httpCryptoProcessor;
         this.oauth2AuthenticationProperties = oauth2AuthenticationProperties;
         this.oauth2FormLoginConfigurerCustomizer = new OAuth2FormLoginConfigurerCustomizer(oauth2AuthenticationProperties);
-        this.oauth2ExceptionHandlingConfigurerCustomizer = new  OAuth2ExceptionHandlingConfigurerCustomizer(oauth2AuthenticationProperties);
+        this.oauth2ExceptionHandlingConfigurerCustomizer = new OAuth2ExceptionHandlingConfigurerCustomizer(oauth2AuthenticationProperties);
         this.oauth2AccessTokenResponseHandler = new OAuth2AccessTokenResponseHandler(httpCryptoProcessor);
         this.oauth2AuthenticationFailureHandler = new OAuth2AuthenticationFailureHandler(thymeleafTemplateHandler);
     }

@@ -31,5 +31,5 @@ package cn.herodotus.engine.core.definition.domain;
  * @author : gengwei.zheng
  * @date : 2025/3/29 16:40
  */
-public interface BaseDto extends BaseDomain {
+public non-sealed interface BaseDto extends BaseDomain {
 }

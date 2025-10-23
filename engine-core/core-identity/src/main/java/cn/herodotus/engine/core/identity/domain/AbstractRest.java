@@ -23,8 +23,9 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.engine.core.definition.domain;
+package cn.herodotus.engine.core.identity.domain;
 
+import cn.herodotus.engine.core.definition.domain.BaseModel;
 import com.google.common.base.MoreObjects;
 
 /**
@@ -33,7 +34,7 @@ import com.google.common.base.MoreObjects;
  * @author : gengwei.zheng
  * @date : 2024/12/10 18:43
  */
-public abstract class AbstractRest implements BaseDomain {
+public abstract class AbstractRest implements BaseModel {
 
     private String requestMethod;
 

@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.message.core.domain;
 
-import cn.herodotus.engine.core.definition.domain.BaseDomain;
+import cn.herodotus.engine.core.definition.domain.BaseModel;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 
@@ -35,7 +35,7 @@ import com.google.common.base.Objects;
  * @author : gengwei.zheng
  * @date : 2022/7/10 16:15
  */
-public class AccountStatus implements BaseDomain {
+public class AccountStatus implements BaseModel {
 
 
     private String userId;

@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.oauth2.extension.dto;
 
-import cn.herodotus.engine.core.definition.domain.BaseDomain;
+import cn.herodotus.engine.core.definition.domain.BaseDto;
 
 /**
  * <p>Description: 用户错误状态信息 </p>
@@ -33,7 +33,7 @@ import cn.herodotus.engine.core.definition.domain.BaseDomain;
  * @author : gengwei.zheng
  * @date : 2022/7/10 16:46
  */
-public class SignInErrorStatus implements BaseDomain {
+public class SignInErrorStatus implements BaseDto {
 
     private int errorTimes;
     private int remainTimes;

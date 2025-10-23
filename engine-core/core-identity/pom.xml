@@ -31,7 +31,7 @@
     <parent>
         <groupId>cn.herodotus.engine</groupId>
         <artifactId>engine-core</artifactId>
-        <version>3.5.6.3</version>
+        <version>3.5.7.0</version>
     </parent>
 
     <artifactId>core-identity</artifactId>
@@ -50,9 +50,20 @@
             <artifactId>JustAuth</artifactId>
         </dependency>
 
+        <!-- domain 包中很多实体需要依赖 -->
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-core</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <!-- ServletSecurityUtils 需要依赖这两个包-->
+        <!-- 这两个类原本放在 oauth2-core 但是使用不方便，依赖 oauth2-core 需要依赖更多 Spring Security 模块-->
+        <!-- core-identity 依赖 web-core 又非常奇怪，依赖关系反倒混乱-->
+        <!-- 所以将两个各类归置到当前模块，采用 optional 的方式，确保编译通过。只要整体工程又模块依赖了 Web 相关模块，运行就不会出现问题-->
+        <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
             <optional>true</optional>
         </dependency>
     </dependencies>
