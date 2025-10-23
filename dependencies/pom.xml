@@ -638,6 +638,17 @@
                 <version>${fastjson2.version}</version>
             </dependency>
             <dependency>
+                <groupId>com.alibaba.fastjson2</groupId>
+                <artifactId>fastjson2-extension</artifactId>
+                <version>${fastjson2.version}</version>
+            </dependency>
+            <!--fastjson 1.x 兼容包，不保证 100% 兼容-->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson2.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>org.eclipse.paho</groupId>
                 <artifactId>org.eclipse.paho.mqttv5.client</artifactId>
                 <version>${org.eclipse.paho.version}</version>
