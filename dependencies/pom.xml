@@ -100,7 +100,7 @@
         <commons-collections4.version>4.5.0</commons-collections4.version>
         <commons-io.version>2.20.0</commons-io.version>
         <commons-text.version>1.14.0</commons-text.version>
-        <fastjson2.version>2.0.59</fastjson2.version>
+        <fastjson2.version>2.0.60</fastjson2.version>
         <guava.version>33.5.0-jre</guava.version>
         <hutool.version>7.0.0-M2</hutool.version>
         <hypersistence-utils-hibernate-63.version>3.11.0</hypersistence-utils-hibernate-63.version>
@@ -108,11 +108,11 @@
         <jasypt-spring-boot-starter.version>3.0.5</jasypt-spring-boot-starter.version>
         <jetcache.version>2.7.8</jetcache.version>
         <justauth.verison>1.18.2</justauth.verison>
-        <logstash-logback-encoder.version>8.1</logstash-logback-encoder.version>
+        <logstash-logback-encoder.version>9.0</logstash-logback-encoder.version>
         <minio.version>8.6.0</minio.version>
         <mybatis.version>3.5.19</mybatis.version>
         <mybatis-plus.version>3.5.14</mybatis-plus.version>
-        <mysql.version>9.4.0</mysql.version>
+        <mysql.version>9.5.0</mysql.version>
         <nacos.version>3.1.0</nacos.version>
         <openfeign-querydsl.version>7.0</openfeign-querydsl.version>
         <opengauss-jdbc.version>6.0.2-og</opengauss-jdbc.version>
@@ -126,10 +126,10 @@
         <spring-boot-admin-dependencies.version>3.5.5</spring-boot-admin-dependencies.version>
         <spring-cloud-alibaba-dependencies.version>2025.0.0.0</spring-cloud-alibaba-dependencies.version>
         <spring-cloud-dependencies.version>2025.0.0</spring-cloud-dependencies.version>
-        <spring-cloud-tencent-dependencies.version>2.0.2.2-2024.0.1</spring-cloud-tencent-dependencies.version>
+        <spring-cloud-tencent-dependencies.version>2.1.0.0-2024.0.2</spring-cloud-tencent-dependencies.version>
         <sqlite-jdbc.version>3.50.3.0</sqlite-jdbc.version>
         <transmittable-thread-local.version>2.14.5</transmittable-thread-local.version>
-        <weixin-java-sdk.version>4.7.8-20251023.110018</weixin-java-sdk.version>
+        <weixin-java-sdk.version>4.7.8-20251028.120007</weixin-java-sdk.version>
         <zxing.version>3.5.3</zxing.version>
 
         <!--Webjars 主要用于内置基于 thymeleaf 的自定义页面-->
@@ -155,7 +155,7 @@
         <javassist.version>3.30.2-GA</javassist.version>
         <objenesis.version>3.4</objenesis.version>
         <!--sms4j 依赖 hutool 5，但更新频率低，在此进行统一升级和版本控制-->
-        <hutool5.version>5.8.40</hutool5.version>
+        <hutool5.version>5.8.41</hutool5.version>
         <httpclient.version>4.5.14</httpclient.version>
         <kryo.version>5.6.2</kryo.version>
         <okio.version>3.16.2</okio.version>
