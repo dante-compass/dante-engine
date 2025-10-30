@@ -37,7 +37,7 @@
 
     <groupId>cn.herodotus.engine</groupId>
     <artifactId>dependencies</artifactId>
-    <version>3.5.7.0</version>
+    <version>3.5.7.1</version>
     <name>Dante Engine Dependencies</name>
     <packaging>pom</packaging>
 
@@ -88,11 +88,11 @@
         <maven-archetype-plugin.version>3.4.1</maven-archetype-plugin.version>
         <maven-gpg-plugin.version>3.2.8</maven-gpg-plugin.version>
 
-        <alipay-sdk-java.version>4.40.483.ALL</alipay-sdk-java.version>
+        <alipay-sdk-java.version>4.40.498.ALL</alipay-sdk-java.version>
         <aliyun-sdk-oss.version>3.18.3</aliyun-sdk-oss.version>
         <animated-gif-lib.version>1.4</animated-gif-lib.version>
         <antisamy.version>1.7.8</antisamy.version>
-        <aws-java-sdk-s3.version>1.12.792</aws-java-sdk-s3.version>
+        <aws-java-sdk-s3.version>1.12.793</aws-java-sdk-s3.version>
         <bcpkix-jdk18on.version>1.82</bcpkix-jdk18on.version>
         <bcprov-jdk18on.version>1.82</bcprov-jdk18on.version>
         <camunda-bpm-spring-boot-starter-rest.version>7.24.0</camunda-bpm-spring-boot-starter-rest.version>
@@ -118,7 +118,7 @@
         <opengauss-jdbc.version>6.0.2-og</opengauss-jdbc.version>
         <org.eclipse.paho.version>1.2.5</org.eclipse.paho.version>
         <p6spy.version>3.9.1</p6spy.version>
-        <redisson.version>3.51.0</redisson.version>
+        <redisson.version>3.52.0</redisson.version>
         <skywalking.version>9.5.0</skywalking.version>
         <sms4j-spring-boot-starter.version>3.3.5</sms4j-spring-boot-starter.version>
         <springdoc.version>2.8.13</springdoc.version>
@@ -129,7 +129,7 @@
         <spring-cloud-tencent-dependencies.version>2.1.0.0-2024.0.2</spring-cloud-tencent-dependencies.version>
         <sqlite-jdbc.version>3.50.3.0</sqlite-jdbc.version>
         <transmittable-thread-local.version>2.14.5</transmittable-thread-local.version>
-        <weixin-java-sdk.version>4.7.8-20251028.120007</weixin-java-sdk.version>
+        <weixin-java.version>4.7.8-20251030.194408</weixin-java.version>
         <zxing.version>3.5.3</zxing.version>
 
         <!--Webjars 主要用于内置基于 thymeleaf 的自定义页面-->
@@ -605,12 +605,12 @@
             <dependency>
                 <groupId>com.github.binarywang</groupId>
                 <artifactId>weixin-java-miniapp</artifactId>
-                <version>${weixin-java-sdk.version}</version>
+                <version>${weixin-java.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.github.binarywang</groupId>
                 <artifactId>weixin-java-mp</artifactId>
-                <version>${weixin-java-sdk.version}</version>
+                <version>${weixin-java.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.camunda.bpm.springboot</groupId>
