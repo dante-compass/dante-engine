@@ -39,6 +39,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.tags.Tags;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.data.domain.Page;
@@ -85,7 +86,7 @@ public class NotificationController extends AbstractJpaWriteableController<Notif
     public Result<Map<String, Object>> findByCondition(
             @NotNull @RequestParam(value = "pageNumber") Integer pageNumber,
             @NotNull @RequestParam(value = "pageSize") Integer pageSize,
-            @NotNull @RequestParam(value = "userId") String userId,
+            @NotBlank @RequestParam(value = "userId") String userId,
             @RequestParam(value = "category", required = false) Integer category,
             @RequestParam(value = "read", required = false) Boolean read) {
         NotificationCategory notificationCategory = NotificationCategory.get(category);

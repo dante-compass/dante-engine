@@ -25,16 +25,11 @@
 
 package cn.herodotus.engine.servlet.container.autoconfigure;
 
-import cn.herodotus.engine.core.foundation.condition.ConditionalOnServletApplication;
-import cn.herodotus.engine.servlet.container.autoconfigure.customizer.UndertowWebSocketServletWebServerCustomizer;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.websocket.servlet.WebSocketServletAutoConfiguration;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
 /**
  * <p>Description: Web 自动配置 </p>
@@ -50,18 +45,5 @@ public class ServletContainerAutoConfiguration {
     @PostConstruct
     public void postConstruct() {
         log.info("[Herodotus] |- Starter [Servlet Container] Configure.");
-    }
-
-    @Configuration(proxyBeanMethods = false)
-    @ConditionalOnClass(io.undertow.websockets.jsr.Bootstrap.class)
-    @ConditionalOnServletApplication
-    static class UndertowWebSocketConfiguration {
-
-        @Bean
-        public UndertowWebSocketServletWebServerCustomizer websocketServletWebServerCustomizer() {
-            UndertowWebSocketServletWebServerCustomizer customizer = new UndertowWebSocketServletWebServerCustomizer();
-            log.trace("[Herodotus] |- Undertow websocket servlet web server customizer Configure.");
-            return customizer;
-        }
     }
 }

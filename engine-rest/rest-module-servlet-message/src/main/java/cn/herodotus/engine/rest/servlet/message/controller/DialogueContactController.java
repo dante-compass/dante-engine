@@ -38,6 +38,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.tags.Tags;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.data.domain.Page;
 import org.springframework.http.MediaType;
@@ -85,7 +86,7 @@ public class DialogueContactController extends AbstractJpaWriteableController<Di
     public Result<Map<String, Object>> findByCondition(
             @NotNull @RequestParam("pageNumber") Integer pageNumber,
             @NotNull @RequestParam("pageSize") Integer pageSize,
-            @NotNull @RequestParam("receiverId") String receiverId) {
+            @NotBlank @RequestParam("receiverId") String receiverId) {
         Page<DialogueContact> pages = dialogueContactService.findByCondition(pageNumber, pageSize, receiverId);
         return resultFromPage(pages);
     }

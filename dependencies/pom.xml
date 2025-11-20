@@ -31,13 +31,13 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.5.7</version>
+        <version>3.5.8</version>
         <relativePath/>
     </parent>
 
     <groupId>cn.herodotus.engine</groupId>
     <artifactId>dependencies</artifactId>
-    <version>3.5.7.1</version>
+    <version>3.5.8.0</version>
     <name>Dante Engine Dependencies</name>
     <packaging>pom</packaging>
 
@@ -88,7 +88,7 @@
         <maven-archetype-plugin.version>3.4.1</maven-archetype-plugin.version>
         <maven-gpg-plugin.version>3.2.8</maven-gpg-plugin.version>
 
-        <alipay-sdk-java.version>4.40.498.ALL</alipay-sdk-java.version>
+        <alipay-sdk-java.version>4.40.523.ALL</alipay-sdk-java.version>
         <aliyun-sdk-oss.version>3.18.3</aliyun-sdk-oss.version>
         <animated-gif-lib.version>1.4</animated-gif-lib.version>
         <antisamy.version>1.7.8</antisamy.version>
@@ -98,13 +98,13 @@
         <camunda-bpm-spring-boot-starter-rest.version>7.24.0</camunda-bpm-spring-boot-starter-rest.version>
         <central-publishing-maven-plugin.version>0.9.0</central-publishing-maven-plugin.version>
         <commons-collections4.version>4.5.0</commons-collections4.version>
-        <commons-io.version>2.20.0</commons-io.version>
+        <commons-io.version>2.21.0</commons-io.version>
         <commons-text.version>1.14.0</commons-text.version>
         <fastjson2.version>2.0.60</fastjson2.version>
         <guava.version>33.5.0-jre</guava.version>
         <hutool.version>7.0.0-M2</hutool.version>
-        <hypersistence-utils-hibernate-63.version>3.11.0</hypersistence-utils-hibernate-63.version>
-        <influxdb-client.version>7.3.0</influxdb-client.version>
+        <hypersistence-utils-hibernate-63.version>3.12.0</hypersistence-utils-hibernate-63.version>
+        <influxdb-client.version>7.4.0</influxdb-client.version>
         <jasypt-spring-boot-starter.version>3.0.5</jasypt-spring-boot-starter.version>
         <jetcache.version>2.7.8</jetcache.version>
         <justauth.verison>1.18.2</justauth.verison>
@@ -121,36 +121,36 @@
         <redisson.version>3.52.0</redisson.version>
         <skywalking.version>9.5.0</skywalking.version>
         <sms4j-spring-boot-starter.version>3.3.5</sms4j-spring-boot-starter.version>
-        <springdoc.version>2.8.13</springdoc.version>
-        <spring-boot-dependencies.version>3.5.7</spring-boot-dependencies.version>
-        <spring-boot-admin-dependencies.version>3.5.5</spring-boot-admin-dependencies.version>
+        <springdoc.version>2.8.14</springdoc.version>
+        <spring-boot-dependencies.version>3.5.8</spring-boot-dependencies.version>
+        <spring-boot-admin-dependencies.version>3.5.6</spring-boot-admin-dependencies.version>
         <spring-cloud-alibaba-dependencies.version>2025.0.0.0</spring-cloud-alibaba-dependencies.version>
         <spring-cloud-dependencies.version>2025.0.0</spring-cloud-dependencies.version>
-        <spring-cloud-tencent-dependencies.version>2.1.0.0-2024.0.2</spring-cloud-tencent-dependencies.version>
-        <sqlite-jdbc.version>3.50.3.0</sqlite-jdbc.version>
+        <spring-cloud-tencent-dependencies.version>2.1.0.1-2024.0.2</spring-cloud-tencent-dependencies.version>
+        <sqlite-jdbc.version>3.51.0.0</sqlite-jdbc.version>
         <transmittable-thread-local.version>2.14.5</transmittable-thread-local.version>
-        <weixin-java.version>4.7.8-20251030.194408</weixin-java.version>
-        <zxing.version>3.5.3</zxing.version>
+        <weixin-java.version>4.7.8-20251117.120146</weixin-java.version>
+        <zxing.version>3.5.4</zxing.version>
 
         <!--Webjars 主要用于内置基于 thymeleaf 的自定义页面-->
         <bootstrap.version>5.3.8</bootstrap.version>
         <inter-ui.version>4.1.1</inter-ui.version>
         <jquery.version>3.7.1</jquery.version>
         <mdi__font.version>7.4.47</mdi__font.version>
-        <quasar.version>2.18.5</quasar.version>
+        <quasar.version>2.18.6</quasar.version>
         <sm-crypto-v2.version>1.15.0</sm-crypto-v2.version>
         <sweetalert2.verison>11.26.3</sweetalert2.verison>
         <tabler.version>1.4.0</tabler.version>
-        <vue.version>3.5.22</vue.version>
+        <vue.version>3.5.24</vue.version>
 
         <!--以下为特殊处理, 统一版本处理漏洞等-->
-        <checker-qual.version>3.51.1</checker-qual.version>
+        <checker-qual.version>3.52.0</checker-qual.version>
         <commons-fileupload.version>1.6.0</commons-fileupload.version>
         <!--fix CVE-2025-48924 -->
-        <commons-lang3.version>3.19.0</commons-lang3.version>
+        <commons-lang3.version>3.20.0</commons-lang3.version>
         <classgraph.version>4.8.184</classgraph.version>
         <dom4j.version>2.2.0</dom4j.version>
-        <error_prone_annotations.version>2.43.0</error_prone_annotations.version>
+        <error_prone_annotations.version>2.44.0</error_prone_annotations.version>
         <jaxb-impl.version>4.0.6</jaxb-impl.version>
         <javassist.version>3.30.2-GA</javassist.version>
         <objenesis.version>3.4</objenesis.version>
@@ -158,7 +158,7 @@
         <hutool5.version>5.8.41</hutool5.version>
         <httpclient.version>4.5.14</httpclient.version>
         <kryo.version>5.6.2</kryo.version>
-        <okio.version>3.16.2</okio.version>
+        <okio.version>3.16.4</okio.version>
         <snappy-java.version>1.1.10.8</snappy-java.version>
         <!--fix CVE-2024-51504 -->
         <zookeeper.verison>3.9.4</zookeeper.verison>
@@ -181,8 +181,6 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <!--springdoc import 要配置在 sct 前面。-->
-            <!--否则 sct 中的 <springdoc.version> 会干扰当前配置，从而引入低版本 springdoc，导致系统无法启动-->
             <dependency>
                 <groupId>org.springdoc</groupId>
                 <artifactId>springdoc-openapi</artifactId>
@@ -716,9 +714,20 @@
                 <version>${vue.version}</version>
             </dependency>
             <!--特殊处理, 防止被 sct 中的依赖影响版本控制-->
+            <!--sct 中的 <springdoc.version> 会干扰当前配置，从而引入低版本 springdoc，导致系统无法启动-->
+            <dependency>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-starter-webmvc-api</artifactId>
+                <version>${springdoc.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.springdoc</groupId>
                 <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+                <version>${springdoc.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-starter-webflux-api</artifactId>
                 <version>${springdoc.version}</version>
             </dependency>
             <dependency>

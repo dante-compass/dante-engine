@@ -29,6 +29,7 @@ import cn.herodotus.engine.data.core.jpa.repository.BaseJpaRepository;
 import cn.herodotus.engine.logic.upms.entity.security.SysUser;
 import jakarta.persistence.QueryHint;
 import org.hibernate.jpa.AvailableHints;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.QueryHints;
 
 /**
@@ -44,6 +45,7 @@ public interface SysUserRepository extends BaseJpaRepository<SysUser, String> {
      * @param username 用户名
      * @return {@link SysUser}
      */
+    @Query("FROM SysUser u LEFT JOIN FETCH u.roles r LEFT JOIN FETCH r.permissions p WHERE u.username = :username")
     @QueryHints(@QueryHint(name = AvailableHints.HINT_CACHEABLE, value = "true"))
     SysUser findByUsername(String username);
 
@@ -53,6 +55,7 @@ public interface SysUserRepository extends BaseJpaRepository<SysUser, String> {
      * @param userId 用户ID
      * @return {@link SysUser}
      */
+    @Query("FROM SysUser u LEFT JOIN FETCH u.roles r LEFT JOIN FETCH r.permissions p WHERE u.userId = :userId")
     @QueryHints(@QueryHint(name = AvailableHints.HINT_CACHEABLE, value = "true"))
     SysUser findByUserId(String userId);
 }
