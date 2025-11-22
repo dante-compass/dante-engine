@@ -25,11 +25,14 @@
 
 package cn.herodotus.engine.web.service.config;
 
+import cn.herodotus.engine.core.definition.builder.EnumDictionaryBuilder;
 import cn.herodotus.engine.core.definition.function.ErrorCodeMapperBuilderCustomizer;
 import cn.herodotus.engine.core.foundation.context.ServiceContextHolder;
+import cn.herodotus.engine.message.core.definition.strategy.EnumDictionaryGatherEventManager;
 import cn.herodotus.engine.web.core.support.WebPropertyFinder;
 import cn.herodotus.engine.web.service.customizer.Jackson2XssObjectMapperBuilderCustomizer;
 import cn.herodotus.engine.web.service.customizer.WebErrorCodeMapperBuilderCustomizer;
+import cn.herodotus.engine.web.service.initializer.EnumDictionaryGather;
 import cn.herodotus.engine.web.service.initializer.ServiceContextHolderBuilder;
 import cn.herodotus.engine.web.service.properties.EndpointProperties;
 import cn.herodotus.engine.web.service.properties.PlatformProperties;
@@ -107,5 +110,12 @@ public class WebServiceConfiguration implements ApplicationContextAware {
         WebErrorCodeMapperBuilderCustomizer customizer = new WebErrorCodeMapperBuilderCustomizer();
         log.debug("[Herodotus] |- Strategy [Web ErrorCodeMapper Builder Customizer] Configure.");
         return customizer;
+    }
+
+    @Bean
+    public EnumDictionaryGather enumDictionaryGather(EnumDictionaryBuilder builder, EnumDictionaryGatherEventManager manager) {
+        EnumDictionaryGather gather = new EnumDictionaryGather(builder, manager);
+        log.debug("[Herodotus] |- Strategy [Enum Dictionary Gather] Configure.");
+        return gather;
     }
 }
