@@ -31,6 +31,7 @@ import jakarta.persistence.QueryHint;
 import org.hibernate.jpa.AvailableHints;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.QueryHints;
+import org.springframework.data.repository.query.Param;
 
 /**
  * <p>Description: SysUserRepository </p>
@@ -45,9 +46,9 @@ public interface SysUserRepository extends BaseJpaRepository<SysUser, String> {
      * @param username 用户名
      * @return {@link SysUser}
      */
-    @Query("FROM SysUser u LEFT JOIN FETCH u.roles r LEFT JOIN FETCH r.permissions p WHERE u.username = :username")
     @QueryHints(@QueryHint(name = AvailableHints.HINT_CACHEABLE, value = "true"))
-    SysUser findByUsername(String username);
+    @Query("SELECT DISTINCT u FROM SysUser u LEFT JOIN FETCH u.roles r LEFT JOIN FETCH r.permissions p WHERE u.username = :username")
+    SysUser findByUsername(@Param("username") String username);
 
     /**
      * 根据用户ID查找用户
@@ -55,7 +56,7 @@ public interface SysUserRepository extends BaseJpaRepository<SysUser, String> {
      * @param userId 用户ID
      * @return {@link SysUser}
      */
-    @Query("FROM SysUser u LEFT JOIN FETCH u.roles r LEFT JOIN FETCH r.permissions p WHERE u.userId = :userId")
     @QueryHints(@QueryHint(name = AvailableHints.HINT_CACHEABLE, value = "true"))
-    SysUser findByUserId(String userId);
+    @Query("SELECT DISTINCT u FROM SysUser u LEFT JOIN FETCH u.roles r LEFT JOIN FETCH r.permissions p WHERE u.userId = :userId")
+    SysUser findByUserId(@Param("userId") String userId);
 }

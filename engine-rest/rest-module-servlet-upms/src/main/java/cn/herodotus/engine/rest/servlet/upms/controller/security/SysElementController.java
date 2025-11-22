@@ -26,10 +26,13 @@
 package cn.herodotus.engine.rest.servlet.upms.controller.security;
 
 import cn.herodotus.engine.core.definition.domain.Result;
+import cn.herodotus.engine.data.core.enums.ApplicationType;
 import cn.herodotus.engine.data.core.jpa.service.BaseJpaWriteableService;
-import cn.herodotus.engine.logic.upms.converter.SysElementToTreeNodeConverter;
 import cn.herodotus.engine.logic.upms.entity.security.SysElement;
 import cn.herodotus.engine.logic.upms.service.security.SysElementService;
+import cn.herodotus.engine.rest.servlet.upms.converter.SysElementToTreeNodeConverter;
+import cn.herodotus.engine.rest.servlet.upms.converter.SysElementsToElementsConverter;
+import cn.herodotus.engine.rest.servlet.upms.dto.Elements;
 import cn.herodotus.engine.web.api.servlet.AbstractJpaWriteableController;
 import cn.herodotus.engine.web.core.annotation.AccessLimited;
 import cn.hutool.v7.core.tree.MapTree;
@@ -43,6 +46,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.tags.Tags;
 import jakarta.validation.constraints.NotNull;
+import org.springframework.core.convert.converter.Converter;
 import org.springframework.data.domain.Page;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -64,10 +68,12 @@ import java.util.Map;
 })
 public class SysElementController extends AbstractJpaWriteableController<SysElement, String> {
 
+    private final Converter<List<SysElement>, Elements> toElements;
     private final SysElementService sysElementService;
 
     public SysElementController(SysElementService sysElementService) {
         this.sysElementService = sysElementService;
+        this.toElements = new SysElementsToElementsConverter();
     }
 
     @Override
@@ -83,6 +89,17 @@ public class SysElementController extends AbstractJpaWriteableController<SysElem
         return result(sysMenus, new SysElementToTreeNodeConverter());
     }
 
+    @Operation(summary = "获取用户前端资源", description = "根据用户ID返回前端所需的必要资源",
+            responses = {@ApiResponse(description = "资源", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = List.class)))})
+    @Parameters({
+            @Parameter(name = "roles[]", required = true, description = "角色代码组成的数组"),
+    })
+    @GetMapping("/resources")
+    public Result<Elements> findAllByRoleCodes(@RequestParam(name = "roles[]") String[] roles) {
+        List<SysElement> sysElements = sysElementService.findAllByRoleCodes(ApplicationType.WEB, roles);
+        return result(toElements.convert(sysElements));
+    }
+
     @Operation(summary = "模糊条件查询前端元素", description = "根据动态输入的字段模糊查询前端元素",
             responses = {@ApiResponse(description = "前端元素列表", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = Map.class)))})
     @Parameters({
@@ -92,10 +109,11 @@ public class SysElementController extends AbstractJpaWriteableController<SysElem
             @Parameter(name = "title", description = "组件标题"),
     })
     @GetMapping("/condition")
-    public Result<Map<String, Object>> findByCondition(@NotNull @RequestParam("pageNumber") Integer pageNumber,
-                                                       @NotNull @RequestParam("pageSize") Integer pageSize,
-                                                       @RequestParam(value = "path", required = false) String path,
-                                                       @RequestParam(value = "title", required = false) String title) {
+    public Result<Map<String, Object>> findByCondition(
+            @NotNull @RequestParam("pageNumber") Integer pageNumber,
+            @NotNull @RequestParam("pageSize") Integer pageSize,
+            @RequestParam(value = "path", required = false) String path,
+            @RequestParam(value = "title", required = false) String title) {
         Page<SysElement> pages = sysElementService.findByCondition(pageNumber, pageSize, path, title);
         return resultFromPage(pages);
     }

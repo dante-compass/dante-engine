@@ -25,12 +25,16 @@
 
 package cn.herodotus.engine.logic.upms.service.security;
 
+import cn.herodotus.engine.data.core.enums.ApplicationType;
 import cn.herodotus.engine.data.core.jpa.repository.BaseJpaRepository;
 import cn.herodotus.engine.data.core.jpa.service.AbstractJpaService;
 import cn.herodotus.engine.logic.upms.entity.security.SysElement;
 import cn.herodotus.engine.logic.upms.entity.security.SysRole;
 import cn.herodotus.engine.logic.upms.repository.security.SysElementRepository;
+import jakarta.persistence.criteria.Join;
+import jakarta.persistence.criteria.JoinType;
 import jakarta.persistence.criteria.Predicate;
+import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -81,6 +85,30 @@ public class SysElementService extends AbstractJpaService<SysElement, String> {
         };
 
         return this.findByPage(specification, pageable);
+    }
+
+    public List<SysElement> findAllByRoleCodes(ApplicationType applicationType, String[] roles) {
+        Specification<SysElement> specification = (root, criteriaQuery, criteriaBuilder) -> {
+
+            List<Predicate> predicates = new ArrayList<>();
+
+            if (ObjectUtils.isNotEmpty(applicationType)) {
+                predicates.add(criteriaBuilder.equal(root.get("applicationType"), applicationType));
+            }
+
+            if (ArrayUtils.isNotEmpty(roles)) {
+                Join<SysElement, SysElement> join = root.join("roles", JoinType.INNER);
+                predicates.add(join.get("roleCode").in(List.of(roles)));
+            }
+
+
+            Predicate[] predicateArray = new Predicate[predicates.size()];
+            criteriaQuery.distinct(true);
+            criteriaQuery.where(criteriaBuilder.and(predicates.toArray(predicateArray)));
+            return criteriaQuery.getRestriction();
+        };
+
+        return this.findAll(specification);
     }
 
     public SysElement assign(String elementId, String[] roles) {

@@ -23,7 +23,7 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.engine.logic.upms.converter;
+package cn.herodotus.engine.rest.servlet.upms.converter;
 
 import cn.herodotus.engine.core.definition.domain.view.vue.BaseMeta;
 import cn.herodotus.engine.core.definition.domain.view.vue.ChildMeta;
@@ -31,15 +31,13 @@ import cn.herodotus.engine.core.definition.domain.view.vue.ParentMeta;
 import cn.herodotus.engine.core.definition.domain.view.vue.RootMeta;
 import cn.herodotus.engine.core.definition.utils.WellFormedUtils;
 import cn.herodotus.engine.logic.upms.entity.security.SysElement;
-import cn.herodotus.engine.logic.upms.entity.security.SysRole;
 import cn.hutool.v7.core.tree.TreeNode;
-import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.BooleanUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.core.convert.converter.Converter;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * <p>Description: SysElement 转 TreeNode 转换器 </p>
@@ -84,14 +82,6 @@ public class SysElementToTreeNodeConverter implements Converter<SysElement, Tree
             }
         }
         extra.put("componentPath", sysMenu.getComponent());
-
-        Set<SysRole> sysRoles = sysMenu.getRoles();
-        if (CollectionUtils.isNotEmpty(sysRoles)) {
-            List<String> roles = sysRoles.stream().map(SysRole::getRoleCode).collect(Collectors.toList());
-            extra.put("roles", roles);
-        } else {
-            extra.put("roles", new ArrayList<>());
-        }
 
         return extra;
     }

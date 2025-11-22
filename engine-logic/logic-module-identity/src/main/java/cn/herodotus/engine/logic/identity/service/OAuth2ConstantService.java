@@ -26,7 +26,7 @@
 package cn.herodotus.engine.logic.identity.service;
 
 import cn.herodotus.engine.core.identity.enums.PermissionExpression;
-import cn.herodotus.engine.logic.identity.enums.ApplicationType;
+import cn.herodotus.engine.data.core.enums.ApplicationType;
 import cn.herodotus.engine.logic.identity.enums.AuthenticationMethod;
 import cn.herodotus.engine.logic.identity.enums.GrantType;
 import cn.herodotus.engine.oauth2.core.enums.AllJwsAlgorithm;
