@@ -118,7 +118,7 @@
         <redisson.version>3.52.0</redisson.version>
         <skywalking.version>9.5.0</skywalking.version>
         <sms4j-spring-boot-starter.version>3.3.5</sms4j-spring-boot-starter.version>
-        <software.amazon.awssdk.version>2.39.0</software.amazon.awssdk.version>
+        <software.amazon.awssdk.version>2.39.2</software.amazon.awssdk.version>
         <software.amazon.awssdk.crt.version>0.39.4</software.amazon.awssdk.crt.version>
         <springdoc.version>2.8.14</springdoc.version>
         <spring-boot-dependencies.version>3.5.8</spring-boot-dependencies.version>
