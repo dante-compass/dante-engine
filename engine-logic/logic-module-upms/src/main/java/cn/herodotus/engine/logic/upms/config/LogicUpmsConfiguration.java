@@ -27,6 +27,8 @@ package cn.herodotus.engine.logic.upms.config;
 
 import cn.herodotus.engine.assistant.access.config.AssistantAccessConfiguration;
 import cn.herodotus.engine.assistant.access.factory.AccessHandlerStrategyFactory;
+import cn.herodotus.engine.core.definition.function.EnumDictionaryBuilderCustomizer;
+import cn.herodotus.engine.logic.upms.customizer.UpmsEnumDictionaryBuilderCustomizer;
 import cn.herodotus.engine.logic.upms.definition.SocialAuthenticationHandler;
 import cn.herodotus.engine.logic.upms.handler.DefaultSocialAuthenticationHandler;
 import cn.herodotus.engine.logic.upms.service.security.SysSocialUserService;
@@ -78,5 +80,12 @@ public class LogicUpmsConfiguration {
         DefaultSocialAuthenticationHandler defaultSocialAuthenticationHandler = new DefaultSocialAuthenticationHandler(sysUserService, sysSocialUserService, accessHandlerStrategyFactory);
         log.trace("[Herodotus] |- Bean [Default Social Authentication Handler] Configure.");
         return defaultSocialAuthenticationHandler;
+    }
+
+    @Bean
+    public EnumDictionaryBuilderCustomizer upmsEnumDictionaryBuilderCustomizer() {
+        UpmsEnumDictionaryBuilderCustomizer customizer = new UpmsEnumDictionaryBuilderCustomizer();
+        log.debug("[Herodotus] |- Strategy [Upms EnumDictionary Builder Customizer] Configure.");
+        return customizer;
     }
 }

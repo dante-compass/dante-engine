@@ -25,16 +25,17 @@
 
 package cn.herodotus.engine.logic.upms.entity.security;
 
+import cn.herodotus.engine.data.core.enums.ApplicationType;
 import cn.herodotus.engine.data.core.jpa.entity.AbstractSysEntity;
-import cn.herodotus.engine.logic.upms.constants.LogicUpmsConstants;
+import cn.herodotus.engine.logic.upms.constant.LogicUpmsConstants;
+import cn.herodotus.engine.logic.upms.enums.ElementCategory;
+import cn.herodotus.engine.logic.upms.enums.MenuScenario;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.UuidGenerator;
 
 import java.util.HashSet;
@@ -75,9 +76,6 @@ public class SysElement extends AbstractSysEntity {
     @Column(name = "title", length = 100)
     private String title;
 
-    @Column(name = "type", length = 50)
-    private String type;
-
     @Column(name = "icon", length = 100)
     private String icon;
 
@@ -101,10 +99,24 @@ public class SysElement extends AbstractSysEntity {
     @Column(name = "ignore_auth")
     private Boolean ignoreAuth = false;
 
+    @Schema(name = "元素类别", description = "用于表示不同类型的前端元素，例如：菜单、按钮")
+    @Column(name = "element_category", length = 50)
+    @Enumerated(EnumType.STRING)
+    private ElementCategory elementCategory = ElementCategory.MENU;
+
+    @Schema(name = "菜单类别", description = "用于表示不同类型菜单，例如: Web应用菜单，小程序菜单")
+    @Column(name = "menu_scenario", length = 50)
+    @Enumerated(EnumType.STRING)
+    private MenuScenario menuScenario = MenuScenario.APP;
+
+    @Schema(name = "应用类型", title = "用于区分不同类型的应用")
+    @Column(name = "application_type", length = 50)
+    @Enumerated(EnumType.STRING)
+    private ApplicationType applicationType = ApplicationType.WEB;
+
     @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = LogicUpmsConstants.REGION_SYS_ROLE)
     @Schema(name = "元素角色")
-    @ManyToMany(fetch = FetchType.EAGER)
-    @Fetch(FetchMode.SUBSELECT)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "sys_element_role",
             joinColumns = {@JoinColumn(name = "element_id")},
             inverseJoinColumns = {@JoinColumn(name = "role_id")},
@@ -168,14 +180,6 @@ public class SysElement extends AbstractSysEntity {
         this.title = title;
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
     public String getIcon() {
         return icon;
     }
@@ -224,6 +228,30 @@ public class SysElement extends AbstractSysEntity {
         this.ignoreAuth = ignoreAuth;
     }
 
+    public ElementCategory getElementCategory() {
+        return elementCategory;
+    }
+
+    public void setElementCategory(ElementCategory elementCategory) {
+        this.elementCategory = elementCategory;
+    }
+
+    public MenuScenario getMenuScenario() {
+        return menuScenario;
+    }
+
+    public void setMenuScenario(MenuScenario menuScenario) {
+        this.menuScenario = menuScenario;
+    }
+
+    public ApplicationType getApplicationType() {
+        return applicationType;
+    }
+
+    public void setApplicationType(ApplicationType applicationType) {
+        this.applicationType = applicationType;
+    }
+
     public Set<SysRole> getRoles() {
         return roles;
     }
@@ -259,14 +287,16 @@ public class SysElement extends AbstractSysEntity {
                 .add("component", component)
                 .add("redirect", redirect)
                 .add("title", title)
-                .add("type", type)
                 .add("icon", icon)
                 .add("haveChild", haveChild)
                 .add("notKeepAlive", notKeepAlive)
                 .add("hideAllChild", hideAllChild)
                 .add("detailContent", detailContent)
                 .add("ignoreAuth", ignoreAuth)
-                .add("roles", roles)
+                .add("elementCategory", elementCategory)
+                .add("menuScenario", menuScenario)
+                .add("applicationType", applicationType)
+                .addValue(super.toString())
                 .toString();
     }
 }

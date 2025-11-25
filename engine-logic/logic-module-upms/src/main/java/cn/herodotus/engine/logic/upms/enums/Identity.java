@@ -25,10 +25,9 @@
 
 package cn.herodotus.engine.logic.upms.enums;
 
-import cn.herodotus.engine.core.definition.enums.BaseUiEnum;
+import cn.herodotus.engine.core.definition.domain.Dictionary;
+import cn.herodotus.engine.core.definition.domain.DictionaryEnum;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonValue;
-import com.google.common.collect.ImmutableMap;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.util.ArrayList;
@@ -44,64 +43,49 @@ import java.util.Map;
  */
 @Schema(name = "人员身份")
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
-public enum Identity implements BaseUiEnum<Integer> {
+public enum Identity implements DictionaryEnum {
     /**
      * enum
      */
-    STAFF(0, "员工"),
-    SECTION_LEADER(1, "部门负责人"),
-    LEADERSHIP(2, "领导");
+    STAFF("0", "员工"),
+    SECTION_LEADER("1", "部门负责人"),
+    LEADERSHIP("2", "领导");
 
     private static final Map<Integer, Identity> INDEX_MAP = new HashMap<>();
-    private static final List<Map<String, Object>> JSON_STRUCTURE = new ArrayList<>();
+    private static final List<Dictionary> DICTIONARIES = new ArrayList<>();
 
     static {
         for (Identity identity : Identity.values()) {
-            INDEX_MAP.put(identity.getValue(), identity);
-            JSON_STRUCTURE.add(identity.getValue(),
-                    ImmutableMap.<String, Object>builder()
-                            .put("value", identity.getValue())
-                            .put("key", identity.name())
-                            .put("text", identity.getDescription())
-                            .put("index", identity.getValue())
-                            .build());
+            INDEX_MAP.put(identity.ordinal(), identity);
+            DICTIONARIES.add(identity.getDictionary(identity.name(), identity.ordinal()));
         }
     }
 
     @Schema(name = "索引")
-    private final Integer value;
+    private final String value;
     @Schema(name = "文字")
-    private String description;
+    private final String label;
 
-    Identity(Integer value, String description) {
+    Identity(String value, String label) {
         this.value = value;
-        this.description = description;
+        this.label = label;
     }
 
     public static Identity get(Integer index) {
         return INDEX_MAP.get(index);
     }
 
-    public static List<Map<String, Object>> getPreprocessedJsonStructure() {
-        return JSON_STRUCTURE;
+    public static List<Dictionary> getDictionaries() {
+        return DICTIONARIES;
     }
 
-    /**
-     * 不加@JsonValue，转换的时候转换出完整的对象。
-     * 加了@JsonValue，只会显示相应的属性的值
-     * <p>
-     * 不使用@JsonValue @JsonDeserializer类里面要做相应的处理
-     *
-     * @return Enum索引
-     */
-    @JsonValue
     @Override
-    public Integer getValue() {
+    public String getValue() {
         return value;
     }
 
     @Override
-    public String getDescription() {
-        return description;
+    public String getLabel() {
+        return label;
     }
 }

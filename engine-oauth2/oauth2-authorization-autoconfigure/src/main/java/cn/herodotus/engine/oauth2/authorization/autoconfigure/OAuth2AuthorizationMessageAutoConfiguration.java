@@ -28,8 +28,10 @@ package cn.herodotus.engine.oauth2.authorization.autoconfigure;
 import cn.herodotus.engine.core.foundation.condition.ConditionalOnArchitecture;
 import cn.herodotus.engine.core.foundation.condition.ConditionalOnServletApplication;
 import cn.herodotus.engine.core.foundation.enums.Architecture;
+import cn.herodotus.engine.message.core.definition.strategy.EnumDictionaryGatherEventManager;
 import cn.herodotus.engine.message.core.definition.strategy.RestMappingScanEventManager;
 import cn.herodotus.engine.oauth2.authorization.autoconfigure.listener.RemoteAttributeTransmitterSyncListener;
+import cn.herodotus.engine.oauth2.authorization.autoconfigure.strategy.DefaultEnumDictionaryGatherEventManager;
 import cn.herodotus.engine.oauth2.authorization.autoconfigure.strategy.DefaultRestMappingScanEventManager;
 import cn.herodotus.engine.oauth2.authorization.processor.SecurityAttributeAnalyzer;
 import jakarta.annotation.PostConstruct;
@@ -68,6 +70,14 @@ public class OAuth2AuthorizationMessageAutoConfiguration {
     public RestMappingScanEventManager servletRequestMappingScanEventManager(SecurityAttributeAnalyzer analyzer) {
         DefaultRestMappingScanEventManager manager = new DefaultRestMappingScanEventManager(analyzer);
         log.trace("[Herodotus] |- Bean [Servlet Request Mapping Scan Manager] Configure.");
+        return manager;
+    }
+
+    @Bean
+    @ConditionalOnMissingBean
+    public EnumDictionaryGatherEventManager enumDictionaryGatherEventManager() {
+        DefaultEnumDictionaryGatherEventManager manager = new DefaultEnumDictionaryGatherEventManager();
+        log.trace("[Herodotus] |- Bean [Enum Dictionary Gather Manager] Configure.");
         return manager;
     }
 

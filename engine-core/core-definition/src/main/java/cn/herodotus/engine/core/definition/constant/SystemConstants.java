@@ -49,6 +49,18 @@ public interface SystemConstants {
      * 默认的时间日期格式
      */
     String DATE_TIME_FORMAT = DateFormatPool.NORM_DATETIME_PATTERN;
+    String DATA_TYPE_STRING = "STRING";
+    String DATA_TYPE_NUMBER = "NUMBER";
+
+    String VIRTUAL_ASYNC_PREFIX = "async-";
+
+    /**
+     * 大部分测试的测试资源，放入本地的 resources 目录即可满足。
+     * 但还是有部分测试资源，还是需要外部环境，才能验证具体的可用性。
+     * <p>
+     * 定义测试用途的通用目录，外部资源的统一使用和管控。
+     */
+    String TESTING_WINDOWS = "D:/workspaces/Testing";
 
     /* ---------- 系统信息 ---------- */
 

@@ -25,10 +25,13 @@
 
 package cn.herodotus.engine.logic.message.config;
 
+import cn.herodotus.engine.core.definition.function.EnumDictionaryBuilderCustomizer;
+import cn.herodotus.engine.logic.message.customizer.MessageEnumDictionaryBuilderCustomizer;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -57,5 +60,12 @@ public class LogicMessageConfiguration {
     @PostConstruct
     public void postConstruct() {
         log.debug("[Herodotus] |- Module [Logic Message] Configure.");
+    }
+
+    @Bean
+    public EnumDictionaryBuilderCustomizer messageEnumDictionaryBuilderCustomizer() {
+        MessageEnumDictionaryBuilderCustomizer customizer = new MessageEnumDictionaryBuilderCustomizer();
+        log.debug("[Herodotus] |- Strategy [Message EnumDictionary Builder Customizer] Configure.");
+        return customizer;
     }
 }

@@ -26,9 +26,9 @@
 package cn.herodotus.engine.logic.identity.enums;
 
 import cn.herodotus.engine.core.definition.constant.SystemConstants;
-import cn.herodotus.engine.core.definition.enums.BaseUiEnum;
+import cn.herodotus.engine.core.definition.domain.Dictionary;
+import cn.herodotus.engine.core.definition.domain.DictionaryEnum;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.google.common.collect.ImmutableMap;
 import io.swagger.v3.oas.annotations.media.Schema;
 import org.springframework.security.oauth2.core.AuthorizationGrantType;
 
@@ -45,7 +45,7 @@ import java.util.Map;
  */
 @Schema(name = "OAuth2 认证模式")
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
-public enum GrantType implements BaseUiEnum<String> {
+public enum GrantType implements DictionaryEnum {
 
     /**
      * enum
@@ -60,37 +60,31 @@ public enum GrantType implements BaseUiEnum<String> {
     SOCIAL_CREDENTIALS(SystemConstants.SOCIAL_CREDENTIALS, "Social Credentials 模式");
 
     private static final Map<Integer, GrantType> INDEX_MAP = new HashMap<>();
-    private static final List<Map<String, Object>> JSON_STRUCTURE = new ArrayList<>();
+    private static final List<Dictionary> DICTIONARIES = new ArrayList<>();
 
     static {
         for (GrantType grantType : GrantType.values()) {
             INDEX_MAP.put(grantType.ordinal(), grantType);
-            JSON_STRUCTURE.add(grantType.ordinal(),
-                    ImmutableMap.<String, Object>builder()
-                            .put("value", grantType.getValue())
-                            .put("key", grantType.name())
-                            .put("text", grantType.getDescription())
-                            .put("index", grantType.ordinal())
-                            .build());
+            DICTIONARIES.add(grantType.getDictionary(grantType.name(), grantType.ordinal()));
         }
     }
 
-    @Schema(name = "认证模式")
+    @Schema(name = "枚举值")
     private final String value;
     @Schema(name = "文字")
-    private final String description;
+    private final String label;
 
-    GrantType(String value, String description) {
+    GrantType(String value, String label) {
         this.value = value;
-        this.description = description;
+        this.label = label;
     }
 
     public static GrantType get(Integer index) {
         return INDEX_MAP.get(index);
     }
 
-    public static List<Map<String, Object>> getPreprocessedJsonStructure() {
-        return JSON_STRUCTURE;
+    public static List<Dictionary> getDictionaries() {
+        return DICTIONARIES;
     }
 
     @Override
@@ -99,7 +93,7 @@ public enum GrantType implements BaseUiEnum<String> {
     }
 
     @Override
-    public String getDescription() {
-        return description;
+    public String getLabel() {
+        return label;
     }
 }

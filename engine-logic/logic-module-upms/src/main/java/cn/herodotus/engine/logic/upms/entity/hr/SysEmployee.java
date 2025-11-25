@@ -27,7 +27,7 @@ package cn.herodotus.engine.logic.upms.entity.hr;
 
 import cn.herodotus.engine.core.identity.enums.AccountCategory;
 import cn.herodotus.engine.data.core.jpa.entity.AbstractSysEntity;
-import cn.herodotus.engine.logic.upms.constants.LogicUpmsConstants;
+import cn.herodotus.engine.logic.upms.constant.LogicUpmsConstants;
 import cn.herodotus.engine.logic.upms.definition.SocialUserDetails;
 import cn.herodotus.engine.logic.upms.domain.deserializer.SysUserEmptyToNull;
 import cn.herodotus.engine.logic.upms.entity.security.SysUser;

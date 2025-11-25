@@ -31,7 +31,7 @@
     <parent>
         <groupId>cn.herodotus.engine</groupId>
         <artifactId>engine-starter</artifactId>
-        <version>3.5.8.0</version>
+        <version>4.0.0.0-M1</version>
     </parent>
 
     <artifactId>servlet-container-spring-boot-starter</artifactId>
@@ -48,6 +48,12 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <exclusions>
+                <exclusion>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                    <groupId>org.springframework.boot</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>

@@ -34,7 +34,7 @@
 package cn.herodotus.engine.logic.upms.entity.security;
 
 import cn.herodotus.engine.data.core.jpa.entity.AbstractSysEntity;
-import cn.herodotus.engine.logic.upms.constants.LogicUpmsConstants;
+import cn.herodotus.engine.logic.upms.constant.LogicUpmsConstants;
 import cn.herodotus.engine.logic.upms.domain.deserializer.SysEmployeeEmptyToNull;
 import cn.herodotus.engine.logic.upms.entity.hr.SysEmployee;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;

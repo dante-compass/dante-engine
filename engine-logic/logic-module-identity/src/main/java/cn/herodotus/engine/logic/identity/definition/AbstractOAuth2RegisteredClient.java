@@ -26,9 +26,9 @@
 package cn.herodotus.engine.logic.identity.definition;
 
 import cn.herodotus.engine.logic.identity.entity.OAuth2Scope;
-import cn.herodotus.engine.oauth2.core.enums.AllJwsAlgorithm;
-import cn.herodotus.engine.oauth2.core.enums.SignatureJwsAlgorithm;
-import cn.herodotus.engine.oauth2.core.enums.TokenFormat;
+import cn.herodotus.engine.logic.identity.enums.AllJwsAlgorithm;
+import cn.herodotus.engine.logic.identity.enums.SignatureJwsAlgorithm;
+import cn.herodotus.engine.logic.identity.enums.TokenFormat;
 import cn.herodotus.engine.oauth2.persistence.sas.jpa.definition.AbstractRegisteredClient;
 import cn.hutool.v7.core.data.id.IdUtil;
 import io.swagger.v3.oas.annotations.media.Schema;

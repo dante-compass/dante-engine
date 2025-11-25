@@ -25,10 +25,9 @@
 
 package cn.herodotus.engine.core.identity.enums;
 
-import cn.herodotus.engine.core.definition.enums.BaseUiEnum;
+import cn.herodotus.engine.core.definition.domain.Dictionary;
+import cn.herodotus.engine.core.definition.domain.DictionaryEnum;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonValue;
-import com.google.common.collect.ImmutableMap;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.util.ArrayList;
@@ -44,7 +43,7 @@ import java.util.Map;
  */
 @Schema(name = "Security 权限表达式")
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
-public enum PermissionExpression implements BaseUiEnum<String> {
+public enum PermissionExpression implements DictionaryEnum {
     /**
      * 权限表达式
      */
@@ -55,48 +54,41 @@ public enum PermissionExpression implements BaseUiEnum<String> {
     AUTHENTICATED("isAuthenticated", "isAuthenticated"),
     FULLY_AUTHENTICATED("isFullyAuthenticated", "isFullyAuthenticated");
 
-    private static final Map<String, PermissionExpression> INDEX_MAP = new HashMap<>();
-    private static final List<Map<String, Object>> JSON_STRUCTURE = new ArrayList<>();
+    private static final Map<Integer, PermissionExpression> INDEX_MAP = new HashMap<>();
+    private static final List<Dictionary> DICTIONARIES = new ArrayList<>();
 
     static {
-        for (PermissionExpression permissionExpression : PermissionExpression.values()) {
-            INDEX_MAP.put(permissionExpression.getValue(), permissionExpression);
-            JSON_STRUCTURE.add(permissionExpression.ordinal(),
-                    ImmutableMap.<String, Object>builder()
-                            .put("value", permissionExpression.getValue())
-                            .put("key", permissionExpression.name())
-                            .put("text", permissionExpression.getDescription())
-                            .put("index", permissionExpression.ordinal())
-                            .build());
+        for (PermissionExpression expression : PermissionExpression.values()) {
+            INDEX_MAP.put(expression.ordinal(), expression);
+            DICTIONARIES.add(expression.getDictionary(expression.name(), expression.ordinal()));
         }
     }
 
-    @Schema(name = "索引")
+    @Schema(name = "枚举值")
     private final String value;
-    @Schema(name = "说明")
-    private final String description;
+    @Schema(name = "文字")
+    private final String label;
 
-    PermissionExpression(String value, String description) {
+    PermissionExpression(String value, String label) {
         this.value = value;
-        this.description = description;
+        this.label = label;
     }
 
-    public static PermissionExpression get(String value) {
-        return INDEX_MAP.get(value);
+    public static PermissionExpression get(Integer index) {
+        return INDEX_MAP.get(index);
     }
 
-    public static List<Map<String, Object>> getPreprocessedJsonStructure() {
-        return JSON_STRUCTURE;
+    public static List<Dictionary> getDictionaries() {
+        return DICTIONARIES;
     }
 
-    @JsonValue
     @Override
     public String getValue() {
         return value;
     }
 
     @Override
-    public String getDescription() {
-        return description;
+    public String getLabel() {
+        return label;
     }
 }

@@ -25,10 +25,9 @@
 
 package cn.herodotus.engine.data.core.enums;
 
-import cn.herodotus.engine.core.definition.enums.BaseUiEnum;
+import cn.herodotus.engine.core.definition.domain.Dictionary;
+import cn.herodotus.engine.core.definition.domain.DictionaryEnum;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonValue;
-import com.google.common.collect.ImmutableMap;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.util.ArrayList;
@@ -41,74 +40,60 @@ import java.util.Map;
  */
 @Schema(name = "数据状态")
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
-public enum DataItemStatus implements BaseUiEnum<Integer> {
+public enum DataItemStatus implements DictionaryEnum {
 
     /**
      * 数据条目已启用
      */
-    ENABLE(0, "启用"),
+    ENABLE("0", "启用"),
     /**
      * 数据条目被启用
      */
-    FORBIDDEN(1, "禁用"),
+    FORBIDDEN("1", "禁用"),
     /**
      * 数据条目被锁定
      */
-    LOCKING(2, "锁定"),
+    LOCKING("2", "锁定"),
     /**
      * 数据条目已过期
      */
-    EXPIRED(3, "过期");
+    EXPIRED("3", "过期");
 
     private static final Map<Integer, DataItemStatus> INDEX_MAP = new HashMap<>();
-    private static final List<Map<String, Object>> JSON_STRUCTURE = new ArrayList<>();
+    private static final List<Dictionary> DICTIONARIES = new ArrayList<>();
 
     static {
         for (DataItemStatus dataItemStatus : DataItemStatus.values()) {
-            INDEX_MAP.put(dataItemStatus.getValue(), dataItemStatus);
-            JSON_STRUCTURE.add(dataItemStatus.getValue(),
-                    ImmutableMap.<String, Object>builder()
-                            .put("value", dataItemStatus.getValue())
-                            .put("key", dataItemStatus.name())
-                            .put("text", dataItemStatus.getDescription())
-                            .build());
+            INDEX_MAP.put(dataItemStatus.ordinal(), dataItemStatus);
+            DICTIONARIES.add(dataItemStatus.getDictionary(dataItemStatus.name(), dataItemStatus.ordinal()));
         }
     }
 
     @Schema(name = "枚举值")
-    private final Integer value;
+    private final String value;
     @Schema(name = "文字")
-    private final String description;
+    private final String label;
 
-    DataItemStatus(Integer value, String description) {
+    DataItemStatus(String value, String label) {
         this.value = value;
-        this.description = description;
+        this.label = label;
     }
 
-    public static DataItemStatus get(Integer index) {
-        return INDEX_MAP.get(index);
+    public static DataItemStatus get(Integer ordinal) {
+        return INDEX_MAP.get(ordinal);
     }
 
-    public static List<Map<String, Object>> getPreprocessedJsonStructure() {
-        return JSON_STRUCTURE;
+    public static List<Dictionary> getDictionaries() {
+        return DICTIONARIES;
     }
 
-    /**
-     * 不加@JsonValue，转换的时候转换出完整的对象。
-     * 加了@JsonValue，只会显示相应的属性的值
-     * <p>
-     * 不使用@JsonValue @JsonDeserializer类里面要做相应的处理
-     *
-     * @return Enum枚举值
-     */
-    @JsonValue
     @Override
-    public Integer getValue() {
+    public String getValue() {
         return value;
     }
 
     @Override
-    public String getDescription() {
-        return this.description;
+    public String getLabel() {
+        return this.label;
     }
 }

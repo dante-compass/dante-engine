@@ -32,6 +32,7 @@ import cn.herodotus.engine.logic.upms.service.security.SysUserService;
 import cn.herodotus.engine.oauth2.authorization.autoconfigure.condition.ConditionalOnUpmsService;
 import cn.herodotus.engine.oauth2.authorization.autoconfigure.listener.*;
 import cn.herodotus.engine.oauth2.authorization.autoconfigure.processor.AttributeTransmitterDistributeProcessor;
+import cn.herodotus.engine.oauth2.authorization.autoconfigure.processor.EnumDictionaryGatherProcessor;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -75,6 +76,14 @@ public class OAuth2UpmsServiceAutoConfiguration {
 
         @Bean
         @ConditionalOnMissingBean
+        public LocalEnumDictionaryGatherListener localEnumDictionaryGatherListener(EnumDictionaryGatherProcessor enumDictionaryGatherProcessor) {
+            LocalEnumDictionaryGatherListener listener = new LocalEnumDictionaryGatherListener(enumDictionaryGatherProcessor);
+            log.trace("[Herodotus] |- Bean [Local Enum Dictionary Gather Listener] Configure.");
+            return listener;
+        }
+
+        @Bean
+        @ConditionalOnMissingBean
         public LocalRestMappingGatherListener localRequestMappingGatherListener(AttributeTransmitterDistributeProcessor attributeTransmitterDistributeProcessor) {
             LocalRestMappingGatherListener listener = new LocalRestMappingGatherListener(attributeTransmitterDistributeProcessor);
             log.trace("[Herodotus] |- Bean [Local Request Mapping Gather Listener] Configure.");
@@ -99,6 +108,14 @@ public class OAuth2UpmsServiceAutoConfiguration {
         public RemoteAccountStatusChangedListener remoteAccountStatusChangedListener(SysUserService sysUserService) {
             RemoteAccountStatusChangedListener listener = new RemoteAccountStatusChangedListener(sysUserService);
             log.trace("[Herodotus] |- Bean [Remote Account Status Changed Listener] Configure.");
+            return listener;
+        }
+
+        @Bean
+        @ConditionalOnMissingBean
+        public RemoteEnumDictionaryGatherListener remoteEnumDictionaryGatherListener(EnumDictionaryGatherProcessor enumDictionaryGatherProcessor) {
+            RemoteEnumDictionaryGatherListener listener = new RemoteEnumDictionaryGatherListener(enumDictionaryGatherProcessor);
+            log.trace("[Herodotus] |- Bean [Remote Enum Dictionary Gather Listener] Configure.");
             return listener;
         }
 

@@ -32,7 +32,7 @@
     <parent>
         <artifactId>dante-engine</artifactId>
         <groupId>cn.herodotus.engine</groupId>
-        <version>3.5.8.0</version>
+        <version>4.0.0.0-M1</version>
     </parent>
 
     <artifactId>engine-rest</artifactId>
@@ -46,6 +46,7 @@
         <module>rest-module-servlet-message</module>
         <module>rest-module-servlet-identity</module>
         <module>rest-module-servlet-upms</module>
+        <module>rest-module-oss</module>
     </modules>
 
 </project>

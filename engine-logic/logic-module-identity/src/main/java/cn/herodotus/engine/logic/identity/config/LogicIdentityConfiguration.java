@@ -25,7 +25,9 @@
 
 package cn.herodotus.engine.logic.identity.config;
 
+import cn.herodotus.engine.core.definition.function.EnumDictionaryBuilderCustomizer;
 import cn.herodotus.engine.core.identity.service.ClientDetailsService;
+import cn.herodotus.engine.logic.identity.customizer.IdentityEnumDictionaryBuilderCustomizer;
 import cn.herodotus.engine.logic.identity.definition.HerodotusClientDetailsService;
 import cn.herodotus.engine.logic.identity.service.OAuth2ApplicationService;
 import jakarta.annotation.PostConstruct;
@@ -69,5 +71,12 @@ public class LogicIdentityConfiguration {
         HerodotusClientDetailsService herodotusClientDetailsService = new HerodotusClientDetailsService(applicationService);
         log.trace("[Herodotus] |- Bean [Herodotus Client Details Service] Configure.");
         return herodotusClientDetailsService;
+    }
+
+    @Bean
+    public EnumDictionaryBuilderCustomizer identityEnumDictionaryBuilderCustomizer() {
+        IdentityEnumDictionaryBuilderCustomizer customizer = new IdentityEnumDictionaryBuilderCustomizer();
+        log.debug("[Herodotus] |- Strategy [Identity EnumDictionary Builder Customizer] Configure.");
+        return customizer;
     }
 }

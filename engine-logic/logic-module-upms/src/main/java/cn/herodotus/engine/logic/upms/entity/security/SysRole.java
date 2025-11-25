@@ -26,7 +26,7 @@
 package cn.herodotus.engine.logic.upms.entity.security;
 
 import cn.herodotus.engine.data.core.jpa.entity.AbstractSysEntity;
-import cn.herodotus.engine.logic.upms.constants.LogicUpmsConstants;
+import cn.herodotus.engine.logic.upms.constant.LogicUpmsConstants;
 import com.google.common.base.MoreObjects;
 import jakarta.persistence.*;
 import org.apache.commons.lang3.builder.EqualsBuilder;

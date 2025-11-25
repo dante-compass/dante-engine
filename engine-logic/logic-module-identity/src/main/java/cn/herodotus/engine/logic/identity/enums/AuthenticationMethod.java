@@ -25,9 +25,9 @@
 
 package cn.herodotus.engine.logic.identity.enums;
 
-import cn.herodotus.engine.core.definition.enums.BaseUiEnum;
+import cn.herodotus.engine.core.definition.domain.Dictionary;
+import cn.herodotus.engine.core.definition.domain.DictionaryEnum;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.google.common.collect.ImmutableMap;
 import io.swagger.v3.oas.annotations.media.Schema;
 import org.springframework.security.oauth2.core.ClientAuthenticationMethod;
 
@@ -44,7 +44,7 @@ import java.util.Map;
  */
 @Schema(name = "OAuth2 Client 认证方式")
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
-public enum AuthenticationMethod implements BaseUiEnum<String> {
+public enum AuthenticationMethod implements DictionaryEnum {
 
     /**
      * enum
@@ -57,47 +57,42 @@ public enum AuthenticationMethod implements BaseUiEnum<String> {
     TLS_CLIENT_AUTH(ClientAuthenticationMethod.TLS_CLIENT_AUTH.getValue(), "TSL 客户端认证"),
     SELF_SIGNED_TLS_CLIENT_AUTH(ClientAuthenticationMethod.SELF_SIGNED_TLS_CLIENT_AUTH.getValue(), "自签名 TSL 客户端认证");
 
+
     private static final Map<Integer, AuthenticationMethod> INDEX_MAP = new HashMap<>();
-    private static final List<Map<String, Object>> JSON_STRUCTURE = new ArrayList<>();
+    private static final List<Dictionary> DICTIONARIES = new ArrayList<>();
 
     static {
-        for (AuthenticationMethod authenticationMethod : AuthenticationMethod.values()) {
-            INDEX_MAP.put(authenticationMethod.ordinal(), authenticationMethod);
-            JSON_STRUCTURE.add(authenticationMethod.ordinal(),
-                    ImmutableMap.<String, Object>builder()
-                            .put("value", authenticationMethod.getValue())
-                            .put("key", authenticationMethod.name())
-                            .put("text", authenticationMethod.getDescription())
-                            .put("index", authenticationMethod.ordinal())
-                            .build());
+        for (AuthenticationMethod method : AuthenticationMethod.values()) {
+            INDEX_MAP.put(method.ordinal(), method);
+            DICTIONARIES.add(method.getDictionary(method.name(), method.ordinal()));
         }
     }
 
-    @Schema(name = "认证方法")
+    @Schema(name = "枚举值")
     private final String value;
     @Schema(name = "文字")
-    private final String description;
+    private final String label;
 
-    AuthenticationMethod(String value, String description) {
+    AuthenticationMethod(String value, String label) {
         this.value = value;
-        this.description = description;
+        this.label = label;
     }
 
     public static AuthenticationMethod get(Integer index) {
         return INDEX_MAP.get(index);
     }
 
-    public static List<Map<String, Object>> getPreprocessedJsonStructure() {
-        return JSON_STRUCTURE;
-    }
-
-    @Override
-    public String getDescription() {
-        return description;
+    public static List<Dictionary> getDictionaries() {
+        return DICTIONARIES;
     }
 
     @Override
     public String getValue() {
         return value;
+    }
+
+    @Override
+    public String getLabel() {
+        return label;
     }
 }

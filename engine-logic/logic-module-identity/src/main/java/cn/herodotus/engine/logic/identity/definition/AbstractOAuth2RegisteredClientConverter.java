@@ -26,8 +26,9 @@
 package cn.herodotus.engine.logic.identity.definition;
 
 import cn.herodotus.engine.logic.identity.entity.OAuth2Scope;
-import cn.herodotus.engine.oauth2.core.enums.AllJwsAlgorithm;
-import cn.herodotus.engine.oauth2.core.enums.SignatureJwsAlgorithm;
+import cn.herodotus.engine.logic.identity.enums.AllJwsAlgorithm;
+import cn.herodotus.engine.logic.identity.enums.SignatureJwsAlgorithm;
+import cn.herodotus.engine.logic.identity.enums.TokenFormat;
 import cn.herodotus.engine.oauth2.persistence.sas.jpa.definition.RegisteredClientConverter;
 import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.security.oauth2.jose.jws.JwsAlgorithm;
@@ -78,7 +79,7 @@ public abstract class AbstractOAuth2RegisteredClientConverter<T extends Abstract
         TokenSettings.Builder tokenSettingsBuilder = TokenSettings.builder();
         tokenSettingsBuilder.authorizationCodeTimeToLive(details.getAuthorizationCodeValidity());
         tokenSettingsBuilder.accessTokenTimeToLive(details.getAccessTokenValidity());
-        tokenSettingsBuilder.accessTokenFormat(new OAuth2TokenFormat(details.getAccessTokenFormat().getFormat()));
+        tokenSettingsBuilder.accessTokenFormat(convert(details.getAccessTokenFormat()));
         tokenSettingsBuilder.deviceCodeTimeToLive(details.getDeviceCodeValidity());
         // 是否可重用刷新令牌
         tokenSettingsBuilder.reuseRefreshTokens(details.getReuseRefreshTokens());
@@ -94,7 +95,7 @@ public abstract class AbstractOAuth2RegisteredClientConverter<T extends Abstract
 
     private JwsAlgorithm toJwsAlgorithm(AllJwsAlgorithm allJwsAlgorithm) {
         if (ObjectUtils.isNotEmpty(allJwsAlgorithm)) {
-            if (allJwsAlgorithm.getValue() < AllJwsAlgorithm.HS256.getValue()) {
+            if (allJwsAlgorithm.ordinal() < AllJwsAlgorithm.HS256.ordinal()) {
                 // 如果是签名算法, 转换成 SAS 签名算法
                 return SignatureAlgorithm.from(allJwsAlgorithm.name());
             } else {
@@ -112,5 +113,13 @@ public abstract class AbstractOAuth2RegisteredClientConverter<T extends Abstract
         }
 
         return null;
+    }
+
+    private OAuth2TokenFormat convert(TokenFormat tokenFormat) {
+        if (ObjectUtils.isEmpty(tokenFormat)) {
+            return OAuth2TokenFormat.REFERENCE;
+        } else {
+            return tokenFormat == TokenFormat.REFERENCE ? OAuth2TokenFormat.REFERENCE : OAuth2TokenFormat.SELF_CONTAINED;
+        }
     }
 }

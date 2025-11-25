@@ -27,10 +27,10 @@ package cn.herodotus.engine.logic.identity.converter;
 
 import cn.herodotus.engine.logic.identity.entity.OAuth2Device;
 import cn.herodotus.engine.logic.identity.entity.OAuth2Scope;
+import cn.herodotus.engine.logic.identity.enums.AllJwsAlgorithm;
+import cn.herodotus.engine.logic.identity.enums.SignatureJwsAlgorithm;
+import cn.herodotus.engine.logic.identity.enums.TokenFormat;
 import cn.herodotus.engine.logic.identity.service.OAuth2ScopeService;
-import cn.herodotus.engine.oauth2.core.enums.AllJwsAlgorithm;
-import cn.herodotus.engine.oauth2.core.enums.SignatureJwsAlgorithm;
-import cn.herodotus.engine.oauth2.core.enums.TokenFormat;
 import cn.hutool.v7.core.date.DateUtil;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.ObjectUtils;
@@ -38,6 +38,7 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.security.oauth2.core.AuthorizationGrantType;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
 import org.springframework.security.oauth2.server.authorization.settings.ClientSettings;
+import org.springframework.security.oauth2.server.authorization.settings.OAuth2TokenFormat;
 import org.springframework.security.oauth2.server.authorization.settings.TokenSettings;
 import org.springframework.util.StringUtils;
 
@@ -91,7 +92,7 @@ public class RegisteredClientToOAuth2DeviceConverter implements Converter<Regist
         device.setAccessTokenValidity(tokenSettings.getAccessTokenTimeToLive());
         device.setDeviceCodeValidity(tokenSettings.getDeviceCodeTimeToLive());
         device.setRefreshTokenValidity(tokenSettings.getRefreshTokenTimeToLive());
-        device.setAccessTokenFormat(TokenFormat.get(tokenSettings.getAccessTokenFormat().getValue()));
+        device.setAccessTokenFormat(convert(tokenSettings.getAccessTokenFormat()));
         device.setReuseRefreshTokens(tokenSettings.isReuseRefreshTokens());
         device.setIdTokenSignatureAlgorithm(SignatureJwsAlgorithm.valueOf(tokenSettings.getIdTokenSignatureAlgorithm().getName()));
 
@@ -107,5 +108,13 @@ public class RegisteredClientToOAuth2DeviceConverter implements Converter<Regist
             }
         }
         return new HashSet<>();
+    }
+
+    private TokenFormat convert(OAuth2TokenFormat oauth2TokenFormat) {
+        if (ObjectUtils.isEmpty(oauth2TokenFormat)) {
+            return TokenFormat.REFERENCE;
+        } else {
+            return oauth2TokenFormat == OAuth2TokenFormat.REFERENCE ? TokenFormat.REFERENCE : TokenFormat.SELF_CONTAINED;
+        }
     }
 }

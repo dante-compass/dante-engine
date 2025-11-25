@@ -26,7 +26,7 @@
 package cn.herodotus.engine.logic.upms.entity.hr;
 
 import cn.herodotus.engine.data.core.jpa.entity.AbstractSysEntity;
-import cn.herodotus.engine.logic.upms.constants.LogicUpmsConstants;
+import cn.herodotus.engine.logic.upms.constant.LogicUpmsConstants;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.google.common.base.MoreObjects;

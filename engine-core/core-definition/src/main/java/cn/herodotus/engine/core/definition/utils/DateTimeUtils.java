@@ -25,9 +25,12 @@
 
 package cn.herodotus.engine.core.definition.utils;
 
+import cn.hutool.v7.core.math.NumberUtil;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 
+import java.time.Instant;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
@@ -92,5 +95,45 @@ public class DateTimeUtils {
             return ZonedDateTime.ofInstant(date.toInstant(), ZoneId.systemDefault());
         }
         return ZonedDateTime.now();
+    }
+
+    /**
+     * 时间戳转换为 {@link LocalDateTime}
+     *
+     * @param timestamp 时间戳 {@link Long}
+     * @return {@link LocalDateTime} or null
+     */
+    public static LocalDateTime toLocalDateTime(long timestamp) {
+        if (!NumberUtil.isZero(timestamp)) {
+            Instant instant = Instant.ofEpochMilli(timestamp);
+            return LocalDateTime.ofInstant(instant, ZoneId.systemDefault());
+        }
+        return null;
+    }
+
+    /**
+     * {@link LocalDateTime} 转 {@link Instant}
+     *
+     * @param localDateTime 时间类型 {@link LocalDateTime}
+     * @return {@link Instant} 或 null
+     */
+    public static Instant toInstant(LocalDateTime localDateTime) {
+        if (ObjectUtils.isNotEmpty(localDateTime)) {
+            return localDateTime.atZone(ZoneId.systemDefault()).toInstant();
+        }
+        return null;
+    }
+
+    /**
+     * {@link Instant} 转 {@link LocalDateTime}
+     *
+     * @param instant 时间类型 {@link Instant}
+     * @return {@link LocalDateTime} 或 null
+     */
+    public static LocalDateTime toLocalDateTime(Instant instant) {
+        if (ObjectUtils.isNotEmpty(instant)) {
+            return LocalDateTime.ofInstant(instant, ZoneId.systemDefault());
+        }
+        return null;
     }
 }
