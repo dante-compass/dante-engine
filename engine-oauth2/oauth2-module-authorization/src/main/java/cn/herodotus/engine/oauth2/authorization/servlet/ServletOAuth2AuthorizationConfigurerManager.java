@@ -25,8 +25,7 @@
 
 package cn.herodotus.engine.oauth2.authorization.servlet;
 
-import cn.herodotus.engine.core.autoconfigure.oauth2.OAuth2AuthorizationProperties;
-import cn.herodotus.engine.core.autoconfigure.oauth2.servlet.ServletOAuth2ResourceMatcherConfigurer;
+import cn.herodotus.dante.oauth2.properties.OAuth2AuthorizationProperties;
 import cn.herodotus.engine.web.core.servlet.template.ThymeleafTemplateHandler;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.security.oauth2.server.resource.introspection.OpaqueTokenIntrospector;

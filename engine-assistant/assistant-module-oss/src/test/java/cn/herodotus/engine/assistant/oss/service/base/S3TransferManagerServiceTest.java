@@ -30,7 +30,7 @@ import cn.herodotus.engine.assistant.oss.pool.AwsConfigurer;
 import cn.herodotus.engine.assistant.oss.pool.S3AsyncClientObjectPool;
 import cn.herodotus.engine.assistant.oss.properties.OssProperties;
 import cn.herodotus.engine.assistant.oss.service.utils.OssTestUtils;
-import cn.herodotus.engine.core.foundation.utils.ResourceResolverUtils;
+import cn.herodotus.dante.spring.utils.ResourceResolverUtils;
 import org.junit.jupiter.api.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

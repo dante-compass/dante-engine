@@ -30,7 +30,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>cn.herodotus.engine</groupId>
+        <groupId>cn.herodotus.dante</groupId>
         <artifactId>engine-starter</artifactId>
         <version>4.0.0.0-M1</version>
     </parent>
@@ -42,7 +42,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>cn.herodotus.engine</groupId>
+            <groupId>cn.herodotus.dante</groupId>
             <artifactId>assistant-module-captcha</artifactId>
         </dependency>
     </dependencies>

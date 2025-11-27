@@ -25,8 +25,8 @@
 
 package cn.herodotus.engine.oauth2.authorization.processor;
 
-import cn.herodotus.engine.core.autoconfigure.oauth2.domain.HerodotusRequest;
-import cn.herodotus.engine.core.autoconfigure.oauth2.servlet.ServletOAuth2ResourceMatcherConfigurer;
+import cn.herodotus.dante.oauth2.domain.HerodotusRequest;
+import cn.herodotus.engine.oauth2.authorization.servlet.ServletOAuth2ResourceMatcherConfigurer;
 import cn.herodotus.engine.core.definition.constant.SymbolConstants;
 import cn.herodotus.engine.core.foundation.enums.UrlCategory;
 import cn.herodotus.engine.core.identity.domain.AttributeTransmitter;

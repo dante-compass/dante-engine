@@ -30,7 +30,6 @@ import cn.herodotus.engine.core.definition.function.ErrorCodeMapperBuilderCustom
 import cn.herodotus.engine.core.foundation.context.ServiceContextHolder;
 import cn.herodotus.engine.message.core.definition.strategy.EnumDictionaryGatherEventManager;
 import cn.herodotus.engine.web.core.support.WebPropertyFinder;
-import cn.herodotus.engine.web.service.customizer.Jackson2XssObjectMapperBuilderCustomizer;
 import cn.herodotus.engine.web.service.customizer.WebErrorCodeMapperBuilderCustomizer;
 import cn.herodotus.engine.web.service.initializer.EnumDictionaryGather;
 import cn.herodotus.engine.web.service.initializer.ServiceContextHolderBuilder;
@@ -41,7 +40,6 @@ import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
-import org.springframework.boot.autoconfigure.jackson.Jackson2ObjectMapperBuilderCustomizer;
 import org.springframework.boot.autoconfigure.web.ServerProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.ApplicationContext;
@@ -96,13 +94,6 @@ public class WebServiceConfiguration implements ApplicationContextAware {
         ServiceContextHolder.setApplicationContext(applicationContext);
         ServiceContextHolder.setApplicationName(WebPropertyFinder.getApplicationName(applicationContext));
         log.debug("[Herodotus] |- HERODOTUS ApplicationContext initialization completed.");
-    }
-
-    @Bean
-    public Jackson2ObjectMapperBuilderCustomizer xssObjectMapperBuilderCustomizer() {
-        Jackson2XssObjectMapperBuilderCustomizer customizer = new Jackson2XssObjectMapperBuilderCustomizer();
-        log.debug("[Herodotus] |- Strategy [Jackson2 Xss ObjectMapper Builder Customizer] Configure.");
-        return customizer;
     }
 
     @Bean

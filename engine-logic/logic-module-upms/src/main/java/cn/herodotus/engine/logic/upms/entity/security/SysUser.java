@@ -39,7 +39,7 @@ import cn.herodotus.engine.logic.upms.domain.deserializer.SysEmployeeEmptyToNull
 import cn.herodotus.engine.logic.upms.entity.hr.SysEmployee;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import tools.jackson.databind.annotation.JsonDeserialize;
 import com.google.common.base.MoreObjects;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;

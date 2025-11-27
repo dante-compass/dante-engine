@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.oauth2.persistence.sas.jpa.jackson2;
 
-import com.fasterxml.jackson.core.Version;
+import tools.jackson.core.Version;
 
 /**
  * <p>Description: Jackson2 用到的常量值 </p>

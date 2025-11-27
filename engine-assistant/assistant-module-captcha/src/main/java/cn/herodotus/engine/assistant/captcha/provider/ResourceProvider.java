@@ -28,7 +28,7 @@ package cn.herodotus.engine.assistant.captcha.provider;
 import cn.herodotus.engine.assistant.captcha.enums.CaptchaResource;
 import cn.herodotus.engine.assistant.captcha.enums.FontStyle;
 import cn.herodotus.engine.assistant.captcha.properties.CaptchaProperties;
-import cn.herodotus.engine.core.foundation.utils.ResourceResolverUtils;
+import cn.herodotus.dante.spring.utils.ResourceResolverUtils;
 import cn.hutool.v7.core.data.id.IdUtil;
 import cn.hutool.v7.core.io.IORuntimeException;
 import cn.hutool.v7.core.io.file.FileUtil;

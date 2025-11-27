@@ -28,7 +28,7 @@ package cn.herodotus.engine.oauth2.persistence.sas.jpa.jackson2;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import tools.jackson.databind.annotation.JsonDeserialize;
 
 /**
  * <p>Description: RegisteredClientMixin </p>

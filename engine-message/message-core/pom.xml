@@ -31,7 +31,7 @@
 
     <parent>
         <artifactId>engine-message</artifactId>
-        <groupId>cn.herodotus.engine</groupId>
+        <groupId>cn.herodotus.dante</groupId>
         <version>4.0.0.0-M1</version>
     </parent>
 
@@ -42,12 +42,12 @@
 
     <dependencies>
         <dependency>
-            <groupId>cn.herodotus.engine</groupId>
+            <groupId>cn.herodotus.dante</groupId>
             <artifactId>core-foundation</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>cn.herodotus.engine</groupId>
+            <groupId>cn.herodotus.dante</groupId>
             <artifactId>core-identity</artifactId>
         </dependency>
 

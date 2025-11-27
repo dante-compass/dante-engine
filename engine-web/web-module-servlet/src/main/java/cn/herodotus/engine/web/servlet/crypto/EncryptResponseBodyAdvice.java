@@ -29,7 +29,7 @@ import cn.herodotus.engine.core.definition.utils.Jackson2Utils;
 import cn.herodotus.engine.web.core.annotation.Crypto;
 import cn.herodotus.engine.web.core.exception.SessionInvalidException;
 import cn.herodotus.engine.web.core.servlet.utils.SessionUtils;
-import com.fasterxml.jackson.core.JsonProcessingException;
+import tools.jackson.core.JsonProcessingException;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;

@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.oauth2.authorization.autoconfigure;
 
-import cn.herodotus.engine.core.autoconfigure.oauth2.definition.SecurityGlobalExceptionHandler;
+import cn.herodotus.dante.oauth2.exception.SecurityGlobalExceptionHandler;
 import cn.herodotus.engine.message.core.definition.strategy.RestMappingScanEventManager;
 import cn.herodotus.engine.oauth2.authorization.autoconfigure.listener.RemoteAttributeTransmitterSyncListener;
 import cn.herodotus.engine.oauth2.authorization.autoconfigure.strategy.DefaultRestMappingScanEventManager;

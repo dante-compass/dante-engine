@@ -31,7 +31,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>cn.herodotus.engine</groupId>
+        <groupId>cn.herodotus.dante</groupId>
         <artifactId>dependencies</artifactId>
         <version>4.0.0.0-M1</version>
         <relativePath>dependencies/pom.xml</relativePath>
@@ -115,6 +115,7 @@
         <module>engine-oauth2</module>
         <module>engine-starter</module>
         <module>engine-web</module>
+        <module>dante-framework</module>
     </modules>
 
 </project>

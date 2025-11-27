@@ -25,8 +25,8 @@
 
 package cn.herodotus.engine.oauth2.authorization.config;
 
-import cn.herodotus.engine.core.autoconfigure.oauth2.OAuth2AuthorizationProperties;
-import cn.herodotus.engine.core.autoconfigure.oauth2.servlet.ServletOAuth2ResourceMatcherConfigurer;
+import cn.herodotus.dante.oauth2.properties.OAuth2AuthorizationProperties;
+import cn.herodotus.engine.oauth2.authorization.servlet.ServletOAuth2ResourceMatcherConfigurer;
 import cn.herodotus.engine.core.foundation.condition.ConditionalOnServletApplication;
 import cn.herodotus.engine.oauth2.authorization.processor.SecurityAttributeAnalyzer;
 import cn.herodotus.engine.oauth2.authorization.processor.SecurityAttributeStorage;
@@ -44,6 +44,7 @@ import org.springframework.context.annotation.Import;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.security.oauth2.server.resource.introspection.OpaqueTokenIntrospector;
+import org.springframework.web.servlet.resource.ResourceUrlProvider;
 
 /**
  * <p>Description: SecurityAttribute 配置 </p>
@@ -86,6 +87,14 @@ public class OAuth2ServletAuthorizationConfiguration {
         SecurityAttributeAnalyzer analyzer = new SecurityAttributeAnalyzer(securityAttributeStorage, servletOAuth2ResourceMatcherConfigurer);
         log.trace("[Herodotus] |- Bean [Security Attribute Analyzer] Configure.");
         return analyzer;
+    }
+
+    @Bean
+    @ConditionalOnMissingBean
+    public ServletOAuth2ResourceMatcherConfigurer servletSecurityMatcherConfigurer(OAuth2AuthorizationProperties authorizationProperties, ResourceUrlProvider resourceUrlProvider) {
+        ServletOAuth2ResourceMatcherConfigurer configurer = new ServletOAuth2ResourceMatcherConfigurer(authorizationProperties, resourceUrlProvider);
+        log.trace("[Herodotus] |- Bean [Servlet Security Matcher Configurer] Configure.");
+        return configurer;
     }
 
     @Bean

@@ -35,7 +35,7 @@
         <relativePath/>
     </parent>
 
-    <groupId>cn.herodotus.engine</groupId>
+    <groupId>cn.herodotus.dante</groupId>
     <artifactId>dependencies</artifactId>
     <version>4.0.0.0-M1</version>
     <name>Dante Engine Dependencies</name>
@@ -246,262 +246,277 @@
             </dependency>
             <!--Dante Engine-->
             <dependency>
-                <groupId>cn.herodotus.engine</groupId>
+                <groupId>cn.herodotus.dante</groupId>
+                <artifactId>dante-autoconfigure</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.herodotus.dante</groupId>
+                <artifactId>dante-oauth2</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.herodotus.dante</groupId>
+                <artifactId>dante-spring</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.herodotus.dante</groupId>
+                <artifactId>dante-web</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>assistant-module-oss</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>cn.herodotus.engine</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>assistant-module-access</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>cn.herodotus.engine</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>assistant-module-captcha</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>cn.herodotus.engine</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>cache-core</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>cn.herodotus.engine</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>cache-module-jetcache</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>cn.herodotus.engine</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>cache-module-redis</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>cn.herodotus.engine</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>cache-module-caffeine</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>cn.herodotus.engine</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>cache-module-redisson</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>cn.herodotus.engine</groupId>
-                <artifactId>core-autoconfigure</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.herodotus.engine</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>core-definition</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>cn.herodotus.engine</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>core-foundation</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>cn.herodotus.engine</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>core-identity</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>cn.herodotus.engine</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>data-core</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>cn.herodotus.engine</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>data-core-jpa</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>cn.herodotus.engine</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>data-core-mongodb</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>cn.herodotus.engine</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>data-module-hibernate</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>cn.herodotus.engine</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>data-module-tenant</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>cn.herodotus.engine</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>logic-module-identity</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>cn.herodotus.engine</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>logic-module-message</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>cn.herodotus.engine</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>logic-module-upms</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>cn.herodotus.engine</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>message-autoconfigure</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>cn.herodotus.engine</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>message-core</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>cn.herodotus.engine</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>message-module-websocket-servlet</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>cn.herodotus.engine</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>oauth2-authorization-autoconfigure</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>cn.herodotus.engine</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>oauth2-authentication-autoconfigure</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>cn.herodotus.engine</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>oauth2-core</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>cn.herodotus.engine</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>oauth2-module-authentication</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>cn.herodotus.engine</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>oauth2-module-authorization</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>cn.herodotus.engine</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>oauth2-module-extension</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>cn.herodotus.engine</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>oauth2-module-persistence-jpa</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>cn.herodotus.engine</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>rest-module-oss</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>cn.herodotus.engine</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>rest-module-servlet-identity</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>cn.herodotus.engine</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>rest-module-servlet-message</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>cn.herodotus.engine</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>rest-module-servlet-upms</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>cn.herodotus.engine</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>cache-spring-boot-starter</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>cn.herodotus.engine</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>captcha-spring-boot-starter</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>cn.herodotus.engine</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>data-mongodb-spring-boot-starter</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>cn.herodotus.engine</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>data-rdbms-spring-boot-starter</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>cn.herodotus.engine</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>facility-alibaba-spring-boot-starter</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>cn.herodotus.engine</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>facility-gateway-spring-boot-starter</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>cn.herodotus.engine</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>facility-kafka-spring-boot-starter</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>cn.herodotus.engine</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>facility-tencent-spring-boot-starter</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>cn.herodotus.engine</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>logging-spring-boot-starter</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>cn.herodotus.engine</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>oss-spring-boot-starter</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>cn.herodotus.engine</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>reactive-container-spring-boot-starter</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>cn.herodotus.engine</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>servlet-container-spring-boot-starter</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>cn.herodotus.engine</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>servlet-message-spring-boot-starter</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>cn.herodotus.engine</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>webmvc-spring-boot-starter</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>cn.herodotus.engine</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>web-core</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>cn.herodotus.engine</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>web-module-api</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>cn.herodotus.engine</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>web-module-service</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>cn.herodotus.engine</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>web-module-servlet</artifactId>
                 <version>${project.version}</version>
             </dependency>

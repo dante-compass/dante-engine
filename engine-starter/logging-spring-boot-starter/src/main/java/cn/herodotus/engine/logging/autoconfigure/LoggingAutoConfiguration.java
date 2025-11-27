@@ -25,10 +25,13 @@
 
 package cn.herodotus.engine.logging.autoconfigure;
 
+import cn.herodotus.engine.logging.autoconfigure.logstash.LogstashLoggingConfiguration;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.annotation.Import;
 
 /**
  * <p>Description: 日志系统自动配置 Starter </p>
@@ -37,6 +40,10 @@ import org.springframework.boot.autoconfigure.AutoConfiguration;
  * @date : 2024/7/3 11:30
  */
 @AutoConfiguration
+@EnableConfigurationProperties(LoggingProperties.class)
+@Import({
+        LogstashLoggingConfiguration.class
+})
 public class LoggingAutoConfiguration {
 
     private static final Logger log = LoggerFactory.getLogger(LoggingAutoConfiguration.class);

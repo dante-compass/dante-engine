@@ -26,9 +26,9 @@
 package cn.herodotus.engine.core.foundation.jackson2;
 
 import cn.herodotus.engine.core.definition.constant.SymbolConstants;
-import com.fasterxml.jackson.core.JsonGenerator;
-import com.fasterxml.jackson.databind.SerializerProvider;
-import com.fasterxml.jackson.databind.ser.std.StdSerializer;
+import tools.jackson.core.JsonGenerator;
+import tools.jackson.databind.SerializerProvider;
+import tools.jackson.databind.ser.std.StdSerializer;
 import org.apache.commons.lang3.Strings;
 import org.springframework.util.StringUtils;
 

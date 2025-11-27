@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.webmvc.autoconfigure;
 
-import cn.herodotus.engine.core.autoconfigure.crypto.CryptoAutoConfiguration;
+import cn.herodotus.dante.autoconfigure.crypto.CryptoAutoConfiguration;
 import cn.herodotus.engine.web.servlet.config.HttpCryptoConfiguration;
 import cn.herodotus.engine.web.servlet.crypto.DecryptRequestParamMapResolver;
 import cn.herodotus.engine.web.servlet.crypto.DecryptRequestParamResolver;

@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.oauth2.authorization.matcher;
 
-import cn.herodotus.engine.core.autoconfigure.oauth2.domain.HerodotusRequest;
+import cn.herodotus.dante.oauth2.domain.HerodotusRequest;
 import cn.herodotus.engine.oauth2.authorization.processor.SecurityAttributeStorage;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.security.web.servlet.util.matcher.PathPatternRequestMatcher;

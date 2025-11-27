@@ -11,7 +11,7 @@
 
 ```xml
 <dependency>
-  <groupId>cn.herodotus.engine</groupId>
+  <groupId>cn.herodotus.dante</groupId>
   <artifactId>cache-module-redis</artifactId>
 </dependency>
 ```

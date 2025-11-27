@@ -27,8 +27,8 @@ package cn.herodotus.engine.core.definition.utils;
 
 import cn.herodotus.engine.core.definition.constant.SymbolConstants;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.core.JsonProcessingException;
+import tools.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.Strings;

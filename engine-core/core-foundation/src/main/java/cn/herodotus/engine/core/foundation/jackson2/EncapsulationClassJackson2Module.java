@@ -25,8 +25,8 @@
 
 package cn.herodotus.engine.core.foundation.jackson2;
 
-import com.fasterxml.jackson.databind.module.SimpleModule;
-import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
+import tools.jackson.databind.module.SimpleModule;
+import tools.jackson.databind.ser.std.ToStringSerializer;
 
 /**
  * <p>Description: Java 封装类 Jackson 处理定义 Module </p>
