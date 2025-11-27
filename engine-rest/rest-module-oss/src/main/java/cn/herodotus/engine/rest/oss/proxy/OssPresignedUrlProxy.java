@@ -30,7 +30,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.*;
 import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.stereotype.Component;
-import org.springframework.util.MultiValueMap;
 import org.springframework.util.StreamUtils;
 import org.springframework.web.client.RestTemplate;
 
@@ -81,7 +80,7 @@ public class OssPresignedUrlProxy {
     private RequestEntity<byte[]> createRequestEntity(HttpServletRequest request, String url) throws URISyntaxException, IOException {
         String method = request.getMethod();
         HttpMethod httpMethod = method != null ? HttpMethod.valueOf(method) : null;
-        MultiValueMap<String, String> headers = readRequestHeader(request);
+        HttpHeaders headers = readRequestHeader(request);
         byte[] body = readRequestBody(request);
         return new RequestEntity<>(body, headers, httpMethod, new URI(url));
     }
@@ -104,7 +103,7 @@ public class OssPresignedUrlProxy {
      * @param request 请求 {@link HttpServletRequest}
      * @return 请求头
      */
-    private MultiValueMap<String, String> readRequestHeader(HttpServletRequest request) {
+    private HttpHeaders readRequestHeader(HttpServletRequest request) {
         HttpHeaders headers = new HttpHeaders();
         List<String> headerNames = Collections.list(request.getHeaderNames());
         for (String headerName : headerNames) {

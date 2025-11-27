@@ -28,7 +28,7 @@ package cn.herodotus.engine.logging.autoconfigure.logstash;
 import ch.qos.logback.classic.LoggerContext;
 import cn.herodotus.engine.logging.autoconfigure.LoggingProperties;
 import cn.herodotus.engine.core.definition.constant.SymbolConstants;
-import cn.herodotus.engine.core.definition.utils.Jackson2Utils;
+import cn.herodotus.engine.core.definition.utils.JacksonUtils;
 import cn.herodotus.engine.logging.autoconfigure.logging.LogbackConfigurator;
 import com.google.common.base.MoreObjects;
 import jakarta.annotation.PostConstruct;
@@ -93,7 +93,7 @@ public class LogstashLoggingConfiguration {
         customFields.setService(applicationName);
 
         LogstashEncoder logstashEncoder = new LogstashEncoder();
-        logstashEncoder.setCustomFields(Jackson2Utils.toJson(customFields));
+        logstashEncoder.setCustomFields(JacksonUtils.toJson(customFields));
         logstashEncoder.addProvider(traceIdJsonProvider);
 
         logstashTcpSocketAppender.setEncoder(logstashEncoder);

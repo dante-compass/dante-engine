@@ -37,7 +37,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * <p>Description: Jackson2 配置 </p>
+ * <p>Description: Jackson 配置 </p>
  *
  * @author : gengwei.zheng
  * @date : 2022/6/1 0:09
@@ -49,7 +49,7 @@ public class JacksonAutoConfiguration {
 
     @PostConstruct
     public void postConstruct() {
-        log.info("[Herodotus] |- Auto [Jackson2] Configure.");
+        log.info("[Herodotus] |- Auto [Jackson] Configure.");
     }
 
     @Bean

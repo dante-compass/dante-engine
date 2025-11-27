@@ -26,17 +26,17 @@
 package cn.herodotus.engine.oauth2.persistence.sas.jpa.definition;
 
 import cn.herodotus.engine.core.definition.constant.SystemConstants;
-import cn.herodotus.engine.core.foundation.jackson2.ArrayToCommaDelimitedStringDeserializer;
-import cn.herodotus.engine.core.foundation.jackson2.CommaDelimitedStringToSetSerializer;
+import cn.herodotus.engine.core.foundation.jackson.ArrayToCommaDelimitedStringDeserializer;
+import cn.herodotus.engine.core.foundation.jackson.CommaDelimitedStringToSetSerializer;
 import cn.herodotus.engine.core.identity.domain.RegisteredClientDetails;
 import cn.herodotus.engine.data.core.jpa.entity.AbstractSysEntity;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import tools.jackson.databind.annotation.JsonDeserialize;
-import tools.jackson.databind.annotation.JsonSerialize;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Column;
 import jakarta.persistence.MappedSuperclass;
 import org.hibernate.annotations.CreationTimestamp;
+import tools.jackson.databind.annotation.JsonDeserialize;
+import tools.jackson.databind.annotation.JsonSerialize;
 
 import java.time.LocalDateTime;
 

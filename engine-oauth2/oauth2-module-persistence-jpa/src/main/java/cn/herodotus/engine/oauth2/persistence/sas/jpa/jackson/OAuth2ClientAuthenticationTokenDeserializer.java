@@ -23,24 +23,22 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.engine.oauth2.persistence.sas.jpa.jackson2;
+package cn.herodotus.engine.oauth2.persistence.sas.jpa.jackson;
 
 import cn.herodotus.engine.core.identity.domain.HerodotusGrantedAuthority;
-import cn.herodotus.engine.core.identity.jackson2.JsonNodeUtils;
+import cn.herodotus.engine.core.identity.jackson.JsonNodeUtils;
 import cn.hutool.v7.core.reflect.FieldUtil;
-import tools.jackson.core.JacksonException;
-import tools.jackson.core.JsonParser;
-import tools.jackson.core.type.TypeReference;
-import tools.jackson.databind.DeserializationContext;
-import tools.jackson.databind.JsonDeserializer;
-import tools.jackson.databind.JsonNode;
-import tools.jackson.databind.ObjectMapper;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.security.oauth2.core.ClientAuthenticationMethod;
 import org.springframework.security.oauth2.server.authorization.authentication.OAuth2ClientAuthenticationToken;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
+import tools.jackson.core.JacksonException;
+import tools.jackson.core.JsonParser;
+import tools.jackson.core.type.TypeReference;
+import tools.jackson.databind.DeserializationContext;
+import tools.jackson.databind.JsonNode;
+import tools.jackson.databind.ValueDeserializer;
 
-import java.io.IOException;
 import java.util.Set;
 
 /**
@@ -49,26 +47,25 @@ import java.util.Set;
  * @author : gengwei.zheng
  * @date : 2022/10/24 14:43
  */
-public class OAuth2ClientAuthenticationTokenDeserializer extends JsonDeserializer<OAuth2ClientAuthenticationToken> {
+public class OAuth2ClientAuthenticationTokenDeserializer extends ValueDeserializer<OAuth2ClientAuthenticationToken> {
 
     private static final TypeReference<Set<HerodotusGrantedAuthority>> HERODOTUS_GRANTED_AUTHORITY_SET = new TypeReference<Set<HerodotusGrantedAuthority>>() {
     };
 
     @Override
-    public OAuth2ClientAuthenticationToken deserialize(JsonParser jsonParser, DeserializationContext context) throws IOException, JacksonException {
+    public OAuth2ClientAuthenticationToken deserialize(JsonParser parser, DeserializationContext context) throws JacksonException {
 
-        ObjectMapper mapper = (ObjectMapper) jsonParser.getCodec();
-        JsonNode jsonNode = mapper.readTree(jsonParser);
-        return deserialize(jsonParser, mapper, jsonNode);
+        JsonNode jsonNode = context.readTree(parser);
+        return deserialize(context, jsonNode);
     }
 
-    private OAuth2ClientAuthenticationToken deserialize(JsonParser parser, ObjectMapper mapper, JsonNode root) throws IOException {
-        Set<HerodotusGrantedAuthority> authorities = JsonNodeUtils.findValue(root, "authorities", HERODOTUS_GRANTED_AUTHORITY_SET, mapper);
+    private OAuth2ClientAuthenticationToken deserialize(DeserializationContext context, JsonNode root) throws JacksonException {
+        Set<HerodotusGrantedAuthority> authorities = JsonNodeUtils.findValue(root, "authorities", HERODOTUS_GRANTED_AUTHORITY_SET, context);
         RegisteredClient registeredClient = JsonNodeUtils.findValue(root, "registeredClient", new TypeReference<RegisteredClient>() {
-        }, mapper);
+        }, context);
         String credentials = JsonNodeUtils.findStringValue(root, "credentials");
         ClientAuthenticationMethod clientAuthenticationMethod = JsonNodeUtils.findValue(root, "clientAuthenticationMethod", new TypeReference<ClientAuthenticationMethod>() {
-        }, mapper);
+        }, context);
 
         OAuth2ClientAuthenticationToken clientAuthenticationToken = new OAuth2ClientAuthenticationToken(registeredClient, clientAuthenticationMethod, credentials);
         if (CollectionUtils.isNotEmpty(authorities)) {

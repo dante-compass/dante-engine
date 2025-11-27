@@ -46,7 +46,7 @@
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot</artifactId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
         </dependency>
 
         <!--让所有依赖该模块的其它模块，可以实现自动配置已经配置类的 meta 文件自动生成-->

@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.cache.jetcache.enhance;
 
-import cn.herodotus.engine.core.definition.utils.Jackson2Utils;
+import cn.herodotus.engine.core.definition.utils.JacksonUtils;
 import com.alicp.jetcache.Cache;
 import org.apache.commons.lang3.ObjectUtils;
 import org.slf4j.Logger;
@@ -69,7 +69,7 @@ public class JetCacheSpringCache extends AbstractValueAdaptingCache {
     protected Object lookup(Object key) {
         Object value = cache.get(key);
         if (ObjectUtils.isNotEmpty(value)) {
-            log.trace("[Herodotus] |- CACHE - Lookup data in herodotus cache, value is : [{}]", Jackson2Utils.toJson(value));
+            log.trace("[Herodotus] |- CACHE - Lookup data in herodotus cache, value is : [{}]", JacksonUtils.toJson(value));
             return value;
         }
 

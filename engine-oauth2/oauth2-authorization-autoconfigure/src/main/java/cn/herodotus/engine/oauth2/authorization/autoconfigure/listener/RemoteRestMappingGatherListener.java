@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.oauth2.authorization.autoconfigure.listener;
 
-import cn.herodotus.engine.core.definition.utils.Jackson2Utils;
+import cn.herodotus.engine.core.definition.utils.JacksonUtils;
 import cn.herodotus.engine.message.core.domain.RestMapping;
 import cn.herodotus.engine.oauth2.authorization.autoconfigure.bus.RemoteRestMappingGatherEvent;
 import cn.herodotus.engine.oauth2.authorization.autoconfigure.processor.AttributeTransmitterDistributeProcessor;
@@ -67,7 +67,7 @@ public class RemoteRestMappingGatherListener implements ApplicationListener<Remo
         log.debug("[Herodotus] |- [R4] Request mapping process BEGIN!");
 
         Optional.ofNullable(requestMapping)
-                .flatMap(value -> Optional.ofNullable(Jackson2Utils.toList(value, RestMapping.class)))
+                .flatMap(value -> Optional.ofNullable(JacksonUtils.toList(value, RestMapping.class)))
                 .ifPresent(attributeTransmitterDistributeProcessor::postRestMappings);
     }
 }

@@ -38,7 +38,7 @@ import jakarta.servlet.http.HttpSession;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.Strings;
-import org.springframework.boot.autoconfigure.session.SessionProperties;
+import org.springframework.boot.session.autoconfigure.SessionProperties;
 import org.springframework.http.ResponseCookie;
 import org.springframework.security.web.WebAttributes;
 import org.springframework.stereotype.Controller;

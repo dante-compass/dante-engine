@@ -61,7 +61,7 @@ public class OAuth2FormLoginSecureConfigurer<H extends HttpSecurityBuilder<H>> e
     }
 
     @Override
-    public void configure(H httpSecurity) throws Exception {
+    public void configure(H httpSecurity) {
 
         AuthenticationManager authenticationManager = httpSecurity.getSharedObject(AuthenticationManager.class);
         SecurityContextRepository securityContextRepository = httpSecurity.getSharedObject(SecurityContextRepository.class);

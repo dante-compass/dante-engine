@@ -23,27 +23,27 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.engine.oauth2.persistence.sas.jpa.jackson2;
+package cn.herodotus.engine.oauth2.persistence.sas.jpa.jackson;
 
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import cn.herodotus.engine.core.identity.domain.HerodotusGrantedAuthority;
+import cn.herodotus.engine.core.identity.jackson.JsonNodeUtils;
+import tools.jackson.core.JacksonException;
+import tools.jackson.core.JsonParser;
+import tools.jackson.databind.DeserializationContext;
+import tools.jackson.databind.JsonNode;
+import tools.jackson.databind.ValueDeserializer;
 
 /**
- * <p>Description: AuthorizationGrantTypesMixin </p>
+ * <p>Description: HerodotusGrantedAuthority 反序列化 </p>
  *
  * @author : gengwei.zheng
- * @date : 2022/10/24 15:57
+ * @date : 2022/3/17 20:28
  */
-@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY, getterVisibility = JsonAutoDetect.Visibility.NONE,
-        isGetterVisibility = JsonAutoDetect.Visibility.NONE)
-public class AuthorizationGrantTypeMixin {
-
-    @JsonCreator
-    AuthorizationGrantTypeMixin(@JsonProperty("value") String value) {
+public class HerodotusGrantedAuthorityDeserializer extends ValueDeserializer<HerodotusGrantedAuthority> {
+    @Override
+    public HerodotusGrantedAuthority deserialize(JsonParser parser, DeserializationContext context) throws JacksonException {
+        JsonNode jsonNode = context.readTree(parser);
+        String authority = JsonNodeUtils.findStringValue(jsonNode, "authority");
+        return new HerodotusGrantedAuthority(authority);
     }
 }
-
-

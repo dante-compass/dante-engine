@@ -23,23 +23,21 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.engine.oauth2.persistence.sas.jpa.jackson2;
+package cn.herodotus.engine.oauth2.persistence.sas.jpa.jackson;
 
-import cn.herodotus.engine.core.identity.jackson2.JsonNodeUtils;
-import tools.jackson.core.JacksonException;
-import tools.jackson.core.JsonParser;
-import tools.jackson.core.type.TypeReference;
-import tools.jackson.databind.DeserializationContext;
-import tools.jackson.databind.JsonDeserializer;
-import tools.jackson.databind.JsonNode;
-import tools.jackson.databind.ObjectMapper;
+import cn.herodotus.engine.core.identity.jackson.JsonNodeUtils;
 import org.springframework.security.oauth2.core.AuthorizationGrantType;
 import org.springframework.security.oauth2.core.ClientAuthenticationMethod;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
 import org.springframework.security.oauth2.server.authorization.settings.ClientSettings;
 import org.springframework.security.oauth2.server.authorization.settings.TokenSettings;
+import tools.jackson.core.JacksonException;
+import tools.jackson.core.JsonParser;
+import tools.jackson.core.type.TypeReference;
+import tools.jackson.databind.DeserializationContext;
+import tools.jackson.databind.JsonNode;
+import tools.jackson.databind.ValueDeserializer;
 
-import java.io.IOException;
 import java.time.Instant;
 import java.util.Set;
 
@@ -49,39 +47,38 @@ import java.util.Set;
  * @author : gengwei.zheng
  * @date : 2022/10/24 15:11
  */
-public class RegisteredClientDeserializer extends JsonDeserializer<RegisteredClient> {
+public class RegisteredClientDeserializer extends ValueDeserializer<RegisteredClient> {
 
-    private static final TypeReference<Set<ClientAuthenticationMethod>> CLIENT_AUTHENTICATION_METHOD_SET = new TypeReference<Set<ClientAuthenticationMethod>>() {
+    private static final TypeReference<Set<ClientAuthenticationMethod>> CLIENT_AUTHENTICATION_METHOD_SET = new TypeReference<>() {
     };
-    private static final TypeReference<Set<AuthorizationGrantType>> AUTHORIZATION_GRANT_TYPE_SET = new TypeReference<Set<AuthorizationGrantType>>() {
+    private static final TypeReference<Set<AuthorizationGrantType>> AUTHORIZATION_GRANT_TYPE_SET = new TypeReference<>() {
     };
 
     @Override
-    public RegisteredClient deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JacksonException {
+    public RegisteredClient deserialize(JsonParser parser, DeserializationContext context) throws JacksonException {
 
-        ObjectMapper mapper = (ObjectMapper) jsonParser.getCodec();
-        JsonNode root = mapper.readTree(jsonParser);
-        return deserialize(jsonParser, mapper, root);
+        JsonNode root = context.readTree(parser);
+        return deserialize(context, root);
     }
 
-    private RegisteredClient deserialize(JsonParser parser, ObjectMapper mapper, JsonNode root) throws IOException {
+    private RegisteredClient deserialize(DeserializationContext context, JsonNode root) throws JacksonException {
 
         String id = JsonNodeUtils.findStringValue(root, "id");
         String clientId = JsonNodeUtils.findStringValue(root, "clientId");
-        Instant clientIdIssuedAt = JsonNodeUtils.findValue(root, "clientIdIssuedAt", JsonNodeUtils.INSTANT, mapper);
+        Instant clientIdIssuedAt = JsonNodeUtils.findValue(root, "clientIdIssuedAt", JsonNodeUtils.INSTANT, context);
         String clientSecret = JsonNodeUtils.findStringValue(root, "clientSecret");
-        Instant clientSecretExpiresAt = JsonNodeUtils.findValue(root, "clientSecretExpiresAt", JsonNodeUtils.INSTANT, mapper);
+        Instant clientSecretExpiresAt = JsonNodeUtils.findValue(root, "clientSecretExpiresAt", JsonNodeUtils.INSTANT, context);
         String clientName = JsonNodeUtils.findStringValue(root, "clientName");
 
-        Set<ClientAuthenticationMethod> clientAuthenticationMethods = JsonNodeUtils.findValue(root, "clientAuthenticationMethods", CLIENT_AUTHENTICATION_METHOD_SET, mapper);
-        Set<AuthorizationGrantType> authorizationGrantTypes = JsonNodeUtils.findValue(root, "authorizationGrantTypes", AUTHORIZATION_GRANT_TYPE_SET, mapper);
-        Set<String> redirectUris = JsonNodeUtils.findValue(root, "redirectUris", JsonNodeUtils.STRING_SET, mapper);
-        Set<String> postLogoutRedirectUris = JsonNodeUtils.findValue(root, "postLogoutRedirectUris", JsonNodeUtils.STRING_SET, mapper);
-        Set<String> scopes = JsonNodeUtils.findValue(root, "scopes", JsonNodeUtils.STRING_SET, mapper);
+        Set<ClientAuthenticationMethod> clientAuthenticationMethods = JsonNodeUtils.findValue(root, "clientAuthenticationMethods", CLIENT_AUTHENTICATION_METHOD_SET, context);
+        Set<AuthorizationGrantType> authorizationGrantTypes = JsonNodeUtils.findValue(root, "authorizationGrantTypes", AUTHORIZATION_GRANT_TYPE_SET, context);
+        Set<String> redirectUris = JsonNodeUtils.findValue(root, "redirectUris", JsonNodeUtils.STRING_SET, context);
+        Set<String> postLogoutRedirectUris = JsonNodeUtils.findValue(root, "postLogoutRedirectUris", JsonNodeUtils.STRING_SET, context);
+        Set<String> scopes = JsonNodeUtils.findValue(root, "scopes", JsonNodeUtils.STRING_SET, context);
         ClientSettings clientSettings = JsonNodeUtils.findValue(root, "clientSettings", new TypeReference<>() {
-        }, mapper);
+        }, context);
         TokenSettings tokenSettings = JsonNodeUtils.findValue(root, "tokenSettings", new TypeReference<>() {
-        }, mapper);
+        }, context);
 
         return RegisteredClient.withId(id)
                 .clientId(clientId)

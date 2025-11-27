@@ -26,7 +26,7 @@
 package cn.herodotus.engine.web.core.servlet.utils;
 
 import cn.herodotus.engine.core.definition.domain.Result;
-import cn.herodotus.engine.core.definition.utils.Jackson2Utils;
+import cn.herodotus.engine.core.definition.utils.JacksonUtils;
 import jakarta.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -86,7 +86,7 @@ public class ResponseUtils {
      * @param object     待写入的内容
      */
     public static void renderJson(HttpServletResponse response, int statusCode, Object object) {
-        renderJson(response, statusCode, Jackson2Utils.toJson(object));
+        renderJson(response, statusCode, JacksonUtils.toJson(object));
     }
 
     /**

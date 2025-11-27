@@ -23,15 +23,15 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.engine.oauth2.persistence.sas.jpa.jackson2;
+package cn.herodotus.engine.oauth2.persistence.sas.jpa.jackson;
 
-import tools.jackson.core.type.TypeReference;
-import tools.jackson.databind.Module;
-import tools.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.security.jackson2.SecurityJackson2Modules;
-import org.springframework.security.oauth2.server.authorization.jackson2.OAuth2AuthorizationServerJackson2Module;
+import org.springframework.security.jackson.SecurityJacksonModules;
+import tools.jackson.core.type.TypeReference;
+import tools.jackson.databind.JacksonModule;
+import tools.jackson.databind.ObjectMapper;
+import tools.jackson.databind.json.JsonMapper;
 
 import java.util.List;
 import java.util.Map;
@@ -50,15 +50,13 @@ public class OAuth2JacksonProcessor {
 
     public OAuth2JacksonProcessor() {
 
-        objectMapper = new ObjectMapper();
-
         ClassLoader classLoader = OAuth2JacksonProcessor.class.getClassLoader();
-        List<Module> securityModules = SecurityJackson2Modules.getModules(classLoader);
+        List<JacksonModule> securityModules = SecurityJacksonModules.getModules(classLoader);
 
-        objectMapper.registerModules(securityModules);
-        objectMapper.registerModules(new OAuth2AuthorizationServerJackson2Module());
-        objectMapper.registerModules(new HerodotusJackson2Module());
-        objectMapper.registerModules(new OAuth2TokenJackson2Module());
+        JsonMapper.Builder builder = JsonMapper.builder();
+        builder.addModules(securityModules);
+        builder.addModule(new HerodotusJackson2Module());
+        objectMapper = builder.build();
     }
 
     public Map<String, Object> parseMap(String data) {

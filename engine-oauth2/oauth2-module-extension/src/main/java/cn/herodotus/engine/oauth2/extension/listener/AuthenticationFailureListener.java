@@ -25,6 +25,7 @@
 
 package cn.herodotus.engine.oauth2.extension.listener;
 
+import cn.herodotus.engine.core.definition.constant.SystemConstants;
 import cn.herodotus.engine.oauth2.extension.manager.OAuth2ComplianceManager;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.ObjectUtils;
@@ -36,7 +37,6 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.authentication.event.AbstractAuthenticationFailureEvent;
 import org.springframework.security.authentication.event.AuthenticationFailureBadCredentialsEvent;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.oauth2.core.endpoint.OAuth2ParameterNames;
 import org.springframework.security.oauth2.server.authorization.authentication.OAuth2AuthorizationGrantAuthenticationToken;
 import org.springframework.stereotype.Component;
 
@@ -96,8 +96,8 @@ public class AuthenticationFailureListener implements ApplicationListener<Abstra
 
     private String getPrincipal(Map<String, Object> params) {
         if (MapUtils.isNotEmpty(params)) {
-            if (params.containsKey(OAuth2ParameterNames.USERNAME)) {
-                Object value = params.get(OAuth2ParameterNames.USERNAME);
+            if (params.containsKey(SystemConstants.USERNAME)) {
+                Object value = params.get(SystemConstants.USERNAME);
                 if (ObjectUtils.isNotEmpty(value)) {
                     return (String) value;
                 }

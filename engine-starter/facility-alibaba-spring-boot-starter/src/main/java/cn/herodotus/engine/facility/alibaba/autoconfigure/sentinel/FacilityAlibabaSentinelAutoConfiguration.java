@@ -26,7 +26,7 @@
 package cn.herodotus.engine.facility.alibaba.autoconfigure.sentinel;
 
 import cn.herodotus.engine.core.definition.domain.Result;
-import cn.herodotus.engine.core.definition.utils.Jackson2Utils;
+import cn.herodotus.engine.core.definition.utils.JacksonUtils;
 import cn.herodotus.engine.facility.alibaba.autoconfigure.sentinel.enhance.HerodotusSentinelFeign;
 import com.alibaba.csp.sentinel.adapter.spring.webflux.callback.BlockRequestHandler;
 import com.alibaba.csp.sentinel.adapter.spring.webmvc_v6x.callback.BlockExceptionHandler;
@@ -82,7 +82,7 @@ public class FacilityAlibabaSentinelAutoConfiguration {
                 response.setStatus(HttpStatus.TOO_MANY_REQUESTS.value());
                 Result<String> result = Result.failure("Too many request, please retry later.");
                 result.path(resource);
-                response.getWriter().print(Jackson2Utils.toJson(result));
+                response.getWriter().print(JacksonUtils.toJson(result));
             };
         }
 

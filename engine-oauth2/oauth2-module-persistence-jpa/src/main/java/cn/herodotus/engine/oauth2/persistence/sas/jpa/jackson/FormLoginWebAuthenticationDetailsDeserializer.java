@@ -23,51 +23,34 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.engine.core.foundation.jackson2;
+package cn.herodotus.engine.oauth2.persistence.sas.jpa.jackson;
 
+import cn.herodotus.engine.core.identity.jackson.JsonNodeUtils;
+import cn.herodotus.engine.oauth2.core.domain.FormLoginWebAuthenticationDetails;
 import tools.jackson.core.JacksonException;
 import tools.jackson.core.JsonParser;
-import tools.jackson.core.JsonToken;
-import tools.jackson.core.type.TypeReference;
 import tools.jackson.databind.DeserializationContext;
-import tools.jackson.databind.JavaType;
-import tools.jackson.databind.deser.std.StdDeserializer;
-import tools.jackson.databind.type.TypeFactory;
-import org.springframework.util.StringUtils;
-
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.LinkedHashSet;
-import java.util.Set;
+import tools.jackson.databind.JsonNode;
+import tools.jackson.databind.ValueDeserializer;
 
 /**
- * <p>Description: 数组转字符串序列化 </p>
+ * <p>Description: FormLoginWebAuthenticationDetailsDeserializer </p>
  *
  * @author : gengwei.zheng
- * @date : 2022/3/18 12:16
+ * @date : 2022/4/14 11:48
  */
-public class ArrayOrStringToSetDeserializer extends StdDeserializer<Set<String>> {
-
-    public ArrayOrStringToSetDeserializer() {
-        super(Set.class);
-    }
-
-    public JavaType getValueType() {
-        return TypeFactory.defaultInstance().constructType(String.class);
-    }
-
+public class FormLoginWebAuthenticationDetailsDeserializer extends ValueDeserializer<FormLoginWebAuthenticationDetails> {
     @Override
-    public Set<String> deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JacksonException {
-        JsonToken token = jsonParser.getCurrentToken();
-        if (token.isScalarValue()) {
-            String value = jsonParser.getText();
-            value = value.replaceAll("\\s+", ",");
-            return new LinkedHashSet<>(Arrays.asList(StringUtils.commaDelimitedListToStringArray(value)));
-        } else {
-            return jsonParser.readValueAs(new TypeReference<Set<String>>() {
-            });
-        }
+    public FormLoginWebAuthenticationDetails deserialize(JsonParser parser, DeserializationContext context) throws JacksonException {
+        JsonNode jsonNode = context.readTree(parser);
+
+        String remoteAddress = JsonNodeUtils.findStringValue(jsonNode, "remoteAddress");
+        String sessionId = JsonNodeUtils.findStringValue(jsonNode, "sessionId");
+        String parameterName = JsonNodeUtils.findStringValue(jsonNode, "parameterName");
+        String category = JsonNodeUtils.findStringValue(jsonNode, "category");
+        String code = JsonNodeUtils.findStringValue(jsonNode, "code");
+        boolean enabled = JsonNodeUtils.findBooleanValue(jsonNode, "enabled");
+
+        return new FormLoginWebAuthenticationDetails(remoteAddress, sessionId, enabled, parameterName, category, code);
     }
-
-
 }

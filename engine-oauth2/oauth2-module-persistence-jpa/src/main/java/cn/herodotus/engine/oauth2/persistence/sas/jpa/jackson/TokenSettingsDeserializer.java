@@ -23,38 +23,32 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.engine.oauth2.persistence.sas.jpa.jackson2;
+package cn.herodotus.engine.oauth2.persistence.sas.jpa.jackson;
 
-import cn.herodotus.engine.core.identity.jackson2.JsonNodeUtils;
-import cn.herodotus.engine.oauth2.core.domain.FormLoginWebAuthenticationDetails;
+import cn.herodotus.engine.core.identity.jackson.JsonNodeUtils;
+import org.springframework.security.oauth2.server.authorization.settings.TokenSettings;
 import tools.jackson.core.JacksonException;
 import tools.jackson.core.JsonParser;
 import tools.jackson.databind.DeserializationContext;
-import tools.jackson.databind.JsonDeserializer;
 import tools.jackson.databind.JsonNode;
-import tools.jackson.databind.ObjectMapper;
+import tools.jackson.databind.ValueDeserializer;
 
-import java.io.IOException;
+import java.util.Map;
 
 /**
- * <p>Description: FormLoginWebAuthenticationDetailsDeserializer </p>
+ * <p>Description: TokenSettingsDeserializer </p>
  *
  * @author : gengwei.zheng
- * @date : 2022/4/14 11:48
+ * @date : 2022/10/24 23:29
  */
-public class FormLoginWebAuthenticationDetailsDeserializer extends JsonDeserializer<FormLoginWebAuthenticationDetails> {
+public class TokenSettingsDeserializer extends ValueDeserializer<TokenSettings> {
+
     @Override
-    public FormLoginWebAuthenticationDetails deserialize(JsonParser jp, DeserializationContext deserializationContext) throws IOException, JacksonException {
-        ObjectMapper mapper = (ObjectMapper) jp.getCodec();
-        JsonNode jsonNode = mapper.readTree(jp);
+    public TokenSettings deserialize(JsonParser parser, DeserializationContext context) throws JacksonException {
+        JsonNode jsonNode = context.readTree(parser);
 
-        String remoteAddress = JsonNodeUtils.findStringValue(jsonNode, "remoteAddress");
-        String sessionId = JsonNodeUtils.findStringValue(jsonNode, "sessionId");
-        String parameterName = JsonNodeUtils.findStringValue(jsonNode, "parameterName");
-        String category = JsonNodeUtils.findStringValue(jsonNode, "category");
-        String code = JsonNodeUtils.findStringValue(jsonNode, "code");
-        boolean enabled = JsonNodeUtils.findBooleanValue(jsonNode, "enabled");
+        Map<String, Object> settings = JsonNodeUtils.findValue(jsonNode, "settings", JsonNodeUtils.STRING_OBJECT_MAP, context);
 
-        return new FormLoginWebAuthenticationDetails(remoteAddress, sessionId, enabled, parameterName, category, code);
+        return TokenSettings.withSettings(settings).build();
     }
 }

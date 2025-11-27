@@ -26,14 +26,13 @@
 package cn.herodotus.engine.core.definition.utils;
 
 import cn.herodotus.engine.core.definition.constant.SymbolConstants;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import tools.jackson.core.JsonProcessingException;
-import tools.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.Strings;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import tools.jackson.core.JacksonException;
+import tools.jackson.databind.ObjectMapper;
+import tools.jackson.dataformat.yaml.YAMLMapper;
 
 /**
  * <p> Description : 基于Jackson Yaml 的 yml处理工具 </p>
@@ -41,15 +40,14 @@ import org.slf4j.LoggerFactory;
  * @author : gengwei.zheng
  * @date : 2020/5/3 8:50
  */
-public class Jackson2YamlUtils {
+public class JacksonYamlUtils {
 
-    private static final Logger log = LoggerFactory.getLogger(Jackson2YamlUtils.class);
+    private static final Logger log = LoggerFactory.getLogger(JacksonYamlUtils.class);
 
     private static final ObjectMapper objectMapper;
 
     static {
-        objectMapper = new ObjectMapper(new YAMLFactory());
-        objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+        objectMapper = YAMLMapper.builder().build();
     }
 
     private static ObjectMapper getObjectMapper() {
@@ -76,7 +74,7 @@ public class Jackson2YamlUtils {
             } else {
                 return yaml;
             }
-        } catch (JsonProcessingException e) {
+        } catch (JacksonException e) {
             log.error("[Herodotus] |- Yaml writeAsString processing error! {}", e.getMessage());
         }
 

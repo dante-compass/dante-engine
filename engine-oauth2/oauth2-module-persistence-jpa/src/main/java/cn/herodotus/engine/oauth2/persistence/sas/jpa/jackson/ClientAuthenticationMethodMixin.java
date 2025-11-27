@@ -23,35 +23,28 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.engine.oauth2.persistence.sas.jpa.jackson2;
+package cn.herodotus.engine.oauth2.persistence.sas.jpa.jackson;
 
-import cn.herodotus.engine.core.identity.jackson2.JsonNodeUtils;
-import tools.jackson.core.JacksonException;
-import tools.jackson.core.JsonParser;
-import tools.jackson.databind.DeserializationContext;
-import tools.jackson.databind.JsonDeserializer;
-import tools.jackson.databind.JsonNode;
-import tools.jackson.databind.ObjectMapper;
-import org.springframework.security.oauth2.server.authorization.settings.TokenSettings;
-
-import java.io.IOException;
-import java.util.Map;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 /**
- * <p>Description: TokenSettingsDeserializer </p>
+ * <p>Description: ClientAuthenticationMethodMixin </p>
  *
  * @author : gengwei.zheng
- * @date : 2022/10/24 23:29
+ * @date : 2022/10/24 15:50
  */
-public class TokenSettingsDeserializer extends JsonDeserializer<TokenSettings> {
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+@JsonAutoDetect(
+        fieldVisibility = JsonAutoDetect.Visibility.ANY,
+        getterVisibility = JsonAutoDetect.Visibility.NONE,
+        isGetterVisibility = JsonAutoDetect.Visibility.NONE
+)
+public class ClientAuthenticationMethodMixin {
 
-    @Override
-    public TokenSettings deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JacksonException {
-        ObjectMapper mapper = (ObjectMapper) jsonParser.getCodec();
-        JsonNode jsonNode = mapper.readTree(jsonParser);
-
-        Map<String, Object> settings = JsonNodeUtils.findValue(jsonNode, "settings", JsonNodeUtils.STRING_OBJECT_MAP, mapper);
-
-        return TokenSettings.withSettings(settings).build();
+    @JsonCreator
+    ClientAuthenticationMethodMixin(@JsonProperty("value") String value) {
     }
 }

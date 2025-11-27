@@ -104,13 +104,14 @@ public interface SystemConstants {
     /**
      * Oauth2 模式类型
      */
+    String USERNAME = "username";
     String PASSWORD = "password";
     String SOCIAL_CREDENTIALS = "social_credentials";
     /**
      * Security User 相关属性
      */
     String CODE = "code";
-    String USERNAME = "username";
+
     String ROLES = "roles";
     String AUTHORITIES = "authorities";
     String EMPLOYEE_ID = "employeeId";

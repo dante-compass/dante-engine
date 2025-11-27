@@ -23,35 +23,25 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.engine.oauth2.persistence.sas.jpa.jackson2;
+package cn.herodotus.engine.oauth2.persistence.sas.jpa.jackson;
 
-import cn.herodotus.engine.core.identity.jackson2.JsonNodeUtils;
-import tools.jackson.core.JacksonException;
-import tools.jackson.core.JsonParser;
-import tools.jackson.databind.DeserializationContext;
-import tools.jackson.databind.JsonDeserializer;
-import tools.jackson.databind.JsonNode;
-import tools.jackson.databind.ObjectMapper;
-import org.springframework.security.oauth2.server.authorization.settings.ClientSettings;
-
-import java.io.IOException;
-import java.util.Map;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import tools.jackson.databind.annotation.JsonDeserialize;
 
 /**
- * <p>Description: ClientSettingsDeserializer </p>
+ * <p>Description: HerodotusGrantedAuthority Jackson Mixin </p>
  *
  * @author : gengwei.zheng
- * @date : 2022/10/24 23:18
+ * @date : 2022/3/17 20:28
  */
-public class ClientSettingsDeserializer extends JsonDeserializer<ClientSettings> {
-
-    @Override
-    public ClientSettings deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JacksonException {
-        ObjectMapper mapper = (ObjectMapper) jsonParser.getCodec();
-        JsonNode jsonNode = mapper.readTree(jsonParser);
-
-        Map<String, Object> settings = JsonNodeUtils.findValue(jsonNode, "settings", JsonNodeUtils.STRING_OBJECT_MAP, mapper);
-
-        return ClientSettings.withSettings(settings).build();
-    }
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+@JsonDeserialize(using = HerodotusGrantedAuthorityDeserializer.class)
+@JsonAutoDetect(
+        fieldVisibility = JsonAutoDetect.Visibility.ANY,
+        getterVisibility = JsonAutoDetect.Visibility.NONE,
+        isGetterVisibility = JsonAutoDetect.Visibility.NONE)
+@JsonIgnoreProperties(ignoreUnknown = true)
+public abstract class HerodotusGrantedAuthorityMixin {
 }

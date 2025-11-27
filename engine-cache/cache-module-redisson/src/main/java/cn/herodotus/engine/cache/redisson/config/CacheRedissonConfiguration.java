@@ -25,10 +25,10 @@
 
 package cn.herodotus.engine.cache.redisson.config;
 
+import cn.herodotus.dante.spring.utils.ResourceResolverUtils;
 import cn.herodotus.engine.cache.redisson.annotation.ConditionalOnRedisson;
 import cn.herodotus.engine.cache.redisson.properties.RedissonProperties;
 import cn.herodotus.engine.core.definition.constant.SymbolConstants;
-import cn.herodotus.dante.spring.utils.ResourceResolverUtils;
 import jakarta.annotation.PostConstruct;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.ObjectUtils;
@@ -44,8 +44,8 @@ import org.redisson.config.SingleServerConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
-import org.springframework.boot.autoconfigure.data.redis.RedisProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.boot.data.redis.autoconfigure.DataRedisProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -67,9 +67,9 @@ public class CacheRedissonConfiguration {
     private static final Logger log = LoggerFactory.getLogger(CacheRedissonConfiguration.class);
 
     private final RedissonProperties redissonProperties;
-    private final RedisProperties redisProperties;
+    private final DataRedisProperties redisProperties;
 
-    public CacheRedissonConfiguration(RedissonProperties redissonProperties, RedisProperties redisProperties) {
+    public CacheRedissonConfiguration(RedissonProperties redissonProperties, DataRedisProperties redisProperties) {
         this.redissonProperties = redissonProperties;
         this.redisProperties = redisProperties;
     }

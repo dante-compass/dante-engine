@@ -28,7 +28,7 @@ package cn.herodotus.dante.autoconfigure.jackson;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.boot.jackson.autoconfigure.JsonMapperBuilderCustomizer;
 import org.springframework.core.Ordered;
-import tools.jackson.databind.Module;
+import tools.jackson.databind.JacksonModule;
 
 import java.util.List;
 
@@ -40,12 +40,12 @@ import java.util.List;
  */
 public interface JacksonJsonMapperBuilderCustomizer extends JsonMapperBuilderCustomizer, Ordered {
 
-    default Module[] toArray(List<Module> modules) {
+    default JacksonModule[] toArray(List<JacksonModule> modules) {
         if (CollectionUtils.isNotEmpty(modules)) {
-            Module[] temps = new Module[modules.size()];
+            JacksonModule[] temps = new JacksonModule[modules.size()];
             return modules.toArray(temps);
         } else {
-            return new Module[]{};
+            return new JacksonModule[]{};
         }
     }
 }

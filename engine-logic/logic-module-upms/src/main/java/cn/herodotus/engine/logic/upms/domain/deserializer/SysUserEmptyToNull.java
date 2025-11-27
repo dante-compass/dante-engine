@@ -26,14 +26,12 @@
 package cn.herodotus.engine.logic.upms.domain.deserializer;
 
 import cn.herodotus.engine.logic.upms.entity.security.SysUser;
+import tools.jackson.core.JacksonException;
 import tools.jackson.core.JsonParser;
-import tools.jackson.core.JsonProcessingException;
 import tools.jackson.databind.DeserializationContext;
-import tools.jackson.databind.JsonDeserializer;
 import tools.jackson.databind.JsonNode;
 import tools.jackson.databind.ObjectMapper;
-
-import java.io.IOException;
+import tools.jackson.databind.ValueDeserializer;
 
 /**
  * <p>Description: SysUser 反序列化 空对象 '{}' 转 为 null </p>
@@ -41,11 +39,11 @@ import java.io.IOException;
  * @author : gengwei.zheng
  * @date : 2021/10/11 20:18
  */
-public class SysUserEmptyToNull extends JsonDeserializer<SysUser> {
+public class SysUserEmptyToNull extends ValueDeserializer<SysUser> {
 
     @Override
-    public SysUser deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JsonProcessingException {
-        JsonNode jsonNode = jsonParser.readValueAsTree();
+    public SysUser deserialize(JsonParser parser, DeserializationContext context) throws JacksonException {
+        JsonNode jsonNode = parser.readValueAsTree();
         if (jsonNode.isEmpty() || jsonNode.isNull()) {
             return null;
         } else {

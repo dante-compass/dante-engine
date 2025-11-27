@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.core.identity.domain;
 
-import cn.herodotus.engine.core.identity.jackson2.HerodotusUserDeserializer;
+import cn.herodotus.engine.core.identity.jackson.HerodotusUserDeserializer;
 import tools.jackson.databind.annotation.JsonDeserialize;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;

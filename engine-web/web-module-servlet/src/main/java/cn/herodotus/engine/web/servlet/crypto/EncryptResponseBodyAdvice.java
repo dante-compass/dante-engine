@@ -25,11 +25,10 @@
 
 package cn.herodotus.engine.web.servlet.crypto;
 
-import cn.herodotus.engine.core.definition.utils.Jackson2Utils;
+import cn.herodotus.engine.core.definition.utils.JacksonUtils;
 import cn.herodotus.engine.web.core.annotation.Crypto;
 import cn.herodotus.engine.web.core.exception.SessionInvalidException;
 import cn.herodotus.engine.web.core.servlet.utils.SessionUtils;
-import tools.jackson.core.JsonProcessingException;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -41,6 +40,7 @@ import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
+import tools.jackson.core.JacksonException;
 
 /**
  * <p>Description: 响应体加密Advice </p>
@@ -83,7 +83,7 @@ public class EncryptResponseBodyAdvice implements ResponseBodyAdvice<Object> {
             String className = methodParameter.getDeclaringClass().getName();
 
             try {
-                String bodyString = Jackson2Utils.getObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(body);
+                String bodyString = JacksonUtils.getObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(body);
                 String result = httpCryptoProcessor.encrypt(sessionId, bodyString);
                 if (StringUtils.isNotBlank(result)) {
                     log.debug("[Herodotus] |- Encrypt response body for rest method [{}] in [{}] finished.", methodName, className);
@@ -91,7 +91,7 @@ public class EncryptResponseBodyAdvice implements ResponseBodyAdvice<Object> {
                 } else {
                     return body;
                 }
-            } catch (JsonProcessingException e) {
+            } catch (JacksonException e) {
                 log.debug("[Herodotus] |- Encrypt response body for rest method [{}] in [{}] catch error, skip encrypt operation.", methodName, className, e);
                 return body;
             } catch (SessionInvalidException e) {

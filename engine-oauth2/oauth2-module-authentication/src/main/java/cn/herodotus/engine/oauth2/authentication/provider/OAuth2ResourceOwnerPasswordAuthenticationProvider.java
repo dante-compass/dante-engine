@@ -25,6 +25,7 @@
 
 package cn.herodotus.engine.oauth2.authentication.provider;
 
+import cn.herodotus.engine.core.definition.constant.SystemConstants;
 import cn.herodotus.engine.core.identity.service.EnhanceUserDetailsService;
 import cn.herodotus.engine.oauth2.authentication.customizer.HerodotusGrantType;
 import cn.herodotus.engine.oauth2.authentication.utils.DPoPProofVerifier;
@@ -41,7 +42,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.oauth2.core.*;
-import org.springframework.security.oauth2.core.endpoint.OAuth2ParameterNames;
 import org.springframework.security.oauth2.core.oidc.OidcIdToken;
 import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.security.oauth2.server.authorization.OAuth2Authorization;
@@ -91,7 +91,7 @@ public class OAuth2ResourceOwnerPasswordAuthenticationProvider extends AbstractU
 
     @Override
     protected void additionalAuthenticationChecks(UserDetails userDetails, Map<String, Object> additionalParameters) throws AuthenticationException {
-        String presentedPassword = (String) additionalParameters.get(OAuth2ParameterNames.PASSWORD);
+        String presentedPassword = (String) additionalParameters.get(SystemConstants.PASSWORD);
         if (!this.getPasswordEncoder().matches(presentedPassword, userDetails.getPassword())) {
             log.debug("[Herodotus] |- Failed to authenticate since password does not match stored value");
             throw new BadCredentialsException("Bad credentials");
@@ -100,7 +100,7 @@ public class OAuth2ResourceOwnerPasswordAuthenticationProvider extends AbstractU
 
     @Override
     protected UserDetails retrieveUser(Map<String, Object> additionalParameters) throws AuthenticationException {
-        String username = (String) additionalParameters.get(OAuth2ParameterNames.USERNAME);
+        String username = (String) additionalParameters.get(SystemConstants.USERNAME);
 
         try {
             EnhanceUserDetailsService enhanceUserDetailsService = getUserDetailsService();

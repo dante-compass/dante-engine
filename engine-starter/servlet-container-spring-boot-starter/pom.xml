@@ -42,7 +42,7 @@
     <dependencies>
         <dependency>
             <groupId>cn.herodotus.dante</groupId>
-            <artifactId>stirrup-autoconfigure</artifactId>
+            <artifactId>dante-autoconfigure</artifactId>
         </dependency>
 
         <dependency>

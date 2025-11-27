@@ -23,31 +23,35 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.engine.oauth2.persistence.sas.jpa.jackson2;
+package cn.herodotus.engine.oauth2.persistence.sas.jpa.jackson;
 
-import cn.herodotus.engine.core.identity.domain.HerodotusGrantedAuthority;
-import cn.herodotus.engine.core.identity.domain.HerodotusUser;
-import cn.herodotus.engine.oauth2.core.domain.FormLoginWebAuthenticationDetails;
+import org.springframework.security.oauth2.core.AuthorizationGrantType;
+import org.springframework.security.oauth2.core.ClientAuthenticationMethod;
+import org.springframework.security.oauth2.server.authorization.authentication.OAuth2ClientAuthenticationToken;
+import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
+import org.springframework.security.oauth2.server.authorization.settings.ClientSettings;
+import org.springframework.security.oauth2.server.authorization.settings.TokenSettings;
 import tools.jackson.databind.module.SimpleModule;
-import org.springframework.security.jackson2.SecurityJackson2Modules;
 
 /**
- * <p>Description: 自定义 User Details Module </p>
+ * <p>Description: 自定义 OAutho2 Module </p>
  *
  * @author : gengwei.zheng
- * @date : 2022/2/17 23:39
+ * @date : 2022/10/24 15:51
  */
-public class HerodotusJackson2Module extends SimpleModule {
+public class OAuth2TokenJackson2Module extends SimpleModule {
 
-    public HerodotusJackson2Module() {
-        super(HerodotusJackson2Module.class.getName(), Jackson2Constants.VERSION);
+    public OAuth2TokenJackson2Module() {
+        super(OAuth2TokenJackson2Module.class.getName(), Jackson2Constants.VERSION);
     }
 
     @Override
     public void setupModule(SetupContext context) {
-        SecurityJackson2Modules.enableDefaultTyping(context.getOwner());
-        context.setMixInAnnotations(HerodotusUser.class, HerodotusUserMixin.class);
-        context.setMixInAnnotations(HerodotusGrantedAuthority.class, HerodotusGrantedAuthorityMixin.class);
-        context.setMixInAnnotations(FormLoginWebAuthenticationDetails.class, FormLoginWebAuthenticationDetailsMixin.class);
+        context.setMixIn(ClientAuthenticationMethod.class, ClientAuthenticationMethodMixin.class);
+        context.setMixIn(AuthorizationGrantType.class, AuthorizationGrantTypeMixin.class);
+        context.setMixIn(TokenSettings.class, TokenSettingsMixin.class);
+        context.setMixIn(ClientSettings.class, ClientSettingsMixin.class);
+        context.setMixIn(RegisteredClient.class, RegisteredClientMixin.class);
+        context.setMixIn(OAuth2ClientAuthenticationToken.class, OAuth2ClientAuthenticationTokenMixin.class);
     }
 }

@@ -23,17 +23,27 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.engine.oauth2.persistence.sas.jpa.jackson2;
+package cn.herodotus.engine.oauth2.persistence.sas.jpa.jackson;
 
-import tools.jackson.core.Version;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 /**
- * <p>Description: Jackson2 用到的常量值 </p>
+ * <p>Description: AuthorizationGrantTypesMixin </p>
  *
  * @author : gengwei.zheng
- * @date : 2023/4/28 14:39
+ * @date : 2022/10/24 15:57
  */
-public class Jackson2Constants {
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY, getterVisibility = JsonAutoDetect.Visibility.NONE,
+        isGetterVisibility = JsonAutoDetect.Visibility.NONE)
+public class AuthorizationGrantTypeMixin {
 
-    public static final Version VERSION = new Version(2, 14, 2, null, null, null);
+    @JsonCreator
+    AuthorizationGrantTypeMixin(@JsonProperty("value") String value) {
+    }
 }
+
+

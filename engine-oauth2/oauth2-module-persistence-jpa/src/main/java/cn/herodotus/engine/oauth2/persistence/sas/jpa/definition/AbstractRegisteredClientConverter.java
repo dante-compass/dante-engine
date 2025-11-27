@@ -26,7 +26,7 @@
 package cn.herodotus.engine.oauth2.persistence.sas.jpa.definition;
 
 import cn.herodotus.engine.core.identity.domain.RegisteredClientDetails;
-import cn.herodotus.engine.oauth2.persistence.sas.jpa.jackson2.OAuth2JacksonProcessor;
+import cn.herodotus.engine.oauth2.persistence.sas.jpa.jackson.OAuth2JacksonProcessor;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
 
 /**

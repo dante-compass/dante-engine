@@ -28,8 +28,6 @@ package cn.herodotus.engine.servlet.container.autoconfigure;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.autoconfigure.AutoConfiguration;
-import org.springframework.boot.autoconfigure.websocket.servlet.WebSocketServletAutoConfiguration;
 
 /**
  * <p>Description: Web 自动配置 </p>
@@ -37,7 +35,6 @@ import org.springframework.boot.autoconfigure.websocket.servlet.WebSocketServlet
  * @author : gengwei.zheng
  * @date : 2022/1/14 15:43
  */
-@AutoConfiguration(before = WebSocketServletAutoConfiguration.class)
 public class ServletContainerAutoConfiguration {
 
     private static final Logger log = LoggerFactory.getLogger(ServletContainerAutoConfiguration.class);

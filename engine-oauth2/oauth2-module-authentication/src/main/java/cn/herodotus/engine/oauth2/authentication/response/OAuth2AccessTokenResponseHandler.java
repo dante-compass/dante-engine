@@ -26,7 +26,7 @@
 package cn.herodotus.engine.oauth2.authentication.response;
 
 import cn.herodotus.engine.core.definition.constant.SystemConstants;
-import cn.herodotus.engine.core.definition.utils.Jackson2Utils;
+import cn.herodotus.engine.core.definition.utils.JacksonUtils;
 import cn.herodotus.engine.core.identity.domain.UserPrincipal;
 import cn.herodotus.engine.core.identity.utils.SecurityUtils;
 import cn.herodotus.engine.web.core.servlet.utils.SessionUtils;
@@ -108,7 +108,7 @@ public class OAuth2AccessTokenResponseHandler implements AuthenticationSuccessHa
         } else {
             // 如果不包含 ID_TOKEN, 那么需要利用 SessionId 将用户信息加密传递给前端，前端解密后获取用户基本信息
             if (isHerodotusUserInfoPattern(sessionId, userPrincipal)) {
-                String data = Jackson2Utils.toJson(userPrincipal);
+                String data = JacksonUtils.toJson(userPrincipal);
                 String encryptData = httpCryptoProcessor.encrypt(sessionId, data);
                 Map<String, Object> parameters = new HashMap<>(additionalParameters);
                 parameters.put(SystemConstants.SCOPE_OPENID, encryptData);

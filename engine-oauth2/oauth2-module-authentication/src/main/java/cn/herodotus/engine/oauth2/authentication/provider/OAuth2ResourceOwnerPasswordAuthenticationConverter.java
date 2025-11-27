@@ -25,6 +25,7 @@
 
 package cn.herodotus.engine.oauth2.authentication.provider;
 
+import cn.herodotus.engine.core.definition.constant.SystemConstants;
 import cn.herodotus.engine.oauth2.authentication.customizer.HerodotusGrantType;
 import cn.herodotus.engine.oauth2.authentication.utils.OAuth2EndpointUtils;
 import cn.herodotus.engine.web.servlet.crypto.HttpCryptoProcessor;
@@ -66,10 +67,10 @@ public final class OAuth2ResourceOwnerPasswordAuthenticationConverter extends Ab
         String scope = OAuth2EndpointUtils.checkOptionalParameter(parameters, OAuth2ParameterNames.SCOPE);
 
         // username (REQUIRED)
-        OAuth2EndpointUtils.checkRequiredParameter(parameters, OAuth2ParameterNames.USERNAME);
+        OAuth2EndpointUtils.checkRequiredParameter(parameters, SystemConstants.USERNAME);
 
         // password (REQUIRED)
-        OAuth2EndpointUtils.checkRequiredParameter(parameters, OAuth2ParameterNames.PASSWORD);
+        OAuth2EndpointUtils.checkRequiredParameter(parameters, SystemConstants.PASSWORD);
 
         Map<String, Object> additionalParameters = getAdditionalParameters(request, parameters);
         // Validate DPoP Proof HTTP Header (if available)

@@ -23,31 +23,27 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.engine.oauth2.persistence.sas.jpa.jackson2;
+package cn.herodotus.engine.core.foundation.jackson;
 
-import cn.herodotus.engine.core.identity.domain.HerodotusGrantedAuthority;
-import cn.herodotus.engine.core.identity.jackson2.JsonNodeUtils;
+import cn.herodotus.engine.core.definition.utils.DateTimeUtils;
 import tools.jackson.core.JacksonException;
 import tools.jackson.core.JsonParser;
 import tools.jackson.databind.DeserializationContext;
-import tools.jackson.databind.JsonDeserializer;
-import tools.jackson.databind.JsonNode;
-import tools.jackson.databind.ObjectMapper;
+import tools.jackson.databind.ValueDeserializer;
 
-import java.io.IOException;
+import java.time.LocalDateTime;
 
 /**
- * <p>Description: HerodotusGrantedAuthority 反序列化 </p>
+ * <p>Description: Timestamp 转 LocalDateTime 反序列化器 </p>
  *
  * @author : gengwei.zheng
- * @date : 2022/3/17 20:28
+ * @date : 2023/9/22 16:46
  */
-public class HerodotusGrantedAuthorityDeserializer extends JsonDeserializer<HerodotusGrantedAuthority> {
+public class TimestampToLocalDateTimeDeserializer extends ValueDeserializer<LocalDateTime> {
     @Override
-    public HerodotusGrantedAuthority deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException, JacksonException {
-        ObjectMapper mapper = (ObjectMapper) jp.getCodec();
-        JsonNode jsonNode = mapper.readTree(jp);
-        String authority = JsonNodeUtils.findStringValue(jsonNode, "authority");
-        return new HerodotusGrantedAuthority(authority);
+    public LocalDateTime deserialize(JsonParser parser, DeserializationContext context) throws JacksonException {
+
+        long timestamp = parser.getValueAsLong();
+        return DateTimeUtils.toLocalDateTime(timestamp);
     }
 }

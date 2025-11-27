@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.oauth2.authorization.autoconfigure.listener;
 
-import cn.herodotus.engine.core.definition.utils.Jackson2Utils;
+import cn.herodotus.engine.core.definition.utils.JacksonUtils;
 import cn.herodotus.engine.data.core.enums.DataItemStatus;
 import cn.herodotus.engine.logic.upms.service.security.SysUserService;
 import cn.herodotus.engine.message.core.domain.AccountStatus;
@@ -63,7 +63,7 @@ public class RemoteAccountStatusChangedListener implements ApplicationListener<R
         String data = event.getData();
 
         if (ObjectUtils.isNotEmpty(data)) {
-            AccountStatus accountStatus = Jackson2Utils.toObject(data, AccountStatus.class);
+            AccountStatus accountStatus = JacksonUtils.toObject(data, AccountStatus.class);
             if (ObjectUtils.isNotEmpty(accountStatus)) {
                 DataItemStatus dataItemStatus = DataItemStatus.valueOf(accountStatus.getStatus());
                 if (ObjectUtils.isNotEmpty(dataItemStatus)) {

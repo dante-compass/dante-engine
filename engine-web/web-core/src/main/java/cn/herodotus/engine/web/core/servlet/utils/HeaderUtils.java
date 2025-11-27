@@ -112,7 +112,7 @@ public class HeaderUtils {
      * @return true 存在，false 不存在
      */
     public static boolean hasHeader(HttpHeaders httpHeaders, String name) {
-        return httpHeaders.containsKey(name);
+        return httpHeaders.containsHeader(name);
     }
 
     /**

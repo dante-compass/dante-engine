@@ -23,11 +23,11 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.engine.core.identity.jackson2;
+package cn.herodotus.engine.core.identity.jackson;
 
 import tools.jackson.core.type.TypeReference;
+import tools.jackson.databind.DeserializationContext;
 import tools.jackson.databind.JsonNode;
-import tools.jackson.databind.ObjectMapper;
 import tools.jackson.databind.node.MissingNode;
 
 import java.time.Instant;
@@ -56,7 +56,7 @@ public class JsonNodeUtils {
             return null;
         }
         JsonNode value = jsonNode.findValue(fieldName);
-        return (value != null && value.isTextual()) ? value.asText() : null;
+        return (value != null && value.isString()) ? value.asString() : null;
     }
 
     public static boolean findBooleanValue(JsonNode jsonNode, String fieldName) {
@@ -67,20 +67,20 @@ public class JsonNodeUtils {
         return value != null && value.isBoolean() && value.asBoolean();
     }
 
-    public static <T> T findValue(JsonNode jsonNode, String fieldName, TypeReference<T> valueTypeReference, ObjectMapper mapper) {
+    public static <T> T findValue(JsonNode jsonNode, String fieldName, TypeReference<T> valueTypeReference, DeserializationContext context) {
         if (jsonNode == null) {
             return null;
         }
         JsonNode value = jsonNode.findValue(fieldName);
-        return (value != null && value.isContainerNode()) ? mapper.convertValue(value, valueTypeReference) : null;
+        return value != null && value.isContainer() ? context.readTreeAsValue(value, context.getTypeFactory().constructType(valueTypeReference)) : null;
     }
 
-    public static JsonNode findObjectNode(JsonNode jsonNode, String fieldName) {
+    public static <T> T findObject(JsonNode jsonNode, String fieldName, TypeReference<T> valueTypeReference, DeserializationContext context) {
         if (jsonNode == null) {
             return null;
         }
         JsonNode value = jsonNode.findValue(fieldName);
-        return (value != null && value.isObject()) ? value : null;
+        return (value != null && value.isObject()) ? context.readTreeAsValue(value, context.getTypeFactory().constructType(valueTypeReference)) : null;
     }
 
     public static JsonNode readJsonNode(JsonNode jsonNode, String field) {

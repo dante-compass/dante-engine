@@ -32,7 +32,7 @@ import cn.herodotus.engine.web.service.properties.EndpointProperties;
 import cn.herodotus.engine.web.service.properties.PlatformProperties;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.boot.autoconfigure.web.ServerProperties;
+import org.springframework.boot.web.server.autoconfigure.ServerProperties;
 
 /**
  * <p>Description: ServiceContextHolder 构建器 </p>

@@ -26,7 +26,7 @@
 package cn.herodotus.engine.oauth2.authorization.autoconfigure.listener;
 
 import cn.herodotus.engine.core.definition.domain.Dictionary;
-import cn.herodotus.engine.core.definition.utils.Jackson2Utils;
+import cn.herodotus.engine.core.definition.utils.JacksonUtils;
 import cn.herodotus.engine.oauth2.authorization.autoconfigure.bus.RemoteEnumDictionaryGatherEvent;
 import cn.herodotus.engine.oauth2.authorization.autoconfigure.processor.EnumDictionaryGatherProcessor;
 import org.slf4j.Logger;
@@ -63,7 +63,7 @@ public class RemoteEnumDictionaryGatherListener implements ApplicationListener<R
         log.debug("[Herodotus] |- [E3] Enum dictionary process BEGIN!");
 
         Optional.ofNullable(dictionary)
-                .flatMap(value -> Optional.ofNullable(Jackson2Utils.toList(value, Dictionary.class)))
+                .flatMap(value -> Optional.ofNullable(JacksonUtils.toList(value, Dictionary.class)))
                 .ifPresent(processor::postDictionaries);
     }
 }

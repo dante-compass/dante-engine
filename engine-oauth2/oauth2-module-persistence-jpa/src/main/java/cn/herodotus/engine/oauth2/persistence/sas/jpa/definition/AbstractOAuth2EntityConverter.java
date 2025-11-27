@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.oauth2.persistence.sas.jpa.definition;
 
-import cn.herodotus.engine.oauth2.persistence.sas.jpa.jackson2.OAuth2JacksonProcessor;
+import cn.herodotus.engine.oauth2.persistence.sas.jpa.jackson.OAuth2JacksonProcessor;
 import org.springframework.core.convert.converter.Converter;
 
 import java.util.Map;

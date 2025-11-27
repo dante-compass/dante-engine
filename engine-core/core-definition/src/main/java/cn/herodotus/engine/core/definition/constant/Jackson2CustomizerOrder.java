@@ -26,7 +26,7 @@
 package cn.herodotus.engine.core.definition.constant;
 
 /**
- * <p>Description: Jackson2 ObjectMapper builder Customizer 顺序控制 </p>
+ * <p>Description: Jackson ObjectMapper builder Customizer 顺序控制 </p>
  * <p>
  * 值越小越先执行
  *

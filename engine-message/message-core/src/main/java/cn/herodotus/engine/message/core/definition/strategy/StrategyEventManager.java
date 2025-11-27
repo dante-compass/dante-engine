@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.message.core.definition.strategy;
 
-import cn.herodotus.engine.core.definition.utils.Jackson2Utils;
+import cn.herodotus.engine.core.definition.utils.JacksonUtils;
 import cn.herodotus.engine.core.foundation.context.ServiceContextHolder;
 import org.apache.commons.lang3.Strings;
 import org.springframework.context.ApplicationEvent;
@@ -88,7 +88,7 @@ public interface StrategyEventManager<T> {
         if (isLocal(destinationService)) {
             postLocalProcess(data);
         } else {
-            postRemoteProcess(Jackson2Utils.toJson(data), originService, destinationService);
+            postRemoteProcess(JacksonUtils.toJson(data), originService, destinationService);
         }
     }
 

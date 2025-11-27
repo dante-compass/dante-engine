@@ -64,6 +64,11 @@
             <groupId>cn.herodotus.dante</groupId>
             <artifactId>cache-module-jetcache</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-web-server</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

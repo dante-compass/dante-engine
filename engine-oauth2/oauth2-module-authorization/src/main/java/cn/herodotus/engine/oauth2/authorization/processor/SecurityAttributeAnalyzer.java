@@ -26,17 +26,16 @@
 package cn.herodotus.engine.oauth2.authorization.processor;
 
 import cn.herodotus.dante.oauth2.domain.HerodotusRequest;
-import cn.herodotus.engine.oauth2.authorization.servlet.ServletOAuth2ResourceMatcherConfigurer;
 import cn.herodotus.engine.core.definition.constant.SymbolConstants;
 import cn.herodotus.engine.core.foundation.enums.UrlCategory;
 import cn.herodotus.engine.core.identity.domain.AttributeTransmitter;
 import cn.herodotus.engine.core.identity.domain.HerodotusSecurityAttribute;
+import cn.herodotus.engine.oauth2.authorization.servlet.ServletOAuth2ResourceMatcherConfigurer;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.Strings;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.security.access.ConfigAttribute;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
@@ -151,7 +150,7 @@ public class SecurityAttributeAnalyzer {
      *
      * @param url              请求url
      * @param methods          请求method
-     * @param configAttributes Security权限{@link ConfigAttribute}
+     * @param configAttributes Security权限{@link HerodotusSecurityAttribute}
      * @return 保存请求和权限的映射的Map
      */
     private LinkedHashMap<HerodotusRequest, List<HerodotusSecurityAttribute>> convert(String url, String methods, List<HerodotusSecurityAttribute> configAttributes) {

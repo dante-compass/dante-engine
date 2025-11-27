@@ -23,21 +23,26 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.engine.core.foundation.jackson2;
+package cn.herodotus.engine.oauth2.persistence.sas.jpa.jackson;
 
-import tools.jackson.databind.module.SimpleModule;
-import tools.jackson.databind.ser.std.ToStringSerializer;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import tools.jackson.databind.annotation.JsonDeserialize;
 
 /**
- * <p>Description: Java 封装类 Jackson 处理定义 Module </p>
+ * <p>Description: ClientSettingsMixin </p>
  *
  * @author : gengwei.zheng
- * @date : 2023/4/29 16:35
+ * @date : 2022/10/24 23:28
  */
-public class EncapsulationClassJackson2Module extends SimpleModule {
-
-    public EncapsulationClassJackson2Module() {
-        this.addSerializer(Long.class, ToStringSerializer.instance);
-        this.addSerializer(Long.TYPE, ToStringSerializer.instance);
-    }
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+@JsonDeserialize(using = ClientSettingsDeserializer.class)
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonAutoDetect(
+        fieldVisibility = JsonAutoDetect.Visibility.ANY,
+        getterVisibility = JsonAutoDetect.Visibility.NONE,
+        isGetterVisibility = JsonAutoDetect.Visibility.NONE,
+        creatorVisibility = JsonAutoDetect.Visibility.ANY)
+public class ClientSettingsMixin {
 }

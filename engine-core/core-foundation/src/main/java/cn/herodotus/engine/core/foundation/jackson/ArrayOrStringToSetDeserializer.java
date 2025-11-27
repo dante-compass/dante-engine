@@ -23,55 +23,50 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.engine.core.foundation.jackson2;
+package cn.herodotus.engine.core.foundation.jackson;
 
+import org.springframework.util.StringUtils;
 import tools.jackson.core.JacksonException;
 import tools.jackson.core.JsonParser;
+import tools.jackson.core.JsonToken;
 import tools.jackson.core.type.TypeReference;
 import tools.jackson.databind.DeserializationContext;
-import tools.jackson.databind.DeserializationFeature;
 import tools.jackson.databind.JavaType;
-import tools.jackson.databind.ObjectMapper;
 import tools.jackson.databind.deser.std.StdDeserializer;
 import tools.jackson.databind.type.TypeFactory;
-import org.apache.commons.collections4.CollectionUtils;
-import org.springframework.util.StringUtils;
 
-import java.io.IOException;
+import java.util.Arrays;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 /**
- * <p>Description: Set集合反序列化为逗号分隔字符串 </p>
+ * <p>Description: 数组转字符串序列化 </p>
  *
  * @author : gengwei.zheng
- * @date : 2023/5/22 13:55
+ * @date : 2022/3/18 12:16
  */
-public class ArrayToCommaDelimitedStringDeserializer extends StdDeserializer<String> {
+public class ArrayOrStringToSetDeserializer extends StdDeserializer<Set<String>> {
 
-    protected ArrayToCommaDelimitedStringDeserializer() {
-        super(String.class);
+    public ArrayOrStringToSetDeserializer() {
+        super(Set.class);
     }
 
     public JavaType getValueType() {
-        return TypeFactory.defaultInstance().constructType(Set.class);
+        return TypeFactory.createDefaultInstance().constructType(String.class);
     }
 
     @Override
-    public String deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JacksonException {
-        // spring-cloud-function-context.jar 会开启DeserializationFeature.FAIL_ON_TRAILING_TOKENS，这会导致前端传过来的数组无法解析抛错
-        // see ContextFunctionCatalogAutoConfiguration#JsonMapperConfiguration
-        // 临时新建一个 ObjectMapper，解决数组解析
-        ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.disable(DeserializationFeature.FAIL_ON_TRAILING_TOKENS);
-        jsonParser.setCodec(objectMapper);
-
-        Set<String> collection = jsonParser.readValueAs(new TypeReference<Set<String>>() {
-        });
-
-        if (CollectionUtils.isNotEmpty(collection)) {
-            return StringUtils.collectionToCommaDelimitedString(collection);
+    public Set<String> deserialize(JsonParser parser, DeserializationContext context) throws JacksonException {
+        JsonToken token = parser.currentToken();
+        if (token.isScalarValue()) {
+            String value = parser.getString();
+            value = value.replaceAll("\\s+", ",");
+            return new LinkedHashSet<>(Arrays.asList(StringUtils.commaDelimitedListToStringArray(value)));
+        } else {
+            return parser.readValueAs(new TypeReference<Set<String>>() {
+            });
         }
-
-        return null;
     }
+
+
 }

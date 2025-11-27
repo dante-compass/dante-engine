@@ -26,7 +26,7 @@
 package cn.herodotus.engine.data.hibernate.dialect;
 
 import org.hibernate.dialect.PostgreSQLDialect;
-import org.hibernate.query.sqm.FetchClauseType;
+import org.hibernate.query.common.FetchClauseType;
 
 /**
  * <p>Description: 扩展 OpenGauss Dialect</p>

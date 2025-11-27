@@ -23,8 +23,9 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.engine.core.foundation.jackson2;
+package cn.herodotus.engine.core.foundation.jackson;
 
+import org.springframework.util.StringUtils;
 import tools.jackson.core.JacksonException;
 import tools.jackson.core.JsonParser;
 import tools.jackson.core.JsonToken;
@@ -33,9 +34,7 @@ import tools.jackson.databind.DeserializationContext;
 import tools.jackson.databind.JavaType;
 import tools.jackson.databind.deser.std.StdDeserializer;
 import tools.jackson.databind.type.TypeFactory;
-import org.springframework.util.StringUtils;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -53,18 +52,18 @@ public class ArrayOrStringToListDeserializer extends StdDeserializer<List<String
     }
 
     public JavaType getValueType() {
-        return TypeFactory.defaultInstance().constructType(String.class);
+        return TypeFactory.createDefaultInstance().constructType(String.class);
     }
 
     @Override
-    public List<String> deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JacksonException {
-        JsonToken token = jsonParser.getCurrentToken();
+    public List<String> deserialize(JsonParser parser, DeserializationContext context) throws JacksonException {
+        JsonToken token = parser.currentToken();
         if (token.isScalarValue()) {
-            String value = jsonParser.getText();
+            String value = parser.getText();
             value = value.replaceAll("\\s+", ",");
             return new ArrayList<>(Arrays.asList(StringUtils.commaDelimitedListToStringArray(value)));
         } else {
-            return jsonParser.readValueAs(new TypeReference<List<String>>() {
+            return parser.readValueAs(new TypeReference<List<String>>() {
             });
         }
     }

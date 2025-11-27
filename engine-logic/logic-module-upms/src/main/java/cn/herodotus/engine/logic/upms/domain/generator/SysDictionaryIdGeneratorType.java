@@ -29,7 +29,7 @@ import cn.herodotus.engine.data.hibernate.generator.AbstractIdGeneratorType;
 import cn.herodotus.engine.logic.upms.entity.security.SysDictionary;
 import org.apache.commons.lang3.StringUtils;
 import org.hibernate.engine.spi.SharedSessionContractImplementor;
-import org.hibernate.id.factory.spi.CustomIdGeneratorCreationContext;
+import org.hibernate.generator.GeneratorCreationContext;
 
 import java.lang.reflect.Member;
 
@@ -41,7 +41,7 @@ import java.lang.reflect.Member;
  */
 public class SysDictionaryIdGeneratorType extends AbstractIdGeneratorType {
 
-    public SysDictionaryIdGeneratorType(SysDictionaryIdGenerator config, Member member, CustomIdGeneratorCreationContext context) {
+    public SysDictionaryIdGeneratorType(SysDictionaryIdGenerator config, Member member, GeneratorCreationContext context) {
         super(member);
     }
 

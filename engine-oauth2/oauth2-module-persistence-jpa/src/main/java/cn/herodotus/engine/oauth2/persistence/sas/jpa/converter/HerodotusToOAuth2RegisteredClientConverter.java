@@ -27,7 +27,7 @@ package cn.herodotus.engine.oauth2.persistence.sas.jpa.converter;
 
 import cn.herodotus.engine.oauth2.persistence.sas.jpa.definition.AbstractRegisteredClientConverter;
 import cn.herodotus.engine.oauth2.persistence.sas.jpa.entity.HerodotusRegisteredClient;
-import cn.herodotus.engine.oauth2.persistence.sas.jpa.jackson2.OAuth2JacksonProcessor;
+import cn.herodotus.engine.oauth2.persistence.sas.jpa.jackson.OAuth2JacksonProcessor;
 import org.springframework.security.oauth2.server.authorization.settings.ClientSettings;
 import org.springframework.security.oauth2.server.authorization.settings.TokenSettings;
 import org.springframework.util.StringUtils;

@@ -26,7 +26,7 @@
 package cn.herodotus.dante.autoconfigure.openfeign;
 
 import cn.herodotus.engine.core.definition.domain.Result;
-import cn.herodotus.engine.core.definition.utils.Jackson2Utils;
+import cn.herodotus.engine.core.definition.utils.JacksonUtils;
 import cn.herodotus.engine.core.foundation.exception.feigin.FeignDecodeIOException;
 import feign.Response;
 import feign.Util;
@@ -55,8 +55,8 @@ public class FeignErrorDecoder implements ErrorDecoder {
         try {
             String content = Util.toString(response.body().asReader(StandardCharsets.UTF_8));
             Result<String> result = Result.failure("Feign 远程调用" + methodKey + " 出错");
-            JavaType javaType = Jackson2Utils.getTypeFactory().constructParametricType(Result.class, String.class);
-            Result<String> object = Jackson2Utils.toObject(content, javaType);
+            JavaType javaType = JacksonUtils.getTypeFactory().constructParametricType(Result.class, String.class);
+            Result<String> object = JacksonUtils.toObject(content, javaType);
             if (ObjectUtils.isEmpty(object)) {
                 result = object;
             }

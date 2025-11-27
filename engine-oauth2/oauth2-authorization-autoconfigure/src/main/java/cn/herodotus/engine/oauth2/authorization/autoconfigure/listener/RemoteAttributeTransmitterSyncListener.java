@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.oauth2.authorization.autoconfigure.listener;
 
-import cn.herodotus.engine.core.definition.utils.Jackson2Utils;
+import cn.herodotus.engine.core.definition.utils.JacksonUtils;
 import cn.herodotus.engine.core.identity.domain.AttributeTransmitter;
 import cn.herodotus.engine.oauth2.authorization.autoconfigure.bus.RemoteAttributeTransmitterSyncEvent;
 import cn.herodotus.engine.oauth2.authorization.processor.SecurityAttributeAnalyzer;
@@ -65,7 +65,7 @@ public class RemoteAttributeTransmitterSyncListener implements ApplicationListen
             log.debug("[Herodotus] |- Got attribute transmitter from service [{}], current [{}] start to process security attributes.", event.getOriginService(), event.getDestinationService());
 
             Optional.ofNullable(data)
-                    .flatMap(value -> Optional.ofNullable(Jackson2Utils.toList(value, AttributeTransmitter.class)))
+                    .flatMap(value -> Optional.ofNullable(JacksonUtils.toList(value, AttributeTransmitter.class)))
                     .ifPresent(securityAttributeAnalyzer::processAttributeTransmitters);
         }
     }

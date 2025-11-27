@@ -23,7 +23,7 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.engine.oauth2.persistence.sas.jpa.jackson2;
+package cn.herodotus.engine.oauth2.persistence.sas.jpa.jackson;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -31,18 +31,18 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import tools.jackson.databind.annotation.JsonDeserialize;
 
 /**
- * <p>Description: OAuth2ClientAuthenticationTokenMixin </p>
+ * <p>Description: RegisteredClientMixin </p>
  *
  * @author : gengwei.zheng
- * @date : 2022/10/24 16:45
+ * @date : 2022/10/24 16:18
  */
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-@JsonDeserialize(using = OAuth2ClientAuthenticationTokenDeserializer.class)
+@JsonDeserialize(using = RegisteredClientDeserializer.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonAutoDetect(
         fieldVisibility = JsonAutoDetect.Visibility.ANY,
         getterVisibility = JsonAutoDetect.Visibility.NONE,
         isGetterVisibility = JsonAutoDetect.Visibility.NONE,
         creatorVisibility = JsonAutoDetect.Visibility.ANY)
-public class OAuth2ClientAuthenticationTokenMixin {
+public class RegisteredClientMixin {
 }

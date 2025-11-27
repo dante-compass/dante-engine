@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.assistant.access.processor;
 
-import cn.herodotus.engine.core.definition.utils.Jackson2Utils;
+import cn.herodotus.engine.core.definition.utils.JacksonUtils;
 import me.chanjar.weixin.common.error.WxErrorException;
 import me.chanjar.weixin.common.session.WxSessionManager;
 import me.chanjar.weixin.mp.api.WxMpMessageHandler;
@@ -52,7 +52,7 @@ public class WxmppLogHandler implements WxMpMessageHandler {
     @Override
     public WxMpXmlOutMessage handle(WxMpXmlMessage wxMpXmlMessage, Map<String, Object> map, WxMpService wxMpService, WxSessionManager wxSessionManager) throws WxErrorException {
         // 代码逻辑未实现,仅仅简单打印信息
-        log.info("\n接收到请求消息，内容：{}", Jackson2Utils.toJson(wxMpXmlMessage));
+        log.info("\n接收到请求消息，内容：{}", JacksonUtils.toJson(wxMpXmlMessage));
         return null;
     }
 }

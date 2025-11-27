@@ -23,21 +23,19 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.engine.core.identity.jackson2;
+package cn.herodotus.engine.core.identity.jackson;
 
 import cn.herodotus.engine.core.identity.domain.HerodotusGrantedAuthority;
 import cn.herodotus.engine.core.identity.domain.HerodotusUser;
-import tools.jackson.core.JsonParser;
-import tools.jackson.core.JsonProcessingException;
-import tools.jackson.core.type.TypeReference;
-import tools.jackson.databind.DeserializationContext;
-import tools.jackson.databind.JsonDeserializer;
-import tools.jackson.databind.JsonNode;
-import tools.jackson.databind.ObjectMapper;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
+import tools.jackson.core.JacksonException;
+import tools.jackson.core.JsonParser;
+import tools.jackson.core.type.TypeReference;
+import tools.jackson.databind.DeserializationContext;
+import tools.jackson.databind.JsonNode;
+import tools.jackson.databind.ValueDeserializer;
 
-import java.io.IOException;
 import java.util.Set;
 
 /**
@@ -46,11 +44,11 @@ import java.util.Set;
  * @author : gengwei.zheng
  * @date : 2022/2/17 21:01
  */
-public class HerodotusUserDeserializer extends JsonDeserializer<HerodotusUser> {
+public class HerodotusUserDeserializer extends ValueDeserializer<HerodotusUser> {
 
-    private static final TypeReference<Set<HerodotusGrantedAuthority>> HERODOTUS_GRANTED_AUTHORITY_SET = new TypeReference<Set<HerodotusGrantedAuthority>>() {
+    private static final TypeReference<Set<HerodotusGrantedAuthority>> HERODOTUS_GRANTED_AUTHORITY_SET = new TypeReference<>() {
     };
-    private static final TypeReference<Set<String>> HERODOTUS_ROLE_SET = new TypeReference<Set<String>>() {
+    private static final TypeReference<Set<String>> HERODOTUS_ROLE_SET = new TypeReference<>() {
     };
 
     /**
@@ -59,22 +57,20 @@ public class HerodotusUserDeserializer extends JsonDeserializer<HerodotusUser> {
      * be removed from the {@link User} by invoking {@link User#eraseCredentials()}. In
      * that case there won't be any password key in serialized json.
      *
-     * @param jp   the JsonParser
-     * @param ctxt the DeserializationContext
+     * @param parser   the JsonParser
+     * @param context the DeserializationContext
      * @return the user
-     * @throws IOException             if a exception during IO occurs
-     * @throws JsonProcessingException if an error during JSON processing occurs
+     * @throws JacksonException if an error during JSON processing occurs
      */
     @Override
-    public HerodotusUser deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException, JsonProcessingException {
-        ObjectMapper mapper = (ObjectMapper) jp.getCodec();
-        JsonNode jsonNode = mapper.readTree(jp);
-        Set<? extends GrantedAuthority> authorities = mapper.convertValue(jsonNode.get("authorities"), HERODOTUS_GRANTED_AUTHORITY_SET);
-        Set<String> roles = mapper.convertValue(jsonNode.get("roles"), HERODOTUS_ROLE_SET);
+    public HerodotusUser deserialize(JsonParser parser, DeserializationContext context) throws JacksonException {
+        JsonNode jsonNode = context.readTree(parser);
+        Set<? extends GrantedAuthority> authorities = JsonNodeUtils.findObject(jsonNode,"authorities", HERODOTUS_GRANTED_AUTHORITY_SET, context);
+        Set<String> roles = JsonNodeUtils.findObject(jsonNode, "roles", HERODOTUS_ROLE_SET, context);
         JsonNode passwordNode = JsonNodeUtils.readJsonNode(jsonNode, "password");
         String userId = JsonNodeUtils.findStringValue(jsonNode, "userId");
         String username = JsonNodeUtils.findStringValue(jsonNode, "username");
-        String password = passwordNode.asText("");
+        String password = passwordNode.asString("");
         boolean enabled = JsonNodeUtils.findBooleanValue(jsonNode, "enabled");
         boolean accountNonExpired = JsonNodeUtils.findBooleanValue(jsonNode, "accountNonExpired");
         boolean credentialsNonExpired = JsonNodeUtils.findBooleanValue(jsonNode, "credentialsNonExpired");

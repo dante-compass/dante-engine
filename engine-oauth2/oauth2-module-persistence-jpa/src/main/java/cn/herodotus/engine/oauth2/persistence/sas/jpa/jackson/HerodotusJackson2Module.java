@@ -23,25 +23,30 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.engine.oauth2.persistence.sas.jpa.jackson2;
+package cn.herodotus.engine.oauth2.persistence.sas.jpa.jackson;
 
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import tools.jackson.databind.annotation.JsonDeserialize;
+import cn.herodotus.engine.core.identity.domain.HerodotusGrantedAuthority;
+import cn.herodotus.engine.core.identity.domain.HerodotusUser;
+import cn.herodotus.engine.oauth2.core.domain.FormLoginWebAuthenticationDetails;
+import tools.jackson.core.Version;
+import tools.jackson.databind.module.SimpleModule;
 
 /**
- * <p>Description: HerodotusGrantedAuthority Jackson2 Mixin </p>
+ * <p>Description: 自定义 User Details Module </p>
  *
  * @author : gengwei.zheng
- * @date : 2022/3/17 20:28
+ * @date : 2022/2/17 23:39
  */
-@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-@JsonDeserialize(using = HerodotusGrantedAuthorityDeserializer.class)
-@JsonAutoDetect(
-        fieldVisibility = JsonAutoDetect.Visibility.ANY,
-        getterVisibility = JsonAutoDetect.Visibility.NONE,
-        isGetterVisibility = JsonAutoDetect.Visibility.NONE)
-@JsonIgnoreProperties(ignoreUnknown = true)
-public abstract class HerodotusGrantedAuthorityMixin {
+public class HerodotusJackson2Module extends SimpleModule {
+
+    public HerodotusJackson2Module() {
+        super(HerodotusJackson2Module.class.getName(), new Version(1, 0, 0, null, null, null));
+    }
+
+    @Override
+    public void setupModule(SetupContext context) {
+        context.setMixIn(HerodotusUser.class, HerodotusUserMixin.class);
+        context.setMixIn(HerodotusGrantedAuthority.class, HerodotusGrantedAuthorityMixin.class);
+        context.setMixIn(FormLoginWebAuthenticationDetails.class, FormLoginWebAuthenticationDetailsMixin.class);
+    }
 }

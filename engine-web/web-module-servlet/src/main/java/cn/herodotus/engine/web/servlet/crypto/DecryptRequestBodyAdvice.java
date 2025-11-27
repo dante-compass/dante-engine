@@ -25,14 +25,12 @@
 
 package cn.herodotus.engine.web.servlet.crypto;
 
-import cn.herodotus.engine.core.definition.utils.Jackson2Utils;
+import cn.herodotus.engine.core.definition.utils.JacksonUtils;
 import cn.herodotus.engine.web.core.annotation.Crypto;
 import cn.herodotus.engine.web.core.exception.SessionInvalidException;
 import cn.herodotus.engine.web.core.servlet.utils.SessionUtils;
 import cn.hutool.v7.core.io.IoUtil;
 import cn.hutool.v7.core.util.ByteUtil;
-import tools.jackson.databind.JsonNode;
-import tools.jackson.databind.node.TextNode;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.Strings;
@@ -44,13 +42,15 @@ import org.springframework.http.HttpInputMessage;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.RequestBodyAdvice;
+import tools.jackson.databind.JsonNode;
+import tools.jackson.databind.node.StringNode;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Type;
-import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * <p>Description: RequestBody 解密 Advice</p>
@@ -112,10 +112,10 @@ public class DecryptRequestBodyAdvice implements RequestBodyAdvice {
     }
 
     private String decrypt(String sessionKey, String content) throws SessionInvalidException {
-        JsonNode jsonNode = Jackson2Utils.toNode(content);
+        JsonNode jsonNode = JacksonUtils.toNode(content);
         if (ObjectUtils.isNotEmpty(jsonNode)) {
             decrypt(sessionKey, jsonNode);
-            return Jackson2Utils.toJson(jsonNode);
+            return JacksonUtils.toJson(jsonNode);
         }
 
         return content;
@@ -123,12 +123,11 @@ public class DecryptRequestBodyAdvice implements RequestBodyAdvice {
 
     private void decrypt(String sessionKey, JsonNode jsonNode) throws SessionInvalidException {
         if (jsonNode.isObject()) {
-            Iterator<Map.Entry<String, JsonNode>> it = jsonNode.fields();
-            while (it.hasNext()) {
-                Map.Entry<String, JsonNode> entry = it.next();
-                if (entry.getValue() instanceof TextNode t && entry.getValue().isValueNode()) {
-                    String value = httpCryptoProcessor.decrypt(sessionKey, t.asText());
-                    entry.setValue(new TextNode(value));
+            Set<Map.Entry<String, JsonNode>> it = jsonNode.properties();
+            for (Map.Entry<String, JsonNode> entry : it) {
+                if (entry.getValue() instanceof JsonNode t && entry.getValue().isValueNode()) {
+                    String value = httpCryptoProcessor.decrypt(sessionKey, t.asString());
+                    entry.setValue(new StringNode(value));
                 }
                 decrypt(sessionKey, entry.getValue());
             }

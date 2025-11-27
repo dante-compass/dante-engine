@@ -23,16 +23,16 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.engine.core.foundation.jackson2;
+package cn.herodotus.engine.core.foundation.jackson;
 
 import cn.herodotus.engine.core.definition.constant.SymbolConstants;
-import tools.jackson.core.JsonGenerator;
-import tools.jackson.databind.SerializerProvider;
-import tools.jackson.databind.ser.std.StdSerializer;
 import org.apache.commons.lang3.Strings;
 import org.springframework.util.StringUtils;
+import tools.jackson.core.JacksonException;
+import tools.jackson.core.JsonGenerator;
+import tools.jackson.databind.SerializationContext;
+import tools.jackson.databind.ser.std.StdSerializer;
 
-import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -48,7 +48,7 @@ public class CommaDelimitedStringToSetSerializer extends StdSerializer<String> {
     }
 
     @Override
-    public void serialize(String value, JsonGenerator gen, SerializerProvider provider) throws IOException {
+    public void serialize(String value, JsonGenerator generator, SerializationContext context) throws JacksonException {
         Set<String> collection = new HashSet<>();
         if (StringUtils.hasText(value)) {
             if (Strings.CS.contains(value, SymbolConstants.COMMA)) {
@@ -60,25 +60,25 @@ public class CommaDelimitedStringToSetSerializer extends StdSerializer<String> {
 
         int len = collection.size();
 
-        gen.writeStartArray(collection, len);
-        serializeContents(collection, gen, provider);
-        gen.writeEndArray();
+        generator.writeStartArray(collection, len);
+        serializeContents(collection, generator, context);
+        generator.writeEndArray();
     }
 
-    private void serializeContents(Set<String> value, JsonGenerator g, SerializerProvider provider) throws IOException {
+    private void serializeContents(Set<String> value, JsonGenerator generator, SerializationContext context) throws JacksonException {
         int i = 0;
 
         try {
             for (String str : value) {
                 if (str == null) {
-                    provider.defaultSerializeNull(g);
+                    context.defaultSerializeNullValue(generator);
                 } else {
-                    g.writeString(str);
+                    generator.writeString(str);
                 }
                 ++i;
             }
         } catch (Exception e) {
-            wrapAndThrow(provider, e, value, i);
+            wrapAndThrow(context, e, value, i);
         }
     }
 }

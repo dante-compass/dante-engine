@@ -23,34 +23,17 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.engine.core.foundation.jackson2;
+package cn.herodotus.engine.oauth2.persistence.sas.jpa.jackson;
 
-import tools.jackson.core.JacksonException;
-import tools.jackson.core.JsonParser;
-import tools.jackson.databind.DeserializationContext;
-import tools.jackson.databind.JsonDeserializer;
-
-import java.io.IOException;
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
+import tools.jackson.core.Version;
 
 /**
- * <p>Description: Timestamp 转 LocalDateTime 反序列化器 </p>
+ * <p>Description: Jackson 用到的常量值 </p>
  *
  * @author : gengwei.zheng
- * @date : 2023/9/22 16:46
+ * @date : 2023/4/28 14:39
  */
-public class TimestampToLocalDateTimeDeserializer extends JsonDeserializer<LocalDateTime> {
-    @Override
-    public LocalDateTime deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JacksonException {
+public class Jackson2Constants {
 
-        long timestamp = jsonParser.getValueAsLong();
-        if (timestamp > 0) {
-            Instant instant = Instant.ofEpochMilli(timestamp);
-            return LocalDateTime.ofInstant(instant, ZoneId.systemDefault());
-        } else {
-            return null;
-        }
-    }
+    public static final Version VERSION = new Version(2, 14, 2, null, null, null);
 }

@@ -28,7 +28,7 @@ package cn.herodotus.engine.oauth2.persistence.sas.jpa.storage;
 import cn.herodotus.engine.oauth2.persistence.sas.jpa.converter.HerodotusToOAuth2AuthorizationConverter;
 import cn.herodotus.engine.oauth2.persistence.sas.jpa.converter.OAuth2ToHerodotusAuthorizationConverter;
 import cn.herodotus.engine.oauth2.persistence.sas.jpa.entity.HerodotusAuthorization;
-import cn.herodotus.engine.oauth2.persistence.sas.jpa.jackson2.OAuth2JacksonProcessor;
+import cn.herodotus.engine.oauth2.persistence.sas.jpa.jackson.OAuth2JacksonProcessor;
 import cn.herodotus.engine.oauth2.persistence.sas.jpa.service.HerodotusAuthorizationService;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.ObjectUtils;

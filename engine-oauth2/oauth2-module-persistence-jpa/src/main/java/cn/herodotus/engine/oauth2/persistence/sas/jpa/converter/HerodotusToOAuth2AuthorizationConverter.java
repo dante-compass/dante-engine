@@ -28,7 +28,7 @@ package cn.herodotus.engine.oauth2.persistence.sas.jpa.converter;
 import cn.herodotus.engine.oauth2.core.utils.OAuth2AuthenticationUtils;
 import cn.herodotus.engine.oauth2.persistence.sas.jpa.definition.AbstractOAuth2EntityConverter;
 import cn.herodotus.engine.oauth2.persistence.sas.jpa.entity.HerodotusAuthorization;
-import cn.herodotus.engine.oauth2.persistence.sas.jpa.jackson2.OAuth2JacksonProcessor;
+import cn.herodotus.engine.oauth2.persistence.sas.jpa.jackson.OAuth2JacksonProcessor;
 import cn.hutool.v7.core.date.DateUtil;
 import org.springframework.dao.DataRetrievalFailureException;
 import org.springframework.security.oauth2.core.OAuth2AccessToken;
