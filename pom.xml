@@ -112,7 +112,6 @@
         <module>dante-rest</module>
         <module>engine-message</module>
         <module>engine-oauth2</module>
-        <module>engine-starter</module>
         <module>engine-web</module>
         <module>dante-framework</module>
         <module>dante-starter</module>
