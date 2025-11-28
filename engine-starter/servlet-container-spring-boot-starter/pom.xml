@@ -37,7 +37,7 @@
     <artifactId>servlet-container-spring-boot-starter</artifactId>
     <name>servlet-container-spring-boot-starter</name>
 
-    <description>Dante Cloud 微服务基座组件库 Servlet 容器基础配置自动配置 Starter</description>
+    <description>Dante Cloud 云原生微服务基座组件库 Servlet 容器基础配置自动配置 Starter</description>
 
     <dependencies>
         <dependency>

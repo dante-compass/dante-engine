@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.core.definition.utils;
 
-import cn.herodotus.engine.core.definition.constant.SystemConstants;
+import cn.herodotus.dante.core.constant.SystemConstants;
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
 import org.apache.commons.lang3.ObjectUtils;

@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.facility.kafka.autoconfigure.annotation;
 
-import cn.herodotus.engine.core.definition.constant.BaseConstants;
+import cn.herodotus.dante.core.constant.BaseConstants;
 import cn.herodotus.engine.message.core.constants.MessageConstants;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 

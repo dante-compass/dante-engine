@@ -33,7 +33,7 @@ import cn.herodotus.engine.assistant.access.stamp.VerificationCodeStampManager;
 import cn.herodotus.engine.cache.core.exception.StampHasExpiredException;
 import cn.herodotus.engine.cache.core.exception.StampMismatchException;
 import cn.herodotus.engine.cache.core.exception.StampParameterIllegalException;
-import cn.herodotus.engine.core.definition.constant.SystemConstants;
+import cn.herodotus.dante.core.constant.SystemConstants;
 import cn.herodotus.engine.core.identity.domain.AccessPrincipal;
 import org.dromara.sms4j.api.SmsBlend;
 import org.dromara.sms4j.api.entity.SmsResponse;

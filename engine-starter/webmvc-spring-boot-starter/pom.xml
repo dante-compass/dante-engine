@@ -37,7 +37,7 @@
     <artifactId>webmvc-spring-boot-starter</artifactId>
     <name>webmvc-spring-boot-starter</name>
 
-    <description>Dante Cloud 微服务基座组件库 WebMvc 类型应用自动配置 Starter</description>
+    <description>Dante Cloud 云原生微服务基座组件库 WebMvc 类型应用自动配置 Starter</description>
 
     <dependencies>
         <dependency>

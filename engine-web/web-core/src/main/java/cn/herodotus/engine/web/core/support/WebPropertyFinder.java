@@ -26,7 +26,7 @@
 package cn.herodotus.engine.web.core.support;
 
 
-import cn.herodotus.engine.core.definition.constant.BaseConstants;
+import cn.herodotus.dante.core.constant.BaseConstants;
 import cn.herodotus.engine.core.foundation.context.PropertyResolver;
 import cn.herodotus.engine.web.core.constant.WebConstants;
 import org.springframework.context.ApplicationContext;

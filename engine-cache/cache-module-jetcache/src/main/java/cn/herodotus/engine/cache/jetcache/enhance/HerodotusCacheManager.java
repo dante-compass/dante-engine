@@ -27,7 +27,7 @@ package cn.herodotus.engine.cache.jetcache.enhance;
 
 import cn.herodotus.engine.cache.core.properties.CacheProperties;
 import cn.herodotus.engine.cache.core.properties.CacheSetting;
-import cn.herodotus.engine.core.definition.constant.SymbolConstants;
+import cn.herodotus.dante.core.constant.SymbolConstants;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.Strings;
 import org.slf4j.Logger;

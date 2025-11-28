@@ -37,7 +37,7 @@
     <artifactId>data-mongodb-spring-boot-starter</artifactId>
     <name>data-mongodb-spring-boot-starter</name>
 
-    <description>Dante Cloud 微服务基座组件库 MongoDB 数据访问层自动配置 Starter</description>
+    <description>Dante Cloud 云原生微服务基座组件库 MongoDB 数据访问层自动配置 Starter</description>
 
     <dependencies>
         <dependency>

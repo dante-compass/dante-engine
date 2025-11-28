@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.web.core.condition;
 
-import cn.herodotus.engine.core.definition.constant.BaseConstants;
+import cn.herodotus.dante.core.constant.BaseConstants;
 import cn.herodotus.engine.web.core.constant.WebConstants;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 

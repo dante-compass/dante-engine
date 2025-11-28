@@ -40,7 +40,7 @@
 
     <packaging>pom</packaging>
 
-    <description>Dante Cloud 微服务基座组件库消息通用代码模块分组</description>
+    <description>Dante Cloud 云原生微服务基座组件库消息通用代码模块分组</description>
 
     <modules>
         <module>message-autoconfigure</module>

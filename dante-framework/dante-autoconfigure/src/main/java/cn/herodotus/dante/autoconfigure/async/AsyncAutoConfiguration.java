@@ -25,7 +25,7 @@
 
 package cn.herodotus.dante.autoconfigure.async;
 
-import cn.herodotus.engine.core.definition.constant.SystemConstants;
+import cn.herodotus.dante.core.constant.SystemConstants;
 import cn.herodotus.engine.core.foundation.condition.ConditionalOnServletApplication;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;

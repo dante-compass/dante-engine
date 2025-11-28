@@ -37,7 +37,7 @@
     <artifactId>assistant-module-access</artifactId>
     <name>assistant-module-access</name>
 
-    <description>Dante Cloud 微服务基座组件库第三方登录接入辅助功能模块</description>
+    <description>Dante Cloud 云原生微服务基座组件库第三方登录接入辅助功能模块</description>
 
     <dependencies>
         <dependency>

@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.oauth2.core.properties;
 
-import cn.herodotus.engine.core.definition.constant.SymbolConstants;
+import cn.herodotus.dante.core.constant.SymbolConstants;
 import cn.herodotus.engine.core.foundation.enums.Certificate;
 import cn.herodotus.engine.oauth2.core.constants.OAuth2Constants;
 import com.google.common.base.MoreObjects;

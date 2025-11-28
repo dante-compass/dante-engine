@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.assistant.captcha.constant;
 
-import cn.herodotus.engine.core.definition.constant.BaseConstants;
+import cn.herodotus.dante.core.constant.BaseConstants;
 
 /**
  * <p>Description: 验证码常量 </p>

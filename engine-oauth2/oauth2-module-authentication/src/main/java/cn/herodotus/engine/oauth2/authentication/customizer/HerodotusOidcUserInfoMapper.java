@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.oauth2.authentication.customizer;
 
-import cn.herodotus.engine.core.definition.constant.SystemConstants;
+import cn.herodotus.dante.core.constant.SystemConstants;
 import org.springframework.security.oauth2.core.oidc.OidcUserInfo;
 import org.springframework.security.oauth2.core.oidc.StandardClaimNames;
 import org.springframework.security.oauth2.server.authorization.oidc.authentication.OidcUserInfoAuthenticationContext;

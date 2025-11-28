@@ -28,7 +28,7 @@ package cn.herodotus.engine.assistant.oss.service.utils;
 import cn.herodotus.engine.assistant.oss.config.AssistantOssConfiguration;
 import cn.herodotus.engine.assistant.oss.pool.AwsConfigurer;
 import cn.herodotus.engine.assistant.oss.properties.OssProperties;
-import cn.herodotus.engine.core.definition.constant.SystemConstants;
+import cn.herodotus.dante.core.constant.SystemConstants;
 
 import java.io.File;
 

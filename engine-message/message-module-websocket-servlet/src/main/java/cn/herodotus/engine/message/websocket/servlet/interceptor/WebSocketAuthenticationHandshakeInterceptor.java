@@ -25,8 +25,8 @@
 
 package cn.herodotus.engine.message.websocket.servlet.interceptor;
 
-import cn.herodotus.engine.core.definition.constant.SymbolConstants;
-import cn.herodotus.engine.core.definition.constant.SystemConstants;
+import cn.herodotus.dante.core.constant.SymbolConstants;
+import cn.herodotus.dante.core.constant.SystemConstants;
 import cn.herodotus.engine.core.identity.domain.UserPrincipal;
 import cn.herodotus.engine.core.identity.oauth2.BearerTokenResolver;
 import cn.herodotus.engine.message.websocket.servlet.utils.WebSocketUtils;

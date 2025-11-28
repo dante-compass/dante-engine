@@ -39,7 +39,7 @@
     <artifactId>cache-module-redis</artifactId>
     <name>cache-module-redis</name>
 
-    <description>Dante Cloud 微服务基座组件库 Redis 缓存功能封装模块</description>
+    <description>Dante Cloud 云原生微服务基座组件库 Redis 缓存功能封装模块</description>
 
     <dependencies>
         <dependency>

@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.oauth2.persistence.sas.jpa.converter;
 
-import cn.herodotus.engine.core.definition.constant.SymbolConstants;
+import cn.herodotus.dante.core.constant.SymbolConstants;
 import cn.herodotus.engine.oauth2.persistence.sas.jpa.definition.AbstractOAuth2EntityConverter;
 import cn.herodotus.engine.oauth2.persistence.sas.jpa.entity.HerodotusAuthorization;
 import cn.herodotus.engine.oauth2.persistence.sas.jpa.jackson.OAuth2JacksonProcessor;

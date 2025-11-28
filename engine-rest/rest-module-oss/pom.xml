@@ -37,7 +37,7 @@
     <artifactId>rest-module-oss</artifactId>
     <name>rest-module-oss</name>
 
-    <description>Dante Cloud 微服务基座组件库对象存储功能 REST 接口模块</description>
+    <description>Dante Cloud 云原生微服务基座组件库对象存储功能 REST 接口模块</description>
 
     <dependencies>
         <dependency>

@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.web.core.constant;
 
-import cn.herodotus.engine.core.definition.constant.BaseConstants;
+import cn.herodotus.dante.core.constant.BaseConstants;
 
 /**
  * <p>Description: Rest 模块常量 </p>

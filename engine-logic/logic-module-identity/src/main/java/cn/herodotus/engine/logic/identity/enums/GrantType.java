@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.logic.identity.enums;
 
-import cn.herodotus.engine.core.definition.constant.SystemConstants;
+import cn.herodotus.dante.core.constant.SystemConstants;
 import cn.herodotus.engine.core.definition.domain.Dictionary;
 import cn.herodotus.engine.core.definition.domain.DictionaryEnum;
 import com.fasterxml.jackson.annotation.JsonFormat;

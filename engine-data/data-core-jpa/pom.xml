@@ -37,7 +37,7 @@
     <artifactId>data-core-jpa</artifactId>
     <name>data-core-jpa</name>
 
-    <description>Dante Cloud 微服务基座组件库以 JPA 作为数据访问层的通用代码模块</description>
+    <description>Dante Cloud 云原生微服务基座组件库以 JPA 作为数据访问层的通用代码模块</description>
 
     <dependencies>
         <dependency>
@@ -47,7 +47,7 @@
 
         <dependency>
             <groupId>cn.herodotus.dante</groupId>
-            <artifactId>data-module-hibernate</artifactId>
+            <artifactId>dante-hibernate</artifactId>
         </dependency>
 
         <dependency>

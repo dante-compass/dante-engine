@@ -116,6 +116,7 @@
         <module>engine-starter</module>
         <module>engine-web</module>
         <module>dante-framework</module>
+        <module>dante-starter</module>
     </modules>
 
 </project>

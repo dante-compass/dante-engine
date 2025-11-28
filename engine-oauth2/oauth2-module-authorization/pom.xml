@@ -38,7 +38,7 @@
     <artifactId>oauth2-module-authorization</artifactId>
     <name>oauth2-module-authorization</name>
 
-    <description>Dante Cloud 微服务基座组件库 Spring Authorization Server 资源服务器核心功能封装模块</description>
+    <description>Dante Cloud 云原生微服务基座组件库 Spring Authorization Server 资源服务器核心功能封装模块</description>
 
     <dependencies>
         <dependency>

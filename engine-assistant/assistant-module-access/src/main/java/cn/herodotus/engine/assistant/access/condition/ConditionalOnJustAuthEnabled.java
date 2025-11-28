@@ -26,7 +26,7 @@
 package cn.herodotus.engine.assistant.access.condition;
 
 import cn.herodotus.engine.assistant.access.constant.AccessConstants;
-import cn.herodotus.engine.core.definition.constant.BaseConstants;
+import cn.herodotus.dante.core.constant.BaseConstants;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 
 import java.lang.annotation.*;

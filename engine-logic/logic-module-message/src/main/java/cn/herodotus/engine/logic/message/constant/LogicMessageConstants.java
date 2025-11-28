@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.logic.message.constant;
 
-import cn.herodotus.engine.core.definition.constant.BaseConstants;
+import cn.herodotus.dante.core.constant.BaseConstants;
 
 /**
  * <p>Description: 消息业务逻辑模块常量 </p>

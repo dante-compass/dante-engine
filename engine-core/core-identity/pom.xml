@@ -37,7 +37,7 @@
     <artifactId>core-identity</artifactId>
     <name>core-identity</name>
 
-    <description>Dante Cloud 微服务基座组件库身份认证通用模块</description>
+    <description>Dante Cloud 云原生微服务基座组件库身份认证通用模块</description>
 
     <dependencies>
         <dependency>

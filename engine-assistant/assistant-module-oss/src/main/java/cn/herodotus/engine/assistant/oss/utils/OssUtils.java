@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.assistant.oss.utils;
 
-import cn.herodotus.engine.core.definition.constant.SymbolConstants;
+import cn.herodotus.dante.core.constant.SymbolConstants;
 import cn.hutool.v7.http.html.HtmlUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.Strings;

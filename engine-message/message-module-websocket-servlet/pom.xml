@@ -37,7 +37,7 @@
     <artifactId>message-module-websocket-servlet</artifactId>
     <name>message-module-websocket-servlet</name>
 
-    <description>Dante Cloud 微服务基座组件库基于 Servlet 环境下的 Websocket 功能封装模块</description>
+    <description>Dante Cloud 云原生微服务基座组件库基于 Servlet 环境下的 Websocket 功能封装模块</description>
 
     <dependencies>
         <dependency>

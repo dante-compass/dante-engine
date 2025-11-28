@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.oauth2.authorization.servlet;
 
-import cn.herodotus.engine.core.definition.constant.SystemConstants;
+import cn.herodotus.dante.core.constant.SystemConstants;
 import cn.herodotus.engine.oauth2.authorization.converter.HerodotusJwtGrantedAuthoritiesConverter;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter;
 

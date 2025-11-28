@@ -37,7 +37,7 @@
     <artifactId>servlet-message-spring-boot-starter</artifactId>
     <name>servlet-message-spring-boot-starter</name>
 
-    <description>Dante Cloud 微服务基座组件库 Servlet 环境消息模块自动配置 Starter</description>
+    <description>Dante Cloud 云原生微服务基座组件库 Servlet 环境消息模块自动配置 Starter</description>
 
     <dependencies>
         <dependency>

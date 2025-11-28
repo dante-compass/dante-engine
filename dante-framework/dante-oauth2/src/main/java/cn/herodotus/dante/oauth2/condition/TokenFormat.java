@@ -25,7 +25,7 @@
 
 package cn.herodotus.dante.oauth2.condition;
 
-import cn.herodotus.engine.core.definition.constant.BaseConstants;
+import cn.herodotus.dante.core.constant.BaseConstants;
 import cn.herodotus.engine.core.foundation.condition.ConditionEnum;
 import org.springframework.core.env.Environment;
 

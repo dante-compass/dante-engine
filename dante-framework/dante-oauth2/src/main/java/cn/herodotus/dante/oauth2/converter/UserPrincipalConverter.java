@@ -25,7 +25,7 @@
 
 package cn.herodotus.dante.oauth2.converter;
 
-import cn.herodotus.engine.core.definition.constant.SystemConstants;
+import cn.herodotus.dante.core.constant.SystemConstants;
 import cn.herodotus.engine.core.identity.domain.HerodotusUser;
 import cn.herodotus.engine.core.identity.domain.UserPrincipal;
 import org.apache.commons.collections4.CollectionUtils;

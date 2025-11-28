@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.oauth2.authentication.provider;
 
-import cn.herodotus.engine.core.definition.constant.SystemConstants;
+import cn.herodotus.dante.core.constant.SystemConstants;
 import cn.herodotus.engine.core.identity.enums.AccountCategory;
 import cn.herodotus.engine.oauth2.authentication.customizer.HerodotusGrantType;
 import cn.herodotus.engine.oauth2.authentication.utils.OAuth2EndpointUtils;

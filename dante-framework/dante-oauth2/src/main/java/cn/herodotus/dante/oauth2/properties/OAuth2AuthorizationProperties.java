@@ -26,7 +26,7 @@
 package cn.herodotus.dante.oauth2.properties;
 
 import cn.herodotus.dante.oauth2.condition.TokenFormat;
-import cn.herodotus.engine.core.definition.constant.BaseConstants;
+import cn.herodotus.dante.core.constant.BaseConstants;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 import java.util.List;

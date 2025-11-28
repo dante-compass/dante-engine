@@ -25,4 +25,3 @@
 
 cn.herodotus.engine.oauth2.authentication.autoconfigure.OAuth2AuthenticationAutoConfiguration
 cn.herodotus.engine.oauth2.authentication.autoconfigure.OAuth2IdentityAutoConfiguration
-cn.herodotus.engine.oauth2.authentication.autoconfigure.TenantDataSourceAutoConfiguration

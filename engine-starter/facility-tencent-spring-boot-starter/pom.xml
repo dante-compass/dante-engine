@@ -38,7 +38,7 @@
     <artifactId>facility-tencent-spring-boot-starter</artifactId>
     <name>facility-tencent-spring-boot-starter</name>
 
-    <description>Dante Cloud 微服务基座组件库面向 Spring Cloud Tencent 的微服务基础设施适配模块 Starter</description>
+    <description>Dante Cloud 云原生微服务基座组件库面向 Spring Cloud Tencent 的微服务基础设施适配模块 Starter</description>
 
     <dependencies>
 

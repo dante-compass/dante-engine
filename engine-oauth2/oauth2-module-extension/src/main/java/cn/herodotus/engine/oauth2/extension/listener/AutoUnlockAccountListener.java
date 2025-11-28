@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.oauth2.extension.listener;
 
-import cn.herodotus.engine.core.definition.constant.SymbolConstants;
+import cn.herodotus.dante.core.constant.SymbolConstants;
 import cn.herodotus.engine.oauth2.core.constants.OAuth2Constants;
 import cn.herodotus.engine.oauth2.extension.manager.OAuth2ComplianceManager;
 import org.apache.commons.lang3.StringUtils;

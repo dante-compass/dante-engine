@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.data.core.jpa.service;
 
-import cn.herodotus.engine.core.definition.constant.SymbolConstants;
+import cn.herodotus.dante.core.constant.SymbolConstants;
 import cn.herodotus.engine.core.definition.domain.BaseEntity;
 
 import java.io.Serializable;

@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.reactive.container.autoconfigure;
 
-import cn.herodotus.engine.core.definition.constant.SymbolConstants;
+import cn.herodotus.dante.core.constant.SymbolConstants;
 import cn.herodotus.engine.core.definition.domain.Feedback;
 import cn.herodotus.engine.core.definition.domain.Result;
 import cn.herodotus.engine.core.definition.exception.PlatformRuntimeException;

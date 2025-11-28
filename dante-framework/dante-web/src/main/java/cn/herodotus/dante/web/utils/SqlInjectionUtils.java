@@ -25,7 +25,7 @@
 
 package cn.herodotus.dante.web.utils;
 
-import cn.herodotus.engine.core.definition.constant.SymbolConstants;
+import cn.herodotus.dante.core.constant.SymbolConstants;
 import cn.herodotus.engine.core.definition.utils.GsonUtils;
 import cn.hutool.v7.core.net.url.UrlDecoder;
 import com.google.gson.JsonArray;

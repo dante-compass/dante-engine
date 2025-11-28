@@ -37,7 +37,7 @@
     <artifactId>dante-web</artifactId>
     <name>dante-web</name>
 
-    <description>Dante Cloud 组件库框架Web相关基础模块</description>
+    <description>Dante Cloud 云原生微服务基座组件库框架Web相关基础模块</description>
 
     <dependencies>
 

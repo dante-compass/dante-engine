@@ -37,9 +37,15 @@
     <artifactId>core-definition</artifactId>
     <name>core-definition</name>
 
-    <description>Dante Cloud 微服务基座组件库核心定义模块</description>
+    <description>Dante Cloud 云原生微服务基座组件库核心定义模块</description>
 
     <dependencies>
+
+        <dependency>
+            <groupId>cn.herodotus.dante</groupId>
+            <artifactId>dante-core</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-collections4</artifactId>

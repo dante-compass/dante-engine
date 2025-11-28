@@ -34,18 +34,19 @@
         <version>4.0.0.0-M1</version>
     </parent>
 
-    <groupId>cn.herodotus.dante</groupId>
     <artifactId>dante-framework</artifactId>
     <name>dante-framework</name>
 
-    <description>Dante Cloud 组件库框架核心模块分组</description>
+    <description>Dante Cloud 云原生微服务基座组件库框架核心模块分组</description>
 
     <packaging>pom</packaging>
 
     <modules>
+        <module>dante-core</module>
         <module>dante-autoconfigure</module>
         <module>dante-oauth2</module>
         <module>dante-spring</module>
         <module>dante-web</module>
+        <module>dante-hibernate</module>
     </modules>
 </project>

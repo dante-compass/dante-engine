@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.web.api.servlet;
 
-import cn.herodotus.engine.core.definition.constant.SystemConstants;
+import cn.herodotus.dante.core.constant.SystemConstants;
 import cn.herodotus.engine.core.definition.domain.BaseEntity;
 import cn.herodotus.engine.core.definition.domain.Result;
 import cn.herodotus.engine.data.core.service.BasePageService;

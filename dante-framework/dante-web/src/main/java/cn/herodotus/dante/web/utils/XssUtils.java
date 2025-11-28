@@ -26,7 +26,7 @@
 package cn.herodotus.dante.web.utils;
 
 import cn.herodotus.dante.spring.utils.ResourceResolverUtils;
-import cn.herodotus.engine.core.definition.constant.SymbolConstants;
+import cn.herodotus.dante.core.constant.SymbolConstants;
 import cn.hutool.v7.json.JSONUtil;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.Strings;

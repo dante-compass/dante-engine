@@ -39,7 +39,7 @@
 
     <packaging>pom</packaging>
 
-    <description>Dante Cloud 微服务基座组件库 Web 模块分组</description>
+    <description>Dante Cloud 云原生微服务基座组件库 Web 模块分组</description>
 
     <modules>
         <module>web-core</module>

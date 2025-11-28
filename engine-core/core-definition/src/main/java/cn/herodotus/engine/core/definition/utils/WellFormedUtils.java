@@ -25,8 +25,8 @@
 
 package cn.herodotus.engine.core.definition.utils;
 
-import cn.herodotus.engine.core.definition.constant.SymbolConstants;
-import cn.herodotus.engine.core.definition.constant.SystemConstants;
+import cn.herodotus.dante.core.constant.SymbolConstants;
+import cn.herodotus.dante.core.constant.SystemConstants;
 import cn.herodotus.engine.core.definition.enums.Protocol;
 import cn.herodotus.engine.core.definition.exception.PropertyValueIsNotSetException;
 import org.apache.commons.lang3.StringUtils;

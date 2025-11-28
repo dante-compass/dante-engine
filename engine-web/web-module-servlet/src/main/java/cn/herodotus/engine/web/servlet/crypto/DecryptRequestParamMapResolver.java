@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.web.servlet.crypto;
 
-import cn.herodotus.engine.core.definition.constant.SystemConstants;
+import cn.herodotus.dante.core.constant.SystemConstants;
 import cn.herodotus.engine.web.core.annotation.Crypto;
 import cn.herodotus.engine.web.core.servlet.utils.SessionUtils;
 import jakarta.servlet.http.HttpServletRequest;

@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.message.websocket.servlet.interceptor;
 
-import cn.herodotus.engine.core.definition.constant.SystemConstants;
+import cn.herodotus.dante.core.constant.SystemConstants;
 import cn.herodotus.engine.core.identity.domain.UserPrincipal;
 import cn.herodotus.engine.message.websocket.servlet.domain.WebSocketPrincipal;
 import org.apache.commons.lang3.ObjectUtils;

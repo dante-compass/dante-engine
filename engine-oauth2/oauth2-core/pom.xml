@@ -38,7 +38,7 @@
     <artifactId>oauth2-core</artifactId>
     <name>oauth2-core</name>
 
-    <description>Dante Cloud 微服务基座组件库 OAuth2 共性通用代码模块</description>
+    <description>Dante Cloud 云原生微服务基座组件库 OAuth2 共性通用代码模块</description>
 
     <dependencies>
         <dependency>

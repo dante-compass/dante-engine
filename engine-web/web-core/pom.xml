@@ -37,7 +37,7 @@
     <artifactId>web-core</artifactId>
     <name>web-core</name>
 
-    <description>Dante Cloud 微服务基座组件库消息功能 Web 通用代码模块</description>
+    <description>Dante Cloud 云原生微服务基座组件库消息功能 Web 通用代码模块</description>
 
     <dependencies>
         <dependency>

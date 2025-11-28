@@ -37,7 +37,7 @@
     <artifactId>dante-autoconfigure</artifactId>
     <name>dante-autoconfigure</name>
 
-    <description>Dante Cloud 组件库框架自动配置</description>
+    <description>Dante Cloud 云原生微服务基座组件库框架自动配置</description>
 
     <dependencies>
         <dependency>

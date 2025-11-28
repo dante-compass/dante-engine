@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.core.identity.domain;
 
-import cn.herodotus.engine.core.definition.constant.SystemConstants;
+import cn.herodotus.dante.core.constant.SystemConstants;
 import com.google.common.base.MoreObjects;
 
 import java.io.Serializable;

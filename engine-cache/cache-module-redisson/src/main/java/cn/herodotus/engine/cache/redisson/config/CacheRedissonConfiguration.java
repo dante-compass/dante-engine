@@ -28,7 +28,7 @@ package cn.herodotus.engine.cache.redisson.config;
 import cn.herodotus.dante.spring.utils.ResourceResolverUtils;
 import cn.herodotus.engine.cache.redisson.annotation.ConditionalOnRedisson;
 import cn.herodotus.engine.cache.redisson.properties.RedissonProperties;
-import cn.herodotus.engine.core.definition.constant.SymbolConstants;
+import cn.herodotus.dante.core.constant.SymbolConstants;
 import jakarta.annotation.PostConstruct;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.ObjectUtils;

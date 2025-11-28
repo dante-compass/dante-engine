@@ -38,7 +38,7 @@
     <artifactId>cache-core</artifactId>
     <name>cache-core</name>
 
-    <description>Dante Cloud 微服务基座组件库缓存通用代码模块</description>
+    <description>Dante Cloud 云原生微服务基座组件库缓存通用代码模块</description>
 
     <dependencies>
         <dependency>

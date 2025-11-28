@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.facility.alibaba.autoconfigure.sentinel.enhance;
 
-import cn.herodotus.engine.core.definition.constant.SymbolConstants;
+import cn.herodotus.dante.core.constant.SymbolConstants;
 import cn.herodotus.engine.core.definition.domain.Result;
 import cn.herodotus.engine.core.definition.exception.GlobalExceptionHandler;
 import com.google.common.base.Objects;

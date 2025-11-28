@@ -37,7 +37,7 @@
     <artifactId>facility-gateway-spring-boot-starter</artifactId>
     <name>facility-gateway-spring-boot-starter</name>
 
-    <description>Dante Cloud 微服务基座组件库 Alibaba Sentinel 在 Gateway 环境下基础设施适配 Starter</description>
+    <description>Dante Cloud 云原生微服务基座组件库 Alibaba Sentinel 在 Gateway 环境下基础设施适配 Starter</description>
 
     <dependencies>
         <dependency>

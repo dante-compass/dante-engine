@@ -37,7 +37,7 @@
     <artifactId>web-module-servlet</artifactId>
     <name>web-module-servlet</name>
 
-    <description>Dante Cloud 微服务基座组件库 Servlet 环境 Web 服务专有基础代码模块</description>
+    <description>Dante Cloud 云原生微服务基座组件库 Servlet 环境 Web 服务专有基础代码模块</description>
 
     <dependencies>
         <dependency>

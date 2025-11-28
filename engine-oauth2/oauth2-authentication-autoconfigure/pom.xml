@@ -37,14 +37,9 @@
     <artifactId>oauth2-authentication-autoconfigure</artifactId>
     <name>oauth2-authentication-autoconfigure</name>
 
-    <description>Dante Cloud 微服务基座组件库 OAuth2 授权服务器基础内容自动配置模块</description>
+    <description>Dante Cloud 云原生微服务基座组件库 OAuth2 授权服务器基础内容自动配置模块</description>
 
     <dependencies>
-        <dependency>
-            <groupId>cn.herodotus.dante</groupId>
-            <artifactId>data-module-tenant</artifactId>
-        </dependency>
-
         <dependency>
             <groupId>cn.herodotus.dante</groupId>
             <artifactId>oauth2-module-extension</artifactId>

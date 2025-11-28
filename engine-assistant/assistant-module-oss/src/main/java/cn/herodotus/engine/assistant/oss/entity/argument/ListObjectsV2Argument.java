@@ -26,7 +26,7 @@
 package cn.herodotus.engine.assistant.oss.entity.argument;
 
 import cn.herodotus.engine.assistant.oss.definition.argument.AbstractObjectRequestPayerArgument;
-import cn.herodotus.engine.core.definition.constant.SymbolConstants;
+import cn.herodotus.dante.core.constant.SymbolConstants;
 import com.google.common.base.MoreObjects;
 import io.swagger.v3.oas.annotations.media.Schema;
 

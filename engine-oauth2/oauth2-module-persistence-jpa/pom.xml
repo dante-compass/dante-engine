@@ -37,7 +37,7 @@
     <artifactId>oauth2-module-persistence-jpa</artifactId>
     <name>oauth2-module-persistence-jpa</name>
 
-    <description>Dante Cloud 微服务基座组件库以 JPA 作为 SAS 核心数据访问层代码实现模块</description>
+    <description>Dante Cloud 云原生微服务基座组件库以 JPA 作为 SAS 核心数据访问层代码实现模块</description>
 
     <dependencies>
         <dependency>

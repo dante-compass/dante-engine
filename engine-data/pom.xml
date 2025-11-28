@@ -40,13 +40,11 @@
 
     <packaging>pom</packaging>
 
-    <description>Dante Cloud 微服务基座组件库数据访问通用代码模块分组</description>
+    <description>Dante Cloud 云原生微服务基座组件库数据访问通用代码模块分组</description>
 
     <modules>
         <module>data-core</module>
         <module>data-core-jpa</module>
         <module>data-core-mongodb</module>
-        <module>data-module-tenant</module>
-        <module>data-module-hibernate</module>
     </modules>
 </project>

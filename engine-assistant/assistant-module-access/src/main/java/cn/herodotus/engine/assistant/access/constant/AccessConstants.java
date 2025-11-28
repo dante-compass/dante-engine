@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.assistant.access.constant;
 
-import cn.herodotus.engine.core.definition.constant.BaseConstants;
+import cn.herodotus.dante.core.constant.BaseConstants;
 
 /**
  * <p>Description: 接入模块常量 </p>

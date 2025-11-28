@@ -244,10 +244,27 @@
                 <artifactId>aws-crt</artifactId>
                 <version>${software.amazon.awssdk.crt.version}</version>
             </dependency>
+            <dependency>
+                <groupId>cn.hutool.v7</groupId>
+                <artifactId>hutool-bom</artifactId>
+                <version>${hutool.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
             <!--Dante Engine-->
             <dependency>
                 <groupId>cn.herodotus.dante</groupId>
                 <artifactId>dante-autoconfigure</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.herodotus.dante</groupId>
+                <artifactId>dante-core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.herodotus.dante</groupId>
+                <artifactId>dante-hibernate</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -337,16 +354,6 @@
             </dependency>
             <dependency>
                 <groupId>cn.herodotus.dante</groupId>
-                <artifactId>data-module-hibernate</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.herodotus.dante</groupId>
-                <artifactId>data-module-tenant</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>logic-module-identity</artifactId>
                 <version>${project.version}</version>
             </dependency>
@@ -432,6 +439,21 @@
             </dependency>
             <dependency>
                 <groupId>cn.herodotus.dante</groupId>
+                <artifactId>data-rdbms-spring-boot-starter</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.herodotus.dante</groupId>
+                <artifactId>logging-spring-boot-starter</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.herodotus.dante</groupId>
+                <artifactId>tenant-spring-boot-starter</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>cache-spring-boot-starter</artifactId>
                 <version>${project.version}</version>
             </dependency>
@@ -443,11 +465,6 @@
             <dependency>
                 <groupId>cn.herodotus.dante</groupId>
                 <artifactId>data-mongodb-spring-boot-starter</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.herodotus.dante</groupId>
-                <artifactId>data-rdbms-spring-boot-starter</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -468,11 +485,6 @@
             <dependency>
                 <groupId>cn.herodotus.dante</groupId>
                 <artifactId>facility-tencent-spring-boot-starter</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.herodotus.dante</groupId>
-                <artifactId>logging-spring-boot-starter</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
