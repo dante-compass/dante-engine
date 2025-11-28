@@ -34,8 +34,8 @@
         <version>4.0.0.0-M1</version>
     </parent>
 
-    <artifactId>assistant-module-oss</artifactId>
-    <name>assistant-module-oss</name>
+    <artifactId>dante-assistant-oss</artifactId>
+    <name>dante-assistant-oss</name>
 
     <description>Dante Cloud 云原生微服务基座件组件库AWS SDK V2 对象存储辅助功能模块</description>
 

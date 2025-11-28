@@ -299,7 +299,7 @@
             </dependency>
             <dependency>
                 <groupId>cn.herodotus.dante</groupId>
-                <artifactId>assistant-module-oss</artifactId>
+                <artifactId>dante-assistant-oss</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

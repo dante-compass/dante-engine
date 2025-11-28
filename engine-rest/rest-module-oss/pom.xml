@@ -42,7 +42,7 @@
     <dependencies>
         <dependency>
             <groupId>cn.herodotus.dante</groupId>
-            <artifactId>assistant-module-oss</artifactId>
+            <artifactId>dante-assistant-oss</artifactId>
         </dependency>
         <dependency>
             <groupId>cn.herodotus.dante</groupId>
