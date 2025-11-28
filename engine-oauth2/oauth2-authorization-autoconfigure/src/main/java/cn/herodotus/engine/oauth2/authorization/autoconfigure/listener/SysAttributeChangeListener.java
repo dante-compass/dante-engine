@@ -25,8 +25,8 @@
 
 package cn.herodotus.engine.oauth2.authorization.autoconfigure.listener;
 
-import cn.herodotus.engine.logic.upms.domain.event.SysAttributeChangeEvent;
-import cn.herodotus.engine.logic.upms.entity.security.SysAttribute;
+import cn.herodotus.dante.logic.upms.domain.event.SysAttributeChangeEvent;
+import cn.herodotus.dante.logic.upms.entity.security.SysAttribute;
 import cn.herodotus.engine.oauth2.authorization.autoconfigure.processor.AttributeTransmitterDistributeProcessor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

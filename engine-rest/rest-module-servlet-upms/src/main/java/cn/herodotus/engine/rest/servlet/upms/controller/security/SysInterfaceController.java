@@ -26,8 +26,8 @@
 package cn.herodotus.engine.rest.servlet.upms.controller.security;
 
 import cn.herodotus.dante.data.jpa.service.BaseJpaWriteableService;
-import cn.herodotus.engine.logic.upms.entity.security.SysInterface;
-import cn.herodotus.engine.logic.upms.service.security.SysInterfaceService;
+import cn.herodotus.dante.logic.upms.entity.security.SysInterface;
+import cn.herodotus.dante.logic.upms.service.security.SysInterfaceService;
 import cn.herodotus.engine.web.api.servlet.AbstractJpaWriteableController;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.tags.Tags;

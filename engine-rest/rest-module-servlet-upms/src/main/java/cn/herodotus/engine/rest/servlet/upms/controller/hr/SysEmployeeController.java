@@ -27,10 +27,10 @@ package cn.herodotus.engine.rest.servlet.upms.controller.hr;
 
 import cn.herodotus.dante.core.domain.Result;
 import cn.herodotus.dante.data.jpa.service.BaseJpaWriteableService;
-import cn.herodotus.engine.logic.upms.entity.hr.SysEmployee;
-import cn.herodotus.engine.logic.upms.enums.Gender;
-import cn.herodotus.engine.logic.upms.enums.Identity;
-import cn.herodotus.engine.logic.upms.service.hr.SysEmployeeService;
+import cn.herodotus.dante.logic.upms.entity.hr.SysEmployee;
+import cn.herodotus.dante.logic.upms.enums.Gender;
+import cn.herodotus.dante.logic.upms.enums.Identity;
+import cn.herodotus.dante.logic.upms.service.hr.SysEmployeeService;
 import cn.herodotus.engine.rest.servlet.upms.dto.AllocatableDeploy;
 import cn.herodotus.engine.rest.servlet.upms.dto.AllocatableRemove;
 import cn.herodotus.engine.web.api.servlet.AbstractJpaWriteableController;

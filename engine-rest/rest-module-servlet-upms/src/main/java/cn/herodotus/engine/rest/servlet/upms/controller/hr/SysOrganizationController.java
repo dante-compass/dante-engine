@@ -27,10 +27,10 @@ package cn.herodotus.engine.rest.servlet.upms.controller.hr;
 
 import cn.herodotus.dante.core.domain.Result;
 import cn.herodotus.dante.data.jpa.service.BaseJpaWriteableService;
-import cn.herodotus.engine.logic.upms.converter.SysOrganizationToTreeNodeConverter;
-import cn.herodotus.engine.logic.upms.entity.hr.SysOrganization;
-import cn.herodotus.engine.logic.upms.enums.OrganizationCategory;
-import cn.herodotus.engine.logic.upms.service.hr.SysOrganizationService;
+import cn.herodotus.dante.logic.upms.converter.SysOrganizationToTreeNodeConverter;
+import cn.herodotus.dante.logic.upms.entity.hr.SysOrganization;
+import cn.herodotus.dante.logic.upms.enums.OrganizationCategory;
+import cn.herodotus.dante.logic.upms.service.hr.SysOrganizationService;
 import cn.herodotus.engine.web.api.servlet.AbstractJpaWriteableController;
 import cn.hutool.v7.core.tree.MapTree;
 import io.swagger.v3.oas.annotations.Operation;

@@ -30,7 +30,7 @@ import cn.herodotus.dante.core.domain.view.vue.ChildMeta;
 import cn.herodotus.dante.core.domain.view.vue.ParentMeta;
 import cn.herodotus.dante.core.domain.view.vue.RootMeta;
 import cn.herodotus.dante.core.utils.WellFormedUtils;
-import cn.herodotus.engine.logic.upms.entity.security.SysElement;
+import cn.herodotus.dante.logic.upms.entity.security.SysElement;
 import cn.hutool.v7.core.tree.TreeNode;
 import org.apache.commons.lang3.BooleanUtils;
 import org.apache.commons.lang3.StringUtils;

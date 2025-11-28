@@ -27,11 +27,11 @@ package cn.herodotus.engine.oauth2.authorization.autoconfigure.processor;
 
 import cn.herodotus.dante.core.domain.Dictionary;
 import cn.herodotus.dante.spring.founction.ListConverter;
-import cn.herodotus.engine.logic.upms.converter.SysEnumToSysDictionaryConverter;
-import cn.herodotus.engine.logic.upms.entity.security.SysDictionary;
-import cn.herodotus.engine.logic.upms.entity.security.SysEnum;
-import cn.herodotus.engine.logic.upms.service.security.SysDictionaryService;
-import cn.herodotus.engine.logic.upms.service.security.SysEnumService;
+import cn.herodotus.dante.logic.upms.converter.SysEnumToSysDictionaryConverter;
+import cn.herodotus.dante.logic.upms.entity.security.SysDictionary;
+import cn.herodotus.dante.logic.upms.entity.security.SysEnum;
+import cn.herodotus.dante.logic.upms.service.security.SysDictionaryService;
+import cn.herodotus.dante.logic.upms.service.security.SysEnumService;
 import org.apache.commons.collections4.CollectionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

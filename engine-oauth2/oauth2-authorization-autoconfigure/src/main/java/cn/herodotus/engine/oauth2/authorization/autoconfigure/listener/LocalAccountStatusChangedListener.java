@@ -26,7 +26,7 @@
 package cn.herodotus.engine.oauth2.authorization.autoconfigure.listener;
 
 import cn.herodotus.dante.data.commons.enums.DataItemStatus;
-import cn.herodotus.engine.logic.upms.service.security.SysUserService;
+import cn.herodotus.dante.logic.upms.service.security.SysUserService;
 import cn.herodotus.engine.message.core.domain.AccountStatus;
 import cn.herodotus.engine.message.core.event.AccountStatusChangedEvent;
 import org.apache.commons.lang3.ObjectUtils;

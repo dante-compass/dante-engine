@@ -26,8 +26,8 @@
 package cn.herodotus.engine.rest.servlet.upms.converter;
 
 import cn.herodotus.dante.core.constant.SystemConstants;
-import cn.herodotus.engine.logic.upms.entity.security.SysElement;
-import cn.herodotus.engine.logic.upms.enums.ElementCategory;
+import cn.herodotus.dante.logic.upms.entity.security.SysElement;
+import cn.herodotus.dante.logic.upms.enums.ElementCategory;
 import cn.herodotus.engine.rest.servlet.upms.dto.Elements;
 import cn.hutool.v7.core.tree.MapTree;
 import cn.hutool.v7.core.tree.TreeNode;

@@ -26,8 +26,8 @@
 package cn.herodotus.engine.rest.servlet.upms.controller.hr;
 
 import cn.herodotus.dante.data.jpa.service.BaseJpaWriteableService;
-import cn.herodotus.engine.logic.upms.entity.hr.SysOwnership;
-import cn.herodotus.engine.logic.upms.service.hr.SysOwnershipService;
+import cn.herodotus.dante.logic.upms.entity.hr.SysOwnership;
+import cn.herodotus.dante.logic.upms.service.hr.SysOwnershipService;
 import cn.herodotus.engine.web.api.servlet.AbstractJpaWriteableController;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.RequestMapping;

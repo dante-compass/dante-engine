@@ -27,8 +27,8 @@ package cn.herodotus.engine.oauth2.authorization.autoconfigure;
 
 import cn.herodotus.dante.spring.condition.ConditionalOnArchitecture;
 import cn.herodotus.dante.spring.enums.Architecture;
-import cn.herodotus.engine.logic.upms.annotation.EnableHerodotusLogicUpms;
-import cn.herodotus.engine.logic.upms.service.security.SysUserService;
+import cn.herodotus.dante.logic.upms.annotation.EnableHerodotusLogicUpms;
+import cn.herodotus.dante.logic.upms.service.security.SysUserService;
 import cn.herodotus.engine.oauth2.authorization.autoconfigure.condition.ConditionalOnUpmsService;
 import cn.herodotus.engine.oauth2.authorization.autoconfigure.listener.*;
 import cn.herodotus.engine.oauth2.authorization.autoconfigure.processor.AttributeTransmitterDistributeProcessor;
