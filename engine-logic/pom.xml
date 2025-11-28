@@ -42,7 +42,7 @@
 
     <modules>
         <module>dante-logic-identity</module>
-        <module>logic-module-message</module>
+        <module>dante-logic-message</module>
         <module>dante-logic-upms</module>
     </modules>
 

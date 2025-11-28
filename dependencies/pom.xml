@@ -354,7 +354,7 @@
             </dependency>
             <dependency>
                 <groupId>cn.herodotus.dante</groupId>
-                <artifactId>logic-module-message</artifactId>
+                <artifactId>dante-logic-message</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

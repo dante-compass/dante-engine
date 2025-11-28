@@ -42,7 +42,7 @@
     <dependencies>
         <dependency>
             <groupId>cn.herodotus.dante</groupId>
-            <artifactId>logic-module-message</artifactId>
+            <artifactId>dante-logic-message</artifactId>
         </dependency>
 
         <dependency>
