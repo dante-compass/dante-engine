@@ -27,7 +27,7 @@ package cn.herodotus.dante.assistant.access.stamp;
 
 import cn.herodotus.dante.assistant.access.constant.AccessConstants;
 import cn.herodotus.dante.assistant.access.properties.JustAuthProperties;
-import cn.herodotus.engine.cache.jetcache.stamp.AbstractStampManager;
+import cn.herodotus.dante.cache.jetcache.stamp.AbstractStampManager;
 import cn.hutool.v7.core.data.id.IdUtil;
 import me.zhyd.oauth.cache.AuthStateCache;
 

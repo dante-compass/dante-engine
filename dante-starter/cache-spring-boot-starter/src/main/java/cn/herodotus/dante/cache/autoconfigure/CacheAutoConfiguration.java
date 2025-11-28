@@ -25,8 +25,8 @@
 
 package cn.herodotus.dante.cache.autoconfigure;
 
-import cn.herodotus.engine.cache.jetcache.config.CacheJetCacheConfiguration;
-import cn.herodotus.engine.cache.redisson.config.CacheRedissonConfiguration;
+import cn.herodotus.dante.cache.jetcache.config.CacheJetCacheConfiguration;
+import cn.herodotus.dante.cache.autoconfigure.config.CacheRedissonConfiguration;
 import cn.herodotus.dante.autoconfigure.jackson.JacksonAutoConfiguration;
 import com.alicp.jetcache.autoconfigure.JetCacheAutoConfiguration;
 import jakarta.annotation.PostConstruct;

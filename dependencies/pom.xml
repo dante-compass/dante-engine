@@ -314,27 +314,22 @@
             </dependency>
             <dependency>
                 <groupId>cn.herodotus.dante</groupId>
-                <artifactId>cache-core</artifactId>
+                <artifactId>dante-cache-commons</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>cn.herodotus.dante</groupId>
-                <artifactId>cache-module-jetcache</artifactId>
+                <artifactId>dante-cache-jetcache</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>cn.herodotus.dante</groupId>
-                <artifactId>cache-module-redis</artifactId>
+                <artifactId>dante-cache-redis</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>cn.herodotus.dante</groupId>
-                <artifactId>cache-module-caffeine</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.herodotus.dante</groupId>
-                <artifactId>cache-module-redisson</artifactId>
+                <artifactId>dante-cache-caffeine</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

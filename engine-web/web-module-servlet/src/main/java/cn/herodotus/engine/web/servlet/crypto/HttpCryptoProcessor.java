@@ -25,8 +25,8 @@
 
 package cn.herodotus.engine.web.servlet.crypto;
 
-import cn.herodotus.engine.cache.core.exception.StampHasExpiredException;
-import cn.herodotus.engine.cache.jetcache.stamp.AbstractStampManager;
+import cn.herodotus.dante.cache.commons.exception.StampHasExpiredException;
+import cn.herodotus.dante.cache.jetcache.stamp.AbstractStampManager;
 import cn.herodotus.dante.core.domain.SecretKey;
 import cn.herodotus.dante.core.support.crypto.AsymmetricCryptoProcessor;
 import cn.herodotus.dante.core.support.crypto.SymmetricCryptoProcessor;

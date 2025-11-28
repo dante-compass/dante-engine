@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.web.service.stamp;
 
-import cn.herodotus.engine.cache.jetcache.stamp.AbstractStampManager;
+import cn.herodotus.dante.cache.jetcache.stamp.AbstractStampManager;
 import cn.herodotus.engine.web.core.constant.WebConstants;
 import cn.herodotus.engine.web.service.properties.SecureProperties;
 import cn.hutool.v7.core.data.id.IdUtil;
