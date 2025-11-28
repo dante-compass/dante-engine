@@ -36,7 +36,7 @@
     </parent>
 
     <artifactId>dante-cache-caffeine</artifactId>
-    <name>cache-module-caffeine</name>
+    <name>dante-cache-caffeine</name>
 
     <description>Dante Cloud 云原生微服务基座组件库 Caffeine 缓存功能封装模块</description>
 

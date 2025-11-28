@@ -36,7 +36,7 @@
     </parent>
 
     <artifactId>dante-cache-jetcache</artifactId>
-    <name>cache-module-jetcache</name>
+    <name>dante-cache-jetcache</name>
 
     <description>Dante Cloud 云原生微服务基座组件库 JetCache 缓存功能封装模块</description>
 
@@ -53,7 +53,7 @@
 
         <dependency>
             <groupId>cn.herodotus.dante</groupId>
-            <artifactId>cache-module-caffeine</artifactId>
+            <artifactId>dante-cache-caffeine</artifactId>
         </dependency>
 
         <dependency>

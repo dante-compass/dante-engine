@@ -37,7 +37,7 @@
     </parent>
 
     <artifactId>dante-cache-redis</artifactId>
-    <name>cache-module-redis</name>
+    <name>dante-cache-redis</name>
 
     <description>Dante Cloud 云原生微服务基座组件库 Redis 缓存功能封装模块</description>
 
