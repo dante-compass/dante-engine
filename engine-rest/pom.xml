@@ -46,7 +46,7 @@
         <module>rest-module-servlet-message</module>
         <module>rest-module-servlet-identity</module>
         <module>rest-module-servlet-upms</module>
-        <module>rest-module-oss</module>
+        <module>dante-rest-oss</module>
     </modules>
 
 </project>

@@ -23,43 +23,43 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.engine.rest.oss.proxy;
+package cn.herodotus.dante.rest.oss.config;
 
-import cn.herodotus.dante.assistant.oss.constant.OssConstants;
-import cn.herodotus.dante.assistant.oss.properties.OssProperties;
-import cn.herodotus.dante.core.constant.SymbolConstants;
-import jakarta.servlet.http.HttpServletRequest;
+import cn.herodotus.dante.assistant.oss.config.AssistantOssConfiguration;
+import cn.herodotus.dante.spring.condition.ConditionalOnServletApplication;
+import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.util.function.Function;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 
 /**
- * <p>Description: 默认代理地址转换器 </p>
+ * <p>Description: 对象存储REST模块配置类 </p>
  *
  * @author : gengwei.zheng
- * @date : 2023/8/19 18:21
+ * @date : 2024/7/22 18:10
  */
-public class OssProxyAddressFunction implements Function<HttpServletRequest, String> {
+@Configuration(proxyBeanMethods = false)
+@Import({
+        AssistantOssConfiguration.class
+})
+public class RestOssConfiguration {
 
-    private static final Logger log = LoggerFactory.getLogger(OssProxyAddressFunction.class);
+    private static final Logger log = LoggerFactory.getLogger(RestOssConfiguration.class);
 
-    private final OssProperties ossProperties;
-
-    public OssProxyAddressFunction(OssProperties ossProperties) {
-        this.ossProperties = ossProperties;
+    @PostConstruct
+    public void postConstruct() {
+        log.debug("[Herodotus] |- Module [Rest Oss] Configure.");
     }
 
-    @Override
-    public String apply(HttpServletRequest request) {
-        String uri = request.getRequestURI();
-        String path = uri.replace(OssConstants.PRESIGNED_OBJECT_URL_PROXY, SymbolConstants.BLANK);
+    @Configuration(proxyBeanMethods = false)
+    @ConditionalOnServletApplication
+    @ComponentScan(basePackages = {
+            "cn.herodotus.engine.rest.oss.service",
+            "cn.herodotus.engine.rest.oss.controller"
+    })
+    static class ServletOssRestConfiguration {
 
-        String queryString = request.getQueryString();
-        String params = queryString != null ? SymbolConstants.QUESTION + queryString : SymbolConstants.BLANK;
-
-        String target = ossProperties.getProxy().getDestination() + path + params;
-        log.debug("[Herodotus] |- Convert request [{}] to [{}].", uri, target);
-        return target;
     }
 }

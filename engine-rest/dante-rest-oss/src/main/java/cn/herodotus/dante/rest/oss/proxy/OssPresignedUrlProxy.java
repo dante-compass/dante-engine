@@ -23,7 +23,7 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.engine.rest.oss.proxy;
+package cn.herodotus.dante.rest.oss.proxy;
 
 import cn.herodotus.dante.assistant.oss.properties.OssProperties;
 import jakarta.servlet.http.HttpServletRequest;

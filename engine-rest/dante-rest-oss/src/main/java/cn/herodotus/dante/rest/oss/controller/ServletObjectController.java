@@ -23,7 +23,7 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.engine.rest.oss.controller;
+package cn.herodotus.dante.rest.oss.controller;
 
 import cn.herodotus.dante.assistant.oss.converter.result.ResponseToPutObjectResultConverter;
 import cn.herodotus.dante.assistant.oss.definition.converter.ResponseConverter;
@@ -40,7 +40,7 @@ import cn.herodotus.dante.assistant.oss.exception.UploadObjectException;
 import cn.herodotus.dante.assistant.oss.service.base.S3TransferManagerService;
 import cn.herodotus.dante.assistant.oss.service.servlet.ServletObjectService;
 import cn.herodotus.dante.core.domain.Result;
-import cn.herodotus.engine.rest.oss.service.ServletObjectStreamService;
+import cn.herodotus.dante.rest.oss.service.ServletObjectStreamService;
 import cn.herodotus.engine.web.core.annotation.AccessLimited;
 import cn.herodotus.engine.web.core.annotation.Idempotent;
 import cn.herodotus.engine.web.core.definition.Controller;

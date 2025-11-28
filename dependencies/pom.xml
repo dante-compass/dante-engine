@@ -414,7 +414,7 @@
             </dependency>
             <dependency>
                 <groupId>cn.herodotus.dante</groupId>
-                <artifactId>rest-module-oss</artifactId>
+                <artifactId>dante-rest-oss</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

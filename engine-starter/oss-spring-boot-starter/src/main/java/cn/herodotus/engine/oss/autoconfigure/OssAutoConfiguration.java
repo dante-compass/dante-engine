@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.oss.autoconfigure;
 
-import cn.herodotus.engine.rest.oss.config.RestOssConfiguration;
+import cn.herodotus.dante.rest.oss.config.RestOssConfiguration;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -23,7 +23,7 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.engine.rest.oss.service;
+package cn.herodotus.dante.rest.oss.service;
 
 import cn.herodotus.dante.assistant.oss.definition.domain.PutObjectDomain;
 import cn.herodotus.dante.assistant.oss.entity.argument.GetObjectArgument;
