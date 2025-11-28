@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.rest.servlet.identity.service;
 
-import cn.herodotus.engine.core.definition.domain.SecretKey;
+import cn.herodotus.dante.core.domain.SecretKey;
 import cn.herodotus.engine.core.identity.utils.SecurityUtils;
 import cn.herodotus.engine.web.servlet.crypto.HttpCryptoProcessor;
 import org.apache.commons.lang3.ObjectUtils;

@@ -25,8 +25,8 @@
 
 package cn.herodotus.engine.logic.message.customizer;
 
-import cn.herodotus.engine.core.definition.builder.EnumDictionaryBuilder;
-import cn.herodotus.engine.core.definition.function.EnumDictionaryBuilderCustomizer;
+import cn.herodotus.dante.core.builder.EnumDictionaryBuilder;
+import cn.herodotus.dante.core.function.EnumDictionaryBuilderCustomizer;
 import cn.herodotus.engine.logic.message.enums.NotificationCategory;
 
 /**

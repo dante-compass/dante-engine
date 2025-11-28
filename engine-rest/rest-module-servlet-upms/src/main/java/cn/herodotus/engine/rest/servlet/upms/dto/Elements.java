@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.rest.servlet.upms.dto;
 
-import cn.herodotus.engine.core.definition.domain.BaseDto;
+import cn.herodotus.dante.core.domain.BaseDto;
 import cn.herodotus.engine.logic.upms.entity.security.SysElement;
 import cn.hutool.v7.core.tree.MapTree;
 import com.google.common.base.MoreObjects;

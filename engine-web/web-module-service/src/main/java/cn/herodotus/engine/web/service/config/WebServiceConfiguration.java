@@ -25,8 +25,8 @@
 
 package cn.herodotus.engine.web.service.config;
 
-import cn.herodotus.engine.core.definition.builder.EnumDictionaryBuilder;
-import cn.herodotus.engine.core.definition.function.ErrorCodeMapperBuilderCustomizer;
+import cn.herodotus.dante.core.builder.EnumDictionaryBuilder;
+import cn.herodotus.dante.core.function.ErrorCodeMapperBuilderCustomizer;
 import cn.herodotus.engine.core.foundation.context.ServiceContextHolder;
 import cn.herodotus.engine.message.core.definition.strategy.EnumDictionaryGatherEventManager;
 import cn.herodotus.engine.web.core.support.WebPropertyFinder;

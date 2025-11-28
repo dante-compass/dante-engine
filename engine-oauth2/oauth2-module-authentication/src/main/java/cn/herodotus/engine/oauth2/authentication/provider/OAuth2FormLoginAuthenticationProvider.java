@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.oauth2.authentication.provider;
 
-import cn.herodotus.engine.core.definition.domain.captcha.Verification;
+import cn.herodotus.dante.core.domain.captcha.Verification;
 import cn.herodotus.engine.core.foundation.exception.captcha.CaptchaHasExpiredException;
 import cn.herodotus.engine.core.foundation.exception.captcha.CaptchaIsEmptyException;
 import cn.herodotus.engine.core.foundation.exception.captcha.CaptchaMismatchException;

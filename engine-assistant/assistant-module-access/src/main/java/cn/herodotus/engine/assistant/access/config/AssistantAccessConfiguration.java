@@ -35,7 +35,7 @@ package cn.herodotus.engine.assistant.access.config;
 import cn.herodotus.engine.assistant.access.customizer.AccessErrorCodeMapperBuilderCustomizer;
 import cn.herodotus.engine.assistant.access.definition.AccessHandler;
 import cn.herodotus.engine.assistant.access.factory.AccessHandlerStrategyFactory;
-import cn.herodotus.engine.core.definition.function.ErrorCodeMapperBuilderCustomizer;
+import cn.herodotus.dante.core.function.ErrorCodeMapperBuilderCustomizer;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.web.core.servlet.template;
 
-import cn.herodotus.engine.core.definition.domain.Result;
+import cn.herodotus.dante.core.domain.Result;
 import cn.herodotus.engine.web.core.servlet.utils.RequestUtils;
 import cn.herodotus.engine.web.core.servlet.utils.ResponseUtils;
 import jakarta.servlet.http.HttpServletRequest;

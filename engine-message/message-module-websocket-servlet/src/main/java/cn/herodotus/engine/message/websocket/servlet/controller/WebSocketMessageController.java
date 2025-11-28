@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.message.websocket.servlet.controller;
 
-import cn.herodotus.engine.core.definition.domain.Result;
+import cn.herodotus.dante.core.domain.Result;
 import cn.herodotus.engine.message.websocket.servlet.definition.WebSocketMessageSender;
 import cn.herodotus.engine.message.websocket.servlet.utils.WebSocketUtils;
 import io.swagger.v3.oas.annotations.Operation;

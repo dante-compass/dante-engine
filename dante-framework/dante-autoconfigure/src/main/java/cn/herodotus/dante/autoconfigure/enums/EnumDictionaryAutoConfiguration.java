@@ -25,8 +25,8 @@
 
 package cn.herodotus.dante.autoconfigure.enums;
 
-import cn.herodotus.engine.core.definition.builder.EnumDictionaryBuilder;
-import cn.herodotus.engine.core.definition.function.EnumDictionaryBuilderCustomizer;
+import cn.herodotus.dante.core.builder.EnumDictionaryBuilder;
+import cn.herodotus.dante.core.function.EnumDictionaryBuilderCustomizer;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

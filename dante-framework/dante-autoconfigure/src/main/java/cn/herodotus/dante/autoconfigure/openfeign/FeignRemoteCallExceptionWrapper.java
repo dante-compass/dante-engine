@@ -25,8 +25,8 @@
 
 package cn.herodotus.dante.autoconfigure.openfeign;
 
-import cn.herodotus.engine.core.definition.domain.Result;
-import cn.herodotus.engine.core.definition.exception.PlatformRuntimeException;
+import cn.herodotus.dante.core.domain.Result;
+import cn.herodotus.dante.core.exception.PlatformRuntimeException;
 
 /**
  * <p>Description: Feign Fallback 错误统一封装器 </p>

@@ -25,9 +25,9 @@
 
 package cn.herodotus.engine.rest.servlet.identity.controller;
 
-import cn.herodotus.engine.core.definition.domain.Result;
-import cn.herodotus.engine.core.definition.domain.captcha.Captcha;
-import cn.herodotus.engine.core.definition.domain.captcha.Verification;
+import cn.herodotus.dante.core.domain.Result;
+import cn.herodotus.dante.core.domain.captcha.Captcha;
+import cn.herodotus.dante.core.domain.captcha.Verification;
 import cn.herodotus.engine.core.foundation.support.captcha.CaptchaRendererFactory;
 import cn.herodotus.engine.web.api.servlet.PaginationController;
 import cn.herodotus.engine.web.core.annotation.AccessLimited;

@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.rest.servlet.upms.controller.security;
 
-import cn.herodotus.engine.core.definition.domain.Result;
+import cn.herodotus.dante.core.domain.Result;
 import cn.herodotus.dante.data.commons.enums.ApplicationType;
 import cn.herodotus.dante.data.jpa.service.BaseJpaWriteableService;
 import cn.herodotus.engine.logic.upms.entity.security.SysElement;

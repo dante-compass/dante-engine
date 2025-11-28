@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.web.core.exception;
 
-import cn.herodotus.engine.core.definition.domain.Feedback;
+import cn.herodotus.dante.core.domain.Feedback;
 import cn.herodotus.engine.web.core.constant.WebErrorCodes;
 
 /**

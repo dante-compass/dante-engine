@@ -25,10 +25,10 @@
 
 package cn.herodotus.engine.core.identity.exception;
 
-import cn.herodotus.engine.core.definition.constant.ErrorCodes;
-import cn.herodotus.engine.core.definition.domain.Feedback;
-import cn.herodotus.engine.core.definition.domain.Result;
-import cn.herodotus.engine.core.definition.exception.HerodotusException;
+import cn.herodotus.dante.core.constant.ErrorCodes;
+import cn.herodotus.dante.core.domain.Feedback;
+import cn.herodotus.dante.core.domain.Result;
+import cn.herodotus.dante.core.exception.HerodotusException;
 import org.springframework.security.core.AuthenticationException;
 
 /**

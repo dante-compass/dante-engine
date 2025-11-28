@@ -25,8 +25,8 @@
 
 package cn.herodotus.engine.oauth2.core.exception;
 
-import cn.herodotus.engine.core.definition.constant.ErrorCodes;
-import cn.herodotus.engine.core.definition.domain.Feedback;
+import cn.herodotus.dante.core.constant.ErrorCodes;
+import cn.herodotus.dante.core.domain.Feedback;
 
 /**
  * <p>Description: Oauth2 使用的验证码不匹配错误 </p>

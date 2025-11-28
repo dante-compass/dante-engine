@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.web.service.initializer;
 
-import cn.herodotus.engine.core.definition.utils.WellFormedUtils;
+import cn.herodotus.dante.core.utils.WellFormedUtils;
 import cn.herodotus.engine.core.foundation.context.ServiceContextHolder;
 import cn.herodotus.engine.core.foundation.enums.Architecture;
 import cn.herodotus.engine.web.service.properties.EndpointProperties;

@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.assistant.oss.definition.argument;
 
-import cn.herodotus.engine.core.definition.constant.RegexPool;
+import cn.herodotus.dante.core.constant.RegexPool;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;

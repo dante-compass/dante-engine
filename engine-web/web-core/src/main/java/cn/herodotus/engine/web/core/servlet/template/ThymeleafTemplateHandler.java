@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.web.core.servlet.template;
 
-import cn.herodotus.engine.core.definition.domain.Result;
+import cn.herodotus.dante.core.domain.Result;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.thymeleaf.context.Context;

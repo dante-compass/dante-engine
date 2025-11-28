@@ -25,11 +25,11 @@
 
 package cn.herodotus.engine.rest.servlet.upms.converter;
 
-import cn.herodotus.engine.core.definition.domain.view.vue.BaseMeta;
-import cn.herodotus.engine.core.definition.domain.view.vue.ChildMeta;
-import cn.herodotus.engine.core.definition.domain.view.vue.ParentMeta;
-import cn.herodotus.engine.core.definition.domain.view.vue.RootMeta;
-import cn.herodotus.engine.core.definition.utils.WellFormedUtils;
+import cn.herodotus.dante.core.domain.view.vue.BaseMeta;
+import cn.herodotus.dante.core.domain.view.vue.ChildMeta;
+import cn.herodotus.dante.core.domain.view.vue.ParentMeta;
+import cn.herodotus.dante.core.domain.view.vue.RootMeta;
+import cn.herodotus.dante.core.utils.WellFormedUtils;
 import cn.herodotus.engine.logic.upms.entity.security.SysElement;
 import cn.hutool.v7.core.tree.TreeNode;
 import org.apache.commons.lang3.BooleanUtils;

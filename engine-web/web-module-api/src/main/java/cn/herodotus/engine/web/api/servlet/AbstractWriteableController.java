@@ -25,8 +25,8 @@
 
 package cn.herodotus.engine.web.api.servlet;
 
-import cn.herodotus.engine.core.definition.domain.BaseEntity;
-import cn.herodotus.engine.core.definition.domain.Result;
+import cn.herodotus.dante.core.domain.BaseEntity;
+import cn.herodotus.dante.core.domain.Result;
 import cn.herodotus.dante.data.commons.service.BasePageService;
 import cn.herodotus.engine.web.core.annotation.Idempotent;
 import io.swagger.v3.oas.annotations.Operation;

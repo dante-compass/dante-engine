@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.assistant.access.processor;
 
-import cn.herodotus.engine.core.definition.utils.JacksonUtils;
+import cn.herodotus.dante.core.utils.JacksonUtils;
 import me.chanjar.weixin.common.error.WxErrorException;
 import me.chanjar.weixin.common.session.WxSessionManager;
 import me.chanjar.weixin.mp.api.WxMpMessageHandler;

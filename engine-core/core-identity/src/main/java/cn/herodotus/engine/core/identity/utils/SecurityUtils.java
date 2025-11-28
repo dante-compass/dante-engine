@@ -26,7 +26,7 @@
 package cn.herodotus.engine.core.identity.utils;
 
 import cn.herodotus.dante.core.constant.SymbolConstants;
-import cn.herodotus.engine.core.definition.utils.WellFormedUtils;
+import cn.herodotus.dante.core.utils.WellFormedUtils;
 import cn.herodotus.engine.core.identity.domain.UserPrincipal;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;

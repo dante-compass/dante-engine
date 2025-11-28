@@ -25,7 +25,7 @@
 
 package cn.herodotus.dante.data.jpa.repository;
 
-import cn.herodotus.engine.core.definition.domain.BaseEntity;
+import cn.herodotus.dante.core.domain.BaseEntity;
 import jakarta.persistence.QueryHint;
 import org.hibernate.jpa.AvailableHints;
 import org.springframework.data.domain.Page;

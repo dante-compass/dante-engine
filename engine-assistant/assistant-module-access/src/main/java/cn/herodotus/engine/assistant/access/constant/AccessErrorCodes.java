@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.assistant.access.constant;
 
-import cn.herodotus.engine.core.definition.feedback.PreconditionFailedFeedback;
+import cn.herodotus.dante.core.feedback.PreconditionFailedFeedback;
 
 /**
  * <p>Description: Access 模块错误代码 </p>

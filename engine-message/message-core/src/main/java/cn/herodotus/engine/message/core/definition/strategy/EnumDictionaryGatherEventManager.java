@@ -21,7 +21,7 @@
 
 package cn.herodotus.engine.message.core.definition.strategy;
 
-import cn.herodotus.engine.core.definition.domain.Dictionary;
+import cn.herodotus.dante.core.domain.Dictionary;
 
 import java.util.List;
 

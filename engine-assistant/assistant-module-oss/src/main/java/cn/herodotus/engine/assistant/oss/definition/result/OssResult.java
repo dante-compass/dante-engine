@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.assistant.oss.definition.result;
 
-import cn.herodotus.engine.core.definition.domain.BaseModel;
+import cn.herodotus.dante.core.domain.BaseModel;
 
 /**
  * <p>Description: 对象存储响应结果统一定义 </p>

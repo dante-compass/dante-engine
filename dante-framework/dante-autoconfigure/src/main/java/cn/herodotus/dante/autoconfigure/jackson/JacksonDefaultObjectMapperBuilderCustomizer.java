@@ -26,7 +26,7 @@
 package cn.herodotus.dante.autoconfigure.jackson;
 
 import cn.herodotus.dante.web.jackson.XssStringJsonDeserializer;
-import cn.herodotus.engine.core.definition.constant.Jackson2CustomizerOrder;
+import cn.herodotus.dante.core.constant.JacksonCustomizerOrder;
 import tools.jackson.core.json.JsonReadFeature;
 import tools.jackson.databind.SerializationFeature;
 import tools.jackson.databind.json.JsonMapper;
@@ -58,6 +58,6 @@ public class JacksonDefaultObjectMapperBuilderCustomizer implements JacksonJsonM
 
     @Override
     public int getOrder() {
-        return Jackson2CustomizerOrder.CUSTOMIZER_DEFAULT;
+        return JacksonCustomizerOrder.CUSTOMIZER_DEFAULT;
     }
 }

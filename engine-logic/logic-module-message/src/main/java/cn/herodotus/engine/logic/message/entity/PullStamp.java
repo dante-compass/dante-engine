@@ -26,7 +26,7 @@
 package cn.herodotus.engine.logic.message.entity;
 
 import cn.herodotus.dante.core.constant.SystemConstants;
-import cn.herodotus.engine.core.definition.domain.BaseEntity;
+import cn.herodotus.dante.core.domain.BaseEntity;
 import cn.herodotus.engine.logic.message.constant.LogicMessageConstants;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.google.common.base.MoreObjects;

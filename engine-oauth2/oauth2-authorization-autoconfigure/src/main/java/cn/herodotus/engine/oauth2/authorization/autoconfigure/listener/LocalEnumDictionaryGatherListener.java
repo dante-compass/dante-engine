@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.oauth2.authorization.autoconfigure.listener;
 
-import cn.herodotus.engine.core.definition.domain.Dictionary;
+import cn.herodotus.dante.core.domain.Dictionary;
 import cn.herodotus.engine.message.core.event.EnumDictionaryGatherEvent;
 import cn.herodotus.engine.oauth2.authorization.autoconfigure.processor.EnumDictionaryGatherProcessor;
 import org.apache.commons.collections4.CollectionUtils;

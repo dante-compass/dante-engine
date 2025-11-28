@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.cache.jetcache.enhance;
 
-import cn.herodotus.engine.core.definition.utils.JacksonUtils;
+import cn.herodotus.dante.core.utils.JacksonUtils;
 import com.alicp.jetcache.Cache;
 import org.apache.commons.lang3.ObjectUtils;
 import org.slf4j.Logger;

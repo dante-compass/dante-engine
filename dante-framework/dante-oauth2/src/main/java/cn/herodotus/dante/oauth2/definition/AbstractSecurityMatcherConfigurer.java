@@ -27,8 +27,8 @@ package cn.herodotus.dante.oauth2.definition;
 
 import cn.herodotus.dante.oauth2.properties.OAuth2AuthorizationProperties;
 import cn.herodotus.dante.oauth2.domain.HerodotusRequest;
-import cn.herodotus.engine.core.definition.constant.SecurityResources;
-import cn.herodotus.engine.core.definition.utils.ListUtils;
+import cn.herodotus.dante.core.constant.SecurityResources;
+import cn.herodotus.dante.core.utils.ListUtils;
 import cn.herodotus.engine.core.identity.domain.HerodotusSecurityAttribute;
 import cn.herodotus.engine.core.identity.enums.PermissionExpression;
 import org.apache.commons.collections4.CollectionUtils;

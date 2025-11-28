@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.assistant.oss.constant;
 
-import cn.herodotus.engine.core.definition.feedback.InternalServerErrorFeedback;
+import cn.herodotus.dante.core.feedback.InternalServerErrorFeedback;
 
 /**
  * <p>Description: 对象存储错误码 </p>

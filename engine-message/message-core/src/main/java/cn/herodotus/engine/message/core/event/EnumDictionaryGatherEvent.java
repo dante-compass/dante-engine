@@ -21,7 +21,7 @@
 
 package cn.herodotus.engine.message.core.event;
 
-import cn.herodotus.engine.core.definition.domain.Dictionary;
+import cn.herodotus.dante.core.domain.Dictionary;
 import cn.herodotus.engine.core.foundation.context.AbstractApplicationEvent;
 
 import java.util.List;

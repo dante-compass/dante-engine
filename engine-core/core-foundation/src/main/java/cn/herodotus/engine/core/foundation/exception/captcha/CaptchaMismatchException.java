@@ -25,9 +25,9 @@
 
 package cn.herodotus.engine.core.foundation.exception.captcha;
 
-import cn.herodotus.engine.core.definition.constant.ErrorCodes;
-import cn.herodotus.engine.core.definition.domain.Feedback;
-import cn.herodotus.engine.core.definition.exception.PlatformRuntimeException;
+import cn.herodotus.dante.core.constant.ErrorCodes;
+import cn.herodotus.dante.core.domain.Feedback;
+import cn.herodotus.dante.core.exception.PlatformRuntimeException;
 
 /**
  * <p>Description: 验证码不匹配错误 </p>

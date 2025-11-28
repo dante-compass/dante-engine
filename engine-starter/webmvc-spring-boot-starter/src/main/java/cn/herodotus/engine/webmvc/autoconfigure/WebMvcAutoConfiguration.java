@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.webmvc.autoconfigure;
 
-import cn.herodotus.engine.core.definition.constant.SecurityResources;
+import cn.herodotus.dante.core.constant.SecurityResources;
 import cn.herodotus.engine.web.service.config.WebServiceConfiguration;
 import cn.herodotus.engine.web.servlet.config.SecureConfiguration;
 import cn.herodotus.engine.web.servlet.config.TemplateConfiguration;

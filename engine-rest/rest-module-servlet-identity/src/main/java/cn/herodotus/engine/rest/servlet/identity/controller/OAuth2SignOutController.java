@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.rest.servlet.identity.controller;
 
-import cn.herodotus.engine.core.definition.domain.Result;
+import cn.herodotus.dante.core.domain.Result;
 import cn.herodotus.engine.core.foundation.context.ServiceContextHolder;
 import cn.herodotus.engine.oauth2.persistence.sas.jpa.event.SignOutComplianceEvent;
 import io.swagger.v3.oas.annotations.Operation;

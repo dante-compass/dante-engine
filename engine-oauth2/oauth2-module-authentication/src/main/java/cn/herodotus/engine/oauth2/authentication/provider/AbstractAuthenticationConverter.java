@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.oauth2.authentication.provider;
 
-import cn.herodotus.engine.core.definition.utils.ListUtils;
+import cn.herodotus.dante.core.utils.ListUtils;
 import cn.herodotus.engine.core.identity.constant.OAuth2ErrorKeys;
 import cn.herodotus.engine.oauth2.authentication.utils.OAuth2EndpointUtils;
 import cn.herodotus.engine.web.core.exception.SessionInvalidException;

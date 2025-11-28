@@ -26,7 +26,7 @@
 package cn.herodotus.engine.oauth2.authentication.response;
 
 import cn.herodotus.dante.core.constant.SystemConstants;
-import cn.herodotus.engine.core.definition.utils.JacksonUtils;
+import cn.herodotus.dante.core.utils.JacksonUtils;
 import cn.herodotus.engine.core.identity.domain.UserPrincipal;
 import cn.herodotus.engine.core.identity.utils.SecurityUtils;
 import cn.herodotus.engine.web.core.servlet.utils.SessionUtils;

@@ -25,7 +25,7 @@
 
 package cn.herodotus.dante.autoconfigure.jackson.initializer;
 
-import cn.herodotus.engine.core.definition.utils.JacksonUtils;
+import cn.herodotus.dante.core.utils.JacksonUtils;
 import org.springframework.stereotype.Component;
 import tools.jackson.databind.ObjectMapper;
 

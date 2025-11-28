@@ -27,7 +27,7 @@ package cn.herodotus.engine.assistant.oss.converter.argument;
 
 import cn.herodotus.engine.assistant.oss.definition.domain.SseCustomerDomain;
 import cn.herodotus.engine.assistant.oss.entity.argument.GetObjectArgument;
-import cn.herodotus.engine.core.definition.utils.DateTimeUtils;
+import cn.herodotus.dante.core.utils.DateTimeUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.core.convert.converter.Converter;
 import software.amazon.awssdk.services.s3.model.GetObjectRequest;

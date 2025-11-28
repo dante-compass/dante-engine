@@ -26,7 +26,7 @@
 package cn.herodotus.engine.rest.servlet.upms.controller.social;
 
 import cn.herodotus.engine.assistant.access.processor.JustAuthProcessor;
-import cn.herodotus.engine.core.definition.domain.Result;
+import cn.herodotus.dante.core.domain.Result;
 import cn.herodotus.engine.rest.servlet.upms.event.AutomaticSignInEvent;
 import cn.hutool.v7.core.bean.BeanUtil;
 import com.google.common.collect.ImmutableMap;

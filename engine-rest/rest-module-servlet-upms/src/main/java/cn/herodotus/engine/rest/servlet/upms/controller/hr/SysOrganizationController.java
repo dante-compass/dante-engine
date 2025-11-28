@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.rest.servlet.upms.controller.hr;
 
-import cn.herodotus.engine.core.definition.domain.Result;
+import cn.herodotus.dante.core.domain.Result;
 import cn.herodotus.dante.data.jpa.service.BaseJpaWriteableService;
 import cn.herodotus.engine.logic.upms.converter.SysOrganizationToTreeNodeConverter;
 import cn.herodotus.engine.logic.upms.entity.hr.SysOrganization;

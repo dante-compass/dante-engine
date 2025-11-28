@@ -48,7 +48,7 @@
 
         <dependency>
             <groupId>cn.herodotus.dante</groupId>
-            <artifactId>core-definition</artifactId>
+            <artifactId>dante-core</artifactId>
         </dependency>
 
         <dependency>

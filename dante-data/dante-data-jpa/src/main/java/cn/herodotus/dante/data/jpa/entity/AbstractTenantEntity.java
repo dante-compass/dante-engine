@@ -26,7 +26,7 @@
 package cn.herodotus.dante.data.jpa.entity;
 
 import cn.herodotus.dante.core.constant.SystemConstants;
-import cn.herodotus.engine.core.definition.domain.BaseEntity;
+import cn.herodotus.dante.core.domain.BaseEntity;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Column;
 import jakarta.persistence.MappedSuperclass;

@@ -25,11 +25,11 @@
 
 package cn.herodotus.dante.oauth2.exception;
 
-import cn.herodotus.engine.core.definition.constant.ErrorCodes;
-import cn.herodotus.engine.core.definition.domain.Feedback;
-import cn.herodotus.engine.core.definition.domain.Result;
-import cn.herodotus.engine.core.definition.exception.GlobalExceptionHandler;
-import cn.herodotus.engine.core.definition.exception.PlatformRuntimeException;
+import cn.herodotus.dante.core.constant.ErrorCodes;
+import cn.herodotus.dante.core.domain.Feedback;
+import cn.herodotus.dante.core.domain.Result;
+import cn.herodotus.dante.core.exception.GlobalExceptionHandler;
+import cn.herodotus.dante.core.exception.PlatformRuntimeException;
 import cn.herodotus.engine.core.identity.constant.OAuth2ErrorKeys;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;

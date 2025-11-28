@@ -32,7 +32,7 @@ import cn.herodotus.engine.assistant.oss.entity.result.CreateBucketResult;
 import cn.herodotus.engine.assistant.oss.entity.result.DeleteBucketResult;
 import cn.herodotus.engine.assistant.oss.entity.result.ListBucketsResult;
 import cn.herodotus.engine.assistant.oss.service.servlet.ServletBucketService;
-import cn.herodotus.engine.core.definition.domain.Result;
+import cn.herodotus.dante.core.domain.Result;
 import cn.herodotus.engine.web.core.annotation.AccessLimited;
 import cn.herodotus.engine.web.core.annotation.Idempotent;
 import cn.herodotus.engine.web.core.definition.Controller;

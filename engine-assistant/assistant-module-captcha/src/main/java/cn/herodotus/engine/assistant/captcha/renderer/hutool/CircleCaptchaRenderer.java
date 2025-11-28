@@ -27,7 +27,7 @@ package cn.herodotus.engine.assistant.captcha.renderer.hutool;
 
 import cn.herodotus.engine.assistant.captcha.definition.AbstractGraphicRenderer;
 import cn.herodotus.engine.assistant.captcha.provider.ResourceProvider;
-import cn.herodotus.engine.core.definition.domain.captcha.Metadata;
+import cn.herodotus.dante.core.domain.captcha.Metadata;
 import cn.herodotus.engine.core.foundation.enums.CaptchaCategory;
 import cn.hutool.v7.swing.captcha.CaptchaUtil;
 import cn.hutool.v7.swing.captcha.CircleCaptcha;

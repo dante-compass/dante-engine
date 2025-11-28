@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.oauth2.extension.dto;
 
-import cn.herodotus.engine.core.definition.domain.BaseDto;
+import cn.herodotus.dante.core.domain.BaseDto;
 
 /**
  * <p>Description: 用户错误状态信息 </p>

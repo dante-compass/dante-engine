@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.oauth2.authorization.autoconfigure.listener;
 
-import cn.herodotus.engine.core.definition.utils.JacksonUtils;
+import cn.herodotus.dante.core.utils.JacksonUtils;
 import cn.herodotus.engine.core.identity.domain.AttributeTransmitter;
 import cn.herodotus.engine.oauth2.authorization.autoconfigure.bus.RemoteAttributeTransmitterSyncEvent;
 import cn.herodotus.engine.oauth2.authorization.processor.SecurityAttributeAnalyzer;

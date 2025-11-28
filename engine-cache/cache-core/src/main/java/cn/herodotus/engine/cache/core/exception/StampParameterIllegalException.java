@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.cache.core.exception;
 
-import cn.herodotus.engine.core.definition.exception.PlatformException;
+import cn.herodotus.dante.core.exception.PlatformException;
 
 /**
  * <p>Description: 请求参数中缺少幂等Token错误 </p>

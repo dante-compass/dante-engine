@@ -27,7 +27,7 @@ package cn.herodotus.engine.rest.servlet.upms.controller.social;
 
 import cn.herodotus.engine.assistant.access.definition.domain.AccessResponse;
 import cn.herodotus.engine.assistant.access.factory.AccessHandlerStrategyFactory;
-import cn.herodotus.engine.core.definition.domain.Result;
+import cn.herodotus.dante.core.domain.Result;
 import cn.herodotus.engine.core.identity.enums.AccountCategory;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;

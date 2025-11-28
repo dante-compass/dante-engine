@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.web.service.properties;
 
-import cn.herodotus.engine.core.definition.enums.Protocol;
+import cn.herodotus.dante.core.enums.Protocol;
 import cn.herodotus.engine.core.foundation.enums.Architecture;
 import cn.herodotus.engine.core.foundation.enums.DataAccessStrategy;
 import cn.herodotus.engine.web.core.constant.WebConstants;

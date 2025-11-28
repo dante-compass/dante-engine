@@ -25,8 +25,8 @@
 
 package cn.herodotus.engine.core.foundation.support.crypto;
 
-import cn.herodotus.engine.core.definition.domain.SecretKey;
-import cn.herodotus.engine.core.definition.support.crypto.AsymmetricCryptoProcessor;
+import cn.herodotus.dante.core.domain.SecretKey;
+import cn.herodotus.dante.core.support.crypto.AsymmetricCryptoProcessor;
 import cn.hutool.v7.core.codec.binary.HexUtil;
 import cn.hutool.v7.core.text.StrUtil;
 import cn.hutool.v7.crypto.asymmetric.KeyType;

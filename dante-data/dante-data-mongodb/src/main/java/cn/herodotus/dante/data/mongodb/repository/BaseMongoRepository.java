@@ -25,7 +25,7 @@
 
 package cn.herodotus.dante.data.mongodb.repository;
 
-import cn.herodotus.engine.core.definition.domain.BaseEntity;
+import cn.herodotus.dante.core.domain.BaseEntity;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.repository.NoRepositoryBean;
 

@@ -27,7 +27,7 @@ package cn.herodotus.engine.assistant.captcha.renderer.graphic;
 
 import cn.herodotus.engine.assistant.captcha.provider.ResourceProvider;
 import cn.herodotus.dante.core.constant.SymbolConstants;
-import cn.herodotus.engine.core.definition.domain.captcha.Metadata;
+import cn.herodotus.dante.core.domain.captcha.Metadata;
 import org.apache.commons.lang3.StringUtils;
 
 import java.awt.image.BufferedImage;

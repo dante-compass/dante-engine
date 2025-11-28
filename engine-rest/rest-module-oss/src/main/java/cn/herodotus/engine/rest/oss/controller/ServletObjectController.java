@@ -39,7 +39,7 @@ import cn.herodotus.engine.assistant.oss.exception.DownloadObjectException;
 import cn.herodotus.engine.assistant.oss.exception.UploadObjectException;
 import cn.herodotus.engine.assistant.oss.service.base.S3TransferManagerService;
 import cn.herodotus.engine.assistant.oss.service.servlet.ServletObjectService;
-import cn.herodotus.engine.core.definition.domain.Result;
+import cn.herodotus.dante.core.domain.Result;
 import cn.herodotus.engine.rest.oss.service.ServletObjectStreamService;
 import cn.herodotus.engine.web.core.annotation.AccessLimited;
 import cn.herodotus.engine.web.core.annotation.Idempotent;

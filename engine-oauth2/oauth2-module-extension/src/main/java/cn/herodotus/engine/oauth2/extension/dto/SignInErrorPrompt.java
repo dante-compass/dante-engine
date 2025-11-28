@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.oauth2.extension.dto;
 
-import cn.herodotus.engine.core.definition.domain.BaseDto;
+import cn.herodotus.dante.core.domain.BaseDto;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
 

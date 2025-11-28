@@ -30,7 +30,7 @@ import cn.herodotus.engine.assistant.oss.pool.AwsConfigurer;
 import cn.herodotus.engine.assistant.oss.pool.S3AsyncClientObjectPool;
 import cn.herodotus.engine.assistant.oss.pool.S3PresignerObjectPool;
 import cn.herodotus.engine.assistant.oss.properties.OssProperties;
-import cn.herodotus.engine.core.definition.function.ErrorCodeMapperBuilderCustomizer;
+import cn.herodotus.dante.core.function.ErrorCodeMapperBuilderCustomizer;
 import cn.herodotus.engine.core.foundation.condition.ConditionalOnServletApplication;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;

@@ -25,8 +25,8 @@
 
 package cn.herodotus.dante.autoconfigure.openfeign;
 
-import cn.herodotus.engine.core.definition.annotation.Inner;
-import cn.herodotus.engine.core.definition.constant.HerodotusHeaders;
+import cn.herodotus.dante.core.annotation.Inner;
+import cn.herodotus.dante.core.constant.HerodotusHeaders;
 import feign.MethodMetadata;
 import org.apache.commons.lang3.ObjectUtils;
 import org.slf4j.Logger;

@@ -26,7 +26,7 @@
 package cn.herodotus.engine.web.service.initializer;
 
 import cn.herodotus.dante.core.constant.SymbolConstants;
-import cn.herodotus.engine.core.definition.utils.WellFormedUtils;
+import cn.herodotus.dante.core.utils.WellFormedUtils;
 import cn.herodotus.engine.message.core.definition.strategy.RestMappingScanEventManager;
 import cn.herodotus.engine.message.core.domain.RestMapping;
 import cn.herodotus.engine.web.core.support.WebPropertyFinder;

@@ -25,8 +25,8 @@
 
 package cn.herodotus.engine.web.core.servlet.utils;
 
-import cn.herodotus.engine.core.definition.domain.Result;
-import cn.herodotus.engine.core.definition.utils.JacksonUtils;
+import cn.herodotus.dante.core.domain.Result;
+import cn.herodotus.dante.core.utils.JacksonUtils;
 import jakarta.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

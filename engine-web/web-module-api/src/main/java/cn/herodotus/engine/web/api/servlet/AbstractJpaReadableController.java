@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.web.api.servlet;
 
-import cn.herodotus.engine.core.definition.domain.BaseEntity;
+import cn.herodotus.dante.core.domain.BaseEntity;
 import cn.herodotus.dante.data.jpa.service.BaseJpaReadableService;
 
 import java.io.Serializable;

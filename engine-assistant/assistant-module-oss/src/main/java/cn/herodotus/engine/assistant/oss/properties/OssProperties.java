@@ -26,7 +26,7 @@
 package cn.herodotus.engine.assistant.oss.properties;
 
 import cn.herodotus.engine.assistant.oss.constant.OssConstants;
-import cn.herodotus.engine.core.definition.domain.Pool;
+import cn.herodotus.dante.core.domain.Pool;
 import com.google.common.base.MoreObjects;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

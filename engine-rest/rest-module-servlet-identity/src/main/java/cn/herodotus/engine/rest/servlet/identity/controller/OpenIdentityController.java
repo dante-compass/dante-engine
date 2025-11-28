@@ -25,8 +25,8 @@
 
 package cn.herodotus.engine.rest.servlet.identity.controller;
 
-import cn.herodotus.engine.core.definition.domain.Result;
-import cn.herodotus.engine.core.definition.domain.SecretKey;
+import cn.herodotus.dante.core.domain.Result;
+import cn.herodotus.dante.core.domain.SecretKey;
 import cn.herodotus.engine.oauth2.extension.dto.SignInErrorPrompt;
 import cn.herodotus.engine.oauth2.extension.dto.SignInErrorStatus;
 import cn.herodotus.engine.oauth2.extension.stamp.SignInFailureLimitedStampManager;

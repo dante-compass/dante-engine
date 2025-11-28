@@ -27,10 +27,10 @@ package cn.herodotus.engine.assistant.captcha.definition;
 
 import cn.herodotus.engine.assistant.captcha.constant.CaptchaConstants;
 import cn.herodotus.engine.assistant.captcha.provider.ResourceProvider;
-import cn.herodotus.engine.core.definition.domain.captcha.Captcha;
-import cn.herodotus.engine.core.definition.domain.captcha.GraphicCaptcha;
-import cn.herodotus.engine.core.definition.domain.captcha.Metadata;
-import cn.herodotus.engine.core.definition.domain.captcha.Verification;
+import cn.herodotus.dante.core.domain.captcha.Captcha;
+import cn.herodotus.dante.core.domain.captcha.GraphicCaptcha;
+import cn.herodotus.dante.core.domain.captcha.Metadata;
+import cn.herodotus.dante.core.domain.captcha.Verification;
 import cn.herodotus.engine.core.foundation.exception.captcha.CaptchaHasExpiredException;
 import cn.herodotus.engine.core.foundation.exception.captcha.CaptchaIsEmptyException;
 import cn.herodotus.engine.core.foundation.exception.captcha.CaptchaMismatchException;

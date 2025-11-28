@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.web.core.exception;
 
-import cn.herodotus.engine.core.definition.exception.PlatformRuntimeException;
+import cn.herodotus.dante.core.exception.PlatformRuntimeException;
 
 /**
  * <p>Description: 非法操作Exception </p>

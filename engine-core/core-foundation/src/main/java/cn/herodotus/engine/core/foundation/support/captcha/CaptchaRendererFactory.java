@@ -25,9 +25,9 @@
 
 package cn.herodotus.engine.core.foundation.support.captcha;
 
-import cn.herodotus.engine.core.definition.domain.captcha.Captcha;
-import cn.herodotus.engine.core.definition.domain.captcha.Verification;
-import cn.herodotus.engine.core.definition.support.CaptchaRenderer;
+import cn.herodotus.dante.core.domain.captcha.Captcha;
+import cn.herodotus.dante.core.domain.captcha.Verification;
+import cn.herodotus.dante.core.support.CaptchaRenderer;
 import cn.herodotus.engine.core.foundation.enums.CaptchaCategory;
 import cn.herodotus.engine.core.foundation.exception.captcha.CaptchaCategoryIsIncorrectException;
 import cn.herodotus.engine.core.foundation.exception.captcha.CaptchaHandlerNotExistException;

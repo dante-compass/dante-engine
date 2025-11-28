@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.web.core.definition.dto;
 
-import cn.herodotus.engine.core.definition.domain.AbstractDto;
+import cn.herodotus.dante.core.domain.AbstractDto;
 import cn.herodotus.engine.web.core.annotation.EnumeratedValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 

@@ -27,7 +27,7 @@ package cn.herodotus.engine.cache.redisson.properties;
 
 import cn.herodotus.engine.cache.core.constants.CacheConstants;
 import cn.herodotus.dante.core.constant.SymbolConstants;
-import cn.herodotus.engine.core.definition.enums.Protocol;
+import cn.herodotus.dante.core.enums.Protocol;
 import com.google.common.base.MoreObjects;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.Strings;

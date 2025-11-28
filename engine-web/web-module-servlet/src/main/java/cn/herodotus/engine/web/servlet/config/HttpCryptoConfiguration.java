@@ -25,8 +25,8 @@
 
 package cn.herodotus.engine.web.servlet.config;
 
-import cn.herodotus.engine.core.definition.support.crypto.AsymmetricCryptoProcessor;
-import cn.herodotus.engine.core.definition.support.crypto.SymmetricCryptoProcessor;
+import cn.herodotus.dante.core.support.crypto.AsymmetricCryptoProcessor;
+import cn.herodotus.dante.core.support.crypto.SymmetricCryptoProcessor;
 import cn.herodotus.engine.web.servlet.crypto.*;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;

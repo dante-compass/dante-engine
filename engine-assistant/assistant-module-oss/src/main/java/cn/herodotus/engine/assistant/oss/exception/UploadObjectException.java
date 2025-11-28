@@ -26,8 +26,8 @@
 package cn.herodotus.engine.assistant.oss.exception;
 
 import cn.herodotus.engine.assistant.oss.constant.OssErrorCodes;
-import cn.herodotus.engine.core.definition.domain.Feedback;
-import cn.herodotus.engine.core.definition.exception.PlatformRuntimeException;
+import cn.herodotus.dante.core.domain.Feedback;
+import cn.herodotus.dante.core.exception.PlatformRuntimeException;
 
 /**
  * <p>Description: 上传文件异常 </p>

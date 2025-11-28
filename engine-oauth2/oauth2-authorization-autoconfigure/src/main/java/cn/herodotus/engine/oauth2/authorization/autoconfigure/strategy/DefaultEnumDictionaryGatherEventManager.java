@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.oauth2.authorization.autoconfigure.strategy;
 
-import cn.herodotus.engine.core.definition.domain.Dictionary;
+import cn.herodotus.dante.core.domain.Dictionary;
 import cn.herodotus.engine.core.foundation.context.ServiceContextHolder;
 import cn.herodotus.engine.message.core.definition.strategy.EnumDictionaryGatherEventManager;
 import cn.herodotus.engine.message.core.event.EnumDictionaryGatherEvent;

@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.assistant.captcha.renderer.behavior;
 
-import cn.herodotus.engine.core.definition.domain.captcha.Captcha;
+import cn.herodotus.dante.core.domain.captcha.Captcha;
 
 /**
  * <p>Description: 滑块拼图验证码返回前端信息 </p>

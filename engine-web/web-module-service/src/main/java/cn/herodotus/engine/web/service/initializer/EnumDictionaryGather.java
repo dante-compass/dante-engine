@@ -21,8 +21,8 @@
 
 package cn.herodotus.engine.web.service.initializer;
 
-import cn.herodotus.engine.core.definition.builder.EnumDictionaryBuilder;
-import cn.herodotus.engine.core.definition.domain.Dictionary;
+import cn.herodotus.dante.core.builder.EnumDictionaryBuilder;
+import cn.herodotus.dante.core.domain.Dictionary;
 import cn.herodotus.engine.message.core.definition.strategy.EnumDictionaryGatherEventManager;
 import org.apache.commons.collections4.CollectionUtils;
 import org.slf4j.Logger;

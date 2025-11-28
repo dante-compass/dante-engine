@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.logic.upms.converter;
 
-import cn.herodotus.engine.core.definition.utils.WellFormedUtils;
+import cn.herodotus.dante.core.utils.WellFormedUtils;
 import cn.herodotus.engine.logic.upms.entity.hr.SysOrganization;
 import cn.hutool.v7.core.tree.TreeNode;
 import org.springframework.core.convert.converter.Converter;

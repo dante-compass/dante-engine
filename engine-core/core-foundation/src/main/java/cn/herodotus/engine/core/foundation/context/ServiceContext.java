@@ -26,7 +26,7 @@
 package cn.herodotus.engine.core.foundation.context;
 
 import cn.herodotus.dante.core.constant.SystemConstants;
-import cn.herodotus.engine.core.definition.enums.Protocol;
+import cn.herodotus.dante.core.enums.Protocol;
 import cn.herodotus.engine.core.foundation.enums.Architecture;
 import cn.herodotus.engine.core.foundation.enums.DataAccessStrategy;
 import com.google.common.base.MoreObjects;

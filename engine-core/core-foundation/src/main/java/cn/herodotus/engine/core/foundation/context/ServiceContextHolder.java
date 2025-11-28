@@ -26,8 +26,8 @@
 package cn.herodotus.engine.core.foundation.context;
 
 import cn.herodotus.dante.core.constant.SymbolConstants;
-import cn.herodotus.engine.core.definition.enums.Protocol;
-import cn.herodotus.engine.core.definition.utils.WellFormedUtils;
+import cn.herodotus.dante.core.enums.Protocol;
+import cn.herodotus.dante.core.utils.WellFormedUtils;
 import cn.herodotus.engine.core.foundation.enums.Architecture;
 import cn.herodotus.engine.core.foundation.enums.DataAccessStrategy;
 import org.apache.commons.lang3.ObjectUtils;

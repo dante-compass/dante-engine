@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.core.identity.domain;
 
-import cn.herodotus.engine.core.definition.domain.BaseModel;
+import cn.herodotus.dante.core.domain.BaseModel;
 import com.google.common.base.MoreObjects;
 
 /**

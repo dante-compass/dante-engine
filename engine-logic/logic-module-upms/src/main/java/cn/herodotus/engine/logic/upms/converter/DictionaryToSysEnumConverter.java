@@ -27,7 +27,7 @@ package cn.herodotus.engine.logic.upms.converter;
 
 import cn.herodotus.dante.core.constant.SymbolConstants;
 import cn.herodotus.dante.core.constant.SystemConstants;
-import cn.herodotus.engine.core.definition.domain.Dictionary;
+import cn.herodotus.dante.core.domain.Dictionary;
 import cn.herodotus.engine.core.foundation.founction.ListConverter;
 import cn.herodotus.engine.logic.upms.entity.security.SysEnum;
 import cn.hutool.v7.crypto.SecureUtil;

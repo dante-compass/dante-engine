@@ -25,8 +25,8 @@
 
 package cn.herodotus.engine.message.core.exception;
 
-import cn.herodotus.engine.core.definition.domain.Feedback;
-import cn.herodotus.engine.core.definition.exception.PlatformRuntimeException;
+import cn.herodotus.dante.core.domain.Feedback;
+import cn.herodotus.dante.core.exception.PlatformRuntimeException;
 import cn.herodotus.engine.message.core.constants.MessageErrorCodes;
 
 /**

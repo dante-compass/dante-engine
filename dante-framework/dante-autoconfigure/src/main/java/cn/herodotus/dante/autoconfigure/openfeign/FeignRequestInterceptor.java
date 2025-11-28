@@ -25,7 +25,7 @@
 
 package cn.herodotus.dante.autoconfigure.openfeign;
 
-import cn.herodotus.engine.core.definition.constant.HerodotusHeaders;
+import cn.herodotus.dante.core.constant.HerodotusHeaders;
 import cn.herodotus.dante.core.constant.SymbolConstants;
 import cn.herodotus.dante.core.context.TenantContextHolder;
 import cn.hutool.v7.http.server.servlet.ServletUtil;

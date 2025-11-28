@@ -26,7 +26,7 @@
 package cn.herodotus.engine.web.service.properties;
 
 import cn.herodotus.dante.core.constant.SystemConstants;
-import cn.herodotus.engine.core.definition.utils.WellFormedUtils;
+import cn.herodotus.dante.core.utils.WellFormedUtils;
 import cn.herodotus.engine.web.core.constant.WebConstants;
 import com.google.common.base.MoreObjects;
 import org.springframework.boot.context.properties.ConfigurationProperties;

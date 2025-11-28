@@ -28,7 +28,7 @@ package cn.herodotus.engine.assistant.captcha.definition;
 import cn.herodotus.engine.assistant.captcha.properties.CaptchaProperties;
 import cn.herodotus.engine.assistant.captcha.provider.ResourceProvider;
 import cn.herodotus.engine.cache.jetcache.stamp.AbstractStampManager;
-import cn.herodotus.engine.core.definition.support.CaptchaRenderer;
+import cn.herodotus.dante.core.support.CaptchaRenderer;
 import cn.hutool.v7.swing.img.ImgUtil;
 
 import java.awt.image.BufferedImage;

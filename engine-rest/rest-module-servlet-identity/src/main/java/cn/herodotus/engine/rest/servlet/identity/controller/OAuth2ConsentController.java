@@ -27,7 +27,7 @@ package cn.herodotus.engine.rest.servlet.identity.controller;
 
 import cn.herodotus.dante.core.constant.SymbolConstants;
 import cn.herodotus.dante.core.constant.SystemConstants;
-import cn.herodotus.engine.core.definition.domain.view.vue.Option;
+import cn.herodotus.dante.core.domain.view.vue.Option;
 import cn.herodotus.engine.core.foundation.context.ServiceContextHolder;
 import cn.herodotus.engine.logic.identity.entity.OAuth2Application;
 import cn.herodotus.engine.logic.identity.entity.OAuth2Scope;

@@ -26,9 +26,9 @@
 package cn.herodotus.engine.web.core.definition;
 
 import cn.herodotus.dante.core.constant.SystemConstants;
-import cn.herodotus.engine.core.definition.domain.BaseDomain;
-import cn.herodotus.engine.core.definition.domain.Pagination;
-import cn.herodotus.engine.core.definition.domain.Result;
+import cn.herodotus.dante.core.domain.BaseDomain;
+import cn.herodotus.dante.core.domain.Pagination;
+import cn.herodotus.dante.core.domain.Result;
 import cn.hutool.v7.core.tree.MapTree;
 import cn.hutool.v7.core.tree.TreeNode;
 import cn.hutool.v7.core.tree.TreeUtil;

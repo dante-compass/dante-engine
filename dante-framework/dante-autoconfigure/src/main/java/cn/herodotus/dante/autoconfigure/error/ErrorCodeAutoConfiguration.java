@@ -25,9 +25,9 @@
 
 package cn.herodotus.dante.autoconfigure.error;
 
-import cn.herodotus.engine.core.definition.builder.ErrorCodeMapperBuilder;
-import cn.herodotus.engine.core.definition.domain.ErrorCodeMapper;
-import cn.herodotus.engine.core.definition.function.ErrorCodeMapperBuilderCustomizer;
+import cn.herodotus.dante.core.builder.ErrorCodeMapperBuilder;
+import cn.herodotus.dante.core.domain.ErrorCodeMapper;
+import cn.herodotus.dante.core.function.ErrorCodeMapperBuilderCustomizer;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

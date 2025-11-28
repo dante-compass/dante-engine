@@ -26,8 +26,8 @@
 package cn.herodotus.engine.logic.identity.enums;
 
 import cn.herodotus.dante.core.constant.SystemConstants;
-import cn.herodotus.engine.core.definition.domain.Dictionary;
-import cn.herodotus.engine.core.definition.domain.DictionaryEnum;
+import cn.herodotus.dante.core.domain.Dictionary;
+import cn.herodotus.dante.core.domain.DictionaryEnum;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.v3.oas.annotations.media.Schema;
 import org.springframework.security.oauth2.core.AuthorizationGrantType;

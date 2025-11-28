@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.core.foundation.support.crypto;
 
-import cn.herodotus.engine.core.definition.support.crypto.SymmetricCryptoProcessor;
+import cn.herodotus.dante.core.support.crypto.SymmetricCryptoProcessor;
 import cn.hutool.v7.core.codec.binary.Base64;
 import cn.hutool.v7.core.text.StrUtil;
 import cn.hutool.v7.core.util.ByteUtil;
