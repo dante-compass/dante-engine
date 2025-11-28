@@ -42,7 +42,7 @@
     <dependencies>
         <dependency>
             <groupId>cn.herodotus.dante</groupId>
-            <artifactId>logic-module-upms</artifactId>
+            <artifactId>dante-logic-upms</artifactId>
         </dependency>
 
         <dependency>

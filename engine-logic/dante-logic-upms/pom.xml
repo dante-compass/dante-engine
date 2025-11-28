@@ -34,8 +34,8 @@
         <version>4.0.0.0-M1</version>
     </parent>
 
-    <artifactId>logic-module-upms</artifactId>
-    <name>logic-module-upms</name>
+    <artifactId>dante-logic-upms</artifactId>
+    <name>dante-logic-upms</name>
 
     <description>Dante Cloud 云原生微服务基座组件库 UPMS 业务逻辑模块</description>
 
