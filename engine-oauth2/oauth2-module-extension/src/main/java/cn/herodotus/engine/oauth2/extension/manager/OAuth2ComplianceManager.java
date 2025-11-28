@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.oauth2.extension.manager;
 
-import cn.herodotus.engine.cache.core.exception.MaximumLimitExceededException;
+import cn.herodotus.dante.cache.commons.exception.MaximumLimitExceededException;
 import cn.herodotus.engine.oauth2.extension.converter.RequestToUserLoggingConverter;
 import cn.herodotus.engine.oauth2.extension.entity.OAuth2UserLogging;
 import cn.herodotus.engine.oauth2.extension.service.OAuth2UserLoggingService;

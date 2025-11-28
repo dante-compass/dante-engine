@@ -52,7 +52,7 @@
 
         <dependency>
             <groupId>cn.herodotus.dante</groupId>
-            <artifactId>cache-module-jetcache</artifactId>
+            <artifactId>dante-cache-jetcache</artifactId>
         </dependency>
     </dependencies>
 

@@ -106,7 +106,7 @@
     <modules>
         <module>dependencies</module>
         <module>dante-assistant</module>
-        <module>engine-cache</module>
+        <module>dante-cache</module>
         <module>engine-core</module>
         <module>dante-logic</module>
         <module>dante-rest</module>

@@ -52,7 +52,7 @@
 
         <dependency>
             <groupId>cn.herodotus.dante</groupId>
-            <artifactId>cache-module-redis</artifactId>
+            <artifactId>dante-cache-redis</artifactId>
         </dependency>
 
         <dependency>
