@@ -30,7 +30,6 @@ import cn.herodotus.dante.assistant.captcha.provider.ResourceProvider;
 import cn.herodotus.dante.assistant.captcha.renderer.behavior.JigsawCaptchaRenderer;
 import cn.herodotus.dante.assistant.captcha.renderer.behavior.WordClickCaptchaRenderer;
 import cn.herodotus.dante.assistant.captcha.renderer.graphic.*;
-import cn.herodotus.engine.assistant.captcha.renderer.graphic.*;
 import cn.herodotus.dante.assistant.captcha.renderer.hutool.CircleCaptchaRenderer;
 import cn.herodotus.dante.assistant.captcha.renderer.hutool.GifCaptchaRenderer;
 import cn.herodotus.dante.assistant.captcha.renderer.hutool.LineCaptchaRenderer;

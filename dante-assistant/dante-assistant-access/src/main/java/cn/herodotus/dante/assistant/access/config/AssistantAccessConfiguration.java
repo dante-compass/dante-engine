@@ -25,13 +25,6 @@
 
 package cn.herodotus.dante.assistant.access.config;
 
-/**
- * <p>Description: TODO </p>
- *
- * @author : gengwei.zheng
- * @date : 2025/9/6 16:22
- */
-
 import cn.herodotus.dante.assistant.access.customizer.AccessErrorCodeMapperBuilderCustomizer;
 import cn.herodotus.dante.assistant.access.definition.AccessHandler;
 import cn.herodotus.dante.assistant.access.factory.AccessHandlerStrategyFactory;
