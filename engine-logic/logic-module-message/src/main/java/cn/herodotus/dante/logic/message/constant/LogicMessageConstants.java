@@ -23,32 +23,24 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.engine.rest.servlet.message.config;
+package cn.herodotus.dante.logic.message.constant;
 
-import cn.herodotus.dante.logic.message.annotation.EnableHerodotusLogicMessage;
-import jakarta.annotation.PostConstruct;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
+import cn.herodotus.dante.core.constant.BaseConstants;
 
 /**
- * <p>Description: Servlet 环境消息 Rest 模块配置 </p>
+ * <p>Description: 消息业务逻辑模块常量 </p>
  *
  * @author : gengwei.zheng
- * @date : 2024/2/19 16:51
+ * @date : 2024/2/19 16:36
  */
-@Configuration(proxyBeanMethods = false)
-@EnableHerodotusLogicMessage
-@ComponentScan(basePackages = {
-        "cn.herodotus.engine.rest.servlet.message.controller",
-})
-public class RestServletMessageConfiguration {
+public interface LogicMessageConstants extends BaseConstants {
 
-    private static final Logger log = LoggerFactory.getLogger(RestServletMessageConfiguration.class);
+    String MESSAGE_AREA_PREFIX = AREA_PREFIX + "message:";
 
-    @PostConstruct
-    public void postConstruct() {
-        log.debug("[Herodotus] |- Module [Rest Servlet Message] Configure.");
-    }
+    String REGION_MESSAGE_ANNOUNCEMENT = MESSAGE_AREA_PREFIX + "system_announcement";
+    String REGION_MESSAGE_DIALOGUE_CONTACT = MESSAGE_AREA_PREFIX + "personal:contact";
+    String REGION_MESSAGE_DIALOGUE = MESSAGE_AREA_PREFIX + "personal:dialogue";
+    String REGION_MESSAGE_DIALOGUE_DETAIL = MESSAGE_AREA_PREFIX + "personal:dialogue:detail";
+    String REGION_MESSAGE_NOTIFICATION = MESSAGE_AREA_PREFIX + "notification_queue";
+    String REGION_MESSAGE_PULL_STAMP = MESSAGE_AREA_PREFIX + "pull_stamp";
 }

@@ -23,32 +23,22 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.engine.rest.servlet.message.config;
+package cn.herodotus.dante.logic.message.customizer;
 
-import cn.herodotus.dante.logic.message.annotation.EnableHerodotusLogicMessage;
-import jakarta.annotation.PostConstruct;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
+import cn.herodotus.dante.core.builder.EnumDictionaryBuilder;
+import cn.herodotus.dante.core.function.EnumDictionaryBuilderCustomizer;
+import cn.herodotus.dante.logic.message.enums.NotificationCategory;
 
 /**
- * <p>Description: Servlet 环境消息 Rest 模块配置 </p>
+ * <p>Description: Message 枚举数据字典定义器 </p>
  *
  * @author : gengwei.zheng
- * @date : 2024/2/19 16:51
+ * @date : 2024/8/23 16:00
  */
-@Configuration(proxyBeanMethods = false)
-@EnableHerodotusLogicMessage
-@ComponentScan(basePackages = {
-        "cn.herodotus.engine.rest.servlet.message.controller",
-})
-public class RestServletMessageConfiguration {
+public class MessageEnumDictionaryBuilderCustomizer implements EnumDictionaryBuilderCustomizer {
 
-    private static final Logger log = LoggerFactory.getLogger(RestServletMessageConfiguration.class);
-
-    @PostConstruct
-    public void postConstruct() {
-        log.debug("[Herodotus] |- Module [Rest Servlet Message] Configure.");
+    @Override
+    public void customize(EnumDictionaryBuilder builder) {
+        builder.append(NotificationCategory.getDictionaries());
     }
 }

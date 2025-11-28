@@ -23,32 +23,17 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.engine.rest.servlet.message.config;
+package cn.herodotus.dante.logic.message.repository;
 
-import cn.herodotus.dante.logic.message.annotation.EnableHerodotusLogicMessage;
-import jakarta.annotation.PostConstruct;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
+import cn.herodotus.dante.data.jpa.repository.BaseJpaRepository;
+import cn.herodotus.dante.logic.message.entity.Dialogue;
 
 /**
- * <p>Description: Servlet 环境消息 Rest 模块配置 </p>
+ * <p>Description: PersonalDialogueRepository </p>
  *
  * @author : gengwei.zheng
- * @date : 2024/2/19 16:51
+ * @date : 2022/12/7 22:06
  */
-@Configuration(proxyBeanMethods = false)
-@EnableHerodotusLogicMessage
-@ComponentScan(basePackages = {
-        "cn.herodotus.engine.rest.servlet.message.controller",
-})
-public class RestServletMessageConfiguration {
+public interface DialogueRepository extends BaseJpaRepository<Dialogue, String> {
 
-    private static final Logger log = LoggerFactory.getLogger(RestServletMessageConfiguration.class);
-
-    @PostConstruct
-    public void postConstruct() {
-        log.debug("[Herodotus] |- Module [Rest Servlet Message] Configure.");
-    }
 }

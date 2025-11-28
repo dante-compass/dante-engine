@@ -23,32 +23,49 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.engine.rest.servlet.message.config;
+package cn.herodotus.dante.logic.message.config;
 
-import cn.herodotus.dante.logic.message.annotation.EnableHerodotusLogicMessage;
+import cn.herodotus.dante.core.function.EnumDictionaryBuilderCustomizer;
+import cn.herodotus.dante.logic.message.customizer.MessageEnumDictionaryBuilderCustomizer;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.persistence.autoconfigure.EntityScan;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 /**
- * <p>Description: Servlet 环境消息 Rest 模块配置 </p>
+ * <p>Description: 消息业务逻辑模块配置 </p>
  *
  * @author : gengwei.zheng
- * @date : 2024/2/19 16:51
+ * @date : 2024/2/19 16:40
  */
 @Configuration(proxyBeanMethods = false)
-@EnableHerodotusLogicMessage
-@ComponentScan(basePackages = {
-        "cn.herodotus.engine.rest.servlet.message.controller",
+@EntityScan(basePackages = {
+        "cn.herodotus.dante.logic.message.entity"
 })
-public class RestServletMessageConfiguration {
+@EnableJpaRepositories(basePackages = {
+        "cn.herodotus.dante.logic.message.repository",
+})
+@ComponentScan(basePackages = {
+        "cn.herodotus.dante.logic.message.service",
+        "cn.herodotus.dante.logic.message.listener",
+})
+public class LogicMessageConfiguration {
 
-    private static final Logger log = LoggerFactory.getLogger(RestServletMessageConfiguration.class);
+    private static final Logger log = LoggerFactory.getLogger(LogicMessageConfiguration.class);
 
     @PostConstruct
     public void postConstruct() {
-        log.debug("[Herodotus] |- Module [Rest Servlet Message] Configure.");
+        log.debug("[Herodotus] |- Module [Logic Message] Configure.");
+    }
+
+    @Bean
+    public EnumDictionaryBuilderCustomizer messageEnumDictionaryBuilderCustomizer() {
+        MessageEnumDictionaryBuilderCustomizer customizer = new MessageEnumDictionaryBuilderCustomizer();
+        log.debug("[Herodotus] |- Strategy [Message EnumDictionary Builder Customizer] Configure.");
+        return customizer;
     }
 }
