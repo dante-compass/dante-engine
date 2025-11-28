@@ -25,9 +25,9 @@
 
 package cn.herodotus.dante.data.jpa.service;
 
-import cn.herodotus.engine.core.definition.domain.BaseEntity;
-import cn.herodotus.dante.data.jpa.repository.BaseJpaRepository;
 import cn.herodotus.dante.data.commons.service.BasePageService;
+import cn.herodotus.dante.data.jpa.repository.BaseJpaRepository;
+import cn.herodotus.engine.core.definition.domain.BaseEntity;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
