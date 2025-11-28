@@ -34,8 +34,8 @@
         <version>4.0.0.0-M1</version>
     </parent>
 
-    <artifactId>engine-assistant</artifactId>
-    <name>engine-assistant</name>
+    <artifactId>dante-assistant</artifactId>
+    <name>dante-assistant</name>
 
     <packaging>pom</packaging>
 
