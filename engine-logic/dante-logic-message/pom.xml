@@ -35,7 +35,7 @@
     </parent>
 
     <artifactId>dante-logic-message</artifactId>
-    <name>logic-module-message</name>
+    <name>dante-logic-message</name>
 
     <description>Dante Cloud 云原生微服务基座组件库系统消息业务逻辑模块</description>
 

@@ -119,10 +119,10 @@
 ```
 dante-engine
 ├── dependencies -- 工程 Maven 顶级依赖，统一控制版本和依赖
-├── engine-assistant -- 辅助功能模块
-├    ├── assistant-module-access -- 第三方登录接入辅助功能模块
-├    ├── assistant-module-captcha -- 验证码辅助功能模块
-├    └── assistant-module-oss -- AWS SDK V2 对象存储辅助功能模块
+├── dante-assistant -- 辅助功能模块
+├    ├── dante-assistant-access -- 第三方登录接入辅助功能模块
+├    ├── dante-assistant-captcha -- 验证码辅助功能模块
+├    └── dante-assistant-oss -- AWS SDK V2 对象存储辅助功能模块
 ├── engine-cache -- 缓存功能模块
 ├    ├── cache-core -- 缓存通用代码模块
 ├    ├── cache-module-caffeine -- Caffeine 缓存功能封装模块
@@ -140,10 +140,10 @@ dante-engine
 ├    ├── data-core-mongodb -- 以 MongoDB 作为数据访问层的通用代码模块
 ├    ├── data-module-hibernate -- Hibernate 扩展模块
 ├    └── data-module-tenant -- 基于 JPA 的多租户扩展配置模块
-├── engine-logic -- 系统内置功能业务逻辑模块
-├    ├── logic-module-identity -- 身份认证功能业务逻辑模块
-├    ├── logic-module-message -- 系统消息业务逻辑模块
-├    └── logic-module-upms -- UPMS 业务逻辑模块
+├── dante-logic -- 系统内置功能业务逻辑模块
+├    ├── dante-logic-identity -- 身份认证功能业务逻辑模块
+├    ├── dante-logic-message -- 系统消息业务逻辑模块
+├    └── dante-logic-upms -- UPMS 业务逻辑模块
 ├── engine-message -- 消息模块
 ├    ├── message-autoconfigure -- 消息自动配置模块
 ├    ├── message-core -- 消息通用代码模块

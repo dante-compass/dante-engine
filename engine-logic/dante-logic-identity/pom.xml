@@ -35,7 +35,7 @@
     </parent>
 
     <artifactId>dante-logic-identity</artifactId>
-    <name>logic-module-identity</name>
+    <name>dante-logic-identity</name>
 
     <description>Dante Cloud 云原生微服务基座组件库身份认证功能业务逻辑模块</description>
 
