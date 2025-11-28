@@ -27,7 +27,7 @@ package cn.herodotus.engine.servlet.message.autoconfigure;
 
 import cn.herodotus.dante.core.function.ErrorCodeMapperBuilderCustomizer;
 import cn.herodotus.engine.message.websocket.servlet.annotation.EnableHerodotusServletWebSocket;
-import cn.herodotus.engine.rest.servlet.message.annotation.EnableHerodotusRestServletMessage;
+import cn.herodotus.dante.rest.servlet.message.annotation.EnableHerodotusRestServletMessage;
 import cn.herodotus.engine.servlet.message.autoconfigure.customizer.MessageErrorCodeMapperBuilderCustomizer;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;

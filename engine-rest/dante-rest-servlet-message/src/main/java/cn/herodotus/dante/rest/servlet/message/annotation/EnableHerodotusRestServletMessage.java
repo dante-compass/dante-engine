@@ -23,9 +23,9 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.engine.rest.servlet.message.annotation;
+package cn.herodotus.dante.rest.servlet.message.annotation;
 
-import cn.herodotus.engine.rest.servlet.message.config.RestServletMessageConfiguration;
+import cn.herodotus.dante.rest.servlet.message.config.RestServletMessageConfiguration;
 import org.springframework.context.annotation.Import;
 
 import java.lang.annotation.*;

@@ -43,7 +43,7 @@
     <description>Dante Cloud 云原生微服务基座组件库系统内置功能 REST 接口模块分组</description>
 
     <modules>
-        <module>rest-module-servlet-message</module>
+        <module>dante-rest-servlet-message</module>
         <module>dante-rest-servlet-identity</module>
         <module>rest-module-servlet-upms</module>
         <module>dante-rest-oss</module>

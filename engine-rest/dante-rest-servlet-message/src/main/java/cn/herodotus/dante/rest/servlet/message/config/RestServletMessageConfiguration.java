@@ -23,7 +23,7 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.engine.rest.servlet.message.config;
+package cn.herodotus.dante.rest.servlet.message.config;
 
 import cn.herodotus.dante.logic.message.annotation.EnableHerodotusLogicMessage;
 import jakarta.annotation.PostConstruct;
@@ -41,7 +41,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration(proxyBeanMethods = false)
 @EnableHerodotusLogicMessage
 @ComponentScan(basePackages = {
-        "cn.herodotus.engine.rest.servlet.message.controller",
+        "cn.herodotus.dante.rest.servlet.message.controller",
 })
 public class RestServletMessageConfiguration {
 

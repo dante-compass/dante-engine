@@ -424,7 +424,7 @@
             </dependency>
             <dependency>
                 <groupId>cn.herodotus.dante</groupId>
-                <artifactId>rest-module-servlet-message</artifactId>
+                <artifactId>dante-rest-servlet-message</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
