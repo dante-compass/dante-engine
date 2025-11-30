@@ -25,11 +25,11 @@
 
 package cn.herodotus.engine.oauth2.authentication.configurer;
 
+import cn.herodotus.dante.core.support.crypto.DigitalEnvelopeProcessor;
 import cn.herodotus.dante.spring.support.captcha.CaptchaRendererFactory;
 import cn.herodotus.engine.oauth2.authentication.provider.OAuth2FormLoginAuthenticationProvider;
 import cn.herodotus.engine.oauth2.authentication.response.OAuth2FormLoginAuthenticationFailureHandler;
 import cn.herodotus.engine.oauth2.core.properties.OAuth2AuthenticationProperties;
-import cn.herodotus.engine.web.servlet.crypto.HttpCryptoProcessor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.HttpSecurityBuilder;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -51,13 +51,13 @@ public class OAuth2FormLoginSecureConfigurer<H extends HttpSecurityBuilder<H>> e
     private final UserDetailsService userDetailsService;
     private final OAuth2AuthenticationProperties authenticationProperties;
     private final CaptchaRendererFactory captchaRendererFactory;
-    private final HttpCryptoProcessor httpCryptoProcessor;
+    private final DigitalEnvelopeProcessor digitalEnvelopeProcessor;
 
-    public OAuth2FormLoginSecureConfigurer(UserDetailsService userDetailsService, OAuth2AuthenticationProperties authenticationProperties, CaptchaRendererFactory captchaRendererFactory, HttpCryptoProcessor httpCryptoProcessor) {
+    public OAuth2FormLoginSecureConfigurer(UserDetailsService userDetailsService, OAuth2AuthenticationProperties authenticationProperties, CaptchaRendererFactory captchaRendererFactory, DigitalEnvelopeProcessor digitalEnvelopeProcessor) {
         this.userDetailsService = userDetailsService;
         this.authenticationProperties = authenticationProperties;
         this.captchaRendererFactory = captchaRendererFactory;
-        this.httpCryptoProcessor = httpCryptoProcessor;
+        this.digitalEnvelopeProcessor = digitalEnvelopeProcessor;
     }
 
     @Override
@@ -66,7 +66,7 @@ public class OAuth2FormLoginSecureConfigurer<H extends HttpSecurityBuilder<H>> e
         AuthenticationManager authenticationManager = httpSecurity.getSharedObject(AuthenticationManager.class);
         SecurityContextRepository securityContextRepository = httpSecurity.getSharedObject(SecurityContextRepository.class);
 
-        OAuth2FormLoginAuthenticationFilter filter = getOAuth2FormLoginAuthenticationFilter(authenticationManager, this.httpCryptoProcessor, securityContextRepository);
+        OAuth2FormLoginAuthenticationFilter filter = getOAuth2FormLoginAuthenticationFilter(authenticationManager, this.digitalEnvelopeProcessor, securityContextRepository);
 
         OAuth2FormLoginAuthenticationProvider provider = new OAuth2FormLoginAuthenticationProvider(captchaRendererFactory, userDetailsService);
         provider.setHideUserNotFoundExceptions(false);
@@ -76,11 +76,11 @@ public class OAuth2FormLoginSecureConfigurer<H extends HttpSecurityBuilder<H>> e
                 .addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class);
     }
 
-    private OAuth2FormLoginAuthenticationFilter getOAuth2FormLoginAuthenticationFilter(AuthenticationManager authenticationManager, HttpCryptoProcessor httpCryptoProcessor, SecurityContextRepository securityContextRepository) {
-        OAuth2FormLoginAuthenticationFilter filter = new OAuth2FormLoginAuthenticationFilter(authenticationManager, httpCryptoProcessor);
+    private OAuth2FormLoginAuthenticationFilter getOAuth2FormLoginAuthenticationFilter(AuthenticationManager authenticationManager, DigitalEnvelopeProcessor digitalEnvelopeProcessor, SecurityContextRepository securityContextRepository) {
+        OAuth2FormLoginAuthenticationFilter filter = new OAuth2FormLoginAuthenticationFilter(authenticationManager, digitalEnvelopeProcessor);
         filter.setUsernameParameter(getFormLogin().getUsernameParameter());
         filter.setPasswordParameter(getFormLogin().getPasswordParameter());
-        filter.setAuthenticationDetailsSource(new OAuth2FormLoginWebAuthenticationDetailSource(authenticationProperties, httpCryptoProcessor));
+        filter.setAuthenticationDetailsSource(new OAuth2FormLoginWebAuthenticationDetailSource(authenticationProperties, digitalEnvelopeProcessor));
         filter.setAuthenticationFailureHandler(new OAuth2FormLoginAuthenticationFailureHandler(getFormLogin().getFailureUrl()));
         filter.setSecurityContextRepository(securityContextRepository);
         return filter;

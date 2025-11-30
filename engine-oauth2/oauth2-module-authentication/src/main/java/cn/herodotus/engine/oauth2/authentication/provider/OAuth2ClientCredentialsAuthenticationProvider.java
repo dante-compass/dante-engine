@@ -29,9 +29,8 @@ import cn.herodotus.engine.core.identity.domain.HerodotusGrantedAuthority;
 import cn.herodotus.engine.core.identity.service.ClientDetailsService;
 import cn.herodotus.engine.oauth2.authentication.utils.OAuth2AuthenticationProviderUtils;
 import cn.hutool.v7.core.reflect.FieldUtil;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.jetbrains.annotations.NotNull;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.oauth2.core.*;
@@ -63,7 +62,7 @@ import java.util.Set;
 public class OAuth2ClientCredentialsAuthenticationProvider extends AbstractAuthenticationProvider {
 
     private static final String ERROR_URI = "https://datatracker.ietf.org/doc/html/rfc6749#section-5.2";
-    private final Log logger = LogFactory.getLog(getClass());
+    private static final Logger log = LoggerFactory.getLogger(OAuth2ClientCredentialsAuthenticationProvider.class);
     private final OAuth2AuthorizationService authorizationService;
     private final OAuth2TokenGenerator<? extends OAuth2Token> tokenGenerator;
     private final ClientDetailsService clientDetailsService;
@@ -84,7 +83,6 @@ public class OAuth2ClientCredentialsAuthenticationProvider extends AbstractAuthe
         this.clientDetailsService = clientDetailsService;
     }
 
-    @NotNull
     private static Set<String> getScopes(OAuth2ClientCredentialsAuthenticationToken clientCredentialsAuthentication, RegisteredClient registeredClient) {
         Set<String> authorizedScopes = Collections.emptySet();
         if (!CollectionUtils.isEmpty(clientCredentialsAuthentication.getScopes())) {
@@ -107,8 +105,8 @@ public class OAuth2ClientCredentialsAuthenticationProvider extends AbstractAuthe
                 .getAuthenticatedClientElseThrowInvalidClient(clientCredentialsAuthentication);
         RegisteredClient registeredClient = clientPrincipal.getRegisteredClient();
 
-        if (this.logger.isTraceEnabled()) {
-            this.logger.trace("Retrieved registered client");
+        if (log.isTraceEnabled()) {
+            log.trace("Retrieved registered client");
         }
 
         if (!registeredClient.getAuthorizationGrantTypes().contains(AuthorizationGrantType.CLIENT_CREDENTIALS)) {
@@ -118,15 +116,15 @@ public class OAuth2ClientCredentialsAuthenticationProvider extends AbstractAuthe
         // Default to configured scopes
         Set<String> authorizedScopes = getScopes(clientCredentialsAuthentication, registeredClient);
 
-        if (this.logger.isTraceEnabled()) {
-            this.logger.trace("Validated token request parameters");
+        if (log.isTraceEnabled()) {
+            log.trace("Validated token request parameters");
         }
 
         Set<HerodotusGrantedAuthority> authorities = clientDetailsService.findAuthoritiesById(registeredClient.getClientId());
         if (org.apache.commons.collections4.CollectionUtils.isNotEmpty(authorities)) {
             FieldUtil.setFieldValue(clientPrincipal, "authorities", authorities);
-            if (this.logger.isDebugEnabled()) {
-                this.logger.debug("[Herodotus] |- Assign authorities to OAuth2ClientAuthenticationToken.");
+            if (log.isDebugEnabled()) {
+                log.debug("[Herodotus] |- Assign authorities to OAuth2ClientAuthenticationToken.");
             }
         }
 
@@ -153,10 +151,10 @@ public class OAuth2ClientCredentialsAuthenticationProvider extends AbstractAuthe
 
         this.authorizationService.save(authorization);
 
-        if (this.logger.isTraceEnabled()) {
-            this.logger.trace("Saved authorization");
+        if (log.isTraceEnabled()) {
+            log.trace("Saved authorization");
             // This log is kept separate for consistency with other providers
-            this.logger.trace("Authenticated token request");
+            log.trace("Authenticated token request");
         }
 
         return new OAuth2AccessTokenAuthenticationToken(registeredClient, clientPrincipal, accessToken);

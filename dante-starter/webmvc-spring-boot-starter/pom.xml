@@ -42,11 +42,6 @@
     <dependencies>
         <dependency>
             <groupId>cn.herodotus.dante</groupId>
-            <artifactId>web-module-servlet</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>cn.herodotus.dante</groupId>
             <artifactId>web-spring-boot-starter</artifactId>
         </dependency>
 

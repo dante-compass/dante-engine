@@ -107,15 +107,14 @@
         <module>dependencies</module>
         <module>dante-assistant</module>
         <module>dante-cache</module>
-        <module>engine-core</module>
+        <module>dante-data</module>
+        <module>dante-framework</module>
         <module>dante-logic</module>
         <module>dante-rest</module>
+        <module>dante-starter</module>
+        <module>engine-core</module>
         <module>engine-message</module>
         <module>engine-oauth2</module>
-        <module>engine-web</module>
-        <module>dante-framework</module>
-        <module>dante-starter</module>
-        <module>dante-data</module>
     </modules>
 
 </project>

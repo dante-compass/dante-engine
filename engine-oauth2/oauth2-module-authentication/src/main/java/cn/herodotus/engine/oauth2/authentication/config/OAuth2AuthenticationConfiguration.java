@@ -25,13 +25,13 @@
 
 package cn.herodotus.engine.oauth2.authentication.config;
 
+import cn.herodotus.dante.core.support.crypto.DigitalEnvelopeProcessor;
+import cn.herodotus.dante.web.servlet.template.ThymeleafTemplateHandler;
 import cn.herodotus.engine.oauth2.authentication.configurer.OAuth2AuthenticationConfigurerManager;
 import cn.herodotus.engine.oauth2.authentication.customizer.HerodotusJwtTokenCustomizer;
 import cn.herodotus.engine.oauth2.authentication.customizer.HerodotusOpaqueTokenCustomizer;
 import cn.herodotus.engine.oauth2.authentication.response.DefaultOAuth2AuthenticationEventPublisher;
 import cn.herodotus.engine.oauth2.core.properties.OAuth2AuthenticationProperties;
-import cn.herodotus.dante.web.servlet.template.ThymeleafTemplateHandler;
-import cn.herodotus.engine.web.servlet.crypto.HttpCryptoProcessor;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -88,12 +88,12 @@ public class OAuth2AuthenticationConfiguration {
     @ConditionalOnMissingBean
     public OAuth2AuthenticationConfigurerManager oauth2AuthenticationConfigurerManager(
             ThymeleafTemplateHandler thymeleafTemplateHandler,
-            HttpCryptoProcessor httpCryptoProcessor,
+            DigitalEnvelopeProcessor digitalEnvelopeProcessor,
             OAuth2AuthenticationProperties authenticationProperties) {
 
         OAuth2AuthenticationConfigurerManager configurer = new OAuth2AuthenticationConfigurerManager(
                 thymeleafTemplateHandler,
-                httpCryptoProcessor,
+                digitalEnvelopeProcessor,
                 authenticationProperties);
         log.trace("[Herodotus] |- Bean [Servlet OAuth2 Authorization Server Configurer] Configure.");
         return configurer;

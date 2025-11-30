@@ -25,13 +25,13 @@
 
 package cn.herodotus.engine.oauth2.authentication.configurer;
 
+import cn.herodotus.dante.core.support.crypto.DigitalEnvelopeProcessor;
+import cn.herodotus.dante.web.servlet.template.ThymeleafTemplateHandler;
 import cn.herodotus.engine.oauth2.authentication.customizer.OAuth2ExceptionHandlingConfigurerCustomizer;
 import cn.herodotus.engine.oauth2.authentication.customizer.OAuth2FormLoginConfigurerCustomizer;
 import cn.herodotus.engine.oauth2.authentication.response.OAuth2AccessTokenResponseHandler;
 import cn.herodotus.engine.oauth2.authentication.response.OAuth2AuthenticationFailureHandler;
 import cn.herodotus.engine.oauth2.core.properties.OAuth2AuthenticationProperties;
-import cn.herodotus.dante.web.servlet.template.ThymeleafTemplateHandler;
-import cn.herodotus.engine.web.servlet.crypto.HttpCryptoProcessor;
 
 /**
  * <p>Description: 授权服务器通用 Bean 配置器 </p>
@@ -43,7 +43,7 @@ import cn.herodotus.engine.web.servlet.crypto.HttpCryptoProcessor;
  */
 public class OAuth2AuthenticationConfigurerManager {
 
-    private final HttpCryptoProcessor httpCryptoProcessor;
+    private final DigitalEnvelopeProcessor digitalEnvelopeProcessor;
 
     private final OAuth2AuthenticationProperties oauth2AuthenticationProperties;
     private final OAuth2FormLoginConfigurerCustomizer oauth2FormLoginConfigurerCustomizer;
@@ -53,18 +53,18 @@ public class OAuth2AuthenticationConfigurerManager {
 
     public OAuth2AuthenticationConfigurerManager(
             ThymeleafTemplateHandler thymeleafTemplateHandler,
-            HttpCryptoProcessor httpCryptoProcessor,
+            DigitalEnvelopeProcessor digitalEnvelopeProcessor,
             OAuth2AuthenticationProperties oauth2AuthenticationProperties) {
-        this.httpCryptoProcessor = httpCryptoProcessor;
+        this.digitalEnvelopeProcessor = digitalEnvelopeProcessor;
         this.oauth2AuthenticationProperties = oauth2AuthenticationProperties;
         this.oauth2FormLoginConfigurerCustomizer = new OAuth2FormLoginConfigurerCustomizer(oauth2AuthenticationProperties);
         this.oauth2ExceptionHandlingConfigurerCustomizer = new OAuth2ExceptionHandlingConfigurerCustomizer(oauth2AuthenticationProperties);
-        this.oauth2AccessTokenResponseHandler = new OAuth2AccessTokenResponseHandler(httpCryptoProcessor);
+        this.oauth2AccessTokenResponseHandler = new OAuth2AccessTokenResponseHandler(digitalEnvelopeProcessor);
         this.oauth2AuthenticationFailureHandler = new OAuth2AuthenticationFailureHandler(thymeleafTemplateHandler);
     }
 
-    public HttpCryptoProcessor getHttpCryptoProcessor() {
-        return httpCryptoProcessor;
+    public DigitalEnvelopeProcessor getDigitalEnvelopeProcessor() {
+        return digitalEnvelopeProcessor;
     }
 
     public OAuth2AuthenticationProperties getOAuth2AuthenticationProperties() {

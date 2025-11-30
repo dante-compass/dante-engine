@@ -25,8 +25,8 @@
 
 package cn.herodotus.engine.oauth2.authentication.response;
 
-import cn.herodotus.dante.security.exception.SecurityGlobalExceptionHandler;
 import cn.herodotus.dante.core.domain.Result;
+import cn.herodotus.dante.security.exception.SecurityGlobalExceptionHandler;
 import cn.herodotus.dante.web.servlet.utils.SessionUtils;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -74,10 +74,10 @@ public class OAuth2FormLoginAuthenticationFailureHandler extends SimpleUrlAuthen
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException e) throws IOException, ServletException {
 
         if (this.defaultFailureUrl == null) {
-            if (this.logger.isTraceEnabled()) {
-                this.logger.trace("Sending 401 Unauthorized error since no failure URL is set");
+            if (log.isTraceEnabled()) {
+                log.trace("Sending 401 Unauthorized error since no failure URL is set");
             } else {
-                this.logger.debug("Sending 401 Unauthorized error");
+                log.debug("Sending 401 Unauthorized error");
             }
             response.sendError(HttpStatus.UNAUTHORIZED.value(), HttpStatus.UNAUTHORIZED.getReasonPhrase());
             return;

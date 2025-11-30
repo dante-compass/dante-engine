@@ -26,9 +26,8 @@ package cn.herodotus.engine.oauth2.authentication.provider;
 
 import cn.herodotus.engine.oauth2.authentication.utils.DPoPProofVerifier;
 import cn.herodotus.engine.oauth2.authentication.utils.OAuth2AuthenticationProviderUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.springframework.core.log.LogMessage;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
@@ -71,7 +70,7 @@ import java.util.Map;
  */
 public final class OAuth2AuthorizationCodeAuthenticationProvider extends AbstractAuthenticationProvider {
 
-    private final Log logger = LogFactory.getLog(getClass());
+    private static final Logger log = LoggerFactory.getLogger(OAuth2AuthorizationCodeAuthenticationProvider.class);
 
     private static final String ERROR_URI = "https://datatracker.ietf.org/doc/html/rfc6749#section-5.2";
     private static final OAuth2TokenType AUTHORIZATION_CODE_TOKEN_TYPE = new OAuth2TokenType(OAuth2ParameterNames.CODE);
@@ -102,8 +101,8 @@ public final class OAuth2AuthorizationCodeAuthenticationProvider extends Abstrac
                 OAuth2AuthenticationProviderUtils.getAuthenticatedClientElseThrowInvalidClient(authorizationCodeAuthentication);
         RegisteredClient registeredClient = clientPrincipal.getRegisteredClient();
 
-        if (this.logger.isTraceEnabled()) {
-            this.logger.trace("Retrieved registered client");
+        if (log.isTraceEnabled()) {
+            log.trace("Retrieved registered client");
         }
 
         OAuth2Authorization authorization = this.authorizationService.findByToken(
@@ -112,8 +111,8 @@ public final class OAuth2AuthorizationCodeAuthenticationProvider extends Abstrac
             throw new OAuth2AuthenticationException(OAuth2ErrorCodes.INVALID_GRANT);
         }
 
-        if (this.logger.isTraceEnabled()) {
-            this.logger.trace("Retrieved authorization with authorization code");
+        if (log.isTraceEnabled()) {
+            log.trace("Retrieved authorization with authorization code");
         }
 
         OAuth2Authorization.Token<OAuth2AuthorizationCode> authorizationCode =
@@ -130,8 +129,8 @@ public final class OAuth2AuthorizationCodeAuthenticationProvider extends Abstrac
                         .invalidate(authorizationCode.getToken())
                         .build();
                 this.authorizationService.save(authorization);
-                if (this.logger.isWarnEnabled()) {
-                    this.logger.warn(LogMessage.format("Invalidated authorization code used by registered client '%s'", registeredClient.getId()));
+                if (log.isWarnEnabled()) {
+                    log.warn("Invalidated authorization code used by registered client {}", registeredClient.getId());
                 }
             }
             throw new OAuth2AuthenticationException(OAuth2ErrorCodes.INVALID_GRANT);
@@ -152,8 +151,8 @@ public final class OAuth2AuthorizationCodeAuthenticationProvider extends Abstrac
                     // attempting to use the authorization code more than once
                     authorization = OAuth2Authorization.from(authorization).invalidate(token.getToken()).build();
                     this.authorizationService.save(authorization);
-                    if (this.logger.isWarnEnabled()) {
-                        this.logger.warn(LogMessage.format("Invalidated authorization token(s) previously issued to registered client '%s'", registeredClient.getId()));
+                    if (log.isWarnEnabled()) {
+                        log.warn("Invalidated authorization token(s) previously issued to registered client {}", registeredClient.getId());
                     }
                 }
             }
@@ -163,8 +162,8 @@ public final class OAuth2AuthorizationCodeAuthenticationProvider extends Abstrac
         // Verify the DPoP Proof (if available)
         Jwt dPoPProof = DPoPProofVerifier.verifyIfAvailable(authorizationCodeAuthentication);
 
-        if (this.logger.isTraceEnabled()) {
-            this.logger.trace("Validated token request parameters");
+        if (log.isTraceEnabled()) {
+            log.trace("Validated token request parameters");
         }
 
         Authentication principal = authorization.getAttribute(Principal.class.getName());
@@ -202,14 +201,14 @@ public final class OAuth2AuthorizationCodeAuthenticationProvider extends Abstrac
 
         this.authorizationService.save(authorization);
 
-        if (this.logger.isTraceEnabled()) {
-            this.logger.trace("Saved authorization");
+        if (log.isTraceEnabled()) {
+            log.trace("Saved authorization");
         }
 
         Map<String, Object> additionalParameters = idTokenAdditionalParameters(idToken);
 
-        if (this.logger.isTraceEnabled()) {
-            this.logger.trace("Authenticated token request");
+        if (log.isTraceEnabled()) {
+            log.trace("Authenticated token request");
         }
 
         OAuth2AccessTokenAuthenticationToken accessTokenAuthenticationToken = new OAuth2AccessTokenAuthenticationToken(

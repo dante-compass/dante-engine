@@ -30,7 +30,7 @@ import cn.herodotus.dante.data.jpa.service.BaseJpaWriteableService;
 import cn.herodotus.dante.logic.message.entity.Notification;
 import cn.herodotus.dante.logic.message.enums.NotificationCategory;
 import cn.herodotus.dante.logic.message.service.NotificationService;
-import cn.herodotus.engine.web.api.servlet.AbstractJpaWriteableController;
+import cn.herodotus.dante.data.rest.servlet.AbstractJpaWriteableController;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;

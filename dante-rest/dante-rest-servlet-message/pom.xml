@@ -47,7 +47,7 @@
 
         <dependency>
             <groupId>cn.herodotus.dante</groupId>
-            <artifactId>web-module-api</artifactId>
+            <artifactId>dante-data-rest</artifactId>
         </dependency>
     </dependencies>
 

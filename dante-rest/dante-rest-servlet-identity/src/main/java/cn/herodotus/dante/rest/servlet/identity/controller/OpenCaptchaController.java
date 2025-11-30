@@ -29,7 +29,7 @@ import cn.herodotus.dante.core.domain.Result;
 import cn.herodotus.dante.core.domain.captcha.Captcha;
 import cn.herodotus.dante.core.domain.captcha.Verification;
 import cn.herodotus.dante.spring.support.captcha.CaptchaRendererFactory;
-import cn.herodotus.engine.web.api.servlet.PaginationController;
+import cn.herodotus.dante.data.rest.servlet.PaginationController;
 import cn.herodotus.dante.web.annotation.AccessLimited;
 import cn.herodotus.dante.web.annotation.Crypto;
 import cn.herodotus.dante.web.annotation.Idempotent;

@@ -26,10 +26,10 @@
 package cn.herodotus.engine.oauth2.authentication.provider;
 
 import cn.herodotus.dante.core.constant.SystemConstants;
+import cn.herodotus.dante.core.support.crypto.DigitalEnvelopeProcessor;
 import cn.herodotus.engine.core.identity.enums.AccountCategory;
 import cn.herodotus.engine.oauth2.authentication.customizer.HerodotusGrantType;
 import cn.herodotus.engine.oauth2.authentication.utils.OAuth2EndpointUtils;
-import cn.herodotus.engine.web.servlet.crypto.HttpCryptoProcessor;
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.security.core.Authentication;
@@ -47,8 +47,8 @@ import java.util.Map;
  */
 public class OAuth2SocialCredentialsAuthenticationConverter extends AbstractAuthenticationConverter {
 
-    public OAuth2SocialCredentialsAuthenticationConverter(HttpCryptoProcessor httpCryptoProcessor) {
-        super(httpCryptoProcessor);
+    public OAuth2SocialCredentialsAuthenticationConverter(DigitalEnvelopeProcessor digitalEnvelopeProcessor) {
+        super(digitalEnvelopeProcessor);
     }
 
     @Override

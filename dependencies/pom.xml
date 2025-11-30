@@ -511,22 +511,6 @@
                 <version>${project.version}</version>
             </dependency>
 
-            <dependency>
-                <groupId>cn.herodotus.dante</groupId>
-                <artifactId>web-module-api</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.herodotus.dante</groupId>
-                <artifactId>web-module-service</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.herodotus.dante</groupId>
-                <artifactId>web-module-servlet</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-
             <!--第三方依赖组件-->
             <dependency>
                 <groupId>com.alipay.sdk</groupId>

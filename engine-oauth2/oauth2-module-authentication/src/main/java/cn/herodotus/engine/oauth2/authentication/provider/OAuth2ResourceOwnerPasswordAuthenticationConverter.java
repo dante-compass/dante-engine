@@ -26,9 +26,9 @@
 package cn.herodotus.engine.oauth2.authentication.provider;
 
 import cn.herodotus.dante.core.constant.SystemConstants;
+import cn.herodotus.dante.core.support.crypto.DigitalEnvelopeProcessor;
 import cn.herodotus.engine.oauth2.authentication.customizer.HerodotusGrantType;
 import cn.herodotus.engine.oauth2.authentication.utils.OAuth2EndpointUtils;
-import cn.herodotus.engine.web.servlet.crypto.HttpCryptoProcessor;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.lang.Nullable;
 import org.springframework.security.core.Authentication;
@@ -48,8 +48,8 @@ import java.util.Map;
  */
 public final class OAuth2ResourceOwnerPasswordAuthenticationConverter extends AbstractAuthenticationConverter {
 
-    public OAuth2ResourceOwnerPasswordAuthenticationConverter(HttpCryptoProcessor httpCryptoProcessor) {
-        super(httpCryptoProcessor);
+    public OAuth2ResourceOwnerPasswordAuthenticationConverter(DigitalEnvelopeProcessor digitalEnvelopeProcessor) {
+        super(digitalEnvelopeProcessor);
     }
 
     @Nullable

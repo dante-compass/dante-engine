@@ -33,7 +33,7 @@ import cn.herodotus.dante.logic.upms.service.security.SysElementService;
 import cn.herodotus.dante.rest.servlet.upms.converter.SysElementToTreeNodeConverter;
 import cn.herodotus.dante.rest.servlet.upms.converter.SysElementsToElementsConverter;
 import cn.herodotus.dante.rest.servlet.upms.dto.Elements;
-import cn.herodotus.engine.web.api.servlet.AbstractJpaWriteableController;
+import cn.herodotus.dante.data.rest.servlet.AbstractJpaWriteableController;
 import cn.herodotus.dante.web.annotation.AccessLimited;
 import cn.hutool.v7.core.tree.MapTree;
 import io.swagger.v3.oas.annotations.Operation;

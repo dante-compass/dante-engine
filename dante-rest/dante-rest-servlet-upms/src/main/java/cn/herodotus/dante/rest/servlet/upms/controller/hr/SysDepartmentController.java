@@ -30,7 +30,7 @@ import cn.herodotus.dante.data.jpa.service.BaseJpaWriteableService;
 import cn.herodotus.dante.logic.upms.converter.SysDepartmentToTreeNodeConverter;
 import cn.herodotus.dante.logic.upms.entity.hr.SysDepartment;
 import cn.herodotus.dante.logic.upms.service.hr.SysDepartmentService;
-import cn.herodotus.engine.web.api.servlet.AbstractJpaWriteableController;
+import cn.herodotus.dante.data.rest.servlet.AbstractJpaWriteableController;
 import cn.hutool.v7.core.tree.MapTree;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;

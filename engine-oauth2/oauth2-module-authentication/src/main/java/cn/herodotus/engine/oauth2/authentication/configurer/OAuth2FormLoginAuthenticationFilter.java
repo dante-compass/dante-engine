@@ -25,9 +25,9 @@
 
 package cn.herodotus.engine.oauth2.authentication.configurer;
 
-import cn.herodotus.engine.oauth2.authentication.provider.OAuth2FormLoginAuthenticationToken;
+import cn.herodotus.dante.core.support.crypto.DigitalEnvelopeProcessor;
 import cn.herodotus.dante.web.servlet.utils.SessionUtils;
-import cn.herodotus.engine.web.servlet.crypto.HttpCryptoProcessor;
+import cn.herodotus.engine.oauth2.authentication.provider.OAuth2FormLoginAuthenticationToken;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -53,12 +53,12 @@ public class OAuth2FormLoginAuthenticationFilter extends UsernamePasswordAuthent
 
     private static final Logger log = LoggerFactory.getLogger(OAuth2FormLoginAuthenticationFilter.class);
 
-    private final HttpCryptoProcessor httpCryptoProcessor;
+    private final DigitalEnvelopeProcessor digitalEnvelopeProcessor;
     private boolean postOnly = true;
 
-    public OAuth2FormLoginAuthenticationFilter(AuthenticationManager authenticationManager, HttpCryptoProcessor httpCryptoProcessor) {
+    public OAuth2FormLoginAuthenticationFilter(AuthenticationManager authenticationManager, DigitalEnvelopeProcessor digitalEnvelopeProcessor) {
         super(authenticationManager);
-        this.httpCryptoProcessor = httpCryptoProcessor;
+        this.digitalEnvelopeProcessor = digitalEnvelopeProcessor;
     }
 
     @Override
@@ -90,8 +90,8 @@ public class OAuth2FormLoginAuthenticationFilter extends UsernamePasswordAuthent
         }
 
         if (StringUtils.isNotBlank(username) && StringUtils.isNotBlank(password)) {
-            username = httpCryptoProcessor.decrypt(sessionId, username);
-            password = httpCryptoProcessor.decrypt(sessionId, password);
+            username = digitalEnvelopeProcessor.decrypt(sessionId, username);
+            password = digitalEnvelopeProcessor.decrypt(sessionId, password);
             log.debug("[Herodotus] |- Decrypt Username is : [{}], Password is : [{}]", username, password);
         }
 

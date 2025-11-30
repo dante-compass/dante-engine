@@ -53,12 +53,12 @@
 
         <dependency>
             <groupId>cn.herodotus.dante</groupId>
-            <artifactId>web-module-api</artifactId>
+            <artifactId>dante-data-rest</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>cn.herodotus.dante</groupId>
-            <artifactId>web-module-servlet</artifactId>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
         </dependency>
 
         <dependency>

@@ -90,8 +90,8 @@ public class OAuth2AuthorizationServerConfigurerCustomizer implements Customizer
                                     new OAuth2RefreshTokenAuthenticationConverter(),
                                     new OAuth2ClientCredentialsAuthenticationConverter(),
                                     new OAuth2DeviceCodeAuthenticationConverter(),
-                                    new OAuth2ResourceOwnerPasswordAuthenticationConverter(authenticationConfigurerManager.getHttpCryptoProcessor()),
-                                    new OAuth2SocialCredentialsAuthenticationConverter(authenticationConfigurerManager.getHttpCryptoProcessor())
+                                    new OAuth2ResourceOwnerPasswordAuthenticationConverter(authenticationConfigurerManager.getDigitalEnvelopeProcessor()),
+                                    new OAuth2SocialCredentialsAuthenticationConverter(authenticationConfigurerManager.getDigitalEnvelopeProcessor())
                             ));
                     endpoint.accessTokenRequestConverter(authenticationConverter);
                     endpoint.errorResponseHandler(authenticationConfigurerManager.getOAuth2AuthenticationFailureHandler());

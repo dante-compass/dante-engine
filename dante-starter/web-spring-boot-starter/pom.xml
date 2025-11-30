@@ -43,11 +43,6 @@
 
         <dependency>
             <groupId>cn.herodotus.dante</groupId>
-            <artifactId>web-module-service</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>cn.herodotus.dante</groupId>
             <artifactId>dante-autoconfigure</artifactId>
         </dependency>
 

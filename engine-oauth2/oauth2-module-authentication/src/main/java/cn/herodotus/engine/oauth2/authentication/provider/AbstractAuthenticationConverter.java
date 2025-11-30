@@ -25,12 +25,12 @@
 
 package cn.herodotus.engine.oauth2.authentication.provider;
 
+import cn.herodotus.dante.core.support.crypto.DigitalEnvelopeProcessor;
 import cn.herodotus.dante.core.utils.ListUtils;
-import cn.herodotus.engine.core.identity.constant.OAuth2ErrorKeys;
-import cn.herodotus.engine.oauth2.authentication.utils.OAuth2EndpointUtils;
 import cn.herodotus.dante.web.exception.SessionInvalidException;
 import cn.herodotus.dante.web.servlet.utils.SessionUtils;
-import cn.herodotus.engine.web.servlet.crypto.HttpCryptoProcessor;
+import cn.herodotus.engine.core.identity.constant.OAuth2ErrorKeys;
+import cn.herodotus.engine.oauth2.authentication.utils.OAuth2EndpointUtils;
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -50,10 +50,10 @@ import java.util.*;
  */
 public abstract class AbstractAuthenticationConverter implements AuthenticationConverter {
 
-    private final HttpCryptoProcessor httpCryptoProcessor;
+    private final DigitalEnvelopeProcessor digitalEnvelopeProcessor;
 
-    public AbstractAuthenticationConverter(HttpCryptoProcessor httpCryptoProcessor) {
-        this.httpCryptoProcessor = httpCryptoProcessor;
+    public AbstractAuthenticationConverter(DigitalEnvelopeProcessor digitalEnvelopeProcessor) {
+        this.digitalEnvelopeProcessor = digitalEnvelopeProcessor;
     }
 
     protected String[] decrypt(HttpServletRequest request, String sessionId, List<String> parameters) {
@@ -68,7 +68,7 @@ public abstract class AbstractAuthenticationConverter implements AuthenticationC
     protected String decrypt(HttpServletRequest request, String sessionId, String parameter) {
         if (SessionUtils.isCryptoEnabled(request, sessionId) && StringUtils.isNotBlank(parameter)) {
             try {
-                return httpCryptoProcessor.decrypt(sessionId, parameter);
+                return digitalEnvelopeProcessor.decrypt(sessionId, parameter);
             } catch (SessionInvalidException e) {
                 OAuth2EndpointUtils.throwError(
                         OAuth2ErrorKeys.SESSION_EXPIRED,

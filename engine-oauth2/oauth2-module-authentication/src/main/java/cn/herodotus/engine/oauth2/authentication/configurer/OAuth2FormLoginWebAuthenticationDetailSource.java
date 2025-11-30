@@ -25,10 +25,10 @@
 
 package cn.herodotus.engine.oauth2.authentication.configurer;
 
+import cn.herodotus.dante.core.support.crypto.DigitalEnvelopeProcessor;
+import cn.herodotus.dante.web.servlet.utils.SessionUtils;
 import cn.herodotus.engine.oauth2.core.domain.FormLoginWebAuthenticationDetails;
 import cn.herodotus.engine.oauth2.core.properties.OAuth2AuthenticationProperties;
-import cn.herodotus.dante.web.servlet.utils.SessionUtils;
-import cn.herodotus.engine.web.servlet.crypto.HttpCryptoProcessor;
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.security.authentication.AuthenticationDetailsSource;
@@ -42,11 +42,11 @@ import org.springframework.security.authentication.AuthenticationDetailsSource;
 public class OAuth2FormLoginWebAuthenticationDetailSource implements AuthenticationDetailsSource<HttpServletRequest, FormLoginWebAuthenticationDetails> {
 
     private final OAuth2AuthenticationProperties authenticationProperties;
-    private final HttpCryptoProcessor httpCryptoProcessor;
+    private final DigitalEnvelopeProcessor digitalEnvelopeProcessor;
 
-    public OAuth2FormLoginWebAuthenticationDetailSource(OAuth2AuthenticationProperties authenticationProperties, HttpCryptoProcessor httpCryptoProcessor) {
+    public OAuth2FormLoginWebAuthenticationDetailSource(OAuth2AuthenticationProperties authenticationProperties, DigitalEnvelopeProcessor digitalEnvelopeProcessor) {
         this.authenticationProperties = authenticationProperties;
-        this.httpCryptoProcessor = httpCryptoProcessor;
+        this.digitalEnvelopeProcessor = digitalEnvelopeProcessor;
     }
 
     @Override
@@ -58,7 +58,7 @@ public class OAuth2FormLoginWebAuthenticationDetailSource implements Authenticat
 
         String code = null;
         if (StringUtils.isNotBlank(sessionId) && StringUtils.isNotBlank(encryptedCode)) {
-            code = httpCryptoProcessor.decrypt(sessionId, encryptedCode);
+            code = digitalEnvelopeProcessor.decrypt(sessionId, encryptedCode);
         }
 
         return new FormLoginWebAuthenticationDetails(request, authenticationProperties.getFormLogin().getCaptchaEnabled(), authenticationProperties.getFormLogin().getCaptchaParameter(), authenticationProperties.getFormLogin().getCategory(), code);

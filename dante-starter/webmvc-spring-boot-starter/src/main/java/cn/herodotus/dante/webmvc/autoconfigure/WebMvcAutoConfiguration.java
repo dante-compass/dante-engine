@@ -26,13 +26,13 @@
 package cn.herodotus.dante.webmvc.autoconfigure;
 
 import cn.herodotus.dante.core.constant.SecurityResources;
-import cn.herodotus.engine.web.service.config.WebServiceConfiguration;
-import cn.herodotus.engine.web.servlet.config.SecureConfiguration;
-import cn.herodotus.engine.web.servlet.config.TemplateConfiguration;
-import cn.herodotus.engine.web.servlet.config.TenantConfiguration;
-import cn.herodotus.engine.web.servlet.secure.AccessLimitedInterceptor;
-import cn.herodotus.engine.web.servlet.secure.IdempotentInterceptor;
-import cn.herodotus.engine.web.servlet.tenant.MultiTenantInterceptor;
+import cn.herodotus.dante.web.autoconfigure.WebAutoConfiguration;
+import cn.herodotus.dante.webmvc.autoconfigure.config.SecureConfiguration;
+import cn.herodotus.dante.webmvc.autoconfigure.config.TemplateConfiguration;
+import cn.herodotus.dante.webmvc.autoconfigure.config.TenantConfiguration;
+import cn.herodotus.dante.webmvc.autoconfigure.secure.AccessLimitedInterceptor;
+import cn.herodotus.dante.webmvc.autoconfigure.secure.IdempotentInterceptor;
+import cn.herodotus.dante.webmvc.autoconfigure.tenant.MultiTenantInterceptor;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -53,7 +53,7 @@ import org.springframework.web.servlet.resource.LiteWebJarsResourceResolver;
  */
 @AutoConfiguration
 @Import({
-        WebServiceConfiguration.class,
+        WebAutoConfiguration.class,
         SecureConfiguration.class,
         TenantConfiguration.class,
         TemplateConfiguration.class,

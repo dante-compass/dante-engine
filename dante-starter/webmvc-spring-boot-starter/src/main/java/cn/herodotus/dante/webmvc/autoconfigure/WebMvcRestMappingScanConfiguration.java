@@ -27,8 +27,8 @@ package cn.herodotus.dante.webmvc.autoconfigure;
 
 import cn.herodotus.engine.message.core.definition.strategy.RestMappingScanEventManager;
 import cn.herodotus.dante.web.condition.ConditionalOnRestScanEnabled;
-import cn.herodotus.engine.web.service.properties.ServiceProperties;
-import cn.herodotus.engine.web.servlet.initializer.RestMappingScanner;
+import cn.herodotus.dante.web.properties.ServiceProperties;
+import cn.herodotus.dante.webmvc.autoconfigure.initializer.RestMappingScanner;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

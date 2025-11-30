@@ -173,11 +173,6 @@ dante-engine
 ├    ├── servlet-container-spring-boot-starter -- Servlet 容器基础配置自动配置 Starter
 ├    ├── servlet-message-spring-boot-starter -- Servlet 环境消息模块自动配置 Starter
 ├    └── webmvc-spring-boot-starter -- WebMvc 类型应用自动配置 Starter
-├── engine-web -- Web 模块
-├    ├── web-core -- Web 通用代码模块
-├    ├── web-module-api -- Rest 接口通用代码模块
-├    ├── web-module-service -- 微服务通用代码模块
-├    └── web-module-servlet -- Servlet 环境 Web 服务专有基础代码模块
 └──  readme -- README 相关素材放置目录
 ```
 

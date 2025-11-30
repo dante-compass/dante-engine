@@ -27,9 +27,9 @@ package cn.herodotus.dante.rest.servlet.identity.controller;
 
 import cn.herodotus.dante.core.domain.SecretKey;
 import cn.herodotus.dante.core.enums.Protocol;
-import cn.herodotus.engine.oauth2.core.properties.OAuth2AuthenticationProperties;
+import cn.herodotus.dante.core.support.crypto.DigitalEnvelopeProcessor;
 import cn.herodotus.dante.web.servlet.utils.SessionUtils;
-import cn.herodotus.engine.web.servlet.crypto.HttpCryptoProcessor;
+import cn.herodotus.engine.oauth2.core.properties.OAuth2AuthenticationProperties;
 import cn.hutool.v7.core.codec.binary.Base64;
 import com.google.common.net.HttpHeaders;
 import jakarta.servlet.http.HttpServletRequest;
@@ -62,12 +62,12 @@ public class OAuth2SignInController {
 
     private final OAuth2AuthenticationProperties authenticationProperties;
     private final SessionProperties sessionProperties;
-    private final HttpCryptoProcessor httpCryptoProcessor;
+    private final DigitalEnvelopeProcessor digitalEnvelopeProcessor;
 
-    public OAuth2SignInController(OAuth2AuthenticationProperties authenticationProperties, SessionProperties sessionProperties, HttpCryptoProcessor httpCryptoProcessor) {
+    public OAuth2SignInController(OAuth2AuthenticationProperties authenticationProperties, SessionProperties sessionProperties, DigitalEnvelopeProcessor digitalEnvelopeProcessor) {
         this.authenticationProperties = authenticationProperties;
         this.sessionProperties = sessionProperties;
-        this.httpCryptoProcessor = httpCryptoProcessor;
+        this.digitalEnvelopeProcessor = digitalEnvelopeProcessor;
     }
 
 
@@ -107,7 +107,7 @@ public class OAuth2SignInController {
         String sessionId = SessionUtils.analyseSessionId(request);
         SecretKey secretKey;
         if (StringUtils.isBlank(sessionId)) {
-            secretKey = httpCryptoProcessor.createSecretKey(null, sessionProperties.getTimeout());
+            secretKey = digitalEnvelopeProcessor.createSecretKey(null, sessionProperties.getTimeout());
             sessionId = secretKey.getIdentity();
 
             ResponseCookie cookie = ResponseCookie.from("SESSION", Base64.encode(secretKey.getIdentity()))
@@ -120,7 +120,7 @@ public class OAuth2SignInController {
 
             response.setHeader(HttpHeaders.SET_COOKIE, cookie.toString());
         } else {
-            secretKey = httpCryptoProcessor.createSecretKey(sessionId, sessionProperties.getTimeout());
+            secretKey = digitalEnvelopeProcessor.createSecretKey(sessionId, sessionProperties.getTimeout());
             sessionId = secretKey.getIdentity();
         }
 

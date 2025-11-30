@@ -28,7 +28,7 @@ package cn.herodotus.dante.rest.servlet.identity.controller;
 import cn.herodotus.dante.data.jpa.service.BaseJpaWriteableService;
 import cn.herodotus.engine.oauth2.persistence.sas.jpa.entity.HerodotusAuthorization;
 import cn.herodotus.engine.oauth2.persistence.sas.jpa.service.HerodotusAuthorizationService;
-import cn.herodotus.engine.web.api.servlet.AbstractJpaWriteableController;
+import cn.herodotus.dante.data.rest.servlet.AbstractJpaWriteableController;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.tags.Tags;
 import org.springframework.beans.factory.annotation.Autowired;

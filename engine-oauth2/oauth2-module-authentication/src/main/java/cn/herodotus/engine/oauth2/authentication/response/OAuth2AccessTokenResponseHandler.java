@@ -26,11 +26,11 @@
 package cn.herodotus.engine.oauth2.authentication.response;
 
 import cn.herodotus.dante.core.constant.SystemConstants;
+import cn.herodotus.dante.core.support.crypto.DigitalEnvelopeProcessor;
 import cn.herodotus.dante.core.utils.JacksonUtils;
+import cn.herodotus.dante.web.servlet.utils.SessionUtils;
 import cn.herodotus.engine.core.identity.domain.UserPrincipal;
 import cn.herodotus.engine.core.identity.utils.SecurityUtils;
-import cn.herodotus.dante.web.servlet.utils.SessionUtils;
-import cn.herodotus.engine.web.servlet.crypto.HttpCryptoProcessor;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -69,10 +69,10 @@ public class OAuth2AccessTokenResponseHandler implements AuthenticationSuccessHa
     private final HttpMessageConverter<OAuth2AccessTokenResponse> accessTokenHttpResponseConverter =
             new OAuth2AccessTokenResponseHttpMessageConverter();
 
-    private final HttpCryptoProcessor httpCryptoProcessor;
+    private final DigitalEnvelopeProcessor digitalEnvelopeProcessor;
 
-    public OAuth2AccessTokenResponseHandler(HttpCryptoProcessor httpCryptoProcessor) {
-        this.httpCryptoProcessor = httpCryptoProcessor;
+    public OAuth2AccessTokenResponseHandler(DigitalEnvelopeProcessor digitalEnvelopeProcessor) {
+        this.digitalEnvelopeProcessor = digitalEnvelopeProcessor;
     }
 
     @Override
@@ -109,7 +109,7 @@ public class OAuth2AccessTokenResponseHandler implements AuthenticationSuccessHa
             // 如果不包含 ID_TOKEN, 那么需要利用 SessionId 将用户信息加密传递给前端，前端解密后获取用户基本信息
             if (isHerodotusUserInfoPattern(sessionId, userPrincipal)) {
                 String data = JacksonUtils.toJson(userPrincipal);
-                String encryptData = httpCryptoProcessor.encrypt(sessionId, data);
+                String encryptData = digitalEnvelopeProcessor.encrypt(sessionId, data);
                 Map<String, Object> parameters = new HashMap<>(additionalParameters);
                 parameters.put(SystemConstants.SCOPE_OPENID, encryptData);
                 builder.additionalParameters(parameters);
