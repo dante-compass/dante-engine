@@ -27,7 +27,7 @@ package cn.herodotus.engine.oauth2.authorization.processor;
 
 import cn.herodotus.dante.cache.jetcache.utils.JetCacheUtils;
 import cn.herodotus.dante.security.domain.HerodotusRequest;
-import cn.herodotus.engine.core.identity.domain.HerodotusSecurityAttribute;
+import cn.herodotus.dante.security.domain.HerodotusSecurityAttribute;
 import cn.herodotus.engine.oauth2.authorization.matcher.HerodotusPathPatternRequestMatcher;
 import cn.herodotus.engine.oauth2.authorization.matcher.HerodotusRequestMatcher;
 import cn.herodotus.engine.oauth2.core.constants.OAuth2Constants;

@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.oauth2.persistence.sas.jpa.definition;
 
-import cn.herodotus.engine.core.identity.domain.RegisteredClientDetails;
+import cn.herodotus.dante.security.domain.RegisteredClientDetails;
 import cn.herodotus.engine.oauth2.core.utils.OAuth2AuthenticationUtils;
 import cn.hutool.v7.core.date.DateUtil;
 import org.springframework.core.convert.converter.Converter;

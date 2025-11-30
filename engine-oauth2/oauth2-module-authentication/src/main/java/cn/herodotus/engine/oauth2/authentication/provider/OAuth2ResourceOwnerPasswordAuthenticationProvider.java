@@ -26,7 +26,7 @@
 package cn.herodotus.engine.oauth2.authentication.provider;
 
 import cn.herodotus.dante.core.constant.SystemConstants;
-import cn.herodotus.engine.core.identity.service.EnhanceUserDetailsService;
+import cn.herodotus.dante.security.service.EnhanceUserDetailsService;
 import cn.herodotus.engine.oauth2.authentication.customizer.HerodotusGrantType;
 import cn.herodotus.engine.oauth2.authentication.utils.DPoPProofVerifier;
 import cn.herodotus.engine.oauth2.authentication.utils.OAuth2AuthenticationProviderUtils;

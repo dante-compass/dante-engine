@@ -376,11 +376,6 @@
 
             <dependency>
                 <groupId>cn.herodotus.dante</groupId>
-                <artifactId>core-identity</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>message-autoconfigure</artifactId>
                 <version>${project.version}</version>
             </dependency>

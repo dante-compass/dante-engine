@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.message.websocket.servlet.config;
 
-import cn.herodotus.engine.core.identity.oauth2.BearerTokenResolver;
+import cn.herodotus.dante.security.oauth2.BearerTokenResolver;
 import cn.herodotus.engine.message.core.domain.WebSocketMessage;
 import cn.herodotus.engine.message.websocket.servlet.annotation.ConditionalOnMultipleWebSocketInstance;
 import cn.herodotus.engine.message.websocket.servlet.annotation.ConditionalOnSingleWebSocketInstance;

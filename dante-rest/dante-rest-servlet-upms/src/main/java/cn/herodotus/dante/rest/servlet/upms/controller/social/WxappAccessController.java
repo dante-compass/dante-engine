@@ -29,7 +29,7 @@ import cn.binarywang.wx.miniapp.bean.WxMaJscode2SessionResult;
 import cn.herodotus.dante.assistant.access.definition.domain.AccessResponse;
 import cn.herodotus.dante.assistant.access.factory.AccessHandlerStrategyFactory;
 import cn.herodotus.dante.core.domain.Result;
-import cn.herodotus.engine.core.identity.enums.AccountCategory;
+import cn.herodotus.dante.security.enums.AccountCategory;
 import cn.herodotus.dante.rest.servlet.upms.dto.WxappProfile;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;

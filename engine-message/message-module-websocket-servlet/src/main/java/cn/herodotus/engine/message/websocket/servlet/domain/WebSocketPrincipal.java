@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.message.websocket.servlet.domain;
 
-import cn.herodotus.engine.core.identity.domain.UserPrincipal;
+import cn.herodotus.dante.security.domain.UserPrincipal;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 

@@ -27,7 +27,7 @@ package cn.herodotus.engine.oauth2.core.exception;
 
 import cn.herodotus.dante.core.constant.ErrorCodes;
 import cn.herodotus.dante.core.domain.Feedback;
-import cn.herodotus.engine.core.identity.exception.PlatformAuthenticationException;
+import cn.herodotus.dante.security.exception.PlatformAuthenticationException;
 
 /**
  * <p>Description: UsernameAlreadyExistsException </p>

@@ -25,12 +25,12 @@
 
 package cn.herodotus.dante.security.definition;
 
-import cn.herodotus.dante.security.properties.OAuth2AuthorizationProperties;
-import cn.herodotus.dante.security.domain.HerodotusRequest;
 import cn.herodotus.dante.core.constant.SecurityResources;
 import cn.herodotus.dante.core.utils.ListUtils;
-import cn.herodotus.engine.core.identity.domain.HerodotusSecurityAttribute;
-import cn.herodotus.engine.core.identity.enums.PermissionExpression;
+import cn.herodotus.dante.security.domain.HerodotusRequest;
+import cn.herodotus.dante.security.domain.HerodotusSecurityAttribute;
+import cn.herodotus.dante.security.enums.PermissionExpression;
+import cn.herodotus.dante.security.properties.OAuth2AuthorizationProperties;
 import org.apache.commons.collections4.CollectionUtils;
 
 import java.util.LinkedHashMap;

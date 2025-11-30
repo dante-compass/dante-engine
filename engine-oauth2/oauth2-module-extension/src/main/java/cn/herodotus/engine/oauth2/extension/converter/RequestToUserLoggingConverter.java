@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.oauth2.extension.converter;
 
-import cn.herodotus.engine.core.identity.utils.SecurityUtils;
+import cn.herodotus.dante.security.utils.SecurityUtils;
 import cn.herodotus.engine.oauth2.extension.entity.OAuth2UserLogging;
 import cn.herodotus.dante.web.servlet.utils.HeaderUtils;
 import cn.hutool.v7.http.useragent.UserAgent;

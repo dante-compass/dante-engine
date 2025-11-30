@@ -33,8 +33,8 @@ import cn.herodotus.dante.assistant.access.definition.domain.AccessUserDetails;
 import cn.herodotus.dante.assistant.access.exception.AccessIdentityVerificationFailedException;
 import cn.herodotus.dante.assistant.access.exception.AccessPreProcessFailedException;
 import cn.herodotus.dante.core.constant.SymbolConstants;
-import cn.herodotus.engine.core.identity.domain.AccessPrincipal;
-import cn.herodotus.engine.core.identity.enums.AccountCategory;
+import cn.herodotus.dante.security.domain.AccessPrincipal;
+import cn.herodotus.dante.security.enums.AccountCategory;
 import org.apache.commons.lang3.ObjectUtils;
 
 /**

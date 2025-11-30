@@ -30,7 +30,7 @@ import cn.herodotus.dante.core.domain.Feedback;
 import cn.herodotus.dante.core.domain.Result;
 import cn.herodotus.dante.core.exception.GlobalExceptionHandler;
 import cn.herodotus.dante.core.exception.PlatformRuntimeException;
-import cn.herodotus.engine.core.identity.constant.OAuth2ErrorKeys;
+import cn.herodotus.dante.security.constant.OAuth2ErrorKeys;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;

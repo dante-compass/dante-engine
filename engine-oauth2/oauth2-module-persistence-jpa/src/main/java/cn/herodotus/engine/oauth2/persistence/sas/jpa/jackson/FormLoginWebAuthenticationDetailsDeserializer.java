@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.oauth2.persistence.sas.jpa.jackson;
 
-import cn.herodotus.engine.core.identity.jackson.JsonNodeUtils;
+import cn.herodotus.dante.security.jackson.JsonNodeUtils;
 import cn.herodotus.engine.oauth2.core.domain.FormLoginWebAuthenticationDetails;
 import tools.jackson.core.JacksonException;
 import tools.jackson.core.JsonParser;

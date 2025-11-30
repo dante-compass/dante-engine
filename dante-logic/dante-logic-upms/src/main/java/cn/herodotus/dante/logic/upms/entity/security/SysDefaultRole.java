@@ -25,7 +25,7 @@
 
 package cn.herodotus.dante.logic.upms.entity.security;
 
-import cn.herodotus.engine.core.identity.enums.AccountCategory;
+import cn.herodotus.dante.security.enums.AccountCategory;
 import cn.herodotus.dante.data.jpa.entity.AbstractSysEntity;
 import cn.herodotus.dante.logic.upms.constant.LogicUpmsConstants;
 import com.google.common.base.MoreObjects;

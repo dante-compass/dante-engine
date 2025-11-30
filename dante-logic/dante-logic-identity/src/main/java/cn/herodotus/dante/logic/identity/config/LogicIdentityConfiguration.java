@@ -26,7 +26,7 @@
 package cn.herodotus.dante.logic.identity.config;
 
 import cn.herodotus.dante.core.function.EnumDictionaryBuilderCustomizer;
-import cn.herodotus.engine.core.identity.service.ClientDetailsService;
+import cn.herodotus.dante.security.service.ClientDetailsService;
 import cn.herodotus.dante.logic.identity.customizer.IdentityEnumDictionaryBuilderCustomizer;
 import cn.herodotus.dante.logic.identity.definition.HerodotusClientDetailsService;
 import cn.herodotus.dante.logic.identity.service.OAuth2ApplicationService;

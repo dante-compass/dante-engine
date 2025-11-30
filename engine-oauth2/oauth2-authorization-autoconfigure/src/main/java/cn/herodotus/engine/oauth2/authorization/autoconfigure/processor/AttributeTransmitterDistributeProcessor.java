@@ -27,7 +27,7 @@ package cn.herodotus.engine.oauth2.authorization.autoconfigure.processor;
 
 import cn.herodotus.dante.spring.context.ServiceContextHolder;
 import cn.herodotus.dante.spring.founction.ListConverter;
-import cn.herodotus.engine.core.identity.domain.AttributeTransmitter;
+import cn.herodotus.dante.security.domain.AttributeTransmitter;
 import cn.herodotus.dante.logic.upms.converter.SysAttributeToAttributeTransmitterConverter;
 import cn.herodotus.dante.logic.upms.converter.SysInterfacesToSysAttributesConverter;
 import cn.herodotus.dante.logic.upms.entity.security.SysAttribute;

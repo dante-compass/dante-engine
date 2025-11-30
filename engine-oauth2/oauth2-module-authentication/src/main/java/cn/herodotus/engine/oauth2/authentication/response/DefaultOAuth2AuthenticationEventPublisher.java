@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.oauth2.authentication.response;
 
-import cn.herodotus.engine.core.identity.constant.OAuth2ErrorKeys;
+import cn.herodotus.dante.security.constant.OAuth2ErrorKeys;
 import cn.herodotus.engine.oauth2.core.exception.AccountEndpointLimitedException;
 import cn.herodotus.engine.oauth2.core.exception.SessionExpiredException;
 import org.springframework.context.ApplicationEventPublisher;

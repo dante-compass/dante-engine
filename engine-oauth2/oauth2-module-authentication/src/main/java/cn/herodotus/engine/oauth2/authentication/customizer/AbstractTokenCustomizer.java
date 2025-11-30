@@ -26,7 +26,7 @@
 package cn.herodotus.engine.oauth2.authentication.customizer;
 
 import cn.herodotus.dante.core.constant.SystemConstants;
-import cn.herodotus.engine.core.identity.domain.HerodotusUser;
+import cn.herodotus.dante.security.domain.HerodotusUser;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

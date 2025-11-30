@@ -29,7 +29,7 @@ import cn.herodotus.dante.assistant.access.condition.ConditionalOnWxappEnabled;
 import cn.herodotus.dante.assistant.access.processor.WxappAccessHandler;
 import cn.herodotus.dante.assistant.access.processor.WxappProcessor;
 import cn.herodotus.dante.assistant.access.properties.WxappProperties;
-import cn.herodotus.engine.core.identity.enums.AccountCategory;
+import cn.herodotus.dante.security.enums.AccountCategory;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

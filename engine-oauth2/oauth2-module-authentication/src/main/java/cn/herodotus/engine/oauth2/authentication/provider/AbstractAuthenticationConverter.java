@@ -29,7 +29,7 @@ import cn.herodotus.dante.core.support.crypto.DigitalEnvelopeProcessor;
 import cn.herodotus.dante.core.utils.ListUtils;
 import cn.herodotus.dante.web.exception.SessionInvalidException;
 import cn.herodotus.dante.web.servlet.utils.SessionUtils;
-import cn.herodotus.engine.core.identity.constant.OAuth2ErrorKeys;
+import cn.herodotus.dante.security.constant.OAuth2ErrorKeys;
 import cn.herodotus.engine.oauth2.authentication.utils.OAuth2EndpointUtils;
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.commons.collections4.CollectionUtils;

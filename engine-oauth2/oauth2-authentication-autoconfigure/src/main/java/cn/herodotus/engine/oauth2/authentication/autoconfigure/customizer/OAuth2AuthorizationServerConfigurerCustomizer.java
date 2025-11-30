@@ -26,7 +26,7 @@
 package cn.herodotus.engine.oauth2.authentication.autoconfigure.customizer;
 
 import cn.herodotus.dante.core.constant.SystemConstants;
-import cn.herodotus.engine.core.identity.service.ClientDetailsService;
+import cn.herodotus.dante.security.service.ClientDetailsService;
 import cn.herodotus.engine.oauth2.authentication.configurer.OAuth2AuthenticationConfigurerManager;
 import cn.herodotus.engine.oauth2.authentication.consumer.OAuth2TokenEndpointAuthenticationProviderConsumer;
 import cn.herodotus.engine.oauth2.authentication.customizer.HerodotusOidcUserInfoMapper;

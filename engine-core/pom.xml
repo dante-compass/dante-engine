@@ -41,7 +41,4 @@
 
     <description>Dante Cloud 云原生微服务基座组件库核心模块分组</description>
 
-    <modules>
-        <module>core-identity</module>
-    </modules>
 </project>

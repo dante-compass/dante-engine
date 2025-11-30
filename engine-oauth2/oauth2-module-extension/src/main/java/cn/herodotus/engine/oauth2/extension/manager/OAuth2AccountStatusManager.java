@@ -25,8 +25,8 @@
 
 package cn.herodotus.engine.oauth2.extension.manager;
 
-import cn.herodotus.engine.core.identity.domain.HerodotusUser;
-import cn.herodotus.engine.core.identity.service.EnhanceUserDetailsService;
+import cn.herodotus.dante.security.domain.HerodotusUser;
+import cn.herodotus.dante.security.service.EnhanceUserDetailsService;
 import cn.herodotus.dante.data.commons.enums.DataItemStatus;
 import cn.herodotus.engine.message.core.definition.strategy.AccountStatusChangedEventManager;
 import cn.herodotus.engine.message.core.domain.AccountStatus;

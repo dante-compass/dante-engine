@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.oauth2.authentication.provider;
 
-import cn.herodotus.engine.core.identity.domain.HerodotusUser;
+import cn.herodotus.dante.security.domain.HerodotusUser;
 import cn.herodotus.engine.oauth2.core.utils.PrincipalUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

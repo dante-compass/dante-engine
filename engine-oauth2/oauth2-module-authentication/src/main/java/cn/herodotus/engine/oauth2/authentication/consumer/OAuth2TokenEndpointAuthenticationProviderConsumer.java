@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.oauth2.authentication.consumer;
 
-import cn.herodotus.engine.core.identity.service.ClientDetailsService;
+import cn.herodotus.dante.security.service.ClientDetailsService;
 import cn.herodotus.engine.oauth2.authentication.provider.OAuth2AuthorizationCodeAuthenticationProvider;
 import cn.herodotus.engine.oauth2.authentication.provider.OAuth2ClientCredentialsAuthenticationProvider;
 import cn.herodotus.engine.oauth2.authentication.utils.OAuth2ConfigurerUtils;

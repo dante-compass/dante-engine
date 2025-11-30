@@ -25,8 +25,8 @@
 
 package cn.herodotus.engine.oauth2.persistence.sas.jpa.jackson;
 
-import cn.herodotus.engine.core.identity.domain.HerodotusGrantedAuthority;
-import cn.herodotus.engine.core.identity.domain.HerodotusUser;
+import cn.herodotus.dante.security.domain.HerodotusGrantedAuthority;
+import cn.herodotus.dante.security.domain.HerodotusUser;
 import cn.herodotus.engine.oauth2.core.domain.FormLoginWebAuthenticationDetails;
 import tools.jackson.core.Version;
 import tools.jackson.databind.module.SimpleModule;
