@@ -30,7 +30,7 @@ import cn.herodotus.engine.oauth2.authentication.customizer.HerodotusJwtTokenCus
 import cn.herodotus.engine.oauth2.authentication.customizer.HerodotusOpaqueTokenCustomizer;
 import cn.herodotus.engine.oauth2.authentication.response.DefaultOAuth2AuthenticationEventPublisher;
 import cn.herodotus.engine.oauth2.core.properties.OAuth2AuthenticationProperties;
-import cn.herodotus.engine.web.core.servlet.template.ThymeleafTemplateHandler;
+import cn.herodotus.dante.web.servlet.template.ThymeleafTemplateHandler;
 import cn.herodotus.engine.web.servlet.crypto.HttpCryptoProcessor;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;

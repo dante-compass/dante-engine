@@ -30,7 +30,7 @@ import cn.herodotus.engine.oauth2.authentication.customizer.OAuth2FormLoginConfi
 import cn.herodotus.engine.oauth2.authentication.response.OAuth2AccessTokenResponseHandler;
 import cn.herodotus.engine.oauth2.authentication.response.OAuth2AuthenticationFailureHandler;
 import cn.herodotus.engine.oauth2.core.properties.OAuth2AuthenticationProperties;
-import cn.herodotus.engine.web.core.servlet.template.ThymeleafTemplateHandler;
+import cn.herodotus.dante.web.servlet.template.ThymeleafTemplateHandler;
 import cn.herodotus.engine.web.servlet.crypto.HttpCryptoProcessor;
 
 /**

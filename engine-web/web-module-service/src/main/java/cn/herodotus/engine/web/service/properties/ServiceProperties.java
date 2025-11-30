@@ -26,7 +26,7 @@
 package cn.herodotus.engine.web.service.properties;
 
 import cn.herodotus.dante.core.constant.SystemConstants;
-import cn.herodotus.engine.web.core.constant.WebConstants;
+import cn.herodotus.dante.web.constant.WebConstants;
 import com.google.common.base.MoreObjects;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.boot.context.properties.ConfigurationProperties;

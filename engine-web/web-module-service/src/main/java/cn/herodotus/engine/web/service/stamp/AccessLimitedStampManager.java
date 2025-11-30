@@ -26,7 +26,7 @@
 package cn.herodotus.engine.web.service.stamp;
 
 import cn.herodotus.dante.cache.jetcache.stamp.AbstractStampManager;
-import cn.herodotus.engine.web.core.constant.WebConstants;
+import cn.herodotus.dante.web.constant.WebConstants;
 import cn.herodotus.engine.web.service.properties.SecureProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

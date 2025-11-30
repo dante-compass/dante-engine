@@ -33,7 +33,7 @@ import cn.herodotus.dante.logic.identity.service.OAuth2ScopeService;
 import cn.herodotus.dante.rest.servlet.identity.dto.OAuth2PermissionDto;
 import cn.herodotus.dante.rest.servlet.identity.dto.OAuth2ScopeDto;
 import cn.herodotus.engine.web.api.servlet.AbstractJpaWriteableController;
-import cn.herodotus.engine.web.core.annotation.AccessLimited;
+import cn.herodotus.dante.web.annotation.AccessLimited;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;

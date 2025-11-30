@@ -27,7 +27,7 @@ package cn.herodotus.engine.web.api.servlet;
 
 import cn.herodotus.dante.core.domain.BaseEntity;
 import cn.herodotus.dante.core.domain.Result;
-import cn.herodotus.engine.web.core.definition.Controller;
+import cn.herodotus.dante.web.definition.Controller;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Slice;

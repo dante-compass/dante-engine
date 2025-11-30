@@ -28,7 +28,7 @@ package cn.herodotus.dante.rest.servlet.identity.controller;
 import cn.herodotus.dante.core.domain.SecretKey;
 import cn.herodotus.dante.core.enums.Protocol;
 import cn.herodotus.engine.oauth2.core.properties.OAuth2AuthenticationProperties;
-import cn.herodotus.engine.web.core.servlet.utils.SessionUtils;
+import cn.herodotus.dante.web.servlet.utils.SessionUtils;
 import cn.herodotus.engine.web.servlet.crypto.HttpCryptoProcessor;
 import cn.hutool.v7.core.codec.binary.Base64;
 import com.google.common.net.HttpHeaders;

@@ -33,7 +33,7 @@ import cn.herodotus.engine.oauth2.authorization.processor.SecurityAttributeStora
 import cn.herodotus.engine.oauth2.authorization.servlet.OAuth2SessionManagementConfigurerCustomer;
 import cn.herodotus.engine.oauth2.authorization.servlet.ServletOAuth2AuthorizationConfigurerManager;
 import cn.herodotus.engine.oauth2.authorization.servlet.ServletSecurityAuthorizationManager;
-import cn.herodotus.engine.web.core.servlet.template.ThymeleafTemplateHandler;
+import cn.herodotus.dante.web.servlet.template.ThymeleafTemplateHandler;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -28,7 +28,7 @@ package cn.herodotus.engine.oauth2.authorization.servlet;
 import cn.herodotus.dante.security.domain.HerodotusRequest;
 import cn.herodotus.engine.core.identity.domain.HerodotusSecurityAttribute;
 import cn.herodotus.engine.oauth2.authorization.processor.SecurityAttributeStorage;
-import cn.herodotus.engine.web.core.servlet.utils.HeaderUtils;
+import cn.herodotus.dante.web.servlet.utils.HeaderUtils;
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.collections4.MapUtils;

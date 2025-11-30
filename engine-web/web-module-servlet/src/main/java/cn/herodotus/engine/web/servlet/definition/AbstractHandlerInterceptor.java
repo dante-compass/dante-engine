@@ -26,7 +26,7 @@
 package cn.herodotus.engine.web.servlet.definition;
 
 import cn.herodotus.dante.core.constant.SymbolConstants;
-import cn.herodotus.engine.web.core.servlet.utils.SessionUtils;
+import cn.herodotus.dante.web.servlet.utils.SessionUtils;
 import cn.hutool.v7.crypto.SecureUtil;
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.commons.lang3.StringUtils;

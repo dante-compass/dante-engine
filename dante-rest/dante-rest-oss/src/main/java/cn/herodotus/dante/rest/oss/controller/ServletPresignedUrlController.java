@@ -27,9 +27,9 @@ package cn.herodotus.dante.rest.oss.controller;
 
 import cn.herodotus.dante.assistant.oss.service.logic.PresignedUrlService;
 import cn.herodotus.dante.core.domain.Result;
-import cn.herodotus.engine.web.core.annotation.Idempotent;
-import cn.herodotus.engine.web.core.definition.Controller;
-import cn.herodotus.engine.web.core.definition.dto.OssPresigned;
+import cn.herodotus.dante.web.annotation.Idempotent;
+import cn.herodotus.dante.web.definition.Controller;
+import cn.herodotus.dante.web.definition.dto.OssPresigned;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;

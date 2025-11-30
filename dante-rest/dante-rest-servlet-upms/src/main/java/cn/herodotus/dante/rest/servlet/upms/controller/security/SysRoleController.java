@@ -30,7 +30,7 @@ import cn.herodotus.dante.data.jpa.service.BaseJpaWriteableService;
 import cn.herodotus.dante.logic.upms.entity.security.SysRole;
 import cn.herodotus.dante.logic.upms.service.security.SysRoleService;
 import cn.herodotus.engine.web.api.servlet.AbstractJpaWriteableController;
-import cn.herodotus.engine.web.core.annotation.AccessLimited;
+import cn.herodotus.dante.web.annotation.AccessLimited;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;

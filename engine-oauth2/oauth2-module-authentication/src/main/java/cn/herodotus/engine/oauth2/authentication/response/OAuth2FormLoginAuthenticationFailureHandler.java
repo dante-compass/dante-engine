@@ -27,7 +27,7 @@ package cn.herodotus.engine.oauth2.authentication.response;
 
 import cn.herodotus.dante.security.exception.SecurityGlobalExceptionHandler;
 import cn.herodotus.dante.core.domain.Result;
-import cn.herodotus.engine.web.core.servlet.utils.SessionUtils;
+import cn.herodotus.dante.web.servlet.utils.SessionUtils;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

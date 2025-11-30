@@ -27,7 +27,7 @@ package cn.herodotus.engine.web.servlet.tenant;
 
 import cn.herodotus.dante.core.constant.SystemConstants;
 import cn.herodotus.dante.core.context.TenantContextHolder;
-import cn.herodotus.engine.web.core.servlet.utils.HeaderUtils;
+import cn.herodotus.dante.web.servlet.utils.HeaderUtils;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.ServletRequest;

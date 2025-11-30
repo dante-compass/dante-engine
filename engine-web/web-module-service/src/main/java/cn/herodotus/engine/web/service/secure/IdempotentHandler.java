@@ -25,8 +25,8 @@
 
 package cn.herodotus.engine.web.service.secure;
 
-import cn.herodotus.engine.web.core.annotation.Idempotent;
-import cn.herodotus.engine.web.core.exception.RepeatSubmissionException;
+import cn.herodotus.dante.web.annotation.Idempotent;
+import cn.herodotus.dante.web.exception.RepeatSubmissionException;
 import cn.herodotus.engine.web.service.stamp.IdempotentStampManager;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;

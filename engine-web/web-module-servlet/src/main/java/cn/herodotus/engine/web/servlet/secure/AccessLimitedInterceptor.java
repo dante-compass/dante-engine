@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.web.servlet.secure;
 
-import cn.herodotus.engine.web.core.annotation.AccessLimited;
+import cn.herodotus.dante.web.annotation.AccessLimited;
 import cn.herodotus.engine.web.service.secure.AccessLimitedHandler;
 import cn.herodotus.engine.web.service.stamp.AccessLimitedStampManager;
 import cn.herodotus.engine.web.servlet.definition.AbstractHandlerInterceptor;

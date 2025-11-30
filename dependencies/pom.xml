@@ -513,11 +513,6 @@
 
             <dependency>
                 <groupId>cn.herodotus.dante</groupId>
-                <artifactId>web-core</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>web-module-api</artifactId>
                 <version>${project.version}</version>
             </dependency>

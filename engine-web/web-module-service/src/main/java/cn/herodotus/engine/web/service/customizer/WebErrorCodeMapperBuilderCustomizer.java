@@ -28,7 +28,7 @@ package cn.herodotus.engine.web.service.customizer;
 import cn.herodotus.dante.core.builder.ErrorCodeMapperBuilder;
 import cn.herodotus.dante.core.constant.ErrorCodeMapperBuilderOrdered;
 import cn.herodotus.dante.core.function.ErrorCodeMapperBuilderCustomizer;
-import cn.herodotus.engine.web.core.constant.WebErrorCodes;
+import cn.herodotus.dante.web.constant.WebErrorCodes;
 import org.springframework.core.Ordered;
 
 /**

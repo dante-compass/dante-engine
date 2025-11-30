@@ -28,7 +28,7 @@ package cn.herodotus.engine.web.service.properties;
 import cn.herodotus.dante.core.enums.Protocol;
 import cn.herodotus.dante.spring.enums.Architecture;
 import cn.herodotus.dante.spring.enums.DataAccessStrategy;
-import cn.herodotus.engine.web.core.constant.WebConstants;
+import cn.herodotus.dante.web.constant.WebConstants;
 import com.google.common.base.MoreObjects;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

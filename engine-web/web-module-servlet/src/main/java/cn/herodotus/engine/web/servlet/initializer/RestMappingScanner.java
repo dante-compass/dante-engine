@@ -28,7 +28,7 @@ package cn.herodotus.engine.web.servlet.initializer;
 import cn.herodotus.dante.core.constant.SymbolConstants;
 import cn.herodotus.engine.message.core.definition.strategy.RestMappingScanEventManager;
 import cn.herodotus.engine.message.core.domain.RestMapping;
-import cn.herodotus.engine.web.core.support.WebPropertyFinder;
+import cn.herodotus.dante.web.support.WebPropertyFinder;
 import cn.herodotus.engine.web.service.initializer.AbstractRestMappingScanner;
 import cn.herodotus.engine.web.service.properties.ServiceProperties;
 import cn.hutool.v7.crypto.SecureUtil;

@@ -25,8 +25,8 @@
 
 package cn.herodotus.engine.web.service.secure;
 
-import cn.herodotus.engine.web.core.annotation.AccessLimited;
-import cn.herodotus.engine.web.core.exception.FrequentRequestsException;
+import cn.herodotus.dante.web.annotation.AccessLimited;
+import cn.herodotus.dante.web.exception.FrequentRequestsException;
 import cn.herodotus.engine.web.service.stamp.AccessLimitedStampManager;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;

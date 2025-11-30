@@ -27,8 +27,8 @@ package cn.herodotus.engine.web.service.config;
 
 import cn.herodotus.dante.core.constant.SystemConstants;
 import cn.herodotus.dante.spring.context.ServiceContextHolder;
-import cn.herodotus.engine.web.core.condition.ConditionalOnSwaggerEnabled;
-import cn.herodotus.engine.web.core.definition.OpenApiServerResolver;
+import cn.herodotus.dante.web.condition.ConditionalOnSwaggerEnabled;
+import cn.herodotus.dante.web.definition.OpenApiServerResolver;
 import com.google.common.collect.ImmutableList;
 import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
 import io.swagger.v3.oas.annotations.security.*;

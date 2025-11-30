@@ -25,7 +25,7 @@
 
 package cn.herodotus.engine.web.servlet.secure;
 
-import cn.herodotus.engine.web.core.annotation.Idempotent;
+import cn.herodotus.dante.web.annotation.Idempotent;
 import cn.herodotus.engine.web.service.secure.IdempotentHandler;
 import cn.herodotus.engine.web.service.stamp.IdempotentStampManager;
 import cn.herodotus.engine.web.servlet.definition.AbstractHandlerInterceptor;

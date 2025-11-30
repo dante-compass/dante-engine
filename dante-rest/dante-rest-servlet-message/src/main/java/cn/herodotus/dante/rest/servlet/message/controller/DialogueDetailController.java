@@ -30,7 +30,7 @@ import cn.herodotus.dante.data.jpa.service.BaseJpaWriteableService;
 import cn.herodotus.dante.logic.message.entity.DialogueDetail;
 import cn.herodotus.dante.logic.message.service.DialogueDetailService;
 import cn.herodotus.engine.web.api.servlet.AbstractJpaWriteableController;
-import cn.herodotus.engine.web.core.annotation.Idempotent;
+import cn.herodotus.dante.web.annotation.Idempotent;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
