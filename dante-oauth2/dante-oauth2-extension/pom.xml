@@ -35,7 +35,7 @@
     </parent>
 
     <artifactId>dante-oauth2-extension</artifactId>
-    <name>oauth2-module-extension</name>
+    <name>dante-oauth2-extension</name>
 
     <description>Dante Cloud 云原生微服务基座组件库 Spring Authorization Server 功能扩展模块</description>
 

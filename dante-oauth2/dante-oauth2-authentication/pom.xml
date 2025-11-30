@@ -37,7 +37,7 @@
     </parent>
 
     <artifactId>dante-oauth2-authentication</artifactId>
-    <name>oauth2-module-authentication</name>
+    <name>dante-oauth2-authentication</name>
 
     <description>Dante Cloud 云原生微服务基座组件库 Spring Authorization Server 授权服务器核心功能封装模块</description>
 

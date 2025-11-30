@@ -35,7 +35,7 @@
     </parent>
 
     <artifactId>dante-authorization-autoconfigure</artifactId>
-    <name>oauth2-authorization-autoconfigure</name>
+    <name>dante-authorization-autoconfigure</name>
 
     <description>Dante Cloud 云原生微服务基座组件库 OAuth2 资源服务器基础内容自动配置模块</description>
 

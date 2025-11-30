@@ -36,7 +36,7 @@
     </parent>
 
     <artifactId>dante-oauth2-commons</artifactId>
-    <name>oauth2-core</name>
+    <name>dante-oauth2-commons</name>
 
     <description>Dante Cloud 云原生微服务基座组件库 OAuth2 共性通用代码模块</description>
 

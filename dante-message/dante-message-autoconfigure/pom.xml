@@ -30,12 +30,12 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>cn.herodotus.dante</groupId>
-        <artifactId>engine-message</artifactId>
+        <artifactId>dante-message</artifactId>
         <version>4.0.0.0-M1</version>
     </parent>
 
     <artifactId>dante-message-autoconfigure</artifactId>
-    <name>message-autoconfigure</name>
+    <name>dante-message-autoconfigure</name>
 
     <description>Dante Cloud 云原生微服务基座组件库消息自动配置模块</description>
 

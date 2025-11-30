@@ -30,12 +30,12 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>cn.herodotus.dante</groupId>
-        <artifactId>engine-message</artifactId>
+        <artifactId>dante-message</artifactId>
         <version>4.0.0.0-M1</version>
     </parent>
 
     <artifactId>dante-message-servlet-websocket</artifactId>
-    <name>message-module-websocket-servlet</name>
+    <name>dante-message-servlet-websocket</name>
 
     <description>Dante Cloud 云原生微服务基座组件库基于 Servlet 环境下的 Websocket 功能封装模块</description>
 
