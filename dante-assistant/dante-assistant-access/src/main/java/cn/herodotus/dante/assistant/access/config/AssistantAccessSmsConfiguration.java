@@ -29,7 +29,7 @@ import cn.herodotus.dante.assistant.access.condition.ConditionalOnSmsEnabled;
 import cn.herodotus.dante.assistant.access.processor.PhoneNumberAccessHandler;
 import cn.herodotus.dante.assistant.access.properties.SmsProperties;
 import cn.herodotus.dante.assistant.access.stamp.VerificationCodeStampManager;
-import cn.herodotus.engine.core.identity.enums.AccountCategory;
+import cn.herodotus.dante.security.enums.AccountCategory;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -28,7 +28,7 @@ package cn.herodotus.dante.logic.identity.customizer;
 import cn.herodotus.dante.core.builder.EnumDictionaryBuilder;
 import cn.herodotus.dante.core.function.EnumDictionaryBuilderCustomizer;
 import cn.herodotus.dante.logic.identity.enums.*;
-import cn.herodotus.engine.core.identity.enums.PermissionExpression;
+import cn.herodotus.dante.security.enums.PermissionExpression;
 
 /**
  * <p>Description: Identity 枚举数据字典定义器 </p>

@@ -33,7 +33,7 @@ import cn.herodotus.dante.logic.upms.enums.Identity;
 import cn.herodotus.dante.logic.upms.service.hr.SysEmployeeService;
 import cn.herodotus.dante.rest.servlet.upms.dto.AllocatableDeploy;
 import cn.herodotus.dante.rest.servlet.upms.dto.AllocatableRemove;
-import cn.herodotus.engine.web.api.servlet.AbstractJpaWriteableController;
+import cn.herodotus.dante.data.rest.servlet.AbstractJpaWriteableController;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;

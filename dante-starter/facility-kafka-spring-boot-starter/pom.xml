@@ -42,7 +42,7 @@
     <dependencies>
         <dependency>
             <groupId>cn.herodotus.dante</groupId>
-            <artifactId>message-core</artifactId>
+            <artifactId>dante-message-commons</artifactId>
         </dependency>
 
         <dependency>

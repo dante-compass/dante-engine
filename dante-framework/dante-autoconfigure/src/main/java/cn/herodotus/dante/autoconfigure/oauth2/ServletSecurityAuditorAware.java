@@ -25,7 +25,7 @@
 
 package cn.herodotus.dante.autoconfigure.oauth2;
 
-import cn.herodotus.dante.oauth2.definition.AbstractAuditorAware;
+import cn.herodotus.dante.security.definition.AbstractAuditorAware;
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;

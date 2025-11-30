@@ -25,9 +25,9 @@
 
 package cn.herodotus.dante.logic.upms.service.security;
 
-import cn.herodotus.engine.core.identity.domain.HerodotusUser;
-import cn.herodotus.engine.core.identity.enums.AccountCategory;
-import cn.herodotus.engine.core.identity.utils.SecurityUtils;
+import cn.herodotus.dante.security.domain.HerodotusUser;
+import cn.herodotus.dante.security.enums.AccountCategory;
+import cn.herodotus.dante.security.utils.SecurityUtils;
 import cn.herodotus.dante.data.commons.enums.DataItemStatus;
 import cn.herodotus.dante.data.jpa.repository.BaseJpaRepository;
 import cn.herodotus.dante.data.jpa.service.AbstractJpaService;

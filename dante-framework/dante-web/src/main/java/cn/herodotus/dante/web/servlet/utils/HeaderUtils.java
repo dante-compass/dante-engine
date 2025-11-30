@@ -1,0 +1,317 @@
+/*
+ * Copyright 2020-2030 码匠君<herodotus@aliyun.com>
+ *
+ * Dante Engine licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * Dante Engine 是 Dante Cloud 系统核心组件库，采用 APACHE LICENSE 2.0 开源协议，您在使用过程中，需要注意以下几点：
+ *
+ * 1. 请不要删除和修改根目录下的LICENSE文件。
+ * 2. 请不要删除和修改 Dante Engine 源码头部的版权声明。
+ * 3. 请保留源码和相关描述文件的项目出处，作者声明等。
+ * 4. 分发源码时候，请注明软件出处 <https://gitee.com/dromara/dante-cloud>
+ * 5. 在修改包名，模块名称，项目代码等时，请注明软件出处 <https://gitee.com/dromara/dante-cloud>
+ * 6. 若您的项目无法满足以上几点，可申请商业授权
+ */
+
+package cn.herodotus.dante.web.servlet.utils;
+
+import cn.herodotus.dante.core.constant.HerodotusHeaders;
+import cn.herodotus.dante.core.constant.SystemConstants;
+import cn.hutool.v7.http.server.servlet.ServletUtil;
+import jakarta.servlet.http.HttpServletRequest;
+import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.Strings;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpInputMessage;
+import org.springframework.http.server.ServerHttpRequest;
+
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.util.List;
+
+/**
+ * <p>Description: Http Header 工具类 </p>
+ *
+ * @author : gengwei.zheng
+ * @date : 2023/9/2 16:39
+ */
+public class HeaderUtils {
+
+    /**
+     * 获取头信息
+     *
+     * @param httpHeaders {@link HttpHeaders}
+     * @param name        头名称
+     * @return 头信息值
+     */
+    public static List<String> getHeaders(HttpHeaders httpHeaders, String name) {
+        return httpHeaders.get(name);
+    }
+
+    /**
+     * 获取头信息
+     *
+     * @param serverHttpRequest {@link ServerHttpRequest}
+     * @param name              名称
+     * @return 头信息值
+     */
+    public static List<String> getHeaders(ServerHttpRequest serverHttpRequest, String name) {
+        return getHeaders(serverHttpRequest.getHeaders(), name);
+    }
+
+    /**
+     * 获取第一条头信息
+     *
+     * @param httpHeaders {@link HttpHeaders}
+     * @param name        头名称
+     * @return 如果存在就返回第一条头信息值，如果不存在就返回空。
+     */
+    public static String getHeader(HttpHeaders httpHeaders, String name) {
+        List<String> values = getHeaders(httpHeaders, name);
+        return CollectionUtils.isNotEmpty(values) ? values.get(0) : null;
+    }
+
+    /**
+     * 获取第一条头信息
+     *
+     * @param serverHttpRequest {@link ServerHttpRequest}
+     * @param name              名称
+     * @return 如果存在就返回第一条头信息值，如果不存在就返回空。
+     */
+    public static String getHeader(ServerHttpRequest serverHttpRequest, String name) {
+        return getHeader(serverHttpRequest.getHeaders(), name);
+    }
+
+    /**
+     * 获取头信息
+     *
+     * @param httpServletRequest {@link HttpServletRequest}
+     * @param name               名称
+     * @return 头信息值
+     */
+    public static String getHeader(HttpServletRequest httpServletRequest, String name) {
+        return httpServletRequest.getHeader(name);
+    }
+
+    /**
+     * 请求头中是否存在某个 Header
+     *
+     * @param httpHeaders {@link HttpHeaders}
+     * @param name        头名称
+     * @return true 存在，false 不存在
+     */
+    public static boolean hasHeader(HttpHeaders httpHeaders, String name) {
+        return httpHeaders.containsHeader(name);
+    }
+
+    /**
+     * 请求头中是否存在某个 Header
+     *
+     * @param httpServletRequest {@link HttpServletRequest}
+     * @param name               名称
+     * @return true 存在，false 不存在
+     */
+    public static Boolean hasHeader(HttpServletRequest httpServletRequest, String name) {
+        return StringUtils.isNotBlank(getHeader(httpServletRequest, name));
+    }
+
+    /**
+     * 请求头中是否存在某个 Header
+     *
+     * @param serverHttpRequest {@link ServerHttpRequest}
+     * @param name              名称
+     * @return true 存在，false 不存在
+     */
+    public static Boolean hasHeader(ServerHttpRequest serverHttpRequest, String name) {
+        return hasHeader(serverHttpRequest.getHeaders(), name);
+    }
+
+    /**
+     * 获取自定义 X_HERODOTUS_SESSION_ID 头信息
+     *
+     * @param httpServletRequest {@link HttpServletRequest}
+     * @return X_HERODOTUS_SESSION_ID 头信息
+     */
+    public static String getHerodotusSessionId(HttpServletRequest httpServletRequest) {
+        return getHeader(httpServletRequest, HerodotusHeaders.X_HERODOTUS_SESSION_ID);
+    }
+
+    /**
+     * 获取自定义 X_HERODOTUS_SESSION_ID 请求头内容
+     *
+     * @param serverHttpRequest {@link ServerHttpRequest}
+     * @return X_HERODOTUS_SESSION_ID 请求头内容
+     */
+    public static String getHerodotusSessionId(ServerHttpRequest serverHttpRequest) {
+        return getHeader(serverHttpRequest, HerodotusHeaders.X_HERODOTUS_SESSION_ID);
+    }
+
+    /**
+     * 获取自定义 X_HERODOTUS_SESSION_ID 请求头内容
+     *
+     * @param httpInputMessage {@link HttpInputMessage}
+     * @return X_HERODOTUS_SESSION_ID 请求头内容
+     */
+    public static String getHerodotusSessionId(HttpInputMessage httpInputMessage) {
+        return getHeader(httpInputMessage.getHeaders(), HerodotusHeaders.X_HERODOTUS_SESSION_ID);
+    }
+
+    /**
+     * 获取自定义 X_HERODOTUS_TENANT_ID 请求头内容
+     *
+     * @param httpServletRequest {@link HttpServletRequest}
+     * @return X_HERODOTUS_TENANT_ID 请求头内容
+     */
+    public static String getHerodotusTenantId(HttpServletRequest httpServletRequest) {
+        return getHeader(httpServletRequest, HerodotusHeaders.X_HERODOTUS_TENANT_ID);
+    }
+
+    /**
+     * 获取自定义 X_HERODOTUS_FROM_IN 请求头内容
+     *
+     * @param httpServletRequest {@link HttpServletRequest}
+     * @return X_HERODOTUS_FROM_IN 请求头内容
+     */
+    public static String getHerodotusFromIn(HttpServletRequest httpServletRequest) {
+        return getHeader(httpServletRequest, HerodotusHeaders.X_HERODOTUS_FROM_IN);
+    }
+
+    /**
+     * 请求中包含 X_HERODOTUS_SESSION_ID 请求头
+     *
+     * @param httpServletRequest {@link HttpServletRequest}
+     * @return 是否包含 X_HERODOTUS_SESSION_ID 请求头
+     */
+    public static boolean hasHerodotusSessionIdHeader(HttpServletRequest httpServletRequest) {
+        return hasHeader(httpServletRequest, HerodotusHeaders.X_HERODOTUS_SESSION_ID);
+    }
+
+    /**
+     * 请求中包含 X_HERODOTUS_SESSION_ID 请求头
+     *
+     * @param serverHttpRequest {@link ServerHttpRequest}
+     * @return 是否包含 X_HERODOTUS_SESSION_ID 请求头
+     */
+    public static boolean hasHerodotusSessionIdHeader(ServerHttpRequest serverHttpRequest) {
+        return hasHeader(serverHttpRequest, HerodotusHeaders.X_HERODOTUS_SESSION_ID);
+    }
+
+    /**
+     * 请求中包含 X_HERODOTUS_SESSION_ID 请求头
+     *
+     * @param httpInputMessage {@link HttpInputMessage}
+     * @return 是否包含 X_HERODOTUS_SESSION_ID 请求头
+     */
+    public static boolean hasHerodotusSessionIdHeader(HttpInputMessage httpInputMessage) {
+        return hasHeader(httpInputMessage.getHeaders(), HerodotusHeaders.X_HERODOTUS_SESSION_ID);
+    }
+
+    /**
+     * 获取 COOKIE 头请求头内容
+     *
+     * @param httpServletRequest {@link HttpServletRequest}
+     * @return COOKIE 请求头内容
+     */
+    public static String getCookie(HttpServletRequest httpServletRequest) {
+        return getHeader(httpServletRequest, HttpHeaders.COOKIE);
+    }
+
+    /**
+     * 获取 COOKIE 请求头内容
+     *
+     * @param serverHttpRequest {@link ServerHttpRequest}
+     * @return COOKIE 请求头内容
+     */
+    public static String getCookie(ServerHttpRequest serverHttpRequest) {
+        return getHeader(serverHttpRequest, HttpHeaders.COOKIE);
+    }
+
+    /**
+     * 获取 COOKIE 请求头内容
+     *
+     * @param httpInputMessage {@link HttpInputMessage}
+     * @return COOKIE 请求头内容
+     */
+    public static String getCookie(HttpInputMessage httpInputMessage) {
+        return getHeader(httpInputMessage.getHeaders(), HttpHeaders.COOKIE);
+    }
+
+    /**
+     * 获取 AUTHORIZATION 请求头内容
+     *
+     * @param httpServletRequest {@link HttpServletRequest}
+     * @return AUTHORIZATION 请求头或者为空
+     */
+    public static String getAuthorization(HttpServletRequest httpServletRequest) {
+        return getHeader(httpServletRequest, HttpHeaders.AUTHORIZATION);
+    }
+
+    /**
+     * 获取 Bearer Token 的值
+     *
+     * @param request {@link HttpServletRequest}
+     * @return 如果 AUTHORIZATION 不存在，或者 Token 不是以 “Bearer ” 开头，则返回 null。如果 AUTHORIZATION 存在，而且是以 “Bearer ” 开头，那么返回 “Bearer ” 后面的值。
+     */
+    public static String getBearerToken(HttpServletRequest request) {
+        String header = getAuthorization(request);
+        if (StringUtils.isNotBlank(header) && Strings.CS.startsWith(header, SystemConstants.BEARER_TOKEN)) {
+            return Strings.CS.remove(header, SystemConstants.BEARER_TOKEN);
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * 获取 ORIGIN 请求头内容
+     *
+     * @param httpServletRequest {@link HttpServletRequest}
+     * @return ORIGIN 请求头或者为空
+     */
+    public static String getOrigin(HttpServletRequest httpServletRequest) {
+        return getHeader(httpServletRequest, HttpHeaders.ORIGIN);
+    }
+
+    /**
+     * 获取 ACCEPT 请求头内容
+     *
+     * @param httpServletRequest {@link HttpServletRequest}
+     * @return ACCEPT 请求头或者为空
+     */
+    public static String getAccept(HttpServletRequest httpServletRequest) {
+        return getHeader(httpServletRequest, HttpHeaders.ACCEPT);
+    }
+
+    /**
+     * 获取 CONTENT_TYPE 请求头内容
+     *
+     * @param httpServletRequest {@link HttpServletRequest}
+     * @return CONTENT_TYPE 请求头或者为空
+     */
+    public static String getContentType(HttpServletRequest httpServletRequest) {
+        return getHeader(httpServletRequest, HttpHeaders.CONTENT_TYPE);
+    }
+
+    public static String getIp(HttpServletRequest httpServletRequest) {
+        String ip = ServletUtil.getClientIP(httpServletRequest, "");
+        if (Strings.CS.equals(ip, "0:0:0:0:0:0:0:1")) {
+            try {
+                return InetAddress.getLocalHost().getHostAddress();
+            } catch (UnknownHostException e) {
+                return "127.0.0.1";
+            }
+        } else {
+            return ip;
+        }
+    }
+}

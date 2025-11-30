@@ -27,8 +27,8 @@ package cn.herodotus.dante.logic.message.listener;
 
 import cn.herodotus.dante.logic.message.entity.DialogueDetail;
 import cn.herodotus.dante.logic.message.service.DialogueDetailService;
-import cn.herodotus.engine.message.core.domain.DialogueMessage;
-import cn.herodotus.engine.message.core.event.SendDialogueMessageEvent;
+import cn.herodotus.dante.message.core.domain.DialogueMessage;
+import cn.herodotus.dante.message.core.event.SendDialogueMessageEvent;
 import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;

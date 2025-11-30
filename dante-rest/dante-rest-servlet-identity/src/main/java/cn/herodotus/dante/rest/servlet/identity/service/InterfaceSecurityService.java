@@ -26,8 +26,8 @@
 package cn.herodotus.dante.rest.servlet.identity.service;
 
 import cn.herodotus.dante.core.domain.SecretKey;
-import cn.herodotus.engine.core.identity.utils.SecurityUtils;
-import cn.herodotus.engine.web.servlet.crypto.HttpCryptoProcessor;
+import cn.herodotus.dante.core.support.crypto.DigitalEnvelopeProcessor;
+import cn.herodotus.dante.security.utils.SecurityUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
 import org.springframework.security.oauth2.core.OAuth2ErrorCodes;
@@ -44,11 +44,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class InterfaceSecurityService {
 
-    private final HttpCryptoProcessor httpCryptoProcessor;
+    private final DigitalEnvelopeProcessor digitalEnvelopeProcessor;
     private final RegisteredClientRepository registeredClientRepository;
 
-    public InterfaceSecurityService(HttpCryptoProcessor httpCryptoProcessor, RegisteredClientRepository registeredClientRepository) {
-        this.httpCryptoProcessor = httpCryptoProcessor;
+    public InterfaceSecurityService(DigitalEnvelopeProcessor digitalEnvelopeProcessor, RegisteredClientRepository registeredClientRepository) {
+        this.digitalEnvelopeProcessor = digitalEnvelopeProcessor;
         this.registeredClientRepository = registeredClientRepository;
     }
 
@@ -76,7 +76,7 @@ public class InterfaceSecurityService {
     public SecretKey createSecretKey(String clientId, String clientSecret, String sessionId) {
         // 检测终端是否是有效终端
         RegisteredClient registeredClient = this.validateClient(clientId, clientSecret);
-        return httpCryptoProcessor.createSecretKey(sessionId, registeredClient.getTokenSettings().getAccessTokenTimeToLive());
+        return digitalEnvelopeProcessor.createSecretKey(sessionId, registeredClient.getTokenSettings().getAccessTokenTimeToLive());
     }
 
     /**
@@ -87,6 +87,6 @@ public class InterfaceSecurityService {
      * @return 前端RSA PublicKey 加密后的 AES Key
      */
     public String exchange(String sessionId, String confidentialBase64) {
-        return httpCryptoProcessor.exchange(sessionId, confidentialBase64);
+        return digitalEnvelopeProcessor.exchange(sessionId, confidentialBase64);
     }
 }

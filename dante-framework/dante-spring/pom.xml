@@ -35,6 +35,7 @@
     </parent>
 
     <artifactId>dante-spring</artifactId>
+    <name>dante-spring</name>
 
     <description>Dante Cloud 云原生微服务基座组件库框架Spring及SpringBoot相关基础模块</description>
 

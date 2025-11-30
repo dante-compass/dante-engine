@@ -26,9 +26,9 @@
 package cn.herodotus.dante.webmvc.autoconfigure;
 
 import cn.herodotus.dante.autoconfigure.crypto.CryptoAutoConfiguration;
-import cn.herodotus.engine.web.servlet.config.HttpCryptoConfiguration;
-import cn.herodotus.engine.web.servlet.crypto.DecryptRequestParamMapResolver;
-import cn.herodotus.engine.web.servlet.crypto.DecryptRequestParamResolver;
+import cn.herodotus.dante.webmvc.autoconfigure.config.HttpCryptoConfiguration;
+import cn.herodotus.dante.webmvc.autoconfigure.crypto.DecryptRequestParamMapResolver;
+import cn.herodotus.dante.webmvc.autoconfigure.crypto.DecryptRequestParamResolver;
 import com.google.common.collect.Lists;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;

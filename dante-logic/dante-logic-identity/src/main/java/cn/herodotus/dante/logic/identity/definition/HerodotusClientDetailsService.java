@@ -25,8 +25,8 @@
 
 package cn.herodotus.dante.logic.identity.definition;
 
-import cn.herodotus.engine.core.identity.domain.HerodotusGrantedAuthority;
-import cn.herodotus.engine.core.identity.service.EnhanceClientDetailsService;
+import cn.herodotus.dante.security.domain.HerodotusGrantedAuthority;
+import cn.herodotus.dante.security.service.EnhanceClientDetailsService;
 import cn.herodotus.dante.logic.identity.entity.OAuth2Application;
 import cn.herodotus.dante.logic.identity.entity.OAuth2Permission;
 import cn.herodotus.dante.logic.identity.entity.OAuth2Scope;

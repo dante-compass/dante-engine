@@ -25,9 +25,9 @@
 
 package cn.herodotus.dante.logic.upms.converter;
 
-import cn.herodotus.engine.core.identity.domain.HerodotusGrantedAuthority;
-import cn.herodotus.engine.core.identity.domain.HerodotusUser;
-import cn.herodotus.engine.core.identity.utils.SecurityUtils;
+import cn.herodotus.dante.security.domain.HerodotusGrantedAuthority;
+import cn.herodotus.dante.security.domain.HerodotusUser;
+import cn.herodotus.dante.security.utils.SecurityUtils;
 import cn.herodotus.dante.data.commons.enums.DataItemStatus;
 import cn.herodotus.dante.logic.upms.entity.security.SysPermission;
 import cn.herodotus.dante.logic.upms.entity.security.SysRole;

@@ -1,0 +1,144 @@
+/*
+ * Copyright 2020-2030 码匠君<herodotus@aliyun.com>
+ *
+ * Dante Engine licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * Dante Engine 是 Dante Cloud 系统核心组件库，采用 APACHE LICENSE 2.0 开源协议，您在使用过程中，需要注意以下几点：
+ *
+ * 1. 请不要删除和修改根目录下的LICENSE文件。
+ * 2. 请不要删除和修改 Dante Engine 源码头部的版权声明。
+ * 3. 请保留源码和相关描述文件的项目出处，作者声明等。
+ * 4. 分发源码时候，请注明软件出处 <https://gitee.com/dromara/dante-cloud>
+ * 5. 在修改包名，模块名称，项目代码等时，请注明软件出处 <https://gitee.com/dromara/dante-cloud>
+ * 6. 若您的项目无法满足以上几点，可申请商业授权
+ */
+
+package cn.herodotus.dante.message.servlet.websocket.properties;
+
+import cn.herodotus.dante.core.constant.HerodotusHeaders;
+import cn.herodotus.dante.core.constant.SymbolConstants;
+import cn.herodotus.dante.message.core.constants.MessageConstants;
+import cn.herodotus.dante.message.servlet.websocket.enums.InstanceMode;
+import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.Strings;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+
+import java.util.Collections;
+import java.util.List;
+
+/**
+ * <p>Description: Web Socket 配置 </p>
+ *
+ * @author : gengwei.zheng
+ * @date : 2021/10/24 18:38
+ */
+@ConfigurationProperties(prefix = MessageConstants.PROPERTY_MESSAGE_WEBSOCKET)
+public class WebSocketProperties {
+
+    /**
+     * WebSocket 实例模式，单实例还是多实例。默认为单实例
+     */
+    private InstanceMode mode = InstanceMode.SINGLE;
+    /**
+     * 客户端尝试连接端点
+     */
+    private String endpoint = "stomp/ws";
+
+    /**
+     * 全局使用的消息前缀
+     */
+    private List<String> applicationDestinationPrefixes = Collections.singletonList("/app");
+
+    /**
+     * 点对点使用的订阅前缀（客户端订阅路径上会体现出来），不设置的话，默认也是/user/
+     */
+    private String userDestinationPrefix = "/user";
+
+    /**
+     * 集群模式下，信息同步消息队列Topic
+     */
+    private String topic = "ws";
+
+    /**
+     * 请求中传递的用户身份标识属性名
+     */
+    private String principalHeader = HerodotusHeaders.X_HERODOTUS_OPEN_ID;
+
+    public InstanceMode getMode() {
+        return mode;
+    }
+
+    public void setMode(InstanceMode mode) {
+        this.mode = mode;
+    }
+
+    private String format(String endpoint) {
+        if (StringUtils.isNotBlank(endpoint) && !Strings.CS.startsWith(endpoint, SymbolConstants.FORWARD_SLASH)) {
+            return SymbolConstants.FORWARD_SLASH + endpoint;
+        } else {
+            return endpoint;
+        }
+    }
+
+    public String getEndpoint() {
+        return format(endpoint);
+    }
+
+    public void setEndpoint(String endpoint) {
+        this.endpoint = endpoint;
+    }
+
+    public List<String> getApplicationDestinationPrefixes() {
+        return applicationDestinationPrefixes;
+    }
+
+    public void setApplicationDestinationPrefixes(List<String> applicationDestinationPrefixes) {
+        this.applicationDestinationPrefixes = applicationDestinationPrefixes;
+    }
+
+    public String[] getApplicationPrefixes() {
+        List<String> prefixes = this.getApplicationDestinationPrefixes();
+        if (CollectionUtils.isNotEmpty(prefixes)) {
+            List<String> wellFormed = prefixes.stream().map(this::format).toList();
+            String[] result = new String[wellFormed.size()];
+            return wellFormed.toArray(result);
+        } else {
+            return new String[]{};
+        }
+    }
+
+    public String getUserDestinationPrefix() {
+        return format(userDestinationPrefix);
+    }
+
+    public void setUserDestinationPrefix(String userDestinationPrefix) {
+        this.userDestinationPrefix = userDestinationPrefix;
+    }
+
+    public String getTopic() {
+        return topic;
+    }
+
+    public void setTopic(String topic) {
+        this.topic = topic;
+    }
+
+    public String getPrincipalHeader() {
+        return principalHeader;
+    }
+
+    public void setPrincipalHeader(String principalHeader) {
+        this.principalHeader = principalHeader;
+    }
+}

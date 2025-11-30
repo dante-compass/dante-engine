@@ -29,7 +29,7 @@ import cn.herodotus.dante.assistant.access.definition.AccessHandler;
 import cn.herodotus.dante.assistant.access.definition.domain.AccessResponse;
 import cn.herodotus.dante.assistant.access.definition.domain.AccessUserDetails;
 import cn.herodotus.dante.assistant.access.exception.AccessIdentityVerificationFailedException;
-import cn.herodotus.engine.core.identity.domain.AccessPrincipal;
+import cn.herodotus.dante.security.domain.AccessPrincipal;
 import me.zhyd.oauth.model.AuthCallback;
 import me.zhyd.oauth.model.AuthResponse;
 import me.zhyd.oauth.model.AuthToken;

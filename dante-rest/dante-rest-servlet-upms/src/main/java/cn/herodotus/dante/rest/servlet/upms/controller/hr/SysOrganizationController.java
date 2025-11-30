@@ -31,7 +31,7 @@ import cn.herodotus.dante.logic.upms.converter.SysOrganizationToTreeNodeConverte
 import cn.herodotus.dante.logic.upms.entity.hr.SysOrganization;
 import cn.herodotus.dante.logic.upms.enums.OrganizationCategory;
 import cn.herodotus.dante.logic.upms.service.hr.SysOrganizationService;
-import cn.herodotus.engine.web.api.servlet.AbstractJpaWriteableController;
+import cn.herodotus.dante.data.rest.servlet.AbstractJpaWriteableController;
 import cn.hutool.v7.core.tree.MapTree;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;

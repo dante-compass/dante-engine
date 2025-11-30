@@ -42,12 +42,12 @@
     <dependencies>
         <dependency>
             <groupId>cn.herodotus.dante</groupId>
-            <artifactId>core-identity</artifactId>
+            <artifactId>dante-security</artifactId>
         </dependency>
 
         <dependency>
             <groupId>cn.herodotus.dante</groupId>
-            <artifactId>web-core</artifactId>
+            <artifactId>dante-web</artifactId>
         </dependency>
 
         <dependency>

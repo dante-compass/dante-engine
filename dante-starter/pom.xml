@@ -57,6 +57,7 @@
         <module>servlet-message-spring-boot-starter</module>
         <module>tenant-spring-boot-starter</module>
         <module>webmvc-spring-boot-starter</module>
+        <module>web-spring-boot-starter</module>
     </modules>
 
 </project>

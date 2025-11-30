@@ -27,7 +27,7 @@ package cn.herodotus.dante.assistant.access.definition;
 
 import cn.herodotus.dante.assistant.access.definition.domain.AccessResponse;
 import cn.herodotus.dante.assistant.access.definition.domain.AccessUserDetails;
-import cn.herodotus.engine.core.identity.domain.AccessPrincipal;
+import cn.herodotus.dante.security.domain.AccessPrincipal;
 
 /**
  * <p>Description: 外部应用接入处理器 </p>

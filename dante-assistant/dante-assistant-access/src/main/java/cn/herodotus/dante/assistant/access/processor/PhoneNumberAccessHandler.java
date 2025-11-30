@@ -34,7 +34,7 @@ import cn.herodotus.dante.cache.commons.exception.StampHasExpiredException;
 import cn.herodotus.dante.cache.commons.exception.StampMismatchException;
 import cn.herodotus.dante.cache.commons.exception.StampParameterIllegalException;
 import cn.herodotus.dante.core.constant.SystemConstants;
-import cn.herodotus.engine.core.identity.domain.AccessPrincipal;
+import cn.herodotus.dante.security.domain.AccessPrincipal;
 import org.dromara.sms4j.api.SmsBlend;
 import org.dromara.sms4j.api.entity.SmsResponse;
 import org.dromara.sms4j.core.factory.SmsFactory;

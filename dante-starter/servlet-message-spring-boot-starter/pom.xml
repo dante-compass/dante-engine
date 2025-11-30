@@ -42,7 +42,7 @@
     <dependencies>
         <dependency>
             <groupId>cn.herodotus.dante</groupId>
-            <artifactId>message-module-websocket-servlet</artifactId>
+            <artifactId>dante-message-servlet-websocket</artifactId>
         </dependency>
 
         <dependency>

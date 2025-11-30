@@ -37,9 +37,10 @@
 
     <artifactId>dante-cache</artifactId>
     <name>dante-cache</name>
-    <packaging>pom</packaging>
 
     <description>Dante Cloud 云原生微服务基座组件库缓存功能封装模块分组</description>
+
+    <packaging>pom</packaging>
 
     <modules>
         <module>dante-cache-commons</module>

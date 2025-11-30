@@ -42,7 +42,7 @@ public class MultiTenantProperties {
     /**
      * 多租户数据源扫描包
      */
-    private String[] packageToScan = new String[]{"cn.herodotus.engine", "cn.herodotus.professional"};
+    private String[] packageToScan = new String[]{"cn.herodotus.dante"};
 
     /**
      * 多租户模式，默认：discriminator

@@ -44,7 +44,7 @@
     <modules>
         <module>dante-core</module>
         <module>dante-autoconfigure</module>
-        <module>dante-oauth2</module>
+        <module>dante-security</module>
         <module>dante-spring</module>
         <module>dante-web</module>
         <module>dante-hibernate</module>
