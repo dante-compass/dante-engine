@@ -25,6 +25,7 @@
 
 package cn.herodotus.dante.autoconfigure.oauth2;
 
+import cn.herodotus.dante.autoconfigure.context.ServletServiceContextAutoConfiguration;
 import cn.herodotus.dante.security.condition.ConditionalOnTokenFormat;
 import cn.herodotus.dante.security.condition.TokenFormat;
 import cn.herodotus.dante.security.oauth2.BearerTokenResolver;
@@ -32,6 +33,7 @@ import cn.herodotus.dante.security.properties.OAuth2AuthorizationProperties;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -44,6 +46,7 @@ import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.security.oauth2.server.resource.authentication.BearerTokenAuthenticationToken;
 import org.springframework.security.oauth2.server.resource.introspection.OpaqueTokenIntrospector;
 
+@AutoConfiguration(after = ServletServiceContextAutoConfiguration.class)
 @ConditionalOnClass(BearerTokenAuthenticationToken.class)
 @EnableConfigurationProperties({OAuth2AuthorizationProperties.class})
 @Import({

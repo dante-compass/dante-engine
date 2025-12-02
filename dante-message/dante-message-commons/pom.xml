@@ -43,7 +43,7 @@
     <dependencies>
         <dependency>
             <groupId>cn.herodotus.dante</groupId>
-            <artifactId>dante-spring</artifactId>
+            <artifactId>dante-web</artifactId>
         </dependency>
 
         <dependency>

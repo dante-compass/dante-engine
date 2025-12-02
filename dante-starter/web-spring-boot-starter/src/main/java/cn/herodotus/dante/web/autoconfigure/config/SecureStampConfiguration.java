@@ -31,7 +31,7 @@ import cn.herodotus.dante.core.support.crypto.SymmetricCryptoProcessor;
 import cn.herodotus.dante.web.autoconfigure.secure.DefaultDigitalEnvelopeProcessor;
 import cn.herodotus.dante.web.autoconfigure.stamp.AccessLimitedStampManager;
 import cn.herodotus.dante.web.autoconfigure.stamp.IdempotentStampManager;
-import cn.herodotus.dante.web.properties.SecureProperties;
+import cn.herodotus.dante.web.autoconfigure.properties.SecureProperties;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

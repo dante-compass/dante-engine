@@ -30,7 +30,7 @@ import cn.herodotus.dante.message.core.definition.strategy.RestMappingScanEventM
 import cn.herodotus.dante.message.core.domain.RestMapping;
 import cn.herodotus.dante.web.support.WebPropertyFinder;
 import cn.herodotus.dante.web.autoconfigure.initializer.AbstractRestMappingScanner;
-import cn.herodotus.dante.web.properties.ServiceProperties;
+import cn.herodotus.dante.web.autoconfigure.properties.ServiceProperties;
 import cn.hutool.v7.crypto.SecureUtil;
 import io.swagger.v3.oas.annotations.Operation;
 import org.apache.commons.collections4.CollectionUtils;

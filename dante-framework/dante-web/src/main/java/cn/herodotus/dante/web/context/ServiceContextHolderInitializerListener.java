@@ -23,37 +23,29 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.web.utils;
+package cn.herodotus.dante.web.context;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.junit.platform.commons.util.StringUtils;
+import cn.herodotus.dante.spring.context.ServiceContextHolder;
+import cn.herodotus.dante.web.support.WebPropertyFinder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.context.ApplicationListener;
+import org.springframework.context.event.ApplicationContextEvent;
 
 /**
- * <p>Description: XssUtils 测试 </p>
+ * <p>Description: ServiceContextHolder 初始化器 </p>
  *
  * @author : gengwei.zheng
- * @date : 2025/1/21 16:32
+ * @date : 2025/12/2 12:12
  */
-public class XssUtilsTest {
+public class ServiceContextHolderInitializerListener implements ApplicationListener<ApplicationContextEvent> {
 
-    @BeforeEach
-    public void setup() throws Exception {
+    private static final Logger log = LoggerFactory.getLogger(ServiceContextHolderInitializerListener.class);
 
-    }
-
-    /**
-     * 测试事件字符串中包含空格，Xss 清理问题。
-     * @throws Exception
-     */
-    @Test
-    void testDateBlank() throws Exception {
-
-        String source = "{\"startTime\":\"2025-01-24 00:00:00\",\"endTime\":\"2025-01-31 00:00:00\"}";
-
-        String target = XssUtils.process(source);
-
-        Assertions.assertTrue(StringUtils.containsWhitespace(target), "Xss 清理日期失败");
+    @Override
+    public void onApplicationEvent(ApplicationContextEvent event) {
+        ServiceContextHolder.setApplicationContext(event.getApplicationContext());
+        ServiceContextHolder.setApplicationName(WebPropertyFinder.getApplicationName(event.getApplicationContext()));
+        log.debug("[Herodotus] |- HERODOTUS ApplicationContext initialization completed.");
     }
 }

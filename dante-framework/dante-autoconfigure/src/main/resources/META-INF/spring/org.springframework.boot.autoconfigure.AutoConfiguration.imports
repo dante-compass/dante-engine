@@ -25,6 +25,7 @@
 
 cn.herodotus.dante.autoconfigure.ApplicationAutoConfiguration
 cn.herodotus.dante.autoconfigure.async.AsyncAutoConfiguration
+cn.herodotus.dante.autoconfigure.context.ServletServiceContextAutoConfiguration
 cn.herodotus.dante.autoconfigure.crypto.CryptoAutoConfiguration
 cn.herodotus.dante.autoconfigure.enums.EnumDictionaryAutoConfiguration
 cn.herodotus.dante.autoconfigure.error.ErrorCodeAutoConfiguration

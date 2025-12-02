@@ -30,7 +30,7 @@ import cn.herodotus.dante.core.utils.WellFormedUtils;
 import cn.herodotus.dante.message.core.definition.strategy.RestMappingScanEventManager;
 import cn.herodotus.dante.message.core.domain.RestMapping;
 import cn.herodotus.dante.web.support.WebPropertyFinder;
-import cn.herodotus.dante.web.properties.ServiceProperties;
+import cn.herodotus.dante.web.autoconfigure.properties.ServiceProperties;
 import io.swagger.v3.oas.annotations.Hidden;
 import io.swagger.v3.oas.annotations.Operation;
 import org.apache.commons.collections4.CollectionUtils;

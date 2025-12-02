@@ -23,35 +23,24 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.web.jackson;
+package cn.herodotus.dante.autoconfigure.context.initializer;
 
-import cn.herodotus.dante.spring.utils.XssUtils;
-import org.apache.commons.lang3.StringUtils;
-import tools.jackson.core.JacksonException;
-import tools.jackson.core.JsonParser;
-import tools.jackson.databind.DeserializationContext;
-import tools.jackson.databind.ValueDeserializer;
+import cn.herodotus.dante.web.context.AbstractServiceContextHolderInitializer;
+import cn.herodotus.dante.web.properties.EndpointProperties;
+import cn.herodotus.dante.web.properties.PlatformProperties;
+import org.springframework.boot.web.server.autoconfigure.ServerProperties;
+import org.springframework.stereotype.Component;
 
 /**
- * <p>Description: Xss Json 处理 </p>
+ * <p>Description: ServiceContextHolder 构建器 </p>
  *
  * @author : gengwei.zheng
- * @date : 2021/8/30 23:58
+ * @date : 2024/1/24 17:24
  */
-public class XssStringJsonDeserializer extends ValueDeserializer<String> {
+@Component
+public class ServletServiceContextHolderInitializer extends AbstractServiceContextHolderInitializer {
 
-    @Override
-    public Class<String> handledType() {
-        return String.class;
-    }
-
-    @Override
-    public String deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws JacksonException {
-        String value = jsonParser.getValueAsString();
-        if (StringUtils.isNotBlank(value)) {
-            return XssUtils.process(value);
-        }
-
-        return value;
+    public ServletServiceContextHolderInitializer(PlatformProperties platformProperties, EndpointProperties endpointProperties, ServerProperties serverProperties) {
+        super(platformProperties, endpointProperties, serverProperties.getAddress(), serverProperties.getPort(), serverProperties.getServlet().getContextPath());
     }
 }

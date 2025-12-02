@@ -23,35 +23,37 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.web.jackson;
+package cn.herodotus.dante.spring.utils;
 
-import cn.herodotus.dante.spring.utils.XssUtils;
-import org.apache.commons.lang3.StringUtils;
-import tools.jackson.core.JacksonException;
-import tools.jackson.core.JsonParser;
-import tools.jackson.databind.DeserializationContext;
-import tools.jackson.databind.ValueDeserializer;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.platform.commons.util.StringUtils;
 
 /**
- * <p>Description: Xss Json 处理 </p>
+ * <p>Description: XssUtils 测试 </p>
  *
  * @author : gengwei.zheng
- * @date : 2021/8/30 23:58
+ * @date : 2025/1/21 16:32
  */
-public class XssStringJsonDeserializer extends ValueDeserializer<String> {
+public class XssUtilsTest {
 
-    @Override
-    public Class<String> handledType() {
-        return String.class;
+    @BeforeEach
+    public void setup() throws Exception {
+
     }
 
-    @Override
-    public String deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws JacksonException {
-        String value = jsonParser.getValueAsString();
-        if (StringUtils.isNotBlank(value)) {
-            return XssUtils.process(value);
-        }
+    /**
+     * 测试事件字符串中包含空格，Xss 清理问题。
+     * @throws Exception
+     */
+    @Test
+    void testDateBlank() throws Exception {
 
-        return value;
+        String source = "{\"startTime\":\"2025-01-24 00:00:00\",\"endTime\":\"2025-01-31 00:00:00\"}";
+
+        String target = XssUtils.process(source);
+
+        Assertions.assertTrue(StringUtils.containsWhitespace(target), "Xss 清理日期失败");
     }
 }

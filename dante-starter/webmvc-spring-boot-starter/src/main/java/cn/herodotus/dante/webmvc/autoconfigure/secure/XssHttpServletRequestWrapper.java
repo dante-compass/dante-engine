@@ -25,7 +25,7 @@
 
 package cn.herodotus.dante.webmvc.autoconfigure.secure;
 
-import cn.herodotus.dante.web.utils.XssUtils;
+import cn.herodotus.dante.spring.utils.XssUtils;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletRequestWrapper;
 import org.apache.commons.lang3.ArrayUtils;
