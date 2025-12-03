@@ -25,6 +25,7 @@
 
 package cn.herodotus.dante.security.jackson;
 
+import cn.herodotus.dante.core.jackson.JsonNodeUtils;
 import cn.herodotus.dante.security.domain.HerodotusGrantedAuthority;
 import cn.herodotus.dante.security.domain.HerodotusUser;
 import org.springframework.security.core.GrantedAuthority;
@@ -65,8 +66,8 @@ public class HerodotusUserDeserializer extends ValueDeserializer<HerodotusUser> 
     @Override
     public HerodotusUser deserialize(JsonParser parser, DeserializationContext context) throws JacksonException {
         JsonNode jsonNode = context.readTree(parser);
-        Set<? extends GrantedAuthority> authorities = JsonNodeUtils.findObject(jsonNode,"authorities", HERODOTUS_GRANTED_AUTHORITY_SET, context);
-        Set<String> roles = JsonNodeUtils.findObject(jsonNode, "roles", HERODOTUS_ROLE_SET, context);
+        Set<? extends GrantedAuthority> authorities = JsonNodeUtils.findValue(jsonNode,"authorities", HERODOTUS_GRANTED_AUTHORITY_SET, context);
+        Set<String> roles = JsonNodeUtils.findValue(jsonNode, "roles", HERODOTUS_ROLE_SET, context);
         JsonNode passwordNode = JsonNodeUtils.readJsonNode(jsonNode, "password");
         String userId = JsonNodeUtils.findStringValue(jsonNode, "userId");
         String username = JsonNodeUtils.findStringValue(jsonNode, "username");
@@ -78,7 +79,7 @@ public class HerodotusUserDeserializer extends ValueDeserializer<HerodotusUser> 
         String employeeId = JsonNodeUtils.findStringValue(jsonNode, "employeeId");
         String avatar = JsonNodeUtils.findStringValue(jsonNode, "avatar");
         HerodotusUser result = new HerodotusUser(userId, username, password, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, authorities, roles, employeeId, avatar);
-        if (passwordNode.asText(null) == null) {
+        if (passwordNode.asString(null) == null) {
             result.eraseCredentials();
         }
         return result;

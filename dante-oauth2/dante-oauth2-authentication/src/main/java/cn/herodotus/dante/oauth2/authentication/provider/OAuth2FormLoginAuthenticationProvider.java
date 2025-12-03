@@ -31,7 +31,7 @@ import cn.herodotus.dante.spring.exception.captcha.CaptchaIsEmptyException;
 import cn.herodotus.dante.spring.exception.captcha.CaptchaMismatchException;
 import cn.herodotus.dante.spring.exception.captcha.CaptchaParameterIllegalException;
 import cn.herodotus.dante.spring.support.captcha.CaptchaRendererFactory;
-import cn.herodotus.dante.oauth2.commons.domain.FormLoginWebAuthenticationDetails;
+import cn.herodotus.dante.security.domain.FormLoginWebAuthenticationDetails;
 import cn.herodotus.dante.oauth2.commons.exception.OAuth2CaptchaArgumentIllegalException;
 import cn.herodotus.dante.oauth2.commons.exception.OAuth2CaptchaHasExpiredException;
 import cn.herodotus.dante.oauth2.commons.exception.OAuth2CaptchaIsEmptyException;

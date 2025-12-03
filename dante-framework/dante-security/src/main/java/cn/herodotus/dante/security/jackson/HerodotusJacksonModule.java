@@ -23,27 +23,38 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.oauth2.persistence.sas.jpa.jackson;
+package cn.herodotus.dante.security.jackson;
 
+import cn.herodotus.dante.core.jackson.JacksonConstants;
 import cn.herodotus.dante.security.domain.HerodotusGrantedAuthority;
-import cn.herodotus.dante.security.jackson.JsonNodeUtils;
-import tools.jackson.core.JacksonException;
-import tools.jackson.core.JsonParser;
-import tools.jackson.databind.DeserializationContext;
-import tools.jackson.databind.JsonNode;
-import tools.jackson.databind.ValueDeserializer;
+import cn.herodotus.dante.security.domain.HerodotusUser;
+import cn.herodotus.dante.security.domain.FormLoginWebAuthenticationDetails;
+import org.springframework.security.jackson.SecurityJacksonModule;
+import tools.jackson.databind.jsontype.BasicPolymorphicTypeValidator;
 
 /**
- * <p>Description: HerodotusGrantedAuthority 反序列化 </p>
+ * <p>Description: 自定义 User Details Module </p>
  *
  * @author : gengwei.zheng
- * @date : 2022/3/17 20:28
+ * @date : 2022/2/17 23:39
  */
-public class HerodotusGrantedAuthorityDeserializer extends ValueDeserializer<HerodotusGrantedAuthority> {
+public class HerodotusJacksonModule extends SecurityJacksonModule {
+
+    public HerodotusJacksonModule() {
+        super(HerodotusJacksonModule.class.getName(), JacksonConstants.DEFAULT_VERSION);
+    }
+
     @Override
-    public HerodotusGrantedAuthority deserialize(JsonParser parser, DeserializationContext context) throws JacksonException {
-        JsonNode jsonNode = context.readTree(parser);
-        String authority = JsonNodeUtils.findStringValue(jsonNode, "authority");
-        return new HerodotusGrantedAuthority(authority);
+    public void configurePolymorphicTypeValidator(BasicPolymorphicTypeValidator.Builder builder) {
+        builder.allowIfSubType(HerodotusUser.class)
+                .allowIfSubType(HerodotusGrantedAuthority.class)
+                .allowIfSubType(FormLoginWebAuthenticationDetails.class);
+    }
+
+    @Override
+    public void setupModule(SetupContext context) {
+        context.setMixIn(HerodotusUser.class, HerodotusUserMixin.class);
+        context.setMixIn(HerodotusGrantedAuthority.class, HerodotusGrantedAuthorityMixin.class);
+        context.setMixIn(FormLoginWebAuthenticationDetails.class, FormLoginWebAuthenticationDetailsMixin.class);
     }
 }

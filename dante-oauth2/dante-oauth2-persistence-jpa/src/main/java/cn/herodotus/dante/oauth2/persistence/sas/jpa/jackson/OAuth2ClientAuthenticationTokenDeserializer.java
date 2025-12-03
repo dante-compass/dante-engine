@@ -26,7 +26,7 @@
 package cn.herodotus.dante.oauth2.persistence.sas.jpa.jackson;
 
 import cn.herodotus.dante.security.domain.HerodotusGrantedAuthority;
-import cn.herodotus.dante.security.jackson.JsonNodeUtils;
+import cn.herodotus.dante.core.jackson.JsonNodeUtils;
 import cn.hutool.v7.core.reflect.FieldUtil;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.security.oauth2.core.ClientAuthenticationMethod;

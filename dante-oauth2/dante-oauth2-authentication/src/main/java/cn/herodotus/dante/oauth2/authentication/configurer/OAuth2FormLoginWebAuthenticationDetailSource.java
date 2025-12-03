@@ -27,7 +27,7 @@ package cn.herodotus.dante.oauth2.authentication.configurer;
 
 import cn.herodotus.dante.core.support.crypto.DigitalEnvelopeProcessor;
 import cn.herodotus.dante.web.servlet.utils.SessionUtils;
-import cn.herodotus.dante.oauth2.commons.domain.FormLoginWebAuthenticationDetails;
+import cn.herodotus.dante.security.domain.FormLoginWebAuthenticationDetails;
 import cn.herodotus.dante.oauth2.commons.properties.OAuth2AuthenticationProperties;
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.commons.lang3.StringUtils;

@@ -27,7 +27,7 @@ package cn.herodotus.dante.oauth2.authentication.response;
 
 import cn.herodotus.dante.core.constant.SystemConstants;
 import cn.herodotus.dante.core.support.crypto.DigitalEnvelopeProcessor;
-import cn.herodotus.dante.core.utils.JacksonUtils;
+import cn.herodotus.dante.core.jackson.JacksonUtils;
 import cn.herodotus.dante.web.servlet.utils.SessionUtils;
 import cn.herodotus.dante.security.domain.UserPrincipal;
 import cn.herodotus.dante.security.utils.SecurityUtils;

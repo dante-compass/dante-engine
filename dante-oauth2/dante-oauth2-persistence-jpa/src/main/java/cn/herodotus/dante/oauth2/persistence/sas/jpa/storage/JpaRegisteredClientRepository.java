@@ -51,7 +51,7 @@ public class JpaRegisteredClientRepository implements RegisteredClientRepository
 
     public JpaRegisteredClientRepository(HerodotusRegisteredClientService herodotusRegisteredClientService, PasswordEncoder passwordEncoder) {
         this.herodotusRegisteredClientService = herodotusRegisteredClientService;
-        OAuth2JacksonProcessor jacksonProcessor = new OAuth2JacksonProcessor();
+        OAuth2JacksonProcessor jacksonProcessor = OAuth2JacksonProcessor.builder().build();;
         this.herodotusToOAuth2Converter = new HerodotusToOAuth2RegisteredClientConverter(jacksonProcessor);
         this.oauth2ToHerodotusConverter = new OAuth2ToHerodotusRegisteredClientConverter(jacksonProcessor, passwordEncoder);
     }

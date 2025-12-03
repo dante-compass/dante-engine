@@ -25,7 +25,7 @@
 
 package cn.herodotus.dante.oauth2.authorization.autoconfigure.listener;
 
-import cn.herodotus.dante.core.utils.JacksonUtils;
+import cn.herodotus.dante.core.jackson.JacksonUtils;
 import cn.herodotus.dante.data.commons.enums.DataItemStatus;
 import cn.herodotus.dante.logic.upms.service.security.SysUserService;
 import cn.herodotus.dante.message.core.domain.AccountStatus;

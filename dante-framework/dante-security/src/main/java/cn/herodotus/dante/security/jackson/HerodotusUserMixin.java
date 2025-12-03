@@ -23,7 +23,7 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.oauth2.persistence.sas.jpa.jackson;
+package cn.herodotus.dante.security.jackson;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -31,19 +31,25 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import tools.jackson.databind.annotation.JsonDeserialize;
 
 /**
- * <p>Description: FormLoginWebAuthenticationDetailsMixin </p>
+ * <p>Description: 自定义 UserDetails Mixin </p>
+ * <p>
+ * This mixin class helps in serialize/deserialize {@link org.springframework.security.core.userdetails.User}. This class also register a custom deserializer UserDeserializer to deserialize User object successfully. In order to use this mixin you need to register two more mixin classes in your ObjectMapper configuration.
+ * SimpleGrantedAuthorityMixin
+ * UnmodifiableSetMixin
+ * ObjectMapper mapper = new ObjectMapper();
+ * mapper.registerModule(new CoreJackson2Module());
+ * <p>
+ * See Also: UserDeserializer, CoreJackson2Module, SecurityJackson2Modules
  *
  * @author : gengwei.zheng
- * @date : 2022/4/14 11:03
+ * @date : 2022/2/17 21:57
  */
 @JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-@JsonDeserialize(using = FormLoginWebAuthenticationDetailsDeserializer.class)
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(using = HerodotusUserDeserializer.class)
 @JsonAutoDetect(
         fieldVisibility = JsonAutoDetect.Visibility.ANY,
         getterVisibility = JsonAutoDetect.Visibility.NONE,
-        isGetterVisibility = JsonAutoDetect.Visibility.NONE,
-        creatorVisibility = JsonAutoDetect.Visibility.ANY)
-public class FormLoginWebAuthenticationDetailsMixin {
-
+        isGetterVisibility = JsonAutoDetect.Visibility.NONE)
+@JsonIgnoreProperties(ignoreUnknown = true)
+public abstract class HerodotusUserMixin {
 }

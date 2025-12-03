@@ -23,7 +23,7 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.oauth2.commons.domain;
+package cn.herodotus.dante.security.domain;
 
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.security.web.authentication.WebAuthenticationDetails;

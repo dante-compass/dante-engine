@@ -23,17 +23,27 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.oauth2.persistence.sas.jpa.jackson;
+package cn.herodotus.dante.security.jackson;
 
-import tools.jackson.core.Version;
+import cn.herodotus.dante.security.domain.HerodotusGrantedAuthority;
+import cn.herodotus.dante.core.jackson.JsonNodeUtils;
+import tools.jackson.core.JacksonException;
+import tools.jackson.core.JsonParser;
+import tools.jackson.databind.DeserializationContext;
+import tools.jackson.databind.JsonNode;
+import tools.jackson.databind.ValueDeserializer;
 
 /**
- * <p>Description: Jackson 用到的常量值 </p>
+ * <p>Description: HerodotusGrantedAuthority 反序列化 </p>
  *
  * @author : gengwei.zheng
- * @date : 2023/4/28 14:39
+ * @date : 2022/3/17 20:28
  */
-public class Jackson2Constants {
-
-    public static final Version VERSION = new Version(2, 14, 2, null, null, null);
+public class HerodotusGrantedAuthorityDeserializer extends ValueDeserializer<HerodotusGrantedAuthority> {
+    @Override
+    public HerodotusGrantedAuthority deserialize(JsonParser parser, DeserializationContext context) throws JacksonException {
+        JsonNode jsonNode = context.readTree(parser);
+        String authority = JsonNodeUtils.findStringValue(jsonNode, "authority");
+        return new HerodotusGrantedAuthority(authority);
+    }
 }

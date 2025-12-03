@@ -25,14 +25,16 @@
 
 package cn.herodotus.dante.oauth2.persistence.sas.jpa.jackson;
 
+import cn.herodotus.dante.security.jackson.HerodotusSecurityJacksonModules;
+import org.apache.commons.lang3.ObjectUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.security.jackson.SecurityJacksonModules;
 import tools.jackson.core.type.TypeReference;
 import tools.jackson.databind.JacksonModule;
 import tools.jackson.databind.ObjectMapper;
 import tools.jackson.databind.json.JsonMapper;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -46,17 +48,21 @@ public class OAuth2JacksonProcessor {
 
     private static final Logger log = LoggerFactory.getLogger(OAuth2JacksonProcessor.class);
 
-    private final ObjectMapper objectMapper;
+    private ObjectMapper objectMapper;
 
-    public OAuth2JacksonProcessor() {
+    private OAuth2JacksonProcessor() {
+    }
 
-        ClassLoader classLoader = OAuth2JacksonProcessor.class.getClassLoader();
-        List<JacksonModule> securityModules = SecurityJacksonModules.getModules(classLoader);
+    public static Builder builder() {
+        return new Builder();
+    }
 
-        JsonMapper.Builder builder = JsonMapper.builder();
-        builder.addModules(securityModules);
-        builder.addModule(new HerodotusJackson2Module());
-        objectMapper = builder.build();
+    private void setObjectMapper(ObjectMapper objectMapper) {
+        this.objectMapper = objectMapper;
+    }
+
+    public ObjectMapper getObjectMapper() {
+        return objectMapper;
     }
 
     public Map<String, Object> parseMap(String data) {
@@ -75,6 +81,45 @@ public class OAuth2JacksonProcessor {
         } catch (Exception ex) {
             log.error("[Herodotus] |- OAuth2 jackson processing writeMap catch error {}", ex.getMessage());
             throw new IllegalArgumentException(ex.getMessage(), ex);
+        }
+    }
+
+    public static class Builder {
+        private ObjectMapper objectMapper;
+        private Class<?> target;
+        private Class<?> mixinSource;
+        private final List<JacksonModule> modules = new ArrayList<>();
+
+        protected Builder() {
+        }
+
+        public Builder mixIn(Class<?> target, Class<?> mixinSource) {
+            this.target = target;
+            this.mixinSource = mixinSource;
+            return this;
+        }
+
+        public Builder module(JacksonModule module) {
+            this.modules.add(module);
+            return this;
+        }
+
+        public OAuth2JacksonProcessor build() {
+            ClassLoader classLoader = OAuth2JacksonProcessor.class.getClassLoader();
+            List<JacksonModule> securityModules = HerodotusSecurityJacksonModules.getModules(classLoader);
+
+            JsonMapper.Builder builder = JsonMapper.builder();
+            builder.addModules(securityModules);
+
+            if (ObjectUtils.isNotEmpty(target) && ObjectUtils.isNotEmpty(mixinSource)) {
+                builder.addMixIn(target, mixinSource);
+            }
+
+            builder.addModules(this.modules);
+
+            OAuth2JacksonProcessor processor = new OAuth2JacksonProcessor();
+            processor.setObjectMapper(builder.build());
+            return processor;
         }
     }
 }

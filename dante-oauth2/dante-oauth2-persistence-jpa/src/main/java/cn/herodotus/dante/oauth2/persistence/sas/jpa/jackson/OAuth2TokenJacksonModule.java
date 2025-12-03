@@ -25,12 +25,15 @@
 
 package cn.herodotus.dante.oauth2.persistence.sas.jpa.jackson;
 
+import cn.herodotus.dante.core.jackson.JacksonConstants;
+import org.springframework.security.jackson.SecurityJacksonModule;
 import org.springframework.security.oauth2.core.AuthorizationGrantType;
 import org.springframework.security.oauth2.core.ClientAuthenticationMethod;
 import org.springframework.security.oauth2.server.authorization.authentication.OAuth2ClientAuthenticationToken;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
 import org.springframework.security.oauth2.server.authorization.settings.ClientSettings;
 import org.springframework.security.oauth2.server.authorization.settings.TokenSettings;
+import tools.jackson.databind.jsontype.BasicPolymorphicTypeValidator;
 import tools.jackson.databind.module.SimpleModule;
 
 /**
@@ -39,10 +42,20 @@ import tools.jackson.databind.module.SimpleModule;
  * @author : gengwei.zheng
  * @date : 2022/10/24 15:51
  */
-public class OAuth2TokenJackson2Module extends SimpleModule {
+public class OAuth2TokenJacksonModule extends SecurityJacksonModule {
 
-    public OAuth2TokenJackson2Module() {
-        super(OAuth2TokenJackson2Module.class.getName(), Jackson2Constants.VERSION);
+    public OAuth2TokenJacksonModule() {
+        super(OAuth2TokenJacksonModule.class.getName(), JacksonConstants.DEFAULT_VERSION);
+    }
+
+    @Override
+    public void configurePolymorphicTypeValidator(BasicPolymorphicTypeValidator.Builder builder) {
+        builder.allowIfSubType(ClientAuthenticationMethod.class)
+                .allowIfSubType(AuthorizationGrantType.class)
+                .allowIfSubType(TokenSettings.class)
+                .allowIfSubType(ClientSettings.class)
+                .allowIfSubType(RegisteredClient.class)
+                .allowIfSubType(OAuth2ClientAuthenticationToken.class);
     }
 
     @Override

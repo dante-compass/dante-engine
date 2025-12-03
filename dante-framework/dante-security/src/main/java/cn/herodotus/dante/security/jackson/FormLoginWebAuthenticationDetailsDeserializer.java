@@ -23,10 +23,10 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.oauth2.persistence.sas.jpa.jackson;
+package cn.herodotus.dante.security.jackson;
 
-import cn.herodotus.dante.security.jackson.JsonNodeUtils;
-import cn.herodotus.dante.oauth2.commons.domain.FormLoginWebAuthenticationDetails;
+import cn.herodotus.dante.core.jackson.JsonNodeUtils;
+import cn.herodotus.dante.security.domain.FormLoginWebAuthenticationDetails;
 import tools.jackson.core.JacksonException;
 import tools.jackson.core.JsonParser;
 import tools.jackson.databind.DeserializationContext;

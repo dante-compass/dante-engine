@@ -25,7 +25,7 @@
 
 package cn.herodotus.dante.oauth2.authorization.autoconfigure.listener;
 
-import cn.herodotus.dante.core.utils.JacksonUtils;
+import cn.herodotus.dante.core.jackson.JacksonUtils;
 import cn.herodotus.dante.message.core.domain.RestMapping;
 import cn.herodotus.dante.oauth2.authorization.autoconfigure.bus.RemoteRestMappingGatherEvent;
 import cn.herodotus.dante.oauth2.authorization.autoconfigure.processor.AttributeTransmitterDistributeProcessor;

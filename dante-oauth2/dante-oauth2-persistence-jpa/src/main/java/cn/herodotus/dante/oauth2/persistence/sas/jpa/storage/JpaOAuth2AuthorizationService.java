@@ -66,7 +66,7 @@ public class JpaOAuth2AuthorizationService implements OAuth2AuthorizationService
     public JpaOAuth2AuthorizationService(HerodotusAuthorizationService herodotusAuthorizationService, RegisteredClientRepository registeredClientRepository) {
         this.herodotusAuthorizationService = herodotusAuthorizationService;
 
-        OAuth2JacksonProcessor jacksonProcessor = new OAuth2JacksonProcessor();
+        OAuth2JacksonProcessor jacksonProcessor = OAuth2JacksonProcessor.builder().build();
         this.herodotusToOAuth2Converter = new HerodotusToOAuth2AuthorizationConverter(jacksonProcessor, registeredClientRepository);
         this.oauth2ToHerodotusConverter = new OAuth2ToHerodotusAuthorizationConverter(jacksonProcessor);
 

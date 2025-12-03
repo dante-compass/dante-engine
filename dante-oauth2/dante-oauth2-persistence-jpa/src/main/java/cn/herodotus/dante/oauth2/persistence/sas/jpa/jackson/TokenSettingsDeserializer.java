@@ -25,7 +25,7 @@
 
 package cn.herodotus.dante.oauth2.persistence.sas.jpa.jackson;
 
-import cn.herodotus.dante.security.jackson.JsonNodeUtils;
+import cn.herodotus.dante.core.jackson.JsonNodeUtils;
 import org.springframework.security.oauth2.server.authorization.settings.TokenSettings;
 import tools.jackson.core.JacksonException;
 import tools.jackson.core.JsonParser;

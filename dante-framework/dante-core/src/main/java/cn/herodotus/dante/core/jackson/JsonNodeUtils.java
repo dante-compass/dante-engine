@@ -23,7 +23,7 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.security.jackson;
+package cn.herodotus.dante.core.jackson;
 
 import tools.jackson.core.type.TypeReference;
 import tools.jackson.databind.DeserializationContext;
@@ -42,13 +42,13 @@ import java.util.Set;
  */
 public class JsonNodeUtils {
 
-    public static final TypeReference<Instant> INSTANT = new TypeReference<Instant>() {
+    public static final TypeReference<Instant> INSTANT = new TypeReference<>() {
     };
 
-    public static final TypeReference<Set<String>> STRING_SET = new TypeReference<Set<String>>() {
+    public static final TypeReference<Set<String>> STRING_SET = new TypeReference<>() {
     };
 
-    public static final TypeReference<Map<String, Object>> STRING_OBJECT_MAP = new TypeReference<Map<String, Object>>() {
+    public static final TypeReference<Map<String, Object>> STRING_OBJECT_MAP = new TypeReference<>() {
     };
 
     public static String findStringValue(JsonNode jsonNode, String fieldName) {
@@ -75,12 +75,12 @@ public class JsonNodeUtils {
         return value != null && value.isContainer() ? context.readTreeAsValue(value, context.getTypeFactory().constructType(valueTypeReference)) : null;
     }
 
-    public static <T> T findObject(JsonNode jsonNode, String fieldName, TypeReference<T> valueTypeReference, DeserializationContext context) {
+    public static JsonNode findObject(JsonNode jsonNode, String fieldName) {
         if (jsonNode == null) {
             return null;
         }
         JsonNode value = jsonNode.findValue(fieldName);
-        return (value != null && value.isObject()) ? context.readTreeAsValue(value, context.getTypeFactory().constructType(valueTypeReference)) : null;
+        return (value != null && value.isObject()) ? value : null;
     }
 
     public static JsonNode readJsonNode(JsonNode jsonNode, String field) {

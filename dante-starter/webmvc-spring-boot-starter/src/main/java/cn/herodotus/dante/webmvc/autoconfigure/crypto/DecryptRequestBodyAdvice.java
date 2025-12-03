@@ -26,7 +26,7 @@
 package cn.herodotus.dante.webmvc.autoconfigure.crypto;
 
 import cn.herodotus.dante.core.support.crypto.DigitalEnvelopeProcessor;
-import cn.herodotus.dante.core.utils.JacksonUtils;
+import cn.herodotus.dante.core.jackson.JacksonUtils;
 import cn.herodotus.dante.web.annotation.Crypto;
 import cn.herodotus.dante.web.exception.SessionInvalidException;
 import cn.herodotus.dante.web.servlet.utils.SessionUtils;

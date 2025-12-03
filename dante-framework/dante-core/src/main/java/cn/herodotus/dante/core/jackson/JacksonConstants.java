@@ -23,30 +23,17 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.oauth2.persistence.sas.jpa.jackson;
+package cn.herodotus.dante.core.jackson;
 
-import cn.herodotus.dante.security.domain.HerodotusGrantedAuthority;
-import cn.herodotus.dante.security.domain.HerodotusUser;
-import cn.herodotus.dante.oauth2.commons.domain.FormLoginWebAuthenticationDetails;
 import tools.jackson.core.Version;
-import tools.jackson.databind.module.SimpleModule;
 
 /**
- * <p>Description: 自定义 User Details Module </p>
+ * <p>Description: Jackson 用到的常量值 </p>
  *
  * @author : gengwei.zheng
- * @date : 2022/2/17 23:39
+ * @date : 2023/4/28 14:39
  */
-public class HerodotusJackson2Module extends SimpleModule {
+public interface JacksonConstants {
 
-    public HerodotusJackson2Module() {
-        super(HerodotusJackson2Module.class.getName(), new Version(1, 0, 0, null, null, null));
-    }
-
-    @Override
-    public void setupModule(SetupContext context) {
-        context.setMixIn(HerodotusUser.class, HerodotusUserMixin.class);
-        context.setMixIn(HerodotusGrantedAuthority.class, HerodotusGrantedAuthorityMixin.class);
-        context.setMixIn(FormLoginWebAuthenticationDetails.class, FormLoginWebAuthenticationDetailsMixin.class);
-    }
+    Version DEFAULT_VERSION = new Version(1, 0, 0, null, null, null);
 }
