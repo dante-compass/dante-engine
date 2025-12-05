@@ -25,8 +25,8 @@
 
 package cn.herodotus.dante.security.jackson;
 
-import cn.herodotus.dante.security.domain.HerodotusGrantedAuthority;
 import cn.herodotus.dante.core.jackson.JsonNodeUtils;
+import cn.herodotus.dante.security.domain.HerodotusGrantedAuthority;
 import tools.jackson.core.JacksonException;
 import tools.jackson.core.JsonParser;
 import tools.jackson.databind.DeserializationContext;

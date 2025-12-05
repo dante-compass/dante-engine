@@ -29,6 +29,7 @@ import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.Strings;
 import org.springframework.http.HttpMethod;
 import org.springframework.util.Assert;
 
@@ -48,6 +49,11 @@ public final class HerodotusRequest implements Serializable {
 
     private String httpMethod;
 
+    private String version;
+
+    /**
+     * 无参构造函数，解决 Jackson 序列化出错问题
+     */
     public HerodotusRequest() {
     }
 
@@ -61,6 +67,10 @@ public final class HerodotusRequest implements Serializable {
         this(pattern, null);
     }
 
+    public HerodotusRequest(String pattern, String httpMethod) {
+        this(pattern, httpMethod, null);
+    }
+
     /**
      * Creates a matcher with the supplied pattern which will match the specified Http
      * method
@@ -69,10 +79,11 @@ public final class HerodotusRequest implements Serializable {
      * @param httpMethod the HTTP method. The {@code matches} method will return false if
      *                   the incoming request doesn't have the same method.
      */
-    public HerodotusRequest(String pattern, String httpMethod) {
+    public HerodotusRequest(String pattern, String httpMethod, String version) {
         Assert.hasText(pattern, "Pattern cannot be null or empty");
         this.pattern = pattern;
         this.httpMethod = checkHttpMethod(httpMethod);
+        this.version = version;
     }
 
     public String getPattern() {
@@ -81,6 +92,10 @@ public final class HerodotusRequest implements Serializable {
 
     public String getHttpMethod() {
         return httpMethod;
+    }
+
+    public String getVersion() {
+        return version;
     }
 
     private String checkHttpMethod(String method) {
@@ -95,19 +110,16 @@ public final class HerodotusRequest implements Serializable {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
         HerodotusRequest that = (HerodotusRequest) o;
-        return Objects.equal(pattern, that.pattern) && Objects.equal(httpMethod, that.httpMethod);
+        return Strings.CS.equals(pattern, that.pattern) && Strings.CS.equals(httpMethod, that.httpMethod) && Strings.CS.equals(version, that.version);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(pattern, httpMethod);
+        return Objects.hashCode(pattern, httpMethod, version);
     }
 
     @Override
@@ -115,6 +127,7 @@ public final class HerodotusRequest implements Serializable {
         return MoreObjects.toStringHelper(this)
                 .add("pattern", pattern)
                 .add("httpMethod", httpMethod)
+                .add("version", version)
                 .toString();
     }
 }

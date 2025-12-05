@@ -58,7 +58,7 @@ public class HerodotusUserDeserializer extends ValueDeserializer<HerodotusUser> 
      * be removed from the {@link User} by invoking {@link User#eraseCredentials()}. In
      * that case there won't be any password key in serialized json.
      *
-     * @param parser   the JsonParser
+     * @param parser  the JsonParser
      * @param context the DeserializationContext
      * @return the user
      * @throws JacksonException if an error during JSON processing occurs
@@ -66,7 +66,7 @@ public class HerodotusUserDeserializer extends ValueDeserializer<HerodotusUser> 
     @Override
     public HerodotusUser deserialize(JsonParser parser, DeserializationContext context) throws JacksonException {
         JsonNode jsonNode = context.readTree(parser);
-        Set<? extends GrantedAuthority> authorities = JsonNodeUtils.findValue(jsonNode,"authorities", HERODOTUS_GRANTED_AUTHORITY_SET, context);
+        Set<? extends GrantedAuthority> authorities = JsonNodeUtils.findValue(jsonNode, "authorities", HERODOTUS_GRANTED_AUTHORITY_SET, context);
         Set<String> roles = JsonNodeUtils.findValue(jsonNode, "roles", HERODOTUS_ROLE_SET, context);
         JsonNode passwordNode = JsonNodeUtils.readJsonNode(jsonNode, "password");
         String userId = JsonNodeUtils.findStringValue(jsonNode, "userId");

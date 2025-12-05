@@ -26,10 +26,10 @@
 package cn.herodotus.dante.logic.upms.definition;
 
 import cn.herodotus.dante.assistant.access.exception.AccessIdentityVerificationFailedException;
-import cn.herodotus.dante.security.domain.AccessPrincipal;
-import cn.herodotus.dante.security.domain.HerodotusUser;
 import cn.herodotus.dante.oauth2.commons.exception.SocialCredentialsUserBindingFailedException;
 import cn.herodotus.dante.oauth2.commons.exception.UsernameAlreadyExistsException;
+import cn.herodotus.dante.security.domain.AccessPrincipal;
+import cn.herodotus.dante.security.domain.HerodotusUser;
 import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.security.core.AuthenticationException;
 

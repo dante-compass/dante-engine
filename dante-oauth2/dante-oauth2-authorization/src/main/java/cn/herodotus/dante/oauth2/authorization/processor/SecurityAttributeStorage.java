@@ -26,11 +26,11 @@
 package cn.herodotus.dante.oauth2.authorization.processor;
 
 import cn.herodotus.dante.cache.jetcache.utils.JetCacheUtils;
-import cn.herodotus.dante.security.domain.HerodotusRequest;
-import cn.herodotus.dante.security.domain.HerodotusSecurityAttribute;
 import cn.herodotus.dante.oauth2.authorization.matcher.HerodotusPathPatternRequestMatcher;
 import cn.herodotus.dante.oauth2.authorization.matcher.HerodotusRequestMatcher;
 import cn.herodotus.dante.oauth2.commons.constants.OAuth2Constants;
+import cn.herodotus.dante.security.domain.HerodotusRequest;
+import cn.herodotus.dante.security.domain.HerodotusSecurityAttribute;
 import com.alicp.jetcache.Cache;
 import com.alicp.jetcache.anno.CacheType;
 import org.apache.commons.collections4.MapUtils;
@@ -113,12 +113,13 @@ public class SecurityAttributeStorage {
     /**
      * 根据请求的 url 和 method 获取权限对象
      *
-     * @param url    请求 URL
-     * @param method 请求 method
+     * @param url     请求 URL
+     * @param method  请求 method
+     * @param verison API 版本
      * @return 与请求url 和 method 匹配的权限数据，或者是空集合
      */
-    public List<HerodotusSecurityAttribute> getConfigAttribute(String url, String method) {
-        HerodotusRequest herodotusRequest = new HerodotusRequest(url, method);
+    public List<HerodotusSecurityAttribute> getConfigAttribute(String url, String method, String verison) {
+        HerodotusRequest herodotusRequest = new HerodotusRequest(url, method, verison);
         return readFromIndexable(herodotusRequest);
     }
 

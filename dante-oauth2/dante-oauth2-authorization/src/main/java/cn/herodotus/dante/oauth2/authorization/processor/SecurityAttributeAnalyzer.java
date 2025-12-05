@@ -25,12 +25,12 @@
 
 package cn.herodotus.dante.oauth2.authorization.processor;
 
-import cn.herodotus.dante.security.domain.HerodotusRequest;
 import cn.herodotus.dante.core.constant.SymbolConstants;
-import cn.herodotus.dante.spring.enums.UrlCategory;
-import cn.herodotus.dante.security.domain.AttributeTransmitter;
-import cn.herodotus.dante.security.domain.HerodotusSecurityAttribute;
 import cn.herodotus.dante.oauth2.authorization.servlet.ServletOAuth2ResourceMatcherConfigurer;
+import cn.herodotus.dante.security.domain.AttributeTransmitter;
+import cn.herodotus.dante.security.domain.HerodotusRequest;
+import cn.herodotus.dante.security.domain.HerodotusSecurityAttribute;
+import cn.herodotus.dante.spring.enums.UrlCategory;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.Strings;
@@ -60,7 +60,7 @@ public class SecurityAttributeAnalyzer {
     }
 
     /**
-     * 直接使用 {@link org.springframework.security.config.annotation.web.configurers.ExpressionUrlAuthorizationConfigurer} 中的方法
+     * 直接使用 {@link org.springframework.security.authorization.DefaultAuthorizationManagerFactory} 中的方法
      *
      * @param authority 权限
      * @return 权限表达式
@@ -115,11 +115,11 @@ public class SecurityAttributeAnalyzer {
      * Spring Security 基础权限规则，来源于org.springframework.security.config.annotation.web.configurers.ExpressionUrlAuthorizationConfigurer.AuthorizedUrl
      * OAuth2 权限规则来源于 org.springframework.security.oauth2.provider.expression.OAuth2SecurityExpressionMethods
      * 2. 新 spring-authorization-server
-     * Spring Security 基础权限规则，来源于{@link org.springframework.security.config.annotation.web.configurers.ExpressionUrlAuthorizationConfigurer}
+     * Spring Security 基础权限规则，来源于{@link org.springframework.security.authorization.DefaultAuthorizationManagerFactory}
      * OAuth2 权限规则来源于 目前还没有
      * <p>
-     * 具体解析采用的是 Security 的 {@link org.springframework.security.access.AccessDecisionVoter} 方式，而不是采用自定义的 {@link org.springframework.security.access.AccessDecisionManager} 该方式会与默认的 httpsecurity 配置覆盖。
-     * · 基本的权限验证采用的是：{@link org.springframework.security.access.vote.RoleVoter}
+     * 具体解析采用的是 Security 的 <code> org.springframework.security.access.AccessDecisionVoter} </code> 方式，而不是采用自定义的 <code> org.springframework.security.access.AccessDecisionManager </code>该方式会与默认的 httpsecurity 配置覆盖。
+     * · 基本的权限验证采用的是：<code> org.springframework.security.access.vote.RoleVoter</code>
      * · scope权限采用两种方式：
      * 一种是：Spring Security org.springframework.security.oauth2.provider.vote.ScopeVoter 目前已取消
      * 另一种是：OAuth2 'hasScope'和'hasAnyScope'方式  org.springframework.security.oauth2.provider.expression.OAuth2SecurityExpressionMethods#hasAnyScope(String...)
@@ -150,22 +150,23 @@ public class SecurityAttributeAnalyzer {
      *
      * @param url              请求url
      * @param methods          请求method
+     * @param version          请求版本
      * @param configAttributes Security权限{@link HerodotusSecurityAttribute}
      * @return 保存请求和权限的映射的Map
      */
-    private LinkedHashMap<HerodotusRequest, List<HerodotusSecurityAttribute>> convert(String url, String methods, List<HerodotusSecurityAttribute> configAttributes) {
+    private LinkedHashMap<HerodotusRequest, List<HerodotusSecurityAttribute>> convert(String url, String methods, String version, List<HerodotusSecurityAttribute> configAttributes) {
         LinkedHashMap<HerodotusRequest, List<HerodotusSecurityAttribute>> result = new LinkedHashMap<>();
         if (StringUtils.isBlank(methods)) {
-            result.put(new HerodotusRequest(url), configAttributes);
+            result.put(new HerodotusRequest(url, null, version), configAttributes);
         } else {
             // 如果methods是以逗号分隔的字符串，那么进行拆分处理
             if (Strings.CS.contains(methods, SymbolConstants.COMMA)) {
                 String[] multiMethod = StringUtils.split(methods, SymbolConstants.COMMA);
                 for (String method : multiMethod) {
-                    result.put(new HerodotusRequest(url, method), configAttributes);
+                    result.put(new HerodotusRequest(url, method, version), configAttributes);
                 }
             } else {
-                result.put(new HerodotusRequest(url, methods), configAttributes);
+                result.put(new HerodotusRequest(url, methods, version), configAttributes);
             }
         }
 
@@ -182,9 +183,9 @@ public class SecurityAttributeAnalyzer {
 
         Map<UrlCategory, LinkedHashMap<HerodotusRequest, List<HerodotusSecurityAttribute>>> group = new LinkedHashMap<>();
 
-        attributeTransmitters.forEach(attributeTransmitter -> {
-            LinkedHashMap<HerodotusRequest, List<HerodotusSecurityAttribute>> resources = convert(attributeTransmitter.getUrl(), attributeTransmitter.getRequestMethod(), analysis(attributeTransmitter));
-            appendToGroup(group, UrlCategory.getCategory(attributeTransmitter.getUrl()), resources);
+        attributeTransmitters.forEach(transmitter -> {
+            LinkedHashMap<HerodotusRequest, List<HerodotusSecurityAttribute>> resources = convert(transmitter.getUrl(), transmitter.getRequestMethod(), transmitter.getVersion(), analysis(transmitter));
+            appendToGroup(group, UrlCategory.getCategory(transmitter.getUrl()), resources);
         });
 
         log.debug("[Herodotus] |- Grouping security metadata by category.");

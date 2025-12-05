@@ -25,9 +25,9 @@
 
 package cn.herodotus.dante.logic.upms.domain.listener;
 
-import cn.herodotus.dante.spring.context.AbstractApplicationContextAware;
 import cn.herodotus.dante.logic.upms.domain.event.SysAttributeChangeEvent;
 import cn.herodotus.dante.logic.upms.entity.security.SysAttribute;
+import cn.herodotus.dante.spring.context.AbstractApplicationContextAware;
 import jakarta.persistence.PostUpdate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

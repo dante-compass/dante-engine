@@ -25,8 +25,8 @@
 
 package cn.herodotus.dante.security.properties;
 
-import cn.herodotus.dante.security.condition.TokenFormat;
 import cn.herodotus.dante.core.constant.BaseConstants;
+import cn.herodotus.dante.security.condition.TokenFormat;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 import java.util.List;

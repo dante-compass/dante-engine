@@ -42,6 +42,8 @@ public abstract class AbstractRest implements BaseModel {
 
     private String url;
 
+    private String version;
+
     public String getRequestMethod() {
         return requestMethod;
     }
@@ -66,12 +68,21 @@ public abstract class AbstractRest implements BaseModel {
         this.url = url;
     }
 
+    public String getVersion() {
+        return version;
+    }
+
+    public void setVersion(String version) {
+        this.version = version;
+    }
+
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
                 .add("requestMethod", requestMethod)
                 .add("serviceId", serviceId)
                 .add("url", url)
+                .add("version", version)
                 .toString();
     }
 }

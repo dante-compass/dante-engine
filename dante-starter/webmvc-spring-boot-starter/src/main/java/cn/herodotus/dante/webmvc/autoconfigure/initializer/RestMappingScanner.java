@@ -31,8 +31,6 @@ import cn.herodotus.dante.message.core.domain.RestMapping;
 import cn.herodotus.dante.web.autoconfigure.initializer.AbstractRestMappingScanner;
 import cn.herodotus.dante.web.autoconfigure.properties.ServiceProperties;
 import cn.herodotus.dante.web.support.WebPropertyFinder;
-import cn.hutool.v7.crypto.SecureUtil;
-import io.swagger.v3.oas.annotations.Operation;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.ObjectUtils;
@@ -43,6 +41,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.mvc.condition.PathPatternsRequestCondition;
 import org.springframework.web.servlet.mvc.condition.RequestMethodsRequestCondition;
+import org.springframework.web.servlet.mvc.condition.VersionRequestCondition;
 import org.springframework.web.servlet.mvc.method.RequestMappingInfo;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
@@ -109,52 +108,23 @@ public class RestMappingScanner extends AbstractRestMappingScanner {
     }
 
     private RestMapping createRestMapping(String serviceId, RequestMappingInfo info, HandlerMethod method) {
-        // 4.2.1、获取类名
-        // method.getMethod().getDeclaringClass().getName() 取到的是注解实际所在类的名字，比如注解在父类叫BaseController，那么拿到的就是BaseController
-        // method.getBeanType().getName() 取到的是注解实际Bean的名字，比如注解在在父类叫BaseController，而实际类是SysUserController，那么拿到的就是SysUserController
-        String className = method.getBeanType().getName();
-
-        // 4.2.2、检测该类是否在GroupIds列表中
-        if (isLegalGroup(className)) {
-            return null;
-        }
-
-        // 5.2.3、获取不包含包路径的类名
-        String classSimpleName = method.getBeanType().getSimpleName();
-
-        // 4.2.4、获取RequestMapping注解对应的方法名
-        String methodName = method.getMethod().getName();
-
-        // 5.2.5、获取注解对应的请求类型
+        // 4.2.1、获取注解对应的请求类型
         RequestMethodsRequestCondition requestMethodsRequestCondition = info.getMethodsCondition();
         String requestMethods = StringUtils.join(requestMethodsRequestCondition.getMethods(), SymbolConstants.COMMA);
 
-        // 5.2.6、获取主机对应的请求路径
+        // 4.2.2、获取主机对应的请求路径
         PathPatternsRequestCondition pathPatternsCondition = info.getPathPatternsCondition();
         Set<String> patternValues = pathPatternsCondition.getPatternValues();
         if (CollectionUtils.isEmpty(patternValues)) {
             return null;
         }
 
+        // 4.2.3、获取 API 版本信息
+        VersionRequestCondition versionRequestCondition = info.getVersionCondition();
+        String version = versionRequestCondition.getVersion();
+
         String urls = String.join(SymbolConstants.COMMA, patternValues);
 
-        // 5.2.8、根据serviceId, requestMethods, urls生成的MD5值，作为自定义主键
-        String flag = serviceId + SymbolConstants.DASH + requestMethods + SymbolConstants.DASH + urls;
-        String id = SecureUtil.md5(flag);
-
-        // 5.2.9、组装对象
-        RestMapping restMapping = new RestMapping();
-        restMapping.setMappingId(id);
-        restMapping.setMappingCode(createCode(urls, requestMethods));
-        restMapping.setServiceId(serviceId);
-        Operation apiOperation = method.getMethodAnnotation(Operation.class);
-        if (ObjectUtils.isNotEmpty(apiOperation)) {
-            restMapping.setDescription(apiOperation.summary());
-        }
-        restMapping.setRequestMethod(requestMethods);
-        restMapping.setUrl(urls);
-        restMapping.setClassName(className);
-        restMapping.setMethodName(methodName);
-        return restMapping;
+        return buildRestMapping(serviceId, requestMethods, urls, version, method);
     }
 }

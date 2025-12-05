@@ -25,7 +25,6 @@
 
 package cn.herodotus.dante.logic.upms.entity.hr;
 
-import cn.herodotus.dante.security.enums.AccountCategory;
 import cn.herodotus.dante.data.jpa.entity.AbstractSysEntity;
 import cn.herodotus.dante.logic.upms.constant.LogicUpmsConstants;
 import cn.herodotus.dante.logic.upms.definition.SocialUserDetails;
@@ -33,9 +32,9 @@ import cn.herodotus.dante.logic.upms.domain.deserializer.SysUserEmptyToNull;
 import cn.herodotus.dante.logic.upms.entity.security.SysUser;
 import cn.herodotus.dante.logic.upms.enums.Gender;
 import cn.herodotus.dante.logic.upms.enums.Identity;
+import cn.herodotus.dante.security.enums.AccountCategory;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import tools.jackson.databind.annotation.JsonDeserialize;
 import com.google.common.base.MoreObjects;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
@@ -45,6 +44,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.UuidGenerator;
+import tools.jackson.databind.annotation.JsonDeserialize;
 
 import java.util.Date;
 import java.util.HashSet;

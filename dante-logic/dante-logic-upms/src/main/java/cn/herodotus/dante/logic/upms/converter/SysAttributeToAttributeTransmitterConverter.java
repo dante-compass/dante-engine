@@ -25,10 +25,10 @@
 
 package cn.herodotus.dante.logic.upms.converter;
 
-import cn.herodotus.dante.spring.founction.ListConverter;
-import cn.herodotus.dante.security.domain.AttributeTransmitter;
 import cn.herodotus.dante.logic.upms.entity.security.SysAttribute;
 import cn.herodotus.dante.logic.upms.entity.security.SysPermission;
+import cn.herodotus.dante.security.domain.AttributeTransmitter;
+import cn.herodotus.dante.spring.founction.ListConverter;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.util.StringUtils;
 
@@ -53,6 +53,7 @@ public class SysAttributeToAttributeTransmitterConverter implements ListConverte
         target.setRequestMethod(source.getRequestMethod());
         target.setServiceId(source.getServiceId());
         target.setAttributeName(source.getDescription());
+        target.setVersion(source.getVersion());
         return target;
     }
 

@@ -25,8 +25,8 @@
 
 package cn.herodotus.dante.logic.upms.domain.event;
 
-import cn.herodotus.dante.spring.context.AbstractApplicationEvent;
 import cn.herodotus.dante.logic.upms.entity.security.SysAttribute;
+import cn.herodotus.dante.spring.context.AbstractApplicationEvent;
 
 import java.time.Clock;
 

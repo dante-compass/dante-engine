@@ -25,9 +25,9 @@
 
 package cn.herodotus.dante.logic.upms.entity.security;
 
-import cn.herodotus.dante.security.enums.AccountCategory;
 import cn.herodotus.dante.data.jpa.entity.AbstractSysEntity;
 import cn.herodotus.dante.logic.upms.constant.LogicUpmsConstants;
+import cn.herodotus.dante.security.enums.AccountCategory;
 import com.google.common.base.MoreObjects;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;

@@ -26,13 +26,13 @@
 package cn.herodotus.dante.logic.upms.service.security;
 
 import cn.herodotus.dante.core.domain.Dictionary;
-import cn.herodotus.dante.spring.founction.ListConverter;
 import cn.herodotus.dante.data.jpa.repository.BaseJpaRepository;
 import cn.herodotus.dante.data.jpa.service.AbstractJpaService;
 import cn.herodotus.dante.logic.upms.converter.DictionaryToSysEnumConverter;
 import cn.herodotus.dante.logic.upms.entity.security.SysDictionary;
 import cn.herodotus.dante.logic.upms.entity.security.SysEnum;
 import cn.herodotus.dante.logic.upms.repository.security.SysEnumRepository;
+import cn.herodotus.dante.spring.founction.ListConverter;
 import jakarta.persistence.criteria.Predicate;
 import jakarta.persistence.criteria.Root;
 import jakarta.persistence.criteria.Subquery;

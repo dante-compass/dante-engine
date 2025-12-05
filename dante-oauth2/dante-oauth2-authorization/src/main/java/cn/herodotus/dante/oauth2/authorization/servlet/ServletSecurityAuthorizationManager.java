@@ -25,17 +25,21 @@
 
 package cn.herodotus.dante.oauth2.authorization.servlet;
 
+import cn.herodotus.dante.oauth2.authorization.processor.SecurityAttributeStorage;
 import cn.herodotus.dante.security.domain.HerodotusRequest;
 import cn.herodotus.dante.security.domain.HerodotusSecurityAttribute;
-import cn.herodotus.dante.oauth2.authorization.processor.SecurityAttributeStorage;
+import cn.herodotus.dante.spring.context.ServiceContextHolder;
 import cn.herodotus.dante.web.servlet.utils.HeaderUtils;
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.collections4.MapUtils;
+import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.Strings;
 import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authorization.AuthorizationDecision;
 import org.springframework.security.authorization.AuthorizationManager;
@@ -45,6 +49,7 @@ import org.springframework.security.web.access.expression.WebExpressionAuthoriza
 import org.springframework.security.web.access.intercept.RequestAuthorizationContext;
 import org.springframework.security.web.servlet.util.matcher.PathPatternRequestMatcher;
 import org.springframework.security.web.util.matcher.RequestMatcher;
+import org.springframework.web.accept.ApiVersionStrategy;
 
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -68,10 +73,12 @@ public class ServletSecurityAuthorizationManager implements AuthorizationManager
 
     private final SecurityAttributeStorage securityAttributeStorage;
     private final ServletOAuth2ResourceMatcherConfigurer servletOAuth2ResourceMatcherConfigurer;
+    private final ObjectProvider<ApiVersionStrategy> apiVersionStrategies;
 
-    public ServletSecurityAuthorizationManager(SecurityAttributeStorage securityAttributeStorage, ServletOAuth2ResourceMatcherConfigurer servletOAuth2ResourceMatcherConfigurer) {
+    public ServletSecurityAuthorizationManager(SecurityAttributeStorage securityAttributeStorage, ServletOAuth2ResourceMatcherConfigurer servletOAuth2ResourceMatcherConfigurer, ObjectProvider<ApiVersionStrategy> apiVersionStrategies) {
         this.securityAttributeStorage = securityAttributeStorage;
         this.servletOAuth2ResourceMatcherConfigurer = servletOAuth2ResourceMatcherConfigurer;
+        this.apiVersionStrategies = apiVersionStrategies;
     }
 
     @Override
@@ -130,9 +137,20 @@ public class ServletSecurityAuthorizationManager implements AuthorizationManager
 
     private List<HerodotusSecurityAttribute> findConfigAttribute(String url, String method, HttpServletRequest request) {
 
-        log.debug("[Herodotus] |- Current Request is : [{}] - [{}]", url, method);
+        String path = url;
+        if (ServiceContextHolder.hasContextPath()) {
+            path = Strings.CS.removeStart(url, ServiceContextHolder.getContextPath());
+        }
 
-        List<HerodotusSecurityAttribute> configAttributes = this.securityAttributeStorage.getConfigAttribute(url, method);
+        String version = null;
+        ApiVersionStrategy apiVersionStrategy = apiVersionStrategies.getIfAvailable();
+        if (ObjectUtils.isNotEmpty(apiVersionStrategy)) {
+            version = apiVersionStrategy.resolveVersion(request);
+        }
+
+        log.debug("[Herodotus] |- Finding security attribute use : [{}] - [{}]", method, path);
+
+        List<HerodotusSecurityAttribute> configAttributes = this.securityAttributeStorage.getConfigAttribute(url, method, version);
         if (CollectionUtils.isNotEmpty(configAttributes)) {
             log.debug("[Herodotus] |- Get configAttributes from local storage for : [{}] - [{}]", url, method);
             return configAttributes;

@@ -84,6 +84,10 @@ public class SysAttribute extends AbstractSysEntity {
     @Column(name = "web_expression", length = 128)
     private String webExpression;
 
+    @Schema(name = "表达式", description = "Security表达式字符串，通过该值设置动态权限")
+    @Column(name = "version", length = 30)
+    private String version;
+
     @Schema(name = "属性对应权限", title = "根据属性关联权限数据")
     @ManyToMany(fetch = FetchType.EAGER)
     @Fetch(FetchMode.SUBSELECT)
@@ -158,6 +162,14 @@ public class SysAttribute extends AbstractSysEntity {
         this.webExpression = webExpression;
     }
 
+    public String getVersion() {
+        return version;
+    }
+
+    public void setVersion(String version) {
+        this.version = version;
+    }
+
     public Set<SysPermission> getPermissions() {
         return permissions;
     }
@@ -194,6 +206,8 @@ public class SysAttribute extends AbstractSysEntity {
                 .add("methodName", methodName)
                 .add("url", url)
                 .add("webExpression", webExpression)
+                .add("version", version)
+                .addValue(super.toString())
                 .toString();
     }
 }

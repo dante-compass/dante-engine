@@ -25,18 +25,19 @@
 
 package cn.herodotus.dante.oauth2.authorization.config;
 
-import cn.herodotus.dante.security.properties.OAuth2AuthorizationProperties;
-import cn.herodotus.dante.oauth2.authorization.servlet.ServletOAuth2ResourceMatcherConfigurer;
-import cn.herodotus.dante.spring.condition.ConditionalOnServletApplication;
 import cn.herodotus.dante.oauth2.authorization.processor.SecurityAttributeAnalyzer;
 import cn.herodotus.dante.oauth2.authorization.processor.SecurityAttributeStorage;
 import cn.herodotus.dante.oauth2.authorization.servlet.OAuth2SessionManagementConfigurerCustomer;
 import cn.herodotus.dante.oauth2.authorization.servlet.ServletOAuth2AuthorizationConfigurerManager;
+import cn.herodotus.dante.oauth2.authorization.servlet.ServletOAuth2ResourceMatcherConfigurer;
 import cn.herodotus.dante.oauth2.authorization.servlet.ServletSecurityAuthorizationManager;
+import cn.herodotus.dante.security.properties.OAuth2AuthorizationProperties;
+import cn.herodotus.dante.spring.condition.ConditionalOnServletApplication;
 import cn.herodotus.dante.web.servlet.template.ThymeleafTemplateHandler;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -44,6 +45,7 @@ import org.springframework.context.annotation.Import;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.security.oauth2.server.resource.introspection.OpaqueTokenIntrospector;
+import org.springframework.web.accept.ApiVersionStrategy;
 import org.springframework.web.servlet.resource.ResourceUrlProvider;
 
 /**
@@ -75,8 +77,8 @@ public class OAuth2ServletAuthorizationConfiguration {
 
     @Bean
     @ConditionalOnMissingBean
-    public ServletSecurityAuthorizationManager servletSecurityAuthorizationManager(SecurityAttributeStorage securityAttributeStorage, ServletOAuth2ResourceMatcherConfigurer servletOAuth2ResourceMatcherConfigurer) {
-        ServletSecurityAuthorizationManager manager = new ServletSecurityAuthorizationManager(securityAttributeStorage, servletOAuth2ResourceMatcherConfigurer);
+    public ServletSecurityAuthorizationManager servletSecurityAuthorizationManager(SecurityAttributeStorage securityAttributeStorage, ServletOAuth2ResourceMatcherConfigurer servletOAuth2ResourceMatcherConfigurer, ObjectProvider<ApiVersionStrategy> apiVersionStrategies) {
+        ServletSecurityAuthorizationManager manager = new ServletSecurityAuthorizationManager(securityAttributeStorage, servletOAuth2ResourceMatcherConfigurer, apiVersionStrategies);
         log.trace("[Herodotus] |- Bean [Servlet Security Authorization Manager] Configure.");
         return manager;
     }

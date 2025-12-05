@@ -73,6 +73,10 @@ public class SysInterface extends AbstractSysEntity {
     @Column(name = "url", length = 2048)
     private String url;
 
+    @Schema(name = "表达式", description = "Security表达式字符串，通过该值设置动态权限")
+    @Column(name = "version", length = 30)
+    private String version;
+
     public String getInterfaceId() {
         return interfaceId;
     }
@@ -129,6 +133,14 @@ public class SysInterface extends AbstractSysEntity {
         this.url = url;
     }
 
+    public String getVersion() {
+        return version;
+    }
+
+    public void setVersion(String version) {
+        this.version = version;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -156,6 +168,8 @@ public class SysInterface extends AbstractSysEntity {
                 .add("className", className)
                 .add("methodName", methodName)
                 .add("url", url)
+                .add("version", version)
+                .addValue(super.toString())
                 .toString();
     }
 }

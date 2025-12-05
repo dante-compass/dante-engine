@@ -25,8 +25,8 @@
 
 package cn.herodotus.dante.oauth2.authorization.servlet;
 
-import cn.herodotus.dante.security.properties.OAuth2AuthorizationProperties;
 import cn.herodotus.dante.security.definition.AbstractSecurityMatcherConfigurer;
+import cn.herodotus.dante.security.properties.OAuth2AuthorizationProperties;
 import cn.herodotus.dante.security.utils.WebPathUtils;
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.commons.lang3.StringUtils;

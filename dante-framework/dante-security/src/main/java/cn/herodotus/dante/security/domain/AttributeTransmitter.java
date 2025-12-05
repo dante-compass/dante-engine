@@ -28,15 +28,13 @@ package cn.herodotus.dante.security.domain;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 
-import java.io.Serializable;
-
 /**
  * <p>Description: Security Metadata 传输数据实体 </p>
  *
  * @author : gengwei.zheng
  * @date : 2021/8/8 15:51
  */
-public class AttributeTransmitter implements Serializable {
+public class AttributeTransmitter extends AbstractRest {
 
     private String attributeId;
 
@@ -48,21 +46,11 @@ public class AttributeTransmitter implements Serializable {
 
     private String permissions;
 
-    private String url;
+    private String className;
 
-    private String requestMethod;
-
-    private String serviceId;
+    private String methodName;
 
     public AttributeTransmitter() {
-    }
-
-    public String getAttributeId() {
-        return attributeId;
-    }
-
-    public void setAttributeId(String attributeId) {
-        this.attributeId = attributeId;
     }
 
     public String getAttributeCode() {
@@ -73,6 +61,14 @@ public class AttributeTransmitter implements Serializable {
         this.attributeCode = attributeCode;
     }
 
+    public String getAttributeId() {
+        return attributeId;
+    }
+
+    public void setAttributeId(String attributeId) {
+        this.attributeId = attributeId;
+    }
+
     public String getAttributeName() {
         return attributeName;
     }
@@ -81,12 +77,20 @@ public class AttributeTransmitter implements Serializable {
         this.attributeName = attributeName;
     }
 
-    public String getWebExpression() {
-        return webExpression;
+    public String getClassName() {
+        return className;
     }
 
-    public void setWebExpression(String webExpression) {
-        this.webExpression = webExpression;
+    public void setClassName(String className) {
+        this.className = className;
+    }
+
+    public String getMethodName() {
+        return methodName;
+    }
+
+    public void setMethodName(String methodName) {
+        this.methodName = methodName;
     }
 
     public String getPermissions() {
@@ -97,28 +101,12 @@ public class AttributeTransmitter implements Serializable {
         this.permissions = permissions;
     }
 
-    public String getUrl() {
-        return url;
+    public String getWebExpression() {
+        return webExpression;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    public String getRequestMethod() {
-        return requestMethod;
-    }
-
-    public void setRequestMethod(String requestMethod) {
-        this.requestMethod = requestMethod;
-    }
-
-    public String getServiceId() {
-        return serviceId;
-    }
-
-    public void setServiceId(String serviceId) {
-        this.serviceId = serviceId;
+    public void setWebExpression(String webExpression) {
+        this.webExpression = webExpression;
     }
 
     @Override
@@ -141,14 +129,14 @@ public class AttributeTransmitter implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("attributeId", attributeId)
                 .add("attributeCode", attributeCode)
+                .add("attributeId", attributeId)
                 .add("attributeName", attributeName)
-                .add("authorities", webExpression)
+                .add("webExpression", webExpression)
                 .add("permissions", permissions)
-                .add("url", url)
-                .add("requestMethod", requestMethod)
-                .add("serviceId", serviceId)
+                .add("className", className)
+                .add("methodName", methodName)
+                .addValue(super.toString())
                 .toString();
     }
 }

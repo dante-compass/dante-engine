@@ -26,9 +26,9 @@
 package cn.herodotus.dante.security.jackson;
 
 import cn.herodotus.dante.core.jackson.JacksonConstants;
+import cn.herodotus.dante.security.domain.FormLoginWebAuthenticationDetails;
 import cn.herodotus.dante.security.domain.HerodotusGrantedAuthority;
 import cn.herodotus.dante.security.domain.HerodotusUser;
-import cn.herodotus.dante.security.domain.FormLoginWebAuthenticationDetails;
 import org.springframework.security.jackson.SecurityJacksonModule;
 import tools.jackson.databind.jsontype.BasicPolymorphicTypeValidator;
 

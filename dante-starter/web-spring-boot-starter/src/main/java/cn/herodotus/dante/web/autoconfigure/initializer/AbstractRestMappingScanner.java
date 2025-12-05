@@ -31,6 +31,7 @@ import cn.herodotus.dante.message.core.definition.strategy.RestMappingScanEventM
 import cn.herodotus.dante.message.core.domain.RestMapping;
 import cn.herodotus.dante.web.support.WebPropertyFinder;
 import cn.herodotus.dante.web.autoconfigure.properties.ServiceProperties;
+import cn.hutool.v7.crypto.SecureUtil;
 import io.swagger.v3.oas.annotations.Hidden;
 import io.swagger.v3.oas.annotations.Operation;
 import org.apache.commons.collections4.CollectionUtils;
@@ -129,7 +130,7 @@ public abstract class AbstractRestMappingScanner implements ApplicationListener<
      * @param className 当前扫描的controller类名
      * @return Boolean
      */
-    protected boolean isLegalGroup(String className) {
+    private boolean isLegalGroup(String className) {
         if (StringUtils.isNotEmpty(className)) {
             List<String> groupIds = scan.getScanGroupIds();
             List<String> result = groupIds.stream().filter(groupId -> Strings.CS.contains(className, groupId)).collect(Collectors.toList());
@@ -199,5 +200,65 @@ public abstract class AbstractRestMappingScanner implements ApplicationListener<
         } else {
             return StringUtils.EMPTY;
         }
+    }
+
+    /**
+     * 生成 RestMapping Id。根据服务ID、请求方法，URL 以及版本生成 ID
+     * @param serviceId 服务ID
+     * @param requestMethods 请求方法
+     * @param urls 请求 URL
+     * @param version 请求版本
+     * @return id
+     */
+    private String createId(String serviceId, String requestMethods, String urls, String version) {
+        String flag = serviceId + SymbolConstants.DASH + requestMethods + SymbolConstants.DASH + urls;
+        if (StringUtils.isNotEmpty(version)) {
+            flag = flag + SymbolConstants.DASH + version;
+        }
+
+        return SecureUtil.md5(flag);
+    }
+
+    /**
+     * 将接口相关信息，转换为系统统一定义的 {@link RestMapping} 对象
+     * @param serviceId 服务ID
+     * @param requestMethods 请求方法
+     * @param urls 请求 URL
+     * @param version 请求版本
+     * @param method 接口对应的方法对象 {@link HandlerMethod}
+     * @return 封装好的对象 {@link RestMapping}
+     */
+    protected RestMapping buildRestMapping(String serviceId, String requestMethods, String urls, String version, HandlerMethod method) {
+
+        // 1. 获取类名
+        // method.getMethod().getDeclaringClass().getName() 取到的是注解实际所在类的名字，比如注解在父类叫BaseController，那么拿到的就是BaseController
+        // method.getBeanType().getName() 取到的是注解实际Bean的名字，比如注解在在父类叫BaseController，而实际类是SysUserController，那么拿到的就是SysUserController
+        String className = method.getBeanType().getName();
+
+        // 2. 检测该类是否在GroupIds列表中
+        if (isLegalGroup(className)) {
+            return null;
+        }
+
+        // 3. 获取RequestMapping注解对应的方法名
+        String methodName = method.getMethod().getName();
+
+        // 4. 生成 ID
+        String id = createId(serviceId, requestMethods, urls, version);
+
+        RestMapping restMapping = new RestMapping();
+        restMapping.setMappingId(id);
+        restMapping.setMappingCode(createCode(urls, requestMethods));
+        restMapping.setServiceId(serviceId);
+        Operation apiOperation = method.getMethodAnnotation(Operation.class);
+        if (ObjectUtils.isNotEmpty(apiOperation)) {
+            restMapping.setDescription(apiOperation.summary());
+        }
+        restMapping.setRequestMethod(requestMethods);
+        restMapping.setUrl(urls);
+        restMapping.setClassName(className);
+        restMapping.setMethodName(methodName);
+        restMapping.setVersion(version);
+        return restMapping;
     }
 }

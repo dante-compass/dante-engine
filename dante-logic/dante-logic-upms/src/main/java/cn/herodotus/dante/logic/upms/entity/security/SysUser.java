@@ -39,12 +39,12 @@ import cn.herodotus.dante.logic.upms.domain.deserializer.SysEmployeeEmptyToNull;
 import cn.herodotus.dante.logic.upms.entity.hr.SysEmployee;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import tools.jackson.databind.annotation.JsonDeserialize;
 import com.google.common.base.MoreObjects;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.UuidGenerator;
+import tools.jackson.databind.annotation.JsonDeserialize;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;

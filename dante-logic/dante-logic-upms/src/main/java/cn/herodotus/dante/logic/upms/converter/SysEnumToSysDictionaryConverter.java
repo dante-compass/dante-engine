@@ -25,9 +25,9 @@
 
 package cn.herodotus.dante.logic.upms.converter;
 
-import cn.herodotus.dante.spring.founction.ListConverter;
 import cn.herodotus.dante.logic.upms.entity.security.SysDictionary;
 import cn.herodotus.dante.logic.upms.entity.security.SysEnum;
+import cn.herodotus.dante.spring.founction.ListConverter;
 
 /**
  * <p>Description: SysEnum 转 SysDictionary 转换器 </p>

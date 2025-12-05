@@ -38,16 +38,17 @@ import org.springframework.core.convert.converter.Converter;
 public class RequestMappingToSysInterfaceConverter implements Converter<RestMapping, SysInterface> {
 
     @Override
-    public SysInterface convert(RestMapping restMapping) {
-        SysInterface sysInterface = new SysInterface();
-        sysInterface.setInterfaceId(restMapping.getMappingId());
-        sysInterface.setInterfaceCode(restMapping.getMappingCode());
-        sysInterface.setRequestMethod(restMapping.getRequestMethod());
-        sysInterface.setServiceId(restMapping.getServiceId());
-        sysInterface.setClassName(restMapping.getClassName());
-        sysInterface.setMethodName(restMapping.getMethodName());
-        sysInterface.setUrl(restMapping.getUrl());
-        sysInterface.setDescription(restMapping.getDescription());
-        return sysInterface;
+    public SysInterface convert(RestMapping source) {
+        SysInterface target = new SysInterface();
+        target.setInterfaceId(source.getMappingId());
+        target.setInterfaceCode(source.getMappingCode());
+        target.setRequestMethod(source.getRequestMethod());
+        target.setServiceId(source.getServiceId());
+        target.setClassName(source.getClassName());
+        target.setMethodName(source.getMethodName());
+        target.setUrl(source.getUrl());
+        target.setDescription(source.getDescription());
+        target.setVersion(source.getVersion());
+        return target;
     }
 }
