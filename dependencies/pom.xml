@@ -37,7 +37,7 @@
 
     <groupId>cn.herodotus.dante</groupId>
     <artifactId>dependencies</artifactId>
-    <version>4.0.0.0-M2</version>
+    <version>4.0.0.0-M3</version>
     <name>Dante Engine Dependencies</name>
     <packaging>pom</packaging>
 
@@ -88,7 +88,7 @@
         <maven-archetype-plugin.version>3.4.1</maven-archetype-plugin.version>
         <maven-gpg-plugin.version>3.2.8</maven-gpg-plugin.version>
 
-        <alipay-sdk-java.version>4.40.560.ALL</alipay-sdk-java.version>
+        <alipay-sdk-java.version>4.40.572.ALL</alipay-sdk-java.version>
         <animated-gif-lib.version>1.4</animated-gif-lib.version>
         <antisamy.version>1.7.8</antisamy.version>
         <bcpkix-jdk18on.version>1.83</bcpkix-jdk18on.version>
@@ -100,8 +100,8 @@
         <commons-text.version>1.14.0</commons-text.version>
         <fastjson2.version>2.0.60</fastjson2.version>
         <guava.version>33.5.0-jre</guava.version>
-        <hutool.version>7.0.0-M2</hutool.version>
-        <hypersistence-utils-hibernate-71.version>3.12.0</hypersistence-utils-hibernate-71.version>
+        <hutool.version>7.0.0-M3</hutool.version>
+        <hypersistence-utils-hibernate-71.version>3.13.2</hypersistence-utils-hibernate-71.version>
         <influxdb-client.version>7.4.0</influxdb-client.version>
         <jasypt-spring-boot-starter.version>3.0.5</jasypt-spring-boot-starter.version>
         <jetcache.version>2.7.8</jetcache.version>
@@ -117,8 +117,8 @@
         <redisson.version>3.52.0</redisson.version>
         <skywalking.version>9.5.0</skywalking.version>
         <sms4j-spring-boot-starter.version>3.3.5</sms4j-spring-boot-starter.version>
-        <software.amazon.awssdk.version>2.39.6</software.amazon.awssdk.version>
-        <software.amazon.awssdk.crt.version>0.40.1</software.amazon.awssdk.crt.version>
+        <software.amazon.awssdk.version>2.40.3</software.amazon.awssdk.version>
+        <software.amazon.awssdk.crt.version>0.40.3</software.amazon.awssdk.crt.version>
         <springdoc.version>3.0.0</springdoc.version>
         <spring-boot-dependencies.version>4.0.0</spring-boot-dependencies.version>
         <spring-boot-admin-dependencies.version>3.5.6</spring-boot-admin-dependencies.version>
@@ -126,7 +126,7 @@
         <spring-cloud-alibaba-dependencies.version>2025.0.0.0</spring-cloud-alibaba-dependencies.version>
         <spring-cloud-tencent-dependencies.version>2.1.0.2-2024.0.2</spring-cloud-tencent-dependencies.version>
         <transmittable-thread-local.version>2.14.5</transmittable-thread-local.version>
-        <weixin-java.version>4.7.9-20251202.120818</weixin-java.version>
+        <weixin-java.version>4.7.9-20251205.162836</weixin-java.version>
         <zxing.version>3.5.4</zxing.version>
 
         <!--Webjars 主要用于内置基于 thymeleaf 的自定义页面-->
@@ -142,7 +142,7 @@
 
         <!--以下为特殊处理, 统一版本处理漏洞等-->
         <asm.version>9.9</asm.version>
-        <checker-qual.version>3.52.0</checker-qual.version>
+        <checker-qual.version>3.52.1</checker-qual.version>
         <commons-fileupload.version>1.6.0</commons-fileupload.version>
         <classgraph.version>4.8.184</classgraph.version>
         <dom4j.version>2.2.0</dom4j.version>
@@ -151,7 +151,7 @@
         <javassist.version>3.30.2-GA</javassist.version>
         <objenesis.version>3.4</objenesis.version>
         <!--sms4j 依赖 hutool 5，但更新频率低，在此进行统一升级和版本控制-->
-        <hutool5.version>5.8.41</hutool5.version>
+        <hutool5.version>5.8.42</hutool5.version>
         <httpclient.version>4.5.14</httpclient.version>
         <kryo.version>5.6.2</kryo.version>
         <okio.version>3.16.4</okio.version>
