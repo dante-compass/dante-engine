@@ -29,6 +29,7 @@ import cn.herodotus.dante.core.constant.SymbolConstants;
 import cn.herodotus.dante.core.context.TenantContextHolder;
 import cn.herodotus.dante.core.domain.cache.HiberanteQueryKeyWrapper;
 import cn.hutool.v7.crypto.SecureUtil;
+import com.alibaba.fastjson2.JSON;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import org.apache.commons.lang3.StringUtils;
@@ -87,8 +88,7 @@ public class HerodotusKeyConverter implements Function<Object, Object> {
             }
         }
 
-        String others = String.valueOf(originalKey);
-        return createKey(others);
+        return SecureUtil.md5(JSON.toJSONString(originalKey));
     }
 
     private String createKey(String storedKey) {

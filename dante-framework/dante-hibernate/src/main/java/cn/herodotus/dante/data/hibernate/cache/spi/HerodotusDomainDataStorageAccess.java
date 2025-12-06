@@ -57,7 +57,9 @@ public class HerodotusDomainDataStorageAccess implements DomainDataStorageAccess
         if (key instanceof QueryKey queryKey) {
             return new HiberanteQueryKeyWrapper(queryKey);
         }
-        return key;
+        // 转换为 String 之后，在 HerodotusKeyConverter 中，直接走 String 类型的判断，防止与其它缓存内容混合在一起不好区分和处理
+        // 原有修改 QueryKey 代码方式，也是通过将 QueryKey 以外的内容转换为 String 类型，从而可以简化 JetCache KeyConverter 处理逻辑
+        return String.valueOf(key);
     }
 
     private Object get(Object key) {
