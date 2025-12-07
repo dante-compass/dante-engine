@@ -59,7 +59,7 @@ public class DictionaryToSysEnumConverter implements ListConverter<Dictionary, S
     }
 
     private String createId(Dictionary source) {
-        String key = source.getClazz() + SymbolConstants.DASH + source.getCategory() + SymbolConstants.DASH + source.getLabel();
+        String key = source.getClazz() + SymbolConstants.DASH + source.getCategory() + SymbolConstants.DASH + source.getLabel() + SymbolConstants.DASH + source.getName() + SymbolConstants.DASH + source.getValue() + SymbolConstants.DASH + source.getOrdinal();
         return SecureUtil.md5(key);
     }
 
