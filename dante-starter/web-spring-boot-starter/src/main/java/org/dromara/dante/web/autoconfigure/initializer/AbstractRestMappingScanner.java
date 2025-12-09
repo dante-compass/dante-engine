@@ -27,8 +27,8 @@ package org.dromara.dante.web.autoconfigure.initializer;
 
 import org.dromara.dante.core.constant.SymbolConstants;
 import org.dromara.dante.core.utils.WellFormedUtils;
-import cn.herodotus.dante.message.core.definition.strategy.RestMappingScanEventManager;
-import cn.herodotus.dante.message.core.domain.RestMapping;
+import org.dromara.dante.message.core.definition.strategy.RestMappingScanEventManager;
+import org.dromara.dante.message.core.domain.RestMapping;
 import org.dromara.dante.web.support.WebPropertyFinder;
 import org.dromara.dante.web.autoconfigure.properties.ServiceProperties;
 import cn.hutool.v7.crypto.SecureUtil;

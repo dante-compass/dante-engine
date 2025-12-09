@@ -36,7 +36,7 @@ import org.dromara.dante.web.autoconfigure.initializer.ServiceContextHolderBuild
 import org.dromara.dante.web.properties.EndpointProperties;
 import org.dromara.dante.web.properties.PlatformProperties;
 import org.dromara.dante.web.support.WebPropertyFinder;
-import cn.herodotus.dante.message.core.definition.strategy.EnumDictionaryGatherEventManager;
+import org.dromara.dante.message.core.definition.strategy.EnumDictionaryGatherEventManager;
 import jakarta.annotation.Nonnull;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;

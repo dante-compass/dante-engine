@@ -25,8 +25,8 @@
 
 package cn.herodotus.dante.oauth2.authorization.autoconfigure.listener;
 
-import cn.herodotus.dante.message.core.domain.RestMapping;
-import cn.herodotus.dante.message.core.event.RestMappingGatherEvent;
+import org.dromara.dante.message.core.domain.RestMapping;
+import org.dromara.dante.message.core.event.RestMappingGatherEvent;
 import cn.herodotus.dante.oauth2.authorization.autoconfigure.processor.AttributeTransmitterDistributeProcessor;
 import org.apache.commons.collections4.CollectionUtils;
 import org.slf4j.Logger;

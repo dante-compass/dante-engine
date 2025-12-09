@@ -25,7 +25,7 @@
 
 package cn.herodotus.dante.facility.kafka.autoconfigure.properties;
 
-import cn.herodotus.dante.message.core.constants.MessageConstants;
+import org.dromara.dante.message.core.constants.MessageConstants;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
