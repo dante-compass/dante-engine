@@ -23,31 +23,40 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.oss.autoconfigure;
+package org.dromara.dante.rest.servlet.identity.controller;
 
-import org.dromara.dante.rest.oss.config.RestOssConfiguration;
-import jakarta.annotation.PostConstruct;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.boot.autoconfigure.AutoConfiguration;
-import org.springframework.context.annotation.Import;
+import org.dromara.dante.data.jpa.service.BaseJpaWriteableService;
+import org.dromara.dante.logic.identity.entity.OAuth2Product;
+import org.dromara.dante.logic.identity.service.OAuth2ProductService;
+import org.dromara.dante.data.rest.servlet.AbstractJpaWriteableController;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.tags.Tags;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
- * <p>Description: 对象存储 Starter 自动配置 </p>
+ * <p>Description: OAuth2ProductController </p>
  *
  * @author : gengwei.zheng
- * @date : 2024/7/22 21:29
+ * @date : 2023/5/15 16:37
  */
-@AutoConfiguration()
-@Import({
-        RestOssConfiguration.class
+@RestController
+@RequestMapping("/authorize/product")
+@Tags({
+        @Tag(name = "OAuth2 认证服务接口"),
+        @Tag(name = "物联网管理接口"),
+        @Tag(name = "物联网产品接口")
 })
-public class OssAutoConfiguration {
+public class OAuth2ProductController extends AbstractJpaWriteableController<OAuth2Product, String> {
 
-    private static final Logger log = LoggerFactory.getLogger(OssAutoConfiguration.class);
+    private final OAuth2ProductService iotProductService;
 
-    @PostConstruct
-    public void postConstruct() {
-        log.info("[Herodotus] |- Starter [Oss] Configure.");
+    public OAuth2ProductController(OAuth2ProductService iotProductService) {
+        this.iotProductService = iotProductService;
+    }
+
+    @Override
+    public BaseJpaWriteableService<OAuth2Product, String> getService() {
+        return iotProductService;
     }
 }

@@ -23,31 +23,39 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.oss.autoconfigure;
+package org.dromara.dante.rest.servlet.upms.controller.security;
 
-import org.dromara.dante.rest.oss.config.RestOssConfiguration;
-import jakarta.annotation.PostConstruct;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.boot.autoconfigure.AutoConfiguration;
-import org.springframework.context.annotation.Import;
+import org.dromara.dante.data.jpa.service.BaseJpaWriteableService;
+import org.dromara.dante.logic.upms.entity.security.SysInterface;
+import org.dromara.dante.logic.upms.service.security.SysInterfaceService;
+import org.dromara.dante.data.rest.servlet.AbstractJpaWriteableController;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.tags.Tags;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
- * <p>Description: 对象存储 Starter 自动配置 </p>
+ * <p>Description: 系统应用程序接口 Controller </p>
  *
  * @author : gengwei.zheng
- * @date : 2024/7/22 21:29
+ * @date : 2023/3/9 5:05
  */
-@AutoConfiguration()
-@Import({
-        RestOssConfiguration.class
+@RestController
+@RequestMapping("/security/interface")
+@Tags({
+        @Tag(name = "用户安全管理接口"),
+        @Tag(name = "系统接口管理接口")
 })
-public class OssAutoConfiguration {
+public class SysInterfaceController extends AbstractJpaWriteableController<SysInterface, String> {
 
-    private static final Logger log = LoggerFactory.getLogger(OssAutoConfiguration.class);
+    private final SysInterfaceService sysInterfaceService;
 
-    @PostConstruct
-    public void postConstruct() {
-        log.info("[Herodotus] |- Starter [Oss] Configure.");
+    public SysInterfaceController(SysInterfaceService sysInterfaceService) {
+        this.sysInterfaceService = sysInterfaceService;
+    }
+
+    @Override
+    public BaseJpaWriteableService<SysInterface, String> getService() {
+        return sysInterfaceService;
     }
 }

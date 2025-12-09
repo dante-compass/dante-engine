@@ -23,31 +23,35 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.oss.autoconfigure;
+package org.dromara.dante.rest.servlet.upms.controller.hr;
 
-import org.dromara.dante.rest.oss.config.RestOssConfiguration;
-import jakarta.annotation.PostConstruct;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.boot.autoconfigure.AutoConfiguration;
-import org.springframework.context.annotation.Import;
+import org.dromara.dante.data.jpa.service.BaseJpaWriteableService;
+import org.dromara.dante.logic.upms.entity.hr.SysOwnership;
+import org.dromara.dante.logic.upms.service.hr.SysOwnershipService;
+import org.dromara.dante.data.rest.servlet.AbstractJpaWriteableController;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
- * <p>Description: 对象存储 Starter 自动配置 </p>
+ * <p>Description: 人事归属Controller </p>
  *
  * @author : gengwei.zheng
- * @date : 2024/7/22 21:29
+ * @date : 2021/7/15 16:36
  */
-@AutoConfiguration()
-@Import({
-        RestOssConfiguration.class
-})
-public class OssAutoConfiguration {
+@RestController
+@RequestMapping("/hr/ownership")
+@Tag(name = "人事归属管理接口")
+public class SysOwnershipController extends AbstractJpaWriteableController<SysOwnership, String> {
 
-    private static final Logger log = LoggerFactory.getLogger(OssAutoConfiguration.class);
+    private final SysOwnershipService sysOwnershipService;
 
-    @PostConstruct
-    public void postConstruct() {
-        log.info("[Herodotus] |- Starter [Oss] Configure.");
+    public SysOwnershipController(SysOwnershipService sysOwnershipService) {
+        this.sysOwnershipService = sysOwnershipService;
+    }
+
+    @Override
+    public BaseJpaWriteableService<SysOwnership, String> getService() {
+        return this.sysOwnershipService;
     }
 }

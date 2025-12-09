@@ -23,31 +23,48 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.oss.autoconfigure;
+package org.dromara.dante.rest.servlet.upms.dto;
 
-import org.dromara.dante.rest.oss.config.RestOssConfiguration;
-import jakarta.annotation.PostConstruct;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.boot.autoconfigure.AutoConfiguration;
-import org.springframework.context.annotation.Import;
+import org.dromara.dante.core.domain.BaseDto;
+import org.dromara.dante.logic.upms.entity.security.SysElement;
+import cn.hutool.v7.core.tree.MapTree;
+import com.google.common.base.MoreObjects;
+
+import java.util.List;
 
 /**
- * <p>Description: 对象存储 Starter 自动配置 </p>
+ * <p>Description: 前端页面元素 </p>
  *
  * @author : gengwei.zheng
- * @date : 2024/7/22 21:29
+ * @date : 2025/11/21 21:25
  */
-@AutoConfiguration()
-@Import({
-        RestOssConfiguration.class
-})
-public class OssAutoConfiguration {
+public class Elements implements BaseDto {
 
-    private static final Logger log = LoggerFactory.getLogger(OssAutoConfiguration.class);
+    private List<MapTree<String>> menus;
 
-    @PostConstruct
-    public void postConstruct() {
-        log.info("[Herodotus] |- Starter [Oss] Configure.");
+    private List<SysElement> buttons;
+
+    public List<MapTree<String>> getMenus() {
+        return menus;
+    }
+
+    public void setMenus(List<MapTree<String>> menus) {
+        this.menus = menus;
+    }
+
+    public List<SysElement> getButtons() {
+        return buttons;
+    }
+
+    public void setButtons(List<SysElement> buttons) {
+        this.buttons = buttons;
+    }
+
+    @Override
+    public String toString() {
+        return MoreObjects.toStringHelper(this)
+                .add("menus", menus)
+                .add("buttons", buttons)
+                .toString();
     }
 }

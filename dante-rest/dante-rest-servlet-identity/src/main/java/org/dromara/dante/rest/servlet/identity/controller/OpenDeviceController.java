@@ -23,31 +23,40 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.oss.autoconfigure;
+package org.dromara.dante.rest.servlet.identity.controller;
 
-import org.dromara.dante.rest.oss.config.RestOssConfiguration;
-import jakarta.annotation.PostConstruct;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.boot.autoconfigure.AutoConfiguration;
-import org.springframework.context.annotation.Import;
+import org.dromara.dante.core.constant.SymbolConstants;
+import org.dromara.dante.core.constant.SystemConstants;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.security.oauth2.core.endpoint.OAuth2ParameterNames;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
- * <p>Description: 对象存储 Starter 自动配置 </p>
+ * <p>Description: 设备激活 </p>
  *
  * @author : gengwei.zheng
- * @date : 2024/7/22 21:29
+ * @date : 2023/3/24 17:09
  */
-@AutoConfiguration()
-@Import({
-        RestOssConfiguration.class
-})
-public class OssAutoConfiguration {
+@Controller
+public class OpenDeviceController {
 
-    private static final Logger log = LoggerFactory.getLogger(OssAutoConfiguration.class);
+    @GetMapping(SystemConstants.OAUTH2_DEVICE_ACTIVATION_URI)
+    public String activate(@RequestParam(value = OAuth2ParameterNames.USER_CODE, required = false) String userCode) {
+        if (StringUtils.isNotBlank(userCode)) {
+            return "redirect:" + SystemConstants.OAUTH2_DEVICE_VERIFICATION_ENDPOINT + SymbolConstants.QUESTION + OAuth2ParameterNames.USER_CODE + SymbolConstants.EQUAL + userCode;
+        }
+        return "activation";
+    }
 
-    @PostConstruct
-    public void postConstruct() {
-        log.info("[Herodotus] |- Starter [Oss] Configure.");
+    @GetMapping(value = SystemConstants.OAUTH2_DEVICE_VERIFICATION_SUCCESS_URI)
+    public String activated() {
+        return "activation-allowed";
+    }
+
+    @GetMapping(value = "/", params = "success")
+    public String success() {
+        return "activation-allowed";
     }
 }

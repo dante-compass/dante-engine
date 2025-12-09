@@ -23,31 +23,32 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.oss.autoconfigure;
+package org.dromara.dante.rest.servlet.message.config;
 
-import org.dromara.dante.rest.oss.config.RestOssConfiguration;
+import org.dromara.dante.logic.message.annotation.EnableHerodotusLogicMessage;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.autoconfigure.AutoConfiguration;
-import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 
 /**
- * <p>Description: 对象存储 Starter 自动配置 </p>
+ * <p>Description: Servlet 环境消息 Rest 模块配置 </p>
  *
  * @author : gengwei.zheng
- * @date : 2024/7/22 21:29
+ * @date : 2024/2/19 16:51
  */
-@AutoConfiguration()
-@Import({
-        RestOssConfiguration.class
+@Configuration(proxyBeanMethods = false)
+@EnableHerodotusLogicMessage
+@ComponentScan(basePackages = {
+        "cn.herodotus.dante.rest.servlet.message.controller",
 })
-public class OssAutoConfiguration {
+public class RestServletMessageConfiguration {
 
-    private static final Logger log = LoggerFactory.getLogger(OssAutoConfiguration.class);
+    private static final Logger log = LoggerFactory.getLogger(RestServletMessageConfiguration.class);
 
     @PostConstruct
     public void postConstruct() {
-        log.info("[Herodotus] |- Starter [Oss] Configure.");
+        log.debug("[Herodotus] |- Module [Rest Servlet Message] Configure.");
     }
 }

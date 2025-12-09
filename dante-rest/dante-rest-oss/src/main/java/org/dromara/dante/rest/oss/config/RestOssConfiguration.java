@@ -23,31 +23,43 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.oss.autoconfigure;
+package org.dromara.dante.rest.oss.config;
 
-import org.dromara.dante.rest.oss.config.RestOssConfiguration;
+import org.dromara.dante.assistant.oss.config.AssistantOssConfiguration;
+import org.dromara.dante.spring.condition.ConditionalOnServletApplication;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.autoconfigure.AutoConfiguration;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
 /**
- * <p>Description: 对象存储 Starter 自动配置 </p>
+ * <p>Description: 对象存储REST模块配置类 </p>
  *
  * @author : gengwei.zheng
- * @date : 2024/7/22 21:29
+ * @date : 2024/7/22 18:10
  */
-@AutoConfiguration()
+@Configuration(proxyBeanMethods = false)
 @Import({
-        RestOssConfiguration.class
+        AssistantOssConfiguration.class
 })
-public class OssAutoConfiguration {
+public class RestOssConfiguration {
 
-    private static final Logger log = LoggerFactory.getLogger(OssAutoConfiguration.class);
+    private static final Logger log = LoggerFactory.getLogger(RestOssConfiguration.class);
 
     @PostConstruct
     public void postConstruct() {
-        log.info("[Herodotus] |- Starter [Oss] Configure.");
+        log.debug("[Herodotus] |- Module [Rest Oss] Configure.");
+    }
+
+    @Configuration(proxyBeanMethods = false)
+    @ConditionalOnServletApplication
+    @ComponentScan(basePackages = {
+            "cn.herodotus.dante.rest.oss.service",
+            "cn.herodotus.dante.rest.oss.controller"
+    })
+    static class ServletOssRestConfiguration {
+
     }
 }

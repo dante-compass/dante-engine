@@ -23,31 +23,22 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.oss.autoconfigure;
+package org.dromara.dante.rest.servlet.upms.annotation;
 
-import org.dromara.dante.rest.oss.config.RestOssConfiguration;
-import jakarta.annotation.PostConstruct;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.boot.autoconfigure.AutoConfiguration;
+import org.dromara.dante.rest.servlet.upms.config.RestServletUpmsConfiguration;
 import org.springframework.context.annotation.Import;
 
+import java.lang.annotation.*;
+
 /**
- * <p>Description: 对象存储 Starter 自动配置 </p>
+ * <p>Description: 开启 Rest Servlet Upms 模块注解 </p>
  *
  * @author : gengwei.zheng
- * @date : 2024/7/22 21:29
+ * @date : 2021/11/8 11:36
  */
-@AutoConfiguration()
-@Import({
-        RestOssConfiguration.class
-})
-public class OssAutoConfiguration {
-
-    private static final Logger log = LoggerFactory.getLogger(OssAutoConfiguration.class);
-
-    @PostConstruct
-    public void postConstruct() {
-        log.info("[Herodotus] |- Starter [Oss] Configure.");
-    }
+@Target({ElementType.TYPE, ElementType.METHOD})
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+@Import(RestServletUpmsConfiguration.class)
+public @interface EnableHerodotusRestServletUpms {
 }

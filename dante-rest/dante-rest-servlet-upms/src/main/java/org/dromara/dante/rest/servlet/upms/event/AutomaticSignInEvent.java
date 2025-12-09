@@ -23,31 +23,30 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.oss.autoconfigure;
+package org.dromara.dante.rest.servlet.upms.event;
 
-import org.dromara.dante.rest.oss.config.RestOssConfiguration;
-import jakarta.annotation.PostConstruct;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.boot.autoconfigure.AutoConfiguration;
-import org.springframework.context.annotation.Import;
+import org.springframework.context.ApplicationEvent;
+
+import java.util.Map;
 
 /**
- * <p>Description: 对象存储 Starter 自动配置 </p>
+ * <p>Description: 自动登录事件 </p>
+ * <p>
+ * JustAuth 接收到 Callback以后，统一走系统 /oauth/token 接口获取 Token
  *
  * @author : gengwei.zheng
- * @date : 2024/7/22 21:29
+ * @date : 2022/1/26 14:35
  */
-@AutoConfiguration()
-@Import({
-        RestOssConfiguration.class
-})
-public class OssAutoConfiguration {
+public class AutomaticSignInEvent extends ApplicationEvent {
 
-    private static final Logger log = LoggerFactory.getLogger(OssAutoConfiguration.class);
+    private final Map<String, Object> callbackParams;
 
-    @PostConstruct
-    public void postConstruct() {
-        log.info("[Herodotus] |- Starter [Oss] Configure.");
+    public AutomaticSignInEvent(Map<String, Object> callbackParams) {
+        super(callbackParams);
+        this.callbackParams = callbackParams;
+    }
+
+    public Map<String, Object> getCallbackParams() {
+        return callbackParams;
     }
 }

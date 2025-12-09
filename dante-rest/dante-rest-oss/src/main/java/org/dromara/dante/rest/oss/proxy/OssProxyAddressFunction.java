@@ -23,31 +23,43 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.oss.autoconfigure;
+package org.dromara.dante.rest.oss.proxy;
 
-import org.dromara.dante.rest.oss.config.RestOssConfiguration;
-import jakarta.annotation.PostConstruct;
+import org.dromara.dante.assistant.oss.constant.OssConstants;
+import org.dromara.dante.assistant.oss.properties.OssProperties;
+import org.dromara.dante.core.constant.SymbolConstants;
+import jakarta.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.autoconfigure.AutoConfiguration;
-import org.springframework.context.annotation.Import;
+
+import java.util.function.Function;
 
 /**
- * <p>Description: 对象存储 Starter 自动配置 </p>
+ * <p>Description: 默认代理地址转换器 </p>
  *
  * @author : gengwei.zheng
- * @date : 2024/7/22 21:29
+ * @date : 2023/8/19 18:21
  */
-@AutoConfiguration()
-@Import({
-        RestOssConfiguration.class
-})
-public class OssAutoConfiguration {
+public class OssProxyAddressFunction implements Function<HttpServletRequest, String> {
 
-    private static final Logger log = LoggerFactory.getLogger(OssAutoConfiguration.class);
+    private static final Logger log = LoggerFactory.getLogger(OssProxyAddressFunction.class);
 
-    @PostConstruct
-    public void postConstruct() {
-        log.info("[Herodotus] |- Starter [Oss] Configure.");
+    private final OssProperties ossProperties;
+
+    public OssProxyAddressFunction(OssProperties ossProperties) {
+        this.ossProperties = ossProperties;
+    }
+
+    @Override
+    public String apply(HttpServletRequest request) {
+        String uri = request.getRequestURI();
+        String path = uri.replace(OssConstants.PRESIGNED_OBJECT_URL_PROXY, SymbolConstants.BLANK);
+
+        String queryString = request.getQueryString();
+        String params = queryString != null ? SymbolConstants.QUESTION + queryString : SymbolConstants.BLANK;
+
+        String target = ossProperties.getProxy().getDestination() + path + params;
+        log.debug("[Herodotus] |- Convert request [{}] to [{}].", uri, target);
+        return target;
     }
 }
