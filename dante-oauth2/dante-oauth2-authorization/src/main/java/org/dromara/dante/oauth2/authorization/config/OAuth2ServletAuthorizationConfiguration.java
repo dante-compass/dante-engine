@@ -25,6 +25,7 @@
 
 package org.dromara.dante.oauth2.authorization.config;
 
+import jakarta.annotation.PostConstruct;
 import org.dromara.dante.oauth2.authorization.processor.SecurityAttributeAnalyzer;
 import org.dromara.dante.oauth2.authorization.processor.SecurityAttributeStorage;
 import org.dromara.dante.oauth2.authorization.servlet.OAuth2SessionManagementConfigurerCustomer;
@@ -34,7 +35,6 @@ import org.dromara.dante.oauth2.authorization.servlet.ServletSecurityAuthorizati
 import org.dromara.dante.security.properties.OAuth2AuthorizationProperties;
 import org.dromara.dante.spring.condition.ConditionalOnServletApplication;
 import org.dromara.dante.web.servlet.template.ThymeleafTemplateHandler;
-import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.ObjectProvider;

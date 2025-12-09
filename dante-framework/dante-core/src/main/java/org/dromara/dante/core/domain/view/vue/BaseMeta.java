@@ -25,8 +25,8 @@
 
 package org.dromara.dante.core.domain.view.vue;
 
-import org.dromara.dante.core.domain.BaseEntity;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.dromara.dante.core.domain.BaseEntity;
 
 /**
  * <p>Description: Vue Router Meta 属性定义 </p>

@@ -25,6 +25,7 @@
 
 package org.dromara.dante.logic.upms.config;
 
+import jakarta.annotation.PostConstruct;
 import org.dromara.dante.assistant.access.config.AssistantAccessConfiguration;
 import org.dromara.dante.assistant.access.factory.AccessHandlerStrategyFactory;
 import org.dromara.dante.core.function.EnumDictionaryBuilderCustomizer;
@@ -33,7 +34,6 @@ import org.dromara.dante.logic.upms.definition.SocialAuthenticationHandler;
 import org.dromara.dante.logic.upms.handler.DefaultSocialAuthenticationHandler;
 import org.dromara.dante.logic.upms.service.security.SysSocialUserService;
 import org.dromara.dante.logic.upms.service.security.SysUserService;
-import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;

@@ -25,12 +25,6 @@
 
 package org.dromara.dante.web.autoconfigure.initializer;
 
-import org.dromara.dante.core.constant.SymbolConstants;
-import org.dromara.dante.core.utils.WellFormedUtils;
-import org.dromara.dante.message.core.definition.strategy.RestMappingScanEventManager;
-import org.dromara.dante.message.core.domain.RestMapping;
-import org.dromara.dante.web.support.WebPropertyFinder;
-import org.dromara.dante.web.autoconfigure.properties.ServiceProperties;
 import cn.hutool.v7.crypto.SecureUtil;
 import io.swagger.v3.oas.annotations.Hidden;
 import io.swagger.v3.oas.annotations.Operation;
@@ -38,6 +32,12 @@ import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.Strings;
+import org.dromara.dante.core.constant.SymbolConstants;
+import org.dromara.dante.core.utils.WellFormedUtils;
+import org.dromara.dante.message.core.definition.strategy.RestMappingScanEventManager;
+import org.dromara.dante.message.core.domain.RestMapping;
+import org.dromara.dante.web.autoconfigure.properties.ServiceProperties;
+import org.dromara.dante.web.support.WebPropertyFinder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
@@ -204,10 +204,11 @@ public abstract class AbstractRestMappingScanner implements ApplicationListener<
 
     /**
      * 生成 RestMapping Id。根据服务ID、请求方法，URL 以及版本生成 ID
-     * @param serviceId 服务ID
+     *
+     * @param serviceId      服务ID
      * @param requestMethods 请求方法
-     * @param urls 请求 URL
-     * @param version 请求版本
+     * @param urls           请求 URL
+     * @param version        请求版本
      * @return id
      */
     private String createId(String serviceId, String requestMethods, String urls, String version) {
@@ -221,11 +222,12 @@ public abstract class AbstractRestMappingScanner implements ApplicationListener<
 
     /**
      * 将接口相关信息，转换为系统统一定义的 {@link RestMapping} 对象
-     * @param serviceId 服务ID
+     *
+     * @param serviceId      服务ID
      * @param requestMethods 请求方法
-     * @param urls 请求 URL
-     * @param version 请求版本
-     * @param method 接口对应的方法对象 {@link HandlerMethod}
+     * @param urls           请求 URL
+     * @param version        请求版本
+     * @param method         接口对应的方法对象 {@link HandlerMethod}
      * @return 封装好的对象 {@link RestMapping}
      */
     protected RestMapping buildRestMapping(String serviceId, String requestMethods, String urls, String version, HandlerMethod method) {

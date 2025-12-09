@@ -25,9 +25,9 @@
 
 package org.dromara.dante.rest.oss.config;
 
+import jakarta.annotation.PostConstruct;
 import org.dromara.dante.assistant.oss.config.AssistantOssConfiguration;
 import org.dromara.dante.spring.condition.ConditionalOnServletApplication;
-import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.ComponentScan;

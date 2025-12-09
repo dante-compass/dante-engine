@@ -25,11 +25,11 @@
 
 package org.dromara.dante.oauth2.persistence.sas.jpa.entity;
 
+import com.google.common.base.MoreObjects;
+import jakarta.persistence.*;
 import org.dromara.dante.oauth2.commons.constants.OAuth2Constants;
 import org.dromara.dante.oauth2.persistence.sas.jpa.definition.AbstractRegisteredClient;
 import org.dromara.dante.oauth2.persistence.sas.jpa.generator.HerodotusRegisteredClientIdGenerator;
-import com.google.common.base.MoreObjects;
-import jakarta.persistence.*;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import java.util.Objects;

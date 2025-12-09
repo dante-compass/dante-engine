@@ -25,8 +25,8 @@
 
 package org.dromara.dante.assistant.captcha.provider;
 
-import org.dromara.dante.assistant.captcha.enums.CaptchaCharacter;
 import cn.hutool.v7.core.util.RandomUtil;
+import org.dromara.dante.assistant.captcha.enums.CaptchaCharacter;
 
 import java.awt.*;
 import java.util.Arrays;

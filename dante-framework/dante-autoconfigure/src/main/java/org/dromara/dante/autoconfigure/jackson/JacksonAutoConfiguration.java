@@ -25,9 +25,9 @@
 
 package org.dromara.dante.autoconfigure.jackson;
 
+import jakarta.annotation.PostConstruct;
 import org.dromara.dante.autoconfigure.jackson.initializer.JacksonInitializer;
 import org.dromara.dante.spring.context.ServiceContextHolder;
-import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;

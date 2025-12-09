@@ -25,16 +25,16 @@
 
 package org.dromara.dante.oauth2.authorization.autoconfigure;
 
-import org.dromara.dante.spring.condition.ConditionalOnArchitecture;
-import org.dromara.dante.spring.condition.ConditionalOnServletApplication;
-import org.dromara.dante.spring.enums.Architecture;
+import jakarta.annotation.PostConstruct;
 import org.dromara.dante.message.core.definition.strategy.EnumDictionaryGatherEventManager;
 import org.dromara.dante.message.core.definition.strategy.RestMappingScanEventManager;
 import org.dromara.dante.oauth2.authorization.autoconfigure.listener.RemoteAttributeTransmitterSyncListener;
 import org.dromara.dante.oauth2.authorization.autoconfigure.strategy.DefaultEnumDictionaryGatherEventManager;
 import org.dromara.dante.oauth2.authorization.autoconfigure.strategy.DefaultRestMappingScanEventManager;
 import org.dromara.dante.oauth2.authorization.processor.SecurityAttributeAnalyzer;
-import jakarta.annotation.PostConstruct;
+import org.dromara.dante.spring.condition.ConditionalOnArchitecture;
+import org.dromara.dante.spring.condition.ConditionalOnServletApplication;
+import org.dromara.dante.spring.enums.Architecture;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;

@@ -25,7 +25,7 @@
 
 package org.dromara.dante.logic.identity.service;
 
-import org.dromara.dante.spring.exception.transaction.TransactionalRollbackException;
+import org.apache.commons.lang3.ObjectUtils;
 import org.dromara.dante.data.jpa.repository.BaseJpaRepository;
 import org.dromara.dante.data.jpa.service.AbstractJpaService;
 import org.dromara.dante.logic.identity.converter.OAuth2DeviceToRegisteredClientConverter;
@@ -34,7 +34,7 @@ import org.dromara.dante.logic.identity.entity.OAuth2Device;
 import org.dromara.dante.logic.identity.entity.OAuth2Scope;
 import org.dromara.dante.logic.identity.repository.OAuth2DeviceRepository;
 import org.dromara.dante.oauth2.persistence.sas.jpa.repository.HerodotusRegisteredClientRepository;
-import org.apache.commons.lang3.ObjectUtils;
+import org.dromara.dante.spring.exception.transaction.TransactionalRollbackException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.convert.converter.Converter;

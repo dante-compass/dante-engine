@@ -25,12 +25,12 @@
 
 package org.dromara.dante.logic.upms.definition;
 
+import org.apache.commons.lang3.ObjectUtils;
 import org.dromara.dante.assistant.access.exception.AccessIdentityVerificationFailedException;
 import org.dromara.dante.oauth2.commons.exception.SocialCredentialsUserBindingFailedException;
 import org.dromara.dante.oauth2.commons.exception.UsernameAlreadyExistsException;
 import org.dromara.dante.security.domain.AccessPrincipal;
 import org.dromara.dante.security.domain.HerodotusUser;
-import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.security.core.AuthenticationException;
 
 /**

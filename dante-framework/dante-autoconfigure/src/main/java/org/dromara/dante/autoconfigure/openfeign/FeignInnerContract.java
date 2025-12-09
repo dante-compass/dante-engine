@@ -25,10 +25,10 @@
 
 package org.dromara.dante.autoconfigure.openfeign;
 
-import org.dromara.dante.core.annotation.Inner;
-import org.dromara.dante.core.constant.HerodotusHeaders;
 import feign.MethodMetadata;
 import org.apache.commons.lang3.ObjectUtils;
+import org.dromara.dante.core.annotation.Inner;
+import org.dromara.dante.core.constant.HerodotusHeaders;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cloud.openfeign.AnnotatedParameterProcessor;

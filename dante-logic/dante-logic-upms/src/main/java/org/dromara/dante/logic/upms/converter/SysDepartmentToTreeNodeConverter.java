@@ -25,9 +25,9 @@
 
 package org.dromara.dante.logic.upms.converter;
 
+import cn.hutool.v7.core.tree.TreeNode;
 import org.dromara.dante.core.utils.WellFormedUtils;
 import org.dromara.dante.logic.upms.entity.hr.SysDepartment;
-import cn.hutool.v7.core.tree.TreeNode;
 import org.springframework.core.convert.converter.Converter;
 
 

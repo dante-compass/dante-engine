@@ -25,15 +25,15 @@
 
 package org.dromara.dante.oauth2.authentication.provider;
 
-import org.dromara.dante.core.support.crypto.DigitalEnvelopeProcessor;
-import org.dromara.dante.core.utils.ListUtils;
-import org.dromara.dante.web.exception.SessionInvalidException;
-import org.dromara.dante.web.servlet.utils.SessionUtils;
-import org.dromara.dante.security.constant.OAuth2ErrorKeys;
-import org.dromara.dante.oauth2.authentication.utils.OAuth2EndpointUtils;
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.dromara.dante.core.support.crypto.DigitalEnvelopeProcessor;
+import org.dromara.dante.core.utils.ListUtils;
+import org.dromara.dante.oauth2.authentication.utils.OAuth2EndpointUtils;
+import org.dromara.dante.security.constant.OAuth2ErrorKeys;
+import org.dromara.dante.web.exception.SessionInvalidException;
+import org.dromara.dante.web.servlet.utils.SessionUtils;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.core.endpoint.OAuth2ParameterNames;

@@ -25,8 +25,8 @@
 
 package org.dromara.dante.oauth2.extension.condition;
 
-import org.dromara.dante.spring.context.PropertyResolver;
 import org.dromara.dante.oauth2.commons.constants.OAuth2Constants;
+import org.dromara.dante.spring.context.PropertyResolver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Condition;

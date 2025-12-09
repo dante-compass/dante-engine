@@ -25,8 +25,8 @@
 
 package org.dromara.dante.assistant.oss.definition.argument;
 
-import org.dromara.dante.assistant.oss.definition.domain.SseCustomerDomain;
 import com.google.common.base.MoreObjects;
+import org.dromara.dante.assistant.oss.definition.domain.SseCustomerDomain;
 
 import java.time.LocalDateTime;
 

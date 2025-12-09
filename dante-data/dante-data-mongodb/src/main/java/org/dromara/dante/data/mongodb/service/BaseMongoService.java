@@ -25,9 +25,9 @@
 
 package org.dromara.dante.data.mongodb.service;
 
+import org.dromara.dante.core.domain.BaseEntity;
 import org.dromara.dante.data.commons.service.BasePageService;
 import org.dromara.dante.data.mongodb.repository.BaseMongoRepository;
-import org.dromara.dante.core.domain.BaseEntity;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;

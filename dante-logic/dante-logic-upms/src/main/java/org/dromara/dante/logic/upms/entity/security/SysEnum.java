@@ -25,12 +25,12 @@
 
 package org.dromara.dante.logic.upms.entity.security;
 
-import org.dromara.dante.core.constant.SystemConstants;
-import org.dromara.dante.data.jpa.entity.AbstractSysEntity;
-import org.dromara.dante.logic.upms.domain.generator.SysEnumIdGenerator;
 import com.google.common.base.MoreObjects;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
+import org.dromara.dante.core.constant.SystemConstants;
+import org.dromara.dante.data.jpa.entity.AbstractSysEntity;
+import org.dromara.dante.logic.upms.domain.generator.SysEnumIdGenerator;
 
 /**
  * <p>Description: 系统枚举信息 </p>

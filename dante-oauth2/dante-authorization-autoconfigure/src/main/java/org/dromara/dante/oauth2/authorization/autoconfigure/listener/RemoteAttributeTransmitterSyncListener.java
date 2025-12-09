@@ -26,9 +26,9 @@
 package org.dromara.dante.oauth2.authorization.autoconfigure.listener;
 
 import org.dromara.dante.core.jackson.JacksonUtils;
-import org.dromara.dante.security.domain.AttributeTransmitter;
 import org.dromara.dante.oauth2.authorization.autoconfigure.bus.RemoteAttributeTransmitterSyncEvent;
 import org.dromara.dante.oauth2.authorization.processor.SecurityAttributeAnalyzer;
+import org.dromara.dante.security.domain.AttributeTransmitter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cloud.bus.ServiceMatcher;

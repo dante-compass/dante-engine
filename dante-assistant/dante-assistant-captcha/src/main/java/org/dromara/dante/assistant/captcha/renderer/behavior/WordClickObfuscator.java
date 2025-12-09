@@ -25,10 +25,10 @@
 
 package org.dromara.dante.assistant.captcha.renderer.behavior;
 
-import org.dromara.dante.core.constant.SymbolConstants;
-import org.dromara.dante.core.domain.captcha.Coordinate;
 import cn.hutool.v7.core.util.RandomUtil;
 import org.apache.commons.lang3.StringUtils;
+import org.dromara.dante.core.constant.SymbolConstants;
+import org.dromara.dante.core.domain.captcha.Coordinate;
 
 import java.util.ArrayList;
 import java.util.Arrays;

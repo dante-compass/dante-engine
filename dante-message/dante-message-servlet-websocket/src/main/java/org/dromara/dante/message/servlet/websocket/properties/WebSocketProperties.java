@@ -25,13 +25,13 @@
 
 package org.dromara.dante.message.servlet.websocket.properties;
 
+import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.Strings;
 import org.dromara.dante.core.constant.HerodotusHeaders;
 import org.dromara.dante.core.constant.SymbolConstants;
 import org.dromara.dante.message.core.constants.MessageConstants;
 import org.dromara.dante.message.servlet.websocket.enums.InstanceMode;
-import org.apache.commons.collections4.CollectionUtils;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.Strings;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 import java.util.Collections;

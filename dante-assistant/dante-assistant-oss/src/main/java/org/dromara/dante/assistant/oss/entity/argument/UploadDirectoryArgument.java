@@ -25,8 +25,8 @@
 
 package org.dromara.dante.assistant.oss.entity.argument;
 
-import org.dromara.dante.assistant.oss.definition.argument.AbstractArgument;
 import io.swagger.v3.oas.annotations.media.Schema;
+import org.dromara.dante.assistant.oss.definition.argument.AbstractArgument;
 
 /**
  * <p>Description: 上传目录请求参数实体 </p>

@@ -25,6 +25,7 @@
 
 package org.dromara.dante.assistant.oss.config;
 
+import jakarta.annotation.PostConstruct;
 import org.dromara.dante.assistant.oss.customizer.OssErrorCodeMapperBuilderCustomizer;
 import org.dromara.dante.assistant.oss.pool.AwsConfigurer;
 import org.dromara.dante.assistant.oss.pool.S3AsyncClientObjectPool;
@@ -32,7 +33,6 @@ import org.dromara.dante.assistant.oss.pool.S3PresignerObjectPool;
 import org.dromara.dante.assistant.oss.properties.OssProperties;
 import org.dromara.dante.core.function.ErrorCodeMapperBuilderCustomizer;
 import org.dromara.dante.spring.condition.ConditionalOnServletApplication;
-import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;

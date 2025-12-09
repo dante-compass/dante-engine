@@ -25,13 +25,13 @@
 
 package org.dromara.dante.security.definition;
 
+import org.apache.commons.collections4.CollectionUtils;
 import org.dromara.dante.core.constant.SecurityResources;
 import org.dromara.dante.core.utils.ListUtils;
 import org.dromara.dante.security.domain.HerodotusRequest;
 import org.dromara.dante.security.domain.HerodotusSecurityAttribute;
 import org.dromara.dante.security.enums.PermissionExpression;
 import org.dromara.dante.security.properties.OAuth2AuthorizationProperties;
-import org.apache.commons.collections4.CollectionUtils;
 
 import java.util.LinkedHashMap;
 import java.util.List;

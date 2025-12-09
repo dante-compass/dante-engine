@@ -25,6 +25,13 @@
 
 package org.dromara.dante.logic.upms.entity.hr;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.google.common.base.MoreObjects;
+import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.persistence.*;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.dromara.dante.data.jpa.entity.AbstractSysEntity;
 import org.dromara.dante.logic.upms.constant.LogicUpmsConstants;
 import org.dromara.dante.logic.upms.definition.SocialUserDetails;
@@ -33,13 +40,6 @@ import org.dromara.dante.logic.upms.entity.security.SysUser;
 import org.dromara.dante.logic.upms.enums.Gender;
 import org.dromara.dante.logic.upms.enums.Identity;
 import org.dromara.dante.security.enums.AccountCategory;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import com.google.common.base.MoreObjects;
-import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.persistence.*;
-import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;

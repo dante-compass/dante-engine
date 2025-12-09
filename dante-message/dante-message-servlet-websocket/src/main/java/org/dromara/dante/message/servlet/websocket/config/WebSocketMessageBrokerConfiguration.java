@@ -25,14 +25,14 @@
 
 package org.dromara.dante.message.servlet.websocket.config;
 
+import jakarta.annotation.PostConstruct;
+import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.dromara.dante.message.core.constants.MessageConstants;
 import org.dromara.dante.message.servlet.websocket.interceptor.WebSocketAuthenticationHandshakeInterceptor;
 import org.dromara.dante.message.servlet.websocket.interceptor.WebSocketChannelInterceptor;
 import org.dromara.dante.message.servlet.websocket.interceptor.WebSocketPrincipalHandshakeHandler;
 import org.dromara.dante.message.servlet.websocket.properties.WebSocketProperties;
-import jakarta.annotation.PostConstruct;
-import org.apache.commons.lang3.ArrayUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;

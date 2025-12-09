@@ -25,13 +25,13 @@
 
 package org.dromara.dante.data.tenant.autoconfigure.config;
 
+import jakarta.annotation.PostConstruct;
 import org.dromara.dante.data.tenant.autoconfigure.condition.ConditionalOnMultiTenant;
 import org.dromara.dante.data.tenant.autoconfigure.enums.MultiTenant;
 import org.dromara.dante.data.tenant.autoconfigure.factory.MultiTenantDataSourceFactory;
 import org.dromara.dante.data.tenant.autoconfigure.hibernate.DatabaseMultiTenantConnectionProvider;
 import org.dromara.dante.data.tenant.autoconfigure.hibernate.HerodotusHibernatePropertiesProvider;
 import org.dromara.dante.data.tenant.autoconfigure.properties.MultiTenantProperties;
-import jakarta.annotation.PostConstruct;
 import org.hibernate.boot.model.naming.ImplicitNamingStrategy;
 import org.hibernate.boot.model.naming.PhysicalNamingStrategy;
 import org.slf4j.Logger;
@@ -89,13 +89,13 @@ public class DatabaseApproachConfiguration {
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(
             DataSource dataSource, HibernateProperties hibernateProperties,
-                                                                       JpaProperties jpaProperties, JpaVendorAdapter jpaVendorAdapter,
-                                                                       ConfigurableListableBeanFactory beanFactory,
-                                                                       ObjectProvider<SchemaManagementProvider> providers,
-                                                                       ObjectProvider<PhysicalNamingStrategy> physicalNamingStrategy,
-                                                                       ObjectProvider<ImplicitNamingStrategy> implicitNamingStrategy,
-                                                                       ObjectProvider<HibernatePropertiesCustomizer> hibernatePropertiesCustomizers,
-                                                                       MultiTenantProperties multiTenantProperties
+            JpaProperties jpaProperties, JpaVendorAdapter jpaVendorAdapter,
+            ConfigurableListableBeanFactory beanFactory,
+            ObjectProvider<SchemaManagementProvider> providers,
+            ObjectProvider<PhysicalNamingStrategy> physicalNamingStrategy,
+            ObjectProvider<ImplicitNamingStrategy> implicitNamingStrategy,
+            ObjectProvider<HibernatePropertiesCustomizer> hibernatePropertiesCustomizers,
+            MultiTenantProperties multiTenantProperties
     ) {
 
         HerodotusHibernatePropertiesProvider provider = new HerodotusHibernatePropertiesProvider(dataSource, hibernateProperties, jpaProperties, beanFactory, providers, physicalNamingStrategy, implicitNamingStrategy, hibernatePropertiesCustomizers);

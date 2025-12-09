@@ -25,9 +25,9 @@
 
 package org.dromara.dante.core.context;
 
-import org.dromara.dante.core.constant.SystemConstants;
 import com.alibaba.ttl.TransmittableThreadLocal;
 import org.apache.commons.lang3.StringUtils;
+import org.dromara.dante.core.constant.SystemConstants;
 
 /**
  * <p>Description: 存储/获取当前线程的租户信息 </p>

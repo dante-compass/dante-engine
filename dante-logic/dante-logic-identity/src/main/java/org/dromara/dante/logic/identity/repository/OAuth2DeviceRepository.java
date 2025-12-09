@@ -25,9 +25,9 @@
 
 package org.dromara.dante.logic.identity.repository;
 
+import jakarta.transaction.Transactional;
 import org.dromara.dante.data.jpa.repository.BaseJpaRepository;
 import org.dromara.dante.logic.identity.entity.OAuth2Device;
-import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 

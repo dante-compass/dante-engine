@@ -25,8 +25,8 @@
 
 package org.dromara.dante.oss.autoconfigure;
 
-import org.dromara.dante.rest.oss.config.RestOssConfiguration;
 import jakarta.annotation.PostConstruct;
+import org.dromara.dante.rest.oss.config.RestOssConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;

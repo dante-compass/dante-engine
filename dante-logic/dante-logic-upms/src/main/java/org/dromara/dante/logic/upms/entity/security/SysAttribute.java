@@ -25,13 +25,13 @@
 
 package org.dromara.dante.logic.upms.entity.security;
 
-import org.dromara.dante.data.jpa.entity.AbstractSysEntity;
-import org.dromara.dante.logic.upms.domain.generator.SysAttributeIdGenerator;
-import org.dromara.dante.logic.upms.domain.listener.SysAttributeEntityListener;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
+import org.dromara.dante.data.jpa.entity.AbstractSysEntity;
+import org.dromara.dante.logic.upms.domain.generator.SysAttributeIdGenerator;
+import org.dromara.dante.logic.upms.domain.listener.SysAttributeEntityListener;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 

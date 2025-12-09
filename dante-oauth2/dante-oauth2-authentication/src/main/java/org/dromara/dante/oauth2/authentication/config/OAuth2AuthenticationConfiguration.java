@@ -25,14 +25,14 @@
 
 package org.dromara.dante.oauth2.authentication.config;
 
+import jakarta.annotation.PostConstruct;
 import org.dromara.dante.core.support.crypto.DigitalEnvelopeProcessor;
-import org.dromara.dante.web.servlet.template.ThymeleafTemplateHandler;
 import org.dromara.dante.oauth2.authentication.configurer.OAuth2AuthenticationConfigurerManager;
 import org.dromara.dante.oauth2.authentication.customizer.HerodotusJwtTokenCustomizer;
 import org.dromara.dante.oauth2.authentication.customizer.HerodotusOpaqueTokenCustomizer;
 import org.dromara.dante.oauth2.authentication.response.DefaultOAuth2AuthenticationEventPublisher;
 import org.dromara.dante.oauth2.commons.properties.OAuth2AuthenticationProperties;
-import jakarta.annotation.PostConstruct;
+import org.dromara.dante.web.servlet.template.ThymeleafTemplateHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;

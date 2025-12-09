@@ -25,8 +25,8 @@
 
 package org.dromara.dante.message.core.event;
 
-import org.dromara.dante.spring.context.AbstractApplicationEvent;
 import org.dromara.dante.message.core.domain.TemplateMessage;
+import org.dromara.dante.spring.context.AbstractApplicationEvent;
 
 import java.time.Clock;
 

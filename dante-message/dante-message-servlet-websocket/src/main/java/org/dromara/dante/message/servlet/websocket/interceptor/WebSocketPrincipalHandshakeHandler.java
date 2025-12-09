@@ -25,10 +25,10 @@
 
 package org.dromara.dante.message.servlet.websocket.interceptor;
 
-import org.dromara.dante.core.constant.SystemConstants;
-import org.dromara.dante.security.domain.UserPrincipal;
-import org.dromara.dante.message.servlet.websocket.domain.WebSocketPrincipal;
 import org.apache.commons.lang3.ObjectUtils;
+import org.dromara.dante.core.constant.SystemConstants;
+import org.dromara.dante.message.servlet.websocket.domain.WebSocketPrincipal;
+import org.dromara.dante.security.domain.UserPrincipal;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.server.ServerHttpRequest;

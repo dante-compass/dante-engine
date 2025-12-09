@@ -25,12 +25,12 @@
 
 package org.dromara.dante.logic.upms.entity.security;
 
-import org.dromara.dante.data.jpa.entity.AbstractSysEntity;
-import org.dromara.dante.logic.upms.domain.generator.SysInterfaceIdGenerator;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
+import org.dromara.dante.data.jpa.entity.AbstractSysEntity;
+import org.dromara.dante.logic.upms.domain.generator.SysInterfaceIdGenerator;
 
 /**
  * <p>Description: 系统应用程序接口实体 </p>

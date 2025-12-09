@@ -25,17 +25,17 @@
 
 package org.dromara.dante.oauth2.authorization.servlet;
 
-import org.dromara.dante.oauth2.authorization.processor.SecurityAttributeStorage;
-import org.dromara.dante.security.domain.HerodotusRequest;
-import org.dromara.dante.security.domain.HerodotusSecurityAttribute;
-import org.dromara.dante.spring.context.ServiceContextHolder;
-import org.dromara.dante.web.servlet.utils.HeaderUtils;
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.Strings;
+import org.dromara.dante.oauth2.authorization.processor.SecurityAttributeStorage;
+import org.dromara.dante.security.domain.HerodotusRequest;
+import org.dromara.dante.security.domain.HerodotusSecurityAttribute;
+import org.dromara.dante.spring.context.ServiceContextHolder;
+import org.dromara.dante.web.servlet.utils.HeaderUtils;
 import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

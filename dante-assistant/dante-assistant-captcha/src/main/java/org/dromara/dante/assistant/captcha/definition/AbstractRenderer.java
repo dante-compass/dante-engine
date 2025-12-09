@@ -25,11 +25,11 @@
 
 package org.dromara.dante.assistant.captcha.definition;
 
+import cn.hutool.v7.swing.img.ImgUtil;
 import org.dromara.dante.assistant.captcha.properties.CaptchaProperties;
 import org.dromara.dante.assistant.captcha.provider.ResourceProvider;
 import org.dromara.dante.cache.jetcache.stamp.AbstractStampManager;
 import org.dromara.dante.core.support.CaptchaRenderer;
-import cn.hutool.v7.swing.img.ImgUtil;
 
 import java.awt.image.BufferedImage;
 

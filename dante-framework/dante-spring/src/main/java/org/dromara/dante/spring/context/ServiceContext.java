@@ -25,11 +25,11 @@
 
 package org.dromara.dante.spring.context;
 
+import com.google.common.base.MoreObjects;
 import org.dromara.dante.core.constant.SystemConstants;
 import org.dromara.dante.core.enums.Protocol;
 import org.dromara.dante.spring.enums.Architecture;
 import org.dromara.dante.spring.enums.DataAccessStrategy;
-import com.google.common.base.MoreObjects;
 import org.springframework.context.ApplicationContext;
 
 /**

@@ -25,11 +25,6 @@
 
 package org.dromara.dante.rest.servlet.upms.controller.security;
 
-import org.dromara.dante.core.domain.Result;
-import org.dromara.dante.data.jpa.service.BaseJpaWriteableService;
-import org.dromara.dante.logic.upms.entity.security.SysAttribute;
-import org.dromara.dante.logic.upms.service.security.SysAttributeService;
-import org.dromara.dante.data.rest.servlet.AbstractJpaWriteableController;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
@@ -37,6 +32,11 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.tags.Tags;
+import org.dromara.dante.core.domain.Result;
+import org.dromara.dante.data.jpa.service.BaseJpaWriteableService;
+import org.dromara.dante.data.rest.servlet.AbstractJpaWriteableController;
+import org.dromara.dante.logic.upms.entity.security.SysAttribute;
+import org.dromara.dante.logic.upms.service.security.SysAttributeService;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

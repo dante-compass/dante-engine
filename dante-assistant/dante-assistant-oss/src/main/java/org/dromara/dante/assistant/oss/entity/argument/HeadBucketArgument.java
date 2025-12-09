@@ -25,8 +25,8 @@
 
 package org.dromara.dante.assistant.oss.entity.argument;
 
-import org.dromara.dante.assistant.oss.definition.argument.AbstractExpectedBucketOwnerArgument;
 import io.swagger.v3.oas.annotations.media.Schema;
+import org.dromara.dante.assistant.oss.definition.argument.AbstractExpectedBucketOwnerArgument;
 
 /**
  * <p>Description: Head方式操作存储桶请求参数实体 </p>

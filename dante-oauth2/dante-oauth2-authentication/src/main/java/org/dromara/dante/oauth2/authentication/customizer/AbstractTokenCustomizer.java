@@ -25,10 +25,10 @@
 
 package org.dromara.dante.oauth2.authentication.customizer;
 
-import org.dromara.dante.core.constant.SystemConstants;
-import org.dromara.dante.security.domain.HerodotusUser;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.ObjectUtils;
+import org.dromara.dante.core.constant.SystemConstants;
+import org.dromara.dante.security.domain.HerodotusUser;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;

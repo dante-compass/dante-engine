@@ -25,8 +25,8 @@
 
 package org.dromara.dante.spring.jackson;
 
-import org.dromara.dante.core.constant.SymbolConstants;
 import org.apache.commons.lang3.Strings;
+import org.dromara.dante.core.constant.SymbolConstants;
 import org.springframework.util.StringUtils;
 import tools.jackson.core.JacksonException;
 import tools.jackson.core.JsonGenerator;

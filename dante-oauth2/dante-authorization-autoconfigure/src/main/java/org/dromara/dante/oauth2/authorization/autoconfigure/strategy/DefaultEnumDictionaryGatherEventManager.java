@@ -26,10 +26,10 @@
 package org.dromara.dante.oauth2.authorization.autoconfigure.strategy;
 
 import org.dromara.dante.core.domain.Dictionary;
-import org.dromara.dante.spring.context.ServiceContextHolder;
 import org.dromara.dante.message.core.definition.strategy.EnumDictionaryGatherEventManager;
 import org.dromara.dante.message.core.event.EnumDictionaryGatherEvent;
 import org.dromara.dante.oauth2.authorization.autoconfigure.bus.RemoteEnumDictionaryGatherEvent;
+import org.dromara.dante.spring.context.ServiceContextHolder;
 
 import java.util.List;
 

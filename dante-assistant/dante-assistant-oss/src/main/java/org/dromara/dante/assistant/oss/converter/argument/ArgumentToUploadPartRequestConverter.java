@@ -25,8 +25,8 @@
 
 package org.dromara.dante.assistant.oss.converter.argument;
 
-import org.dromara.dante.assistant.oss.entity.argument.UploadPartArgument;
 import org.apache.commons.lang3.ObjectUtils;
+import org.dromara.dante.assistant.oss.entity.argument.UploadPartArgument;
 import org.springframework.core.convert.converter.Converter;
 import software.amazon.awssdk.services.s3.model.UploadPartRequest;
 

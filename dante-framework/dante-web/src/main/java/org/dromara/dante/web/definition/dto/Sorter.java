@@ -25,9 +25,9 @@
 
 package org.dromara.dante.web.definition.dto;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.dromara.dante.core.domain.AbstractDto;
 import org.dromara.dante.web.annotation.EnumeratedValue;
-import io.swagger.v3.oas.annotations.media.Schema;
 
 /**
  * <p>Description: 排序参数 </p>

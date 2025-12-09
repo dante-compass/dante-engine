@@ -25,10 +25,10 @@
 
 package org.dromara.dante.web.autoconfigure.initializer;
 
+import org.apache.commons.collections4.CollectionUtils;
 import org.dromara.dante.core.builder.EnumDictionaryBuilder;
 import org.dromara.dante.core.domain.Dictionary;
 import org.dromara.dante.message.core.definition.strategy.EnumDictionaryGatherEventManager;
-import org.apache.commons.collections4.CollectionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.context.event.ApplicationReadyEvent;

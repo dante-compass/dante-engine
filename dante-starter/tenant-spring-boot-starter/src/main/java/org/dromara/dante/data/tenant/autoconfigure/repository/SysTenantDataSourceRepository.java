@@ -25,9 +25,9 @@
 
 package org.dromara.dante.data.tenant.autoconfigure.repository;
 
-import org.dromara.dante.data.tenant.autoconfigure.entity.SysTenantDataSource;
-import org.dromara.dante.data.jpa.repository.BaseJpaRepository;
 import jakarta.persistence.QueryHint;
+import org.dromara.dante.data.jpa.repository.BaseJpaRepository;
+import org.dromara.dante.data.tenant.autoconfigure.entity.SysTenantDataSource;
 import org.hibernate.jpa.AvailableHints;
 import org.springframework.data.jpa.repository.QueryHints;
 

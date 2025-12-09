@@ -25,12 +25,12 @@
 
 package org.dromara.dante.logic.upms.service.hr;
 
+import jakarta.persistence.criteria.Predicate;
+import org.apache.commons.lang3.ObjectUtils;
 import org.dromara.dante.data.jpa.repository.BaseJpaRepository;
 import org.dromara.dante.data.jpa.service.AbstractJpaService;
 import org.dromara.dante.logic.upms.entity.hr.SysDepartment;
 import org.dromara.dante.logic.upms.repository.hr.SysDepartmentRepository;
-import jakarta.persistence.criteria.Predicate;
-import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;

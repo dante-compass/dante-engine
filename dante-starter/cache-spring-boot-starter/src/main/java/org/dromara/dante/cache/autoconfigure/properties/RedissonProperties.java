@@ -25,12 +25,12 @@
 
 package org.dromara.dante.cache.autoconfigure.properties;
 
-import org.dromara.dante.cache.commons.constants.CacheConstants;
-import org.dromara.dante.core.constant.SymbolConstants;
-import org.dromara.dante.core.enums.Protocol;
 import com.google.common.base.MoreObjects;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.Strings;
+import org.dromara.dante.cache.commons.constants.CacheConstants;
+import org.dromara.dante.core.constant.SymbolConstants;
+import org.dromara.dante.core.enums.Protocol;
 import org.redisson.config.ClusterServersConfig;
 import org.redisson.config.SentinelServersConfig;
 import org.redisson.config.SingleServerConfig;

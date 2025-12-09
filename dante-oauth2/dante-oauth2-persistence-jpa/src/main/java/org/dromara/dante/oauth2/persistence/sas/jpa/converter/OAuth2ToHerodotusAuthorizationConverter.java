@@ -25,11 +25,11 @@
 
 package org.dromara.dante.oauth2.persistence.sas.jpa.converter;
 
+import cn.hutool.v7.core.date.DateUtil;
 import org.dromara.dante.core.constant.SymbolConstants;
 import org.dromara.dante.oauth2.persistence.sas.jpa.definition.AbstractOAuth2EntityConverter;
 import org.dromara.dante.oauth2.persistence.sas.jpa.entity.HerodotusAuthorization;
 import org.dromara.dante.oauth2.persistence.sas.jpa.jackson.OAuth2JacksonProcessor;
-import cn.hutool.v7.core.date.DateUtil;
 import org.springframework.security.oauth2.core.*;
 import org.springframework.security.oauth2.core.endpoint.OAuth2ParameterNames;
 import org.springframework.security.oauth2.core.oidc.OidcIdToken;

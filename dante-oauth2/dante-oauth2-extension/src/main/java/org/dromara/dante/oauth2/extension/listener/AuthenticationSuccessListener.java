@@ -25,9 +25,9 @@
 
 package org.dromara.dante.oauth2.extension.listener;
 
-import org.dromara.dante.oauth2.extension.manager.OAuth2ComplianceManager;
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.commons.lang3.ObjectUtils;
+import org.dromara.dante.oauth2.extension.manager.OAuth2ComplianceManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationListener;

@@ -25,12 +25,12 @@
 
 package org.dromara.dante.oauth2.authorization.autoconfigure.strategy;
 
-import org.dromara.dante.spring.context.ServiceContextHolder;
 import org.dromara.dante.message.core.definition.strategy.RestMappingScanEventManager;
 import org.dromara.dante.message.core.domain.RestMapping;
 import org.dromara.dante.message.core.event.RestMappingGatherEvent;
 import org.dromara.dante.oauth2.authorization.autoconfigure.bus.RemoteRestMappingGatherEvent;
 import org.dromara.dante.oauth2.authorization.processor.SecurityAttributeAnalyzer;
+import org.dromara.dante.spring.context.ServiceContextHolder;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.stereotype.Component;
 

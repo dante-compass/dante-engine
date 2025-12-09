@@ -25,9 +25,6 @@
 
 package org.dromara.dante.cache.jetcache.enhance;
 
-import org.dromara.dante.cache.commons.enums.CacheMethod;
-import org.dromara.dante.cache.commons.properties.CacheProperties;
-import org.dromara.dante.cache.commons.properties.CacheSetting;
 import com.alicp.jetcache.Cache;
 import com.alicp.jetcache.CacheManager;
 import com.alicp.jetcache.anno.CacheType;
@@ -35,6 +32,9 @@ import com.alicp.jetcache.template.QuickConfig;
 import org.apache.commons.lang3.BooleanUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.dromara.dante.cache.commons.enums.CacheMethod;
+import org.dromara.dante.cache.commons.properties.CacheProperties;
+import org.dromara.dante.cache.commons.properties.CacheSetting;
 
 import java.time.Duration;
 

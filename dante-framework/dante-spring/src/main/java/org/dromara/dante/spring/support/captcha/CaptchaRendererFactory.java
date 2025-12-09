@@ -25,13 +25,13 @@
 
 package org.dromara.dante.spring.support.captcha;
 
+import org.apache.commons.lang3.ObjectUtils;
 import org.dromara.dante.core.domain.captcha.Captcha;
 import org.dromara.dante.core.domain.captcha.Verification;
 import org.dromara.dante.core.support.CaptchaRenderer;
 import org.dromara.dante.spring.enums.CaptchaCategory;
 import org.dromara.dante.spring.exception.captcha.CaptchaCategoryIsIncorrectException;
 import org.dromara.dante.spring.exception.captcha.CaptchaHandlerNotExistException;
-import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

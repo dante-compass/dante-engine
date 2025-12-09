@@ -25,10 +25,10 @@
 
 package org.dromara.dante.rest.servlet.identity.dto;
 
-import org.dromara.dante.core.domain.AbstractDto;
 import com.google.common.base.MoreObjects;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotNull;
+import org.dromara.dante.core.domain.AbstractDto;
 
 /**
  * <p>Description: OAuth2 HerodotusPermission Dto </p>

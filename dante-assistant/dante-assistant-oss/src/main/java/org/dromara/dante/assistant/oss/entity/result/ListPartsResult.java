@@ -25,11 +25,11 @@
 
 package org.dromara.dante.assistant.oss.entity.result;
 
+import com.google.common.base.MoreObjects;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.dromara.dante.assistant.oss.definition.domain.OwnerDomain;
 import org.dromara.dante.assistant.oss.definition.domain.PartDomain;
 import org.dromara.dante.assistant.oss.definition.result.AbstractUploadResult;
-import com.google.common.base.MoreObjects;
-import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.time.LocalDateTime;
 import java.util.List;

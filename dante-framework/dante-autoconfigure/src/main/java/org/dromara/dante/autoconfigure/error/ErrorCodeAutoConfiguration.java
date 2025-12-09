@@ -25,10 +25,10 @@
 
 package org.dromara.dante.autoconfigure.error;
 
+import jakarta.annotation.PostConstruct;
 import org.dromara.dante.core.builder.ErrorCodeMapperBuilder;
 import org.dromara.dante.core.domain.ErrorCodeMapper;
 import org.dromara.dante.core.function.ErrorCodeMapperBuilderCustomizer;
-import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;

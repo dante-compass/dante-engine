@@ -25,13 +25,13 @@
 
 package org.dromara.dante.autoconfigure.oauth2;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import org.apache.commons.lang3.ObjectUtils;
 import org.dromara.dante.core.domain.Result;
 import org.dromara.dante.core.exception.PlatformRuntimeException;
 import org.dromara.dante.security.exception.PlatformAuthenticationException;
 import org.dromara.dante.security.exception.SecurityGlobalExceptionHandler;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.oauth2.core.OAuth2AuthenticationException;

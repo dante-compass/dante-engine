@@ -25,15 +25,15 @@
 
 package org.dromara.dante.oauth2.authorization.processor;
 
+import org.apache.commons.collections4.MapUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.Strings;
 import org.dromara.dante.core.constant.SymbolConstants;
 import org.dromara.dante.oauth2.authorization.servlet.ServletOAuth2ResourceMatcherConfigurer;
 import org.dromara.dante.security.domain.AttributeTransmitter;
 import org.dromara.dante.security.domain.HerodotusRequest;
 import org.dromara.dante.security.domain.HerodotusSecurityAttribute;
 import org.dromara.dante.spring.enums.UrlCategory;
-import org.apache.commons.collections4.MapUtils;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.Strings;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;

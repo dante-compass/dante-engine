@@ -25,11 +25,11 @@
 
 package org.dromara.dante.data.jpa.entity;
 
-import org.dromara.dante.core.constant.SystemConstants;
-import org.dromara.dante.core.domain.BaseEntity;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Column;
 import jakarta.persistence.MappedSuperclass;
+import org.dromara.dante.core.constant.SystemConstants;
+import org.dromara.dante.core.domain.BaseEntity;
 import org.hibernate.annotations.TenantId;
 
 /**

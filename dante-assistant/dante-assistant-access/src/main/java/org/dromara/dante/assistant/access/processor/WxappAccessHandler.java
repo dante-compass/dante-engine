@@ -27,6 +27,7 @@ package org.dromara.dante.assistant.access.processor;
 
 import cn.binarywang.wx.miniapp.bean.WxMaJscode2SessionResult;
 import cn.binarywang.wx.miniapp.bean.WxMaUserInfo;
+import org.apache.commons.lang3.ObjectUtils;
 import org.dromara.dante.assistant.access.definition.AccessHandler;
 import org.dromara.dante.assistant.access.definition.domain.AccessResponse;
 import org.dromara.dante.assistant.access.definition.domain.AccessUserDetails;
@@ -35,7 +36,6 @@ import org.dromara.dante.assistant.access.exception.AccessPreProcessFailedExcept
 import org.dromara.dante.core.constant.SymbolConstants;
 import org.dromara.dante.security.domain.AccessPrincipal;
 import org.dromara.dante.security.enums.AccountCategory;
-import org.apache.commons.lang3.ObjectUtils;
 
 /**
  * <p>Description: 微信小程序接入处理器 </p>

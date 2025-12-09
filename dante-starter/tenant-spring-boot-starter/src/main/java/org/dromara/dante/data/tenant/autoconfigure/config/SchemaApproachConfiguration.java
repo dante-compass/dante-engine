@@ -25,10 +25,10 @@
 
 package org.dromara.dante.data.tenant.autoconfigure.config;
 
+import jakarta.annotation.PostConstruct;
 import org.dromara.dante.data.tenant.autoconfigure.condition.ConditionalOnMultiTenant;
 import org.dromara.dante.data.tenant.autoconfigure.enums.MultiTenant;
 import org.dromara.dante.data.tenant.autoconfigure.hibernate.SchemaMultiTenantConnectionProvider;
-import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.hibernate.autoconfigure.HibernatePropertiesCustomizer;

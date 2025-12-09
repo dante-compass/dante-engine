@@ -25,11 +25,11 @@
 
 package org.dromara.dante.oauth2.authentication.autoconfigure;
 
-import org.dromara.dante.oauth2.authentication.config.OAuth2AuthenticationConfiguration;
+import jakarta.annotation.PostConstruct;
 import org.dromara.dante.oauth2.authentication.autoconfigure.message.OAuth2AuthenticationMessageConfiguration;
+import org.dromara.dante.oauth2.authentication.config.OAuth2AuthenticationConfiguration;
 import org.dromara.dante.oauth2.commons.properties.OAuth2AuthenticationProperties;
 import org.dromara.dante.oauth2.persistence.sas.jpa.config.OAuth2PersistenceSasJpaConfiguration;
-import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;

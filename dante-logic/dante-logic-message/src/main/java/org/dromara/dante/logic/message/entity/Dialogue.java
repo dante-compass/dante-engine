@@ -25,11 +25,11 @@
 
 package org.dromara.dante.logic.message.entity;
 
-import org.dromara.dante.data.jpa.entity.AbstractAuditEntity;
-import org.dromara.dante.logic.message.constant.LogicMessageConstants;
 import com.google.common.base.MoreObjects;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
+import org.dromara.dante.data.jpa.entity.AbstractAuditEntity;
+import org.dromara.dante.logic.message.constant.LogicMessageConstants;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.UuidGenerator;
 

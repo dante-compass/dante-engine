@@ -25,10 +25,10 @@
 
 package org.dromara.dante.logic.upms.domain.listener;
 
+import jakarta.persistence.PostUpdate;
 import org.dromara.dante.logic.upms.domain.event.SysAttributeChangeEvent;
 import org.dromara.dante.logic.upms.entity.security.SysAttribute;
 import org.dromara.dante.spring.context.AbstractApplicationContextAware;
-import jakarta.persistence.PostUpdate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -25,10 +25,6 @@
 
 package org.dromara.dante.web.autoconfigure.config;
 
-import org.dromara.dante.core.constant.SystemConstants;
-import org.dromara.dante.spring.context.ServiceContextHolder;
-import org.dromara.dante.web.condition.ConditionalOnSwaggerEnabled;
-import org.dromara.dante.web.definition.OpenApiServerResolver;
 import com.google.common.collect.ImmutableList;
 import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
 import io.swagger.v3.oas.annotations.security.*;
@@ -38,6 +34,10 @@ import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.info.License;
 import io.swagger.v3.oas.models.servers.Server;
 import jakarta.annotation.PostConstruct;
+import org.dromara.dante.core.constant.SystemConstants;
+import org.dromara.dante.spring.context.ServiceContextHolder;
+import org.dromara.dante.web.condition.ConditionalOnSwaggerEnabled;
+import org.dromara.dante.web.definition.OpenApiServerResolver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;

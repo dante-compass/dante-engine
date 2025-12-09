@@ -25,6 +25,10 @@
 
 package org.dromara.dante.assistant.captcha.renderer.behavior;
 
+import cn.hutool.v7.core.data.id.IdUtil;
+import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.lang3.ObjectUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.dromara.dante.assistant.captcha.constant.CaptchaConstants;
 import org.dromara.dante.assistant.captcha.enums.FontStyle;
 import org.dromara.dante.assistant.captcha.provider.RandomProvider;
@@ -37,10 +41,6 @@ import org.dromara.dante.spring.enums.CaptchaCategory;
 import org.dromara.dante.spring.exception.captcha.CaptchaHasExpiredException;
 import org.dromara.dante.spring.exception.captcha.CaptchaMismatchException;
 import org.dromara.dante.spring.exception.captcha.CaptchaParameterIllegalException;
-import cn.hutool.v7.core.data.id.IdUtil;
-import org.apache.commons.collections4.CollectionUtils;
-import org.apache.commons.lang3.ObjectUtils;
-import org.apache.commons.lang3.StringUtils;
 
 import java.awt.*;
 import java.awt.geom.AffineTransform;

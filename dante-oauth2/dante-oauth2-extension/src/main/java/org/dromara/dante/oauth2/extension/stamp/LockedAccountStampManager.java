@@ -25,10 +25,10 @@
 
 package org.dromara.dante.oauth2.extension.stamp;
 
+import cn.hutool.v7.core.data.id.IdUtil;
 import org.dromara.dante.cache.jetcache.stamp.AbstractStampManager;
 import org.dromara.dante.oauth2.commons.constants.OAuth2Constants;
 import org.dromara.dante.oauth2.commons.properties.OAuth2AuthenticationProperties;
-import cn.hutool.v7.core.data.id.IdUtil;
 import org.springframework.stereotype.Component;
 
 /**

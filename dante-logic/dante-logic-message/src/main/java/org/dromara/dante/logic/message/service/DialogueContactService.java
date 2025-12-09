@@ -25,13 +25,13 @@
 
 package org.dromara.dante.logic.message.service;
 
+import jakarta.persistence.criteria.Predicate;
 import org.dromara.dante.data.jpa.repository.BaseJpaRepository;
 import org.dromara.dante.data.jpa.service.AbstractJpaService;
 import org.dromara.dante.logic.message.entity.Dialogue;
 import org.dromara.dante.logic.message.entity.DialogueContact;
 import org.dromara.dante.logic.message.entity.DialogueDetail;
 import org.dromara.dante.logic.message.repository.DialogueContactRepository;
-import jakarta.persistence.criteria.Predicate;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;

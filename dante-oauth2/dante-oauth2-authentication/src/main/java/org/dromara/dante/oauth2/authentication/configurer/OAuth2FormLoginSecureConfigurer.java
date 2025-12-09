@@ -26,10 +26,10 @@
 package org.dromara.dante.oauth2.authentication.configurer;
 
 import org.dromara.dante.core.support.crypto.DigitalEnvelopeProcessor;
-import org.dromara.dante.spring.support.captcha.CaptchaRendererFactory;
 import org.dromara.dante.oauth2.authentication.provider.OAuth2FormLoginAuthenticationProvider;
 import org.dromara.dante.oauth2.authentication.response.OAuth2FormLoginAuthenticationFailureHandler;
 import org.dromara.dante.oauth2.commons.properties.OAuth2AuthenticationProperties;
+import org.dromara.dante.spring.support.captcha.CaptchaRendererFactory;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.HttpSecurityBuilder;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;

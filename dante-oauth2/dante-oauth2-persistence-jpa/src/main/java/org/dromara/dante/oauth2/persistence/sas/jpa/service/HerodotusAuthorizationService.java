@@ -25,12 +25,12 @@
 
 package org.dromara.dante.oauth2.persistence.sas.jpa.service;
 
+import jakarta.persistence.criteria.Predicate;
+import org.apache.commons.collections4.CollectionUtils;
 import org.dromara.dante.data.jpa.repository.BaseJpaRepository;
 import org.dromara.dante.data.jpa.service.AbstractJpaService;
 import org.dromara.dante.oauth2.persistence.sas.jpa.entity.HerodotusAuthorization;
 import org.dromara.dante.oauth2.persistence.sas.jpa.repository.HerodotusAuthorizationRepository;
-import jakarta.persistence.criteria.Predicate;
-import org.apache.commons.collections4.CollectionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

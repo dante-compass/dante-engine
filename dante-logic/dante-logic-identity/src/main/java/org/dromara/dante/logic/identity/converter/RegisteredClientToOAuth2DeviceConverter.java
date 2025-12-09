@@ -25,15 +25,15 @@
 
 package org.dromara.dante.logic.identity.converter;
 
+import cn.hutool.v7.core.date.DateUtil;
+import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.lang3.ObjectUtils;
 import org.dromara.dante.logic.identity.entity.OAuth2Device;
 import org.dromara.dante.logic.identity.entity.OAuth2Scope;
 import org.dromara.dante.logic.identity.enums.AllJwsAlgorithm;
 import org.dromara.dante.logic.identity.enums.SignatureJwsAlgorithm;
 import org.dromara.dante.logic.identity.enums.TokenFormat;
 import org.dromara.dante.logic.identity.service.OAuth2ScopeService;
-import cn.hutool.v7.core.date.DateUtil;
-import org.apache.commons.collections4.CollectionUtils;
-import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.security.oauth2.core.AuthorizationGrantType;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;

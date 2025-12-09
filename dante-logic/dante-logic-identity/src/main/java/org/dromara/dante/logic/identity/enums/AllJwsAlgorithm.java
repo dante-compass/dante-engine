@@ -25,10 +25,10 @@
 
 package org.dromara.dante.logic.identity.enums;
 
-import org.dromara.dante.core.domain.Dictionary;
-import org.dromara.dante.core.domain.DictionaryEnum;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.v3.oas.annotations.media.Schema;
+import org.dromara.dante.core.domain.Dictionary;
+import org.dromara.dante.core.domain.DictionaryEnum;
 
 import java.util.ArrayList;
 import java.util.HashMap;

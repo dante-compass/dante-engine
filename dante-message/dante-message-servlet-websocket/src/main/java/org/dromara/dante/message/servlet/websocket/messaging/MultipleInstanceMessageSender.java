@@ -25,11 +25,11 @@
 
 package org.dromara.dante.message.servlet.websocket.messaging;
 
-import org.dromara.dante.spring.context.ServiceContextHolder;
 import org.dromara.dante.message.core.constants.MessageConstants;
 import org.dromara.dante.message.core.domain.StreamMessage;
 import org.dromara.dante.message.core.domain.WebSocketMessage;
 import org.dromara.dante.message.core.event.StreamMessageSendingEvent;
+import org.dromara.dante.spring.context.ServiceContextHolder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

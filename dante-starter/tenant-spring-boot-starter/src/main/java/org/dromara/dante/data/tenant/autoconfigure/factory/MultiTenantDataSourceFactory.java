@@ -25,12 +25,12 @@
 
 package org.dromara.dante.data.tenant.autoconfigure.factory;
 
-import org.dromara.dante.data.tenant.autoconfigure.entity.SysTenantDataSource;
-import org.dromara.dante.data.tenant.autoconfigure.repository.SysTenantDataSourceRepository;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.ObjectUtils;
+import org.dromara.dante.data.tenant.autoconfigure.entity.SysTenantDataSource;
+import org.dromara.dante.data.tenant.autoconfigure.repository.SysTenantDataSourceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.stereotype.Component;

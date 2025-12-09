@@ -25,8 +25,8 @@
 
 package org.dromara.dante.assistant.oss.entity.business;
 
-import org.dromara.dante.assistant.oss.definition.domain.OssDomain;
 import io.swagger.v3.oas.annotations.media.Schema;
+import org.dromara.dante.assistant.oss.definition.domain.OssDomain;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -25,14 +25,14 @@
 
 package org.dromara.dante.rest.servlet.upms.dto;
 
-import org.dromara.dante.core.domain.AbstractDto;
-import org.dromara.dante.logic.upms.entity.hr.SysDepartment;
-import org.dromara.dante.logic.upms.entity.hr.SysEmployee;
-import org.dromara.dante.logic.upms.entity.hr.SysOwnership;
 import com.google.common.base.MoreObjects;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotNull;
 import org.apache.commons.collections4.CollectionUtils;
+import org.dromara.dante.core.domain.AbstractDto;
+import org.dromara.dante.logic.upms.entity.hr.SysDepartment;
+import org.dromara.dante.logic.upms.entity.hr.SysEmployee;
+import org.dromara.dante.logic.upms.entity.hr.SysOwnership;
 
 import java.util.ArrayList;
 import java.util.HashSet;

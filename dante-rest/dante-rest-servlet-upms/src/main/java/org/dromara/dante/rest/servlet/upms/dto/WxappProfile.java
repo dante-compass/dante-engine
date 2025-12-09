@@ -25,9 +25,9 @@
 
 package org.dromara.dante.rest.servlet.upms.dto;
 
-import org.dromara.dante.core.domain.AbstractDto;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
+import org.dromara.dante.core.domain.AbstractDto;
 
 /**
  * <p>Description: 微信小程序登录请求实体 </p>

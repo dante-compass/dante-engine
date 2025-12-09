@@ -25,6 +25,9 @@
 
 package org.dromara.dante.logic.upms.service.security;
 
+import jakarta.persistence.criteria.Predicate;
+import jakarta.persistence.criteria.Root;
+import jakarta.persistence.criteria.Subquery;
 import org.dromara.dante.core.domain.Dictionary;
 import org.dromara.dante.data.jpa.repository.BaseJpaRepository;
 import org.dromara.dante.data.jpa.service.AbstractJpaService;
@@ -33,9 +36,6 @@ import org.dromara.dante.logic.upms.entity.security.SysDictionary;
 import org.dromara.dante.logic.upms.entity.security.SysEnum;
 import org.dromara.dante.logic.upms.repository.security.SysEnumRepository;
 import org.dromara.dante.spring.founction.ListConverter;
-import jakarta.persistence.criteria.Predicate;
-import jakarta.persistence.criteria.Root;
-import jakarta.persistence.criteria.Subquery;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 

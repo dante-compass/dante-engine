@@ -25,9 +25,9 @@
 
 package org.dromara.dante.assistant.oss.entity.argument;
 
-import org.dromara.dante.assistant.oss.definition.argument.AbstractObjectArgument;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
+import org.dromara.dante.assistant.oss.definition.argument.AbstractObjectArgument;
 
 /**
  * <p>Description: 终止分片上传请求参数实体 </p>

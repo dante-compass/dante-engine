@@ -25,13 +25,13 @@
 
 package org.dromara.dante.autoconfigure.crypto;
 
+import jakarta.annotation.PostConstruct;
 import org.dromara.dante.core.support.crypto.AsymmetricCryptoProcessor;
 import org.dromara.dante.core.support.crypto.SymmetricCryptoProcessor;
 import org.dromara.dante.spring.support.crypto.AESCryptoProcessor;
 import org.dromara.dante.spring.support.crypto.RSACryptoProcessor;
 import org.dromara.dante.spring.support.crypto.SM2CryptoProcessor;
 import org.dromara.dante.spring.support.crypto.SM4CryptoProcessor;
-import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;

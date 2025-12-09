@@ -25,14 +25,14 @@
 
 package org.dromara.dante.logic.identity.definition;
 
-import org.dromara.dante.security.domain.HerodotusGrantedAuthority;
-import org.dromara.dante.security.service.EnhanceClientDetailsService;
+import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.lang3.ObjectUtils;
 import org.dromara.dante.logic.identity.entity.OAuth2Application;
 import org.dromara.dante.logic.identity.entity.OAuth2Permission;
 import org.dromara.dante.logic.identity.entity.OAuth2Scope;
 import org.dromara.dante.logic.identity.service.OAuth2ApplicationService;
-import org.apache.commons.collections4.CollectionUtils;
-import org.apache.commons.lang3.ObjectUtils;
+import org.dromara.dante.security.domain.HerodotusGrantedAuthority;
+import org.dromara.dante.security.service.EnhanceClientDetailsService;
 
 import java.util.HashSet;
 import java.util.Set;

@@ -25,13 +25,6 @@
 
 package org.dromara.dante.rest.servlet.upms.controller.hr;
 
-import org.dromara.dante.core.domain.Result;
-import org.dromara.dante.data.jpa.service.BaseJpaWriteableService;
-import org.dromara.dante.logic.upms.converter.SysOrganizationToTreeNodeConverter;
-import org.dromara.dante.logic.upms.entity.hr.SysOrganization;
-import org.dromara.dante.logic.upms.enums.OrganizationCategory;
-import org.dromara.dante.logic.upms.service.hr.SysOrganizationService;
-import org.dromara.dante.data.rest.servlet.AbstractJpaWriteableController;
 import cn.hutool.v7.core.tree.MapTree;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -42,6 +35,13 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.constraints.NotNull;
 import org.apache.commons.lang3.ObjectUtils;
+import org.dromara.dante.core.domain.Result;
+import org.dromara.dante.data.jpa.service.BaseJpaWriteableService;
+import org.dromara.dante.data.rest.servlet.AbstractJpaWriteableController;
+import org.dromara.dante.logic.upms.converter.SysOrganizationToTreeNodeConverter;
+import org.dromara.dante.logic.upms.entity.hr.SysOrganization;
+import org.dromara.dante.logic.upms.enums.OrganizationCategory;
+import org.dromara.dante.logic.upms.service.hr.SysOrganizationService;
 import org.springframework.data.domain.Page;
 import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;

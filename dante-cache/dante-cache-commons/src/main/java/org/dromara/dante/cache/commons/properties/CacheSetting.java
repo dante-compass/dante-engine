@@ -25,8 +25,8 @@
 
 package org.dromara.dante.cache.commons.properties;
 
-import org.dromara.dante.cache.commons.enums.CacheMethod;
 import com.google.common.base.MoreObjects;
+import org.dromara.dante.cache.commons.enums.CacheMethod;
 
 import java.time.Duration;
 

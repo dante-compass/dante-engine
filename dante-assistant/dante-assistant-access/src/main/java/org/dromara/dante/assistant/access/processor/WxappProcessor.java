@@ -30,13 +30,13 @@ import cn.binarywang.wx.miniapp.api.impl.WxMaServiceImpl;
 import cn.binarywang.wx.miniapp.bean.*;
 import cn.binarywang.wx.miniapp.config.impl.WxMaDefaultConfigImpl;
 import cn.binarywang.wx.miniapp.message.WxMaMessageRouter;
-import org.dromara.dante.assistant.access.properties.WxappProperties;
 import com.google.common.collect.Maps;
 import me.chanjar.weixin.common.error.WxErrorException;
 import me.chanjar.weixin.common.error.WxRuntimeException;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.dromara.dante.assistant.access.properties.WxappProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

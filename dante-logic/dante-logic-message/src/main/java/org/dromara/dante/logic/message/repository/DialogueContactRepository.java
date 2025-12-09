@@ -25,10 +25,10 @@
 
 package org.dromara.dante.logic.message.repository;
 
-import org.dromara.dante.spring.exception.transaction.TransactionalRollbackException;
+import jakarta.persistence.QueryHint;
 import org.dromara.dante.data.jpa.repository.BaseJpaRepository;
 import org.dromara.dante.logic.message.entity.DialogueContact;
-import jakarta.persistence.QueryHint;
+import org.dromara.dante.spring.exception.transaction.TransactionalRollbackException;
 import org.hibernate.jpa.AvailableHints;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

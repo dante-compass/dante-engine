@@ -25,9 +25,9 @@
 
 package org.dromara.dante.assistant.access.properties;
 
+import com.google.common.base.MoreObjects;
 import org.dromara.dante.assistant.access.constant.AccessConstants;
 import org.dromara.dante.assistant.access.definition.enums.MiniProgramState;
-import com.google.common.base.MoreObjects;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 import java.io.Serializable;

@@ -25,11 +25,11 @@
 
 package org.dromara.dante.assistant.oss.converter.argument;
 
+import org.apache.commons.lang3.ObjectUtils;
 import org.dromara.dante.assistant.oss.converter.domain.DomainToCompletedPartConverter;
 import org.dromara.dante.assistant.oss.definition.domain.CompletedPartDomain;
 import org.dromara.dante.assistant.oss.entity.argument.CompleteMultipartUploadArgument;
 import org.dromara.dante.spring.founction.ListConverter;
-import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.core.convert.converter.Converter;
 import software.amazon.awssdk.services.s3.model.CompleteMultipartUploadRequest;
 import software.amazon.awssdk.services.s3.model.CompletedMultipartUpload;

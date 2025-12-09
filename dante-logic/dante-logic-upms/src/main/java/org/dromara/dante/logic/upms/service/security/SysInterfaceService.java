@@ -25,6 +25,10 @@
 
 package org.dromara.dante.logic.upms.service.security;
 
+import jakarta.persistence.criteria.Predicate;
+import jakarta.persistence.criteria.Root;
+import jakarta.persistence.criteria.Subquery;
+import org.apache.commons.collections4.CollectionUtils;
 import org.dromara.dante.data.jpa.repository.BaseJpaRepository;
 import org.dromara.dante.data.jpa.service.AbstractJpaService;
 import org.dromara.dante.logic.upms.converter.RequestMappingToSysInterfaceConverter;
@@ -32,10 +36,6 @@ import org.dromara.dante.logic.upms.entity.security.SysAttribute;
 import org.dromara.dante.logic.upms.entity.security.SysInterface;
 import org.dromara.dante.logic.upms.repository.security.SysInterfaceRepository;
 import org.dromara.dante.message.core.domain.RestMapping;
-import jakarta.persistence.criteria.Predicate;
-import jakarta.persistence.criteria.Root;
-import jakarta.persistence.criteria.Subquery;
-import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;

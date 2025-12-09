@@ -25,8 +25,8 @@
 
 package org.dromara.dante.web.servlet.utils;
 
-import org.dromara.dante.web.definition.utils.HttpUtils;
 import jakarta.servlet.http.HttpServletRequest;
+import org.dromara.dante.web.definition.utils.HttpUtils;
 
 /**
  * <p>Description: 请求工具类 </p>

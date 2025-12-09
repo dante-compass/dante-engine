@@ -25,9 +25,9 @@
 
 package org.dromara.dante.assistant.oss.pool;
 
+import org.apache.commons.lang3.StringUtils;
 import org.dromara.dante.assistant.oss.constant.OssConstants;
 import org.dromara.dante.assistant.oss.properties.OssProperties;
-import org.apache.commons.lang3.StringUtils;
 import software.amazon.awssdk.auth.credentials.AwsBasicCredentials;
 import software.amazon.awssdk.auth.credentials.StaticCredentialsProvider;
 import software.amazon.awssdk.regions.Region;

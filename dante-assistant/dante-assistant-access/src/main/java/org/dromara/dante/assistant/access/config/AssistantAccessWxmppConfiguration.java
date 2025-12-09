@@ -25,11 +25,11 @@
 
 package org.dromara.dante.assistant.access.config;
 
+import jakarta.annotation.PostConstruct;
 import org.dromara.dante.assistant.access.condition.ConditionalOnWxmppEnabled;
 import org.dromara.dante.assistant.access.processor.WxmppLogHandler;
 import org.dromara.dante.assistant.access.processor.WxmppProcessor;
 import org.dromara.dante.assistant.access.properties.WxmppProperties;
-import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;

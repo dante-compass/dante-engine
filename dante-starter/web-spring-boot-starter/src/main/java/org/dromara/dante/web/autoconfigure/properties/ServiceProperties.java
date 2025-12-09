@@ -25,10 +25,10 @@
 
 package org.dromara.dante.web.autoconfigure.properties;
 
-import org.dromara.dante.core.constant.SystemConstants;
-import org.dromara.dante.web.constant.WebConstants;
 import com.google.common.base.MoreObjects;
 import org.apache.commons.collections4.CollectionUtils;
+import org.dromara.dante.core.constant.SystemConstants;
+import org.dromara.dante.web.constant.WebConstants;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 import java.util.ArrayList;

@@ -25,13 +25,13 @@
 
 package org.dromara.dante.spring.support.crypto;
 
-import org.dromara.dante.core.support.crypto.SymmetricCryptoProcessor;
 import cn.hutool.v7.core.codec.binary.Base64;
 import cn.hutool.v7.core.text.StrUtil;
 import cn.hutool.v7.core.util.ByteUtil;
 import cn.hutool.v7.core.util.RandomUtil;
 import cn.hutool.v7.crypto.SecureUtil;
 import cn.hutool.v7.crypto.symmetric.AES;
+import org.dromara.dante.core.support.crypto.SymmetricCryptoProcessor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

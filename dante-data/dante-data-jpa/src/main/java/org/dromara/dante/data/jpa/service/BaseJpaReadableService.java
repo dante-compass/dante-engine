@@ -25,9 +25,9 @@
 
 package org.dromara.dante.data.jpa.service;
 
+import org.dromara.dante.core.domain.BaseEntity;
 import org.dromara.dante.data.commons.service.BasePageService;
 import org.dromara.dante.data.jpa.repository.BaseJpaRepository;
-import org.dromara.dante.core.domain.BaseEntity;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;

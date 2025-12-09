@@ -25,19 +25,19 @@
 
 package org.dromara.dante.oauth2.authentication.provider;
 
+import org.apache.commons.lang3.ObjectUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.dromara.dante.core.domain.captcha.Verification;
+import org.dromara.dante.oauth2.commons.exception.OAuth2CaptchaArgumentIllegalException;
+import org.dromara.dante.oauth2.commons.exception.OAuth2CaptchaHasExpiredException;
+import org.dromara.dante.oauth2.commons.exception.OAuth2CaptchaIsEmptyException;
+import org.dromara.dante.oauth2.commons.exception.OAuth2CaptchaMismatchException;
+import org.dromara.dante.security.domain.FormLoginWebAuthenticationDetails;
 import org.dromara.dante.spring.exception.captcha.CaptchaHasExpiredException;
 import org.dromara.dante.spring.exception.captcha.CaptchaIsEmptyException;
 import org.dromara.dante.spring.exception.captcha.CaptchaMismatchException;
 import org.dromara.dante.spring.exception.captcha.CaptchaParameterIllegalException;
 import org.dromara.dante.spring.support.captcha.CaptchaRendererFactory;
-import org.dromara.dante.security.domain.FormLoginWebAuthenticationDetails;
-import org.dromara.dante.oauth2.commons.exception.OAuth2CaptchaArgumentIllegalException;
-import org.dromara.dante.oauth2.commons.exception.OAuth2CaptchaHasExpiredException;
-import org.dromara.dante.oauth2.commons.exception.OAuth2CaptchaIsEmptyException;
-import org.dromara.dante.oauth2.commons.exception.OAuth2CaptchaMismatchException;
-import org.apache.commons.lang3.ObjectUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

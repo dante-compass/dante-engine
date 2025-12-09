@@ -25,8 +25,8 @@
 
 package org.dromara.dante.oauth2.authentication.customizer;
 
-import org.dromara.dante.oauth2.commons.properties.OAuth2AuthenticationProperties;
 import org.apache.commons.lang3.StringUtils;
+import org.dromara.dante.oauth2.commons.properties.OAuth2AuthenticationProperties;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.FormLoginConfigurer;

@@ -41,7 +41,7 @@ public interface ListConverter<S, T> extends Converter<List<S>, List<T>> {
 
     @Override
     default @Nullable List<T> convert(List<S> source) {
-                return source.stream()
+        return source.stream()
                 .map(this::from)
                 .toList();
     }

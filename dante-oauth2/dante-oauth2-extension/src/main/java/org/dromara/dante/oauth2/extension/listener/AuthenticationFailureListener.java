@@ -25,11 +25,11 @@
 
 package org.dromara.dante.oauth2.extension.listener;
 
-import org.dromara.dante.core.constant.SystemConstants;
-import org.dromara.dante.oauth2.extension.manager.OAuth2ComplianceManager;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.dromara.dante.core.constant.SystemConstants;
+import org.dromara.dante.oauth2.extension.manager.OAuth2ComplianceManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationListener;

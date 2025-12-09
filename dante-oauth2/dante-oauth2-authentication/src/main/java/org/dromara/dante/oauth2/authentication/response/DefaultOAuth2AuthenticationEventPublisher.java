@@ -25,9 +25,9 @@
 
 package org.dromara.dante.oauth2.authentication.response;
 
-import org.dromara.dante.security.constant.OAuth2ErrorKeys;
 import org.dromara.dante.oauth2.commons.exception.AccountEndpointLimitedException;
 import org.dromara.dante.oauth2.commons.exception.SessionExpiredException;
+import org.dromara.dante.security.constant.OAuth2ErrorKeys;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.security.authentication.*;
 import org.springframework.security.core.Authentication;

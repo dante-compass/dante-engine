@@ -25,8 +25,8 @@
 
 package org.dromara.dante.oauth2.authentication.provider;
 
-import org.dromara.dante.oauth2.authentication.customizer.HerodotusGrantType;
 import org.apache.commons.collections4.CollectionUtils;
+import org.dromara.dante.oauth2.authentication.customizer.HerodotusGrantType;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.server.authorization.authentication.OAuth2AuthorizationGrantAuthenticationToken;
 import org.springframework.util.Assert;

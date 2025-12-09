@@ -25,11 +25,11 @@
 
 package org.dromara.dante.oauth2.extension.config;
 
+import jakarta.annotation.PostConstruct;
 import org.dromara.dante.oauth2.extension.condition.ConditionalOnAutoUnlockAccount;
 import org.dromara.dante.oauth2.extension.listener.AutoUnlockAccountListener;
 import org.dromara.dante.oauth2.extension.listener.SignOutComplianceListener;
 import org.dromara.dante.oauth2.extension.manager.OAuth2ComplianceManager;
-import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;

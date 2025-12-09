@@ -25,9 +25,9 @@
 
 package org.dromara.dante.assistant.oss.entity.argument;
 
-import org.dromara.dante.assistant.oss.definition.domain.SseCustomerDomain;
 import com.google.common.base.MoreObjects;
 import io.swagger.v3.oas.annotations.media.Schema;
+import org.dromara.dante.assistant.oss.definition.domain.SseCustomerDomain;
 
 /**
  * <p>Description: 分片列表请求参数实体 </p>

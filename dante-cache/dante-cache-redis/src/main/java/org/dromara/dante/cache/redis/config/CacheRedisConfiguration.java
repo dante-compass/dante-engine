@@ -25,9 +25,9 @@
 
 package org.dromara.dante.cache.redis.config;
 
+import jakarta.annotation.PostConstruct;
 import org.dromara.dante.cache.commons.properties.CacheProperties;
 import org.dromara.dante.cache.redis.enhance.HerodotusRedisCacheManager;
-import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;

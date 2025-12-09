@@ -25,8 +25,8 @@
 
 package org.dromara.dante.data.tenant.autoconfigure.config;
 
-import org.dromara.dante.data.tenant.autoconfigure.hibernate.HerodotusTenantIdentifierResolver;
 import jakarta.annotation.PostConstruct;
+import org.dromara.dante.data.tenant.autoconfigure.hibernate.HerodotusTenantIdentifierResolver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.hibernate.autoconfigure.HibernatePropertiesCustomizer;

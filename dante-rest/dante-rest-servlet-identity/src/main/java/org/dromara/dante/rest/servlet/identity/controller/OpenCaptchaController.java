@@ -25,14 +25,6 @@
 
 package org.dromara.dante.rest.servlet.identity.controller;
 
-import org.dromara.dante.core.domain.Result;
-import org.dromara.dante.core.domain.captcha.Captcha;
-import org.dromara.dante.core.domain.captcha.Verification;
-import org.dromara.dante.spring.support.captcha.CaptchaRendererFactory;
-import org.dromara.dante.data.rest.servlet.PaginationController;
-import org.dromara.dante.web.annotation.AccessLimited;
-import org.dromara.dante.web.annotation.Crypto;
-import org.dromara.dante.web.annotation.Idempotent;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
@@ -45,6 +37,14 @@ import io.swagger.v3.oas.annotations.tags.Tags;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import org.apache.commons.lang3.ObjectUtils;
+import org.dromara.dante.core.domain.Result;
+import org.dromara.dante.core.domain.captcha.Captcha;
+import org.dromara.dante.core.domain.captcha.Verification;
+import org.dromara.dante.data.rest.servlet.PaginationController;
+import org.dromara.dante.spring.support.captcha.CaptchaRendererFactory;
+import org.dromara.dante.web.annotation.AccessLimited;
+import org.dromara.dante.web.annotation.Crypto;
+import org.dromara.dante.web.annotation.Idempotent;
 import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;

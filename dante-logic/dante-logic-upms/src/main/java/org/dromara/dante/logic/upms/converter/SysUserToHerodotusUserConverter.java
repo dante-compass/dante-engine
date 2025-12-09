@@ -25,6 +25,8 @@
 
 package org.dromara.dante.logic.upms.converter;
 
+import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.lang3.ObjectUtils;
 import org.dromara.dante.data.commons.enums.DataItemStatus;
 import org.dromara.dante.logic.upms.entity.security.SysPermission;
 import org.dromara.dante.logic.upms.entity.security.SysRole;
@@ -32,8 +34,6 @@ import org.dromara.dante.logic.upms.entity.security.SysUser;
 import org.dromara.dante.security.domain.HerodotusGrantedAuthority;
 import org.dromara.dante.security.domain.HerodotusUser;
 import org.dromara.dante.security.utils.SecurityUtils;
-import org.apache.commons.collections4.CollectionUtils;
-import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.core.convert.converter.Converter;
 
 import java.time.LocalDateTime;

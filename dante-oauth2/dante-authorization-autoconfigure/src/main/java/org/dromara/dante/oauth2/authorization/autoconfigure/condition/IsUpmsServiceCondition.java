@@ -25,8 +25,8 @@
 
 package org.dromara.dante.oauth2.authorization.autoconfigure.condition;
 
-import org.dromara.dante.spring.condition.ConditionalOnServletApplication;
 import org.dromara.dante.rest.servlet.upms.config.RestServletUpmsConfiguration;
+import org.dromara.dante.spring.condition.ConditionalOnServletApplication;
 import org.springframework.boot.autoconfigure.condition.AllNestedConditions;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 

@@ -25,9 +25,9 @@
 
 package org.dromara.dante.message.core.definition.strategy;
 
+import org.apache.commons.lang3.Strings;
 import org.dromara.dante.core.jackson.JacksonUtils;
 import org.dromara.dante.spring.context.ServiceContextHolder;
-import org.apache.commons.lang3.Strings;
 import org.springframework.context.ApplicationEvent;
 
 /**

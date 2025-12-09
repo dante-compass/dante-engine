@@ -25,9 +25,9 @@
 
 package org.dromara.dante.oauth2.persistence.sas.jpa.repository;
 
+import jakarta.persistence.QueryHint;
 import org.dromara.dante.data.jpa.repository.BaseJpaRepository;
 import org.dromara.dante.oauth2.persistence.sas.jpa.entity.HerodotusRegisteredClient;
-import jakarta.persistence.QueryHint;
 import org.hibernate.jpa.AvailableHints;
 import org.springframework.data.jpa.repository.QueryHints;
 

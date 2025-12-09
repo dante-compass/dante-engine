@@ -25,8 +25,8 @@
 
 package org.dromara.dante.assistant.oss.entity.result;
 
-import org.dromara.dante.assistant.oss.definition.result.AbstractResult;
 import io.swagger.v3.oas.annotations.media.Schema;
+import org.dromara.dante.assistant.oss.definition.result.AbstractResult;
 
 /**
  * <p>Description: Head方式操作存储桶返回响应实体 </p>

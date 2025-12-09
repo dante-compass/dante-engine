@@ -25,16 +25,16 @@
 
 package org.dromara.dante.logic.upms.entity.security;
 
-import org.dromara.dante.data.commons.enums.ApplicationType;
-import org.dromara.dante.data.jpa.entity.AbstractSysEntity;
-import org.dromara.dante.logic.upms.constant.LogicUpmsConstants;
-import org.dromara.dante.logic.upms.enums.ElementCategory;
-import org.dromara.dante.logic.upms.enums.MenuScenario;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
+import org.dromara.dante.data.commons.enums.ApplicationType;
+import org.dromara.dante.data.jpa.entity.AbstractSysEntity;
+import org.dromara.dante.logic.upms.constant.LogicUpmsConstants;
+import org.dromara.dante.logic.upms.enums.ElementCategory;
+import org.dromara.dante.logic.upms.enums.MenuScenario;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.UuidGenerator;
 

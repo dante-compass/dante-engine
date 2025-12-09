@@ -25,12 +25,12 @@
 
 package org.dromara.dante.autoconfigure.oauth2;
 
+import jakarta.annotation.PostConstruct;
 import org.dromara.dante.autoconfigure.context.ServletServiceContextAutoConfiguration;
 import org.dromara.dante.security.condition.ConditionalOnTokenFormat;
 import org.dromara.dante.security.condition.TokenFormat;
 import org.dromara.dante.security.oauth2.BearerTokenResolver;
 import org.dromara.dante.security.properties.OAuth2AuthorizationProperties;
-import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;

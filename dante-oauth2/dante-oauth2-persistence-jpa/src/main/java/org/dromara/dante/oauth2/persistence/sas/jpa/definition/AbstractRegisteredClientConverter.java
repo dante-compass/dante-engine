@@ -25,8 +25,8 @@
 
 package org.dromara.dante.oauth2.persistence.sas.jpa.definition;
 
-import org.dromara.dante.security.domain.RegisteredClientDetails;
 import org.dromara.dante.oauth2.persistence.sas.jpa.jackson.OAuth2JacksonProcessor;
+import org.dromara.dante.security.domain.RegisteredClientDetails;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
 
 /**

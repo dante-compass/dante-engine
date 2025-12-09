@@ -25,13 +25,13 @@
 
 package org.dromara.dante.cache.caffeine.enhance;
 
-import org.dromara.dante.cache.commons.properties.CacheProperties;
-import org.dromara.dante.cache.commons.properties.CacheSetting;
-import org.dromara.dante.core.constant.SymbolConstants;
 import com.github.benmanes.caffeine.cache.Cache;
 import com.github.benmanes.caffeine.cache.Caffeine;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.Strings;
+import org.dromara.dante.cache.commons.properties.CacheProperties;
+import org.dromara.dante.cache.commons.properties.CacheSetting;
+import org.dromara.dante.core.constant.SymbolConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cache.caffeine.CaffeineCacheManager;

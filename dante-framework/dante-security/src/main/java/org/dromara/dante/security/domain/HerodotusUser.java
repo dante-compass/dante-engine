@@ -25,10 +25,10 @@
 
 package org.dromara.dante.security.domain;
 
-import org.dromara.dante.security.jackson.HerodotusUserDeserializer;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 import org.apache.commons.collections4.CollectionUtils;
+import org.dromara.dante.security.jackson.HerodotusUserDeserializer;
 import org.springframework.security.core.CredentialsContainer;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

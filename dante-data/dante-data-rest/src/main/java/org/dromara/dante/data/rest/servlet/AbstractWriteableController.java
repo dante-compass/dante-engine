@@ -25,16 +25,16 @@
 
 package org.dromara.dante.data.rest.servlet;
 
-import org.dromara.dante.core.domain.BaseEntity;
-import org.dromara.dante.core.domain.Result;
-import org.dromara.dante.data.commons.service.BasePageService;
-import org.dromara.dante.web.annotation.Idempotent;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import org.dromara.dante.core.domain.BaseEntity;
+import org.dromara.dante.core.domain.Result;
+import org.dromara.dante.data.commons.service.BasePageService;
+import org.dromara.dante.web.annotation.Idempotent;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;

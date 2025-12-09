@@ -25,11 +25,11 @@
 
 package org.dromara.dante.oauth2.authorization.matcher;
 
-import org.dromara.dante.oauth2.authorization.processor.SecurityAttributeStorage;
-import org.dromara.dante.security.domain.HerodotusRequest;
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.Strings;
+import org.dromara.dante.oauth2.authorization.processor.SecurityAttributeStorage;
+import org.dromara.dante.security.domain.HerodotusRequest;
 import org.jspecify.annotations.Nullable;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.server.PathContainer;

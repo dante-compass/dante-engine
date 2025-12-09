@@ -25,13 +25,13 @@
 
 package org.dromara.dante.web.autoconfigure.initializer;
 
+import org.apache.commons.lang3.ObjectUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.dromara.dante.core.utils.WellFormedUtils;
 import org.dromara.dante.spring.context.ServiceContextHolder;
 import org.dromara.dante.spring.enums.Architecture;
 import org.dromara.dante.web.properties.EndpointProperties;
 import org.dromara.dante.web.properties.PlatformProperties;
-import org.apache.commons.lang3.ObjectUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.boot.web.server.autoconfigure.ServerProperties;
 
 /**

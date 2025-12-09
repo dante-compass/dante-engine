@@ -25,14 +25,14 @@
 
 package org.dromara.dante.spring.context;
 
+import org.apache.commons.lang3.ObjectUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.Strings;
 import org.dromara.dante.core.constant.SymbolConstants;
 import org.dromara.dante.core.enums.Protocol;
 import org.dromara.dante.core.utils.WellFormedUtils;
 import org.dromara.dante.spring.enums.Architecture;
 import org.dromara.dante.spring.enums.DataAccessStrategy;
-import org.apache.commons.lang3.ObjectUtils;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.Strings;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationEvent;
 

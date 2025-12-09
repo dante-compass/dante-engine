@@ -25,8 +25,8 @@
 
 package org.dromara.dante.web.autoconfigure.properties;
 
-import org.dromara.dante.web.constant.WebConstants;
 import com.google.common.base.MoreObjects;
+import org.dromara.dante.web.constant.WebConstants;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 import java.io.Serializable;

@@ -25,12 +25,12 @@
 
 package org.dromara.dante.oauth2.authorization.autoconfigure.listener;
 
+import org.apache.commons.lang3.ObjectUtils;
 import org.dromara.dante.core.jackson.JacksonUtils;
 import org.dromara.dante.data.commons.enums.DataItemStatus;
 import org.dromara.dante.logic.upms.service.security.SysUserService;
 import org.dromara.dante.message.core.domain.AccountStatus;
 import org.dromara.dante.oauth2.authorization.autoconfigure.bus.RemoteAccountStatusChangedEvent;
-import org.apache.commons.lang3.ObjectUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

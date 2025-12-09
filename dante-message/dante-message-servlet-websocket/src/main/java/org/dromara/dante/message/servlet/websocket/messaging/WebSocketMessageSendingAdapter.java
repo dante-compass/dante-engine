@@ -25,11 +25,11 @@
 
 package org.dromara.dante.message.servlet.websocket.messaging;
 
+import org.apache.commons.lang3.StringUtils;
 import org.dromara.dante.message.core.definition.MessageSendingAdapter;
 import org.dromara.dante.message.core.domain.WebSocketMessage;
 import org.dromara.dante.message.core.event.TemplateMessageSendingEvent;
 import org.dromara.dante.message.servlet.websocket.definition.WebSocketMessageSender;
-import org.apache.commons.lang3.StringUtils;
 
 /**
  * <p>Description: WebSocket 消息发送适配器 </p>

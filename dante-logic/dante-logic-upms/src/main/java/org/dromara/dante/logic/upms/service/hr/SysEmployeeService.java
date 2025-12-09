@@ -25,6 +25,10 @@
 
 package org.dromara.dante.logic.upms.service.hr;
 
+import jakarta.persistence.criteria.*;
+import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.lang3.ObjectUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.dromara.dante.data.jpa.repository.BaseJpaRepository;
 import org.dromara.dante.data.jpa.service.AbstractJpaService;
 import org.dromara.dante.logic.upms.entity.hr.SysDepartment;
@@ -36,10 +40,6 @@ import org.dromara.dante.logic.upms.enums.Identity;
 import org.dromara.dante.logic.upms.repository.hr.SysEmployeeRepository;
 import org.dromara.dante.logic.upms.service.security.SysUserService;
 import org.dromara.dante.spring.exception.transaction.TransactionalRollbackException;
-import jakarta.persistence.criteria.*;
-import org.apache.commons.collections4.CollectionUtils;
-import org.apache.commons.lang3.ObjectUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;

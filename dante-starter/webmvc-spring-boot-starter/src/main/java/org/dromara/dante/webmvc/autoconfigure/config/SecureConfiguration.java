@@ -25,12 +25,12 @@
 
 package org.dromara.dante.webmvc.autoconfigure.config;
 
+import jakarta.annotation.PostConstruct;
 import org.dromara.dante.web.autoconfigure.stamp.AccessLimitedStampManager;
 import org.dromara.dante.web.autoconfigure.stamp.IdempotentStampManager;
 import org.dromara.dante.webmvc.autoconfigure.secure.AccessLimitedInterceptor;
 import org.dromara.dante.webmvc.autoconfigure.secure.IdempotentInterceptor;
 import org.dromara.dante.webmvc.autoconfigure.secure.XssHttpServletFilter;
-import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;

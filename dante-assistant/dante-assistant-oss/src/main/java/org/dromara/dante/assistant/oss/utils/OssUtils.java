@@ -25,10 +25,10 @@
 
 package org.dromara.dante.assistant.oss.utils;
 
-import org.dromara.dante.core.constant.SymbolConstants;
 import cn.hutool.v7.http.html.HtmlUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.Strings;
+import org.dromara.dante.core.constant.SymbolConstants;
 
 /**
  * <p>Description: 对象存储工具类 </p>

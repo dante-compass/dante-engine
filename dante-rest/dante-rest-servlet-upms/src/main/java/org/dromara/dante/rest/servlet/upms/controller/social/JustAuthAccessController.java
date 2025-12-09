@@ -25,9 +25,6 @@
 
 package org.dromara.dante.rest.servlet.upms.controller.social;
 
-import org.dromara.dante.assistant.access.processor.JustAuthProcessor;
-import org.dromara.dante.core.domain.Result;
-import org.dromara.dante.rest.servlet.upms.event.AutomaticSignInEvent;
 import cn.hutool.v7.core.bean.BeanUtil;
 import com.google.common.collect.ImmutableMap;
 import io.swagger.v3.oas.annotations.Operation;
@@ -38,6 +35,9 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import me.zhyd.oauth.model.AuthCallback;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.dromara.dante.assistant.access.processor.JustAuthProcessor;
+import org.dromara.dante.core.domain.Result;
+import org.dromara.dante.rest.servlet.upms.event.AutomaticSignInEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.bind.annotation.GetMapping;

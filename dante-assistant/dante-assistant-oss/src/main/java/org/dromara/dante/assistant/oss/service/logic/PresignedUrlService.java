@@ -25,10 +25,10 @@
 
 package org.dromara.dante.assistant.oss.service.logic;
 
+import org.apache.commons.collections4.MapUtils;
 import org.dromara.dante.assistant.oss.definition.service.AbstractS3PresignerService;
 import org.dromara.dante.assistant.oss.pool.S3PresignerObjectPool;
 import org.dromara.dante.assistant.oss.properties.OssProperties;
-import org.apache.commons.collections4.MapUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;

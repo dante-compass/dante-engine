@@ -25,15 +25,15 @@
 
 package org.dromara.dante.oauth2.authentication.response;
 
-import org.dromara.dante.core.domain.Result;
-import org.dromara.dante.security.exception.SecurityGlobalExceptionHandler;
-import org.dromara.dante.web.servlet.utils.SessionUtils;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.dromara.dante.core.domain.Result;
+import org.dromara.dante.security.exception.SecurityGlobalExceptionHandler;
+import org.dromara.dante.web.servlet.utils.SessionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;

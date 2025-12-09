@@ -25,9 +25,9 @@
 
 package org.dromara.dante.oauth2.authorization.converter;
 
-import org.dromara.dante.security.domain.HerodotusGrantedAuthority;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.dromara.dante.security.domain.HerodotusGrantedAuthority;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.core.log.LogMessage;
 import org.springframework.security.core.GrantedAuthority;

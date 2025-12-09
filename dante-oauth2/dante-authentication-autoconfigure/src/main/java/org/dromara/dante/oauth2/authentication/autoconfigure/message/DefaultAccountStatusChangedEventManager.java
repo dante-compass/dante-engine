@@ -25,11 +25,11 @@
 
 package org.dromara.dante.oauth2.authentication.autoconfigure.message;
 
-import org.dromara.dante.spring.context.ServiceContextHolder;
 import org.dromara.dante.message.core.definition.strategy.AccountStatusChangedEventManager;
 import org.dromara.dante.message.core.domain.AccountStatus;
 import org.dromara.dante.message.core.event.AccountStatusChangedEvent;
 import org.dromara.dante.oauth2.authorization.autoconfigure.bus.RemoteAccountStatusChangedEvent;
+import org.dromara.dante.spring.context.ServiceContextHolder;
 
 /**
  * <p>Description: 用户状态变更处理器 </p>

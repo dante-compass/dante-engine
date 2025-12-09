@@ -25,9 +25,9 @@
 
 package org.dromara.dante.autoconfigure.session;
 
+import jakarta.annotation.PostConstruct;
 import org.dromara.dante.autoconfigure.jackson.JacksonAutoConfiguration;
 import org.dromara.dante.spring.condition.ConditionalOnServletApplication;
-import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;

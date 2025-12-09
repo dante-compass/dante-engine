@@ -25,9 +25,9 @@
 
 package org.dromara.dante.assistant.oss.entity.argument;
 
-import org.dromara.dante.assistant.oss.definition.argument.AbstractObjectVersionArgument;
 import com.google.common.base.MoreObjects;
 import io.swagger.v3.oas.annotations.media.Schema;
+import org.dromara.dante.assistant.oss.definition.argument.AbstractObjectVersionArgument;
 
 /**
  * <p>Description: 删除对象请求参数实体 </p>

@@ -45,6 +45,7 @@ public class XssUtilsTest {
 
     /**
      * 测试事件字符串中包含空格，Xss 清理问题。
+     *
      * @throws Exception
      */
     @Test

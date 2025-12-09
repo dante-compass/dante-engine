@@ -25,8 +25,8 @@
 
 package org.dromara.dante.webmvc.autoconfigure.config;
 
-import org.dromara.dante.webmvc.autoconfigure.tenant.MultiTenantInterceptor;
 import jakarta.annotation.PostConstruct;
+import org.dromara.dante.webmvc.autoconfigure.tenant.MultiTenantInterceptor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;

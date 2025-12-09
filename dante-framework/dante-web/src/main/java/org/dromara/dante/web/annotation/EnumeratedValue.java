@@ -25,9 +25,9 @@
 
 package org.dromara.dante.web.annotation;
 
-import org.dromara.dante.web.validation.EnumeratedValueValidator;
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
+import org.dromara.dante.web.validation.EnumeratedValueValidator;
 
 import java.lang.annotation.*;
 

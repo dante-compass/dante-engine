@@ -25,11 +25,11 @@
 
 package org.dromara.dante.web.autoconfigure.secure;
 
-import org.dromara.dante.web.annotation.AccessLimited;
-import org.dromara.dante.web.exception.FrequentRequestsException;
-import org.dromara.dante.web.autoconfigure.stamp.AccessLimitedStampManager;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.dromara.dante.web.annotation.AccessLimited;
+import org.dromara.dante.web.autoconfigure.stamp.AccessLimitedStampManager;
+import org.dromara.dante.web.exception.FrequentRequestsException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

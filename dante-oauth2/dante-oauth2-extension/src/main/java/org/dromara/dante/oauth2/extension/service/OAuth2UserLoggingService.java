@@ -25,10 +25,6 @@
 
 package org.dromara.dante.oauth2.extension.service;
 
-import org.dromara.dante.data.jpa.repository.BaseJpaRepository;
-import org.dromara.dante.data.jpa.service.AbstractJpaService;
-import org.dromara.dante.oauth2.extension.entity.OAuth2UserLogging;
-import org.dromara.dante.oauth2.extension.repository.OAuth2UserLoggingRepository;
 import cn.hutool.v7.http.server.servlet.ServletUtil;
 import cn.hutool.v7.http.useragent.UserAgent;
 import cn.hutool.v7.http.useragent.UserAgentUtil;
@@ -37,6 +33,10 @@ import jakarta.persistence.criteria.Predicate;
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.dromara.dante.data.jpa.repository.BaseJpaRepository;
+import org.dromara.dante.data.jpa.service.AbstractJpaService;
+import org.dromara.dante.oauth2.extension.entity.OAuth2UserLogging;
+import org.dromara.dante.oauth2.extension.repository.OAuth2UserLoggingRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;

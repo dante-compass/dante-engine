@@ -25,8 +25,8 @@
 
 package org.dromara.dante.logging.autoconfigure;
 
-import org.dromara.dante.core.constant.BaseConstants;
 import com.google.common.base.MoreObjects;
+import org.dromara.dante.core.constant.BaseConstants;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.logging.LogLevel;
 

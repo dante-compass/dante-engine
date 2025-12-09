@@ -25,13 +25,13 @@
 
 package org.dromara.dante.logic.message.entity;
 
-import org.dromara.dante.core.constant.SystemConstants;
-import org.dromara.dante.core.domain.BaseEntity;
-import org.dromara.dante.logic.message.constant.LogicMessageConstants;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.google.common.base.MoreObjects;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
+import org.dromara.dante.core.constant.SystemConstants;
+import org.dromara.dante.core.domain.BaseEntity;
+import org.dromara.dante.logic.message.constant.LogicMessageConstants;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.UuidGenerator;
 

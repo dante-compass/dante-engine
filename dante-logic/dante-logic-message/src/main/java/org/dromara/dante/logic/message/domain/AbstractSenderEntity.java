@@ -25,10 +25,10 @@
 
 package org.dromara.dante.logic.message.domain;
 
-import org.dromara.dante.data.jpa.entity.AbstractAuditEntity;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Column;
 import jakarta.persistence.MappedSuperclass;
+import org.dromara.dante.data.jpa.entity.AbstractAuditEntity;
 
 /**
  * <p>Description: 基础发送者实体 </p>

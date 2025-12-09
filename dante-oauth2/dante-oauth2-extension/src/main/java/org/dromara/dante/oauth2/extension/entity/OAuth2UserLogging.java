@@ -25,11 +25,11 @@
 
 package org.dromara.dante.oauth2.extension.entity;
 
-import org.dromara.dante.data.jpa.entity.AbstractAuditEntity;
-import org.dromara.dante.oauth2.commons.constants.OAuth2Constants;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 import jakarta.persistence.*;
+import org.dromara.dante.data.jpa.entity.AbstractAuditEntity;
+import org.dromara.dante.oauth2.commons.constants.OAuth2Constants;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.UuidGenerator;
 

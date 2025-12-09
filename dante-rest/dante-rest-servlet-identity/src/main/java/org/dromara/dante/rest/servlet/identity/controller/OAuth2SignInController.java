@@ -25,11 +25,6 @@
 
 package org.dromara.dante.rest.servlet.identity.controller;
 
-import org.dromara.dante.core.domain.SecretKey;
-import org.dromara.dante.core.enums.Protocol;
-import org.dromara.dante.core.support.crypto.DigitalEnvelopeProcessor;
-import org.dromara.dante.web.servlet.utils.SessionUtils;
-import org.dromara.dante.oauth2.commons.properties.OAuth2AuthenticationProperties;
 import cn.hutool.v7.core.codec.binary.Base64;
 import com.google.common.net.HttpHeaders;
 import jakarta.servlet.http.HttpServletRequest;
@@ -38,6 +33,11 @@ import jakarta.servlet.http.HttpSession;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.Strings;
+import org.dromara.dante.core.domain.SecretKey;
+import org.dromara.dante.core.enums.Protocol;
+import org.dromara.dante.core.support.crypto.DigitalEnvelopeProcessor;
+import org.dromara.dante.oauth2.commons.properties.OAuth2AuthenticationProperties;
+import org.dromara.dante.web.servlet.utils.SessionUtils;
 import org.springframework.boot.session.autoconfigure.SessionProperties;
 import org.springframework.http.ResponseCookie;
 import org.springframework.security.web.WebAttributes;

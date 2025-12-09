@@ -25,8 +25,8 @@
 
 package org.dromara.dante.oauth2.authentication.autoconfigure.message;
 
-import org.dromara.dante.message.core.definition.strategy.AccountStatusChangedEventManager;
 import jakarta.annotation.PostConstruct;
+import org.dromara.dante.message.core.definition.strategy.AccountStatusChangedEventManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;

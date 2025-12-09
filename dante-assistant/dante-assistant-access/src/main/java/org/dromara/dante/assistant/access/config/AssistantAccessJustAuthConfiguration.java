@@ -25,13 +25,13 @@
 
 package org.dromara.dante.assistant.access.config;
 
+import jakarta.annotation.PostConstruct;
 import org.dromara.dante.assistant.access.condition.ConditionalOnJustAuthEnabled;
 import org.dromara.dante.assistant.access.processor.JustAuthAccessHandler;
 import org.dromara.dante.assistant.access.processor.JustAuthProcessor;
 import org.dromara.dante.assistant.access.properties.JustAuthProperties;
 import org.dromara.dante.assistant.access.stamp.JustAuthStateStampManager;
 import org.dromara.dante.security.enums.AccountCategory;
-import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;

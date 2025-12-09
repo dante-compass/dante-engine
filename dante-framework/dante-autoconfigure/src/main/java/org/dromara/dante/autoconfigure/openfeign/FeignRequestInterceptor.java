@@ -25,9 +25,6 @@
 
 package org.dromara.dante.autoconfigure.openfeign;
 
-import org.dromara.dante.core.constant.HerodotusHeaders;
-import org.dromara.dante.core.constant.SymbolConstants;
-import org.dromara.dante.core.context.TenantContextHolder;
 import cn.hutool.v7.http.server.servlet.ServletUtil;
 import com.google.common.net.HttpHeaders;
 import feign.RequestInterceptor;
@@ -35,6 +32,9 @@ import feign.RequestTemplate;
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.Strings;
+import org.dromara.dante.core.constant.HerodotusHeaders;
+import org.dromara.dante.core.constant.SymbolConstants;
+import org.dromara.dante.core.context.TenantContextHolder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;

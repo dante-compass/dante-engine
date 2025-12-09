@@ -25,11 +25,11 @@
 
 package org.dromara.dante.webmvc.autoconfigure;
 
+import jakarta.annotation.PostConstruct;
 import org.dromara.dante.message.core.definition.strategy.RestMappingScanEventManager;
 import org.dromara.dante.web.autoconfigure.properties.ServiceProperties;
 import org.dromara.dante.web.condition.ConditionalOnRestScanEnabled;
 import org.dromara.dante.webmvc.autoconfigure.initializer.RestMappingScanner;
-import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;

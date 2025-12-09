@@ -25,9 +25,9 @@
 
 package org.dromara.dante.assistant.access.properties;
 
-import org.dromara.dante.assistant.access.constant.AccessConstants;
 import com.google.common.base.MoreObjects;
 import me.zhyd.oauth.config.AuthConfig;
+import org.dromara.dante.assistant.access.constant.AccessConstants;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 import java.time.Duration;

@@ -25,9 +25,8 @@
 
 package org.dromara.dante.oauth2.authorization.autoconfigure.processor;
 
-import org.dromara.dante.spring.context.ServiceContextHolder;
-import org.dromara.dante.spring.founction.ListConverter;
-import org.dromara.dante.security.domain.AttributeTransmitter;
+import com.google.common.collect.ImmutableList;
+import org.apache.commons.collections4.CollectionUtils;
 import org.dromara.dante.logic.upms.converter.SysAttributeToAttributeTransmitterConverter;
 import org.dromara.dante.logic.upms.converter.SysInterfacesToSysAttributesConverter;
 import org.dromara.dante.logic.upms.entity.security.SysAttribute;
@@ -39,8 +38,9 @@ import org.dromara.dante.message.core.domain.RestMapping;
 import org.dromara.dante.message.core.event.ApplicationReadinessEvent;
 import org.dromara.dante.oauth2.authorization.autoconfigure.bus.RemoteAttributeTransmitterSyncEvent;
 import org.dromara.dante.oauth2.authorization.processor.SecurityAttributeAnalyzer;
-import com.google.common.collect.ImmutableList;
-import org.apache.commons.collections4.CollectionUtils;
+import org.dromara.dante.security.domain.AttributeTransmitter;
+import org.dromara.dante.spring.context.ServiceContextHolder;
+import org.dromara.dante.spring.founction.ListConverter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;

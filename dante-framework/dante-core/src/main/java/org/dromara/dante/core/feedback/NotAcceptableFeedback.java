@@ -25,8 +25,8 @@
 
 package org.dromara.dante.core.feedback;
 
-import org.dromara.dante.core.domain.Feedback;
 import org.apache.hc.core5.http.HttpStatus;
+import org.dromara.dante.core.domain.Feedback;
 
 /**
  * <p>Description: 406 类型错误反馈 </p>

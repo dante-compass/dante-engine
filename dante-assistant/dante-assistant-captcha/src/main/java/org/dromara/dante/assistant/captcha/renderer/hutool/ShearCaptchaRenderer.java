@@ -25,12 +25,12 @@
 
 package org.dromara.dante.assistant.captcha.renderer.hutool;
 
+import cn.hutool.v7.swing.captcha.CaptchaUtil;
+import cn.hutool.v7.swing.captcha.ShearCaptcha;
 import org.dromara.dante.assistant.captcha.definition.AbstractGraphicRenderer;
 import org.dromara.dante.assistant.captcha.provider.ResourceProvider;
 import org.dromara.dante.core.domain.captcha.Metadata;
 import org.dromara.dante.spring.enums.CaptchaCategory;
-import cn.hutool.v7.swing.captcha.CaptchaUtil;
-import cn.hutool.v7.swing.captcha.ShearCaptcha;
 
 /**
  * <p>Description: Hutool扭曲干扰验证码绘制器 </p>

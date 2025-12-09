@@ -25,8 +25,8 @@
 
 package org.dromara.dante.reactive.container.autoconfigure;
 
-import org.dromara.dante.spring.condition.ConditionalOnReactiveApplication;
 import jakarta.annotation.PostConstruct;
+import org.dromara.dante.spring.condition.ConditionalOnReactiveApplication;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.ObjectProvider;

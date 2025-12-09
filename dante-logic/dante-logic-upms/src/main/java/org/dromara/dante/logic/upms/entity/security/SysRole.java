@@ -25,12 +25,12 @@
 
 package org.dromara.dante.logic.upms.entity.security;
 
-import org.dromara.dante.data.jpa.entity.AbstractSysEntity;
-import org.dromara.dante.logic.upms.constant.LogicUpmsConstants;
 import com.google.common.base.MoreObjects;
 import jakarta.persistence.*;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.dromara.dante.data.jpa.entity.AbstractSysEntity;
+import org.dromara.dante.logic.upms.constant.LogicUpmsConstants;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.UuidGenerator;
 

@@ -25,10 +25,10 @@
 
 package org.dromara.dante.facility.alibaba.autoconfigure.sentinel.enhance;
 
+import com.google.common.base.Objects;
 import org.dromara.dante.core.constant.SymbolConstants;
 import org.dromara.dante.core.domain.Result;
 import org.dromara.dante.core.exception.GlobalExceptionHandler;
-import com.google.common.base.Objects;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cglib.proxy.MethodInterceptor;

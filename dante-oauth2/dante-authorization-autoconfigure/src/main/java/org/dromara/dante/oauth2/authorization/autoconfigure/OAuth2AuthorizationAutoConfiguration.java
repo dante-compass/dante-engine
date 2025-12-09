@@ -25,13 +25,13 @@
 
 package org.dromara.dante.oauth2.authorization.autoconfigure;
 
-import org.dromara.dante.security.exception.SecurityGlobalExceptionHandler;
+import jakarta.annotation.PostConstruct;
 import org.dromara.dante.message.core.definition.strategy.RestMappingScanEventManager;
 import org.dromara.dante.oauth2.authorization.autoconfigure.listener.RemoteAttributeTransmitterSyncListener;
 import org.dromara.dante.oauth2.authorization.autoconfigure.strategy.DefaultRestMappingScanEventManager;
 import org.dromara.dante.oauth2.authorization.config.OAuth2ServletAuthorizationConfiguration;
 import org.dromara.dante.oauth2.authorization.processor.SecurityAttributeAnalyzer;
-import jakarta.annotation.PostConstruct;
+import org.dromara.dante.security.exception.SecurityGlobalExceptionHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;

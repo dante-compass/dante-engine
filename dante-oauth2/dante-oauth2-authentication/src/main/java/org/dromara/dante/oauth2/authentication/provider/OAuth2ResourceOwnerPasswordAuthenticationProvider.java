@@ -26,11 +26,11 @@
 package org.dromara.dante.oauth2.authentication.provider;
 
 import org.dromara.dante.core.constant.SystemConstants;
-import org.dromara.dante.security.service.EnhanceUserDetailsService;
 import org.dromara.dante.oauth2.authentication.customizer.HerodotusGrantType;
 import org.dromara.dante.oauth2.authentication.utils.DPoPProofVerifier;
 import org.dromara.dante.oauth2.authentication.utils.OAuth2AuthenticationProviderUtils;
 import org.dromara.dante.oauth2.commons.properties.OAuth2AuthenticationProperties;
+import org.dromara.dante.security.service.EnhanceUserDetailsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.BadCredentialsException;

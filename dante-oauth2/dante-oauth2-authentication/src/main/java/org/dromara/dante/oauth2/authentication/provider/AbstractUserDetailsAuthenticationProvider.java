@@ -25,14 +25,14 @@
 
 package org.dromara.dante.oauth2.authentication.provider;
 
-import org.dromara.dante.security.constant.OAuth2ErrorKeys;
-import org.dromara.dante.security.service.EnhanceUserDetailsService;
+import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.lang3.ObjectUtils;
 import org.dromara.dante.oauth2.authentication.utils.OAuth2EndpointUtils;
 import org.dromara.dante.oauth2.commons.exception.AccountEndpointLimitedException;
 import org.dromara.dante.oauth2.commons.properties.OAuth2AuthenticationProperties;
 import org.dromara.dante.oauth2.persistence.sas.jpa.storage.JpaOAuth2AuthorizationService;
-import org.apache.commons.collections4.CollectionUtils;
-import org.apache.commons.lang3.ObjectUtils;
+import org.dromara.dante.security.constant.OAuth2ErrorKeys;
+import org.dromara.dante.security.service.EnhanceUserDetailsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.support.MessageSourceAccessor;

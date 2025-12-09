@@ -25,6 +25,7 @@
 
 package org.dromara.dante.assistant.access.factory;
 
+import org.apache.commons.lang3.ObjectUtils;
 import org.dromara.dante.assistant.access.definition.AccessHandler;
 import org.dromara.dante.assistant.access.definition.domain.AccessResponse;
 import org.dromara.dante.assistant.access.definition.domain.AccessUserDetails;
@@ -32,7 +33,6 @@ import org.dromara.dante.assistant.access.exception.AccessHandlerNotFoundExcepti
 import org.dromara.dante.assistant.access.exception.IllegalAccessArgumentException;
 import org.dromara.dante.security.domain.AccessPrincipal;
 import org.dromara.dante.security.enums.AccountCategory;
-import org.apache.commons.lang3.ObjectUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;

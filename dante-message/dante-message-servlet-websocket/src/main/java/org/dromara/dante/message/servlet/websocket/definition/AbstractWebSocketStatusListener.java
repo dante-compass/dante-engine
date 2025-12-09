@@ -25,11 +25,11 @@
 
 package org.dromara.dante.message.servlet.websocket.definition;
 
+import org.apache.commons.lang3.ObjectUtils;
 import org.dromara.dante.cache.redis.utils.RedisBitMapUtils;
 import org.dromara.dante.message.core.constants.MessageConstants;
 import org.dromara.dante.message.servlet.websocket.domain.WebSocketPrincipal;
 import org.dromara.dante.message.servlet.websocket.utils.WebSocketUtils;
-import org.apache.commons.lang3.ObjectUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationEvent;

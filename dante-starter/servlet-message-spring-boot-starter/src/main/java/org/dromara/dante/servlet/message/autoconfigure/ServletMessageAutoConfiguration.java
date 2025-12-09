@@ -25,11 +25,11 @@
 
 package org.dromara.dante.servlet.message.autoconfigure;
 
+import jakarta.annotation.PostConstruct;
 import org.dromara.dante.core.function.ErrorCodeMapperBuilderCustomizer;
 import org.dromara.dante.message.servlet.websocket.annotation.EnableHerodotusServletWebSocket;
 import org.dromara.dante.rest.servlet.message.annotation.EnableHerodotusRestServletMessage;
 import org.dromara.dante.servlet.message.autoconfigure.customizer.MessageErrorCodeMapperBuilderCustomizer;
-import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;

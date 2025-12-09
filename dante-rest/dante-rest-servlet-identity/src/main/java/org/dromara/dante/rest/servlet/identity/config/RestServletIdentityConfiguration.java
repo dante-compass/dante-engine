@@ -25,8 +25,8 @@
 
 package org.dromara.dante.rest.servlet.identity.config;
 
-import org.dromara.dante.logic.identity.config.LogicIdentityConfiguration;
 import jakarta.annotation.PostConstruct;
+import org.dromara.dante.logic.identity.config.LogicIdentityConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;

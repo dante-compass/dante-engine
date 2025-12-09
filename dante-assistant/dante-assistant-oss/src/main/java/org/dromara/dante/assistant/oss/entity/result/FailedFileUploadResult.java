@@ -25,8 +25,8 @@
 
 package org.dromara.dante.assistant.oss.entity.result;
 
-import org.dromara.dante.assistant.oss.entity.argument.UploadFileArgument;
 import io.swagger.v3.oas.annotations.media.Schema;
+import org.dromara.dante.assistant.oss.entity.argument.UploadFileArgument;
 
 /**
  * <p>Description: 高阶文件上传失败响应返回对象实体 </p>

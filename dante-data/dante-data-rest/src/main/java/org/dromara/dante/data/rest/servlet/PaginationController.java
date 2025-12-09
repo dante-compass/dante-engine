@@ -25,10 +25,10 @@
 
 package org.dromara.dante.data.rest.servlet;
 
+import org.apache.commons.collections4.CollectionUtils;
 import org.dromara.dante.core.domain.BaseEntity;
 import org.dromara.dante.core.domain.Result;
 import org.dromara.dante.web.definition.Controller;
-import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Slice;
 

@@ -25,8 +25,11 @@
 
 package org.dromara.dante.web.autoconfigure;
 
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.PostConstruct;
 import org.dromara.dante.core.builder.EnumDictionaryBuilder;
 import org.dromara.dante.core.function.ErrorCodeMapperBuilderCustomizer;
+import org.dromara.dante.message.core.definition.strategy.EnumDictionaryGatherEventManager;
 import org.dromara.dante.spring.context.ServiceContextHolder;
 import org.dromara.dante.web.autoconfigure.config.SecureStampConfiguration;
 import org.dromara.dante.web.autoconfigure.config.SpringdocConfiguration;
@@ -36,9 +39,6 @@ import org.dromara.dante.web.autoconfigure.initializer.ServiceContextHolderBuild
 import org.dromara.dante.web.properties.EndpointProperties;
 import org.dromara.dante.web.properties.PlatformProperties;
 import org.dromara.dante.web.support.WebPropertyFinder;
-import org.dromara.dante.message.core.definition.strategy.EnumDictionaryGatherEventManager;
-import jakarta.annotation.Nonnull;
-import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;

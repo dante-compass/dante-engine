@@ -25,11 +25,11 @@
 
 package org.dromara.dante.cache.caffeine.config;
 
-import org.dromara.dante.cache.caffeine.enhance.HerodotusCaffeineCacheManager;
-import org.dromara.dante.cache.commons.properties.CacheProperties;
 import com.github.benmanes.caffeine.cache.Caffeine;
 import jakarta.annotation.PostConstruct;
 import org.apache.commons.lang3.ObjectUtils;
+import org.dromara.dante.cache.caffeine.enhance.HerodotusCaffeineCacheManager;
+import org.dromara.dante.cache.commons.properties.CacheProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;

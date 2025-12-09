@@ -25,8 +25,8 @@
 
 package org.dromara.dante.oauth2.authorization.config;
 
-import org.dromara.dante.oauth2.authorization.servlet.OAuth2SessionManagementConfigurerCustomer;
 import jakarta.annotation.PostConstruct;
+import org.dromara.dante.oauth2.authorization.servlet.OAuth2SessionManagementConfigurerCustomer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;

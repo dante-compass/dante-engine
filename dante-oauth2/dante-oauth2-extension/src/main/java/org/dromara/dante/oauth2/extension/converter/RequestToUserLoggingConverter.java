@@ -25,14 +25,14 @@
 
 package org.dromara.dante.oauth2.extension.converter;
 
-import org.dromara.dante.security.utils.SecurityUtils;
-import org.dromara.dante.oauth2.extension.entity.OAuth2UserLogging;
-import org.dromara.dante.web.servlet.utils.HeaderUtils;
 import cn.hutool.v7.http.useragent.UserAgent;
 import cn.hutool.v7.http.useragent.UserAgentUtil;
 import com.google.common.net.HttpHeaders;
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.commons.lang3.ObjectUtils;
+import org.dromara.dante.oauth2.extension.entity.OAuth2UserLogging;
+import org.dromara.dante.security.utils.SecurityUtils;
+import org.dromara.dante.web.servlet.utils.HeaderUtils;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.security.oauth2.server.authorization.OAuth2Authorization;
 import org.springframework.security.oauth2.server.authorization.authentication.OAuth2AccessTokenAuthenticationToken;

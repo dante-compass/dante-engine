@@ -25,10 +25,10 @@
 
 package org.dromara.dante.oauth2.extension.config;
 
+import jakarta.annotation.PostConstruct;
 import org.dromara.dante.oauth2.extension.listener.AuthenticationFailureListener;
 import org.dromara.dante.oauth2.extension.listener.AuthenticationSuccessListener;
 import org.dromara.dante.oauth2.extension.manager.OAuth2ComplianceManager;
-import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;

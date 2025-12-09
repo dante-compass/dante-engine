@@ -25,9 +25,9 @@
 
 package org.dromara.dante.assistant.oss.entity.result;
 
-import org.dromara.dante.assistant.oss.definition.result.AbstractResult;
 import com.google.common.base.MoreObjects;
 import io.swagger.v3.oas.annotations.media.Schema;
+import org.dromara.dante.assistant.oss.definition.result.AbstractResult;
 
 /**
  * <p>Description: 终止分片上传响应结果对象实体 </p>

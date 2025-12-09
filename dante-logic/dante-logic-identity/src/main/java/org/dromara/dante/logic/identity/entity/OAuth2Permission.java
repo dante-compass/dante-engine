@@ -25,11 +25,11 @@
 
 package org.dromara.dante.logic.identity.entity;
 
+import com.google.common.base.MoreObjects;
+import jakarta.persistence.*;
 import org.dromara.dante.data.jpa.entity.AbstractSysEntity;
 import org.dromara.dante.logic.identity.generator.OAuth2PermissionIdGenerator;
 import org.dromara.dante.oauth2.commons.constants.OAuth2Constants;
-import com.google.common.base.MoreObjects;
-import jakarta.persistence.*;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 /**

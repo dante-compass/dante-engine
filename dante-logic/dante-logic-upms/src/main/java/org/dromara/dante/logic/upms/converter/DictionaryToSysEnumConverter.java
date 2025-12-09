@@ -25,13 +25,13 @@
 
 package org.dromara.dante.logic.upms.converter;
 
+import cn.hutool.v7.crypto.SecureUtil;
+import org.apache.commons.lang3.StringUtils;
 import org.dromara.dante.core.constant.SymbolConstants;
 import org.dromara.dante.core.constant.SystemConstants;
 import org.dromara.dante.core.domain.Dictionary;
 import org.dromara.dante.logic.upms.entity.security.SysEnum;
 import org.dromara.dante.spring.founction.ListConverter;
-import cn.hutool.v7.crypto.SecureUtil;
-import org.apache.commons.lang3.StringUtils;
 
 /**
  * <p>Description: Dictionary 转 SysEnum 转换器 </p>

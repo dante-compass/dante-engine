@@ -25,6 +25,9 @@
 
 package org.dromara.dante.logic.message.service;
 
+import jakarta.persistence.criteria.Predicate;
+import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.lang3.ObjectUtils;
 import org.dromara.dante.data.jpa.repository.BaseJpaRepository;
 import org.dromara.dante.data.jpa.service.AbstractJpaService;
 import org.dromara.dante.logic.message.entity.Announcement;
@@ -32,9 +35,6 @@ import org.dromara.dante.logic.message.entity.Notification;
 import org.dromara.dante.logic.message.entity.PullStamp;
 import org.dromara.dante.logic.message.enums.NotificationCategory;
 import org.dromara.dante.logic.message.repository.NotificationRepository;
-import jakarta.persistence.criteria.Predicate;
-import org.apache.commons.collections4.CollectionUtils;
-import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;

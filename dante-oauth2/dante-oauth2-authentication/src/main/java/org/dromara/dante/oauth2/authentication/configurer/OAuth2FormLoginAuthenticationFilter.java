@@ -25,13 +25,13 @@
 
 package org.dromara.dante.oauth2.authentication.configurer;
 
-import org.dromara.dante.core.support.crypto.DigitalEnvelopeProcessor;
-import org.dromara.dante.web.servlet.utils.SessionUtils;
-import org.dromara.dante.oauth2.authentication.provider.OAuth2FormLoginAuthenticationToken;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.apache.commons.lang3.StringUtils;
+import org.dromara.dante.core.support.crypto.DigitalEnvelopeProcessor;
+import org.dromara.dante.oauth2.authentication.provider.OAuth2FormLoginAuthenticationToken;
+import org.dromara.dante.web.servlet.utils.SessionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.AuthenticationManager;

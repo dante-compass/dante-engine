@@ -25,12 +25,12 @@
 
 package org.dromara.dante.oauth2.authorization.servlet;
 
-import org.dromara.dante.security.exception.SecurityGlobalExceptionHandler;
-import org.dromara.dante.web.servlet.template.AbstractResponseHandler;
-import org.dromara.dante.web.servlet.template.ThymeleafTemplateHandler;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.dromara.dante.security.exception.SecurityGlobalExceptionHandler;
+import org.dromara.dante.web.servlet.template.AbstractResponseHandler;
+import org.dromara.dante.web.servlet.template.ThymeleafTemplateHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.access.AccessDeniedException;

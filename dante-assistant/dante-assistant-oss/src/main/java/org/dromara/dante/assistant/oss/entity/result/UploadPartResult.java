@@ -25,11 +25,11 @@
 
 package org.dromara.dante.assistant.oss.entity.result;
 
+import com.google.common.base.MoreObjects;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.dromara.dante.assistant.oss.definition.domain.ChecksumDomain;
 import org.dromara.dante.assistant.oss.definition.domain.SsekmsDomain;
 import org.dromara.dante.assistant.oss.definition.result.AbstractRequestChargedResult;
-import com.google.common.base.MoreObjects;
-import io.swagger.v3.oas.annotations.media.Schema;
 
 /**
  * <p>Description: 上传分片响应结果对象实体 </p>

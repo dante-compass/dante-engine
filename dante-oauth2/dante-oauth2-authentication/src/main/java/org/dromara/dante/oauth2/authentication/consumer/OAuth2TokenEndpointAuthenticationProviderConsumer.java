@@ -25,10 +25,10 @@
 
 package org.dromara.dante.oauth2.authentication.consumer;
 
-import org.dromara.dante.security.service.ClientDetailsService;
 import org.dromara.dante.oauth2.authentication.provider.OAuth2AuthorizationCodeAuthenticationProvider;
 import org.dromara.dante.oauth2.authentication.provider.OAuth2ClientCredentialsAuthenticationProvider;
 import org.dromara.dante.oauth2.authentication.utils.OAuth2ConfigurerUtils;
+import org.dromara.dante.security.service.ClientDetailsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.AuthenticationProvider;

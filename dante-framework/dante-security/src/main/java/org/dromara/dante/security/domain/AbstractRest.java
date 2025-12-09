@@ -25,8 +25,8 @@
 
 package org.dromara.dante.security.domain;
 
-import org.dromara.dante.core.domain.BaseModel;
 import com.google.common.base.MoreObjects;
+import org.dromara.dante.core.domain.BaseModel;
 
 /**
  * <p>Description: Rest 接口信息抽象定义 </p>

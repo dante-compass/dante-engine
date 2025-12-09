@@ -25,13 +25,13 @@
 
 package org.dromara.dante.web.context;
 
+import org.apache.commons.lang3.ObjectUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.dromara.dante.core.utils.WellFormedUtils;
 import org.dromara.dante.spring.context.ServiceContextHolder;
 import org.dromara.dante.spring.enums.Architecture;
 import org.dromara.dante.web.properties.EndpointProperties;
 import org.dromara.dante.web.properties.PlatformProperties;
-import org.apache.commons.lang3.ObjectUtils;
-import org.apache.commons.lang3.StringUtils;
 
 import java.net.InetAddress;
 
@@ -116,7 +116,7 @@ public abstract class AbstractServiceContextHolderInitializer {
                 ServiceContextHolder.setUaaServiceUri(endpointProperties.getUaaServiceUri());
                 ServiceContextHolder.setUpmsServiceUri(endpointProperties.getUpmsServiceUri());
                 ServiceContextHolder.setMessageServiceUri(endpointProperties.getMessageServiceUri());
-                 ServiceContextHolder.setOssServiceUri(endpointProperties.getOssServiceUri());
+                ServiceContextHolder.setOssServiceUri(endpointProperties.getOssServiceUri());
             }
 
             ServiceContextHolder.setAuthorizationUri(endpointProperties.getAuthorizationUri());

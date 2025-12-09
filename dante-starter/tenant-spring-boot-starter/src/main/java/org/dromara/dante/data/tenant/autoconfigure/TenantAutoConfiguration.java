@@ -25,11 +25,11 @@
 
 package org.dromara.dante.data.tenant.autoconfigure;
 
+import jakarta.annotation.PostConstruct;
 import org.dromara.dante.data.tenant.autoconfigure.config.DatabaseApproachConfiguration;
 import org.dromara.dante.data.tenant.autoconfigure.config.DiscriminatorApproachConfiguration;
 import org.dromara.dante.data.tenant.autoconfigure.config.SchemaApproachConfiguration;
 import org.dromara.dante.data.tenant.autoconfigure.properties.MultiTenantProperties;
-import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;

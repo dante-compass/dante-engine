@@ -25,10 +25,6 @@
 
 package org.dromara.dante.assistant.access.processor;
 
-import org.dromara.dante.assistant.access.exception.AccessConfigErrorException;
-import org.dromara.dante.assistant.access.exception.IllegalAccessSourceException;
-import org.dromara.dante.assistant.access.properties.JustAuthProperties;
-import org.dromara.dante.assistant.access.stamp.JustAuthStateStampManager;
 import cn.hutool.v7.core.util.EnumUtil;
 import me.zhyd.oauth.config.AuthConfig;
 import me.zhyd.oauth.config.AuthDefaultSource;
@@ -36,6 +32,10 @@ import me.zhyd.oauth.request.*;
 import me.zhyd.oauth.utils.AuthStateUtils;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.ObjectUtils;
+import org.dromara.dante.assistant.access.exception.AccessConfigErrorException;
+import org.dromara.dante.assistant.access.exception.IllegalAccessSourceException;
+import org.dromara.dante.assistant.access.properties.JustAuthProperties;
+import org.dromara.dante.assistant.access.stamp.JustAuthStateStampManager;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Map;

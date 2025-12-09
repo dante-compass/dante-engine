@@ -25,8 +25,8 @@
 
 package org.dromara.dante.security.domain;
 
-import org.dromara.dante.core.constant.SystemConstants;
 import com.google.common.base.MoreObjects;
+import org.dromara.dante.core.constant.SystemConstants;
 
 import java.io.Serializable;
 import java.util.HashMap;

@@ -25,11 +25,6 @@
 
 package org.dromara.dante.rest.servlet.identity.controller;
 
-import org.dromara.dante.core.domain.Result;
-import org.dromara.dante.data.jpa.service.BaseJpaWriteableService;
-import org.dromara.dante.oauth2.extension.entity.OAuth2UserLogging;
-import org.dromara.dante.oauth2.extension.service.OAuth2UserLoggingService;
-import org.dromara.dante.data.rest.servlet.AbstractJpaWriteableController;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
@@ -39,6 +34,11 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.tags.Tags;
 import jakarta.validation.constraints.NotNull;
+import org.dromara.dante.core.domain.Result;
+import org.dromara.dante.data.jpa.service.BaseJpaWriteableService;
+import org.dromara.dante.data.rest.servlet.AbstractJpaWriteableController;
+import org.dromara.dante.oauth2.extension.entity.OAuth2UserLogging;
+import org.dromara.dante.oauth2.extension.service.OAuth2UserLoggingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.MediaType;
@@ -88,10 +88,10 @@ public class OAuth2ComplianceController extends AbstractJpaWriteableController<O
     @GetMapping("/condition")
     public Result<Map<String, Object>> findByCondition(
             @NotNull @RequestParam("pageNumber") Integer pageNumber,
-                                                       @NotNull @RequestParam("pageSize") Integer pageSize,
-                                                       @RequestParam(value = "principalName", required = false) String principalName,
-                                                       @RequestParam(value = "clientId", required = false) String clientId,
-                                                       @RequestParam(value = "ip", required = false) String ip) {
+            @NotNull @RequestParam("pageSize") Integer pageSize,
+            @RequestParam(value = "principalName", required = false) String principalName,
+            @RequestParam(value = "clientId", required = false) String clientId,
+            @RequestParam(value = "ip", required = false) String ip) {
         Page<OAuth2UserLogging> pages = complianceService.findByCondition(pageNumber, pageSize, principalName, clientId, ip);
         return resultFromPage(pages);
     }

@@ -25,8 +25,8 @@
 
 package org.dromara.dante.assistant.oss.entity.result;
 
-import org.dromara.dante.assistant.oss.definition.result.AbstractObjectResult;
 import io.swagger.v3.oas.annotations.media.Schema;
+import org.dromara.dante.assistant.oss.definition.result.AbstractObjectResult;
 
 /**
  * <p>Description: 删除对象响应返回实体 </p>

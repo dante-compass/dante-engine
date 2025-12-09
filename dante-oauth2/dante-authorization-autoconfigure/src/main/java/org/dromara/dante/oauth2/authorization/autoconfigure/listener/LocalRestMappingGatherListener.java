@@ -25,10 +25,10 @@
 
 package org.dromara.dante.oauth2.authorization.autoconfigure.listener;
 
+import org.apache.commons.collections4.CollectionUtils;
 import org.dromara.dante.message.core.domain.RestMapping;
 import org.dromara.dante.message.core.event.RestMappingGatherEvent;
 import org.dromara.dante.oauth2.authorization.autoconfigure.processor.AttributeTransmitterDistributeProcessor;
-import org.apache.commons.collections4.CollectionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationListener;

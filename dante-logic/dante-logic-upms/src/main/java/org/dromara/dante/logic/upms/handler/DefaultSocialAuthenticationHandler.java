@@ -25,6 +25,10 @@
 
 package org.dromara.dante.logic.upms.handler;
 
+import cn.hutool.v7.core.bean.BeanUtil;
+import com.google.common.collect.ImmutableSet;
+import org.apache.commons.lang3.ObjectUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.dromara.dante.assistant.access.definition.domain.AccessUserDetails;
 import org.dromara.dante.assistant.access.exception.AccessIdentityVerificationFailedException;
 import org.dromara.dante.assistant.access.factory.AccessHandlerStrategyFactory;
@@ -39,10 +43,6 @@ import org.dromara.dante.oauth2.commons.exception.SocialCredentialsParameterBind
 import org.dromara.dante.oauth2.commons.exception.UsernameAlreadyExistsException;
 import org.dromara.dante.security.domain.AccessPrincipal;
 import org.dromara.dante.security.domain.HerodotusUser;
-import cn.hutool.v7.core.bean.BeanUtil;
-import com.google.common.collect.ImmutableSet;
-import org.apache.commons.lang3.ObjectUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.core.convert.converter.Converter;
 
 /**

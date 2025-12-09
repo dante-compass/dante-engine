@@ -25,12 +25,12 @@
 
 package org.dromara.dante.autoconfigure.oauth2;
 
-import org.dromara.dante.core.constant.SystemConstants;
-import org.dromara.dante.security.domain.HerodotusGrantedAuthority;
-import org.dromara.dante.spring.context.ServiceContextHolder;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.dromara.dante.core.constant.SystemConstants;
+import org.dromara.dante.security.domain.HerodotusGrantedAuthority;
+import org.dromara.dante.spring.context.ServiceContextHolder;
 import org.springframework.boot.security.oauth2.server.resource.autoconfigure.OAuth2ResourceServerProperties;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.core.convert.converter.Converter;

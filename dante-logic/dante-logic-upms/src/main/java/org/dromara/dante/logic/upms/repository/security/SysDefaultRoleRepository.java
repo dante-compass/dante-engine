@@ -25,10 +25,10 @@
 
 package org.dromara.dante.logic.upms.repository.security;
 
+import jakarta.persistence.QueryHint;
 import org.dromara.dante.data.jpa.repository.BaseJpaRepository;
 import org.dromara.dante.logic.upms.entity.security.SysDefaultRole;
 import org.dromara.dante.security.enums.AccountCategory;
-import jakarta.persistence.QueryHint;
 import org.hibernate.jpa.AvailableHints;
 import org.springframework.data.jpa.repository.QueryHints;
 

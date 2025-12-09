@@ -26,16 +26,16 @@
 package org.dromara.dante.rest.servlet.upms.controller.social;
 
 import cn.binarywang.wx.miniapp.bean.WxMaJscode2SessionResult;
-import org.dromara.dante.assistant.access.definition.domain.AccessResponse;
-import org.dromara.dante.assistant.access.factory.AccessHandlerStrategyFactory;
-import org.dromara.dante.core.domain.Result;
-import org.dromara.dante.security.enums.AccountCategory;
-import org.dromara.dante.rest.servlet.upms.dto.WxappProfile;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.apache.commons.lang3.ObjectUtils;
+import org.dromara.dante.assistant.access.definition.domain.AccessResponse;
+import org.dromara.dante.assistant.access.factory.AccessHandlerStrategyFactory;
+import org.dromara.dante.core.domain.Result;
+import org.dromara.dante.rest.servlet.upms.dto.WxappProfile;
+import org.dromara.dante.security.enums.AccountCategory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;

@@ -25,11 +25,11 @@
 
 package org.dromara.dante.spring.utils;
 
-import org.dromara.dante.core.constant.SymbolConstants;
 import cn.hutool.v7.json.JSONUtil;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.Strings;
 import org.apache.commons.text.StringEscapeUtils;
+import org.dromara.dante.core.constant.SymbolConstants;
 import org.owasp.validator.html.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
