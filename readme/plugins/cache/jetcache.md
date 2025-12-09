@@ -69,13 +69,13 @@ jetcache:
 
 # 签章(stamp)的使用
 
-`stamp.cn.herodotus.dante.cache.jetcache.StampManager` 接口用于定义在特定条件下生成后，在一定时间就会消除的标记性Stamp。
+`stamp.org.dromara.dante.cache.jetcache.StampManager` 接口用于定义在特定条件下生成后，在一定时间就会消除的标记性Stamp。
 例如，幂等、短信验证码、Auth State等，用时生成，然后进行验证，之后再删除的标记Stamp。
 
 ## 计数器
 
 应用场景一般是一段时间内的操作次数，例如登录失败次数、接口请求次数……
-自定义一个计数器需要实现 `stamp.cn.herodotus.dante.cache.jetcache.AbstractCountStampManager` 并注册为 bean
+自定义一个计数器需要实现 `stamp.org.dromara.dante.cache.jetcache.AbstractCountStampManager` 并注册为 bean
 如下所示：
 
 ```java
@@ -141,7 +141,7 @@ public class TestController {
 ### 缓存签章
 
 应用场景是某段时间后会自动失效的数据，例如验证码，也可以用做分布式锁
-自定义签章需要实现 `stamp.cn.herodotus.dante.cache.jetcache.AbstractStampManager`，如下所示：
+自定义签章需要实现 `stamp.org.dromara.dante.cache.jetcache.AbstractStampManager`，如下所示：
 
 ```java
 public class CaptchaStamp extends AbstractStampManager<String, String> {

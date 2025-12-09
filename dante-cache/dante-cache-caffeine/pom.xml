@@ -31,7 +31,7 @@
 
     <parent>
         <artifactId>dante-cache</artifactId>
-        <groupId>cn.herodotus.dante</groupId>
+        <groupId>org.dromara.dante</groupId>
         <version>4.0.0.0-M3</version>
     </parent>
 
@@ -42,7 +42,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>cn.herodotus.dante</groupId>
+            <groupId>org.dromara.dante</groupId>
             <artifactId>dante-cache-commons</artifactId>
         </dependency>
 

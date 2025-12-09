@@ -30,7 +30,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>cn.herodotus.dante</groupId>
+        <groupId>org.dromara.dante</groupId>
         <artifactId>dante-starter</artifactId>
         <version>4.0.0.0-M3</version>
     </parent>
@@ -43,7 +43,7 @@
     <dependencies>
 
         <dependency>
-            <groupId>cn.herodotus.dante</groupId>
+            <groupId>org.dromara.dante</groupId>
             <artifactId>dante-spring</artifactId>
         </dependency>
 

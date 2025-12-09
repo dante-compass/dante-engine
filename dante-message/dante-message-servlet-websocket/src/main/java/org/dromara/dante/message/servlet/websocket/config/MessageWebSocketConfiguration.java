@@ -25,15 +25,14 @@
 
 package org.dromara.dante.message.servlet.websocket.config;
 
+import jakarta.annotation.PostConstruct;
 import org.dromara.dante.message.core.domain.WebSocketMessage;
 import org.dromara.dante.message.servlet.websocket.annotation.ConditionalOnMultipleWebSocketInstance;
 import org.dromara.dante.message.servlet.websocket.annotation.ConditionalOnSingleWebSocketInstance;
 import org.dromara.dante.message.servlet.websocket.definition.WebSocketMessageSender;
 import org.dromara.dante.message.servlet.websocket.interceptor.WebSocketAuthenticationHandshakeInterceptor;
-import cn.herodotus.dante.message.servlet.websocket.messaging.*;
 import org.dromara.dante.message.servlet.websocket.messaging.*;
 import org.dromara.dante.security.oauth2.BearerTokenResolver;
-import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -114,8 +113,8 @@ public class MessageWebSocketConfiguration {
             WebSocketMessageBrokerConfiguration.class,
     })
     @ComponentScan(basePackages = {
-            "cn.herodotus.dante.message.servlet.websocket.controller",
-            "cn.herodotus.dante.message.servlet.websocket.listener",
+            "org.dromara.dante.message.servlet.websocket.controller",
+            "org.dromara.dante.message.servlet.websocket.listener",
     })
     static class WebSocketConfiguration {
 

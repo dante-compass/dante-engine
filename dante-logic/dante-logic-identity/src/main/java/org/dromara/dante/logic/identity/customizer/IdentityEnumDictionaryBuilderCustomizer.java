@@ -27,7 +27,6 @@ package org.dromara.dante.logic.identity.customizer;
 
 import org.dromara.dante.core.builder.EnumDictionaryBuilder;
 import org.dromara.dante.core.function.EnumDictionaryBuilderCustomizer;
-import cn.herodotus.dante.logic.identity.enums.*;
 import org.dromara.dante.logic.identity.enums.*;
 import org.dromara.dante.security.enums.PermissionExpression;
 

@@ -85,7 +85,7 @@ public class OAuth2AuthorizationMessageAutoConfiguration {
     @ConditionalOnClass(StreamBusBridge.class)
     @ConditionalOnArchitecture(Architecture.DISTRIBUTED)
     @RemoteApplicationEventScan({
-            "cn.herodotus.dante.oauth2.authorization.autoconfigure.bus"
+            "org.dromara.dante.oauth2.authorization.autoconfigure.bus"
     })
     static class BusMessageConfiguration {
 

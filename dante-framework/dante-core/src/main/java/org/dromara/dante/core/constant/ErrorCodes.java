@@ -25,7 +25,6 @@
 
 package org.dromara.dante.core.constant;
 
-import cn.herodotus.dante.core.feedback.*;
 import org.dromara.dante.core.feedback.*;
 
 /**

@@ -60,7 +60,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 })
 @ComponentScan(basePackageClasses = SecurityGlobalExceptionHandler.class)
 @RemoteApplicationEventScan({
-        "cn.herodotus.dante.oauth2.authorization.autoconfigure.bus"
+        "org.dromara.dante.oauth2.authorization.autoconfigure.bus"
 })
 public class OAuth2AuthorizationAutoConfiguration {
 

@@ -25,13 +25,9 @@
 
 package org.dromara.dante.assistant.oss.service.servlet;
 
-import cn.herodotus.dante.assistant.oss.converter.argument.*;
-import cn.herodotus.dante.assistant.oss.converter.result.*;
 import org.dromara.dante.assistant.oss.converter.argument.*;
 import org.dromara.dante.assistant.oss.converter.result.*;
 import org.dromara.dante.assistant.oss.definition.service.AbstractServletService;
-import cn.herodotus.dante.assistant.oss.entity.argument.*;
-import cn.herodotus.dante.assistant.oss.entity.result.*;
 import org.dromara.dante.assistant.oss.entity.argument.*;
 import org.dromara.dante.assistant.oss.entity.result.*;
 import org.dromara.dante.assistant.oss.service.base.S3AsyncClientObjectService;

@@ -49,13 +49,13 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
  */
 @Configuration(proxyBeanMethods = false)
 @EntityScan(basePackages = {
-        "cn.herodotus.dante.oauth2.extension.entity"
+        "org.dromara.dante.oauth2.extension.entity"
 })
 @EnableJpaRepositories(basePackages = {
-        "cn.herodotus.dante.oauth2.extension.repository",
+        "org.dromara.dante.oauth2.extension.repository",
 })
 @ComponentScan(basePackages = {
-        "cn.herodotus.dante.oauth2.extension.service"
+        "org.dromara.dante.oauth2.extension.service"
 })
 @Import({OAuth2ComplianceConfiguration.class})
 public class OAuth2ExtensionConfiguration {

@@ -49,8 +49,8 @@ import org.springframework.context.annotation.Configuration;
 @Configuration(proxyBeanMethods = false)
 @EnableHerodotusLogicUpms
 @ComponentScan(basePackages = {
-        "cn.herodotus.dante.rest.servlet.upms.controller.hr",
-        "cn.herodotus.dante.rest.servlet.upms.controller.security",
+        "org.dromara.dante.rest.servlet.upms.controller.hr",
+        "org.dromara.dante.rest.servlet.upms.controller.security",
 })
 public class RestServletUpmsConfiguration {
 

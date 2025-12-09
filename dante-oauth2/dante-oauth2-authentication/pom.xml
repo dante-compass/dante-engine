@@ -32,7 +32,7 @@
 
     <parent>
         <artifactId>dante-oauth2</artifactId>
-        <groupId>cn.herodotus.dante</groupId>
+        <groupId>org.dromara.dante</groupId>
         <version>4.0.0.0-M3</version>
     </parent>
 
@@ -44,7 +44,7 @@
     <dependencies>
 
         <dependency>
-            <groupId>cn.herodotus.dante</groupId>
+            <groupId>org.dromara.dante</groupId>
             <artifactId>dante-oauth2-persistence-jpa</artifactId>
         </dependency>
     </dependencies>

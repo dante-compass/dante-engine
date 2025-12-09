@@ -92,8 +92,8 @@ public final class HerodotusSecurityJacksonModules {
 
     private static final String casJacksonModuleClass = "org.springframework.security.cas.jackson.CasJacksonModule";
 
-    private static final String herodotusSecurityJacksonModuleClass = "cn.herodotus.dante.security.jackson.HerodotusJacksonModule";
-    private static final String herodotusOAuth2JacksonModuleClass = "cn.herodotus.dante.oauth2.persistence.sas.jpa.jackson.OAuth2TokenJacksonModule";
+    private static final String herodotusSecurityJacksonModuleClass = "org.dromara.dante.security.jackson.HerodotusJacksonModule";
+    private static final String herodotusOAuth2JacksonModuleClass = "org.dromara.dante.oauth2.persistence.sas.jpa.jackson.OAuth2TokenJacksonModule";
 
     private static final boolean webServletPresent;
 

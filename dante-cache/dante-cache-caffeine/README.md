@@ -19,7 +19,7 @@ dante 对其进行了简单封装
 
 ```xml
 <dependency>
-  <groupId>cn.herodotus.dante</groupId>
+  <groupId>org.dromara.dante</groupId>
   <artifactId>cache-module-caffeine</artifactId>
 </dependency>
 ```

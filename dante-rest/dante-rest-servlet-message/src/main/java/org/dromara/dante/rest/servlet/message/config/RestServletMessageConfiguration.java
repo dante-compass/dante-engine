@@ -41,7 +41,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration(proxyBeanMethods = false)
 @EnableHerodotusLogicMessage
 @ComponentScan(basePackages = {
-        "cn.herodotus.dante.rest.servlet.message.controller",
+        "org.dromara.dante.rest.servlet.message.controller",
 })
 public class RestServletMessageConfiguration {
 

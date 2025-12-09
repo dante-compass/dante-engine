@@ -36,7 +36,7 @@ import java.time.Clock;
  * Spring Boot 生命周期事件中，在启动过程最后一个事件就是 {@link ApplicationReadyEvent}。在大多数场景下，需要在服务启动之后做一些操作，使用这个事件就足够了。
  * 结合 Herodotus Cloud 自身需求。有些场景的操作需要在 RequestMapping Scan 完成，并且已经正确存储了数据之后，再进行。所以 {@link ApplicationReadyEvent} 就无法满足需求。
  * <p>
- * 定义 {@link ApplicationReadinessEvent} 事件。这个事件是在 RequestMapping 扫描完成，并且 <code>cn.herodotus.dante.oauth2.authorization.autoconfigure.processor.AttributeTransmitterDistributeProcessor</code> 已经正确存储了数据后才会发出。
+ * 定义 {@link ApplicationReadinessEvent} 事件。这个事件是在 RequestMapping 扫描完成，并且 <code>org.dromara.dante.oauth2.authorization.autoconfigure.processor.AttributeTransmitterDistributeProcessor</code> 已经正确存储了数据后才会发出。
  * <p>
  * 如果是在微服务环境下，不同服务发送 RequestMapping 数据时机不同，会出现发送多个 {@link ApplicationReadinessEvent} 情况。所以目前仅在单体环境下开启。
  *

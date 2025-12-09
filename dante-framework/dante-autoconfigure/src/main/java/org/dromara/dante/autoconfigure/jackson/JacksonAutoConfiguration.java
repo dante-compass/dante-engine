@@ -71,7 +71,7 @@ public class JacksonAutoConfiguration {
      */
     @Configuration(proxyBeanMethods = false)
     @ComponentScan({
-            "cn.herodotus.dante.autoconfigure.jackson.initializer"
+            "org.dromara.dante.autoconfigure.jackson.initializer"
     })
     static class JacksonUtilsConfiguration {
 

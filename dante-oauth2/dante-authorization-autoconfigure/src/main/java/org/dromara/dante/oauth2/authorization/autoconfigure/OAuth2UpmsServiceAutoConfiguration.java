@@ -25,16 +25,15 @@
 
 package org.dromara.dante.oauth2.authorization.autoconfigure;
 
-import cn.herodotus.dante.oauth2.authorization.autoconfigure.listener.*;
-import org.dromara.dante.oauth2.authorization.autoconfigure.listener.*;
-import org.dromara.dante.spring.condition.ConditionalOnArchitecture;
-import org.dromara.dante.spring.enums.Architecture;
+import jakarta.annotation.PostConstruct;
 import org.dromara.dante.logic.upms.annotation.EnableHerodotusLogicUpms;
 import org.dromara.dante.logic.upms.service.security.SysUserService;
 import org.dromara.dante.oauth2.authorization.autoconfigure.condition.ConditionalOnUpmsService;
+import org.dromara.dante.oauth2.authorization.autoconfigure.listener.*;
 import org.dromara.dante.oauth2.authorization.autoconfigure.processor.AttributeTransmitterDistributeProcessor;
 import org.dromara.dante.oauth2.authorization.autoconfigure.processor.EnumDictionaryGatherProcessor;
-import jakarta.annotation.PostConstruct;
+import org.dromara.dante.spring.condition.ConditionalOnArchitecture;
+import org.dromara.dante.spring.enums.Architecture;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
@@ -53,7 +52,7 @@ import org.springframework.context.annotation.Configuration;
 @ConditionalOnUpmsService
 @EnableHerodotusLogicUpms
 @ComponentScan(basePackages = {
-        "cn.herodotus.dante.oauth2.authorization.autoconfigure.processor",
+        "org.dromara.dante.oauth2.authorization.autoconfigure.processor",
 })
 public class OAuth2UpmsServiceAutoConfiguration {
 

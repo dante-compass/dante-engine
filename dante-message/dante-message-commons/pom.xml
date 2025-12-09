@@ -31,7 +31,7 @@
 
     <parent>
         <artifactId>dante-message</artifactId>
-        <groupId>cn.herodotus.dante</groupId>
+        <groupId>org.dromara.dante</groupId>
         <version>4.0.0.0-M3</version>
     </parent>
 
@@ -42,12 +42,12 @@
 
     <dependencies>
         <dependency>
-            <groupId>cn.herodotus.dante</groupId>
+            <groupId>org.dromara.dante</groupId>
             <artifactId>dante-web</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>cn.herodotus.dante</groupId>
+            <groupId>org.dromara.dante</groupId>
             <artifactId>dante-security</artifactId>
         </dependency>
 

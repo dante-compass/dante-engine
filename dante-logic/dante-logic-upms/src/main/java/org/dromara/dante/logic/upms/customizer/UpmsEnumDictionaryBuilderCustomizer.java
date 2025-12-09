@@ -29,7 +29,6 @@ import org.dromara.dante.core.builder.EnumDictionaryBuilder;
 import org.dromara.dante.core.function.EnumDictionaryBuilderCustomizer;
 import org.dromara.dante.data.commons.enums.ApplicationType;
 import org.dromara.dante.data.commons.enums.DataItemStatus;
-import cn.herodotus.dante.logic.upms.enums.*;
 import org.dromara.dante.logic.upms.enums.*;
 
 /**

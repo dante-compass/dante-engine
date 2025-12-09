@@ -25,18 +25,17 @@
 
 package org.dromara.dante.assistant.captcha.config;
 
+import jakarta.annotation.PostConstruct;
 import org.dromara.dante.assistant.captcha.properties.CaptchaProperties;
 import org.dromara.dante.assistant.captcha.provider.ResourceProvider;
 import org.dromara.dante.assistant.captcha.renderer.behavior.JigsawCaptchaRenderer;
 import org.dromara.dante.assistant.captcha.renderer.behavior.WordClickCaptchaRenderer;
-import cn.herodotus.dante.assistant.captcha.renderer.graphic.*;
 import org.dromara.dante.assistant.captcha.renderer.graphic.*;
 import org.dromara.dante.assistant.captcha.renderer.hutool.CircleCaptchaRenderer;
 import org.dromara.dante.assistant.captcha.renderer.hutool.GifCaptchaRenderer;
 import org.dromara.dante.assistant.captcha.renderer.hutool.LineCaptchaRenderer;
 import org.dromara.dante.assistant.captcha.renderer.hutool.ShearCaptchaRenderer;
 import org.dromara.dante.spring.enums.CaptchaCategory;
-import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
