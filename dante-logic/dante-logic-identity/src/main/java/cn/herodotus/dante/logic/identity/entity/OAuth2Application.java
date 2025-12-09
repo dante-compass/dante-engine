@@ -25,7 +25,7 @@
 
 package cn.herodotus.dante.logic.identity.entity;
 
-import cn.herodotus.dante.data.commons.enums.ApplicationType;
+import org.dromara.dante.data.commons.enums.ApplicationType;
 import cn.herodotus.dante.logic.identity.definition.AbstractOAuth2RegisteredClient;
 import cn.herodotus.dante.oauth2.commons.constants.OAuth2Constants;
 import com.google.common.base.MoreObjects;

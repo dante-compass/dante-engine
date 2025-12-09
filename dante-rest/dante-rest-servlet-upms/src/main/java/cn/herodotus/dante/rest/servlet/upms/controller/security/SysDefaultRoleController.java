@@ -26,10 +26,10 @@
 package cn.herodotus.dante.rest.servlet.upms.controller.security;
 
 import cn.herodotus.dante.core.domain.Result;
-import cn.herodotus.dante.data.jpa.service.BaseJpaWriteableService;
+import org.dromara.dante.data.jpa.service.BaseJpaWriteableService;
 import cn.herodotus.dante.logic.upms.entity.security.SysDefaultRole;
 import cn.herodotus.dante.logic.upms.service.security.SysDefaultRoleService;
-import cn.herodotus.dante.data.rest.servlet.AbstractJpaWriteableController;
+import org.dromara.dante.data.rest.servlet.AbstractJpaWriteableController;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;

@@ -25,9 +25,9 @@
 
 package cn.herodotus.dante.logic.upms.service.security;
 
-import cn.herodotus.dante.data.commons.enums.ApplicationType;
-import cn.herodotus.dante.data.jpa.repository.BaseJpaRepository;
-import cn.herodotus.dante.data.jpa.service.AbstractJpaService;
+import org.dromara.dante.data.commons.enums.ApplicationType;
+import org.dromara.dante.data.jpa.repository.BaseJpaRepository;
+import org.dromara.dante.data.jpa.service.AbstractJpaService;
 import cn.herodotus.dante.logic.upms.entity.security.SysElement;
 import cn.herodotus.dante.logic.upms.entity.security.SysRole;
 import cn.herodotus.dante.logic.upms.repository.security.SysElementRepository;

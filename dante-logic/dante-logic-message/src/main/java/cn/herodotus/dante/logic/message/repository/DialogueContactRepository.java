@@ -26,7 +26,7 @@
 package cn.herodotus.dante.logic.message.repository;
 
 import cn.herodotus.dante.spring.exception.transaction.TransactionalRollbackException;
-import cn.herodotus.dante.data.jpa.repository.BaseJpaRepository;
+import org.dromara.dante.data.jpa.repository.BaseJpaRepository;
 import cn.herodotus.dante.logic.message.entity.DialogueContact;
 import jakarta.persistence.QueryHint;
 import org.hibernate.jpa.AvailableHints;

@@ -26,14 +26,14 @@
 package cn.herodotus.dante.rest.servlet.upms.controller.security;
 
 import cn.herodotus.dante.core.domain.Result;
-import cn.herodotus.dante.data.commons.enums.ApplicationType;
-import cn.herodotus.dante.data.jpa.service.BaseJpaWriteableService;
+import org.dromara.dante.data.commons.enums.ApplicationType;
+import org.dromara.dante.data.jpa.service.BaseJpaWriteableService;
 import cn.herodotus.dante.logic.upms.entity.security.SysElement;
 import cn.herodotus.dante.logic.upms.service.security.SysElementService;
 import cn.herodotus.dante.rest.servlet.upms.converter.SysElementToTreeNodeConverter;
 import cn.herodotus.dante.rest.servlet.upms.converter.SysElementsToElementsConverter;
 import cn.herodotus.dante.rest.servlet.upms.dto.Elements;
-import cn.herodotus.dante.data.rest.servlet.AbstractJpaWriteableController;
+import org.dromara.dante.data.rest.servlet.AbstractJpaWriteableController;
 import cn.herodotus.dante.web.annotation.AccessLimited;
 import cn.hutool.v7.core.tree.MapTree;
 import io.swagger.v3.oas.annotations.Operation;

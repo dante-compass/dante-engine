@@ -25,8 +25,8 @@
 
 package cn.herodotus.dante.logic.upms.entity.security;
 
-import cn.herodotus.dante.data.commons.enums.ApplicationType;
-import cn.herodotus.dante.data.jpa.entity.AbstractSysEntity;
+import org.dromara.dante.data.commons.enums.ApplicationType;
+import org.dromara.dante.data.jpa.entity.AbstractSysEntity;
 import cn.herodotus.dante.logic.upms.constant.LogicUpmsConstants;
 import cn.herodotus.dante.logic.upms.enums.ElementCategory;
 import cn.herodotus.dante.logic.upms.enums.MenuScenario;

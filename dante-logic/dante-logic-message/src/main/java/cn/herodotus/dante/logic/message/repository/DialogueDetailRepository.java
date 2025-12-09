@@ -25,7 +25,7 @@
 
 package cn.herodotus.dante.logic.message.repository;
 
-import cn.herodotus.dante.data.jpa.repository.BaseJpaRepository;
+import org.dromara.dante.data.jpa.repository.BaseJpaRepository;
 import cn.herodotus.dante.logic.message.entity.DialogueDetail;
 
 /**

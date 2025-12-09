@@ -26,14 +26,14 @@
 package cn.herodotus.dante.rest.servlet.upms.controller.hr;
 
 import cn.herodotus.dante.core.domain.Result;
-import cn.herodotus.dante.data.jpa.service.BaseJpaWriteableService;
+import org.dromara.dante.data.jpa.service.BaseJpaWriteableService;
 import cn.herodotus.dante.logic.upms.entity.hr.SysEmployee;
 import cn.herodotus.dante.logic.upms.enums.Gender;
 import cn.herodotus.dante.logic.upms.enums.Identity;
 import cn.herodotus.dante.logic.upms.service.hr.SysEmployeeService;
 import cn.herodotus.dante.rest.servlet.upms.dto.AllocatableDeploy;
 import cn.herodotus.dante.rest.servlet.upms.dto.AllocatableRemove;
-import cn.herodotus.dante.data.rest.servlet.AbstractJpaWriteableController;
+import org.dromara.dante.data.rest.servlet.AbstractJpaWriteableController;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;

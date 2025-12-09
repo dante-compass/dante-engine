@@ -25,8 +25,8 @@
 
 package cn.herodotus.dante.logic.upms.service.security;
 
-import cn.herodotus.dante.data.jpa.repository.BaseJpaRepository;
-import cn.herodotus.dante.data.jpa.service.AbstractJpaService;
+import org.dromara.dante.data.jpa.repository.BaseJpaRepository;
+import org.dromara.dante.data.jpa.service.AbstractJpaService;
 import cn.herodotus.dante.logic.upms.entity.security.SysPermission;
 import cn.herodotus.dante.logic.upms.repository.security.SysPermissionRepository;
 import org.springframework.stereotype.Service;

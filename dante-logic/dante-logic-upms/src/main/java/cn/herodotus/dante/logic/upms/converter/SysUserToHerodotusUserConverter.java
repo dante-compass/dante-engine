@@ -25,7 +25,7 @@
 
 package cn.herodotus.dante.logic.upms.converter;
 
-import cn.herodotus.dante.data.commons.enums.DataItemStatus;
+import org.dromara.dante.data.commons.enums.DataItemStatus;
 import cn.herodotus.dante.logic.upms.entity.security.SysPermission;
 import cn.herodotus.dante.logic.upms.entity.security.SysRole;
 import cn.herodotus.dante.logic.upms.entity.security.SysUser;

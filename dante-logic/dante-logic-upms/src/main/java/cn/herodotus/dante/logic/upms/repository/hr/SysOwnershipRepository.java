@@ -25,7 +25,7 @@
 
 package cn.herodotus.dante.logic.upms.repository.hr;
 
-import cn.herodotus.dante.data.jpa.repository.BaseJpaRepository;
+import org.dromara.dante.data.jpa.repository.BaseJpaRepository;
 import cn.herodotus.dante.logic.upms.entity.hr.SysOwnership;
 import cn.herodotus.dante.spring.exception.transaction.TransactionalRollbackException;
 import org.springframework.data.jpa.repository.Modifying;

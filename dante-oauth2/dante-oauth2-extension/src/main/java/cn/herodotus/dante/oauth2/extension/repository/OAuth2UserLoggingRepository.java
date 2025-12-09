@@ -25,7 +25,7 @@
 
 package cn.herodotus.dante.oauth2.extension.repository;
 
-import cn.herodotus.dante.data.jpa.repository.BaseJpaRepository;
+import org.dromara.dante.data.jpa.repository.BaseJpaRepository;
 import cn.herodotus.dante.oauth2.extension.entity.OAuth2UserLogging;
 
 /**

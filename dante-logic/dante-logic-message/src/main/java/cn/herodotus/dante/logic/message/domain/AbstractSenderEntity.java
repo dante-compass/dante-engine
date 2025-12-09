@@ -25,7 +25,7 @@
 
 package cn.herodotus.dante.logic.message.domain;
 
-import cn.herodotus.dante.data.jpa.entity.AbstractAuditEntity;
+import org.dromara.dante.data.jpa.entity.AbstractAuditEntity;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Column;
 import jakarta.persistence.MappedSuperclass;

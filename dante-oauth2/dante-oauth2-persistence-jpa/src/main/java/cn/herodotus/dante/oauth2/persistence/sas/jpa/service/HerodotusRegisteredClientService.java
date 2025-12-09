@@ -25,8 +25,8 @@
 
 package cn.herodotus.dante.oauth2.persistence.sas.jpa.service;
 
-import cn.herodotus.dante.data.jpa.repository.BaseJpaRepository;
-import cn.herodotus.dante.data.jpa.service.AbstractJpaService;
+import org.dromara.dante.data.jpa.repository.BaseJpaRepository;
+import org.dromara.dante.data.jpa.service.AbstractJpaService;
 import cn.herodotus.dante.oauth2.persistence.sas.jpa.entity.HerodotusRegisteredClient;
 import cn.herodotus.dante.oauth2.persistence.sas.jpa.repository.HerodotusRegisteredClientRepository;
 import org.slf4j.Logger;

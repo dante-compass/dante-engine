@@ -25,8 +25,8 @@
 
 package cn.herodotus.dante.oauth2.extension.service;
 
-import cn.herodotus.dante.data.jpa.repository.BaseJpaRepository;
-import cn.herodotus.dante.data.jpa.service.AbstractJpaService;
+import org.dromara.dante.data.jpa.repository.BaseJpaRepository;
+import org.dromara.dante.data.jpa.service.AbstractJpaService;
 import cn.herodotus.dante.oauth2.extension.entity.OAuth2UserLogging;
 import cn.herodotus.dante.oauth2.extension.repository.OAuth2UserLoggingRepository;
 import cn.hutool.v7.http.server.servlet.ServletUtil;

@@ -25,7 +25,7 @@
 
 package cn.herodotus.dante.logic.message.entity;
 
-import cn.herodotus.dante.data.jpa.entity.AbstractAuditEntity;
+import org.dromara.dante.data.jpa.entity.AbstractAuditEntity;
 import cn.herodotus.dante.logic.message.constant.LogicMessageConstants;
 import com.google.common.base.MoreObjects;
 import io.swagger.v3.oas.annotations.media.Schema;

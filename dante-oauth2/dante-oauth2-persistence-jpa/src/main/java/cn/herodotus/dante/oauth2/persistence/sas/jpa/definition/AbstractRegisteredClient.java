@@ -29,7 +29,7 @@ import cn.herodotus.dante.core.constant.SystemConstants;
 import cn.herodotus.dante.spring.jackson.ArrayToCommaDelimitedStringDeserializer;
 import cn.herodotus.dante.spring.jackson.CommaDelimitedStringToSetSerializer;
 import cn.herodotus.dante.security.domain.RegisteredClientDetails;
-import cn.herodotus.dante.data.jpa.entity.AbstractSysEntity;
+import org.dromara.dante.data.jpa.entity.AbstractSysEntity;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Column;

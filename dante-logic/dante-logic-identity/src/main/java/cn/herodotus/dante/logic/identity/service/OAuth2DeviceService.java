@@ -26,8 +26,8 @@
 package cn.herodotus.dante.logic.identity.service;
 
 import cn.herodotus.dante.spring.exception.transaction.TransactionalRollbackException;
-import cn.herodotus.dante.data.jpa.repository.BaseJpaRepository;
-import cn.herodotus.dante.data.jpa.service.AbstractJpaService;
+import org.dromara.dante.data.jpa.repository.BaseJpaRepository;
+import org.dromara.dante.data.jpa.service.AbstractJpaService;
 import cn.herodotus.dante.logic.identity.converter.OAuth2DeviceToRegisteredClientConverter;
 import cn.herodotus.dante.logic.identity.converter.RegisteredClientToOAuth2DeviceConverter;
 import cn.herodotus.dante.logic.identity.entity.OAuth2Device;

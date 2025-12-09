@@ -27,8 +27,8 @@ package cn.herodotus.dante.data.tenant.autoconfigure.service;
 
 import cn.herodotus.dante.data.tenant.autoconfigure.entity.SysTenantDataSource;
 import cn.herodotus.dante.data.tenant.autoconfigure.repository.SysTenantDataSourceRepository;
-import cn.herodotus.dante.data.jpa.repository.BaseJpaRepository;
-import cn.herodotus.dante.data.jpa.service.AbstractJpaService;
+import org.dromara.dante.data.jpa.repository.BaseJpaRepository;
+import org.dromara.dante.data.jpa.service.AbstractJpaService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;

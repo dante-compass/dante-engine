@@ -25,7 +25,7 @@
 
 package cn.herodotus.dante.logic.upms.entity.hr;
 
-import cn.herodotus.dante.data.jpa.entity.AbstractSysEntity;
+import org.dromara.dante.data.jpa.entity.AbstractSysEntity;
 import cn.herodotus.dante.logic.upms.constant.LogicUpmsConstants;
 import cn.herodotus.dante.logic.upms.enums.OrganizationCategory;
 import com.google.common.base.MoreObjects;

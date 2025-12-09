@@ -25,7 +25,7 @@
 
 package cn.herodotus.dante.oauth2.extension.entity;
 
-import cn.herodotus.dante.data.jpa.entity.AbstractAuditEntity;
+import org.dromara.dante.data.jpa.entity.AbstractAuditEntity;
 import cn.herodotus.dante.oauth2.commons.constants.OAuth2Constants;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;

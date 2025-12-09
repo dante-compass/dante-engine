@@ -26,7 +26,7 @@
 package cn.herodotus.dante.data.tenant.autoconfigure.entity;
 
 import cn.herodotus.dante.data.tenant.autoconfigure.constant.TenantConstants;
-import cn.herodotus.dante.data.jpa.entity.AbstractSysEntity;
+import org.dromara.dante.data.jpa.entity.AbstractSysEntity;
 import com.google.common.base.MoreObjects;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;

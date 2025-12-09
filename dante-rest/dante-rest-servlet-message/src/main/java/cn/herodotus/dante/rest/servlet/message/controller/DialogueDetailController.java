@@ -26,10 +26,10 @@
 package cn.herodotus.dante.rest.servlet.message.controller;
 
 import cn.herodotus.dante.core.domain.Result;
-import cn.herodotus.dante.data.jpa.service.BaseJpaWriteableService;
+import org.dromara.dante.data.jpa.service.BaseJpaWriteableService;
 import cn.herodotus.dante.logic.message.entity.DialogueDetail;
 import cn.herodotus.dante.logic.message.service.DialogueDetailService;
-import cn.herodotus.dante.data.rest.servlet.AbstractJpaWriteableController;
+import org.dromara.dante.data.rest.servlet.AbstractJpaWriteableController;
 import cn.herodotus.dante.web.annotation.Idempotent;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;

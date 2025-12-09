@@ -25,7 +25,7 @@
 
 package cn.herodotus.dante.logic.identity.repository;
 
-import cn.herodotus.dante.data.jpa.repository.BaseJpaRepository;
+import org.dromara.dante.data.jpa.repository.BaseJpaRepository;
 import cn.herodotus.dante.logic.identity.entity.OAuth2Device;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.Modifying;
