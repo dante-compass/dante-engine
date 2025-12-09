@@ -26,9 +26,9 @@
 package cn.herodotus.dante.rest.servlet.upms.dto;
 
 import org.dromara.dante.core.domain.AbstractDto;
-import cn.herodotus.dante.logic.upms.entity.hr.SysDepartment;
-import cn.herodotus.dante.logic.upms.entity.hr.SysEmployee;
-import cn.herodotus.dante.logic.upms.entity.hr.SysOwnership;
+import org.dromara.dante.logic.upms.entity.hr.SysDepartment;
+import org.dromara.dante.logic.upms.entity.hr.SysEmployee;
+import org.dromara.dante.logic.upms.entity.hr.SysOwnership;
 import com.google.common.base.MoreObjects;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotNull;

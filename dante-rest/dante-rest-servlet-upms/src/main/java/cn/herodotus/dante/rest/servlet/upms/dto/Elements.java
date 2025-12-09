@@ -26,7 +26,7 @@
 package cn.herodotus.dante.rest.servlet.upms.dto;
 
 import org.dromara.dante.core.domain.BaseDto;
-import cn.herodotus.dante.logic.upms.entity.security.SysElement;
+import org.dromara.dante.logic.upms.entity.security.SysElement;
 import cn.hutool.v7.core.tree.MapTree;
 import com.google.common.base.MoreObjects;
 

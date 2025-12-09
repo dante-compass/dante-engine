@@ -27,8 +27,8 @@ package cn.herodotus.dante.rest.servlet.message.controller;
 
 import org.dromara.dante.core.domain.Result;
 import org.dromara.dante.data.jpa.service.BaseJpaWriteableService;
-import cn.herodotus.dante.logic.message.entity.DialogueContact;
-import cn.herodotus.dante.logic.message.service.DialogueContactService;
+import org.dromara.dante.logic.message.entity.DialogueContact;
+import org.dromara.dante.logic.message.service.DialogueContactService;
 import org.dromara.dante.data.rest.servlet.AbstractJpaWriteableController;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;

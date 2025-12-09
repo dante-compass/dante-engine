@@ -28,7 +28,7 @@ package cn.herodotus.dante.rest.servlet.upms.config;
 import org.dromara.dante.assistant.access.condition.ConditionalOnJustAuthEnabled;
 import org.dromara.dante.assistant.access.condition.ConditionalOnSmsEnabled;
 import org.dromara.dante.assistant.access.condition.ConditionalOnWxappEnabled;
-import cn.herodotus.dante.logic.upms.annotation.EnableHerodotusLogicUpms;
+import org.dromara.dante.logic.upms.annotation.EnableHerodotusLogicUpms;
 import cn.herodotus.dante.rest.servlet.upms.controller.social.JustAuthAccessController;
 import cn.herodotus.dante.rest.servlet.upms.controller.social.PhoneNumberAccessController;
 import cn.herodotus.dante.rest.servlet.upms.controller.social.WxappAccessController;

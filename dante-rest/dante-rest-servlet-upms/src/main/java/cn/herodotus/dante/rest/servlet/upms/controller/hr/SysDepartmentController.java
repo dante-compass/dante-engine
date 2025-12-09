@@ -27,9 +27,9 @@ package cn.herodotus.dante.rest.servlet.upms.controller.hr;
 
 import org.dromara.dante.core.domain.Result;
 import org.dromara.dante.data.jpa.service.BaseJpaWriteableService;
-import cn.herodotus.dante.logic.upms.converter.SysDepartmentToTreeNodeConverter;
-import cn.herodotus.dante.logic.upms.entity.hr.SysDepartment;
-import cn.herodotus.dante.logic.upms.service.hr.SysDepartmentService;
+import org.dromara.dante.logic.upms.converter.SysDepartmentToTreeNodeConverter;
+import org.dromara.dante.logic.upms.entity.hr.SysDepartment;
+import org.dromara.dante.logic.upms.service.hr.SysDepartmentService;
 import org.dromara.dante.data.rest.servlet.AbstractJpaWriteableController;
 import cn.hutool.v7.core.tree.MapTree;
 import io.swagger.v3.oas.annotations.Operation;

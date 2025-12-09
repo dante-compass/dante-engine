@@ -26,8 +26,8 @@
 package cn.herodotus.dante.rest.servlet.upms.controller.security;
 
 import org.dromara.dante.data.jpa.service.BaseJpaWriteableService;
-import cn.herodotus.dante.logic.upms.entity.security.SysInterface;
-import cn.herodotus.dante.logic.upms.service.security.SysInterfaceService;
+import org.dromara.dante.logic.upms.entity.security.SysInterface;
+import org.dromara.dante.logic.upms.service.security.SysInterfaceService;
 import org.dromara.dante.data.rest.servlet.AbstractJpaWriteableController;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.tags.Tags;

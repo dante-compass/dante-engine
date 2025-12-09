@@ -27,9 +27,9 @@ package cn.herodotus.dante.rest.servlet.message.controller;
 
 import org.dromara.dante.core.domain.Result;
 import org.dromara.dante.data.jpa.service.BaseJpaWriteableService;
-import cn.herodotus.dante.logic.message.entity.Notification;
-import cn.herodotus.dante.logic.message.enums.NotificationCategory;
-import cn.herodotus.dante.logic.message.service.NotificationService;
+import org.dromara.dante.logic.message.entity.Notification;
+import org.dromara.dante.logic.message.enums.NotificationCategory;
+import org.dromara.dante.logic.message.service.NotificationService;
 import org.dromara.dante.data.rest.servlet.AbstractJpaWriteableController;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
