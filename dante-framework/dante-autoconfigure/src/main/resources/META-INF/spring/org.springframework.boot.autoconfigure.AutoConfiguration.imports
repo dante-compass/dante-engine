@@ -23,14 +23,14 @@
 # 6. 若您的项目无法满足以上几点，可申请商业授权
 #
 
-cn.herodotus.dante.autoconfigure.ApplicationAutoConfiguration
-cn.herodotus.dante.autoconfigure.async.AsyncAutoConfiguration
-cn.herodotus.dante.autoconfigure.context.ServletServiceContextAutoConfiguration
-cn.herodotus.dante.autoconfigure.crypto.CryptoAutoConfiguration
-cn.herodotus.dante.autoconfigure.enums.EnumDictionaryAutoConfiguration
-cn.herodotus.dante.autoconfigure.error.ErrorCodeAutoConfiguration
-cn.herodotus.dante.autoconfigure.jackson.JacksonAutoConfiguration
-cn.herodotus.dante.autoconfigure.oauth2.ServletOAuth2AuthorizationAutoConfiguration
-cn.herodotus.dante.autoconfigure.openfeign.FeignAutoConfiguration
-cn.herodotus.dante.autoconfigure.restclient.RestClientAutoConfiguration
-cn.herodotus.dante.autoconfigure.session.ServletSessionAutoConfiguration
+org.dromara.dante.autoconfigure.ApplicationAutoConfiguration
+org.dromara.dante.autoconfigure.async.AsyncAutoConfiguration
+org.dromara.dante.autoconfigure.context.ServletServiceContextAutoConfiguration
+org.dromara.dante.autoconfigure.crypto.CryptoAutoConfiguration
+org.dromara.dante.autoconfigure.enums.EnumDictionaryAutoConfiguration
+org.dromara.dante.autoconfigure.error.ErrorCodeAutoConfiguration
+org.dromara.dante.autoconfigure.jackson.JacksonAutoConfiguration
+org.dromara.dante.autoconfigure.oauth2.ServletOAuth2AuthorizationAutoConfiguration
+org.dromara.dante.autoconfigure.openfeign.FeignAutoConfiguration
+org.dromara.dante.autoconfigure.restclient.RestClientAutoConfiguration
+org.dromara.dante.autoconfigure.session.ServletSessionAutoConfiguration

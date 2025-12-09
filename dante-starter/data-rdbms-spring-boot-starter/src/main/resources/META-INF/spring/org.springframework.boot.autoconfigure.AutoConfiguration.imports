@@ -23,6 +23,6 @@
 # 6. 若您的项目无法满足以上几点，可申请商业授权
 #
 
-cn.herodotus.dante.data.rdbms.autoconfigure.DataJpaAutoConfiguration
-cn.herodotus.dante.data.rdbms.autoconfigure.DataQueryDslAutoConfiguration
-cn.herodotus.dante.data.rdbms.autoconfigure.DataMybatisPlusAutoConfiguration
+org.dromara.dante.data.rdbms.autoconfigure.DataJpaAutoConfiguration
+org.dromara.dante.data.rdbms.autoconfigure.DataQueryDslAutoConfiguration
+org.dromara.dante.data.rdbms.autoconfigure.DataMybatisPlusAutoConfiguration

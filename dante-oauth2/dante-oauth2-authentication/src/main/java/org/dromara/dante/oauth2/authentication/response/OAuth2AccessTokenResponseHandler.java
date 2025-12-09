@@ -1,0 +1,142 @@
+/*
+ * Copyright 2020-2030 码匠君<herodotus@aliyun.com>
+ *
+ * Dante Engine licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * Dante Engine 是 Dante Cloud 系统核心组件库，采用 APACHE LICENSE 2.0 开源协议，您在使用过程中，需要注意以下几点：
+ *
+ * 1. 请不要删除和修改根目录下的LICENSE文件。
+ * 2. 请不要删除和修改 Dante Engine 源码头部的版权声明。
+ * 3. 请保留源码和相关描述文件的项目出处，作者声明等。
+ * 4. 分发源码时候，请注明软件出处 <https://gitee.com/dromara/dante-cloud>
+ * 5. 在修改包名，模块名称，项目代码等时，请注明软件出处 <https://gitee.com/dromara/dante-cloud>
+ * 6. 若您的项目无法满足以上几点，可申请商业授权
+ */
+
+package org.dromara.dante.oauth2.authentication.response;
+
+import org.dromara.dante.core.constant.SystemConstants;
+import org.dromara.dante.core.support.crypto.DigitalEnvelopeProcessor;
+import org.dromara.dante.core.jackson.JacksonUtils;
+import org.dromara.dante.web.servlet.utils.SessionUtils;
+import org.dromara.dante.security.domain.UserPrincipal;
+import org.dromara.dante.security.utils.SecurityUtils;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import org.apache.commons.collections4.MapUtils;
+import org.apache.commons.lang3.ObjectUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.http.server.ServletServerHttpResponse;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.oauth2.core.OAuth2AccessToken;
+import org.springframework.security.oauth2.core.OAuth2RefreshToken;
+import org.springframework.security.oauth2.core.endpoint.OAuth2AccessTokenResponse;
+import org.springframework.security.oauth2.core.http.converter.OAuth2AccessTokenResponseHttpMessageConverter;
+import org.springframework.security.oauth2.core.oidc.endpoint.OidcParameterNames;
+import org.springframework.security.oauth2.server.authorization.authentication.OAuth2AccessTokenAuthenticationToken;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+
+import java.io.IOException;
+import java.time.temporal.ChronoUnit;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * <p>Description: 自定义 Security 认证成功处理器 </p>
+ *
+ * @author : gengwei.zheng
+ * @date : 2022/2/25 16:53
+ */
+public class OAuth2AccessTokenResponseHandler implements AuthenticationSuccessHandler {
+
+    private static final Logger log = LoggerFactory.getLogger(OAuth2AccessTokenResponseHandler.class);
+
+    private final HttpMessageConverter<OAuth2AccessTokenResponse> accessTokenHttpResponseConverter =
+            new OAuth2AccessTokenResponseHttpMessageConverter();
+
+    private final DigitalEnvelopeProcessor digitalEnvelopeProcessor;
+
+    public OAuth2AccessTokenResponseHandler(DigitalEnvelopeProcessor digitalEnvelopeProcessor) {
+        this.digitalEnvelopeProcessor = digitalEnvelopeProcessor;
+    }
+
+    @Override
+    public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
+
+        log.debug("[Herodotus] |- OAuth2 authentication success for [{}]", request.getRequestURI());
+
+        OAuth2AccessTokenAuthenticationToken accessTokenAuthentication =
+                (OAuth2AccessTokenAuthenticationToken) authentication;
+
+        OAuth2AccessToken accessToken = accessTokenAuthentication.getAccessToken();
+        OAuth2RefreshToken refreshToken = accessTokenAuthentication.getRefreshToken();
+        Map<String, Object> additionalParameters = accessTokenAuthentication.getAdditionalParameters();
+
+        OAuth2AccessTokenResponse.Builder builder =
+                OAuth2AccessTokenResponse.withToken(accessToken.getTokenValue())
+                        .tokenType(accessToken.getTokenType())
+                        .scopes(accessToken.getScopes());
+        if (accessToken.getIssuedAt() != null && accessToken.getExpiresAt() != null) {
+            builder.expiresIn(ChronoUnit.SECONDS.between(accessToken.getIssuedAt(), accessToken.getExpiresAt()));
+        }
+
+        if (refreshToken != null) {
+            builder.refreshToken(refreshToken.getTokenValue());
+        }
+
+        String sessionId = SessionUtils.analyseSessionId(request);
+        UserPrincipal userPrincipal = SecurityUtils.getUserPrincipal(accessTokenAuthentication);
+
+        // 如果包含 ID_TOKEN，那么前端直接解析 ID_TOKEN，从中获取用户基本信息
+        if (isOidcUserInfoPattern(additionalParameters)) {
+            builder.additionalParameters(additionalParameters);
+        } else {
+            // 如果不包含 ID_TOKEN, 那么需要利用 SessionId 将用户信息加密传递给前端，前端解密后获取用户基本信息
+            if (isHerodotusUserInfoPattern(sessionId, userPrincipal)) {
+                String data = JacksonUtils.toJson(userPrincipal);
+                String encryptData = digitalEnvelopeProcessor.encrypt(sessionId, data);
+                Map<String, Object> parameters = new HashMap<>(additionalParameters);
+                parameters.put(SystemConstants.SCOPE_OPENID, encryptData);
+                builder.additionalParameters(parameters);
+            } else {
+                log.warn("[Herodotus] |- OAuth2 authentication can not get use info.");
+            }
+        }
+
+        // 如果 UserPrincipal 存在，则放入 Session 中方便后端直接读取
+        if (isHerodotusUserInfoPattern(sessionId, userPrincipal)) {
+            HttpSession session = request.getSession(false);
+            if (ObjectUtils.isNotEmpty(session)) {
+                log.debug("[Herodotus] |- Adding user principal to session [{}].", sessionId);
+                session.setAttribute(SystemConstants.KEY__USER_PRINCIPAL, userPrincipal);
+            }
+        }
+
+        OAuth2AccessTokenResponse accessTokenResponse = builder.build();
+        ServletServerHttpResponse httpResponse = new ServletServerHttpResponse(response);
+        this.accessTokenHttpResponseConverter.write(accessTokenResponse, null, httpResponse);
+    }
+
+    private boolean isHerodotusUserInfoPattern(String sessionId, UserPrincipal userPrincipal) {
+        return StringUtils.isNotBlank(sessionId) && ObjectUtils.isNotEmpty(userPrincipal);
+    }
+
+    private boolean isOidcUserInfoPattern(Map<String, Object> additionalParameters) {
+        return MapUtils.isNotEmpty(additionalParameters) && additionalParameters.containsKey(OidcParameterNames.ID_TOKEN);
+    }
+}

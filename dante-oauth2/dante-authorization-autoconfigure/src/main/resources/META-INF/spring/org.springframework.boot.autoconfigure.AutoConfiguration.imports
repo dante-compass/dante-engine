@@ -23,6 +23,6 @@
 # 6. 若您的项目无法满足以上几点，可申请商业授权
 #
 
-cn.herodotus.dante.oauth2.authorization.autoconfigure.OAuth2AuthorizationAutoConfiguration
-cn.herodotus.dante.oauth2.authorization.autoconfigure.OAuth2AuthorizationMessageAutoConfiguration
-cn.herodotus.dante.oauth2.authorization.autoconfigure.OAuth2UpmsServiceAutoConfiguration
+org.dromara.dante.oauth2.authorization.autoconfigure.OAuth2AuthorizationAutoConfiguration
+org.dromara.dante.oauth2.authorization.autoconfigure.OAuth2AuthorizationMessageAutoConfiguration
+org.dromara.dante.oauth2.authorization.autoconfigure.OAuth2UpmsServiceAutoConfiguration

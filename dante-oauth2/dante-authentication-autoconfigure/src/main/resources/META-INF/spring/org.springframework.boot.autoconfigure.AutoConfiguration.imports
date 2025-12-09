@@ -23,5 +23,5 @@
 # 6. 若您的项目无法满足以上几点，可申请商业授权
 #
 
-cn.herodotus.dante.oauth2.authentication.autoconfigure.OAuth2AuthenticationAutoConfiguration
-cn.herodotus.dante.oauth2.authentication.autoconfigure.OAuth2IdentityAutoConfiguration
+org.dromara.dante.oauth2.authentication.autoconfigure.OAuth2AuthenticationAutoConfiguration
+org.dromara.dante.oauth2.authentication.autoconfigure.OAuth2IdentityAutoConfiguration

@@ -23,4 +23,4 @@
 # 6. 若您的项目无法满足以上几点，可申请商业授权
 #
 
-cn.herodotus.dante.captcha.autoconfigure.CaptchaAutoConfiguration
+org.dromara.dante.captcha.autoconfigure.CaptchaAutoConfiguration
