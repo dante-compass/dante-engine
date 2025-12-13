@@ -27,11 +27,11 @@ package org.dromara.dante.autoconfigure.async;
 
 import jakarta.annotation.PostConstruct;
 import org.dromara.dante.core.constant.SystemConstants;
-import org.dromara.dante.spring.condition.ConditionalOnServletApplication;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnThreading;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.boot.thread.Threading;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.task.support.TaskExecutorAdapter;
@@ -60,7 +60,7 @@ public class AsyncAutoConfiguration {
 
     @Configuration(proxyBeanMethods = false)
     @ConditionalOnThreading(Threading.VIRTUAL)
-    @ConditionalOnServletApplication
+    @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
     static class AsyncVirtualThreadConfiguration implements AsyncConfigurer {
         @Override
         public Executor getAsyncExecutor() {

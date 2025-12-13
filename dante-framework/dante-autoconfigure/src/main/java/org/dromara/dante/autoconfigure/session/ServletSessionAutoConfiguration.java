@@ -27,11 +27,11 @@ package org.dromara.dante.autoconfigure.session;
 
 import jakarta.annotation.PostConstruct;
 import org.dromara.dante.autoconfigure.jackson.JacksonAutoConfiguration;
-import org.dromara.dante.spring.condition.ConditionalOnServletApplication;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.session.SessionRepository;
@@ -48,7 +48,7 @@ import org.springframework.session.security.web.authentication.SpringSessionReme
  * @date : 2024/4/6 16:03
  */
 @AutoConfiguration(after = JacksonAutoConfiguration.class)
-@ConditionalOnServletApplication
+@ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
 @ConditionalOnClass({SessionRepository.class})
 @EnableRedisIndexedHttpSession
 public class ServletSessionAutoConfiguration {

@@ -26,13 +26,13 @@
 package org.dromara.dante.reactive.container.autoconfigure;
 
 import jakarta.annotation.PostConstruct;
-import org.dromara.dante.spring.condition.ConditionalOnReactiveApplication;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.boot.autoconfigure.condition.SearchStrategy;
 import org.springframework.boot.autoconfigure.web.WebProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -56,7 +56,7 @@ import org.springframework.web.reactive.result.view.ViewResolver;
  * @date : 2024/5/1 22:22
  */
 @AutoConfiguration(before = ErrorWebFluxAutoConfiguration.class)
-@ConditionalOnReactiveApplication
+@ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.REACTIVE)
 @ConditionalOnClass(WebFluxConfigurer.class)
 @EnableConfigurationProperties({WebProperties.class})
 public class ReactiveWebExceptionAutoConfiguration {
@@ -69,6 +69,7 @@ public class ReactiveWebExceptionAutoConfiguration {
     }
 
     @Bean
+    @ConditionalOnMissingBean(search = SearchStrategy.CURRENT)
     @Order(-2)
     public ErrorWebExceptionHandler errorWebExceptionHandler(
             ErrorAttributes errorAttributes,

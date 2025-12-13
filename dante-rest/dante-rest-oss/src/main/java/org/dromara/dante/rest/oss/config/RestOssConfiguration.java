@@ -27,9 +27,9 @@ package org.dromara.dante.rest.oss.config;
 
 import jakarta.annotation.PostConstruct;
 import org.dromara.dante.assistant.oss.config.AssistantOssConfiguration;
-import org.dromara.dante.spring.condition.ConditionalOnServletApplication;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
@@ -54,7 +54,7 @@ public class RestOssConfiguration {
     }
 
     @Configuration(proxyBeanMethods = false)
-    @ConditionalOnServletApplication
+    @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
     @ComponentScan(basePackages = {
             "org.dromara.dante.rest.oss.service",
             "org.dromara.dante.rest.oss.controller"

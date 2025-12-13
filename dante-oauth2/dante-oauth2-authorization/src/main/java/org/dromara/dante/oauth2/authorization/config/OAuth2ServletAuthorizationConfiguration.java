@@ -37,12 +37,12 @@ import org.dromara.dante.oauth2.authorization.servlet.ServletOAuth2Authorization
 import org.dromara.dante.oauth2.authorization.servlet.ServletOAuth2ResourceMatcherConfigurer;
 import org.dromara.dante.oauth2.authorization.servlet.ServletSecurityAuthorizationManager;
 import org.dromara.dante.oauth2.commons.properties.OAuth2Properties;
-import org.dromara.dante.spring.condition.ConditionalOnServletApplication;
 import org.dromara.dante.web.servlet.template.ThymeleafTemplateHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -60,7 +60,7 @@ import org.springframework.web.servlet.resource.ResourceUrlProvider;
  * @date : 2022/1/23 15:42
  */
 @Configuration(proxyBeanMethods = false)
-@ConditionalOnServletApplication
+@ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
 @EnableConfigurationProperties({OAuth2AuthorizationProperties.class})
 @EnableMethodSecurity(proxyTargetClass = true, securedEnabled = true, jsr250Enabled = true)
 @Import({

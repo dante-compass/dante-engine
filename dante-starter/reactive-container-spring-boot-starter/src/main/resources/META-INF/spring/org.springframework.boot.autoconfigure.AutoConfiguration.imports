@@ -24,3 +24,4 @@
 #
 
 org.dromara.dante.reactive.container.autoconfigure.ReactiveContainerAutoConfiguration
+org.dromara.dante.reactive.container.autoconfigure.ReactiveWebExceptionAutoConfiguration

@@ -32,10 +32,10 @@ import org.dromara.dante.assistant.oss.pool.S3AsyncClientObjectPool;
 import org.dromara.dante.assistant.oss.pool.S3PresignerObjectPool;
 import org.dromara.dante.assistant.oss.properties.OssProperties;
 import org.dromara.dante.core.function.ErrorCodeMapperBuilderCustomizer;
-import org.dromara.dante.spring.condition.ConditionalOnServletApplication;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -107,7 +107,7 @@ public class AssistantOssConfiguration {
 
 
     @Configuration(proxyBeanMethods = false)
-    @ConditionalOnServletApplication
+    @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
     @ComponentScan(basePackages = {
             "org.dromara.dante.assistant.oss.service.servlet"
     })

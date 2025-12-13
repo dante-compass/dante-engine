@@ -26,9 +26,9 @@
 package org.dromara.dante.oauth2.authorization.autoconfigure.condition;
 
 import org.dromara.dante.rest.servlet.upms.config.RestServletUpmsConfiguration;
-import org.dromara.dante.spring.condition.ConditionalOnServletApplication;
 import org.springframework.boot.autoconfigure.condition.AllNestedConditions;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 
 /**
  * <p>Description: 判断是否为 Upms 服务条件 </p>
@@ -47,7 +47,7 @@ public final class IsUpmsServiceCondition extends AllNestedConditions {
 
     }
 
-    @ConditionalOnServletApplication
+    @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
     static final class OnServletApplication {
 
     }

@@ -33,13 +33,13 @@ import org.dromara.dante.oauth2.authorization.autoconfigure.strategy.DefaultEnum
 import org.dromara.dante.oauth2.authorization.autoconfigure.strategy.DefaultRestMappingScanEventManager;
 import org.dromara.dante.oauth2.authorization.processor.SecurityAttributeAnalyzer;
 import org.dromara.dante.spring.condition.ConditionalOnArchitecture;
-import org.dromara.dante.spring.condition.ConditionalOnServletApplication;
 import org.dromara.dante.spring.enums.Architecture;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.cloud.bus.ServiceMatcher;
 import org.springframework.cloud.bus.StreamBusBridge;
 import org.springframework.cloud.bus.jackson.RemoteApplicationEventScan;
@@ -65,8 +65,7 @@ public class OAuth2AuthorizationMessageAutoConfiguration {
     }
 
     @Bean
-    @ConditionalOnMissingBean
-    @ConditionalOnServletApplication
+    @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
     public RestMappingScanEventManager servletRequestMappingScanEventManager(SecurityAttributeAnalyzer analyzer) {
         DefaultRestMappingScanEventManager manager = new DefaultRestMappingScanEventManager(analyzer);
         log.trace("[Herodotus] |- Bean [Servlet Request Mapping Scan Manager] Configure.");
@@ -74,7 +73,6 @@ public class OAuth2AuthorizationMessageAutoConfiguration {
     }
 
     @Bean
-    @ConditionalOnMissingBean
     public EnumDictionaryGatherEventManager enumDictionaryGatherEventManager() {
         DefaultEnumDictionaryGatherEventManager manager = new DefaultEnumDictionaryGatherEventManager();
         log.trace("[Herodotus] |- Bean [Enum Dictionary Gather Manager] Configure.");
