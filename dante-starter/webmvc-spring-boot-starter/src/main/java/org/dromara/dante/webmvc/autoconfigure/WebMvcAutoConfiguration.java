@@ -26,7 +26,7 @@
 package org.dromara.dante.webmvc.autoconfigure;
 
 import jakarta.annotation.PostConstruct;
-import org.dromara.dante.core.constant.SecurityResources;
+import org.dromara.dante.core.constant.SystemConstants;
 import org.dromara.dante.web.autoconfigure.WebAutoConfiguration;
 import org.dromara.dante.webmvc.autoconfigure.config.SecureConfiguration;
 import org.dromara.dante.webmvc.autoconfigure.config.TemplateConfiguration;
@@ -88,8 +88,8 @@ public class WebMvcAutoConfiguration implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler(SecurityResources.MATCHER_STATIC).addResourceLocations("classpath:/static/");
-        registry.addResourceHandler(SecurityResources.MATCHER_WEBJARS)
+        registry.addResourceHandler(SystemConstants.MATCHER_STATIC).addResourceLocations("classpath:/static/");
+        registry.addResourceHandler(SystemConstants.MATCHER_WEBJARS)
                 .addResourceLocations("classpath:/META-INF/resources/webjars/")
                 .resourceChain(false)
                 .addResolver(new LiteWebJarsResourceResolver());

@@ -85,10 +85,10 @@ public class OAuth2ConsentController {
     @GetMapping(OAuth2Constants.ANNOTATION_AUTHORIZATION_CONSENT_URI)
     public String consent(
             Principal principal, Model model,
-                          @RequestParam(OAuth2ParameterNames.CLIENT_ID) String clientId,
-                          @RequestParam(OAuth2ParameterNames.SCOPE) String scope,
-                          @RequestParam(OAuth2ParameterNames.STATE) String state,
-                          @RequestParam(value = OAuth2ParameterNames.USER_CODE, required = false) String userCode) {
+            @RequestParam(OAuth2ParameterNames.CLIENT_ID) String clientId,
+            @RequestParam(OAuth2ParameterNames.SCOPE) String scope,
+            @RequestParam(OAuth2ParameterNames.STATE) String state,
+            @RequestParam(value = OAuth2ParameterNames.USER_CODE, required = false) String userCode) {
 
         // 待授权的scope
         Set<String> scopesToApprove = new HashSet<>();
