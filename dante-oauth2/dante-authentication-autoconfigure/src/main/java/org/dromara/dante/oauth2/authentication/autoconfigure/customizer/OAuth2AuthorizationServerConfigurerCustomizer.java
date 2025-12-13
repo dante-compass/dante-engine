@@ -31,6 +31,7 @@ import org.dromara.dante.oauth2.authentication.consumer.OAuth2TokenEndpointAuthe
 import org.dromara.dante.oauth2.authentication.customizer.HerodotusOidcUserInfoMapper;
 import org.dromara.dante.oauth2.authentication.provider.OAuth2ResourceOwnerPasswordAuthenticationConverter;
 import org.dromara.dante.oauth2.authentication.provider.OAuth2SocialCredentialsAuthenticationConverter;
+import org.dromara.dante.oauth2.commons.properties.OAuth2Properties;
 import org.dromara.dante.security.service.ClientDetailsService;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -73,7 +74,7 @@ public class OAuth2AuthorizationServerConfigurerCustomizer implements Customizer
                 .clientAuthentication(endpoint -> endpoint.errorResponseHandler(authenticationConfigurerManager.getOAuth2AuthenticationFailureHandler()))
                 .authorizationEndpoint(endpoint -> {
                     endpoint.errorResponseHandler(authenticationConfigurerManager.getOAuth2AuthenticationFailureHandler());
-                    endpoint.consentPage(SystemConstants.OAUTH2_AUTHORIZATION_CONSENT_URI);
+                    endpoint.consentPage(authenticationConfigurerManager.getOAuth2AuthenticationProperties().getAuthorizationConsentUri());
                 })
                 .deviceAuthorizationEndpoint(endpoint -> {
                     endpoint.errorResponseHandler(authenticationConfigurerManager.getOAuth2AuthenticationFailureHandler());
@@ -81,7 +82,7 @@ public class OAuth2AuthorizationServerConfigurerCustomizer implements Customizer
                 })
                 .deviceVerificationEndpoint(endpoint -> {
                     endpoint.errorResponseHandler(authenticationConfigurerManager.getOAuth2AuthenticationFailureHandler());
-                    endpoint.consentPage(SystemConstants.OAUTH2_AUTHORIZATION_CONSENT_URI);
+                    endpoint.consentPage(authenticationConfigurerManager.getOAuth2AuthenticationProperties().getAuthorizationConsentUri());
                 })
                 .tokenEndpoint(endpoint -> {
                     AuthenticationConverter authenticationConverter = new DelegatingAuthenticationConverter(
