@@ -827,23 +827,6 @@
     </dependencyManagement>
 
     <build>
-        <resources>
-            <!-- 先指定 src/main/resources下所有文件及文件夹为资源文件 -->
-            <resource>
-                <directory>src/main/resources</directory>
-                <includes>
-                    <include>**/*</include>
-                </includes>
-                <filtering>true</filtering>
-            </resource>
-        </resources>
-        <extensions>
-            <extension>
-                <groupId>org.apache.maven.archetype</groupId>
-                <artifactId>archetype-packaging</artifactId>
-                <version>${archetype-packaging.verison}</version>
-            </extension>
-        </extensions>
         <pluginManagement>
             <plugins>
                 <plugin>
