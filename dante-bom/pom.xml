@@ -138,7 +138,7 @@
         <sm-crypto-v2.version>1.15.1</sm-crypto-v2.version>
         <sweetalert2.verison>11.26.17</sweetalert2.verison>
         <tabler.version>1.4.0</tabler.version>
-        <vue.version>3.5.25</vue.version>
+        <vue.version>3.5.26</vue.version>
 
         <!--以下为特殊处理, 统一版本处理漏洞等-->
         <asm.version>9.9</asm.version>
