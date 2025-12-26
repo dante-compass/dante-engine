@@ -46,20 +46,14 @@ public class ServletOAuth2ResourceMatcherConfigurer extends AbstractSecurityMatc
 
     private final ResourceUrlProvider resourceUrlProvider;
 
-    private final RequestMatcher[] staticRequestMatchers;
     private final RequestMatcher[] permitAllRequestMatchers;
     private final RequestMatcher[] hasAuthenticatedRequestMatchers;
 
     public ServletOAuth2ResourceMatcherConfigurer(OAuth2AuthorizationProperties authorizationProperties, ResourceUrlProvider resourceUrlProvider, SecurityMatcher securityMatcher) {
         super(authorizationProperties.getStrictMode(), securityMatcher);
         this.resourceUrlProvider = resourceUrlProvider;
-        this.staticRequestMatchers = WebPathUtils.toRequestMatchers(getStaticResources());
         this.permitAllRequestMatchers = WebPathUtils.toRequestMatchers(getPermitAllResources());
         this.hasAuthenticatedRequestMatchers = WebPathUtils.toRequestMatchers(getHasAuthenticatedResources());
-    }
-
-    public RequestMatcher[] getStaticRequestMatchers() {
-        return staticRequestMatchers;
     }
 
     public RequestMatcher[] getPermitAllRequestMatchers() {

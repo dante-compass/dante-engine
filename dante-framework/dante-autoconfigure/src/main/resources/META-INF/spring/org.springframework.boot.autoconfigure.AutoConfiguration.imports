@@ -24,7 +24,6 @@
 #
 
 org.dromara.dante.autoconfigure.ApplicationAutoConfiguration
-org.dromara.dante.autoconfigure.async.AsyncAutoConfiguration
 org.dromara.dante.autoconfigure.context.ServletServiceContextAutoConfiguration
 org.dromara.dante.autoconfigure.crypto.CryptoAutoConfiguration
 org.dromara.dante.autoconfigure.enums.EnumDictionaryAutoConfiguration

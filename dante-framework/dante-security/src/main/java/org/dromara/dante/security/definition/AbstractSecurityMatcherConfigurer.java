@@ -81,12 +81,12 @@ public abstract class AbstractSecurityMatcherConfigurer {
         return strictMode;
     }
 
-    protected List<String> getStaticResources() {
-        return staticResources;
-    }
-
     protected List<String> getPermitAllResources() {
-        return permitAllResources;
+        if (CollectionUtils.isNotEmpty(this.permitAllResources)) {
+            return CollectionUtils.collate(this.staticResources, this.permitAllResources);
+        }
+
+        return staticResources;
     }
 
     protected List<String> getHasAuthenticatedResources() {
