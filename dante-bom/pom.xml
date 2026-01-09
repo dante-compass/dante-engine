@@ -146,7 +146,7 @@
         <commons-fileupload.version>1.6.0</commons-fileupload.version>
         <classgraph.version>4.8.184</classgraph.version>
         <dom4j.version>2.2.0</dom4j.version>
-        <error_prone_annotations.version>2.45.0</error_prone_annotations.version>
+        <error_prone_annotations.version>2.46.0</error_prone_annotations.version>
         <jaxb-impl.version>4.0.6</jaxb-impl.version>
         <javassist.version>3.30.2-GA</javassist.version>
         <objenesis.version>3.4</objenesis.version>
