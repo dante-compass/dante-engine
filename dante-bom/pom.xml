@@ -37,7 +37,7 @@
 
     <groupId>org.dromara.dante</groupId>
     <artifactId>dante-bom</artifactId>
-    <version>4.0.1.0-M1</version>
+    <version>4.0.1.0-M2</version>
     <name>Dante Engine Bom</name>
     <packaging>pom</packaging>
 
@@ -88,7 +88,7 @@
         <maven-archetype-plugin.version>3.4.1</maven-archetype-plugin.version>
         <maven-gpg-plugin.version>3.2.8</maven-gpg-plugin.version>
 
-        <alipay-sdk-java.version>4.40.607.ALL</alipay-sdk-java.version>
+        <alipay-sdk-java.version>4.40.624.ALL</alipay-sdk-java.version>
         <animated-gif-lib.version>1.4</animated-gif-lib.version>
         <antisamy.version>1.7.8</antisamy.version>
         <bcpkix-jdk18on.version>1.83</bcpkix-jdk18on.version>
@@ -108,7 +108,7 @@
         <justauth.verison>1.18.2</justauth.verison>
         <logstash-logback-encoder.version>9.0</logstash-logback-encoder.version>
         <mybatis.version>3.5.19</mybatis.version>
-        <mybatis-plus.version>3.5.15</mybatis-plus.version>
+        <mybatis-plus.version>3.5.16</mybatis-plus.version>
         <nacos.version>3.1.1</nacos.version>
         <openfeign-querydsl.version>7.1</openfeign-querydsl.version>
         <opengauss-jdbc.version>6.0.2-og</opengauss-jdbc.version>
@@ -117,7 +117,7 @@
         <redisson.version>4.1.0</redisson.version>
         <skywalking.version>9.5.0</skywalking.version>
         <sms4j-spring-boot-starter.version>3.3.5</sms4j-spring-boot-starter.version>
-        <software.amazon.awssdk.version>2.41.4</software.amazon.awssdk.version>
+        <software.amazon.awssdk.version>2.41.7</software.amazon.awssdk.version>
         <software.amazon.awssdk.crt.version>0.42.1</software.amazon.awssdk.crt.version>
         <springdoc.version>3.0.1</springdoc.version>
         <spring-boot-dependencies.version>4.0.1</spring-boot-dependencies.version>
@@ -126,7 +126,7 @@
         <spring-cloud-alibaba-dependencies.version>2025.0.0.0</spring-cloud-alibaba-dependencies.version>
         <spring-cloud-tencent-dependencies.version>2.1.0.3-2024.0.2</spring-cloud-tencent-dependencies.version>
         <transmittable-thread-local.version>2.14.5</transmittable-thread-local.version>
-        <weixin-java.version>4.8.0-20260109.141856</weixin-java.version>
+        <weixin-java.version>4.8.0-20260113.200815</weixin-java.version>
         <zxing.version>3.5.4</zxing.version>
 
         <!--Webjars 主要用于内置基于 thymeleaf 的自定义页面-->
