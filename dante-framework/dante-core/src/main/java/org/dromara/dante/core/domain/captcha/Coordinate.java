@@ -26,9 +26,9 @@
 package org.dromara.dante.core.domain.captcha;
 
 import com.google.common.base.MoreObjects;
-import java.util.Objects;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * <p>Description: 坐标 </p>

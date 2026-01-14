@@ -29,7 +29,7 @@ import com.google.common.base.MoreObjects;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.Strings;
 import org.dromara.dante.cache.commons.constants.CacheConstants;
-import org.dromara.dante.core.constant.SymbolConstants;
+import org.dromara.dante.core.constant.FileExtensions;
 import org.dromara.dante.core.enums.Protocol;
 import org.redisson.config.ClusterServersConfig;
 import org.redisson.config.SentinelServersConfig;
@@ -140,7 +140,7 @@ public class RedissonProperties {
 
     public boolean isYamlConfig() {
         if (this.isExternalConfig()) {
-            return Strings.CI.endsWith(this.getConfig(), SymbolConstants.SUFFIX_YAML);
+            return Strings.CI.endsWith(this.getConfig(), FileExtensions.SUFFIX_YAML);
         } else {
             return false;
         }
@@ -148,7 +148,7 @@ public class RedissonProperties {
 
     public boolean isJsonConfig() {
         if (this.isExternalConfig()) {
-            return Strings.CI.endsWith(this.getConfig(), SymbolConstants.SUFFIX_JSON);
+            return Strings.CI.endsWith(this.getConfig(), FileExtensions.SUFFIX_JSON);
         } else {
             return false;
         }

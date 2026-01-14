@@ -26,9 +26,9 @@
 package org.dromara.dante.core.domain.captcha;
 
 import com.google.common.base.MoreObjects;
-import java.util.Objects;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
  * <p>Description: 验证数据实体 </p>

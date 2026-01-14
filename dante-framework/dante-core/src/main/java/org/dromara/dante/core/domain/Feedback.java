@@ -26,9 +26,9 @@
 package org.dromara.dante.core.domain;
 
 import cn.hutool.v7.core.lang.Assert;
-import java.util.Objects;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * <p>Description: 错误反馈信息实体 </p>

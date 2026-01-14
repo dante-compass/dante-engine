@@ -25,9 +25,8 @@
 
 package org.dromara.dante.core.domain.cache;
 
-import java.util.Objects;
-
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * <p>Description: Hibernate QueryKey 对象包装器 </p>

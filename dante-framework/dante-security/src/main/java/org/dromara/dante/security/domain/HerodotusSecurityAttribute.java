@@ -26,13 +26,13 @@
 package org.dromara.dante.security.domain;
 
 import com.google.common.base.MoreObjects;
-import java.util.Objects;
 import org.springframework.util.Assert;
 import org.springframework.util.StringUtils;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * <p>Description: 自定义SecurityConfig </p>

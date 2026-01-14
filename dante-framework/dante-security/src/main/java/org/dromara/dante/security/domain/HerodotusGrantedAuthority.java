@@ -26,8 +26,9 @@
 package org.dromara.dante.security.domain;
 
 import com.google.common.base.MoreObjects;
-import java.util.Objects;
 import org.springframework.security.core.GrantedAuthority;
+
+import java.util.Objects;
 
 /**
  * <p>Description: 自定义 GrantedAuthority </p>

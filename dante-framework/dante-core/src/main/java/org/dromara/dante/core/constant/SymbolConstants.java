@@ -164,40 +164,4 @@ public interface SymbolConstants {
     String UNDERLINE = "_";
 
     String ZERO = "0";
-
-    String SUFFIX_EXCEL_2003 = ".xls";
-
-    String SUFFIX_EXCEL_2007 = ".xlsx";
-
-    String SUFFIX_JPEG = ".jpg";
-
-    String SUFFIX_XML = ".xml";
-
-    String SUFFIX_PDF = ".pdf";
-
-    String SUFFIX_ZIP = ".zip";
-
-    String SUFFIX_DOC = ".doc";
-
-    String SUFFIX_DOCX = ".docx";
-
-    String SUFFIX_PPT = ".ppt";
-
-    String SUFFIX_PPTX = ".pptx";
-
-    String SUFFIX_EXCEL = ".xls";
-
-    String SUFFIX_EXCELX = ".xlsx";
-
-    String SUFFIX_SWF = ".swf";
-
-    String SUFFIX_PROPERTIES = ".properties";
-
-    String SUFFIX_YML = ".yml";
-
-    String SUFFIX_YAML = ".yaml";
-
-    String SUFFIX_JSON = ".json";
-
-    String XML_DECLARATION = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
 }

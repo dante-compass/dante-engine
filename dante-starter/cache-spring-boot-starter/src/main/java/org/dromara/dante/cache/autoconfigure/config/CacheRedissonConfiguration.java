@@ -32,6 +32,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.Strings;
 import org.dromara.dante.cache.autoconfigure.annotation.ConditionalOnRedisson;
 import org.dromara.dante.cache.autoconfigure.properties.RedissonProperties;
+import org.dromara.dante.core.constant.FileExtensions;
 import org.dromara.dante.core.constant.SymbolConstants;
 import org.dromara.dante.spring.utils.ResourceResolverUtils;
 import org.redisson.Redisson;
@@ -92,7 +93,7 @@ public class CacheRedissonConfiguration {
         try {
             File configFile = readConfigFile();
             if (ObjectUtils.isNotEmpty(configFile)) {
-                if (Strings.CI.endsWith(configFile.getName(), SymbolConstants.SUFFIX_YAML)) {
+                if (Strings.CI.endsWith(configFile.getName(), FileExtensions.SUFFIX_YAML)) {
                     return Config.fromYAML(configFile);
                 }
             }

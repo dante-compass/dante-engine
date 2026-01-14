@@ -26,7 +26,6 @@
 package org.dromara.dante.security.domain;
 
 import com.google.common.base.MoreObjects;
-import java.util.Objects;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.Strings;
@@ -34,6 +33,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.util.Assert;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * <p>Description: 自定义 AntPathRequestMatcher </p>
