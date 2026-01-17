@@ -93,7 +93,6 @@
         <antisamy.version>1.7.8</antisamy.version>
         <bcpkix-jdk18on.version>1.83</bcpkix-jdk18on.version>
         <bcprov-jdk18on.version>1.83</bcprov-jdk18on.version>
-        <camunda-bpm-spring-boot-starter-rest.version>7.24.0</camunda-bpm-spring-boot-starter-rest.version>
         <central-publishing-maven-plugin.version>0.10.0</central-publishing-maven-plugin.version>
         <commons-collections4.version>4.5.0</commons-collections4.version>
         <commons-io.version>2.21.0</commons-io.version>
@@ -112,6 +111,7 @@
         <nacos.version>3.1.1</nacos.version>
         <openfeign-querydsl.version>7.1</openfeign-querydsl.version>
         <opengauss-jdbc.version>6.0.2-og</opengauss-jdbc.version>
+        <operaton-bpm-spring-boot-starter-rest.version>1.0.2</operaton-bpm-spring-boot-starter-rest.version>
         <org.eclipse.paho.version>1.2.5</org.eclipse.paho.version>
         <p6spy.version>3.9.1</p6spy.version>
         <redisson.version>4.1.0</redisson.version>
@@ -607,9 +607,9 @@
                 <version>${weixin-java.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.camunda.bpm.springboot</groupId>
-                <artifactId>camunda-bpm-spring-boot-starter-rest</artifactId>
-                <version>${camunda-bpm-spring-boot-starter-rest.version}</version>
+                <groupId>org.operaton.bpm.springboot</groupId>
+                <artifactId>operaton-bpm-spring-boot-starter-rest</artifactId>
+                <version>${operaton-bpm-spring-boot-starter-rest.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.dromara.sms4j</groupId>
