@@ -103,7 +103,7 @@
         <fastjson2.version>2.0.60</fastjson2.version>
         <guava.version>33.5.0-jre</guava.version>
         <hutool.version>7.0.0-M4</hutool.version>
-        <hypersistence-utils-hibernate-63.version>3.12.0</hypersistence-utils-hibernate-63.version>
+        <hypersistence-utils-hibernate-63.version>3.14.1</hypersistence-utils-hibernate-63.version>
         <influxdb-client.version>7.4.0</influxdb-client.version>
         <jasypt-spring-boot-starter.version>3.0.5</jasypt-spring-boot-starter.version>
         <jetcache.version>2.7.8</jetcache.version>
