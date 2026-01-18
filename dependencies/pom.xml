@@ -129,7 +129,7 @@
         <spring-cloud-tencent-dependencies.version>2.1.0.3-2024.0.2</spring-cloud-tencent-dependencies.version>
         <sqlite-jdbc.version>3.51.1.0</sqlite-jdbc.version>
         <transmittable-thread-local.version>2.14.5</transmittable-thread-local.version>
-        <weixin-java.version>4.7.8-20251117.120146</weixin-java.version>
+        <weixin-java.version>4.8.0-20260116.172906</weixin-java.version>
         <zxing.version>3.5.4</zxing.version>
 
         <!--Webjars 主要用于内置基于 thymeleaf 的自定义页面-->
