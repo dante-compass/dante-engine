@@ -111,7 +111,7 @@
         <logstash-logback-encoder.version>9.0</logstash-logback-encoder.version>
         <minio.version>8.6.0</minio.version>
         <mybatis.version>3.5.19</mybatis.version>
-        <mybatis-plus.version>3.5.14</mybatis-plus.version>
+        <mybatis-plus.version>3.5.16</mybatis-plus.version>
         <mysql.version>9.5.0</mysql.version>
         <nacos.version>3.1.1</nacos.version>
         <openfeign-querydsl.version>7.0</openfeign-querydsl.version>
