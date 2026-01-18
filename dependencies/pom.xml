@@ -126,7 +126,7 @@
         <spring-boot-admin-dependencies.version>3.5.6</spring-boot-admin-dependencies.version>
         <spring-cloud-alibaba-dependencies.version>2025.0.0.0</spring-cloud-alibaba-dependencies.version>
         <spring-cloud-dependencies.version>2025.0.1</spring-cloud-dependencies.version>
-        <spring-cloud-tencent-dependencies.version>2.1.0.1-2024.0.2</spring-cloud-tencent-dependencies.version>
+        <spring-cloud-tencent-dependencies.version>2.1.0.3-2024.0.2</spring-cloud-tencent-dependencies.version>
         <sqlite-jdbc.version>3.51.0.0</sqlite-jdbc.version>
         <transmittable-thread-local.version>2.14.5</transmittable-thread-local.version>
         <weixin-java.version>4.7.8-20251117.120146</weixin-java.version>
