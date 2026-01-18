@@ -79,7 +79,7 @@
                         <annotationProcessorPath>
                             <groupId>io.github.openfeign.querydsl</groupId>
                             <artifactId>querydsl-apt</artifactId>
-                            <version>${openfeign-querydsl.version}</version>
+                            <version>${io.github.openfeign.querydsl.version}</version>
                             <classifier>jpa</classifier>
                         </annotationProcessorPath>
                         <annotationProcessorPath>
