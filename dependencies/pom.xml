@@ -105,7 +105,7 @@
         <hutool.version>7.0.0-M4</hutool.version>
         <hypersistence-utils-hibernate-63.version>3.14.1</hypersistence-utils-hibernate-63.version>
         <influxdb-client.version>7.4.0</influxdb-client.version>
-        <jasypt-spring-boot-starter.version>3.0.5</jasypt-spring-boot-starter.version>
+        <jasypt-spring-boot-starter.version>4.0.3</jasypt-spring-boot-starter.version>
         <jetcache.version>2.7.8</jetcache.version>
         <justauth.verison>1.18.2</justauth.verison>
         <logstash-logback-encoder.version>9.0</logstash-logback-encoder.version>
