@@ -155,7 +155,7 @@
         <javassist.version>3.30.2-GA</javassist.version>
         <objenesis.version>3.4</objenesis.version>
         <!--sms4j 依赖 hutool 5，但更新频率低，在此进行统一升级和版本控制-->
-        <hutool5.version>5.8.41</hutool5.version>
+        <hutool5.version>5.8.43</hutool5.version>
         <httpclient.version>4.5.14</httpclient.version>
         <kryo.version>5.6.2</kryo.version>
         <okio.version>3.16.4</okio.version>
