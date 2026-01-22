@@ -25,68 +25,54 @@
 
 package org.dromara.dante.data.rest.servlet;
 
+import org.dromara.dante.core.domain.BaseDomain;
 import org.dromara.dante.core.domain.BaseEntity;
 import org.dromara.dante.core.domain.Result;
-import org.dromara.dante.data.commons.service.BaseService;
+import org.dromara.dante.data.commons.service.BaseWriteAndPageService;
+import org.springframework.core.convert.converter.Converter;
 
 import java.io.Serializable;
-import java.util.List;
-import java.util.Optional;
 
 /**
- * <p>Description: 与 Service 绑定 Controller </p>
+ * <p>Description: 基于 Dto 实体的与 Service 绑定 Controller </p>
+ * <p>
+ * 阻塞式环境（Servlet）与具体 Service 绑定的 Controller 通用定义。
+ * 请求参数实体和响应结果实体均是继承 {@link BaseDomain} 的实体。需要实现 Dto 与 Entity 的转换
  *
+ * @param <I>  请求参数实体
+ * @param <O>  响应结果实体
  * @param <E>  实体
  * @param <ID> 实体 ID
  * @param <S>  Service
  * @author : gengwei.zheng
  * @date : 2025/3/29 23:02
  */
-public interface BindingController<E extends BaseEntity, ID extends Serializable, S extends BaseService<E, ID>> extends PaginationController {
+public interface DtoWriteAndPageController<I extends BaseDomain, O extends BaseDomain, E extends BaseEntity, ID extends Serializable, S extends BaseWriteAndPageService<E, ID>> extends DtoPageableController<O, E, ID, S> {
 
     /**
-     * 获取 Service
+     * 将请求参数实体转为 Spring Data 实体的转换器
      *
-     * @return Service
+     * @return 转换器
      */
-    S getService();
-
-    /**
-     * 查询所有数据
-     *
-     * @return 包装成 {@link Result} 的 {@link List} 类型查询结果
-     */
-    default Result<List<E>> findAll() {
-        List<E> domains = getService().findAll();
-        return result(domains);
-    }
-
-    /**
-     * 根据实体 ID 查询指定实体数据
-     *
-     * @param id 实体Id
-     * @return 装成 {@link Result} 的查询结果
-     */
-    default Result<E> findById(ID id) {
-        Optional<E> domain = getService().findById(id);
-        return result(domain.orElse(null));
-    }
+    Converter<I, E> getToEntityConverter();
 
     /**
      * 保存或更新实体
      *
      * @param domain 实体参数
-     * @return 用Result包装的实体
+     * @return 用 Result 包装的实体
      */
-    default Result<E> save(E domain) {
-        E savedDomain = getService().save(domain);
-        return result(savedDomain);
+    default Result<O> save(I domain) {
+        E entity = getToEntityConverter().convert(domain);
+        E savedDomain = getService().save(entity);
+        O response = getToDtoConverter().convert(savedDomain);
+        return result(response);
     }
 
     /**
      * 删除数据
      *
-     * @param id 实体ID
+     * @param id 实体 ID
      * @return 包装成 {@link Result} 的 String 类型查询结果。JPA 删除操作没有返回值，所以无法判断操作成功与否。
      */
     default Result<String> delete(ID id) {

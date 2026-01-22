@@ -37,7 +37,7 @@ import jakarta.validation.constraints.NotNull;
 import org.apache.commons.lang3.ObjectUtils;
 import org.dromara.dante.core.domain.Result;
 import org.dromara.dante.data.jpa.service.BaseJpaWriteableService;
-import org.dromara.dante.data.rest.servlet.AbstractJpaWriteableController;
+import org.dromara.dante.data.rest.servlet.AbstractJpaEntityWriteableController;
 import org.dromara.dante.logic.upms.converter.SysOrganizationToTreeNodeConverter;
 import org.dromara.dante.logic.upms.entity.hr.SysOrganization;
 import org.dromara.dante.logic.upms.enums.OrganizationCategory;
@@ -60,7 +60,7 @@ import java.util.Map;
 @RequestMapping("/hr/organization")
 @Tag(name = "单位管理接口")
 @Validated
-public class SysOrganizationController extends AbstractJpaWriteableController<SysOrganization, String> {
+public class SysOrganizationController extends AbstractJpaEntityWriteableController<SysOrganization, String> {
 
     private final SysOrganizationService sysOrganizationService;
 

@@ -23,42 +23,43 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.data.jpa.service;
+package org.dromara.dante.data.commons.service;
+
 
 import org.dromara.dante.core.domain.BaseEntity;
-import org.dromara.dante.data.commons.service.BaseWriteAndPageService;
 
 import java.io.Serializable;
 import java.util.List;
 
 /**
- * <p>Description: JPA “读” 操作基础 Service 定义 </p>
+ * <p>Description: 基于 Spring Data 生态的核心 Service 定义 </p>
+ * <p>
+ * 该接口定义适配 Spring Data 生态所有组件的通用“写”操作，即所有 Spring Data 组件均支持的“写”操作，以便于支持 Spring Data 不同类型数据源的切换。
+ * 将“写”操作单独提取出来，主要是为了解决 JPA 对视图（View）的安全性操作。以避免对视图（View）的增、删、改操作
  *
  * @author : gengwei.zheng
- * @date : 2021/7/7 16:47
+ * @date : 2025/3/29 16:01
  */
-public interface BaseJpaWriteableService<E extends BaseEntity, ID extends Serializable> extends BaseJpaReadableService<E, ID>, BaseWriteAndPageService<E, ID> {
+public interface BaseWriteableService<E extends BaseEntity, ID extends Serializable> {
 
     /**
      * 保存或更新数据
      *
-     * @param domain 数据对应实体
-     * @return 已保存数据
+     * @param domain 对应的实体
+     * @return 保存后的实体
      */
-    @Override
     default E save(E domain) {
-        return getRepository().save(domain);
+        throw new UnsupportedOperationException();
     }
 
     /**
-     * 批量保存或更新数据
+     * 批量保存数据
      *
-     * @param entities 实体集合
-     * @return 已经保存的实体集合
+     * @param entities 数据实体 {@link Iterable}
+     * @return 保存后的实体集合 {@link List}
      */
-    @Override
     default List<E> saveAll(Iterable<E> entities) {
-        return getRepository().saveAll(entities);
+        throw new UnsupportedOperationException();
     }
 
     /**
@@ -66,9 +67,8 @@ public interface BaseJpaWriteableService<E extends BaseEntity, ID extends Serial
      *
      * @param domain 数据对象实体
      */
-    @Override
     default void delete(E domain) {
-        getRepository().delete(domain);
+        throw new UnsupportedOperationException();
     }
 
     /**
@@ -76,17 +76,15 @@ public interface BaseJpaWriteableService<E extends BaseEntity, ID extends Serial
      *
      * @param id ID
      */
-    @Override
     default void deleteById(ID id) {
-        getRepository().deleteById(id);
+        throw new UnsupportedOperationException();
     }
 
     /**
      * 清空全部数据
      */
-    @Override
     default void deleteAll() {
-        getRepository().deleteAll();
+        throw new UnsupportedOperationException();
     }
 
     /**
@@ -94,9 +92,8 @@ public interface BaseJpaWriteableService<E extends BaseEntity, ID extends Serial
      *
      * @param entities 数据实体 {@link Iterable}
      */
-    @Override
     default void deleteAll(Iterable<E> entities) {
-        getRepository().deleteAll(entities);
+        throw new UnsupportedOperationException();
     }
 
     /**
@@ -104,62 +101,7 @@ public interface BaseJpaWriteableService<E extends BaseEntity, ID extends Serial
      *
      * @param ids {@link Iterable}
      */
-    @Override
     default void deleteAllById(Iterable<? extends ID> ids) {
-        getRepository().deleteAllById(ids);
-    }
-
-    /**
-     * 根据 ID 删除批量全部删除
-     *
-     * @param ids 数据 ID
-     */
-    default void deleteAllByIdInBatch(Iterable<ID> ids) {
-        getRepository().deleteAllByIdInBatch(ids);
-    }
-
-    /**
-     * 批量全部删除
-     */
-    default void deleteAllInBatch() {
-        getRepository().deleteAllInBatch();
-    }
-
-
-    /**
-     * 批量删除指定的实体
-     *
-     * @param entities 数据对应实体集合
-     */
-    default void deleteAllInBatch(Iterable<E> entities) {
-        getRepository().deleteAllInBatch(entities);
-    }
-
-
-    /**
-     * 保存或者更新
-     *
-     * @param entity 实体
-     * @return 保存后实体
-     */
-    default E saveAndFlush(E entity) {
-        return getRepository().saveAndFlush(entity);
-    }
-
-    /**
-     * 批量保存或者更新
-     *
-     * @param entities 实体列表
-     * @return 保存或更新后的实体
-     */
-    default List<E> saveAllAndFlush(List<E> entities) {
-        return getRepository().saveAllAndFlush(entities);
-    }
-
-    /**
-     * 刷新实体状态
-     */
-    default void flush() {
-        getRepository().flush();
+        throw new UnsupportedOperationException();
     }
 }

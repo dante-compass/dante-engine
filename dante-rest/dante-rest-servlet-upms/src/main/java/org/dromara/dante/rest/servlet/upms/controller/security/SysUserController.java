@@ -36,7 +36,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.tags.Tags;
 import org.dromara.dante.core.domain.Result;
 import org.dromara.dante.data.jpa.service.BaseJpaWriteableService;
-import org.dromara.dante.data.rest.servlet.AbstractJpaWriteableController;
+import org.dromara.dante.data.rest.servlet.AbstractJpaEntityWriteableController;
 import org.dromara.dante.logic.upms.entity.security.SysUser;
 import org.dromara.dante.logic.upms.service.security.SysUserService;
 import org.dromara.dante.web.annotation.Crypto;
@@ -55,7 +55,7 @@ import org.springframework.web.bind.annotation.*;
         @Tag(name = "用户安全管理接口"),
         @Tag(name = "系统用户管理接口")
 })
-public class SysUserController extends AbstractJpaWriteableController<SysUser, String> {
+public class SysUserController extends AbstractJpaEntityWriteableController<SysUser, String> {
 
     private final SysUserService sysUserService;
 

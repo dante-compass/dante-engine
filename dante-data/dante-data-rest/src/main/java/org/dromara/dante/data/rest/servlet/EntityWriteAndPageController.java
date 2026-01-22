@@ -26,20 +26,45 @@
 package org.dromara.dante.data.rest.servlet;
 
 import org.dromara.dante.core.domain.BaseEntity;
-import org.dromara.dante.data.jpa.service.BaseJpaReadableService;
+import org.dromara.dante.core.domain.Result;
+import org.dromara.dante.data.commons.service.BaseWriteAndPageService;
+import org.springframework.data.domain.Page;
 
 import java.io.Serializable;
 
 /**
- * <p>Description: Jpa 只读基础 Controller 定义 </p>
+ * <p>Description: 基于 {@link Page} 类型分页的与 Service 绑定 Controller 定义 </p>
  * <p>
- * 多定义一层抽象类，用于指定 {@link BaseJpaReadableService} 类型，方便子类更加精确的定位类型。
+ * 请求参数实体和响应结果实体均是直接使用 Spring Data 实体定义，并以 {@link Page} 类型为分页的基础 Controller 定义。
  *
  * @param <E>  实体
  * @param <ID> 实体 ID
+ * @param <S>  Service
  * @author : gengwei.zheng
- * @date : 2021/7/5 17:21
+ * @date : 2025/3/29 23:02
  */
-public abstract class AbstractJpaReadableController<E extends BaseEntity, ID extends Serializable> extends AbstractReadableController<E, ID, BaseJpaReadableService<E, ID>> {
+public interface EntityWriteAndPageController<E extends BaseEntity, ID extends Serializable, S extends BaseWriteAndPageService<E, ID>> extends EntityPageableController<E, ID, S> {
 
+    /**
+     * 保存或更新实体
+     *
+     * @param domain 实体参数
+     * @return 用 Result 包装的实体
+     */
+    default Result<E> save(E domain) {
+        E savedDomain = getService().save(domain);
+        return result(savedDomain);
+    }
+
+    /**
+     * 删除数据
+     *
+     * @param id 实体 ID
+     * @return 包装成 {@link Result} 的 String 类型查询结果。JPA 删除操作没有返回值，所以无法判断操作成功与否。
+     */
+    default Result<String> delete(ID id) {
+        Result<String> result = result(String.valueOf(id));
+        getService().deleteById(id);
+        return result;
+    }
 }

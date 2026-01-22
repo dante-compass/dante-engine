@@ -38,7 +38,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import org.dromara.dante.core.domain.Result;
 import org.dromara.dante.data.jpa.service.BaseJpaWriteableService;
-import org.dromara.dante.data.rest.servlet.AbstractJpaWriteableController;
+import org.dromara.dante.data.rest.servlet.AbstractJpaEntityWriteableController;
 import org.dromara.dante.logic.message.entity.DialogueDetail;
 import org.dromara.dante.logic.message.service.DialogueDetailService;
 import org.dromara.dante.web.annotation.Idempotent;
@@ -61,7 +61,7 @@ import java.util.Map;
         @Tag(name = "私信管理接口"),
         @Tag(name = "私信详情管理接口")
 })
-public class DialogueDetailController extends AbstractJpaWriteableController<DialogueDetail, String> {
+public class DialogueDetailController extends AbstractJpaEntityWriteableController<DialogueDetail, String> {
 
     private final DialogueDetailService dialogueDetailService;
 

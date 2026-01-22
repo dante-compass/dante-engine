@@ -33,18 +33,18 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.dromara.dante.core.domain.BaseEntity;
 import org.dromara.dante.core.domain.Result;
-import org.dromara.dante.data.commons.service.BasePageService;
+import org.dromara.dante.data.commons.service.BaseWriteAndSliceService;
 import org.dromara.dante.web.annotation.Idempotent;
+import org.springframework.data.domain.Page;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.io.Serializable;
 
 /**
- * <p>Description: 通用可读可写接口定义 </p>
+ * <p>Description: 持 {@link Page} 类型分页的基础 Controller 读写操作抽象定义 </p>
  * <p>
  * 如果继承该类将会自动创建相关接口并生成权限数据，所以当前仅提供基础保存和删除接口，以避免生成不必要的接口。
  *
@@ -54,35 +54,32 @@ import java.io.Serializable;
  * @author : gengwei.zheng
  * @date : 2025/3/29 23:16
  */
-public abstract class AbstractWriteableController<E extends BaseEntity, ID extends Serializable, S extends BasePageService<E, ID>> extends AbstractReadableController<E, ID, S> {
+public abstract class AbstractEntityWriteAndSliceController<E extends BaseEntity, ID extends Serializable, S extends BaseWriteAndSliceService<E, ID>> extends AbstractEntitySliceableController<E, ID, S> implements EntityWriteAndSliceController<E, ID, S> {
 
     @Idempotent
     @Operation(summary = "保存或更新数据", description = "接收JSON数据，转换为实体，进行保存或更新",
             requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE)),
-            responses = {
-                    @ApiResponse(description = "已保存数据", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE))
-            })
+            responses = {@ApiResponse(description = "已保存数据", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE))})
     @Parameters({
-            @Parameter(name = "domain", required = true, description = "可转换为实体的json数据")
+            @Parameter(name = "domain", required = true, description = "可转换为实体的 json 数据")
     })
     @PostMapping
     @Override
-    public Result<E> save(@RequestBody E domain) {
-        return super.save(domain);
+    public Result<E> save(E domain) {
+        return EntityWriteAndSliceController.super.save(domain);
     }
+
 
     @Idempotent
     @Operation(summary = "删除数据", description = "根据实体ID删除数据，以及相关联的关联数据",
             requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE)),
-            responses = {
-                    @ApiResponse(description = "操作消息", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE))
-            })
+            responses = {@ApiResponse(description = "操作消息", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE))})
     @Parameters({
             @Parameter(name = "id", required = true, in = ParameterIn.PATH, description = "实体ID，@Id注解对应的实体属性")
     })
     @DeleteMapping("/{id}")
     @Override
     public Result<String> delete(@PathVariable ID id) {
-        return super.delete(id);
+        return EntityWriteAndSliceController.super.delete(id);
     }
 }

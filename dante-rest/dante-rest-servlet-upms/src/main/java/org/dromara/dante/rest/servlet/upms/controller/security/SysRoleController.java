@@ -36,7 +36,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.tags.Tags;
 import org.dromara.dante.core.domain.Result;
 import org.dromara.dante.data.jpa.service.BaseJpaWriteableService;
-import org.dromara.dante.data.rest.servlet.AbstractJpaWriteableController;
+import org.dromara.dante.data.rest.servlet.AbstractJpaEntityWriteableController;
 import org.dromara.dante.logic.upms.entity.security.SysRole;
 import org.dromara.dante.logic.upms.service.security.SysRoleService;
 import org.dromara.dante.web.annotation.AccessLimited;
@@ -57,7 +57,7 @@ import java.util.List;
         @Tag(name = "用户安全管理接口"),
         @Tag(name = "系统角色管理接口")
 })
-public class SysRoleController extends AbstractJpaWriteableController<SysRole, String> {
+public class SysRoleController extends AbstractJpaEntityWriteableController<SysRole, String> {
 
     private final SysRoleService sysRoleService;
 

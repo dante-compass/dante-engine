@@ -39,7 +39,7 @@ import jakarta.validation.constraints.NotNull;
 import org.dromara.dante.core.domain.Result;
 import org.dromara.dante.data.commons.enums.ApplicationType;
 import org.dromara.dante.data.jpa.service.BaseJpaWriteableService;
-import org.dromara.dante.data.rest.servlet.AbstractJpaWriteableController;
+import org.dromara.dante.data.rest.servlet.AbstractJpaEntityWriteableController;
 import org.dromara.dante.logic.upms.entity.security.SysElement;
 import org.dromara.dante.logic.upms.service.security.SysElementService;
 import org.dromara.dante.rest.servlet.upms.converter.SysElementToTreeNodeConverter;
@@ -66,7 +66,7 @@ import java.util.Map;
         @Tag(name = "用户安全管理接口"),
         @Tag(name = "系统菜单管理接口")
 })
-public class SysElementController extends AbstractJpaWriteableController<SysElement, String> {
+public class SysElementController extends AbstractJpaEntityWriteableController<SysElement, String> {
 
     private final Converter<List<SysElement>, Elements> toElements;
     private final SysElementService sysElementService;

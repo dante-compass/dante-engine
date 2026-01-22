@@ -38,7 +38,7 @@ import jakarta.validation.constraints.NotNull;
 import org.apache.commons.lang3.ObjectUtils;
 import org.dromara.dante.core.domain.Result;
 import org.dromara.dante.data.jpa.service.BaseJpaWriteableService;
-import org.dromara.dante.data.rest.servlet.AbstractJpaWriteableController;
+import org.dromara.dante.data.rest.servlet.AbstractJpaEntityWriteableController;
 import org.dromara.dante.logic.upms.entity.hr.SysEmployee;
 import org.dromara.dante.logic.upms.enums.Gender;
 import org.dromara.dante.logic.upms.enums.Identity;
@@ -60,7 +60,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/hr/employee")
 @Tag(name = "人员管理接口")
-public class SysEmployeeController extends AbstractJpaWriteableController<SysEmployee, String> {
+public class SysEmployeeController extends AbstractJpaEntityWriteableController<SysEmployee, String> {
 
     private final SysEmployeeService sysEmployeeService;
 

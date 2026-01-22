@@ -31,7 +31,7 @@ import org.dromara.dante.core.domain.BaseEntity;
 import java.io.Serializable;
 
 /**
- * <p>Description: 通用核心 Service </p>
+ * <p>Description: JPA 基础 Service 抽象定义 </p>
  *
  * @author : gengwei.zheng
  * @date : 2021/7/14 14:32

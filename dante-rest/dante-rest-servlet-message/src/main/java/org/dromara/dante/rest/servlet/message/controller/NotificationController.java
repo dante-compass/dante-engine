@@ -38,7 +38,7 @@ import jakarta.validation.constraints.NotNull;
 import org.apache.commons.lang3.ObjectUtils;
 import org.dromara.dante.core.domain.Result;
 import org.dromara.dante.data.jpa.service.BaseJpaWriteableService;
-import org.dromara.dante.data.rest.servlet.AbstractJpaWriteableController;
+import org.dromara.dante.data.rest.servlet.AbstractJpaEntityWriteableController;
 import org.dromara.dante.logic.message.entity.Notification;
 import org.dromara.dante.logic.message.enums.NotificationCategory;
 import org.dromara.dante.logic.message.service.NotificationService;
@@ -60,7 +60,7 @@ import java.util.Map;
         @Tag(name = "消息管理接口"),
         @Tag(name = "通知管理接口")
 })
-public class NotificationController extends AbstractJpaWriteableController<Notification, String> {
+public class NotificationController extends AbstractJpaEntityWriteableController<Notification, String> {
 
     private final NotificationService notificationService;
 

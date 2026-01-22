@@ -25,27 +25,30 @@
 
 package org.dromara.dante.data.rest.servlet;
 
+import org.dromara.dante.core.domain.BaseDomain;
 import org.dromara.dante.core.domain.BaseEntity;
 import org.dromara.dante.core.domain.Result;
-import org.dromara.dante.data.commons.service.BaseSliceService;
-import org.springframework.data.domain.Slice;
+import org.dromara.dante.data.commons.service.BasePageableService;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Sort;
 
 import java.io.Serializable;
 import java.util.Map;
 
 /**
- * <p>Description: {@link Slice} 类型分页基础 Controller </p>
+ * <p>Description: 基于 Dto 的{@link Page} 类型分页基础 Controller </p>
  * <p>
- * 多定义一层接口，用于区分 {@link Slice} 类型。
+ * 多定义一层接口，用于区分 {@link Page} 类型。
+ * 请求参数实体和响应结果实体均是继承 {@link BaseDomain} 的实体。需要实现 Dto 与 Entity 的转换
  *
+ * @param <O>  响应结果实体
  * @param <E>  实体
  * @param <ID> 实体 ID
  * @param <S>  Service
  * @author : gengwei.zheng
- * @date : 2025/3/30 17:05
+ * @date : 2025/3/30 17:21
  */
-public interface SliceController<E extends BaseEntity, ID extends Serializable, S extends BaseSliceService<E, ID>> extends BindingController<E, ID, S> {
+public interface DtoPageableController<O extends BaseDomain, E extends BaseEntity, ID extends Serializable, S extends BasePageableService<E, ID>> extends DtoReadableController<O, E, ID, S> {
 
     /**
      * 查询分页数据
@@ -55,8 +58,9 @@ public interface SliceController<E extends BaseEntity, ID extends Serializable, 
      * @return 包装成 {@link Result} 的查询结果
      */
     default Result<Map<String, Object>> findByPage(Integer pageNumber, Integer pageSize) {
-        Slice<E> data = getService().findByPage(pageNumber, pageSize);
-        return resultFromSlice(data);
+        Page<E> page = getService().findByPage(pageNumber, pageSize);
+        Page<O> response = page.map(item -> getToDtoConverter().convert(item));
+        return resultFromPage(response);
     }
 
     /**
@@ -69,7 +73,8 @@ public interface SliceController<E extends BaseEntity, ID extends Serializable, 
      * @return 包装成 {@link Result} 的 {@link Map} 类型查询结果
      */
     default Result<Map<String, Object>> findByPage(Integer pageNumber, Integer pageSize, Sort.Direction direction, String... properties) {
-        Slice<E> data = getService().findByPage(pageNumber, pageSize, direction, properties);
-        return resultFromSlice(data);
+        Page<E> page = getService().findByPage(pageNumber, pageSize, direction, properties);
+        Page<O> response = page.map(item -> getToDtoConverter().convert(item));
+        return resultFromPage(response);
     }
 }

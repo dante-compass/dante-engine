@@ -32,7 +32,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.tags.Tags;
 import org.dromara.dante.core.domain.Result;
 import org.dromara.dante.data.jpa.service.BaseJpaWriteableService;
-import org.dromara.dante.data.rest.servlet.AbstractJpaWriteableController;
+import org.dromara.dante.data.rest.servlet.AbstractJpaEntityWriteableController;
 import org.dromara.dante.logic.identity.entity.OAuth2Application;
 import org.dromara.dante.logic.identity.service.OAuth2ApplicationService;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -52,7 +52,7 @@ import org.springframework.web.bind.annotation.RestController;
         @Tag(name = "OAuth2 认证服务接口"),
         @Tag(name = "OAuth2 应用管理接口")
 })
-public class OAuth2ApplicationController extends AbstractJpaWriteableController<OAuth2Application, String> {
+public class OAuth2ApplicationController extends AbstractJpaEntityWriteableController<OAuth2Application, String> {
 
     private final OAuth2ApplicationService applicationService;
 

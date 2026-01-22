@@ -36,7 +36,7 @@ import io.swagger.v3.oas.annotations.tags.Tags;
 import org.apache.commons.collections4.CollectionUtils;
 import org.dromara.dante.core.domain.Result;
 import org.dromara.dante.data.jpa.service.BaseJpaWriteableService;
-import org.dromara.dante.data.rest.servlet.AbstractJpaWriteableController;
+import org.dromara.dante.data.rest.servlet.AbstractJpaEntityWriteableController;
 import org.dromara.dante.logic.identity.entity.OAuth2Permission;
 import org.dromara.dante.logic.identity.entity.OAuth2Scope;
 import org.dromara.dante.logic.identity.service.OAuth2ScopeService;
@@ -64,7 +64,7 @@ import java.util.stream.Collectors;
         @Tag(name = "OAuth2 认证服务接口"),
         @Tag(name = "OAuth2 权限范围管理接口")
 })
-public class OAuth2ScopeController extends AbstractJpaWriteableController<OAuth2Scope, String> {
+public class OAuth2ScopeController extends AbstractJpaEntityWriteableController<OAuth2Scope, String> {
 
     private final OAuth2ScopeService scopeService;
 

@@ -28,7 +28,7 @@ package org.dromara.dante.rest.servlet.identity.controller;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.tags.Tags;
 import org.dromara.dante.data.jpa.service.BaseJpaWriteableService;
-import org.dromara.dante.data.rest.servlet.AbstractJpaWriteableController;
+import org.dromara.dante.data.rest.servlet.AbstractJpaEntityWriteableController;
 import org.dromara.dante.logic.identity.entity.OAuth2Product;
 import org.dromara.dante.logic.identity.service.OAuth2ProductService;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -47,7 +47,7 @@ import org.springframework.web.bind.annotation.RestController;
         @Tag(name = "物联网管理接口"),
         @Tag(name = "物联网产品接口")
 })
-public class OAuth2ProductController extends AbstractJpaWriteableController<OAuth2Product, String> {
+public class OAuth2ProductController extends AbstractJpaEntityWriteableController<OAuth2Product, String> {
 
     private final OAuth2ProductService iotProductService;
 

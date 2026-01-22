@@ -25,21 +25,22 @@
 
 package org.dromara.dante.data.rest.servlet;
 
-import org.dromara.dante.data.mongodb.entity.AbstractAuditEntity;
-import org.dromara.dante.data.mongodb.service.BaseMongoService;
+import org.dromara.dante.core.domain.BaseEntity;
+import org.dromara.dante.data.jpa.service.BaseJpaReadableService;
 
 import java.io.Serializable;
 
 /**
- * <p>Description: Spring Data Mongo 基础 controller </p>
+ * <p>Description: Jpa 只读基础 Controller 定义 </p>
+ * JPA 支持视图（View）类型的实体定义，视图不支持增、删、改。可以继承该抽象类，仅实现只读操作
  * <p>
- * 多定义一层抽象类，用于指定 {@link BaseMongoService} 类型，方便子类更加精确的定位类型。
+ * 多定义一层抽象类，用于指定 {@link BaseJpaReadableService} 类型，方便子类更加精确的定位类型。
  *
  * @param <E>  实体
  * @param <ID> 实体 ID
  * @author : gengwei.zheng
- * @date : 2023/2/26 19:56
+ * @date : 2021/7/5 17:21
  */
-public abstract class AbstractMongoController<E extends AbstractAuditEntity, ID extends Serializable> extends AbstractEntityWriteAndPageController<E, ID, BaseMongoService<E, ID>> {
+public abstract class AbstractJpaEntityReadableController<E extends BaseEntity, ID extends Serializable> extends AbstractEntityPageableController<E, ID, BaseJpaReadableService<E, ID>> {
 
 }

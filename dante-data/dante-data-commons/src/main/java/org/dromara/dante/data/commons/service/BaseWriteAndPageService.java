@@ -23,23 +23,18 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.data.rest.servlet;
+package org.dromara.dante.data.commons.service;
 
-import org.dromara.dante.data.mongodb.entity.AbstractAuditEntity;
-import org.dromara.dante.data.mongodb.service.BaseMongoService;
+import org.dromara.dante.core.domain.BaseEntity;
 
 import java.io.Serializable;
 
 /**
- * <p>Description: Spring Data Mongo 基础 controller </p>
- * <p>
- * 多定义一层抽象类，用于指定 {@link BaseMongoService} 类型，方便子类更加精确的定位类型。
+ * <p>Description: 基于 Spring Data 生态的支持读和 Page的 Service 定义 </p>
  *
- * @param <E>  实体
- * @param <ID> 实体 ID
  * @author : gengwei.zheng
- * @date : 2023/2/26 19:56
+ * @date : 2025/3/29 16:01
  */
-public abstract class AbstractMongoController<E extends AbstractAuditEntity, ID extends Serializable> extends AbstractEntityWriteAndPageController<E, ID, BaseMongoService<E, ID>> {
+public interface BaseWriteAndPageService<E extends BaseEntity, ID extends Serializable> extends BasePageableService<E, ID>, BaseWriteableService<E, ID> {
 
 }

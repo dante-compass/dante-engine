@@ -27,25 +27,51 @@ package org.dromara.dante.data.rest.servlet;
 
 import org.dromara.dante.core.domain.BaseEntity;
 import org.dromara.dante.core.domain.Result;
-import org.dromara.dante.data.jpa.service.BaseJpaWriteableService;
+import org.dromara.dante.data.commons.service.BaseReadableService;
 
 import java.io.Serializable;
+import java.util.List;
+import java.util.Optional;
 
 /**
- * <p> Description : Jpa 可读可写基础 Controller 定义 </p>
+ * <p>Description: 与 Service 绑定 Controller </p>
  * <p>
- * 多定义一层抽象类，用于指定 {@link BaseJpaWriteableService} 类型，方便子类更加精确的定位类型。
+ * 阻塞式环境（Servlet）与具体 Service 绑定的 Controller 通用定义。
+ * 请求参数实体和响应结果实体均是直接使用 Spring Data 实体定义。
  *
  * @param <E>  实体
  * @param <ID> 实体 ID
+ * @param <S>  Service
  * @author : gengwei.zheng
- * @date : 2020/2/29 15:28
+ * @date : 2025/3/29 23:02
  */
-public abstract class AbstractJpaWriteableController<E extends BaseEntity, ID extends Serializable> extends AbstractWriteableController<E, ID, BaseJpaWriteableService<E, ID>> {
+public interface EntityReadableController<E extends BaseEntity, ID extends Serializable, S extends BaseReadableService<E, ID>> extends PaginationController {
 
-    @Override
-    public Result<E> save(E domain) {
-        E savedDomain = getService().saveAndFlush(domain);
-        return result(savedDomain);
+    /**
+     * 获取 Service
+     *
+     * @return Service
+     */
+    S getService();
+
+    /**
+     * 查询所有数据
+     *
+     * @return 包装成 {@link Result} 的 {@link List} 类型查询结果
+     */
+    default Result<List<E>> findAll() {
+        List<E> domains = getService().findAll();
+        return result(domains);
+    }
+
+    /**
+     * 根据实体 ID 查询指定实体数据
+     *
+     * @param id 实体 Id
+     * @return 装成 {@link Result} 的查询结果
+     */
+    default Result<E> findById(ID id) {
+        Optional<E> domain = getService().findById(id);
+        return result(domain.orElse(null));
     }
 }

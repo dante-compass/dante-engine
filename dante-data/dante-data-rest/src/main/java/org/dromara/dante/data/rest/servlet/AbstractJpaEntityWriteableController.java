@@ -25,21 +25,21 @@
 
 package org.dromara.dante.data.rest.servlet;
 
-import org.dromara.dante.data.mongodb.entity.AbstractAuditEntity;
-import org.dromara.dante.data.mongodb.service.BaseMongoService;
+import org.dromara.dante.core.domain.BaseEntity;
+import org.dromara.dante.data.jpa.service.BaseJpaWriteableService;
 
 import java.io.Serializable;
 
 /**
- * <p>Description: Spring Data Mongo 基础 controller </p>
+ * <p> Description : Jpa 可读可写基础 Controller 定义 </p>
  * <p>
- * 多定义一层抽象类，用于指定 {@link BaseMongoService} 类型，方便子类更加精确的定位类型。
+ * 多定义一层抽象类，用于指定 {@link BaseJpaWriteableService} 类型，方便子类更加精确的定位类型。
  *
  * @param <E>  实体
  * @param <ID> 实体 ID
  * @author : gengwei.zheng
- * @date : 2023/2/26 19:56
+ * @date : 2020/2/29 15:28
  */
-public abstract class AbstractMongoController<E extends AbstractAuditEntity, ID extends Serializable> extends AbstractEntityWriteAndPageController<E, ID, BaseMongoService<E, ID>> {
+public abstract class AbstractJpaEntityWriteableController<E extends BaseEntity, ID extends Serializable> extends AbstractEntityWriteAndPageController<E, ID, BaseJpaWriteableService<E, ID>> {
 
 }

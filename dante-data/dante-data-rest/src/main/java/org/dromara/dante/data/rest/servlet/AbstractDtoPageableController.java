@@ -35,11 +35,13 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.apache.commons.lang3.ArrayUtils;
 import org.dromara.dante.core.constant.SystemConstants;
+import org.dromara.dante.core.domain.BaseDomain;
 import org.dromara.dante.core.domain.BaseEntity;
 import org.dromara.dante.core.domain.Result;
-import org.dromara.dante.data.commons.service.BasePageService;
+import org.dromara.dante.data.commons.service.BasePageableService;
 import org.dromara.dante.web.annotation.AccessLimited;
 import org.dromara.dante.web.definition.dto.Pager;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
@@ -49,12 +51,11 @@ import java.io.Serializable;
 import java.util.Map;
 
 /**
- * <p>Description: 通用只读接口定义 </p>
- * <p>
- * JPA 支持视图（View） 的映射，视图无法进行增、删、改操作，所以将度操作单独提取出来，以支持视图同时避免增、删、改误操作
+ * <p>Description: 支持 {@link Page} 类型分页的基础 Controller  “读” 抽象定义 </p>
  * <p>
  * 如果继承该类将会自动创建相关接口并生成权限数据，所以当前仅提供基础分页接口，以避免生成不必要的接口。
  *
+ * @param <O>  响应结果实体
  * @param <E>  实体
  * @param <ID> 实体 ID
  * @param <S>  Service
@@ -62,23 +63,21 @@ import java.util.Map;
  * @date : 2025/3/29 23:16
  */
 @SecurityRequirement(name = SystemConstants.OPEN_API_SECURITY_SCHEME_BEARER_NAME)
-public abstract class AbstractReadableController<E extends BaseEntity, ID extends Serializable, S extends BasePageService<E, ID>> implements PageController<E, ID, S> {
+public abstract class AbstractDtoPageableController<O extends BaseDomain, E extends BaseEntity, ID extends Serializable, S extends BasePageableService<E, ID>> implements DtoPageableController<O, E, ID, S> {
 
     @AccessLimited
-    @Operation(summary = "分页查询数据", description = "通过pageNumber和pageSize获取分页数据",
-            responses = {
-                    @ApiResponse(description = "单位列表", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = Map.class)))
-            })
+    @Operation(summary = "分页查询数据", description = "通过 pageNumber 和 pageSize 获取分页数据",
+            responses = {@ApiResponse(description = "单位列表", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = Map.class)))})
     @Parameters({
-            @Parameter(name = "pager", required = true, in = ParameterIn.QUERY, description = "分页Bo对象", schema = @Schema(implementation = Pager.class))
+            @Parameter(name = "pager", required = true, in = ParameterIn.QUERY, description = "分页 Bo 对象", schema = @Schema(implementation = Pager.class))
     })
     @GetMapping
     public Result<Map<String, Object>> findByPage(@Validated Pager pager) {
         if (ArrayUtils.isNotEmpty(pager.getProperties())) {
             Sort.Direction direction = Sort.Direction.valueOf(pager.getDirection());
-            return PageController.super.findByPage(pager.getPageNumber(), pager.getPageSize(), direction, pager.getProperties());
+            return DtoPageableController.super.findByPage(pager.getPageNumber(), pager.getPageSize(), direction, pager.getProperties());
         } else {
-            return PageController.super.findByPage(pager.getPageNumber(), pager.getPageSize());
+            return DtoPageableController.super.findByPage(pager.getPageNumber(), pager.getPageSize());
         }
     }
 }

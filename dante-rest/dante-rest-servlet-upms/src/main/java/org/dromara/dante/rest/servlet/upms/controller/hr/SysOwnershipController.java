@@ -27,7 +27,7 @@ package org.dromara.dante.rest.servlet.upms.controller.hr;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.dromara.dante.data.jpa.service.BaseJpaWriteableService;
-import org.dromara.dante.data.rest.servlet.AbstractJpaWriteableController;
+import org.dromara.dante.data.rest.servlet.AbstractJpaEntityWriteableController;
 import org.dromara.dante.logic.upms.entity.hr.SysOwnership;
 import org.dromara.dante.logic.upms.service.hr.SysOwnershipService;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,7 +42,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/hr/ownership")
 @Tag(name = "人事归属管理接口")
-public class SysOwnershipController extends AbstractJpaWriteableController<SysOwnership, String> {
+public class SysOwnershipController extends AbstractJpaEntityWriteableController<SysOwnership, String> {
 
     private final SysOwnershipService sysOwnershipService;
 

@@ -32,7 +32,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.tags.Tags;
 import org.dromara.dante.core.domain.Result;
 import org.dromara.dante.data.jpa.service.BaseJpaWriteableService;
-import org.dromara.dante.data.rest.servlet.AbstractJpaWriteableController;
+import org.dromara.dante.data.rest.servlet.AbstractJpaEntityWriteableController;
 import org.dromara.dante.logic.identity.entity.OAuth2Device;
 import org.dromara.dante.logic.identity.service.OAuth2DeviceService;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -53,7 +53,7 @@ import org.springframework.web.bind.annotation.RestController;
         @Tag(name = "物联网管理接口"),
         @Tag(name = "物联网设备接口")
 })
-public class OAuth2DeviceController extends AbstractJpaWriteableController<OAuth2Device, String> {
+public class OAuth2DeviceController extends AbstractJpaEntityWriteableController<OAuth2Device, String> {
 
     private final OAuth2DeviceService deviceService;
 

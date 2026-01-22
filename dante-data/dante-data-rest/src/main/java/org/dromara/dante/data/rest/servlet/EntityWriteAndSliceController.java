@@ -27,49 +27,45 @@ package org.dromara.dante.data.rest.servlet;
 
 import org.dromara.dante.core.domain.BaseEntity;
 import org.dromara.dante.core.domain.Result;
-import org.dromara.dante.data.commons.service.BasePageService;
+import org.dromara.dante.data.commons.service.BaseWriteAndSliceService;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Slice;
 
 import java.io.Serializable;
-import java.util.Map;
 
 /**
- * <p>Description: {@link Page} 类型分页基础 Controller </p>
+ * <p>Description: 基于 {@link Page} 类型分页的与 Service 绑定 Controller 定义 </p>
  * <p>
- * 多定义一层接口，用于区分 {@link Page} 类型。
+ * 请求参数实体和响应结果实体均是直接使用 Spring Data 实体定义，并以 {@link Slice} 类型为分页的基础 Controller 定义
  *
  * @param <E>  实体
  * @param <ID> 实体 ID
  * @param <S>  Service
  * @author : gengwei.zheng
- * @date : 2025/3/30 17:21
+ * @date : 2025/3/29 23:02
  */
-public interface PageController<E extends BaseEntity, ID extends Serializable, S extends BasePageService<E, ID>> extends BindingController<E, ID, S> {
+public interface EntityWriteAndSliceController<E extends BaseEntity, ID extends Serializable, S extends BaseWriteAndSliceService<E, ID>> extends EntitySliceableController<E, ID, S> {
 
     /**
-     * 查询分页数据
+     * 保存或更新实体
      *
-     * @param pageNumber 当前页码，起始页码 0
-     * @param pageSize   每页显示数据条数
-     * @return 包装成 {@link Result} 的查询结果
+     * @param domain 实体参数
+     * @return 用 Result 包装的实体
      */
-    default Result<Map<String, Object>> findByPage(Integer pageNumber, Integer pageSize) {
-        Page<E> data = getService().findByPage(pageNumber, pageSize);
-        return resultFromPage(data);
+    default Result<E> save(E domain) {
+        E savedDomain = getService().save(domain);
+        return result(savedDomain);
     }
 
     /**
-     * 查询分页数据
+     * 删除数据
      *
-     * @param pageNumber 当前页码, 起始页码 0
-     * @param pageSize   每页显示的数据条数
-     * @param direction  排序方向 {@link Sort.Direction}
-     * @param properties 需要排序的字段
-     * @return 包装成 {@link Result} 的 {@link Map} 类型查询结果
+     * @param id 实体 ID
+     * @return 包装成 {@link Result} 的 String 类型查询结果。JPA 删除操作没有返回值，所以无法判断操作成功与否。
      */
-    default Result<Map<String, Object>> findByPage(Integer pageNumber, Integer pageSize, Sort.Direction direction, String... properties) {
-        Page<E> data = getService().findByPage(pageNumber, pageSize, direction, properties);
-        return resultFromPage(data);
+    default Result<String> delete(ID id) {
+        Result<String> result = result(String.valueOf(id));
+        getService().deleteById(id);
+        return result;
     }
 }

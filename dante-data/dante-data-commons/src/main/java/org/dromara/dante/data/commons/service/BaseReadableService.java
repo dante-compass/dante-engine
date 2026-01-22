@@ -33,11 +33,14 @@ import java.util.Optional;
 
 /**
  * <p>Description: 基于 Spring Data 生态的核心 Service 定义 </p>
+ * <p>
+ * 该接口定义适配 Spring Data 生态所有组件的通用“读”操作，即所有 Spring Data 组件均支持的“读”操作，以便于支持 Spring Data 不同类型数据源的切换。
+ * 将“读”操作单独提取出来，主要是为了解决 JPA 对视图（View）的安全性操作。以避免对视图（View）的增、删、改操作
  *
  * @author : gengwei.zheng
  * @date : 2025/3/29 16:01
  */
-public interface BaseService<E extends BaseEntity, ID extends Serializable> {
+public interface BaseReadableService<E extends BaseEntity, ID extends Serializable> {
 
     /**
      * 查询全部
@@ -72,73 +75,10 @@ public interface BaseService<E extends BaseEntity, ID extends Serializable> {
     /**
      * 数据是否存在
      *
-     * @param id 数据ID
+     * @param id 数据 ID
      * @return true 存在，false 不存在
      */
     default boolean existsById(ID id) {
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * 保存或更新数据
-     *
-     * @param domain 对应的实体
-     * @return 保存后的实体
-     */
-    default E save(E domain) {
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * 批量保存数据
-     *
-     * @param entities 数据实体 {@link Iterable}
-     * @return 保存后的实体集合 {@link List}
-     */
-    default List<E> saveAll(Iterable<E> entities) {
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * 删除实体对应的数据
-     *
-     * @param domain 数据对象实体
-     */
-    default void delete(E domain) {
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * 根据 ID 删除
-     *
-     * @param id ID
-     */
-    default void deleteById(ID id) {
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * 清空全部数据
-     */
-    default void deleteAll() {
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * 批量删除指定的数据
-     *
-     * @param entities 数据实体 {@link Iterable}
-     */
-    default void deleteAll(Iterable<E> entities) {
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * 根据指定的 ID 批量删除数据。
-     *
-     * @param ids {@link Iterable}
-     */
-    default void deleteAllById(Iterable<? extends ID> ids) {
         throw new UnsupportedOperationException();
     }
 }

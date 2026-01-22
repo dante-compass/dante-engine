@@ -35,7 +35,7 @@ import io.swagger.v3.oas.annotations.tags.Tags;
 import jakarta.validation.constraints.NotBlank;
 import org.dromara.dante.core.domain.Result;
 import org.dromara.dante.data.jpa.service.BaseJpaWriteableService;
-import org.dromara.dante.data.rest.servlet.AbstractJpaWriteableController;
+import org.dromara.dante.data.rest.servlet.AbstractJpaEntityWriteableController;
 import org.dromara.dante.logic.upms.entity.security.SysDefaultRole;
 import org.dromara.dante.logic.upms.service.security.SysDefaultRoleService;
 import org.springframework.http.MediaType;
@@ -56,7 +56,7 @@ import org.springframework.web.bind.annotation.RestController;
         @Tag(name = "用户安全管理接口"),
         @Tag(name = "系统默认角色管理接口")
 })
-public class SysDefaultRoleController extends AbstractJpaWriteableController<SysDefaultRole, String> {
+public class SysDefaultRoleController extends AbstractJpaEntityWriteableController<SysDefaultRole, String> {
 
     private final SysDefaultRoleService sysDefaultRoleService;
 

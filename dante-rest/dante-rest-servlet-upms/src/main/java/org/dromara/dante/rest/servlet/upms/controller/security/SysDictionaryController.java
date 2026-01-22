@@ -38,7 +38,7 @@ import jakarta.validation.constraints.NotNull;
 import org.apache.commons.collections4.MapUtils;
 import org.dromara.dante.core.domain.Result;
 import org.dromara.dante.data.jpa.service.BaseJpaWriteableService;
-import org.dromara.dante.data.rest.servlet.AbstractJpaWriteableController;
+import org.dromara.dante.data.rest.servlet.AbstractJpaEntityWriteableController;
 import org.dromara.dante.logic.upms.entity.security.SysDictionary;
 import org.dromara.dante.logic.upms.service.security.SysDictionaryService;
 import org.dromara.dante.web.annotation.AccessLimited;
@@ -62,7 +62,7 @@ import java.util.Set;
         @Tag(name = "用户安全管理接口"),
         @Tag(name = "数据字典管理接口")
 })
-public class SysDictionaryController extends AbstractJpaWriteableController<SysDictionary, String> {
+public class SysDictionaryController extends AbstractJpaEntityWriteableController<SysDictionary, String> {
 
     private final SysDictionaryService sysDictionaryService;
 

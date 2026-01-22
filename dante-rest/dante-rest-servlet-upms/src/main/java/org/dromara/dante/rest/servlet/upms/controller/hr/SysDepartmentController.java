@@ -36,7 +36,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.constraints.NotNull;
 import org.dromara.dante.core.domain.Result;
 import org.dromara.dante.data.jpa.service.BaseJpaWriteableService;
-import org.dromara.dante.data.rest.servlet.AbstractJpaWriteableController;
+import org.dromara.dante.data.rest.servlet.AbstractJpaEntityWriteableController;
 import org.dromara.dante.logic.upms.converter.SysDepartmentToTreeNodeConverter;
 import org.dromara.dante.logic.upms.entity.hr.SysDepartment;
 import org.dromara.dante.logic.upms.service.hr.SysDepartmentService;
@@ -61,7 +61,7 @@ import java.util.Map;
 @RequestMapping("/hr/department")
 @Tag(name = "部门管理接口")
 @Validated
-public class SysDepartmentController extends AbstractJpaWriteableController<SysDepartment, String> {
+public class SysDepartmentController extends AbstractJpaEntityWriteableController<SysDepartment, String> {
 
     private final SysDepartmentService sysDepartmentService;
 

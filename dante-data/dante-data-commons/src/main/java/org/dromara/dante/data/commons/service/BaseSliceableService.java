@@ -35,11 +35,14 @@ import java.io.Serializable;
 
 /**
  * <p>Description: Spring Data 生态支持 Slice 方式分页的基础 Service </p>
+ * <p>
+ * 该接口定义支持 {@link Slice} 方式分页的 Spring Data 组件通用操作。
+ * 目前用到的有 Cassandra 支持 {@link Slice} 方式分页
  *
  * @author : gengwei.zheng
  * @date : 2025/3/29 18:30
  */
-public interface BaseSliceService<E extends BaseEntity, ID extends Serializable> extends BaseService<E, ID> {
+public interface BaseSliceableService<E extends BaseEntity, ID extends Serializable> extends BaseReadableService<E, ID> {
 
     /**
      * 分页查询
