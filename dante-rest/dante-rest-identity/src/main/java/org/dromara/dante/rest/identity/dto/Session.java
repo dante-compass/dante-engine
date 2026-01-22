@@ -23,33 +23,35 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.oauth2.authentication.autoconfigure;
+package org.dromara.dante.rest.identity.dto;
 
-import jakarta.annotation.PostConstruct;
-import org.dromara.dante.logic.identity.config.LogicIdentityConfiguration;
-import org.dromara.dante.oauth2.extension.config.OAuth2ExtensionConfiguration;
-import org.dromara.dante.rest.identity.config.RestIdentityConfiguration;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.boot.autoconfigure.AutoConfiguration;
-import org.springframework.context.annotation.Import;
+import com.google.common.base.MoreObjects;
 
 /**
- * <p>Description: OAuth2 身份认证自动配置 </p>
+ * <p>Description: Session响应实体 </p>
  *
  * @author : gengwei.zheng
- * @date : 2024/3/15 22:32
+ * @date : 2021/10/2 11:42
  */
-@AutoConfiguration(after = OAuth2AuthenticationAutoConfiguration.class)
-@Import({
-        OAuth2ExtensionConfiguration.class, LogicIdentityConfiguration.class, RestIdentityConfiguration.class
-})
-public class OAuth2IdentityAutoConfiguration {
+public class Session extends SessionExchange {
 
-    private static final Logger log = LoggerFactory.getLogger(OAuth2IdentityAutoConfiguration.class);
+    /**
+     * 本系统授权码模式校验参数
+     */
+    private String state;
 
-    @PostConstruct
-    public void postConstruct() {
-        log.info("[Herodotus] |- Auto [OAuth2 Identity] Configure.");
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    @Override
+    public String toString() {
+        return MoreObjects.toStringHelper(this)
+                .add("state", state)
+                .toString();
     }
 }

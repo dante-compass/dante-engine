@@ -162,9 +162,9 @@ dante-engine
 ├    └── dante-oauth2-persistence-jpa -- 以 JPA 作为 SAS 核心数据访问层代码实现模块
 ├── dante-rest -- 系统内置功能 REST 接口模块
 ├    ├── dante-rest-oss -- 对象存储功能 REST 接口模块
-├    ├── dante-rest-servlet-identity -- 身份认证功能 Servlet 环境 REST 接口模块
-├    ├── dante-rest-servlet-message -- 消息功能 Servlet 环境 REST 接口模块
-├    └── dante-rest-servlet-upms -- UPMS 功能 Servlet 环境 REST 接口模块
+├    ├── dante-rest-identity -- 身份认证功能 REST 接口模块
+├    ├── dante-rest-message -- 消息功能 REST 接口模块
+├    └── dante-rest-upms -- UPMS 功能 REST 接口模块
 ├── dante-starter -- Starters
 ├    ├── cache-spring-boot-starter -- 缓存自动配置 Starter
 ├    ├── captcha-spring-boot-starter -- 验证码自动配置 Starter

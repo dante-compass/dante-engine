@@ -23,33 +23,51 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.oauth2.authentication.autoconfigure;
+package org.dromara.dante.rest.identity.dto;
 
-import jakarta.annotation.PostConstruct;
-import org.dromara.dante.logic.identity.config.LogicIdentityConfiguration;
-import org.dromara.dante.oauth2.extension.config.OAuth2ExtensionConfiguration;
-import org.dromara.dante.rest.identity.config.RestIdentityConfiguration;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.boot.autoconfigure.AutoConfiguration;
-import org.springframework.context.annotation.Import;
+import com.google.common.base.MoreObjects;
+import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.NotNull;
+
+import java.util.HashSet;
+import java.util.Set;
 
 /**
- * <p>Description: OAuth2 身份认证自动配置 </p>
+ * <p>Description: OAuth2 Scope Dto </p>
  *
  * @author : gengwei.zheng
- * @date : 2024/3/15 22:32
+ * @date : 2022/4/1 13:55
  */
-@AutoConfiguration(after = OAuth2AuthenticationAutoConfiguration.class)
-@Import({
-        OAuth2ExtensionConfiguration.class, LogicIdentityConfiguration.class, RestIdentityConfiguration.class
-})
-public class OAuth2IdentityAutoConfiguration {
+@Schema(name = "OAuth2 范围请求 Dto")
+public class OAuth2ScopeDto {
 
-    private static final Logger log = LoggerFactory.getLogger(OAuth2IdentityAutoConfiguration.class);
+    @Schema(name = "范围ID")
+    @NotNull(message = "范围ID不能为空")
+    private String scopeId;
 
-    @PostConstruct
-    public void postConstruct() {
-        log.info("[Herodotus] |- Auto [OAuth2 Identity] Configure.");
+    @Schema(name = "范围权限列表")
+    private Set<OAuth2PermissionDto> permissions = new HashSet<>();
+
+    public String getScopeId() {
+        return scopeId;
+    }
+
+    public void setScopeId(String scopeId) {
+        this.scopeId = scopeId;
+    }
+
+    public Set<OAuth2PermissionDto> getPermissions() {
+        return permissions;
+    }
+
+    public void setPermissions(Set<OAuth2PermissionDto> permissions) {
+        this.permissions = permissions;
+    }
+
+    @Override
+    public String toString() {
+        return MoreObjects.toStringHelper(this)
+                .add("scopeId", scopeId)
+                .toString();
     }
 }

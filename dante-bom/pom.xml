@@ -353,17 +353,17 @@
             </dependency>
             <dependency>
                 <groupId>org.dromara.dante</groupId>
-                <artifactId>dante-rest-servlet-identity</artifactId>
+                <artifactId>dante-rest-identity</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.dromara.dante</groupId>
-                <artifactId>dante-rest-servlet-message</artifactId>
+                <artifactId>dante-rest-message</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.dromara.dante</groupId>
-                <artifactId>dante-rest-servlet-upms</artifactId>
+                <artifactId>dante-rest-upms</artifactId>
                 <version>${project.version}</version>
             </dependency>
 

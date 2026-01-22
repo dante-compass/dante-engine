@@ -23,33 +23,51 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.oauth2.authentication.autoconfigure;
+package org.dromara.dante.rest.identity.dto;
 
-import jakarta.annotation.PostConstruct;
-import org.dromara.dante.logic.identity.config.LogicIdentityConfiguration;
-import org.dromara.dante.oauth2.extension.config.OAuth2ExtensionConfiguration;
-import org.dromara.dante.rest.identity.config.RestIdentityConfiguration;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.boot.autoconfigure.AutoConfiguration;
-import org.springframework.context.annotation.Import;
+import com.google.common.base.MoreObjects;
+import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.NotBlank;
+import org.dromara.dante.core.domain.AbstractDto;
 
 /**
- * <p>Description: OAuth2 身份认证自动配置 </p>
+ * <p>Description: 机要传递实体 </p>
  *
  * @author : gengwei.zheng
- * @date : 2024/3/15 22:32
+ * @date : 2021/10/2 16:29
  */
-@AutoConfiguration(after = OAuth2AuthenticationAutoConfiguration.class)
-@Import({
-        OAuth2ExtensionConfiguration.class, LogicIdentityConfiguration.class, RestIdentityConfiguration.class
-})
-public class OAuth2IdentityAutoConfiguration {
+@Schema(name = "机要传递实体")
+public class SessionExchange extends AbstractDto {
 
-    private static final Logger log = LoggerFactory.getLogger(OAuth2IdentityAutoConfiguration.class);
+    @NotBlank(message = "confidential参数不能为空")
+    @Schema(name = "用后端RSA/SM2 PublicKey加密的前端RSA/SM2 PublicKey")
+    private String publicKey;
 
-    @PostConstruct
-    public void postConstruct() {
-        log.info("[Herodotus] |- Auto [OAuth2 Identity] Configure.");
+    @NotBlank(message = "Session Key不能为空")
+    @Schema(name = "未登录前端身份标识")
+    private String sessionId;
+
+    public String getPublicKey() {
+        return publicKey;
+    }
+
+    public void setPublicKey(String publicKey) {
+        this.publicKey = publicKey;
+    }
+
+    public String getSessionId() {
+        return sessionId;
+    }
+
+    public void setSessionId(String sessionId) {
+        this.sessionId = sessionId;
+    }
+
+    @Override
+    public String toString() {
+        return MoreObjects.toStringHelper(this)
+                .add("publicKey", publicKey)
+                .add("sessionId", sessionId)
+                .toString();
     }
 }

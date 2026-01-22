@@ -52,7 +52,7 @@
 
         <dependency>
             <groupId>org.dromara.dante</groupId>
-            <artifactId>dante-rest-servlet-message</artifactId>
+            <artifactId>dante-rest-message</artifactId>
         </dependency>
     </dependencies>
 

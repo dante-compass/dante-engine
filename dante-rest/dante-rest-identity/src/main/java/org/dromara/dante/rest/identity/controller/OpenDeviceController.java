@@ -23,33 +23,40 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.oauth2.authentication.autoconfigure;
+package org.dromara.dante.rest.identity.controller;
 
-import jakarta.annotation.PostConstruct;
-import org.dromara.dante.logic.identity.config.LogicIdentityConfiguration;
-import org.dromara.dante.oauth2.extension.config.OAuth2ExtensionConfiguration;
-import org.dromara.dante.rest.identity.config.RestIdentityConfiguration;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.boot.autoconfigure.AutoConfiguration;
-import org.springframework.context.annotation.Import;
+import org.apache.commons.lang3.StringUtils;
+import org.dromara.dante.core.constant.SymbolConstants;
+import org.dromara.dante.core.constant.SystemConstants;
+import org.springframework.security.oauth2.core.endpoint.OAuth2ParameterNames;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
- * <p>Description: OAuth2 身份认证自动配置 </p>
+ * <p>Description: 设备激活 </p>
  *
  * @author : gengwei.zheng
- * @date : 2024/3/15 22:32
+ * @date : 2023/3/24 17:09
  */
-@AutoConfiguration(after = OAuth2AuthenticationAutoConfiguration.class)
-@Import({
-        OAuth2ExtensionConfiguration.class, LogicIdentityConfiguration.class, RestIdentityConfiguration.class
-})
-public class OAuth2IdentityAutoConfiguration {
+@Controller
+public class OpenDeviceController {
 
-    private static final Logger log = LoggerFactory.getLogger(OAuth2IdentityAutoConfiguration.class);
+    @GetMapping(SystemConstants.OAUTH2_DEVICE_ACTIVATION_URI)
+    public String activate(@RequestParam(value = OAuth2ParameterNames.USER_CODE, required = false) String userCode) {
+        if (StringUtils.isNotBlank(userCode)) {
+            return "redirect:" + SystemConstants.OAUTH2_DEVICE_VERIFICATION_ENDPOINT + SymbolConstants.QUESTION + OAuth2ParameterNames.USER_CODE + SymbolConstants.EQUAL + userCode;
+        }
+        return "activation";
+    }
 
-    @PostConstruct
-    public void postConstruct() {
-        log.info("[Herodotus] |- Auto [OAuth2 Identity] Configure.");
+    @GetMapping(value = SystemConstants.OAUTH2_DEVICE_VERIFICATION_SUCCESS_URI)
+    public String activated() {
+        return "activation-allowed";
+    }
+
+    @GetMapping(value = "/", params = "success")
+    public String success() {
+        return "activation-allowed";
     }
 }

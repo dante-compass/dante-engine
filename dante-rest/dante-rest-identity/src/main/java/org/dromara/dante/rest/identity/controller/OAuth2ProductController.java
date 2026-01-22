@@ -23,33 +23,40 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.oauth2.authentication.autoconfigure;
+package org.dromara.dante.rest.identity.controller;
 
-import jakarta.annotation.PostConstruct;
-import org.dromara.dante.logic.identity.config.LogicIdentityConfiguration;
-import org.dromara.dante.oauth2.extension.config.OAuth2ExtensionConfiguration;
-import org.dromara.dante.rest.identity.config.RestIdentityConfiguration;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.boot.autoconfigure.AutoConfiguration;
-import org.springframework.context.annotation.Import;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.tags.Tags;
+import org.dromara.dante.data.jpa.service.BaseJpaWriteableService;
+import org.dromara.dante.data.rest.servlet.AbstractJpaEntityWriteableController;
+import org.dromara.dante.logic.identity.entity.OAuth2Product;
+import org.dromara.dante.logic.identity.service.OAuth2ProductService;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
- * <p>Description: OAuth2 身份认证自动配置 </p>
+ * <p>Description: OAuth2ProductController </p>
  *
  * @author : gengwei.zheng
- * @date : 2024/3/15 22:32
+ * @date : 2023/5/15 16:37
  */
-@AutoConfiguration(after = OAuth2AuthenticationAutoConfiguration.class)
-@Import({
-        OAuth2ExtensionConfiguration.class, LogicIdentityConfiguration.class, RestIdentityConfiguration.class
+@RestController
+@RequestMapping("/authorize/product")
+@Tags({
+        @Tag(name = "OAuth2 认证服务接口"),
+        @Tag(name = "物联网管理接口"),
+        @Tag(name = "物联网产品接口")
 })
-public class OAuth2IdentityAutoConfiguration {
+public class OAuth2ProductController extends AbstractJpaEntityWriteableController<OAuth2Product, String> {
 
-    private static final Logger log = LoggerFactory.getLogger(OAuth2IdentityAutoConfiguration.class);
+    private final OAuth2ProductService iotProductService;
 
-    @PostConstruct
-    public void postConstruct() {
-        log.info("[Herodotus] |- Auto [OAuth2 Identity] Configure.");
+    public OAuth2ProductController(OAuth2ProductService iotProductService) {
+        this.iotProductService = iotProductService;
+    }
+
+    @Override
+    public BaseJpaWriteableService<OAuth2Product, String> getService() {
+        return iotProductService;
     }
 }

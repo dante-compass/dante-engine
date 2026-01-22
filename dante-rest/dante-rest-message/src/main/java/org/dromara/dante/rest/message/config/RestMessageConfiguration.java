@@ -23,33 +23,32 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.oauth2.authentication.autoconfigure;
+package org.dromara.dante.rest.message.config;
 
 import jakarta.annotation.PostConstruct;
-import org.dromara.dante.logic.identity.config.LogicIdentityConfiguration;
-import org.dromara.dante.oauth2.extension.config.OAuth2ExtensionConfiguration;
-import org.dromara.dante.rest.identity.config.RestIdentityConfiguration;
+import org.dromara.dante.logic.message.annotation.EnableHerodotusLogicMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.autoconfigure.AutoConfiguration;
-import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 
 /**
- * <p>Description: OAuth2 身份认证自动配置 </p>
+ * <p>Description: Servlet 环境消息 Rest 模块配置 </p>
  *
  * @author : gengwei.zheng
- * @date : 2024/3/15 22:32
+ * @date : 2024/2/19 16:51
  */
-@AutoConfiguration(after = OAuth2AuthenticationAutoConfiguration.class)
-@Import({
-        OAuth2ExtensionConfiguration.class, LogicIdentityConfiguration.class, RestIdentityConfiguration.class
+@Configuration(proxyBeanMethods = false)
+@EnableHerodotusLogicMessage
+@ComponentScan(basePackages = {
+        "org.dromara.dante.rest.message.controller",
 })
-public class OAuth2IdentityAutoConfiguration {
+public class RestMessageConfiguration {
 
-    private static final Logger log = LoggerFactory.getLogger(OAuth2IdentityAutoConfiguration.class);
+    private static final Logger log = LoggerFactory.getLogger(RestMessageConfiguration.class);
 
     @PostConstruct
     public void postConstruct() {
-        log.info("[Herodotus] |- Auto [OAuth2 Identity] Configure.");
+        log.debug("[Herodotus] |- Module [Rest Message] Configure.");
     }
 }

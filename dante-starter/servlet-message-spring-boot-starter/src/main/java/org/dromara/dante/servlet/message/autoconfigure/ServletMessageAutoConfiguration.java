@@ -29,7 +29,7 @@ import jakarta.annotation.PostConstruct;
 import org.dromara.dante.core.function.ErrorCodeMapperBuilderCustomizer;
 import org.dromara.dante.core.function.SecurityMatcherBuilderCustomizer;
 import org.dromara.dante.message.servlet.websocket.annotation.EnableHerodotusServletWebSocket;
-import org.dromara.dante.rest.servlet.message.annotation.EnableHerodotusRestServletMessage;
+import org.dromara.dante.rest.message.annotation.EnableHerodotusRestMessage;
 import org.dromara.dante.servlet.message.autoconfigure.customizer.MessageErrorCodeMapperBuilderCustomizer;
 import org.dromara.dante.servlet.message.autoconfigure.customizer.WebSocketSecurityMatcherBuilderCustomizer;
 import org.slf4j.Logger;
@@ -45,7 +45,7 @@ import org.springframework.context.annotation.Bean;
  */
 @AutoConfiguration
 @EnableHerodotusServletWebSocket
-@EnableHerodotusRestServletMessage
+@EnableHerodotusRestMessage
 public class ServletMessageAutoConfiguration {
 
     private static final Logger log = LoggerFactory.getLogger(ServletMessageAutoConfiguration.class);

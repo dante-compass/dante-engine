@@ -63,7 +63,7 @@
 
         <dependency>
             <groupId>org.dromara.dante</groupId>
-            <artifactId>dante-rest-servlet-upms</artifactId>
+            <artifactId>dante-rest-upms</artifactId>
             <optional>true</optional>
         </dependency>
     </dependencies>

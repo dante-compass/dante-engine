@@ -23,33 +23,45 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.oauth2.authentication.autoconfigure;
+package org.dromara.dante.rest.identity.config;
 
 import jakarta.annotation.PostConstruct;
+import org.dromara.dante.core.function.SecurityMatcherBuilderCustomizer;
 import org.dromara.dante.logic.identity.config.LogicIdentityConfiguration;
-import org.dromara.dante.oauth2.extension.config.OAuth2ExtensionConfiguration;
-import org.dromara.dante.rest.identity.config.RestIdentityConfiguration;
+import org.dromara.dante.oauth2.commons.properties.OAuth2AuthenticationProperties;
+import org.dromara.dante.rest.identity.customizer.IdentitySecurityMatcherBuilderCustomizer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.autoconfigure.AutoConfiguration;
-import org.springframework.context.annotation.Import;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 
 /**
- * <p>Description: OAuth2 身份认证自动配置 </p>
+ * <p>Description: Servlet 环境身份认证管理 Rest 模块配置 </p>
  *
  * @author : gengwei.zheng
- * @date : 2024/3/15 22:32
+ * @date : 2024/3/16 21:48
  */
-@AutoConfiguration(after = OAuth2AuthenticationAutoConfiguration.class)
-@Import({
-        OAuth2ExtensionConfiguration.class, LogicIdentityConfiguration.class, RestIdentityConfiguration.class
+@Configuration(proxyBeanMethods = false)
+@ConditionalOnClass(LogicIdentityConfiguration.class)
+@ComponentScan(basePackages = {
+        "org.dromara.dante.rest.identity.service",
+        "org.dromara.dante.rest.identity.controller",
 })
-public class OAuth2IdentityAutoConfiguration {
+public class RestIdentityConfiguration {
 
-    private static final Logger log = LoggerFactory.getLogger(OAuth2IdentityAutoConfiguration.class);
+    private static final Logger log = LoggerFactory.getLogger(RestIdentityConfiguration.class);
 
     @PostConstruct
     public void postConstruct() {
-        log.info("[Herodotus] |- Auto [OAuth2 Identity] Configure.");
+        log.debug("[Herodotus] |- Module [Rest Identity] Configure.");
+    }
+
+    @Bean
+    public SecurityMatcherBuilderCustomizer identitySecurityMatcherBuilderCustomizer(OAuth2AuthenticationProperties authenticationProperties) {
+        IdentitySecurityMatcherBuilderCustomizer customizer = new IdentitySecurityMatcherBuilderCustomizer(authenticationProperties);
+        log.debug("[Herodotus] |- Strategy [Identity Security Matcher Builder Customizer] Configure.");
+        return customizer;
     }
 }
