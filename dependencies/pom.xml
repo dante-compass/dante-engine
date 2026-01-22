@@ -31,13 +31,13 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.5.9</version>
+        <version>3.5.10</version>
         <relativePath/>
     </parent>
 
     <groupId>cn.herodotus.engine</groupId>
     <artifactId>dependencies</artifactId>
-    <version>3.5.9.0</version>
+    <version>3.5.10.0</version>
     <name>Dante Engine Dependencies</name>
     <packaging>pom</packaging>
 
@@ -88,7 +88,7 @@
         <maven-archetype-plugin.version>3.4.1</maven-archetype-plugin.version>
         <maven-gpg-plugin.version>3.2.8</maven-gpg-plugin.version>
 
-        <alipay-sdk-java.version>4.40.626.ALL</alipay-sdk-java.version>
+        <alipay-sdk-java.version>4.40.630.ALL</alipay-sdk-java.version>
         <aliyun-sdk-oss.version>3.18.4</aliyun-sdk-oss.version>
         <animated-gif-lib.version>1.4</animated-gif-lib.version>
         <antisamy.version>1.7.8</antisamy.version>
@@ -122,14 +122,14 @@
         <skywalking.version>9.5.0</skywalking.version>
         <sms4j-spring-boot-starter.version>3.3.5</sms4j-spring-boot-starter.version>
         <springdoc.version>2.8.15</springdoc.version>
-        <spring-boot-dependencies.version>3.5.9</spring-boot-dependencies.version>
+        <spring-boot-dependencies.version>3.5.10</spring-boot-dependencies.version>
         <spring-boot-admin-dependencies.version>3.5.6</spring-boot-admin-dependencies.version>
         <spring-cloud-alibaba-dependencies.version>2025.0.0.0</spring-cloud-alibaba-dependencies.version>
         <spring-cloud-dependencies.version>2025.0.1</spring-cloud-dependencies.version>
         <spring-cloud-tencent-dependencies.version>2.1.0.3-2024.0.2</spring-cloud-tencent-dependencies.version>
         <sqlite-jdbc.version>3.51.1.0</sqlite-jdbc.version>
         <transmittable-thread-local.version>2.14.5</transmittable-thread-local.version>
-        <weixin-java.version>4.8.0-20260116.172906</weixin-java.version>
+        <weixin-java.version>4.8.0-20260120.134009</weixin-java.version>
         <zxing.version>3.5.4</zxing.version>
 
         <!--Webjars 主要用于内置基于 thymeleaf 的自定义页面-->
@@ -141,7 +141,7 @@
         <sm-crypto-v2.version>1.15.1</sm-crypto-v2.version>
         <sweetalert2.verison>11.26.17</sweetalert2.verison>
         <tabler.version>1.4.0</tabler.version>
-        <vue.version>3.5.26</vue.version>
+        <vue.version>3.5.27</vue.version>
 
         <!--以下为特殊处理, 统一版本处理漏洞等-->
         <checker-qual.version>3.53.0</checker-qual.version>
