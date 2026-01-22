@@ -32,20 +32,20 @@
     <parent>
         <artifactId>dante-engine</artifactId>
         <groupId>org.dromara.dante</groupId>
-        <version>4.0.1.0-M2</version>
+        <version>4.0.2.0-M1</version>
     </parent>
 
     <artifactId>dante-rest</artifactId>
-    <name>dante-rest</name>
+    <name>${project.artifactId}</name>
 
     <packaging>pom</packaging>
 
     <description>Dante Cloud 云原生微服务基座组件库系统内置功能 REST 接口模块分组</description>
 
     <modules>
-        <module>dante-rest-servlet-message</module>
-        <module>dante-rest-servlet-identity</module>
-        <module>dante-rest-servlet-upms</module>
+        <module>dante-rest-message</module>
+        <module>dante-rest-identity</module>
+        <module>dante-rest-upms</module>
         <module>dante-rest-oss</module>
     </modules>
 

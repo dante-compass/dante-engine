@@ -40,6 +40,6 @@ import java.io.Serializable;
  * @author : gengwei.zheng
  * @date : 2023/2/26 19:56
  */
-public abstract class AbstractMongoController<E extends AbstractAuditEntity, ID extends Serializable> extends AbstractWriteableController<E, ID, BaseMongoService<E, ID>> {
+public abstract class AbstractMongoController<E extends AbstractAuditEntity, ID extends Serializable> extends AbstractEntityWriteAndPageController<E, ID, BaseMongoService<E, ID>> {
 
 }

@@ -33,11 +33,11 @@
     <parent>
         <artifactId>dante-oauth2</artifactId>
         <groupId>org.dromara.dante</groupId>
-        <version>4.0.1.0-M2</version>
+        <version>4.0.2.0-M1</version>
     </parent>
 
     <artifactId>dante-oauth2-authentication</artifactId>
-    <name>dante-oauth2-authentication</name>
+    <name>${project.artifactId}</name>
 
     <description>Dante Cloud 云原生微服务基座组件库 Spring Authorization Server 授权服务器核心功能封装模块</description>
 

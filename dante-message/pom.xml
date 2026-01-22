@@ -32,11 +32,11 @@
     <parent>
         <artifactId>dante-engine</artifactId>
         <groupId>org.dromara.dante</groupId>
-        <version>4.0.1.0-M2</version>
+        <version>4.0.2.0-M1</version>
     </parent>
 
     <artifactId>dante-message</artifactId>
-    <name>dante-message</name>
+    <name>${project.artifactId}</name>
 
     <packaging>pom</packaging>
 

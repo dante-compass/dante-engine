@@ -26,7 +26,7 @@
 package org.dromara.dante.data.rest.servlet;
 
 import org.apache.commons.collections4.CollectionUtils;
-import org.dromara.dante.core.domain.BaseEntity;
+import org.dromara.dante.core.domain.BaseDomain;
 import org.dromara.dante.core.domain.Result;
 import org.dromara.dante.web.definition.Controller;
 import org.springframework.data.domain.Page;
@@ -48,10 +48,10 @@ public interface PaginationController extends Controller {
      * 数据分页对象转换为统一响应实体
      *
      * @param pages 分页查询结果 {@link Page}
-     * @param <E>   {@link BaseEntity} 子类型
+     * @param <D>   {@link BaseDomain} 子类型
      * @return {@link Result} Map
      */
-    default <E extends BaseEntity> Result<Map<String, Object>> resultFromPage(Page<E> pages) {
+    default <D extends BaseDomain> Result<Map<String, Object>> resultFromPage(Page<D> pages) {
         if (null == pages) {
             return Result.failure("查询数据失败！");
         }
@@ -67,10 +67,10 @@ public interface PaginationController extends Controller {
      * 数据切片对象转换为统一响应实体
      *
      * @param slices 分页查询结果 {@link Slice}
-     * @param <E>    {@link BaseEntity} 子类型
+     * @param <D>    {@link BaseDomain} 子类型
      * @return {@link Result} Map
      */
-    default <E extends BaseEntity> Result<Map<String, Object>> resultFromSlice(Slice<E> slices) {
+    default <D extends BaseDomain> Result<Map<String, Object>> resultFromSlice(Slice<D> slices) {
         if (null == slices) {
             return Result.failure("查询数据失败！");
         }
@@ -86,10 +86,10 @@ public interface PaginationController extends Controller {
      * Page 对象转换为 Map
      *
      * @param pages 分页查询结果 {@link Page}
-     * @param <E>   {@link BaseEntity} 子类型
+     * @param <D>   {@link BaseDomain} 子类型
      * @return Map
      */
-    default <E extends BaseEntity> Map<String, Object> fromPage(Page<E> pages) {
+    default <D extends BaseDomain> Map<String, Object> fromPage(Page<D> pages) {
         return with(pages.getContent(), pages.getTotalPages(), pages.getTotalElements());
     }
 
@@ -97,10 +97,10 @@ public interface PaginationController extends Controller {
      * Slice 对象转换为 Map
      *
      * @param slices 分页查询结果 {@link Slice}
-     * @param <E>    {@link BaseEntity} 子类型
+     * @param <D>    {@link BaseDomain} 子类型
      * @return Map
      */
-    default <E extends BaseEntity> Map<String, Object> fromSlice(Slice<E> slices) {
+    default <D extends BaseDomain> Map<String, Object> fromSlice(Slice<D> slices) {
         return with(slices.getContent(), slices.hasNext(), slices.hasPrevious());
     }
 }

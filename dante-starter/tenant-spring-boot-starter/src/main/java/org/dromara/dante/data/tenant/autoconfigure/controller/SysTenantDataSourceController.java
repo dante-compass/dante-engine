@@ -36,7 +36,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.tags.Tags;
 import org.dromara.dante.core.domain.Result;
 import org.dromara.dante.data.jpa.service.BaseJpaWriteableService;
-import org.dromara.dante.data.rest.servlet.AbstractJpaWriteableController;
+import org.dromara.dante.data.rest.servlet.AbstractJpaEntityWriteableController;
 import org.dromara.dante.data.tenant.autoconfigure.entity.SysTenantDataSource;
 import org.dromara.dante.data.tenant.autoconfigure.service.SysTenantDataSourceService;
 import org.dromara.dante.web.annotation.AccessLimited;
@@ -58,7 +58,7 @@ import org.springframework.web.bind.annotation.RestController;
         @Tag(name = "系统安全管理接口"),
         @Tag(name = "多租户数据源接口")
 })
-public class SysTenantDataSourceController extends AbstractJpaWriteableController<SysTenantDataSource, String> {
+public class SysTenantDataSourceController extends AbstractJpaEntityWriteableController<SysTenantDataSource, String> {
 
     private final SysTenantDataSourceService sysTenantDataSourceService;
 

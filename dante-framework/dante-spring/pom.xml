@@ -31,11 +31,11 @@
     <parent>
         <groupId>org.dromara.dante</groupId>
         <artifactId>dante-framework</artifactId>
-        <version>4.0.1.0-M2</version>
+        <version>4.0.2.0-M1</version>
     </parent>
 
     <artifactId>dante-spring</artifactId>
-    <name>dante-spring</name>
+    <name>${project.artifactId}</name>
 
     <description>Dante Cloud 云原生微服务基座组件库框架Spring及SpringBoot相关基础模块</description>
 

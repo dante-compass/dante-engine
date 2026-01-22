@@ -26,7 +26,8 @@
 package org.dromara.dante.data.mongodb.service;
 
 import org.dromara.dante.core.domain.BaseEntity;
-import org.dromara.dante.data.commons.service.BasePageService;
+import org.dromara.dante.data.commons.service.BasePageableService;
+import org.dromara.dante.data.commons.service.BaseWriteAndPageService;
 import org.dromara.dante.data.mongodb.repository.BaseMongoRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -42,7 +43,7 @@ import java.util.Optional;
  * @author : gengwei.zheng
  * @date : 2024/12/19 15:26
  */
-public interface BaseMongoService<E extends BaseEntity, ID extends Serializable> extends BasePageService<E, ID> {
+public interface BaseMongoService<E extends BaseEntity, ID extends Serializable> extends BasePageableService<E, ID>, BaseWriteAndPageService<E, ID> {
 
     /**
      * 获取对应的 Mongo Repository

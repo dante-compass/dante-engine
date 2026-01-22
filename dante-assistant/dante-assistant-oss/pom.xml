@@ -31,11 +31,11 @@
     <parent>
         <groupId>org.dromara.dante</groupId>
         <artifactId>dante-assistant</artifactId>
-        <version>4.0.1.0-M2</version>
+        <version>4.0.2.0-M1</version>
     </parent>
 
     <artifactId>dante-assistant-oss</artifactId>
-    <name>dante-assistant-oss</name>
+    <name>${project.artifactId}</name>
 
     <description>Dante Cloud 云原生微服务基座件组件库AWS SDK V2 对象存储辅助功能模块</description>
 

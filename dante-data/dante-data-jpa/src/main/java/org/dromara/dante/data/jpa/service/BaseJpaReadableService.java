@@ -26,7 +26,7 @@
 package org.dromara.dante.data.jpa.service;
 
 import org.dromara.dante.core.domain.BaseEntity;
-import org.dromara.dante.data.commons.service.BasePageService;
+import org.dromara.dante.data.commons.service.BasePageableService;
 import org.dromara.dante.data.jpa.repository.BaseJpaRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -39,17 +39,15 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * <p> Description : 只读Service，可以提供基于视图实体的操作 </p>
- * <p>
- * JPA 支持视图（View） 的映射，视图无法进行增、删、改操作，所以将度操作单独提取出来，以支持视图同时避免增、删、改误操作
+ * <p> Description : JPA “读” 操作基础 Service 定义 </p>
  *
  * @author : gengwei.zheng
  * @date : 2020/2/15 11:56
  */
-public interface BaseJpaReadableService<E extends BaseEntity, ID extends Serializable> extends BasePageService<E, ID> {
+public interface BaseJpaReadableService<E extends BaseEntity, ID extends Serializable> extends BasePageableService<E, ID> {
 
     /**
-     * 获取Repository
+     * 获取 Repository
      *
      * @return {@link BaseJpaRepository}
      */
@@ -77,9 +75,9 @@ public interface BaseJpaReadableService<E extends BaseEntity, ID extends Seriali
     }
 
     /**
-     * 根据ID查询数据
+     * 根据 ID 查询数据
      *
-     * @param id 数据ID
+     * @param id 数据 ID
      * @return 与ID对应的数据，如果不存在则返回空
      */
     @Override
@@ -99,9 +97,19 @@ public interface BaseJpaReadableService<E extends BaseEntity, ID extends Seriali
     }
 
     /**
+     * 查询一个实体
+     *
+     * @param specification {@link Specification}
+     * @return 查询结果 {@link Optional}
+     */
+    default Optional<E> findOne(Specification<E> specification) {
+        return getRepository().findOne(specification);
+    }
+
+    /**
      * 数据是否存在
      *
-     * @param id 数据ID
+     * @param id 数据 ID
      * @return true 存在，false 不存在
      */
     @Override
@@ -187,7 +195,7 @@ public interface BaseJpaReadableService<E extends BaseEntity, ID extends Seriali
      *
      * @param pageNumber 当前页码, 起始页码 0
      * @param pageSize   每页显示的数据条数
-     * @param direction  {@link org.springframework.data.domain.Sort.Direction}
+     * @param direction  {@link Sort.Direction}
      * @return 分页数据
      */
     default Page<E> findByPage(int pageNumber, int pageSize, Sort.Direction direction) {
@@ -195,13 +203,13 @@ public interface BaseJpaReadableService<E extends BaseEntity, ID extends Seriali
     }
 
     /**
-     * 根据ID查询数据
+     * 根据 ID 查询数据
      * <p>
      * 该方法更类似于懒加载，与事务绑定紧密。
      * <p>
      * 参见 <a href="https://springdoc.cn/spring-data-jpa-getreferencebyid-findbyid-methods/">...</a>
      *
-     * @param id 数据ID
+     * @param id 数据 ID
      * @return 与ID对应的数据，如果不存在则返回空
      */
     default E getReferenceById(ID id) {

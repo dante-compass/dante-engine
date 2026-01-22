@@ -31,11 +31,11 @@
     <parent>
         <groupId>org.dromara.dante</groupId>
         <artifactId>dante-starter</artifactId>
-        <version>4.0.1.0-M2</version>
+        <version>4.0.2.0-M1</version>
     </parent>
 
     <artifactId>data-rdbms-spring-boot-starter</artifactId>
-    <name>data-rdbms-spring-boot-starter</name>
+    <name>${project.artifactId}</name>
 
     <description>Dante Cloud 云原生微服务基座组件库关系型数据库数据访问层自动配置 Starter</description>
 

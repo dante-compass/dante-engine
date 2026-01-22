@@ -26,17 +26,18 @@
 package org.dromara.dante.data.jpa.service;
 
 import org.dromara.dante.core.domain.BaseEntity;
+import org.dromara.dante.data.commons.service.BaseWriteAndPageService;
 
 import java.io.Serializable;
 import java.util.List;
 
 /**
- * <p>Description: 可读、可写的Service基础接口 </p>
+ * <p>Description: JPA “读” 操作基础 Service 定义 </p>
  *
  * @author : gengwei.zheng
  * @date : 2021/7/7 16:47
  */
-public interface BaseJpaWriteableService<E extends BaseEntity, ID extends Serializable> extends BaseJpaReadableService<E, ID> {
+public interface BaseJpaWriteableService<E extends BaseEntity, ID extends Serializable> extends BaseJpaReadableService<E, ID>, BaseWriteAndPageService<E, ID> {
 
     /**
      * 保存或更新数据
@@ -109,9 +110,9 @@ public interface BaseJpaWriteableService<E extends BaseEntity, ID extends Serial
     }
 
     /**
-     * 根据ID删除批量全部删除
+     * 根据 ID 删除批量全部删除
      *
-     * @param ids 数据ID
+     * @param ids 数据 ID
      */
     default void deleteAllByIdInBatch(Iterable<ID> ids) {
         getRepository().deleteAllByIdInBatch(ids);

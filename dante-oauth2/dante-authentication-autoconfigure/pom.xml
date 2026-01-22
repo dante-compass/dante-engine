@@ -31,11 +31,11 @@
     <parent>
         <groupId>org.dromara.dante</groupId>
         <artifactId>dante-oauth2</artifactId>
-        <version>4.0.1.0-M2</version>
+        <version>4.0.2.0-M1</version>
     </parent>
 
     <artifactId>dante-authentication-autoconfigure</artifactId>
-    <name>dante-authentication-autoconfigure</name>
+    <name>${project.artifactId}</name>
 
     <description>Dante Cloud 云原生微服务基座组件库 OAuth2 授权服务器基础内容自动配置模块</description>
 
@@ -62,7 +62,7 @@
 
         <dependency>
             <groupId>org.dromara.dante</groupId>
-            <artifactId>dante-rest-servlet-identity</artifactId>
+            <artifactId>dante-rest-identity</artifactId>
         </dependency>
 
         <dependency>

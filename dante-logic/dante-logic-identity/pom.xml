@@ -31,11 +31,11 @@
     <parent>
         <groupId>org.dromara.dante</groupId>
         <artifactId>dante-logic</artifactId>
-        <version>4.0.1.0-M2</version>
+        <version>4.0.2.0-M1</version>
     </parent>
 
     <artifactId>dante-logic-identity</artifactId>
-    <name>dante-logic-identity</name>
+    <name>${project.artifactId}</name>
 
     <description>Dante Cloud 云原生微服务基座组件库身份认证功能业务逻辑模块</description>
 
