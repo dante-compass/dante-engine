@@ -76,7 +76,15 @@
 
         <dependency>
             <groupId>cn.hutool.v7</groupId>
-            <artifactId>hutool-all</artifactId>
+            <artifactId>hutool-http</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.hutool.v7</groupId>
+            <artifactId>hutool-extra</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.hutool.v7</groupId>
+            <artifactId>hutool-crypto</artifactId>
         </dependency>
 
         <dependency>

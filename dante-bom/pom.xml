@@ -243,6 +243,13 @@
                 <artifactId>aws-crt</artifactId>
                 <version>${software.amazon.awssdk.crt.version}</version>
             </dependency>
+            <dependency>
+                <groupId>cn.hutool.v7</groupId>
+                <artifactId>hutool-bom</artifactId>
+                <version>${hutool.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
             <!--Dante Engine-->
             <dependency>
                 <groupId>org.dromara.dante</groupId>
@@ -548,11 +555,6 @@
                 <groupId>com.google.zxing</groupId>
                 <artifactId>core</artifactId>
                 <version>${zxing.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.hutool.v7</groupId>
-                <artifactId>hutool-all</artifactId>
-                <version>${hutool.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.redisson</groupId>

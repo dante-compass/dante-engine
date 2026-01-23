@@ -25,11 +25,11 @@
 
 package org.dromara.dante.spring.utils;
 
-import cn.hutool.v7.json.JSONUtil;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.Strings;
 import org.apache.commons.text.StringEscapeUtils;
 import org.dromara.dante.core.constant.SymbolConstants;
+import org.dromara.dante.core.jackson.JacksonUtils;
 import org.owasp.validator.html.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -80,7 +80,7 @@ public class XssUtils {
             cleanHtml = Strings.CS.removeStart(cleanHtml, SymbolConstants.NEW_LINE);
         }
 
-        if (JSONUtil.isTypeJSON(cleanHtml) && Strings.CS.contains(cleanHtml, SymbolConstants.NEW_LINE)) {
+        if (JacksonUtils.isTypeJSON(cleanHtml) && Strings.CS.contains(cleanHtml, SymbolConstants.NEW_LINE)) {
             // AntiSamy会把“ ”转换 \n。如果出现时间字符串，中间包含空格就会出现错误"
             cleanHtml = cleanHtml.replaceAll(SymbolConstants.NEW_LINE, SymbolConstants.SPACE);
         }

@@ -25,7 +25,10 @@
 
 package org.dromara.dante.core.jackson;
 
+import cn.hutool.v7.core.text.StrUtil;
 import org.apache.commons.lang3.ObjectUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.dromara.dante.core.constant.SymbolConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import tools.jackson.core.JacksonException;
@@ -293,5 +296,17 @@ public class JacksonUtils {
         } else {
             return null;
         }
+    }
+
+    public static boolean isTypeJSON(String str) {
+        return isTypeJSONObject(str) || isTypeJSONArray(str);
+    }
+
+    public static boolean isTypeJSONObject(String str) {
+        return !StringUtils.isBlank(str) && StrUtil.isWrap(StrUtil.trim(str), SymbolConstants.OPEN_CURLY_BRACE, SymbolConstants.CLOSE_CURLY_BRACE);
+    }
+
+    public static boolean isTypeJSONArray(String str) {
+        return !StringUtils.isBlank(str) && StrUtil.isWrap(StrUtil.trim(str), SymbolConstants.OPEN_BRACKET, SymbolConstants.CLOSE_BRACKET);
     }
 }
