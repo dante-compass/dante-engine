@@ -37,9 +37,11 @@ import org.dromara.dante.data.commons.service.BaseWriteAndSliceService;
 import org.dromara.dante.web.annotation.Idempotent;
 import org.springframework.data.domain.Page;
 import org.springframework.http.MediaType;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.io.Serializable;
 
@@ -65,7 +67,7 @@ public abstract class AbstractEntityWriteAndSliceController<E extends BaseEntity
     })
     @PostMapping
     @Override
-    public Result<E> save(E domain) {
+    public Result<E> save(@Validated @RequestBody E domain) {
         return EntityWriteAndSliceController.super.save(domain);
     }
 
