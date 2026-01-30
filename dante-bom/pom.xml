@@ -122,7 +122,7 @@
         <springdoc.version>3.0.1</springdoc.version>
         <spring-boot-dependencies.version>4.0.2</spring-boot-dependencies.version>
         <spring-boot-admin-dependencies.version>4.0.0-M1</spring-boot-admin-dependencies.version>
-        <spring-cloud-dependencies.version>2025.1.0</spring-cloud-dependencies.version>
+        <spring-cloud-dependencies.version>2025.1.1</spring-cloud-dependencies.version>
         <spring-cloud-alibaba-dependencies.version>2025.0.0.0</spring-cloud-alibaba-dependencies.version>
         <spring-cloud-tencent-dependencies.version>2.1.0.3-2024.0.2</spring-cloud-tencent-dependencies.version>
         <transmittable-thread-local.version>2.14.5</transmittable-thread-local.version>
