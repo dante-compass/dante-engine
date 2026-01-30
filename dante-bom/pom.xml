@@ -150,7 +150,7 @@
         <jaxb-impl.version>4.0.6</jaxb-impl.version>
         <javassist.version>3.30.2-GA</javassist.version>
         <joda-time.version>2.14.0</joda-time.version>
-        <objenesis.version>3.4</objenesis.version>
+        <objenesis.version>3.5</objenesis.version>
         <!--sms4j 依赖 hutool 5，但更新频率低，在此进行统一升级和版本控制-->
         <hutool5.version>5.8.43</hutool5.version>
         <!--redisson 依赖 Kryo 版本为 5.6.2，去除版本控制后会变成 4.0.3-->
