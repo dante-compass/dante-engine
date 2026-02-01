@@ -27,7 +27,7 @@ package org.dromara.dante.assistant.oss.converter.result;
 
 import cn.hutool.v7.core.date.DateFormatPool;
 import cn.hutool.v7.core.date.DateUtil;
-import cn.hutool.v7.core.date.TimeUtil;
+import org.apache.commons.lang3.StringUtils;
 import org.dromara.dante.assistant.oss.definition.converter.ResponseConverter;
 import org.dromara.dante.assistant.oss.definition.domain.ChecksumDomain;
 import org.dromara.dante.assistant.oss.definition.domain.ObjectLockDomain;
@@ -35,7 +35,10 @@ import org.dromara.dante.assistant.oss.definition.domain.PutObjectDomain;
 import org.dromara.dante.assistant.oss.definition.domain.SsekmsDomain;
 import org.dromara.dante.assistant.oss.entity.result.GetObjectResult;
 import org.dromara.dante.assistant.oss.utils.OssUtils;
+import org.dromara.dante.core.utils.TimeUtils;
 import software.amazon.awssdk.services.s3.model.GetObjectResponse;
+
+import java.util.Date;
 
 /**
  * <p>Description: {@link GetObjectResponse} 转 {@link GetObjectResult} 转换器 </p>
@@ -81,7 +84,12 @@ public class ResponseToGetObjectResultConverter implements ResponseConverter<Get
         domain.setContentLanguage(source.contentLanguage());
         domain.setContentLength(source.contentLength());
         domain.setContentType(source.contentType());
-        domain.setExpires(TimeUtil.parse(source.expiresString(), DateFormatPool.NORM_DATETIME_PATTERN));
+
+        if (StringUtils.isNotEmpty(source.expiresString())) {
+            Date expires = DateFormatPool.HTTP_DATETIME_FORMAT_GMT.parse(source.expiresString());
+            domain.setExpires(TimeUtils.toLocalDateTime(expires));
+        }
+
         domain.setMetadata(source.metadata());
 
         domain.setServerSideEncryption(source.serverSideEncryptionAsString());

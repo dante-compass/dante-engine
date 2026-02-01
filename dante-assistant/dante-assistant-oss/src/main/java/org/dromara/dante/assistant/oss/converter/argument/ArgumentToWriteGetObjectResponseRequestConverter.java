@@ -30,7 +30,7 @@ import org.dromara.dante.assistant.oss.definition.domain.ChecksumDomain;
 import org.dromara.dante.assistant.oss.definition.domain.ObjectLockDomain;
 import org.dromara.dante.assistant.oss.definition.domain.SsekmsDomain;
 import org.dromara.dante.assistant.oss.entity.argument.WriteGetObjectResponseArgument;
-import org.dromara.dante.core.utils.DateTimeUtils;
+import org.dromara.dante.core.utils.TimeUtils;
 import org.springframework.core.convert.converter.Converter;
 import software.amazon.awssdk.services.s3.model.WriteGetObjectResponseRequest;
 
@@ -56,7 +56,7 @@ public class ArgumentToWriteGetObjectResponseRequestConverter implements Convert
         builder.deleteMarker(source.getDeleteMarker());
         builder.eTag(source.getETag());
         builder.expiration(source.getExpiration());
-        builder.lastModified(DateTimeUtils.toInstant(source.getLastModified()));
+        builder.lastModified(TimeUtils.toInstant(source.getLastModified()));
         builder.missingMeta(source.getMissingMeta());
         builder.partsCount(source.getPartsCount());
         builder.replicationStatus(source.getReplicationStatus());
@@ -71,7 +71,7 @@ public class ArgumentToWriteGetObjectResponseRequestConverter implements Convert
         builder.contentLanguage(source.getContentLanguage());
         builder.contentLength(source.getContentLength());
         builder.contentType(source.getContentType());
-        builder.expires(DateTimeUtils.toInstant(source.getExpires()));
+        builder.expires(TimeUtils.toInstant(source.getExpires()));
         builder.metadata(source.getMetadata());
         builder.serverSideEncryption(source.getServerSideEncryption());
         builder.storageClass(source.getStorageClass());
@@ -96,7 +96,7 @@ public class ArgumentToWriteGetObjectResponseRequestConverter implements Convert
         if (ObjectUtils.isNotEmpty(objectLock)) {
             builder.objectLockLegalHoldStatus(objectLock.getObjectLockLegalHoldStatus());
             builder.objectLockMode(objectLock.getObjectLockMode());
-            builder.objectLockRetainUntilDate(DateTimeUtils.toInstant(objectLock.getObjectLockRetainUntilDate()));
+            builder.objectLockRetainUntilDate(TimeUtils.toInstant(objectLock.getObjectLockRetainUntilDate()));
         }
 
         return builder.build();

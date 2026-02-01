@@ -28,7 +28,7 @@ package org.dromara.dante.assistant.oss.converter.argument;
 import org.apache.commons.lang3.ObjectUtils;
 import org.dromara.dante.assistant.oss.definition.domain.SseCustomerDomain;
 import org.dromara.dante.assistant.oss.entity.argument.HeadObjectArgument;
-import org.dromara.dante.core.utils.DateTimeUtils;
+import org.dromara.dante.core.utils.TimeUtils;
 import org.springframework.core.convert.converter.Converter;
 import software.amazon.awssdk.services.s3.model.HeadObjectRequest;
 
@@ -53,15 +53,15 @@ public class ArgumentToHeadObjectRequestConverter implements Converter<HeadObjec
 
         builder.ifMatch(source.getIfMatch());
         builder.ifNoneMatch(source.getIfNoneMatch());
-        builder.ifModifiedSince(DateTimeUtils.toInstant(source.getIfModifiedSince()));
-        builder.ifUnmodifiedSince(DateTimeUtils.toInstant(source.getIfUnmodifiedSince()));
+        builder.ifModifiedSince(TimeUtils.toInstant(source.getIfModifiedSince()));
+        builder.ifUnmodifiedSince(TimeUtils.toInstant(source.getIfUnmodifiedSince()));
         builder.range(source.getRange());
         builder.responseCacheControl(source.getResponseCacheControl());
         builder.responseContentDisposition(source.getResponseContentDisposition());
         builder.responseContentEncoding(source.getResponseContentEncoding());
         builder.responseContentLanguage(source.getResponseContentLanguage());
         builder.responseContentType(source.getResponseContentType());
-        builder.responseExpires(DateTimeUtils.toInstant(source.getResponseExpires()));
+        builder.responseExpires(TimeUtils.toInstant(source.getResponseExpires()));
         builder.checksumMode(source.getChecksumMode());
         builder.partNumber(source.getPartNumber());
 

@@ -25,7 +25,7 @@
 
 package org.dromara.dante.spring.jackson;
 
-import org.dromara.dante.core.utils.DateTimeUtils;
+import org.dromara.dante.core.utils.TimeUtils;
 import tools.jackson.core.JacksonException;
 import tools.jackson.core.JsonParser;
 import tools.jackson.databind.DeserializationContext;
@@ -44,6 +44,6 @@ public class TimestampToLocalDateTimeDeserializer extends ValueDeserializer<Loca
     public LocalDateTime deserialize(JsonParser parser, DeserializationContext context) throws JacksonException {
 
         long timestamp = parser.getValueAsLong();
-        return DateTimeUtils.toLocalDateTime(timestamp);
+        return TimeUtils.toLocalDateTime(timestamp);
     }
 }

@@ -31,7 +31,7 @@ import org.dromara.dante.assistant.oss.definition.domain.ObjectLockDomain;
 import org.dromara.dante.assistant.oss.definition.domain.PutObjectDomain;
 import org.dromara.dante.assistant.oss.definition.domain.SsekmsDomain;
 import org.dromara.dante.assistant.oss.entity.argument.PutObjectArgument;
-import org.dromara.dante.core.utils.DateTimeUtils;
+import org.dromara.dante.core.utils.TimeUtils;
 import org.springframework.core.convert.converter.Converter;
 import software.amazon.awssdk.services.s3.model.PutObjectRequest;
 
@@ -76,7 +76,7 @@ public class ArgumentToPutObjectRequestConverter implements Converter<PutObjectA
         builder.contentLanguage(domain.getContentLanguage());
         builder.contentLength(domain.getContentLength());
         builder.contentType(domain.getContentType());
-        builder.expires(DateTimeUtils.toInstant(domain.getExpires()));
+        builder.expires(TimeUtils.toInstant(domain.getExpires()));
         builder.metadata(domain.getMetadata());
         builder.serverSideEncryption(domain.getServerSideEncryption());
         builder.storageClass(domain.getStorageClass());
@@ -95,7 +95,7 @@ public class ArgumentToPutObjectRequestConverter implements Converter<PutObjectA
         if (ObjectUtils.isNotEmpty(objectLock)) {
             builder.objectLockLegalHoldStatus(objectLock.getObjectLockLegalHoldStatus());
             builder.objectLockMode(objectLock.getObjectLockMode());
-            builder.objectLockRetainUntilDate(DateTimeUtils.toInstant(objectLock.getObjectLockRetainUntilDate()));
+            builder.objectLockRetainUntilDate(TimeUtils.toInstant(objectLock.getObjectLockRetainUntilDate()));
         }
 
         return builder.build();
