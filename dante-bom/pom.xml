@@ -37,7 +37,7 @@
 
     <groupId>org.dromara.dante</groupId>
     <artifactId>dante-bom</artifactId>
-    <version>4.0.2.0-M2</version>
+    <version>4.0.2.0-M3</version>
     <name>Dante Engine Bom</name>
     <packaging>pom</packaging>
 
@@ -88,13 +88,14 @@
         <maven-archetype-plugin.version>3.4.1</maven-archetype-plugin.version>
         <maven-gpg-plugin.version>3.2.8</maven-gpg-plugin.version>
 
-        <alipay-sdk-java.version>4.40.643.ALL</alipay-sdk-java.version>
+        <alipay-sdk-java.version>4.40.645.ALL</alipay-sdk-java.version>
         <animated-gif-lib.version>1.4</animated-gif-lib.version>
         <antisamy.version>1.7.8</antisamy.version>
         <bcpkix-jdk18on.version>1.83</bcpkix-jdk18on.version>
         <bcprov-jdk18on.version>1.83</bcprov-jdk18on.version>
         <central-publishing-maven-plugin.version>0.10.0</central-publishing-maven-plugin.version>
         <commons-collections4.version>4.5.0</commons-collections4.version>
+        <commons-fileupload.version>1.6.0</commons-fileupload.version>
         <commons-io.version>2.21.0</commons-io.version>
         <commons-text.version>1.15.0</commons-text.version>
         <fastjson2.version>2.0.60</fastjson2.version>
@@ -117,7 +118,7 @@
         <redisson.version>4.1.0</redisson.version>
         <skywalking.version>9.5.0</skywalking.version>
         <sms4j-spring-boot-starter.version>3.3.5</sms4j-spring-boot-starter.version>
-        <software.amazon.awssdk.version>2.41.18</software.amazon.awssdk.version>
+        <software.amazon.awssdk.version>2.41.20</software.amazon.awssdk.version>
         <software.amazon.awssdk.crt.version>0.42.2</software.amazon.awssdk.crt.version>
         <springdoc.version>3.0.1</springdoc.version>
         <spring-boot-dependencies.version>4.0.2</spring-boot-dependencies.version>
@@ -126,7 +127,7 @@
         <spring-cloud-alibaba-dependencies.version>2025.0.0.0</spring-cloud-alibaba-dependencies.version>
         <spring-cloud-tencent-dependencies.version>2.1.0.3-2024.0.2</spring-cloud-tencent-dependencies.version>
         <transmittable-thread-local.version>2.14.5</transmittable-thread-local.version>
-        <weixin-java.version>4.8.1-20260127.112509</weixin-java.version>
+        <weixin-java.version>4.8.1-20260131.225507</weixin-java.version>
         <zxing.version>3.5.4</zxing.version>
 
         <!--Webjars 主要用于内置基于 thymeleaf 的自定义页面-->
@@ -136,13 +137,12 @@
         <mdi__font.version>7.4.47</mdi__font.version>
         <quasar.version>2.18.6</quasar.version>
         <sm-crypto-v2.version>1.15.1</sm-crypto-v2.version>
-        <sweetalert2.verison>11.26.17</sweetalert2.verison>
+        <sweetalert2.verison>11.26.18</sweetalert2.verison>
         <tabler.version>1.4.0</tabler.version>
         <vue.version>3.5.27</vue.version>
 
         <!--以下为特殊处理, 统一版本处理漏洞等-->
         <asm.version>9.9</asm.version>
-        <commons-fileupload.version>1.6.0</commons-fileupload.version>
         <classgraph.version>4.8.184</classgraph.version>
         <dom4j.version>2.2.0</dom4j.version>
         <error_prone_annotations.version>2.46.0</error_prone_annotations.version>
