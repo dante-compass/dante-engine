@@ -74,4 +74,72 @@ public class S3AsyncClientObjectService extends AbstractS3AsyncClientService {
     public CompletableFuture<WriteGetObjectResponseResponse> writeGetObjectResponse(WriteGetObjectResponseRequest writeGetObjectResponseRequest, AsyncRequestBody requestBody) {
         return toFuture(client -> client.writeGetObjectResponse(writeGetObjectResponseRequest, requestBody));
     }
+
+    public CompletableFuture<GetObjectAclResponse> getObjectAcl(GetObjectAclRequest request) {
+        return toFuture(client -> client.getObjectAcl(request));
+    }
+
+    public CompletableFuture<GetObjectAttributesResponse> getObjectAttributes(GetObjectAttributesRequest request) {
+        return toFuture(client -> client.getObjectAttributes(request));
+    }
+
+    public CompletableFuture<GetObjectLegalHoldResponse> getObjectLegalHold(GetObjectLegalHoldRequest request) {
+        return toFuture(client -> client.getObjectLegalHold(request));
+    }
+
+    public CompletableFuture<GetObjectLockConfigurationResponse> getObjectLockConfiguration(GetObjectLockConfigurationRequest request) {
+        return toFuture(client -> client.getObjectLockConfiguration(request));
+    }
+
+    public CompletableFuture<GetObjectRetentionResponse> getObjectRetention(GetObjectRetentionRequest request) {
+        return toFuture(client -> client.getObjectRetention(request));
+    }
+
+    public CompletableFuture<GetObjectTaggingResponse> getObjectTagging(GetObjectTaggingRequest request) {
+        return toFuture(client -> client.getObjectTagging(request));
+    }
+
+    public <ReturnT> CompletableFuture<ReturnT> getObjectTorrent(GetObjectTorrentRequest request, AsyncResponseTransformer<GetObjectTorrentResponse, ReturnT> asyncResponseTransformer) {
+        return toFuture(client -> client.getObjectTorrent(request, asyncResponseTransformer));
+    }
+
+    public CompletableFuture<PutObjectAclResponse> putObjectAcl(PutObjectAclRequest request) {
+        return toFuture(client -> client.putObjectAcl(request));
+    }
+
+    public CompletableFuture<PutObjectLegalHoldResponse> putObjectLegalHold(PutObjectLegalHoldRequest request) {
+        return toFuture(client -> client.putObjectLegalHold(request));
+    }
+
+    public CompletableFuture<PutObjectLockConfigurationResponse> putObjectLockConfiguration(PutObjectLockConfigurationRequest request) {
+        return toFuture(client -> client.putObjectLockConfiguration(request));
+    }
+
+    public CompletableFuture<PutObjectRetentionResponse> putObjectRetention(PutObjectRetentionRequest request) {
+        return toFuture(client -> client.putObjectRetention(request));
+    }
+
+    public CompletableFuture<PutObjectTaggingResponse> putObjectTagging(PutObjectTaggingRequest request) {
+        return toFuture(client -> client.putObjectTagging(request));
+    }
+
+    public CompletableFuture<DeleteObjectTaggingResponse> deleteObjectTagging(DeleteObjectTaggingRequest request) {
+        return toFuture(client -> client.deleteObjectTagging(request));
+    }
+
+    public CompletableFuture<RenameObjectResponse> renameObject(RenameObjectRequest request) {
+        return toFuture(client -> client.renameObject(request));
+    }
+
+    public CompletableFuture<RestoreObjectResponse> restoreObject(RestoreObjectRequest request) {
+        return toFuture(client -> client.restoreObject(request));
+    }
+
+    public CompletableFuture<ListObjectVersionsResponse> listObjectVersions(ListObjectVersionsRequest request) {
+        return toFuture(client -> client.listObjectVersions(request));
+    }
+
+    public CompletableFuture<UpdateObjectEncryptionResponse> updateObjectEncryption(UpdateObjectEncryptionRequest request) {
+        return toFuture(client -> client.updateObjectEncryption(request));
+    }
 }
