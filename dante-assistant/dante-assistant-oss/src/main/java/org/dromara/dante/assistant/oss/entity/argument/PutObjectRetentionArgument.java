@@ -25,11 +25,13 @@
 
 package org.dromara.dante.assistant.oss.entity.argument;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.google.common.base.MoreObjects;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotNull;
 import org.dromara.dante.assistant.oss.definition.argument.AbstractObjectVersionArgument;
 import org.dromara.dante.assistant.oss.enums.ObjectRetentionMode;
+import org.dromara.dante.core.constant.SystemConstants;
 
 import java.time.LocalDate;
 
@@ -47,6 +49,7 @@ public class PutObjectRetentionArgument extends AbstractObjectVersionArgument {
 
     @Schema(name = "对象保留到期日期")
     @NotNull(message = "对象保存到期日期不能为空")
+    @JsonFormat(pattern = SystemConstants.DATE_FORMAT)
     private LocalDate retainUntilDate;
 
     public ObjectRetentionMode getRetentionMode() {
