@@ -25,9 +25,9 @@
 
 package org.dromara.dante.assistant.oss.entity.result;
 
-import org.dromara.dante.assistant.oss.definition.domain.DeletedObjectDomain;
-import org.dromara.dante.assistant.oss.definition.domain.S3ErrorDomain;
 import org.dromara.dante.assistant.oss.definition.result.AbstractResult;
+import org.dromara.dante.assistant.oss.entity.domain.DeletedObjectDomain;
+import org.dromara.dante.assistant.oss.entity.domain.S3ErrorDomain;
 
 import java.util.List;
 

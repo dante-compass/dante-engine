@@ -38,6 +38,11 @@ import software.amazon.awssdk.services.s3.model.ListBucketsRequest;
 public class ArgumentToListBucketsRequestConverter implements Converter<ListBucketsArgument, ListBucketsRequest> {
     @Override
     public ListBucketsRequest convert(ListBucketsArgument source) {
-        return ListBucketsRequest.builder().build();
+        return ListBucketsRequest.builder()
+                .bucketRegion(source.getBucketRegion())
+                .maxBuckets(source.getMaxBuckets())
+                .prefix(source.getPrefix())
+                .continuationToken(source.getContinuationToken())
+                .build();
     }
 }

@@ -25,11 +25,11 @@
 
 package org.dromara.dante.assistant.oss.definition.argument;
 
+import com.google.common.base.MoreObjects;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import org.dromara.dante.core.constant.RegexPool;
-import org.hibernate.validator.constraints.Length;
 
 /**
  * <p>Description: 对象存储Bucket通用请求参数抽象定义 </p>
@@ -41,8 +41,7 @@ public abstract class AbstractBucketArgument extends AbstractArgument {
 
     @Schema(name = "存储桶名称", requiredMode = Schema.RequiredMode.REQUIRED)
     @NotBlank(message = "存储桶名称不能为空")
-    @Length(min = 3, max = 62, message = "存储桶名称不能少于3个字符，不能大于63个字符")
-    @Pattern(regexp = RegexPool.DNS_COMPATIBLE, message = "存储桶名称无法与DNS兼容")
+    @Pattern(regexp = RegexPool.DNS_COMPATIBLE, message = "存储桶名称只能为小字母、数字、点或横线，最多60个字符")
     private String bucketName;
 
     public String getBucketName() {
@@ -51,5 +50,13 @@ public abstract class AbstractBucketArgument extends AbstractArgument {
 
     public void setBucketName(String bucketName) {
         this.bucketName = bucketName;
+    }
+
+    @Override
+    public String toString() {
+        return MoreObjects.toStringHelper(this)
+                .add("bucketName", bucketName)
+                .addValue(super.toString())
+                .toString();
     }
 }

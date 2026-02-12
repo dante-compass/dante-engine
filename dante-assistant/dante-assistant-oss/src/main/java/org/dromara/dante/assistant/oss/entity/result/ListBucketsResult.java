@@ -25,9 +25,10 @@
 
 package org.dromara.dante.assistant.oss.entity.result;
 
-import org.dromara.dante.assistant.oss.definition.domain.BucketDomain;
-import org.dromara.dante.assistant.oss.definition.domain.OwnerDomain;
-import org.dromara.dante.assistant.oss.definition.result.AbstractResult;
+import com.google.common.base.MoreObjects;
+import io.swagger.v3.oas.annotations.media.Schema;
+import org.dromara.dante.assistant.oss.definition.result.AbstractListBucketsResult;
+import org.dromara.dante.assistant.oss.entity.domain.BucketDomain;
 
 import java.util.List;
 
@@ -37,11 +38,11 @@ import java.util.List;
  * @author : gengwei.zheng
  * @date : 2024/7/21 22:56
  */
-public class ListBucketsResult extends AbstractResult {
+@Schema(name = "存储桶列表响应结果实体", title = "存储桶列表响应结果实体")
+public class ListBucketsResult extends AbstractListBucketsResult {
 
+    @Schema(name = "存储桶列表")
     private List<BucketDomain> buckets;
-
-    private OwnerDomain owner;
 
     public List<BucketDomain> getBuckets() {
         return buckets;
@@ -51,11 +52,10 @@ public class ListBucketsResult extends AbstractResult {
         this.buckets = buckets;
     }
 
-    public OwnerDomain getOwner() {
-        return owner;
-    }
-
-    public void setOwner(OwnerDomain owner) {
-        this.owner = owner;
+    @Override
+    public String toString() {
+        return MoreObjects.toStringHelper(this)
+                .addValue(super.toString())
+                .toString();
     }
 }

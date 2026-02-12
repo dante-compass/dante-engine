@@ -26,10 +26,10 @@
 package org.dromara.dante.assistant.oss.converter.result;
 
 import cn.hutool.v7.core.date.DateUtil;
-import org.dromara.dante.assistant.oss.definition.domain.ChecksumDomain;
-import org.dromara.dante.assistant.oss.definition.domain.ObjectLockDomain;
-import org.dromara.dante.assistant.oss.definition.domain.PutObjectDomain;
-import org.dromara.dante.assistant.oss.definition.domain.SsekmsDomain;
+import org.dromara.dante.assistant.oss.entity.domain.ChecksumDomain;
+import org.dromara.dante.assistant.oss.entity.domain.ObjectLockDomain;
+import org.dromara.dante.assistant.oss.entity.domain.PutObjectDomain;
+import org.dromara.dante.assistant.oss.entity.domain.SsekmsDomain;
 import org.dromara.dante.assistant.oss.entity.result.FailedFileUploadResult;
 import org.dromara.dante.spring.founction.ListConverter;
 import software.amazon.awssdk.services.s3.model.PutObjectRequest;

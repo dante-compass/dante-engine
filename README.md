@@ -12,7 +12,7 @@
     <a href="https://nacos.io/zh-cn/index.html" target="_blank"><img src="https://shields.io/badge/Nacos-3.1.1-brightgreen.svg?logo=alibabadotcom" alt="Nacos 3.1.1"></a>
 </p>
 <p align="center">
-    <a href="#" target="_blank"><img src="https://shields.io/badge/Version-4.0.2.0-M3-red.svg?logo=spring" alt="Version 4.0.2.0-M3"></a>
+    <a href="#" target="_blank"><img src="https://shields.io/badge/Version-4.0.2.0-M4-red.svg?logo=spring" alt="Version 4.0.2.0-M4"></a>
     <a href="https://bell-sw.com/pages/downloads/#downloads" target="_blank"><img src="https://img.shields.io/badge/JDK-25%2B-green.svg?logo=openjdk" alt="Java 25"></a>
     <a href="./LICENSE"><img src="https://shields.io/badge/License-Apache--2.0-blue.svg?logo=apache" alt="License Apache 2.0"></a>
     <a href="https://blog.csdn.net/Pointer_v" target="_blank"><img src="https://shields.io/badge/Author-%E7%A0%81%E5%8C%A0%E5%90%9B-orange" alt="码匠君"></a>
@@ -266,3 +266,18 @@ Dante Cloud 已通过由第三方进行的软件出厂安全测试。详情参�
 | 19 | [宁哥](https://gitee.com/seabuckthorn-syrup) | 2024-05-29 | 20 | [cryptoneedle](https://gitee.com/cryptoneedle) | 2024-11-01 | 21 |                  别吓跑我的鱼                  | 2025-01-10 |
 | 22 |   [代码裁缝](https://gitee.com/code-tailor)    | 2025-03-01 | 23 |                    Go ahead                    | 2025-03-10 | 24 |    [hoku](https://gitee.com/hoku888)     | 2025-06-18 |
 | 25 |                     飞翔                     | 2025-07-19 | 26 |                                                |            | 27 |                                          |            |
+
+## 关注我
+
+<table align="center">
+  <tr>
+    <th align="center">
+      <p>公众号：码匠君</p>
+    </th>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="./readme/公众号.jpg" alt="公众号" height="200px">
+    </td>
+  </tr>
+</table>

@@ -28,8 +28,8 @@ package org.dromara.dante.assistant.oss.converter.result;
 import org.dromara.dante.assistant.oss.converter.domain.BucketsToDomainsConverter;
 import org.dromara.dante.assistant.oss.converter.domain.OwnerToDomainConverter;
 import org.dromara.dante.assistant.oss.definition.converter.ResponseConverter;
-import org.dromara.dante.assistant.oss.definition.domain.BucketDomain;
-import org.dromara.dante.assistant.oss.definition.domain.OwnerDomain;
+import org.dromara.dante.assistant.oss.entity.domain.BucketDomain;
+import org.dromara.dante.assistant.oss.entity.domain.OwnerDomain;
 import org.dromara.dante.assistant.oss.entity.result.ListBucketsResult;
 import org.dromara.dante.spring.founction.ListConverter;
 import org.springframework.core.convert.converter.Converter;
@@ -38,7 +38,7 @@ import software.amazon.awssdk.services.s3.model.ListBucketsResponse;
 import software.amazon.awssdk.services.s3.model.Owner;
 
 /**
- * <p>Description: Response 转 ListBucketsResult 转换器 </p>
+ * <p>Description: {@link ListBucketsResponse} 转 {@link ListBucketsResult} 转换器 </p>
  *
  * @author : gengwei.zheng
  * @date : 2024/7/22 0:21
@@ -57,6 +57,8 @@ public class ResponseToListBucketsResultConverter implements ResponseConverter<L
     public void prepare(ListBucketsResponse source, ListBucketsResult target) {
         target.setBuckets(toBucketDomain.convert(source.buckets()));
         target.setOwner(toOwnerDomain.convert(source.owner()));
+        target.setContinuationToken(source.continuationToken());
+        target.setPrefix(source.prefix());
         ResponseConverter.super.prepare(source, target);
     }
 

@@ -26,9 +26,9 @@
 package org.dromara.dante.assistant.oss.entity.argument;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import org.dromara.dante.assistant.oss.definition.domain.ChecksumDomain;
-import org.dromara.dante.assistant.oss.definition.domain.CompletedPartDomain;
-import org.dromara.dante.assistant.oss.definition.domain.SseCustomerDomain;
+import org.dromara.dante.assistant.oss.entity.domain.ChecksumDomain;
+import org.dromara.dante.assistant.oss.entity.domain.CompletedPartDomain;
+import org.dromara.dante.assistant.oss.entity.domain.SseCustomerDomain;
 
 import java.util.List;
 

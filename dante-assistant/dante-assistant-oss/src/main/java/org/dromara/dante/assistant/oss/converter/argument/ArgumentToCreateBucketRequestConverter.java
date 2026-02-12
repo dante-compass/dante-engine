@@ -25,7 +25,9 @@
 
 package org.dromara.dante.assistant.oss.converter.argument;
 
+import org.apache.commons.lang3.ObjectUtils;
 import org.dromara.dante.assistant.oss.entity.argument.CreateBucketArgument;
+import org.dromara.dante.assistant.oss.entity.domain.GrantDomain;
 import org.springframework.core.convert.converter.Converter;
 import software.amazon.awssdk.services.s3.model.CreateBucketRequest;
 
@@ -39,16 +41,22 @@ public class ArgumentToCreateBucketRequestConverter implements Converter<CreateB
 
     @Override
     public CreateBucketRequest convert(CreateBucketArgument source) {
-        return CreateBucketRequest.builder()
-                .bucket(source.getBucketName())
-                .acl(source.getAcl())
-                .grantFullControl(source.getGrantFullControl())
-                .grantRead(source.getGrantRead())
-                .grantReadACP(source.getGrantReadACP())
-                .grantWrite(source.getGrantWrite())
-                .grantWriteACP(source.getGrantWriteACP())
-                .objectLockEnabledForBucket(source.getObjectLockEnabledForBucket())
-                .objectOwnership(source.getObjectOwnership())
-                .build();
+        CreateBucketRequest.Builder builder = CreateBucketRequest.builder();
+        builder.bucket(source.getBucketName());
+
+        if (ObjectUtils.isNotEmpty(source.getGrantDetails())) {
+            GrantDomain grantDomain = new GrantDomain();
+            builder.acl(grantDomain.getAcl());
+            builder.grantFullControl(grantDomain.getGrantFullControl());
+            builder.grantRead(grantDomain.getGrantRead());
+            builder.grantReadACP(grantDomain.getGrantReadACP());
+            builder.grantWrite(grantDomain.getGrantWrite());
+            builder.grantWriteACP(grantDomain.getGrantWriteACP());
+        }
+
+        builder.objectLockEnabledForBucket(source.getObjectLockEnabled());
+        builder.objectOwnership(source.getObjectOwnership());
+
+        return builder.build();
     }
 }

@@ -29,6 +29,7 @@ import org.dromara.dante.assistant.oss.config.AssistantOssConfiguration;
 import org.dromara.dante.assistant.oss.pool.AwsConfigurer;
 import org.dromara.dante.assistant.oss.pool.S3PresignerObjectPool;
 import org.dromara.dante.assistant.oss.properties.OssProperties;
+import org.dromara.dante.assistant.oss.service.manager.PresignedUrlService;
 import org.dromara.dante.assistant.oss.service.utils.OssTestUtils;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;

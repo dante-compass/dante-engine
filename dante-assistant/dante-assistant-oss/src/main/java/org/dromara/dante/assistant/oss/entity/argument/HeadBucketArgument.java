@@ -26,7 +26,7 @@
 package org.dromara.dante.assistant.oss.entity.argument;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import org.dromara.dante.assistant.oss.definition.argument.AbstractExpectedBucketOwnerArgument;
+import org.dromara.dante.assistant.oss.definition.argument.AbstractBucketExpectedBucketOwnerArgument;
 
 /**
  * <p>Description: Head方式操作存储桶请求参数实体 </p>
@@ -35,5 +35,5 @@ import org.dromara.dante.assistant.oss.definition.argument.AbstractExpectedBucke
  * @date : 2024/7/21 23:02
  */
 @Schema(name = "Head方式操作存储桶请求参数实体", title = "Head方式操作存储桶请求参数实体")
-public class HeadBucketArgument extends AbstractExpectedBucketOwnerArgument {
+public class HeadBucketArgument extends AbstractBucketExpectedBucketOwnerArgument {
 }

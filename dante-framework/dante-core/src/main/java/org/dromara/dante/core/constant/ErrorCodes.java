@@ -114,6 +114,10 @@ public interface ErrorCodes {
      */
     NoContentFeedback NO_CONTENT = new NoContentFeedback("无内容");
     /**
+     * 400.** 客户端请求的语法错误，服务器无法理解
+     */
+    BadRequestFeedback BAD_REQUEST = new BadRequestFeedback("客户端请求的语法错误");
+    /**
      * 401.** 未经授权 Unauthorized	请求要求用户的身份认证
      */
     UnauthorizedFeedback UNAUTHORIZED = new UnauthorizedFeedback("未经授权");
@@ -168,6 +172,11 @@ public interface ErrorCodes {
     NotAcceptableFeedback CAPTCHA_PARAMETER_ILLEGAL = new NotAcceptableFeedback("验证码参数格式错误");
 
     /**
+     * 409.** 服务器处理请求时发生了冲突，与409对应
+     */
+    ConflictFeedback CONFLICT = new ConflictFeedback("服务器处理请求时发生了冲突");
+
+    /**
      * 412.* 未经授权 Precondition Failed 客户端请求信息的先决条件错误
      */
     PreconditionFailedFeedback PRECONDITION_FAILED = new PreconditionFailedFeedback("户端请求信息的先决条件错误");
@@ -197,6 +206,8 @@ public interface ErrorCodes {
     InternalServerErrorFeedback TYPE_MISMATCH_EXCEPTION = new InternalServerErrorFeedback("类型不匹配");
     InternalServerErrorFeedback BORROW_OBJECT_FROM_POOL_ERROR_EXCEPTION = new InternalServerErrorFeedback("从对象池中获取对象错误");
     InternalServerErrorFeedback OPENAPI_INVOKING_FAILED = new InternalServerErrorFeedback("OPEN API 调用失败，请检查API调用方式及参数是否正确");
+    InternalServerErrorFeedback UPLOAD_OBJECT_EXCEPTION = new InternalServerErrorFeedback("上传文件出现错误");
+    InternalServerErrorFeedback DOWNLOAD_OBJECT_EXCEPTION = new InternalServerErrorFeedback("下载文件出现错误");
 
     /**
      * 501. Not Implemented	服务器不支持请求的功能，无法完成请求

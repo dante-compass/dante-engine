@@ -26,6 +26,7 @@
 package org.dromara.dante.assistant.oss.definition.argument;
 
 import com.google.common.base.MoreObjects;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 /**
  * <p>Description: 对象操作需要支付请求参数定义 </p>
@@ -33,8 +34,9 @@ import com.google.common.base.MoreObjects;
  * @author : gengwei.zheng
  * @date : 2024/7/22 23:26
  */
-public class AbstractObjectRequestPayerArgument extends AbstractExpectedBucketOwnerArgument {
+public class AbstractObjectRequestPayerArgument extends AbstractBucketExpectedBucketOwnerArgument {
 
+    @Schema(name = "需要支付")
     private String requestPayer;
 
     public String getRequestPayer() {
@@ -49,6 +51,7 @@ public class AbstractObjectRequestPayerArgument extends AbstractExpectedBucketOw
     public String toString() {
         return MoreObjects.toStringHelper(this)
                 .add("requestPayer", requestPayer)
+                .addValue(super.toString())
                 .toString();
     }
 }

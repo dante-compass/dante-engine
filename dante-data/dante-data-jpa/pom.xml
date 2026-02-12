@@ -31,7 +31,7 @@
     <parent>
         <groupId>org.dromara.dante</groupId>
         <artifactId>dante-data</artifactId>
-        <version>4.0.2.0-M3</version>
+        <version>4.0.2.0-M4</version>
     </parent>
 
     <artifactId>dante-data-jpa</artifactId>
@@ -79,7 +79,7 @@
                         <annotationProcessorPath>
                             <groupId>io.github.openfeign.querydsl</groupId>
                             <artifactId>querydsl-apt</artifactId>
-                            <version>${openfeign-querydsl.version}</version>
+                            <version>${io.github.openfeign.querydsl.version}</version>
                             <classifier>jpa</classifier>
                         </annotationProcessorPath>
                         <annotationProcessorPath>

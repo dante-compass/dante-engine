@@ -29,7 +29,7 @@ import org.apache.commons.collections4.CollectionUtils;
 import org.dromara.dante.assistant.oss.converter.domain.CommonPrefixesToDomainConverter;
 import org.dromara.dante.assistant.oss.converter.domain.S3ObjectsToDomainConverter;
 import org.dromara.dante.assistant.oss.definition.converter.ResponseConverter;
-import org.dromara.dante.assistant.oss.definition.domain.ObjectDomain;
+import org.dromara.dante.assistant.oss.entity.domain.ObjectDomain;
 import org.dromara.dante.assistant.oss.entity.result.ListObjectsV2Result;
 import org.dromara.dante.spring.founction.ListConverter;
 import software.amazon.awssdk.services.s3.model.CommonPrefix;
@@ -70,7 +70,7 @@ public class ResponseToListObjectsV2ResultConverter implements ResponseConverter
 
     private List<ObjectDomain> getContents(ListObjectsV2Response source) {
         ListConverter<CommonPrefix, ObjectDomain> toCommonPrefixesResult = new CommonPrefixesToDomainConverter();
-        ListConverter<S3Object, ObjectDomain> toS3ObjectsResult = new S3ObjectsToDomainConverter();
+        ListConverter<S3Object, ObjectDomain> toS3ObjectsResult = new S3ObjectsToDomainConverter(source.delimiter());
 
         List<ObjectDomain> results = new ArrayList<>();
 

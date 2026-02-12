@@ -31,8 +31,8 @@ import org.dromara.dante.assistant.oss.converter.domain.InitiatorToDomainConvert
 import org.dromara.dante.assistant.oss.converter.domain.OwnerToDomainConverter;
 import org.dromara.dante.assistant.oss.converter.domain.PartToDomainConverter;
 import org.dromara.dante.assistant.oss.definition.converter.ResponseConverter;
-import org.dromara.dante.assistant.oss.definition.domain.OwnerDomain;
-import org.dromara.dante.assistant.oss.definition.domain.PartDomain;
+import org.dromara.dante.assistant.oss.entity.domain.OwnerDomain;
+import org.dromara.dante.assistant.oss.entity.domain.PartDomain;
 import org.dromara.dante.assistant.oss.entity.result.ListPartsResult;
 import org.dromara.dante.spring.founction.ListConverter;
 import org.springframework.core.convert.converter.Converter;

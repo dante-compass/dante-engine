@@ -53,6 +53,7 @@ public abstract class AbstractObjectArgument extends AbstractObjectRequestPayerA
     public String toString() {
         return MoreObjects.toStringHelper(this)
                 .add("objectName", objectName)
+                .addValue(super.toString())
                 .toString();
     }
 }

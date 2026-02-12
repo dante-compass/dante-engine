@@ -26,9 +26,9 @@
 package org.dromara.dante.assistant.oss.entity.result;
 
 import com.google.common.base.MoreObjects;
-import org.dromara.dante.assistant.oss.definition.domain.ChecksumDomain;
-import org.dromara.dante.assistant.oss.definition.domain.PutObjectDomain;
 import org.dromara.dante.assistant.oss.definition.result.AbstractResult;
+import org.dromara.dante.assistant.oss.entity.domain.ChecksumDomain;
+import org.dromara.dante.assistant.oss.entity.domain.PutObjectDomain;
 
 import java.io.InputStream;
 import java.time.LocalDateTime;

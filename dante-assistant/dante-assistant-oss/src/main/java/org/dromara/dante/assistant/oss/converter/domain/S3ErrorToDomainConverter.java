@@ -25,7 +25,7 @@
 
 package org.dromara.dante.assistant.oss.converter.domain;
 
-import org.dromara.dante.assistant.oss.definition.domain.S3ErrorDomain;
+import org.dromara.dante.assistant.oss.entity.domain.S3ErrorDomain;
 import org.dromara.dante.spring.founction.ListConverter;
 import software.amazon.awssdk.services.s3.model.S3Error;
 

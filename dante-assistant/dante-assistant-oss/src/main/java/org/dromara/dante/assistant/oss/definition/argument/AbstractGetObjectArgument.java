@@ -26,7 +26,7 @@
 package org.dromara.dante.assistant.oss.definition.argument;
 
 import com.google.common.base.MoreObjects;
-import org.dromara.dante.assistant.oss.definition.domain.SseCustomerDomain;
+import org.dromara.dante.assistant.oss.entity.domain.SseCustomerDomain;
 
 import java.time.LocalDateTime;
 
@@ -36,7 +36,7 @@ import java.time.LocalDateTime;
  * @author : gengwei.zheng
  * @date : 2024/7/22 23:47
  */
-public abstract class AbstractGetObjectArgument extends AbstractObjectVersionArgument {
+public abstract class AbstractGetObjectArgument extends AbstractObjectVersionIdArgument {
 
     private String ifMatch;
 

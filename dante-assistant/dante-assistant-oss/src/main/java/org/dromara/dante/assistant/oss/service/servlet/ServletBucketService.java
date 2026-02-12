@@ -25,24 +25,13 @@
 
 package org.dromara.dante.assistant.oss.service.servlet;
 
-import org.dromara.dante.assistant.oss.converter.argument.ArgumentToCreateBucketRequestConverter;
-import org.dromara.dante.assistant.oss.converter.argument.ArgumentToDeleteBucketRequestConverter;
-import org.dromara.dante.assistant.oss.converter.argument.ArgumentToHeadBucketRequestConverter;
-import org.dromara.dante.assistant.oss.converter.argument.ArgumentToListBucketsRequestConverter;
-import org.dromara.dante.assistant.oss.converter.result.ResponseToCreateBucketResultConverter;
-import org.dromara.dante.assistant.oss.converter.result.ResponseToDeleteBucketResultConverter;
-import org.dromara.dante.assistant.oss.converter.result.ResponseToHeadBucketResultConverter;
-import org.dromara.dante.assistant.oss.converter.result.ResponseToListBucketsResultConverter;
+import org.dromara.dante.assistant.oss.converter.argument.*;
+import org.dromara.dante.assistant.oss.converter.result.*;
 import org.dromara.dante.assistant.oss.definition.service.AbstractServletService;
-import org.dromara.dante.assistant.oss.entity.argument.CreateBucketArgument;
-import org.dromara.dante.assistant.oss.entity.argument.DeleteBucketArgument;
-import org.dromara.dante.assistant.oss.entity.argument.HeadBucketArgument;
-import org.dromara.dante.assistant.oss.entity.argument.ListBucketsArgument;
-import org.dromara.dante.assistant.oss.entity.result.CreateBucketResult;
-import org.dromara.dante.assistant.oss.entity.result.DeleteBucketResult;
-import org.dromara.dante.assistant.oss.entity.result.HeadBucketResult;
-import org.dromara.dante.assistant.oss.entity.result.ListBucketsResult;
+import org.dromara.dante.assistant.oss.entity.argument.*;
+import org.dromara.dante.assistant.oss.entity.result.*;
 import org.dromara.dante.assistant.oss.service.base.S3AsyncClientBucketService;
+import org.dromara.dante.assistant.oss.service.base.S3AsyncClientCompositeService;
 import org.springframework.stereotype.Service;
 
 /**
@@ -55,9 +44,15 @@ import org.springframework.stereotype.Service;
 public class ServletBucketService extends AbstractServletService {
 
     private final S3AsyncClientBucketService bucketService;
+    private final S3AsyncClientCompositeService compositeService;
 
-    public ServletBucketService(S3AsyncClientBucketService bucketService) {
+    public ServletBucketService(S3AsyncClientBucketService bucketService, S3AsyncClientCompositeService compositeService) {
         this.bucketService = bucketService;
+        this.compositeService = compositeService;
+    }
+
+    public HeadBucketResult headBucket(HeadBucketArgument argument) {
+        return process(argument, new ArgumentToHeadBucketRequestConverter(), new ResponseToHeadBucketResultConverter(), bucketService::headBucket);
     }
 
     public CreateBucketResult createBucket(CreateBucketArgument argument) {
@@ -68,11 +63,15 @@ public class ServletBucketService extends AbstractServletService {
         return process(argument, new ArgumentToDeleteBucketRequestConverter(), new ResponseToDeleteBucketResultConverter(), bucketService::deleteBucket);
     }
 
-    public HeadBucketResult headBucket(HeadBucketArgument argument) {
-        return process(argument, new ArgumentToHeadBucketRequestConverter(), new ResponseToHeadBucketResultConverter(), bucketService::headBucket);
-    }
-
     public ListBucketsResult listBuckets(ListBucketsArgument argument) {
         return process(argument, new ArgumentToListBucketsRequestConverter(), new ResponseToListBucketsResultConverter(), bucketService::listBuckets);
+    }
+
+    public ListBucketDetailsResult listBucketDetails(ListBucketsArgument argument) {
+        return process(argument, new ArgumentToListBucketsRequestConverter(), compositeService::listBucketDetails);
+    }
+
+    public PutBucketPolicyResult putBucketPolicy(PutBucketPolicyArgument argument) {
+        return process(argument, new ArgumentToPutBucketPolicyRequestConverter(), new ResponseToPutBucketPolicyResultConverter(), bucketService::putBucketPolicy);
     }
 }

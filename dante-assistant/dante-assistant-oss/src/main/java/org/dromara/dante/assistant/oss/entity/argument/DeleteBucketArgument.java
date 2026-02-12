@@ -26,7 +26,7 @@
 package org.dromara.dante.assistant.oss.entity.argument;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import org.dromara.dante.assistant.oss.definition.argument.AbstractExpectedBucketOwnerArgument;
+import org.dromara.dante.assistant.oss.definition.argument.AbstractBucketExpectedBucketOwnerArgument;
 
 /**
  * <p>Description: 删除存储桶请求参数实体 </p>
@@ -35,7 +35,7 @@ import org.dromara.dante.assistant.oss.definition.argument.AbstractExpectedBucke
  * @date : 2024/7/21 22:33
  */
 @Schema(name = "删除存储桶请求参数实体", title = "删除存储桶请求参数实体")
-public class DeleteBucketArgument extends AbstractExpectedBucketOwnerArgument {
+public class DeleteBucketArgument extends AbstractBucketExpectedBucketOwnerArgument {
 
 
 }

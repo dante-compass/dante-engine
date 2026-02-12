@@ -26,7 +26,7 @@
 package org.dromara.dante.assistant.oss.converter.domain;
 
 import cn.hutool.v7.core.date.DateUtil;
-import org.dromara.dante.assistant.oss.definition.domain.BucketDomain;
+import org.dromara.dante.assistant.oss.entity.domain.BucketDomain;
 import org.dromara.dante.spring.founction.ListConverter;
 import software.amazon.awssdk.services.s3.model.Bucket;
 
@@ -43,6 +43,8 @@ public class BucketsToDomainsConverter implements ListConverter<Bucket, BucketDo
         BucketDomain target = new BucketDomain();
         target.setCreationDate(DateUtil.toLocalDateTime(source.creationDate()));
         target.setBucketName(source.name());
+        target.setBucketRegion(source.bucketRegion());
+        target.setBucketArn(source.bucketArn());
         return target;
     }
 }

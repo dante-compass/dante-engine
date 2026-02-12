@@ -26,11 +26,13 @@
 package org.dromara.dante.assistant.oss.config;
 
 import jakarta.annotation.PostConstruct;
+import org.dromara.dante.assistant.oss.customizer.OssEnumDictionaryBuilderCustomizer;
 import org.dromara.dante.assistant.oss.customizer.OssErrorCodeMapperBuilderCustomizer;
 import org.dromara.dante.assistant.oss.pool.AwsConfigurer;
 import org.dromara.dante.assistant.oss.pool.S3AsyncClientObjectPool;
 import org.dromara.dante.assistant.oss.pool.S3PresignerObjectPool;
 import org.dromara.dante.assistant.oss.properties.OssProperties;
+import org.dromara.dante.core.function.EnumDictionaryBuilderCustomizer;
 import org.dromara.dante.core.function.ErrorCodeMapperBuilderCustomizer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -63,6 +65,13 @@ public class AssistantOssConfiguration {
     @PostConstruct
     public void postConstruct() {
         log.debug("[Herodotus] |- Module [Assistant Oss] Configure.");
+    }
+
+    @Bean
+    public EnumDictionaryBuilderCustomizer ossEnumDictionaryBuilder() {
+        OssEnumDictionaryBuilderCustomizer customizer = new OssEnumDictionaryBuilderCustomizer();
+        log.debug("[Herodotus] |- Strategy [OSS EnumDictionary Builder Customizer] Configure.");
+        return customizer;
     }
 
     @Bean
@@ -99,12 +108,11 @@ public class AssistantOssConfiguration {
     @Configuration(proxyBeanMethods = false)
     @ComponentScan(basePackages = {
             "org.dromara.dante.assistant.oss.service.base",
-            "org.dromara.dante.assistant.oss.service.logic"
+            "org.dromara.dante.assistant.oss.service.manager"
     })
     static class AwsServiceConfiguration {
 
     }
-
 
     @Configuration(proxyBeanMethods = false)
     @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)

@@ -25,9 +25,11 @@
 
 package org.dromara.dante.assistant.oss.definition.service;
 
+import org.dromara.dante.assistant.oss.utils.OssUtils;
 import org.springframework.core.convert.converter.Converter;
 
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
 import java.util.function.Function;
 
 /**
@@ -37,7 +39,6 @@ import java.util.function.Function;
  * @date : 2024/7/22 18:04
  */
 public abstract class AbstractServletService {
-
     /**
      * 响应式对象存储操作通用处理方法
      *
@@ -53,6 +54,30 @@ public abstract class AbstractServletService {
      */
     protected <ArgumentA, RequestR, ResponseR, ResultR> ResultR process(ArgumentA argument, Converter<ArgumentA, RequestR> toRequest, Converter<ResponseR, ResultR> toResult, Function<RequestR, CompletableFuture<ResponseR>> handler) {
         CompletableFuture<ResponseR> future = handler.apply(toRequest.convert(argument));
-        return toResult.convert(future.join());
+        try {
+            return toResult.convert(future.join());
+        } catch (CompletionException e) {
+            throw OssUtils.convertException(e);
+        }
+    }
+
+    /**
+     * 响应式对象存储操作通用处理方法
+     *
+     * @param argument    实际应用请求参数
+     * @param toRequest   实际应用请求参数转换为AWS SDK V2 XXXRequest 实体转换器
+     * @param handler     AWS SDK V2 操作API
+     * @param <ArgumentA> 实际应用请求参数类型
+     * @param <RequestR>  AWS SDK V2 XXXRequest 实体类型
+     * @param <ResultR>   实际应用响应结果类型
+     * @return 阻塞式对象存储操作返回数据
+     */
+    protected <ArgumentA, RequestR, ResultR> ResultR process(ArgumentA argument, Converter<ArgumentA, RequestR> toRequest, Function<RequestR, CompletableFuture<ResultR>> handler) {
+        CompletableFuture<ResultR> future = handler.apply(toRequest.convert(argument));
+        try {
+            return future.join();
+        } catch (CompletionException e) {
+            throw OssUtils.convertException(e);
+        }
     }
 }

@@ -28,7 +28,7 @@ package org.dromara.dante.assistant.oss.entity.argument;
 import com.google.common.base.MoreObjects;
 import io.swagger.v3.oas.annotations.media.Schema;
 import org.dromara.dante.assistant.oss.definition.argument.AbstractObjectRequestPayerArgument;
-import org.dromara.dante.assistant.oss.definition.domain.DeletedDomain;
+import org.dromara.dante.assistant.oss.entity.domain.DeletedDomain;
 
 import java.util.List;
 

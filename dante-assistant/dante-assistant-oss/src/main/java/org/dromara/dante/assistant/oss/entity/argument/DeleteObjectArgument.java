@@ -27,7 +27,7 @@ package org.dromara.dante.assistant.oss.entity.argument;
 
 import com.google.common.base.MoreObjects;
 import io.swagger.v3.oas.annotations.media.Schema;
-import org.dromara.dante.assistant.oss.definition.argument.AbstractObjectVersionArgument;
+import org.dromara.dante.assistant.oss.definition.argument.AbstractObjectVersionIdArgument;
 
 /**
  * <p>Description: 删除对象请求参数实体 </p>
@@ -36,7 +36,7 @@ import org.dromara.dante.assistant.oss.definition.argument.AbstractObjectVersion
  * @date : 2024/7/22 23:37
  */
 @Schema(name = "删除对象请求参数实体", title = "删除对象请求参数实体")
-public class DeleteObjectArgument extends AbstractObjectVersionArgument {
+public class DeleteObjectArgument extends AbstractObjectVersionIdArgument {
 
     private String mfa;
 

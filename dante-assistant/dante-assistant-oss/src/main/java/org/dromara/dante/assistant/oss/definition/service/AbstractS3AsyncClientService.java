@@ -25,9 +25,13 @@
 
 package org.dromara.dante.assistant.oss.definition.service;
 
+import org.dromara.dante.assistant.oss.exception.*;
 import org.dromara.dante.assistant.oss.pool.S3AsyncClientObjectPool;
 import org.dromara.dante.core.support.pool.AbstractPooledObjectService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import software.amazon.awssdk.services.s3.S3AsyncClient;
+import software.amazon.awssdk.services.s3.model.*;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Function;
@@ -40,6 +44,8 @@ import java.util.function.Function;
  */
 public abstract class AbstractS3AsyncClientService extends AbstractPooledObjectService<S3AsyncClient> {
 
+    private static final Logger log = LoggerFactory.getLogger(AbstractS3AsyncClientService.class);
+
     public AbstractS3AsyncClientService(S3AsyncClientObjectPool objectPool) {
         super(objectPool);
     }
@@ -48,6 +54,34 @@ public abstract class AbstractS3AsyncClientService extends AbstractPooledObjectS
         S3AsyncClient client = getClient();
         CompletableFuture<T> future = operate.apply(client);
         close(client);
-        return future;
+        return future.exceptionally(throwable -> {
+            Throwable cause = throwable.getCause();
+
+            log.error("[Herodotus] |- AWS s3 error: {}", cause.getMessage(), cause);
+
+            if (cause instanceof S3Exception s3Exception) {
+                switch (s3Exception) {
+                    case AccessDeniedException accessDeniedException ->
+                            throw new OssAccessDeniedException(accessDeniedException.getMessage(), accessDeniedException);
+                    case BucketAlreadyOwnedByYouException bucketAlreadyOwnedByYouException ->
+                            throw new OssBucketAlreadyOwnedByYouException(bucketAlreadyOwnedByYouException.getMessage(), bucketAlreadyOwnedByYouException);
+                    case BucketAlreadyExistsException bucketAlreadyExistsException ->
+                            throw new OssBucketAlreadyExistsException(bucketAlreadyExistsException.getMessage(), bucketAlreadyExistsException);
+                    case InvalidObjectStateException invalidObjectStateException ->
+                            throw new OssInvalidObjectStateException(invalidObjectStateException.getMessage(), invalidObjectStateException);
+                    case InvalidRequestException invalidRequestException ->
+                            throw new OssInvalidRequestException(invalidRequestException.getMessage(), invalidRequestException);
+                    case NoSuchBucketException noSuchBucketException ->
+                            throw new OssNoSuchBucketException(noSuchBucketException.getMessage(), noSuchBucketException);
+                    case NoSuchKeyException noSuchKeyException ->
+                            throw new OssNoSuchKeyException(noSuchKeyException.getMessage(), noSuchKeyException);
+                    case NoSuchUploadException noSuchUploadException ->
+                            throw new OssNoSuchUploadException(noSuchUploadException.getMessage(), noSuchUploadException);
+                    default -> throw new RuntimeException(cause);
+                }
+            }
+
+            throw new RuntimeException(throwable);
+        });
     }
 }

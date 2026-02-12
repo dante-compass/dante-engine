@@ -25,7 +25,7 @@
 
 package org.dromara.dante.assistant.oss.converter.domain;
 
-import org.dromara.dante.assistant.oss.definition.domain.OwnerDomain;
+import org.dromara.dante.assistant.oss.entity.domain.OwnerDomain;
 import org.springframework.core.convert.converter.Converter;
 import software.amazon.awssdk.services.s3.model.Owner;
 

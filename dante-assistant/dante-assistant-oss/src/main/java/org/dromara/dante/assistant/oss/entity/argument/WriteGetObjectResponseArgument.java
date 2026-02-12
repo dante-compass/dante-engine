@@ -27,8 +27,8 @@ package org.dromara.dante.assistant.oss.entity.argument;
 
 import com.google.common.base.MoreObjects;
 import io.swagger.v3.oas.annotations.media.Schema;
-import org.dromara.dante.assistant.oss.definition.domain.ChecksumDomain;
-import org.dromara.dante.assistant.oss.definition.domain.PutObjectDomain;
+import org.dromara.dante.assistant.oss.entity.domain.ChecksumDomain;
+import org.dromara.dante.assistant.oss.entity.domain.PutObjectDomain;
 
 import java.time.LocalDateTime;
 

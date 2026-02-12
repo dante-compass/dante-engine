@@ -26,7 +26,7 @@
 package org.dromara.dante.assistant.oss.converter.result;
 
 import org.dromara.dante.assistant.oss.definition.converter.ResponseConverter;
-import org.dromara.dante.assistant.oss.definition.domain.SsekmsDomain;
+import org.dromara.dante.assistant.oss.entity.domain.SsekmsDomain;
 import org.dromara.dante.assistant.oss.entity.result.UploadPartResult;
 import software.amazon.awssdk.services.s3.model.UploadPartResponse;
 

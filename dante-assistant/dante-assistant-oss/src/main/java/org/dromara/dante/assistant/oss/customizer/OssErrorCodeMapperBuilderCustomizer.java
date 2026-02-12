@@ -25,23 +25,30 @@
 
 package org.dromara.dante.assistant.oss.customizer;
 
-import org.dromara.dante.assistant.oss.constant.OssErrorCodes;
+import org.dromara.dante.assistant.oss.constant.OssErrorCode;
 import org.dromara.dante.core.builder.ErrorCodeMapperBuilder;
 import org.dromara.dante.core.constant.ErrorCodeMapperBuilderOrdered;
 import org.dromara.dante.core.function.ErrorCodeMapperBuilderCustomizer;
 import org.springframework.core.Ordered;
 
 /**
- * <p>Description: Oss 错误代码映射定义 </p>
+ * <p>Description: Pki 错误映射 </p>
  *
  * @author : gengwei.zheng
- * @date : 2025/1/22 15:24
+ * @date : 2025/1/10 23:04
  */
 public class OssErrorCodeMapperBuilderCustomizer implements ErrorCodeMapperBuilderCustomizer, Ordered {
 
     @Override
     public void customize(ErrorCodeMapperBuilder builder) {
-        builder.internalServerError(OssErrorCodes.DOWNLOAD_OBJECT_EXCEPTION, OssErrorCodes.UPLOAD_OBJECT_EXCEPTION);
+        builder.badRequest(OssErrorCode.INVALID_REQUEST_EXCEPTION)
+                .forbidden(OssErrorCode.ACCESS_DENIED_EXCEPTION)
+                .conflict(OssErrorCode.BUCKET_ALREADY_EXISTS_EXCEPTION,
+                        OssErrorCode.BUCKET_ALREADY_OWNED_BY_YOU_EXCEPTION,
+                        OssErrorCode.INVALID_OBJECT_STATE_EXCEPTION)
+                .notFound(OssErrorCode.NO_SUCH_BUCKET_EXCEPTION,
+                        OssErrorCode.NO_SUCH_KEY_EXCEPTION,
+                        OssErrorCode.NO_SUCH_UPLOAD_EXCEPTION);
     }
 
     @Override

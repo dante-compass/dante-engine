@@ -30,6 +30,7 @@ import org.dromara.dante.assistant.oss.converter.result.*;
 import org.dromara.dante.assistant.oss.definition.service.AbstractServletService;
 import org.dromara.dante.assistant.oss.entity.argument.*;
 import org.dromara.dante.assistant.oss.entity.result.*;
+import org.dromara.dante.assistant.oss.service.base.S3AsyncClientCompositeService;
 import org.dromara.dante.assistant.oss.service.base.S3AsyncClientObjectService;
 import org.springframework.stereotype.Service;
 import software.amazon.awssdk.core.async.AsyncRequestBody;
@@ -44,37 +45,51 @@ import software.amazon.awssdk.core.async.AsyncResponseTransformer;
 @Service
 public class ServletObjectService extends AbstractServletService {
 
-    private final S3AsyncClientObjectService s3AsyncClientObjectService;
+    private final S3AsyncClientObjectService objectService;
+    private final S3AsyncClientCompositeService compositeService;
 
-    public ServletObjectService(S3AsyncClientObjectService s3AsyncClientObjectService) {
-        this.s3AsyncClientObjectService = s3AsyncClientObjectService;
+    public ServletObjectService(S3AsyncClientObjectService objectService, S3AsyncClientCompositeService compositeService) {
+        this.objectService = objectService;
+        this.compositeService = compositeService;
     }
 
     public HeadObjectResult headObject(HeadObjectArgument argument) {
-        return process(argument, new ArgumentToHeadObjectRequestConverter(), new ResponseToHeadObjectResultConverter(), s3AsyncClientObjectService::headObject);
+        return process(argument, new ArgumentToHeadObjectRequestConverter(), new ResponseToHeadObjectResultConverter(), objectService::headObject);
     }
 
     public DeleteObjectResult deleteObject(DeleteObjectArgument argument) {
-        return process(argument, new ArgumentToDeleteObjectRequestConverter(), new ResponseToDeleteObjectResultConverter(), s3AsyncClientObjectService::deleteObject);
+        return process(argument, new ArgumentToDeleteObjectRequestConverter(), new ResponseToDeleteObjectResultConverter(), objectService::deleteObject);
     }
 
     public DeleteObjectsResult deleteObjects(DeleteObjectsArgument argument) {
-        return process(argument, new ArgumentToDeleteObjectsRequestConverter(), new ResponseToDeleteObjectsResultConverter(), s3AsyncClientObjectService::deleteObjects);
+        return process(argument, new ArgumentToDeleteObjectsRequestConverter(), new ResponseToDeleteObjectsResultConverter(), objectService::deleteObjects);
     }
 
     public GetObjectResult getObject(GetObjectArgument argument) {
-        return process(argument, new ArgumentToGetObjectRequestConverter(), new InputStreamToGetObjectResultConverter(), getObjectRequest -> s3AsyncClientObjectService.getObject(getObjectRequest, AsyncResponseTransformer.toBlockingInputStream()));
+        return process(argument, new ArgumentToGetObjectRequestConverter(), new InputStreamToGetObjectResultConverter(), getObjectRequest -> objectService.getObject(getObjectRequest, AsyncResponseTransformer.toBlockingInputStream()));
     }
 
     public ListObjectsV2Result listObjectsV2(ListObjectsV2Argument argument) {
-        return process(argument, new ArgumentToListObjectsV2RequestConverter(), new ResponseToListObjectsV2ResultConverter(), s3AsyncClientObjectService::listObjectsV2);
+        return process(argument, new ArgumentToListObjectsV2RequestConverter(), new ResponseToListObjectsV2ResultConverter(), objectService::listObjectsV2);
     }
 
     public PutObjectResult putObject(PutObjectArgument argument, AsyncRequestBody requestBody) {
-        return process(argument, new ArgumentToPutObjectRequestConverter(), new ResponseToPutObjectResultConverter(), request -> s3AsyncClientObjectService.putObject(request, requestBody));
+        return process(argument, new ArgumentToPutObjectRequestConverter(), new ResponseToPutObjectResultConverter(), request -> objectService.putObject(request, requestBody));
     }
 
     public WriteGetObjectResponseResult writeGetObjectResponse(WriteGetObjectResponseArgument argument, AsyncRequestBody requestBody) {
-        return process(argument, new ArgumentToWriteGetObjectResponseRequestConverter(), new ResponseToWriteGetObjectResponseResultConverter(), request -> s3AsyncClientObjectService.writeGetObjectResponse(request, requestBody));
+        return process(argument, new ArgumentToWriteGetObjectResponseRequestConverter(), new ResponseToWriteGetObjectResponseResultConverter(), request -> objectService.writeGetObjectResponse(request, requestBody));
+    }
+
+    public GetObjectAttributesResult getObjectAttributes(GetObjectAttributesArgument argument) {
+        return process(argument, new ArgumentToGetObjectAttributesRequestConverter(), compositeService::getObjectAttributes);
+    }
+
+    public PutObjectLegalHoldResult putObjectLegalHold(PutObjectLegalHoldArgument argument) {
+        return process(argument, new ArgumentToPutObjectLegalHoldRequestConverter(), new ResponseToPutObjectLegalHoldResultConverter(), objectService::putObjectLegalHold);
+    }
+
+    public PutObjectRetentionResult putObjectRetention(PutObjectRetentionArgument argument) {
+        return process(argument, new ArgumentToPutObjectRetentionRequestConverter(), new ResponseToPutObjectRetentionResultConverter(), objectService::putObjectRetention);
     }
 }

@@ -25,8 +25,8 @@
 
 package org.dromara.dante.assistant.oss.entity.result;
 
-import org.dromara.dante.assistant.oss.definition.domain.ObjectDomain;
 import org.dromara.dante.assistant.oss.definition.result.AbstractResult;
+import org.dromara.dante.assistant.oss.entity.domain.ObjectDomain;
 
 import java.util.List;
 

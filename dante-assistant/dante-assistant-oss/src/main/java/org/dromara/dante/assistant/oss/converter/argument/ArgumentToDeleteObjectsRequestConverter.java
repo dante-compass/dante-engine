@@ -26,8 +26,8 @@
 package org.dromara.dante.assistant.oss.converter.argument;
 
 import org.dromara.dante.assistant.oss.converter.domain.DomainToObjectIdentifiersConverter;
-import org.dromara.dante.assistant.oss.definition.domain.DeletedDomain;
 import org.dromara.dante.assistant.oss.entity.argument.DeleteObjectsArgument;
+import org.dromara.dante.assistant.oss.entity.domain.DeletedDomain;
 import org.dromara.dante.spring.founction.ListConverter;
 import org.springframework.core.convert.converter.Converter;
 import software.amazon.awssdk.services.s3.model.Delete;

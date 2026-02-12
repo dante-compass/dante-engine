@@ -36,19 +36,13 @@ import io.swagger.v3.oas.annotations.tags.Tags;
 import jakarta.servlet.http.HttpServletResponse;
 import org.dromara.dante.assistant.oss.converter.result.ResponseToPutObjectResultConverter;
 import org.dromara.dante.assistant.oss.definition.converter.ResponseConverter;
-import org.dromara.dante.assistant.oss.entity.argument.DeleteObjectArgument;
-import org.dromara.dante.assistant.oss.entity.argument.DeleteObjectsArgument;
-import org.dromara.dante.assistant.oss.entity.argument.GetObjectArgument;
-import org.dromara.dante.assistant.oss.entity.argument.ListObjectsV2Argument;
-import org.dromara.dante.assistant.oss.entity.result.DeleteObjectResult;
-import org.dromara.dante.assistant.oss.entity.result.DeleteObjectsResult;
-import org.dromara.dante.assistant.oss.entity.result.ListObjectsV2Result;
-import org.dromara.dante.assistant.oss.entity.result.PutObjectResult;
-import org.dromara.dante.assistant.oss.exception.DownloadObjectException;
-import org.dromara.dante.assistant.oss.exception.UploadObjectException;
+import org.dromara.dante.assistant.oss.entity.argument.*;
+import org.dromara.dante.assistant.oss.entity.result.*;
 import org.dromara.dante.assistant.oss.service.base.S3TransferManagerService;
 import org.dromara.dante.assistant.oss.service.servlet.ServletObjectService;
 import org.dromara.dante.core.domain.Result;
+import org.dromara.dante.core.exception.DownloadObjectException;
+import org.dromara.dante.core.exception.UploadObjectException;
 import org.dromara.dante.rest.oss.service.ServletObjectStreamService;
 import org.dromara.dante.web.annotation.AccessLimited;
 import org.dromara.dante.web.annotation.Idempotent;
@@ -102,7 +96,6 @@ public class ServletObjectController implements Controller {
             responses = {
                     @ApiResponse(description = "所有对象", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = Result.class))),
                     @ApiResponse(responseCode = "200", description = "查询成功，查到数据"),
-                    @ApiResponse(responseCode = "204", description = "查询成功，未查到数据"),
                     @ApiResponse(responseCode = "500", description = "查询失败"),
                     @ApiResponse(responseCode = "503", description = "Server无法访问或未启动")
             })
@@ -139,7 +132,6 @@ public class ServletObjectController implements Controller {
             responses = {
                     @ApiResponse(description = "返回删除操作出错对象的具体信息", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = Result.class))),
                     @ApiResponse(responseCode = "200", description = "查询成功，查到数据"),
-                    @ApiResponse(responseCode = "204", description = "查询成功，未查到数据"),
                     @ApiResponse(responseCode = "500", description = "查询失败"),
                     @ApiResponse(responseCode = "503", description = "Server无法访问或未启动")
             })
@@ -237,5 +229,59 @@ public class ServletObjectController implements Controller {
             log.error("[Herodotus] |- Display bucket [{}] object [{}] catch error", arguments.getBucketName(), arguments.getObjectName(), e);
             throw new DownloadObjectException(e.getMessage());
         }
+    }
+
+    @AccessLimited
+    @Operation(summary = "获取对象属性", description = "该接口为非 S3 官方接口，在对象官方信息基础上扩展了更多信息",
+            requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE)),
+            responses = {
+                    @ApiResponse(description = "所有对象", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = Result.class))),
+                    @ApiResponse(responseCode = "200", description = "查询成功，查到数据"),
+                    @ApiResponse(responseCode = "500", description = "查询失败"),
+                    @ApiResponse(responseCode = "503", description = "Server无法访问或未启动")
+            })
+    @Parameters({
+            @Parameter(name = "argument", required = true, description = "获取对象属性请求参数实体", schema = @Schema(implementation = GetObjectAttributesArgument.class))
+    })
+    @GetMapping("/attributes")
+    public Result<GetObjectAttributesResult> getObjectAttributes(@Validated GetObjectAttributesArgument argument) {
+        GetObjectAttributesResult domain = servletObjectService.getObjectAttributes(argument);
+        return result(domain);
+    }
+
+    @Idempotent
+    @Operation(summary = "变更对象留存状态", description = "该接口仅在存储桶开启了 Object Lock 才会生效",
+            requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE)),
+            responses = {
+                    @ApiResponse(description = "所有对象", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = Result.class))),
+                    @ApiResponse(responseCode = "200", description = "操作成功"),
+                    @ApiResponse(responseCode = "500", description = "操作失败，具体查看错误信息内容"),
+                    @ApiResponse(responseCode = "503", description = "Server 无法访问或未启动")
+            })
+    @Parameters({
+            @Parameter(name = "argument", required = true, description = "设置对象留存请求参数实体", schema = @Schema(implementation = PutObjectLegalHoldArgument.class))
+    })
+    @PutMapping("/legalhold")
+    public Result<PutObjectLegalHoldResult> putObjectLegalHold(@Validated @RequestBody PutObjectLegalHoldArgument argument) {
+        PutObjectLegalHoldResult result = servletObjectService.putObjectLegalHold(argument);
+        return result(result);
+    }
+
+    @Idempotent
+    @Operation(summary = "变更对象保留色湖之", description = "该接口仅在存储桶开启了 Object Lock 才会生效",
+            requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE)),
+            responses = {
+                    @ApiResponse(description = "所有对象", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = Result.class))),
+                    @ApiResponse(responseCode = "200", description = "操作成功"),
+                    @ApiResponse(responseCode = "500", description = "操作失败，具体查看错误信息内容"),
+                    @ApiResponse(responseCode = "503", description = "Server 无法访问或未启动")
+            })
+    @Parameters({
+            @Parameter(name = "argument", required = true, description = "变更对象保留设置请求参数实体", schema = @Schema(implementation = PutObjectRetentionArgument.class))
+    })
+    @PutMapping("/retention")
+    public Result<PutObjectRetentionResult> putObjectRetention(@Validated @RequestBody PutObjectRetentionArgument argument) {
+        PutObjectRetentionResult result = servletObjectService.putObjectRetention(argument);
+        return result(result);
     }
 }

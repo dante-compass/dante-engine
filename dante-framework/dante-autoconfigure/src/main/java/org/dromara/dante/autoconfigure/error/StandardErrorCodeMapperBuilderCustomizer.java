@@ -55,7 +55,8 @@ public class StandardErrorCodeMapperBuilderCustomizer implements ErrorCodeMapper
                         ErrorCodes.USERNAME_NOT_FOUND,
                         ErrorCodes.SESSION_EXPIRED,
                         ErrorCodes.NOT_AUTHENTICATED)
-                .forbidden(ErrorCodes.INSUFFICIENT_SCOPE, ErrorCodes.SQL_INJECTION_REQUEST)
+                .forbidden(ErrorCodes.INSUFFICIENT_SCOPE,
+                        ErrorCodes.SQL_INJECTION_REQUEST)
                 .methodNotAllowed(ErrorCodes.HTTP_REQUEST_METHOD_NOT_SUPPORTED)
                 .notAcceptable(ErrorCodes.UNSUPPORTED_GRANT_TYPE,
                         ErrorCodes.UNSUPPORTED_RESPONSE_TYPE,
@@ -68,8 +69,11 @@ public class StandardErrorCodeMapperBuilderCustomizer implements ErrorCodeMapper
                         ErrorCodes.CAPTCHA_IS_EMPTY,
                         ErrorCodes.CAPTCHA_MISMATCH,
                         ErrorCodes.CAPTCHA_PARAMETER_ILLEGAL)
-                .notFound(ErrorCodes.NOT_FOUND, ErrorCodes.NO_RESOURCE_FOUND_EXCEPTION)
-                .preconditionFailed(ErrorCodes.INVALID_REDIRECT_URI, ErrorCodes.INVALID_REQUEST, ErrorCodes.INVALID_SCOPE, ErrorCodes.METHOD_ARGUMENT_NOT_VALID)
+                .notFound(ErrorCodes.NO_RESOURCE_FOUND_EXCEPTION)
+                .preconditionFailed(ErrorCodes.INVALID_REDIRECT_URI,
+                        ErrorCodes.INVALID_REQUEST,
+                        ErrorCodes.INVALID_SCOPE,
+                        ErrorCodes.METHOD_ARGUMENT_NOT_VALID)
                 .unsupportedMediaType(ErrorCodes.HTTP_MEDIA_TYPE_NOT_ACCEPTABLE)
                 .internalServerError(ErrorCodes.SERVER_ERROR,
                         ErrorCodes.HTTP_MESSAGE_NOT_READABLE_EXCEPTION,
@@ -79,9 +83,19 @@ public class StandardErrorCodeMapperBuilderCustomizer implements ErrorCodeMapper
                         ErrorCodes.NULL_POINTER_EXCEPTION,
                         ErrorCodes.TYPE_MISMATCH_EXCEPTION,
                         ErrorCodes.BORROW_OBJECT_FROM_POOL_ERROR_EXCEPTION,
-                        ErrorCodes.OPENAPI_INVOKING_FAILED)
-                .notImplemented(ErrorCodes.PROPERTY_VALUE_IS_NOT_SET_EXCEPTION, ErrorCodes.URL_FORMAT_INCORRECT_EXCEPTION, ErrorCodes.ILLEGAL_SYMMETRIC_KEY, ErrorCodes.DISCOVERED_UNRECORDED_ERROR_EXCEPTION)
-                .serviceUnavailable(ErrorCodes.COOKIE_THEFT, ErrorCodes.INVALID_COOKIE, ErrorCodes.PROVIDER_NOT_FOUND, ErrorCodes.TEMPORARILY_UNAVAILABLE, ErrorCodes.SEARCH_IP_LOCATION)
+                        ErrorCodes.OPENAPI_INVOKING_FAILED,
+                        ErrorCodes.DOWNLOAD_OBJECT_EXCEPTION,
+                        ErrorCodes.UPLOAD_OBJECT_EXCEPTION)
+                .notImplemented(ErrorCodes.PROPERTY_VALUE_IS_NOT_SET_EXCEPTION,
+                        ErrorCodes.URL_FORMAT_INCORRECT_EXCEPTION,
+                        ErrorCodes.ILLEGAL_SYMMETRIC_KEY,
+                        ErrorCodes.DISCOVERED_UNRECORDED_ERROR_EXCEPTION)
+                .serviceUnavailable(
+                        ErrorCodes.COOKIE_THEFT,
+                        ErrorCodes.INVALID_COOKIE,
+                        ErrorCodes.PROVIDER_NOT_FOUND,
+                        ErrorCodes.TEMPORARILY_UNAVAILABLE,
+                        ErrorCodes.SEARCH_IP_LOCATION)
                 .customize(ErrorCodes.TRANSACTION_ROLLBACK,
                         ErrorCodes.BAD_SQL_GRAMMAR,
                         ErrorCodes.DATA_INTEGRITY_VIOLATION,

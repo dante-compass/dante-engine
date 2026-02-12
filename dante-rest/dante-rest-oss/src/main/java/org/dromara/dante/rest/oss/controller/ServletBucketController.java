@@ -36,9 +36,11 @@ import io.swagger.v3.oas.annotations.tags.Tags;
 import org.dromara.dante.assistant.oss.entity.argument.CreateBucketArgument;
 import org.dromara.dante.assistant.oss.entity.argument.DeleteBucketArgument;
 import org.dromara.dante.assistant.oss.entity.argument.ListBucketsArgument;
+import org.dromara.dante.assistant.oss.entity.argument.PutBucketPolicyArgument;
 import org.dromara.dante.assistant.oss.entity.result.CreateBucketResult;
 import org.dromara.dante.assistant.oss.entity.result.DeleteBucketResult;
-import org.dromara.dante.assistant.oss.entity.result.ListBucketsResult;
+import org.dromara.dante.assistant.oss.entity.result.ListBucketDetailsResult;
+import org.dromara.dante.assistant.oss.entity.result.PutBucketPolicyResult;
 import org.dromara.dante.assistant.oss.service.servlet.ServletBucketService;
 import org.dromara.dante.core.domain.Result;
 import org.dromara.dante.web.annotation.AccessLimited;
@@ -68,7 +70,6 @@ public class ServletBucketController implements Controller {
     public ServletBucketController(ServletBucketService servletBucketService) {
         this.servletBucketService = servletBucketService;
     }
-
 
     @Idempotent
     @Operation(summary = "创建存储桶", description = "创建存储桶接口，该接口仅是创建，不包含是否已存在检查",
@@ -112,7 +113,6 @@ public class ServletBucketController implements Controller {
             responses = {
                     @ApiResponse(description = "所有Buckets", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = Result.class))),
                     @ApiResponse(responseCode = "200", description = "查询成功，查到数据"),
-                    @ApiResponse(responseCode = "204", description = "查询成功，未查到数据"),
                     @ApiResponse(responseCode = "500", description = "查询失败"),
                     @ApiResponse(responseCode = "503", description = "Server无法访问或未启动")
             })
@@ -120,8 +120,26 @@ public class ServletBucketController implements Controller {
             @Parameter(name = "argument", description = "CListBucketsArgument请求参数实体", schema = @Schema(implementation = ListBucketsArgument.class))
     })
     @GetMapping("/list")
-    public Result<ListBucketsResult> listBuckets(ListBucketsArgument argument) {
-        ListBucketsResult buckets = servletBucketService.listBuckets(argument);
+    public Result<ListBucketDetailsResult> listBuckets(ListBucketsArgument argument) {
+        ListBucketDetailsResult buckets = servletBucketService.listBucketDetails(argument);
         return result(buckets);
+    }
+
+    @Idempotent
+    @Operation(summary = "设置存储桶策略", description = "变更存储桶权限公开还是私有",
+            requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE)),
+            responses = {
+                    @ApiResponse(description = "所有对象", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = Result.class))),
+                    @ApiResponse(responseCode = "200", description = "操作成功"),
+                    @ApiResponse(responseCode = "500", description = "操作失败，具体查看错误信息内容"),
+                    @ApiResponse(responseCode = "503", description = "Server无法访问或未启动")
+            })
+    @Parameters({
+            @Parameter(name = "argument", required = true, description = "设置存储桶策略请求参数实体", schema = @Schema(implementation = PutBucketPolicyArgument.class))
+    })
+    @PutMapping("/policy")
+    public Result<PutBucketPolicyResult> putBucketPolicy(@Validated @RequestBody PutBucketPolicyArgument argument) {
+        PutBucketPolicyResult result = servletBucketService.putBucketPolicy(argument);
+        return result(result);
     }
 }

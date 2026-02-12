@@ -100,6 +100,12 @@ import java.util.Map;
 public class ErrorCodeMapperBuilder {
 
     /**
+     * 400 - Bad Request：客户端请求的语法错误，服务器无法理解
+     */
+    private final Map<Feedback, Integer> badRequestConfigs = new LinkedHashMap<>() {{
+        put(ErrorCodes.BAD_REQUEST, ErrorCodes.BAD_REQUEST.getSequence());
+    }};
+    /**
      * 401	Unauthorized	请求要求用户的身份认证
      */
     private final Map<Feedback, Integer> unauthorizedConfigs = new LinkedHashMap<>() {{
@@ -128,6 +134,12 @@ public class ErrorCodeMapperBuilder {
      */
     private final Map<Feedback, Integer> notAcceptableConfigs = new LinkedHashMap<>() {{
         put(ErrorCodes.NOT_ACCEPTABLE, ErrorCodes.NOT_ACCEPTABLE.getSequence());
+    }};
+    /**
+     * 409 - Conflict：服务器完成客户端的PUT请求是可能返回此代码，服务器处理请求时发生了冲突
+     */
+    private final Map<Feedback, Integer> conflictConfigs = new LinkedHashMap<>() {{
+        put(ErrorCodes.CONFLICT, ErrorCodes.CONFLICT.getSequence());
     }};
     /**
      * 412	Precondition Failed	客户端请求信息的先决条件错误
@@ -185,6 +197,13 @@ public class ErrorCodeMapperBuilder {
     }
 
     /**
+     * 400 - Bad Request：客户端请求的语法错误，服务器无法理解
+     */
+    public ErrorCodeMapperBuilder badRequest(BadRequestFeedback... items) {
+        return create(this.badRequestConfigs, items);
+    }
+
+    /**
      * 401	Unauthorized	请求要求用户的身份认证
      *
      * @param items 错误标识条目  {@link UnauthorizedFeedback}
@@ -232,6 +251,16 @@ public class ErrorCodeMapperBuilder {
      */
     public ErrorCodeMapperBuilder notAcceptable(NotAcceptableFeedback... items) {
         return create(this.notAcceptableConfigs, items);
+    }
+
+    /**
+     * 409	Conflict   服务器完成客户端的PUT请求是可能返回此代码，服务器处理请求时发生了冲突
+     *
+     * @param items 错误标识条目 {@link ConflictFeedback}
+     * @return {@link ErrorCodeMapperBuilder}
+     */
+    public ErrorCodeMapperBuilder conflict(ConflictFeedback... items) {
+        return create(this.conflictConfigs, items);
     }
 
     /**
@@ -286,10 +315,12 @@ public class ErrorCodeMapperBuilder {
 
     public ErrorCodeMapper build() {
         ErrorCodeMapper errorCodeMapper = ErrorCodeMapper.getInstance();
+        errorCodeMapper.append(badRequestConfigs);
         errorCodeMapper.append(unauthorizedConfigs);
         errorCodeMapper.append(forbiddenConfigs);
         errorCodeMapper.append(methodNotAllowedConfigs);
         errorCodeMapper.append(notAcceptableConfigs);
+        errorCodeMapper.append(conflictConfigs);
         errorCodeMapper.append(preconditionFailedConfigs);
         errorCodeMapper.append(unsupportedMediaTypeConfigs);
         errorCodeMapper.append(internalServerErrorConfigs);

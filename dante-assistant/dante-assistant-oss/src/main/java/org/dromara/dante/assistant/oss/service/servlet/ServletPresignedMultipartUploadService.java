@@ -26,7 +26,7 @@
 package org.dromara.dante.assistant.oss.service.servlet;
 
 import org.dromara.dante.assistant.oss.entity.business.CreateMultipartUploadBusiness;
-import org.dromara.dante.assistant.oss.service.logic.PresignedMultipartUploadService;
+import org.dromara.dante.assistant.oss.service.manager.PresignedMultipartUploadService;
 import org.springframework.stereotype.Service;
 import software.amazon.awssdk.services.s3.model.CreateMultipartUploadResponse;
 

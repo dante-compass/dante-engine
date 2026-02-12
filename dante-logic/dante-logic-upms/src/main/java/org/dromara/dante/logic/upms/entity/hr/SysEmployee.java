@@ -46,7 +46,7 @@ import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.UuidGenerator;
 import tools.jackson.databind.annotation.JsonDeserialize;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -118,8 +118,7 @@ public class SysEmployee extends AbstractSysEntity implements SocialUserDetails 
 
     @Schema(name = "生日")
     @Column(name = "birth_day")
-    @Temporal(TemporalType.DATE)
-    private Date birthday;
+    private LocalDate birthday;
 
     @Schema(name = "性别")
     @Column(name = "gender")
@@ -258,11 +257,11 @@ public class SysEmployee extends AbstractSysEntity implements SocialUserDetails 
         return this.getEmail();
     }
 
-    public Date getBirthday() {
+    public LocalDate getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(LocalDate birthday) {
         this.birthday = birthday;
     }
 

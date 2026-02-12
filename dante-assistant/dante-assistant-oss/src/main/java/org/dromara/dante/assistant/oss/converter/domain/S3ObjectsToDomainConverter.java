@@ -27,9 +27,11 @@ package org.dromara.dante.assistant.oss.converter.domain;
 
 import cn.hutool.v7.core.date.DateUtil;
 import org.apache.commons.lang3.ObjectUtils;
-import org.dromara.dante.assistant.oss.definition.domain.ObjectDomain;
-import org.dromara.dante.assistant.oss.definition.domain.OwnerDomain;
-import org.dromara.dante.assistant.oss.definition.domain.RestoreStatusDomain;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.Strings;
+import org.dromara.dante.assistant.oss.entity.domain.ObjectDomain;
+import org.dromara.dante.assistant.oss.entity.domain.OwnerDomain;
+import org.dromara.dante.assistant.oss.entity.domain.RestoreStatusDomain;
 import org.dromara.dante.assistant.oss.utils.OssUtils;
 import org.dromara.dante.spring.founction.ListConverter;
 import org.springframework.core.convert.converter.Converter;
@@ -38,7 +40,7 @@ import software.amazon.awssdk.services.s3.model.RestoreStatus;
 import software.amazon.awssdk.services.s3.model.S3Object;
 
 /**
- * <p>Description: S3Objects 转 Result 转换器 </p>
+ * <p>Description: {@link S3Object} 转 {@link ObjectDomain} 转换器 </p>
  *
  * @author : gengwei.zheng
  * @date : 2024/7/15 15:38
@@ -47,8 +49,10 @@ public class S3ObjectsToDomainConverter implements ListConverter<S3Object, Objec
 
     private final Converter<Owner, OwnerDomain> toOwnerResult;
     private final Converter<RestoreStatus, RestoreStatusDomain> toRestoreStatusResult;
+    private final String delimiter;
 
-    public S3ObjectsToDomainConverter() {
+    public S3ObjectsToDomainConverter(String delimiter) {
+        this.delimiter = delimiter;
         this.toOwnerResult = new OwnerToDomainConverter();
         this.toRestoreStatusResult = new RestoreStatusToDomainConverter();
     }
@@ -64,6 +68,7 @@ public class S3ObjectsToDomainConverter implements ListConverter<S3Object, Objec
         target.setRestoreStatus(ObjectUtils.isNotEmpty(source.restoreStatus()) ? toRestoreStatusResult.convert(source.restoreStatus()) : null);
         target.setSize(source.size());
         target.setStorageClass(source.storageClassAsString());
+        target.setDir(StringUtils.isNotBlank(this.delimiter) && Strings.CS.contains(source.key(), this.delimiter));
         return target;
     }
 }

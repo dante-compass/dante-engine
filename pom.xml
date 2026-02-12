@@ -31,26 +31,40 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.dromara.dante</groupId>
-        <artifactId>dante-bom</artifactId>
-        <version>4.0.2.0-M3</version>
-        <relativePath>dante-bom/pom.xml</relativePath>
+        <groupId>cn.herodotus.ecosystem</groupId>
+        <artifactId>herodotus-ecosystem-parent</artifactId>
+        <version>4.0.2.0-M4</version>
+        <relativePath/>
     </parent>
 
+    <groupId>org.dromara.dante</groupId>
     <artifactId>dante-engine</artifactId>
     <name>${project.artifactId}</name>
-
     <packaging>pom</packaging>
 
     <description>Dante Engine</description>
 
     <url>https://github.com/dromara/dante-cloud</url>
+
     <licenses>
         <license>
             <name>Apache License Version 2.0</name>
             <url>https://www.apache.org/licenses/LICENSE-2.0</url>
+            <distribution>repo</distribution>
         </license>
     </licenses>
+
+    <scm>
+        <url>https://github.com/dromara/dante-cloud</url>
+        <connection>scm:git:git@github.com:dromara/dante-cloud.git</connection>
+        <developerConnection>scm:git:git@github.com:dromara/dante-cloud.git</developerConnection>
+    </scm>
+
+    <organization>
+        <name>dromara</name>
+        <url>https://dromara.org</url>
+    </organization>
+
     <developers>
         <developer>
             <id>herodotus-ecosystem</id>
@@ -58,12 +72,30 @@
             <email>herodotus@aliyun.com</email>
             <organization>dromara</organization>
             <organizationUrl>https://dromara.org</organizationUrl>
-            <timezone>+8</timezone>
+            <url>https://github.com/herodotus-ecosystem</url>
         </developer>
     </developers>
-    <scm>
-        <url>https://github.com/dromara/dante-cloud.git</url>
-    </scm>
+
+    <properties>
+        <java.version>25</java.version>
+        <resource.delimiter>@</resource.delimiter>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.dromara.dante</groupId>
+                <artifactId>dante-engine-dependencies</artifactId>
+                <version>${project.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <profiles>
         <profile>
@@ -105,7 +137,7 @@
     </profiles>
 
     <modules>
-        <module>dante-bom</module>
+        <module>dante-dependencies</module>
         <module>dante-assistant</module>
         <module>dante-cache</module>
         <module>dante-data</module>

@@ -26,7 +26,7 @@
 package org.dromara.dante.assistant.oss.converter.result;
 
 import org.dromara.dante.assistant.oss.definition.converter.ResponseConverter;
-import org.dromara.dante.assistant.oss.definition.domain.ChecksumDomain;
+import org.dromara.dante.assistant.oss.entity.domain.ChecksumDomain;
 import org.dromara.dante.assistant.oss.entity.result.CompleteMultipartUploadResult;
 import org.dromara.dante.assistant.oss.utils.OssUtils;
 import software.amazon.awssdk.services.s3.model.CompleteMultipartUploadResponse;

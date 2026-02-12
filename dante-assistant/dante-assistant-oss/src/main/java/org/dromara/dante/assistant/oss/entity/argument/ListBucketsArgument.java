@@ -25,6 +25,7 @@
 
 package org.dromara.dante.assistant.oss.entity.argument;
 
+import com.google.common.base.MoreObjects;
 import io.swagger.v3.oas.annotations.media.Schema;
 import org.dromara.dante.assistant.oss.definition.argument.AbstractArgument;
 
@@ -36,4 +37,54 @@ import org.dromara.dante.assistant.oss.definition.argument.AbstractArgument;
  */
 @Schema(name = "存储桶列表请求参数实体", title = "存储桶列表请求参数实体")
 public class ListBucketsArgument extends AbstractArgument {
+
+    private Integer maxBuckets;
+
+    private String continuationToken;
+
+    private String prefix;
+
+    private String bucketRegion;
+
+    public Integer getMaxBuckets() {
+        return maxBuckets;
+    }
+
+    public void setMaxBuckets(Integer maxBuckets) {
+        this.maxBuckets = maxBuckets;
+    }
+
+    public String getContinuationToken() {
+        return continuationToken;
+    }
+
+    public void setContinuationToken(String continuationToken) {
+        this.continuationToken = continuationToken;
+    }
+
+    public String getPrefix() {
+        return prefix;
+    }
+
+    public void setPrefix(String prefix) {
+        this.prefix = prefix;
+    }
+
+    public String getBucketRegion() {
+        return bucketRegion;
+    }
+
+    public void setBucketRegion(String bucketRegion) {
+        this.bucketRegion = bucketRegion;
+    }
+
+    @Override
+    public String toString() {
+        return MoreObjects.toStringHelper(this)
+                .add("maxBuckets", maxBuckets)
+                .add("continuationToken", continuationToken)
+                .add("prefix", prefix)
+                .add("bucketRegion", bucketRegion)
+                .toString();
+    }
 }
