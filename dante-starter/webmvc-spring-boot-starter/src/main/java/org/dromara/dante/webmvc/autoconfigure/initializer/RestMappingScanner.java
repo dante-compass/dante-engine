@@ -37,6 +37,7 @@ import org.dromara.dante.web.autoconfigure.properties.ServiceProperties;
 import org.dromara.dante.web.support.WebPropertyFinder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.webmvc.autoconfigure.WebMvcProperties;
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.mvc.condition.PathPatternsRequestCondition;
@@ -59,9 +60,11 @@ import java.util.Set;
 public class RestMappingScanner extends AbstractRestMappingScanner {
 
     private static final Logger log = LoggerFactory.getLogger(RestMappingScanner.class);
+    private final WebMvcProperties webMvcProperties;
 
-    public RestMappingScanner(ServiceProperties.Scan scan, RestMappingScanEventManager restMappingScanEventManager) {
+    public RestMappingScanner(WebMvcProperties webMvcProperties, ServiceProperties.Scan scan, RestMappingScanEventManager restMappingScanEventManager) {
         super(scan, restMappingScanEventManager);
+        this.webMvcProperties = webMvcProperties;
     }
 
     public void onApplicationEvent(ApplicationContext applicationContext) {
@@ -120,11 +123,20 @@ public class RestMappingScanner extends AbstractRestMappingScanner {
         }
 
         // 4.2.3、获取 API 版本信息
-        VersionRequestCondition versionRequestCondition = info.getVersionCondition();
-        String version = versionRequestCondition.getVersion();
+        String version = parseVersion(info);
 
         String urls = String.join(SymbolConstants.COMMA, patternValues);
 
         return buildRestMapping(serviceId, requestMethods, urls, version, method);
+    }
+
+    private String parseVersion(RequestMappingInfo info) {
+        VersionRequestCondition versionRequestCondition = info.getVersionCondition();
+        String version = versionRequestCondition.getVersion();
+        if (ObjectUtils.isNotEmpty(version)) {
+            return version;
+        }
+
+        return webMvcProperties.getApiversion().getDefaultVersion();
     }
 }

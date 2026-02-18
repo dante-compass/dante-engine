@@ -36,6 +36,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.boot.webmvc.autoconfigure.WebMvcProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -61,8 +62,8 @@ public class WebMvcRestMappingScanConfiguration {
     @Bean
     @ConditionalOnBean(RestMappingScanEventManager.class)
     @ConditionalOnMissingBean
-    public RestMappingScanner restMappingScanner(ServiceProperties serviceProperties, RestMappingScanEventManager requestMappingScanManager) {
-        RestMappingScanner scanner = new RestMappingScanner(serviceProperties.getScan(), requestMappingScanManager);
+    public RestMappingScanner restMappingScanner(WebMvcProperties webMvcProperties, ServiceProperties serviceProperties, RestMappingScanEventManager requestMappingScanManager) {
+        RestMappingScanner scanner = new RestMappingScanner(webMvcProperties, serviceProperties.getScan(), requestMappingScanManager);
         log.trace("[Herodotus] |- Bean [Servlet Rest Mapping Scanner] Configure.");
         return scanner;
     }
