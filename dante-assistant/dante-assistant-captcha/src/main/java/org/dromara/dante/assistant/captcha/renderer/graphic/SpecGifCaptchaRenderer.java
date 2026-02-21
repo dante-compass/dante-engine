@@ -26,7 +26,7 @@
 package org.dromara.dante.assistant.captcha.renderer.graphic;
 
 import org.dromara.dante.assistant.captcha.provider.ResourceProvider;
-import org.dromara.dante.spring.enums.CaptchaCategory;
+import org.dromara.dante.assistant.captcha.enums.CaptchaCategory;
 
 /**
  * <p>Description: Gif 类型验证码绘制器 </p>

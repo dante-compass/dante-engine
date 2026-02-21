@@ -23,68 +23,23 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.core.domain.captcha;
+package org.dromara.dante.assistant.captcha.constant;
 
-import com.google.common.base.MoreObjects;
-
-import java.io.Serializable;
-import java.util.Objects;
+import org.dromara.dante.core.feedback.NotAcceptableFeedback;
 
 /**
- * <p>Description: 坐标 </p>
+ * <p>Description: Captcha 模块错误代码 </p>
  *
  * @author : gengwei.zheng
- * @date : 2021/12/11 15:30
+ * @date : 2025/1/10 23:07
  */
-public class Coordinate implements Serializable {
+public interface CaptchaErrorCodes {
 
-    private int x;
-    private int y;
-
-    public Coordinate() {
-    }
-
-    public Coordinate(int x, int y) {
-        this.x = x;
-        this.y = y;
-    }
-
-    public int getX() {
-        return x;
-    }
-
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public void setY(int y) {
-        this.y = y;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Coordinate that = (Coordinate) o;
-        return x == that.x && y == that.y;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(x, y);
-    }
-
-    @Override
-    public String toString() {
-        return MoreObjects.toStringHelper(this)
-                .add("x", x)
-                .add("y", y)
-                .toString();
-    }
+    NotAcceptableFeedback CAPTCHA_CATEGORY_IS_INCORRECT = new NotAcceptableFeedback("验证码分类错误");
+    NotAcceptableFeedback CAPTCHA_HANDLER_NOT_EXIST = new NotAcceptableFeedback("验证码处理器不存在");
+    NotAcceptableFeedback CAPTCHA_HAS_EXPIRED = new NotAcceptableFeedback("验证码已过期");
+    NotAcceptableFeedback CAPTCHA_IS_EMPTY = new NotAcceptableFeedback("验证码不能为空");
+    NotAcceptableFeedback CAPTCHA_MISMATCH = new NotAcceptableFeedback("验证码不匹配");
+    NotAcceptableFeedback CAPTCHA_PARAMETER_ILLEGAL = new NotAcceptableFeedback("验证码参数格式错误");
 }
+

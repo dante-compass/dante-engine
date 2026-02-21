@@ -23,21 +23,29 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.security.strategy;
+package org.dromara.dante.assistant.captcha.exception;
 
-import org.dromara.dante.security.domain.AccessPrincipal;
-import org.dromara.dante.security.domain.HerodotusUser;
-import org.springframework.security.core.AuthenticationException;
+import org.dromara.dante.assistant.captcha.constant.CaptchaErrorCodes;
+import org.dromara.dante.core.domain.Feedback;
 
 /**
- * <p>Description: 系统用户服务策略定义 </p>
+ * <p>Description: 验证码已过期 </p>
  *
  * @author : gengwei.zheng
- * @date : 2022/2/17 10:52
+ * @date : 2021/12/15 18:06
  */
-public interface StrategyUserDetailsService {
+public class CaptchaHasExpiredException extends CaptchaException {
 
-    HerodotusUser findUserDetailsByUsername(String username) throws AuthenticationException;
+    public CaptchaHasExpiredException(String message) {
+        super(message);
+    }
 
-    HerodotusUser findUserDetailsBySocial(String source, AccessPrincipal accessPrincipal) throws AuthenticationException;
+    public CaptchaHasExpiredException(String message, Throwable cause) {
+        super(message, cause);
+    }
+
+    @Override
+    public Feedback getFeedback() {
+        return CaptchaErrorCodes.CAPTCHA_HAS_EXPIRED;
+    }
 }

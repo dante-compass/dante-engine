@@ -26,7 +26,7 @@
 package org.dromara.dante.assistant.captcha.renderer.behavior;
 
 import com.google.common.base.MoreObjects;
-import org.dromara.dante.core.domain.captcha.Captcha;
+import org.dromara.dante.security.domain.captcha.Captcha;
 
 /**
  * <p>Description: 文字点选验证码返回前台信息 </p>

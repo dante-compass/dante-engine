@@ -23,29 +23,17 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.oauth2.commons.exception;
+package org.dromara.dante.security.definition;
 
-import org.dromara.dante.core.constant.ErrorCodes;
-import org.dromara.dante.core.domain.Feedback;
+import org.dromara.dante.security.domain.UserPrincipal;
 
 /**
- * <p>Description: Oauth2 使用的验证码不匹配错误 </p>
+ * <p>Description: 身份信息解析器 </p>
  *
  * @author : gengwei.zheng
- * @date : 2021/12/24 12:08
+ * @date : 2022/12/28 0:08
  */
-public class OAuth2CaptchaMismatchException extends OAuth2CaptchaException {
+public interface BearerTokenResolver {
 
-    public OAuth2CaptchaMismatchException(String msg, Throwable cause) {
-        super(msg, cause);
-    }
-
-    public OAuth2CaptchaMismatchException(String msg) {
-        super(msg);
-    }
-
-    @Override
-    public Feedback getFeedback() {
-        return ErrorCodes.CAPTCHA_MISMATCH;
-    }
+    UserPrincipal resolve(String token);
 }

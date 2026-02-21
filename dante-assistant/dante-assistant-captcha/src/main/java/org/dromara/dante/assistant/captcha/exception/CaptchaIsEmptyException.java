@@ -23,38 +23,29 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.core.domain.captcha;
+package org.dromara.dante.assistant.captcha.exception;
 
-import io.swagger.v3.oas.annotations.media.Schema;
-import org.dromara.dante.core.domain.AbstractDto;
+import org.dromara.dante.assistant.captcha.constant.CaptchaErrorCodes;
+import org.dromara.dante.core.domain.Feedback;
 
 /**
- * <p>Description: 验证码返回数据基础类 </p>
+ * <p>Description: 验证码为空 </p>
  *
  * @author : gengwei.zheng
- * @date : 2021/12/13 17:06
+ * @date : 2021/12/24 18:11
  */
-public abstract class Captcha extends AbstractDto {
+public class CaptchaIsEmptyException extends CaptchaException {
 
-    @Schema(name = "验证码身份")
-    private String identity;
-
-    @Schema(name = "验证码类别")
-    private String category;
-
-    public String getIdentity() {
-        return identity;
+    public CaptchaIsEmptyException(String message) {
+        super(message);
     }
 
-    public void setIdentity(String identity) {
-        this.identity = identity;
+    public CaptchaIsEmptyException(String message, Throwable cause) {
+        super(message, cause);
     }
 
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
+    @Override
+    public Feedback getFeedback() {
+        return CaptchaErrorCodes.CAPTCHA_IS_EMPTY;
     }
 }

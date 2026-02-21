@@ -32,7 +32,7 @@ import org.dromara.dante.message.servlet.websocket.annotation.ConditionalOnSingl
 import org.dromara.dante.message.servlet.websocket.definition.WebSocketMessageSender;
 import org.dromara.dante.message.servlet.websocket.interceptor.WebSocketAuthenticationHandshakeInterceptor;
 import org.dromara.dante.message.servlet.websocket.messaging.*;
-import org.dromara.dante.security.oauth2.BearerTokenResolver;
+import org.dromara.dante.security.definition.BearerTokenResolver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;

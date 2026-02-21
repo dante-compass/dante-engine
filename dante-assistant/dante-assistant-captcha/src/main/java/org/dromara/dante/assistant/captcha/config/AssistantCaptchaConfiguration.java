@@ -26,6 +26,9 @@
 package org.dromara.dante.assistant.captcha.config;
 
 import jakarta.annotation.PostConstruct;
+import org.dromara.dante.assistant.captcha.DefaultCaptchaProcessor;
+import org.dromara.dante.assistant.captcha.customizer.CaptchaErrorCodeMapperBuilderCustomizer;
+import org.dromara.dante.assistant.captcha.definition.CaptchaRenderer;
 import org.dromara.dante.assistant.captcha.properties.CaptchaProperties;
 import org.dromara.dante.assistant.captcha.provider.ResourceProvider;
 import org.dromara.dante.assistant.captcha.renderer.behavior.JigsawCaptchaRenderer;
@@ -35,13 +38,17 @@ import org.dromara.dante.assistant.captcha.renderer.hutool.CircleCaptchaRenderer
 import org.dromara.dante.assistant.captcha.renderer.hutool.GifCaptchaRenderer;
 import org.dromara.dante.assistant.captcha.renderer.hutool.LineCaptchaRenderer;
 import org.dromara.dante.assistant.captcha.renderer.hutool.ShearCaptchaRenderer;
-import org.dromara.dante.spring.enums.CaptchaCategory;
+import org.dromara.dante.core.function.ErrorCodeMapperBuilderCustomizer;
+import org.dromara.dante.security.definition.CaptchaProcessor;
+import org.dromara.dante.assistant.captcha.enums.CaptchaCategory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import java.util.Map;
 
 /**
  * <p>Description: 辅助模块 Captcha 配置 </p>
@@ -58,6 +65,13 @@ public class AssistantCaptchaConfiguration {
     @PostConstruct
     public void postConstruct() {
         log.debug("[Herodotus] |- Module [Assistant Captcha] Configure.");
+    }
+
+    @Bean
+    public ErrorCodeMapperBuilderCustomizer captchaErrorCodeMapperBuilderCustomizer() {
+        CaptchaErrorCodeMapperBuilderCustomizer customizer = new CaptchaErrorCodeMapperBuilderCustomizer();
+        log.debug("[Herodotus] |- Strategy [Captcha ErrorCodeMapper Builder Customizer] Configure.");
+        return customizer;
     }
 
     @Bean
@@ -155,5 +169,13 @@ public class AssistantCaptchaConfiguration {
             log.trace("[Herodotus] |- Bean [Hutool Gif Captcha Renderer] Configure.");
             return gifCaptchaRenderer;
         }
+    }
+
+    @Bean
+    @ConditionalOnMissingBean
+    public CaptchaProcessor captchaProcessor(Map<String, CaptchaRenderer> handlers) {
+        DefaultCaptchaProcessor processor = new DefaultCaptchaProcessor(handlers);
+        log.trace("[Herodotus] |- Bean [Captcha Processor] Configure.");
+        return processor;
     }
 }

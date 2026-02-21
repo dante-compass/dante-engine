@@ -25,13 +25,13 @@
 
 package org.dromara.dante.oauth2.authentication.configurer;
 
-import org.dromara.dante.web.support.crypto.DigitalEnvelopeProcessor;
 import org.dromara.dante.oauth2.authentication.customizer.OAuth2ExceptionHandlingConfigurerCustomizer;
 import org.dromara.dante.oauth2.authentication.customizer.OAuth2FormLoginConfigurerCustomizer;
 import org.dromara.dante.oauth2.authentication.response.OAuth2AccessTokenResponseHandler;
 import org.dromara.dante.oauth2.authentication.response.OAuth2AuthenticationFailureHandler;
 import org.dromara.dante.oauth2.commons.properties.OAuth2AuthenticationProperties;
 import org.dromara.dante.web.servlet.template.ThymeleafTemplateHandler;
+import org.dromara.dante.web.support.crypto.DigitalEnvelopeProcessor;
 
 /**
  * <p>Description: 授权服务器通用 Bean 配置器 </p>

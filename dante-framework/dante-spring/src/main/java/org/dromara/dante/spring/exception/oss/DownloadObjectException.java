@@ -23,38 +23,38 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.spring.exception.captcha;
+package org.dromara.dante.spring.exception.oss;
 
 import org.dromara.dante.core.constant.ErrorCodes;
 import org.dromara.dante.core.domain.Feedback;
 import org.dromara.dante.core.exception.PlatformRuntimeException;
 
 /**
- * <p>Description: 验证码校验参数错误 </p>
+ * <p>Description: 下载文件异常 </p>
  *
  * @author : gengwei.zheng
- * @date : 2021/12/15 17:54
+ * @date : 2025/1/22 15:14
  */
-public class CaptchaParameterIllegalException extends PlatformRuntimeException {
+public class DownloadObjectException extends PlatformRuntimeException {
 
-    public CaptchaParameterIllegalException() {
+    public DownloadObjectException() {
         super();
     }
 
-    public CaptchaParameterIllegalException(String message) {
+    public DownloadObjectException(String message) {
         super(message);
     }
 
-    public CaptchaParameterIllegalException(String message, Throwable cause) {
+    public DownloadObjectException(String message, Throwable cause) {
         super(message, cause);
     }
 
-    public CaptchaParameterIllegalException(Throwable cause) {
+    public DownloadObjectException(Throwable cause) {
         super(cause);
     }
 
     @Override
     public Feedback getFeedback() {
-        return ErrorCodes.CAPTCHA_PARAMETER_ILLEGAL;
+        return ErrorCodes.DOWNLOAD_OBJECT_EXCEPTION;
     }
 }

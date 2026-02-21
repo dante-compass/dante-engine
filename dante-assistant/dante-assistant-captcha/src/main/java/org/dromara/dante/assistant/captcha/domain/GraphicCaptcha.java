@@ -23,37 +23,56 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.core.exception;
+package org.dromara.dante.assistant.captcha.domain;
 
-import org.dromara.dante.core.constant.ErrorCodes;
-import org.dromara.dante.core.domain.Feedback;
+import com.google.common.base.MoreObjects;
+import org.dromara.dante.security.domain.captcha.Captcha;
+
+import java.util.Objects;
 
 /**
- * <p>Description: 下载文件异常 </p>
+ * <p>Description: 图形验证码 </p>
  *
  * @author : gengwei.zheng
- * @date : 2025/1/22 15:14
+ * @date : 2021/12/21 22:19
  */
-public class DownloadObjectException extends PlatformRuntimeException {
+public class GraphicCaptcha extends Captcha {
 
-    public DownloadObjectException() {
-        super();
+    /**
+     * 图形验证码成的图。
+     */
+    private String graphicImageBase64;
+
+    public GraphicCaptcha() {
     }
 
-    public DownloadObjectException(String message) {
-        super(message);
+    public String getGraphicImageBase64() {
+        return graphicImageBase64;
     }
 
-    public DownloadObjectException(String message, Throwable cause) {
-        super(message, cause);
-    }
-
-    public DownloadObjectException(Throwable cause) {
-        super(cause);
+    public void setGraphicImageBase64(String graphicImageBase64) {
+        this.graphicImageBase64 = graphicImageBase64;
     }
 
     @Override
-    public Feedback getFeedback() {
-        return ErrorCodes.DOWNLOAD_OBJECT_EXCEPTION;
+    public boolean equals(Object o) {
+
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        GraphicCaptcha that = (GraphicCaptcha) o;
+        return Objects.equals(graphicImageBase64, that.graphicImageBase64);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(graphicImageBase64);
+    }
+
+    @Override
+    public String toString() {
+        return MoreObjects.toStringHelper(this)
+                .add("graphicImageBase64", graphicImageBase64)
+                .toString();
     }
 }

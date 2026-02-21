@@ -23,45 +23,38 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.oauth2.commons.exception;
+package org.dromara.dante.spring.exception.oss;
 
 import org.dromara.dante.core.constant.ErrorCodes;
 import org.dromara.dante.core.domain.Feedback;
-import org.dromara.dante.core.domain.Result;
-import org.dromara.dante.core.exception.HerodotusException;
-import org.springframework.security.authentication.AccountStatusException;
-import org.springframework.security.core.Authentication;
+import org.dromara.dante.core.exception.PlatformRuntimeException;
 
 /**
- * <p>Description: OAuth2 验证码基础 Exception </p>
- * <p>
- * 这里没有用基础定义的 PlatformAuthorizationException。主要问题是在自定义表单登录时，如果使用基础的 {@link org.springframework.security.core.AuthenticationException}，
- * 在 Spring Security 标准代码中该Exception将不会抛出，而是进行二次的用户验证，这将导致在验证过程中直接跳过验证码的校验。
+ * <p>Description: 上传文件异常 </p>
  *
  * @author : gengwei.zheng
- * @date : 2022/4/12 22:33
- * @see org.springframework.security.authentication.ProviderManager#authenticate(Authentication)
+ * @date : 2025/1/22 15:13
  */
-public class OAuth2CaptchaException extends AccountStatusException implements HerodotusException {
+public class UploadObjectException extends PlatformRuntimeException {
 
-    public OAuth2CaptchaException(String msg) {
-        super(msg);
+    public UploadObjectException() {
+        super();
     }
 
-    public OAuth2CaptchaException(String msg, Throwable cause) {
-        super(msg, cause);
+    public UploadObjectException(String message) {
+        super(message);
+    }
+
+    public UploadObjectException(String message, Throwable cause) {
+        super(message, cause);
+    }
+
+    public UploadObjectException(Throwable cause) {
+        super(cause);
     }
 
     @Override
     public Feedback getFeedback() {
-        return ErrorCodes.INTERNAL_SERVER_ERROR;
-    }
-
-    @Override
-    public Result<String> getResult() {
-        Result<String> result = Result.failure(getFeedback());
-        result.stackTrace(super.getStackTrace());
-        result.detail(super.getMessage());
-        return result;
+        return ErrorCodes.UPLOAD_OBJECT_EXCEPTION;
     }
 }

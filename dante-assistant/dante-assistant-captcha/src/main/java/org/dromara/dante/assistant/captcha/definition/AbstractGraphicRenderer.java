@@ -30,15 +30,15 @@ import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.Strings;
 import org.dromara.dante.assistant.captcha.constant.CaptchaConstants;
+import org.dromara.dante.assistant.captcha.domain.GraphicCaptcha;
+import org.dromara.dante.assistant.captcha.domain.Metadata;
+import org.dromara.dante.assistant.captcha.exception.CaptchaHasExpiredException;
+import org.dromara.dante.assistant.captcha.exception.CaptchaIsEmptyException;
+import org.dromara.dante.assistant.captcha.exception.CaptchaMismatchException;
+import org.dromara.dante.assistant.captcha.exception.CaptchaParameterIllegalException;
 import org.dromara.dante.assistant.captcha.provider.ResourceProvider;
-import org.dromara.dante.core.domain.captcha.Captcha;
-import org.dromara.dante.core.domain.captcha.GraphicCaptcha;
-import org.dromara.dante.core.domain.captcha.Metadata;
-import org.dromara.dante.core.domain.captcha.Verification;
-import org.dromara.dante.spring.exception.captcha.CaptchaHasExpiredException;
-import org.dromara.dante.spring.exception.captcha.CaptchaIsEmptyException;
-import org.dromara.dante.spring.exception.captcha.CaptchaMismatchException;
-import org.dromara.dante.spring.exception.captcha.CaptchaParameterIllegalException;
+import org.dromara.dante.security.domain.captcha.Captcha;
+import org.dromara.dante.security.domain.captcha.Verification;
 
 import java.awt.*;
 
@@ -104,7 +104,7 @@ public abstract class AbstractGraphicRenderer extends AbstractRenderer<String, S
         String real = verification.getCharacters();
 
         if (!Strings.CI.equals(store, real)) {
-            throw new CaptchaMismatchException();
+            throw new CaptchaMismatchException("Captcha coordinate mismatch!");
         }
 
         return true;

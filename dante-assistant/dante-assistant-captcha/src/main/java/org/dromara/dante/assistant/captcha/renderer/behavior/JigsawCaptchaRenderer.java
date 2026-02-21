@@ -30,16 +30,16 @@ import cn.hutool.v7.swing.img.ImgUtil;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.dromara.dante.assistant.captcha.constant.CaptchaConstants;
+import org.dromara.dante.assistant.captcha.domain.Metadata;
+import org.dromara.dante.assistant.captcha.exception.CaptchaHasExpiredException;
+import org.dromara.dante.assistant.captcha.exception.CaptchaMismatchException;
+import org.dromara.dante.assistant.captcha.exception.CaptchaParameterIllegalException;
 import org.dromara.dante.assistant.captcha.provider.RandomProvider;
 import org.dromara.dante.assistant.captcha.provider.ResourceProvider;
-import org.dromara.dante.core.domain.captcha.Captcha;
-import org.dromara.dante.core.domain.captcha.Coordinate;
-import org.dromara.dante.core.domain.captcha.Metadata;
-import org.dromara.dante.core.domain.captcha.Verification;
-import org.dromara.dante.spring.enums.CaptchaCategory;
-import org.dromara.dante.spring.exception.captcha.CaptchaHasExpiredException;
-import org.dromara.dante.spring.exception.captcha.CaptchaMismatchException;
-import org.dromara.dante.spring.exception.captcha.CaptchaParameterIllegalException;
+import org.dromara.dante.security.domain.captcha.Captcha;
+import org.dromara.dante.security.domain.captcha.Coordinate;
+import org.dromara.dante.security.domain.captcha.Verification;
+import org.dromara.dante.assistant.captcha.enums.CaptchaCategory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -115,7 +115,7 @@ public class JigsawCaptchaRenderer extends AbstractBehaviorRenderer<String, Coor
         Coordinate real = verification.getCoordinate();
 
         if (this.isDeflected(real.getX(), store.getX(), getCaptchaProperties().getJigsaw().getDeviation()) || real.getY() != store.getY()) {
-            throw new CaptchaMismatchException();
+            throw new CaptchaMismatchException("Captcha coordinate mismatch!");
         }
 
         return true;

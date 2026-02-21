@@ -23,20 +23,18 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.spring.support.captcha;
+package org.dromara.dante.assistant.captcha;
 
 import org.apache.commons.lang3.ObjectUtils;
-import org.dromara.dante.core.domain.captcha.Captcha;
-import org.dromara.dante.core.domain.captcha.Verification;
-import org.dromara.dante.core.support.CaptchaRenderer;
-import org.dromara.dante.spring.enums.CaptchaCategory;
-import org.dromara.dante.spring.exception.captcha.CaptchaCategoryIsIncorrectException;
-import org.dromara.dante.spring.exception.captcha.CaptchaHandlerNotExistException;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.dromara.dante.assistant.captcha.definition.CaptchaRenderer;
+import org.dromara.dante.assistant.captcha.exception.CaptchaCategoryIsIncorrectException;
+import org.dromara.dante.assistant.captcha.exception.CaptchaHandlerNotExistException;
+import org.dromara.dante.security.definition.CaptchaProcessor;
+import org.dromara.dante.security.domain.captcha.Captcha;
+import org.dromara.dante.security.domain.captcha.Verification;
+import org.dromara.dante.assistant.captcha.enums.CaptchaCategory;
 
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * <p>Description: Captcha 工厂 </p>
@@ -44,11 +42,14 @@ import java.util.concurrent.ConcurrentHashMap;
  * @author : gengwei.zheng
  * @date : 2021/12/14 14:38
  */
-@Component
-public class CaptchaRendererFactory {
+public class DefaultCaptchaProcessor implements CaptchaProcessor {
 
-    @Autowired
-    private final Map<String, CaptchaRenderer> handlers = new ConcurrentHashMap<>(8);
+    private final Map<String, CaptchaRenderer> handlers;
+
+    public DefaultCaptchaProcessor(Map<String, CaptchaRenderer> handlers) {
+        this.handlers = handlers;
+    }
+
 
     public CaptchaRenderer getRenderer(String category) {
         CaptchaCategory captchaCategory = CaptchaCategory.getCaptchaCategory(category);
@@ -59,7 +60,7 @@ public class CaptchaRendererFactory {
 
         CaptchaRenderer captchaRenderer = handlers.get(captchaCategory.getConstant());
         if (ObjectUtils.isEmpty(captchaRenderer)) {
-            throw new CaptchaHandlerNotExistException();
+            throw new CaptchaHandlerNotExistException("Captcha handler not exist.");
         }
 
         return captchaRenderer;

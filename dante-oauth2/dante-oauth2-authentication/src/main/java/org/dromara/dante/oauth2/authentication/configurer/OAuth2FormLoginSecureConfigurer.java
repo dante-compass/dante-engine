@@ -25,11 +25,11 @@
 
 package org.dromara.dante.oauth2.authentication.configurer;
 
-import org.dromara.dante.web.support.crypto.DigitalEnvelopeProcessor;
 import org.dromara.dante.oauth2.authentication.provider.OAuth2FormLoginAuthenticationProvider;
 import org.dromara.dante.oauth2.authentication.response.OAuth2FormLoginAuthenticationFailureHandler;
 import org.dromara.dante.oauth2.commons.properties.OAuth2AuthenticationProperties;
-import org.dromara.dante.spring.support.captcha.CaptchaRendererFactory;
+import org.dromara.dante.security.definition.CaptchaProcessor;
+import org.dromara.dante.web.support.crypto.DigitalEnvelopeProcessor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.HttpSecurityBuilder;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -50,13 +50,13 @@ public class OAuth2FormLoginSecureConfigurer<H extends HttpSecurityBuilder<H>> e
 
     private final UserDetailsService userDetailsService;
     private final OAuth2AuthenticationProperties authenticationProperties;
-    private final CaptchaRendererFactory captchaRendererFactory;
+    private final CaptchaProcessor captchaProcessor;
     private final DigitalEnvelopeProcessor digitalEnvelopeProcessor;
 
-    public OAuth2FormLoginSecureConfigurer(UserDetailsService userDetailsService, OAuth2AuthenticationProperties authenticationProperties, CaptchaRendererFactory captchaRendererFactory, DigitalEnvelopeProcessor digitalEnvelopeProcessor) {
+    public OAuth2FormLoginSecureConfigurer(UserDetailsService userDetailsService, OAuth2AuthenticationProperties authenticationProperties, CaptchaProcessor captchaProcessor, DigitalEnvelopeProcessor digitalEnvelopeProcessor) {
         this.userDetailsService = userDetailsService;
         this.authenticationProperties = authenticationProperties;
-        this.captchaRendererFactory = captchaRendererFactory;
+        this.captchaProcessor = captchaProcessor;
         this.digitalEnvelopeProcessor = digitalEnvelopeProcessor;
     }
 
@@ -68,7 +68,7 @@ public class OAuth2FormLoginSecureConfigurer<H extends HttpSecurityBuilder<H>> e
 
         OAuth2FormLoginAuthenticationFilter filter = getOAuth2FormLoginAuthenticationFilter(authenticationManager, this.digitalEnvelopeProcessor, securityContextRepository);
 
-        OAuth2FormLoginAuthenticationProvider provider = new OAuth2FormLoginAuthenticationProvider(captchaRendererFactory, userDetailsService);
+        OAuth2FormLoginAuthenticationProvider provider = new OAuth2FormLoginAuthenticationProvider(captchaProcessor, userDetailsService);
         provider.setHideUserNotFoundExceptions(false);
 
         httpSecurity

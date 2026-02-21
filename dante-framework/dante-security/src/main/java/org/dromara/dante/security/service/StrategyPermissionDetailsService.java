@@ -23,17 +23,24 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.security.oauth2;
+package org.dromara.dante.security.service;
 
-import org.dromara.dante.security.domain.UserPrincipal;
+import org.dromara.dante.security.domain.HerodotusPermission;
+
+import java.util.List;
 
 /**
- * <p>Description: 身份信息解析器 </p>
+ * <p>Description: 系统范围服务策略定义 </p>
  *
  * @author : gengwei.zheng
- * @date : 2022/12/28 0:08
+ * @date : 2022/3/31 22:34
  */
-public interface BearerTokenResolver {
+public interface StrategyPermissionDetailsService {
 
-    UserPrincipal resolve(String token);
+    /**
+     * 获取全部权限
+     *
+     * @return 权限集合
+     */
+    List<HerodotusPermission> findAll();
 }

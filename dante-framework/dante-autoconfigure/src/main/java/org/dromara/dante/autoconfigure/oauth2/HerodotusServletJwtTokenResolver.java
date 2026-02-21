@@ -29,7 +29,7 @@ import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.dromara.dante.security.converter.UserPrincipalConverter;
 import org.dromara.dante.security.domain.UserPrincipal;
-import org.dromara.dante.security.oauth2.BearerTokenResolver;
+import org.dromara.dante.security.definition.BearerTokenResolver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.oauth2.jwt.BadJwtException;

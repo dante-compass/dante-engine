@@ -29,7 +29,7 @@ import jakarta.annotation.PostConstruct;
 import org.dromara.dante.autoconfigure.context.ServletServiceContextAutoConfiguration;
 import org.dromara.dante.security.condition.ConditionalOnTokenFormat;
 import org.dromara.dante.security.condition.TokenFormat;
-import org.dromara.dante.security.oauth2.BearerTokenResolver;
+import org.dromara.dante.security.definition.BearerTokenResolver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;

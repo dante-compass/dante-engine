@@ -29,7 +29,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.dromara.dante.security.domain.AccessPrincipal;
 import org.dromara.dante.security.domain.HerodotusUser;
 import org.dromara.dante.security.service.EnhanceUserDetailsService;
-import org.dromara.dante.security.strategy.StrategyUserDetailsService;
+import org.dromara.dante.security.service.StrategyUserDetailsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.userdetails.UserDetails;

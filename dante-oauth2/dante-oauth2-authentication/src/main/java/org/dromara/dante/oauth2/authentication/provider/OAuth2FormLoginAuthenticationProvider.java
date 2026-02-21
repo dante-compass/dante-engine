@@ -26,18 +26,9 @@
 package org.dromara.dante.oauth2.authentication.provider;
 
 import org.apache.commons.lang3.ObjectUtils;
-import org.apache.commons.lang3.StringUtils;
-import org.dromara.dante.core.domain.captcha.Verification;
-import org.dromara.dante.oauth2.commons.exception.OAuth2CaptchaArgumentIllegalException;
-import org.dromara.dante.oauth2.commons.exception.OAuth2CaptchaHasExpiredException;
-import org.dromara.dante.oauth2.commons.exception.OAuth2CaptchaIsEmptyException;
-import org.dromara.dante.oauth2.commons.exception.OAuth2CaptchaMismatchException;
+import org.dromara.dante.security.definition.CaptchaProcessor;
 import org.dromara.dante.security.domain.FormLoginWebAuthenticationDetails;
-import org.dromara.dante.spring.exception.captcha.CaptchaHasExpiredException;
-import org.dromara.dante.spring.exception.captcha.CaptchaIsEmptyException;
-import org.dromara.dante.spring.exception.captcha.CaptchaMismatchException;
-import org.dromara.dante.spring.exception.captcha.CaptchaParameterIllegalException;
-import org.dromara.dante.spring.support.captcha.CaptchaRendererFactory;
+import org.dromara.dante.security.domain.captcha.Verification;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -59,11 +50,11 @@ public class OAuth2FormLoginAuthenticationProvider extends DaoAuthenticationProv
 
     private static final Logger log = LoggerFactory.getLogger(OAuth2FormLoginAuthenticationProvider.class);
 
-    private final CaptchaRendererFactory captchaRendererFactory;
+    private final CaptchaProcessor captchaProcessor;
 
-    public OAuth2FormLoginAuthenticationProvider(CaptchaRendererFactory captchaRendererFactory, UserDetailsService userDetailsService) {
+    public OAuth2FormLoginAuthenticationProvider(CaptchaProcessor captchaProcessor, UserDetailsService userDetailsService) {
         super(userDetailsService);
-        this.captchaRendererFactory = captchaRendererFactory;
+        this.captchaProcessor = captchaProcessor;
     }
 
     @Override
@@ -78,25 +69,11 @@ public class OAuth2FormLoginAuthenticationProvider extends DaoAuthenticationProv
                 String category = formLoginWebAuthenticationDetails.getCategory();
                 String identity = formLoginWebAuthenticationDetails.getSessionId();
 
-                if (StringUtils.isBlank(code)) {
-                    throw new OAuth2CaptchaIsEmptyException("Captcha is empty.");
-                }
-
-                try {
-                    Verification verification = new Verification();
-                    verification.setCharacters(code);
-                    verification.setCategory(category);
-                    verification.setIdentity(identity);
-                    captchaRendererFactory.verify(verification);
-                } catch (CaptchaParameterIllegalException e) {
-                    throw new OAuth2CaptchaArgumentIllegalException("Captcha argument is illegal!");
-                } catch (CaptchaHasExpiredException e) {
-                    throw new OAuth2CaptchaHasExpiredException("Captcha is expired!");
-                } catch (CaptchaMismatchException e) {
-                    throw new OAuth2CaptchaMismatchException("Captcha is mismatch!");
-                } catch (CaptchaIsEmptyException e) {
-                    throw new OAuth2CaptchaIsEmptyException("Captcha is empty!");
-                }
+                Verification verification = new Verification();
+                verification.setCharacters(code);
+                verification.setCategory(category);
+                verification.setIdentity(identity);
+                captchaProcessor.verify(verification);
             }
         }
 

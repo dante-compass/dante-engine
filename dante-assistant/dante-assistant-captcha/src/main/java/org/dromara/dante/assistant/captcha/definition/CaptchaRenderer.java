@@ -23,11 +23,11 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.core.support;
+package org.dromara.dante.assistant.captcha.definition;
 
-import org.dromara.dante.core.domain.captcha.Captcha;
-import org.dromara.dante.core.domain.captcha.Metadata;
-import org.dromara.dante.core.domain.captcha.Verification;
+import org.dromara.dante.assistant.captcha.domain.Metadata;
+import org.dromara.dante.security.domain.captcha.Captcha;
+import org.dromara.dante.security.domain.captcha.Verification;
 
 /**
  * <p>Description: 基础绘制器定义 </p>

@@ -23,7 +23,9 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.core.domain.captcha;
+package org.dromara.dante.assistant.captcha.domain;
+
+import org.dromara.dante.security.domain.captcha.Coordinate;
 
 import java.util.List;
 

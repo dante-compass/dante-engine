@@ -23,29 +23,29 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.oauth2.commons.exception;
+package org.dromara.dante.assistant.captcha.exception;
 
-import org.dromara.dante.core.constant.ErrorCodes;
+import org.dromara.dante.assistant.captcha.constant.CaptchaErrorCodes;
 import org.dromara.dante.core.domain.Feedback;
 
 /**
- * <p>Description: 验证码为空 </p>
+ * <p>Description: 验证码分类错误 </p>
  *
  * @author : gengwei.zheng
- * @date : 2021/12/24 18:08
+ * @date : 2021/12/15 17:51
  */
-public class OAuth2CaptchaIsEmptyException extends OAuth2CaptchaException {
+public class CaptchaCategoryIsIncorrectException extends CaptchaException {
 
-    public OAuth2CaptchaIsEmptyException(String msg, Throwable cause) {
-        super(msg, cause);
+    public CaptchaCategoryIsIncorrectException(String message) {
+        super(message);
     }
 
-    public OAuth2CaptchaIsEmptyException(String msg) {
-        super(msg);
+    public CaptchaCategoryIsIncorrectException(String message, Throwable cause) {
+        super(message, cause);
     }
 
     @Override
     public Feedback getFeedback() {
-        return ErrorCodes.CAPTCHA_IS_EMPTY;
+        return CaptchaErrorCodes.CAPTCHA_CATEGORY_IS_INCORRECT;
     }
 }

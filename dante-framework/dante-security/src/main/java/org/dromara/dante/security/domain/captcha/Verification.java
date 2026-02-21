@@ -23,34 +23,59 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.core.domain.captcha;
+package org.dromara.dante.security.domain.captcha;
 
 import com.google.common.base.MoreObjects;
 
+import java.util.List;
 import java.util.Objects;
 
 /**
- * <p>Description: 图形验证码 </p>
+ * <p>Description: 验证数据实体 </p>
  *
  * @author : gengwei.zheng
- * @date : 2021/12/21 22:19
+ * @date : 2021/12/14 16:04
  */
-public class GraphicCaptcha extends Captcha {
+public class Verification extends Captcha {
 
     /**
-     * 图形验证码成的图。
+     * 滑块拼图验证参数
      */
-    private String graphicImageBase64;
+    private Coordinate coordinate;
+    /**
+     * 文字点选验证参数
+     */
+    private List<Coordinate> coordinates;
+    /**
+     * 图形验证码验证参数
+     */
+    private String characters;
 
-    public GraphicCaptcha() {
+    public Verification() {
     }
 
-    public String getGraphicImageBase64() {
-        return graphicImageBase64;
+    public Coordinate getCoordinate() {
+        return coordinate;
     }
 
-    public void setGraphicImageBase64(String graphicImageBase64) {
-        this.graphicImageBase64 = graphicImageBase64;
+    public void setCoordinate(Coordinate coordinate) {
+        this.coordinate = coordinate;
+    }
+
+    public List<Coordinate> getCoordinates() {
+        return coordinates;
+    }
+
+    public void setCoordinates(List<Coordinate> coordinates) {
+        this.coordinates = coordinates;
+    }
+
+    public String getCharacters() {
+        return characters;
+    }
+
+    public void setCharacters(String characters) {
+        this.characters = characters;
     }
 
     @Override
@@ -59,19 +84,19 @@ public class GraphicCaptcha extends Captcha {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        GraphicCaptcha that = (GraphicCaptcha) o;
-        return Objects.equals(graphicImageBase64, that.graphicImageBase64);
+        Verification that = (Verification) o;
+        return Objects.equals(characters, that.characters);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(graphicImageBase64);
+        return Objects.hashCode(characters);
     }
 
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("graphicImageBase64", graphicImageBase64)
+                .add("characters", characters)
                 .toString();
     }
 }

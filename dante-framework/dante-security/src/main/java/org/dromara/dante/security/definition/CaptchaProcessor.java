@@ -23,29 +23,20 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.oauth2.commons.exception;
+package org.dromara.dante.security.definition;
 
-import org.dromara.dante.core.constant.ErrorCodes;
-import org.dromara.dante.core.domain.Feedback;
+import org.dromara.dante.security.domain.captcha.Captcha;
+import org.dromara.dante.security.domain.captcha.Verification;
 
 /**
- * <p>Description: Oauth2 使用的验证码参数错误 </p>
+ * <p>Description: 验证码处理器定义 </p>
  *
  * @author : gengwei.zheng
- * @date : 2021/12/24 12:02
+ * @date : 2026/2/21 11:42
  */
-public class OAuth2CaptchaArgumentIllegalException extends OAuth2CaptchaException {
+public interface CaptchaProcessor {
 
-    public OAuth2CaptchaArgumentIllegalException(String msg, Throwable cause) {
-        super(msg, cause);
-    }
+    Captcha getCaptcha(String identity, String category);
 
-    public OAuth2CaptchaArgumentIllegalException(String msg) {
-        super(msg);
-    }
-
-    @Override
-    public Feedback getFeedback() {
-        return ErrorCodes.CAPTCHA_PARAMETER_ILLEGAL;
-    }
+    boolean verify(Verification verification);
 }

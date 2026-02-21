@@ -23,38 +23,29 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.spring.exception.captcha;
+package org.dromara.dante.assistant.captcha.exception;
 
-import org.dromara.dante.core.constant.ErrorCodes;
+import org.dromara.dante.assistant.captcha.constant.CaptchaErrorCodes;
 import org.dromara.dante.core.domain.Feedback;
-import org.dromara.dante.core.exception.PlatformRuntimeException;
 
 /**
- * <p>Description: 验证码处理器不存在 </p>
+ * <p>Description: 验证码不匹配错误 </p>
  *
  * @author : gengwei.zheng
- * @date : 2021/12/15 17:53
+ * @date : 2021/12/15 17:56
  */
-public class CaptchaHandlerNotExistException extends PlatformRuntimeException {
+public class CaptchaMismatchException extends CaptchaException {
 
-    public CaptchaHandlerNotExistException() {
-        super();
-    }
-
-    public CaptchaHandlerNotExistException(String message) {
+    public CaptchaMismatchException(String message) {
         super(message);
     }
 
-    public CaptchaHandlerNotExistException(String message, Throwable cause) {
+    public CaptchaMismatchException(String message, Throwable cause) {
         super(message, cause);
-    }
-
-    public CaptchaHandlerNotExistException(Throwable cause) {
-        super(cause);
     }
 
     @Override
     public Feedback getFeedback() {
-        return ErrorCodes.CAPTCHA_HANDLER_NOT_EXIST;
+        return CaptchaErrorCodes.CAPTCHA_MISMATCH;
     }
 }

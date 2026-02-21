@@ -38,10 +38,10 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import org.apache.commons.lang3.ObjectUtils;
 import org.dromara.dante.core.domain.Result;
-import org.dromara.dante.core.domain.captcha.Captcha;
-import org.dromara.dante.core.domain.captcha.Verification;
+import org.dromara.dante.security.domain.captcha.Captcha;
+import org.dromara.dante.security.domain.captcha.Verification;
+import org.dromara.dante.security.definition.CaptchaProcessor;
 import org.dromara.dante.data.rest.servlet.PaginationController;
-import org.dromara.dante.spring.support.captcha.CaptchaRendererFactory;
 import org.dromara.dante.web.annotation.AccessLimited;
 import org.dromara.dante.web.annotation.Crypto;
 import org.dromara.dante.web.annotation.Idempotent;
@@ -67,10 +67,10 @@ import java.util.Map;
 })
 public class OpenCaptchaController implements PaginationController {
 
-    private final CaptchaRendererFactory captchaRendererFactory;
+    private final CaptchaProcessor captchaProcessor;
 
-    public OpenCaptchaController(CaptchaRendererFactory captchaRendererFactory) {
-        this.captchaRendererFactory = captchaRendererFactory;
+    public OpenCaptchaController(CaptchaProcessor captchaProcessor) {
+        this.captchaProcessor = captchaProcessor;
     }
 
     @AccessLimited
@@ -82,7 +82,7 @@ public class OpenCaptchaController implements PaginationController {
     })
     @GetMapping
     public Result<Captcha> create(@NotBlank(message = "身份信息不能为空") String identity, @NotBlank(message = "验证码类型不能为空") String category) {
-        Captcha captcha = captchaRendererFactory.getCaptcha(identity, category);
+        Captcha captcha = captchaProcessor.getCaptcha(identity, category);
         if (ObjectUtils.isNotEmpty(captcha)) {
             return Result.success("验证码创建成功", captcha);
         } else {
@@ -100,7 +100,7 @@ public class OpenCaptchaController implements PaginationController {
     })
     @PostMapping
     public Result<Boolean> check(@Valid @RequestBody Verification verification) {
-        boolean isSuccess = captchaRendererFactory.verify(verification);
+        boolean isSuccess = captchaProcessor.verify(verification);
         if (isSuccess) {
             return Result.success("验证码验证成功", true);
         }

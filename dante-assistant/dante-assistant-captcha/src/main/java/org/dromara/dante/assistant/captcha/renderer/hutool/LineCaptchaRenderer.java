@@ -28,9 +28,9 @@ package org.dromara.dante.assistant.captcha.renderer.hutool;
 import cn.hutool.v7.swing.captcha.CaptchaUtil;
 import cn.hutool.v7.swing.captcha.LineCaptcha;
 import org.dromara.dante.assistant.captcha.definition.AbstractGraphicRenderer;
+import org.dromara.dante.assistant.captcha.domain.Metadata;
 import org.dromara.dante.assistant.captcha.provider.ResourceProvider;
-import org.dromara.dante.core.domain.captcha.Metadata;
-import org.dromara.dante.spring.enums.CaptchaCategory;
+import org.dromara.dante.assistant.captcha.enums.CaptchaCategory;
 
 /**
  * <p>Description: Hutool Line Captcha </p>

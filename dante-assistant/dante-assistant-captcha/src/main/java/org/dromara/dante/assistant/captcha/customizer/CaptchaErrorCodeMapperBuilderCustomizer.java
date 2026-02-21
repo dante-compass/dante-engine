@@ -23,37 +23,34 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.core.exception;
+package org.dromara.dante.assistant.captcha.customizer;
 
-import org.dromara.dante.core.constant.ErrorCodes;
-import org.dromara.dante.core.domain.Feedback;
+import org.dromara.dante.assistant.captcha.constant.CaptchaErrorCodes;
+import org.dromara.dante.core.builder.ErrorCodeMapperBuilder;
+import org.dromara.dante.core.constant.ErrorCodeMapperBuilderOrdered;
+import org.dromara.dante.core.function.ErrorCodeMapperBuilderCustomizer;
+import org.springframework.core.Ordered;
 
 /**
- * <p>Description: 上传文件异常 </p>
+ * <p>Description: Pki 错误映射 </p>
  *
  * @author : gengwei.zheng
- * @date : 2025/1/22 15:13
+ * @date : 2025/1/10 23:04
  */
-public class UploadObjectException extends PlatformRuntimeException {
+public class CaptchaErrorCodeMapperBuilderCustomizer implements ErrorCodeMapperBuilderCustomizer, Ordered {
 
-    public UploadObjectException() {
-        super();
-    }
-
-    public UploadObjectException(String message) {
-        super(message);
-    }
-
-    public UploadObjectException(String message, Throwable cause) {
-        super(message, cause);
-    }
-
-    public UploadObjectException(Throwable cause) {
-        super(cause);
+    @Override
+    public void customize(ErrorCodeMapperBuilder builder) {
+        builder.notAcceptable(CaptchaErrorCodes.CAPTCHA_CATEGORY_IS_INCORRECT,
+                CaptchaErrorCodes.CAPTCHA_HANDLER_NOT_EXIST,
+                CaptchaErrorCodes.CAPTCHA_HAS_EXPIRED,
+                CaptchaErrorCodes.CAPTCHA_IS_EMPTY,
+                CaptchaErrorCodes.CAPTCHA_MISMATCH,
+                CaptchaErrorCodes.CAPTCHA_PARAMETER_ILLEGAL);
     }
 
     @Override
-    public Feedback getFeedback() {
-        return ErrorCodes.UPLOAD_OBJECT_EXCEPTION;
+    public int getOrder() {
+        return ErrorCodeMapperBuilderOrdered.CAPTCHA;
     }
 }

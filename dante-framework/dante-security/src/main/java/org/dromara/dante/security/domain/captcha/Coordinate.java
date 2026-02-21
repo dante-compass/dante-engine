@@ -23,38 +23,68 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.spring.exception.captcha;
+package org.dromara.dante.security.domain.captcha;
 
-import org.dromara.dante.core.constant.ErrorCodes;
-import org.dromara.dante.core.domain.Feedback;
-import org.dromara.dante.core.exception.PlatformRuntimeException;
+import com.google.common.base.MoreObjects;
+
+import java.io.Serializable;
+import java.util.Objects;
 
 /**
- * <p>Description: 验证码已过期 </p>
+ * <p>Description: 坐标 </p>
  *
  * @author : gengwei.zheng
- * @date : 2021/12/15 18:06
+ * @date : 2021/12/11 15:30
  */
-public class CaptchaHasExpiredException extends PlatformRuntimeException {
+public class Coordinate implements Serializable {
 
-    public CaptchaHasExpiredException() {
-        super();
+    private int x;
+    private int y;
+
+    public Coordinate() {
     }
 
-    public CaptchaHasExpiredException(String message) {
-        super(message);
+    public Coordinate(int x, int y) {
+        this.x = x;
+        this.y = y;
     }
 
-    public CaptchaHasExpiredException(String message, Throwable cause) {
-        super(message, cause);
+    public int getX() {
+        return x;
     }
 
-    public CaptchaHasExpiredException(Throwable cause) {
-        super(cause);
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
     }
 
     @Override
-    public Feedback getFeedback() {
-        return ErrorCodes.CAPTCHA_HAS_EXPIRED;
+    public boolean equals(Object o) {
+
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Coordinate that = (Coordinate) o;
+        return x == that.x && y == that.y;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(x, y);
+    }
+
+    @Override
+    public String toString() {
+        return MoreObjects.toStringHelper(this)
+                .add("x", x)
+                .add("y", y)
+                .toString();
     }
 }
