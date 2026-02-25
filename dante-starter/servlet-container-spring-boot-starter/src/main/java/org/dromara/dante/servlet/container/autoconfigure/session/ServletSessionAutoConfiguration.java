@@ -23,7 +23,7 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.autoconfigure.session;
+package org.dromara.dante.servlet.container.autoconfigure.session;
 
 import jakarta.annotation.PostConstruct;
 import org.dromara.dante.autoconfigure.jackson.JacksonAutoConfiguration;

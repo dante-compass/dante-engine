@@ -42,7 +42,35 @@
     <dependencies>
         <dependency>
             <groupId>org.dromara.dante</groupId>
+            <artifactId>dante-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.dromara.dante</groupId>
             <artifactId>dante-autoconfigure</artifactId>
+        </dependency>
+
+        <!--RestClient 自动配置，依赖该模块就会自动配置 RestClient，有些自定义扩展类例如 RestClientCustomizer只有该模块有所以要手动区分模块-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-restclient</artifactId>
+        </dependency>
+
+        <!--Spring Session 自动配置, 支持t OAuth2、Security and 常规 Web-->
+        <dependency>
+            <groupId>org.springframework.session</groupId>
+            <artifactId>spring-session-data-redis</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-session</artifactId>
+        </dependency>
+
+        <!--Spring Security 和 OAuth2 自动配置, 支持t OAuth2、Security-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-security-oauth2-resource-server</artifactId>
+            <optional>true</optional>
         </dependency>
 
         <dependency>
@@ -71,6 +99,7 @@
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
 
+        <!--依赖其中的 @LoadBalanced-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-loadbalancer</artifactId>

@@ -24,12 +24,7 @@
 #
 
 org.dromara.dante.autoconfigure.ApplicationAutoConfiguration
-org.dromara.dante.autoconfigure.context.ServletServiceContextAutoConfiguration
 org.dromara.dante.autoconfigure.enums.EnumDictionaryAutoConfiguration
 org.dromara.dante.autoconfigure.error.ErrorCodeAutoConfiguration
 org.dromara.dante.autoconfigure.jackson.JacksonAutoConfiguration
 org.dromara.dante.autoconfigure.matcher.SecurityMatcherAutoConfiguration
-org.dromara.dante.autoconfigure.oauth2.ServletOAuth2AuthorizationAutoConfiguration
-org.dromara.dante.autoconfigure.openfeign.FeignAutoConfiguration
-org.dromara.dante.autoconfigure.restclient.RestClientAutoConfiguration
-org.dromara.dante.autoconfigure.session.ServletSessionAutoConfiguration

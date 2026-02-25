@@ -24,3 +24,7 @@
 #
 
 org.dromara.dante.servlet.container.autoconfigure.ServletContainerAutoConfiguration
+org.dromara.dante.servlet.container.autoconfigure.context.ServletServiceContextAutoConfiguration
+org.dromara.dante.servlet.container.autoconfigure.oauth2.ServletOAuth2AuthorizationAutoConfiguration
+org.dromara.dante.servlet.container.autoconfigure.restclient.RestClientAutoConfiguration
+org.dromara.dante.servlet.container.autoconfigure.session.ServletSessionAutoConfiguration

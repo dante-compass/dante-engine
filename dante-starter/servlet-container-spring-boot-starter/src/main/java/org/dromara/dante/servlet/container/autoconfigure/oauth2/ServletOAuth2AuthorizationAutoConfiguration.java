@@ -23,13 +23,13 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.autoconfigure.oauth2;
+package org.dromara.dante.servlet.container.autoconfigure.oauth2;
 
 import jakarta.annotation.PostConstruct;
-import org.dromara.dante.autoconfigure.context.ServletServiceContextAutoConfiguration;
 import org.dromara.dante.security.condition.ConditionalOnTokenFormat;
 import org.dromara.dante.security.condition.TokenFormat;
 import org.dromara.dante.security.definition.BearerTokenResolver;
+import org.dromara.dante.servlet.container.autoconfigure.context.ServletServiceContextAutoConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;

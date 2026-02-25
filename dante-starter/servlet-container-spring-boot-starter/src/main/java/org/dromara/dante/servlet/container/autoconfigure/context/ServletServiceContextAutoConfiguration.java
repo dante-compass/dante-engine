@@ -23,7 +23,7 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.autoconfigure.context;
+package org.dromara.dante.servlet.container.autoconfigure.context;
 
 import jakarta.annotation.PostConstruct;
 import org.dromara.dante.web.context.ServiceContextHolderInitializerListener;
@@ -69,7 +69,7 @@ public class ServletServiceContextAutoConfiguration {
      */
     @Configuration(proxyBeanMethods = false)
     @ComponentScan({
-            "org.dromara.dante.autoconfigure.context.initializer"
+            "org.dromara.dante.servlet.container.autoconfigure.context.initializer"
     })
     static class ServiceContextConfiguration {
 

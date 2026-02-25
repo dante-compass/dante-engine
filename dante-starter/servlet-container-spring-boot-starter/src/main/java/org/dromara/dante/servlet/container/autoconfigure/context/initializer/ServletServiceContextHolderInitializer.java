@@ -23,42 +23,24 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.autoconfigure.openfeign;
+package org.dromara.dante.servlet.container.autoconfigure.context.initializer;
 
-import org.dromara.dante.core.domain.Result;
-import org.dromara.dante.core.exception.PlatformRuntimeException;
+import org.dromara.dante.web.context.AbstractServiceContextHolderInitializer;
+import org.dromara.dante.web.properties.EndpointProperties;
+import org.dromara.dante.web.properties.PlatformProperties;
+import org.springframework.boot.web.server.autoconfigure.ServerProperties;
+import org.springframework.stereotype.Component;
 
 /**
- * <p>Description: Feign Fallback 错误统一封装器 </p>
+ * <p>Description: ServiceContextHolder 构建器 </p>
  *
  * @author : gengwei.zheng
- * @date : 2022/5/30 11:31
+ * @date : 2024/1/24 17:24
  */
-public class FeignRemoteCallExceptionWrapper extends PlatformRuntimeException {
+@Component
+public class ServletServiceContextHolderInitializer extends AbstractServiceContextHolderInitializer {
 
-    private final Result<String> result;
-
-    public FeignRemoteCallExceptionWrapper(Result<String> result) {
-        this.result = result;
-    }
-
-    public FeignRemoteCallExceptionWrapper(String message, Result<String> result) {
-        super(message);
-        this.result = result;
-    }
-
-    public FeignRemoteCallExceptionWrapper(String message, Throwable cause, Result<String> result) {
-        super(message, cause);
-        this.result = result;
-    }
-
-    public FeignRemoteCallExceptionWrapper(Throwable cause, Result<String> result) {
-        super(cause);
-        this.result = result;
-    }
-
-    @Override
-    public Result<String> getResult() {
-        return result;
+    public ServletServiceContextHolderInitializer(PlatformProperties platformProperties, EndpointProperties endpointProperties, ServerProperties serverProperties) {
+        super(platformProperties, endpointProperties, serverProperties.getAddress(), serverProperties.getPort(), serverProperties.getServlet().getContextPath());
     }
 }
