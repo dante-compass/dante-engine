@@ -27,10 +27,10 @@ package org.dromara.dante.oauth2.authorization.autoconfigure;
 
 import jakarta.annotation.PostConstruct;
 import org.dromara.dante.message.core.definition.strategy.RestMappingScanEventManager;
+import org.dromara.dante.oauth2.authorization.attribute.SecurityAttributeAnalyzer;
 import org.dromara.dante.oauth2.authorization.autoconfigure.listener.RemoteAttributeTransmitterSyncListener;
 import org.dromara.dante.oauth2.authorization.autoconfigure.strategy.DefaultRestMappingScanEventManager;
 import org.dromara.dante.oauth2.authorization.config.OAuth2ServletAuthorizationConfiguration;
-import org.dromara.dante.oauth2.authorization.attribute.SecurityAttributeAnalyzer;
 import org.dromara.dante.oauth2.commons.properties.OAuth2Properties;
 import org.dromara.dante.security.exception.SecurityGlobalExceptionHandler;
 import org.slf4j.Logger;
