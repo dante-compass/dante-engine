@@ -27,7 +27,7 @@ package org.dromara.dante.oauth2.authorization.autoconfigure.listener;
 
 import org.dromara.dante.core.jackson.JacksonUtils;
 import org.dromara.dante.oauth2.authorization.attribute.SecurityAttributeAnalyzer;
-import org.dromara.dante.oauth2.authorization.autoconfigure.bus.RemoteAttributeTransmitterSyncEvent;
+import org.dromara.dante.oauth2.authorization.autoconfigure.bus.RemoteAttributeDistributionEvent;
 import org.dromara.dante.security.domain.AttributeTransmitter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,20 +42,20 @@ import java.util.Optional;
  * @author : gengwei.zheng
  * @date : 2021/8/6 12:23
  */
-public class RemoteAttributeTransmitterSyncListener implements ApplicationListener<RemoteAttributeTransmitterSyncEvent> {
+public class RemoteAttributeDistributionListener implements ApplicationListener<RemoteAttributeDistributionEvent> {
 
-    private static final Logger log = LoggerFactory.getLogger(RemoteAttributeTransmitterSyncListener.class);
+    private static final Logger log = LoggerFactory.getLogger(RemoteAttributeDistributionListener.class);
 
     private final SecurityAttributeAnalyzer securityAttributeAnalyzer;
     private final ServiceMatcher serviceMatcher;
 
-    public RemoteAttributeTransmitterSyncListener(SecurityAttributeAnalyzer securityAttributeAnalyzer, ServiceMatcher serviceMatcher) {
+    public RemoteAttributeDistributionListener(SecurityAttributeAnalyzer securityAttributeAnalyzer, ServiceMatcher serviceMatcher) {
         this.securityAttributeAnalyzer = securityAttributeAnalyzer;
         this.serviceMatcher = serviceMatcher;
     }
 
     @Override
-    public void onApplicationEvent(RemoteAttributeTransmitterSyncEvent event) {
+    public void onApplicationEvent(RemoteAttributeDistributionEvent event) {
 
         if (!serviceMatcher.isFromSelf(event)) {
             log.info("[Herodotus] |- Remote attribute transmitter sync listener, response service [{}] event!", event.getOriginService());

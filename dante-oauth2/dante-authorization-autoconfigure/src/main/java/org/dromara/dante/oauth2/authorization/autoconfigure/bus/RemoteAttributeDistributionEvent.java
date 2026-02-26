@@ -33,15 +33,15 @@ import org.springframework.cloud.bus.event.RemoteApplicationEvent;
  * @author : gengwei.zheng
  * @date : 2021/8/6 11:24
  */
-public class RemoteAttributeTransmitterSyncEvent extends RemoteApplicationEvent {
+public class RemoteAttributeDistributionEvent extends RemoteApplicationEvent {
 
     private String data;
 
-    public RemoteAttributeTransmitterSyncEvent() {
+    public RemoteAttributeDistributionEvent() {
         super();
     }
 
-    public RemoteAttributeTransmitterSyncEvent(String data, String originService, String destinationService) {
+    public RemoteAttributeDistributionEvent(String data, String originService, String destinationService) {
         super(data, originService, DEFAULT_DESTINATION_FACTORY.getDestination(destinationService));
         this.data = data;
     }

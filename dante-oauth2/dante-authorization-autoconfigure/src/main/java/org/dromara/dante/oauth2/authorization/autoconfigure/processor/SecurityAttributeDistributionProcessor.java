@@ -37,7 +37,7 @@ import org.dromara.dante.message.core.definition.strategy.StrategyEventManager;
 import org.dromara.dante.message.core.domain.RestMapping;
 import org.dromara.dante.message.core.event.ApplicationReadinessEvent;
 import org.dromara.dante.oauth2.authorization.attribute.SecurityAttributeAnalyzer;
-import org.dromara.dante.oauth2.authorization.autoconfigure.bus.RemoteAttributeTransmitterSyncEvent;
+import org.dromara.dante.oauth2.authorization.autoconfigure.bus.RemoteAttributeDistributionEvent;
 import org.dromara.dante.security.domain.AttributeTransmitter;
 import org.dromara.dante.spring.context.ServiceContextHolder;
 import org.dromara.dante.spring.founction.ListConverter;
@@ -86,7 +86,7 @@ public class SecurityAttributeDistributionProcessor implements StrategyEventMana
 
     @Override
     public void postRemoteProcess(String data, String originService, String destinationService) {
-        publishEvent(new RemoteAttributeTransmitterSyncEvent(data, originService, destinationService));
+        publishEvent(new RemoteAttributeDistributionEvent(data, originService, destinationService));
     }
 
     /**

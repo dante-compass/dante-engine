@@ -31,7 +31,7 @@ import org.dromara.dante.message.core.definition.strategy.RestMappingScanEventMa
 import org.dromara.dante.oauth2.authorization.attribute.RestSecurityAttributeStorage;
 import org.dromara.dante.oauth2.authorization.attribute.SecurityAttributeAnalyzer;
 import org.dromara.dante.oauth2.authorization.autoconfigure.listener.LocalRestMappingGatherListener;
-import org.dromara.dante.oauth2.authorization.autoconfigure.listener.RemoteAttributeTransmitterSyncListener;
+import org.dromara.dante.oauth2.authorization.autoconfigure.listener.RemoteAttributeDistributionListener;
 import org.dromara.dante.oauth2.authorization.autoconfigure.listener.RemoteRestMappingGatherListener;
 import org.dromara.dante.oauth2.authorization.autoconfigure.processor.SecurityAttributeDistributionProcessor;
 import org.dromara.dante.oauth2.authorization.autoconfigure.strategy.DefaultRestMappingScanEventManager;
@@ -101,8 +101,8 @@ public class OAuth2AuthorizationAutoConfiguration {
 
     @Bean
     @ConditionalOnMissingBean
-    public RemoteAttributeTransmitterSyncListener remoteSecurityMetadataSyncListener(SecurityAttributeAnalyzer securityAttributeAnalyzer, ServiceMatcher serviceMatcher) {
-        RemoteAttributeTransmitterSyncListener listener = new RemoteAttributeTransmitterSyncListener(securityAttributeAnalyzer, serviceMatcher);
+    public RemoteAttributeDistributionListener remoteAttributeDistributionListener(SecurityAttributeAnalyzer securityAttributeAnalyzer, ServiceMatcher serviceMatcher) {
+        RemoteAttributeDistributionListener listener = new RemoteAttributeDistributionListener(securityAttributeAnalyzer, serviceMatcher);
         log.trace("[Herodotus] |- Bean [Security Metadata Refresh Listener] Configure.");
         return listener;
     }
