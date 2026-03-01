@@ -247,7 +247,7 @@ public class SecurityAttributeAnalyzer {
         restSecurityAttributeStorage.addToStorage(matchers, placeholders, false);
 
         // 4. 占位符数据也需要被拿来做权限冲突，前面第三步仅是将其存入本地存储，当前 matchers 中并未包含这部分数据，所以重新设置
-        if(MapUtils.isNotEmpty(placeholders)) {
+        if (MapUtils.isNotEmpty(placeholders)) {
             matchers.putAll(placeholders);
         }
         // 5. 拿到全路径的分组数据，并检测是否存在冲突的匹配规则，然后将结果存入本地存储
