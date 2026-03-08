@@ -78,6 +78,7 @@ public class StandardErrorCodeMapperBuilderCustomizer implements ErrorCodeMapper
                         ErrorCodes.TYPE_MISMATCH_EXCEPTION,
                         ErrorCodes.BORROW_OBJECT_FROM_POOL_ERROR_EXCEPTION,
                         ErrorCodes.OPENAPI_INVOKING_FAILED,
+                        ErrorCodes.KEYPAIR_GENERATION_EXCEPTION,
                         ErrorCodes.DOWNLOAD_OBJECT_EXCEPTION,
                         ErrorCodes.UPLOAD_OBJECT_EXCEPTION)
                 .notImplemented(ErrorCodes.PROPERTY_VALUE_IS_NOT_SET_EXCEPTION,
