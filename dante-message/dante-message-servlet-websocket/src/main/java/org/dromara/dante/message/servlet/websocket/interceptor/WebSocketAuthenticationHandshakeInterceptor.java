@@ -34,10 +34,11 @@ import org.apache.commons.lang3.Strings;
 import org.dromara.dante.core.constant.SymbolConstants;
 import org.dromara.dante.core.constant.SystemConstants;
 import org.dromara.dante.message.servlet.websocket.utils.WebSocketUtils;
-import org.dromara.dante.security.domain.UserPrincipal;
 import org.dromara.dante.security.definition.BearerTokenResolver;
+import org.dromara.dante.security.domain.UserPrincipal;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.ApplicationContext;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServerHttpResponse;
@@ -63,11 +64,12 @@ public class WebSocketAuthenticationHandshakeInterceptor implements HandshakeInt
 
     private static final String SEC_WEBSOCKET_PROTOCOL = com.google.common.net.HttpHeaders.SEC_WEBSOCKET_PROTOCOL;
 
-    private final BearerTokenResolver bearerTokenResolver;
+    private final ApplicationContext applicationContext;
 
-    public WebSocketAuthenticationHandshakeInterceptor(BearerTokenResolver bearerTokenResolver) {
-        this.bearerTokenResolver = bearerTokenResolver;
+    public WebSocketAuthenticationHandshakeInterceptor(ApplicationContext applicationContext) {
+        this.applicationContext = applicationContext;
     }
+
 
     @Override
     public boolean beforeHandshake(ServerHttpRequest request, ServerHttpResponse response, WebSocketHandler wsHandler, Map<String, Object> attributes) throws Exception {
@@ -83,7 +85,10 @@ public class WebSocketAuthenticationHandshakeInterceptor implements HandshakeInt
 
                 String protocol = httpServletRequest.getHeader(SEC_WEBSOCKET_PROTOCOL);
                 String token = determineToken(protocol);
-                if (StringUtils.isNotBlank(token)) {
+                // 以前采用构造函数方式注入 BearerTokenResolver，而 BearerTokenResolver 依赖于 ServletServiceContextAutoConfiguration 的注入顺序。由于 WebSocket 相关配置注入早于 ServletServiceContextAutoConfiguration 而引起启动失败
+                // 现改为通过 applicationContext 获取 Bean 的方式，因为 WebSocket 是在启动成功后登录系统才会进行的操作，这就避免了 WebSocket 相关配置启动过早问题
+                BearerTokenResolver bearerTokenResolver = applicationContext.getBean(BearerTokenResolver.class);
+                if (StringUtils.isNotBlank(token) && ObjectUtils.isNotEmpty(bearerTokenResolver)) {
                     UserPrincipal details = bearerTokenResolver.resolve(token);
                     attributes.put(SystemConstants.PRINCIPAL, details);
                     log.debug("[Herodotus] |- WebSocket fetch the token is [{}].", token);

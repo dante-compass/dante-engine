@@ -26,10 +26,10 @@
 package org.dromara.dante.message.servlet.websocket.domain;
 
 import com.google.common.base.MoreObjects;
-import java.util.Objects;
 import org.dromara.dante.security.domain.UserPrincipal;
 
 import java.security.Principal;
+import java.util.Objects;
 import java.util.Set;
 
 /**

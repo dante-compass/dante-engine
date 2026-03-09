@@ -28,6 +28,7 @@ package org.dromara.dante.servlet.container.autoconfigure;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.autoconfigure.AutoConfiguration;
 
 /**
  * <p>Description: Web 自动配置 </p>
@@ -35,6 +36,7 @@ import org.slf4j.LoggerFactory;
  * @author : gengwei.zheng
  * @date : 2022/1/14 15:43
  */
+@AutoConfiguration
 public class ServletContainerAutoConfiguration {
 
     private static final Logger log = LoggerFactory.getLogger(ServletContainerAutoConfiguration.class);

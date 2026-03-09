@@ -32,7 +32,6 @@ import org.dromara.dante.web.properties.PlatformProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.web.server.autoconfigure.ServerProperties;
 import org.springframework.context.annotation.Bean;
@@ -46,7 +45,6 @@ import org.springframework.context.annotation.Configuration;
  * @date : 2025/12/2 12:30
  */
 @AutoConfiguration
-@ConditionalOnWebApplication
 @EnableConfigurationProperties({EndpointProperties.class, PlatformProperties.class, ServerProperties.class})
 public class ServletServiceContextAutoConfiguration {
 

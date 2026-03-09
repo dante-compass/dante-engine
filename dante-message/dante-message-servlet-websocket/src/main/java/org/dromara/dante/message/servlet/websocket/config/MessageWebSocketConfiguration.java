@@ -32,10 +32,10 @@ import org.dromara.dante.message.servlet.websocket.annotation.ConditionalOnSingl
 import org.dromara.dante.message.servlet.websocket.definition.WebSocketMessageSender;
 import org.dromara.dante.message.servlet.websocket.interceptor.WebSocketAuthenticationHandshakeInterceptor;
 import org.dromara.dante.message.servlet.websocket.messaging.*;
-import org.dromara.dante.security.definition.BearerTokenResolver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -62,8 +62,8 @@ public class MessageWebSocketConfiguration {
     }
 
     @Bean
-    public WebSocketAuthenticationHandshakeInterceptor webSocketPrincipalHandshakeHandler(BearerTokenResolver bearerTokenResolver) {
-        WebSocketAuthenticationHandshakeInterceptor interceptor = new WebSocketAuthenticationHandshakeInterceptor(bearerTokenResolver);
+    public WebSocketAuthenticationHandshakeInterceptor webSocketPrincipalHandshakeHandler(ApplicationContext applicationContext) {
+        WebSocketAuthenticationHandshakeInterceptor interceptor = new WebSocketAuthenticationHandshakeInterceptor(applicationContext);
         log.trace("[Herodotus] |- Bean [WebSocket Authentication Handshake Interceptor] Configure.");
         return interceptor;
     }
