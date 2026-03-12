@@ -122,7 +122,6 @@ dante-engine
 ├    ├── dante-assistant-access -- 第三方登录接入辅助功能模块
 ├    ├── dante-assistant-captcha -- 验证码辅助功能模块
 ├    └── dante-assistant-oss -- AWS SDK V2 对象存储辅助功能模
-├── dante-bom -- 工程 Maven 顶级依赖，统一控制版本和依赖
 ├── dante-cache -- 缓存功能模块
 ├    ├── dante-cache-caffeine -- Caffeine 缓存功能封装模块
 ├    ├── dante-cache-commons -- 缓存通用代码模块
@@ -133,6 +132,7 @@ dante-engine
 ├    ├── dante-data-jpa -- 以 JPA 作为数据访问层的通用代码模块
 ├    ├── dante-data-mongodb -- 以 MongoDB 作为数据访问层的通用代码模块
 ├    └── dante-data-rest -- 关联数据访问层的REST开发通用代码模块
+├── dante-dependencies -- 工程 Bom 定义，统一管理工程模块
 ├── dante-framework -- Dante Cloud 框架核心基础模块
 ├    ├── dante-autoconfigure -- 基础自动配置模块
 ├    ├── dante-core -- 核心定义模块
@@ -170,6 +170,7 @@ dante-engine
 ├    ├── facility-gateway-spring-boot-starter -- Alibaba Sentinel 在 Gateway 环境下基础设施适配 Starter
 ├    ├── facility-kafka-spring-boot-starter -- 基于 Kafka 的消息事件自动配置 Starter
 ├    ├── facility-tencent-spring-boot-starter -- 面向 Spring Cloud Tencent 的微服务基础设施适配模块 Starter
+├    ├── fegin-client-spring-boot-starter -- Feign 客户端自动配置 Starter
 ├    ├── logging-spring-boot-starter -- 日志收集和聚合自动配置 Starter
 ├    ├── oss-spring-boot-starter -- 基于 AWS SDK V2 对象存储自动配置 Starter
 ├    ├── reactive-container-spring-boot-starter -- Reactive 容器基础配置自动配置 Starter
