@@ -48,11 +48,12 @@ public enum PermissionExpression implements DictionaryEnum {
      * 权限表达式
      */
     PERMIT_ALL("permitAll", "permitAll"),
-    ANONYMOUS("isAnonymous", "isAnonymous"),
-    REMEMBER_ME("isRememberMe", "isRememberMe"),
+    ANONYMOUS("anonymous", "anonymous"),
+    REMEMBER_ME("rememberMe", "rememberMe"),
     DENY_ALL("denyAll", "denyAll"),
-    AUTHENTICATED("isAuthenticated", "isAuthenticated"),
-    FULLY_AUTHENTICATED("isFullyAuthenticated", "isFullyAuthenticated");
+    AUTHENTICATED("authenticated", "authenticated"),
+    FULLY_AUTHENTICATED("fullyAuthenticated", "fullyAuthenticated");
+
 
     private static final Map<Integer, PermissionExpression> INDEX_MAP = new HashMap<>();
     private static final List<Dictionary> DICTIONARIES = new ArrayList<>();
