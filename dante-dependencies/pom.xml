@@ -31,13 +31,13 @@
     <parent>
         <groupId>cn.herodotus.ecosystem</groupId>
         <artifactId>herodotus-ecosystem-dependencies</artifactId>
-        <version>4.0.4.0</version>
+        <version>4.0.4.1</version>
         <relativePath/>
     </parent>
 
     <groupId>org.dromara.dante</groupId>
-    <artifactId>dante-engine-dependencies</artifactId>
-    <name>dante-dependencies</name>
+    <artifactId>dante-dependencies</artifactId>
+    <name>${project.artifactId}</name>
     <packaging>pom</packaging>
 
     <description>Dante Cloud 云原生微服务基座组件库 Dante Engine Dependencies</description>

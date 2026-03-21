@@ -31,7 +31,7 @@
     <parent>
         <groupId>org.dromara.dante</groupId>
         <artifactId>dante-oauth2</artifactId>
-        <version>4.0.4.0</version>
+        <version>4.0.4.1</version>
     </parent>
 
     <artifactId>dante-oauth2-extension</artifactId>

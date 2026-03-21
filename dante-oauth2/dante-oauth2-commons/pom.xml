@@ -32,7 +32,7 @@
     <parent>
         <artifactId>dante-oauth2</artifactId>
         <groupId>org.dromara.dante</groupId>
-        <version>4.0.4.0</version>
+        <version>4.0.4.1</version>
     </parent>
 
     <artifactId>dante-oauth2-commons</artifactId>
