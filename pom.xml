@@ -89,7 +89,7 @@
         <dependencies>
             <dependency>
                 <groupId>org.dromara.dante</groupId>
-                <artifactId>dante-engine-dependencies</artifactId>
+                <artifactId>dante-dependencies</artifactId>
                 <version>${project.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
