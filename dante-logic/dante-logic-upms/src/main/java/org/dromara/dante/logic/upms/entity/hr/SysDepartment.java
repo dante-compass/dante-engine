@@ -28,13 +28,14 @@ package org.dromara.dante.logic.upms.entity.hr;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.google.common.base.MoreObjects;
-import java.util.Objects;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import org.dromara.dante.data.jpa.entity.AbstractSysEntity;
 import org.dromara.dante.logic.upms.constant.LogicUpmsConstants;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.UuidGenerator;
+
+import java.util.Objects;
 
 /**
  * <p>Description: 部门信息 </p>

@@ -26,13 +26,14 @@
 package org.dromara.dante.logic.upms.entity.security;
 
 import com.google.common.base.MoreObjects;
-import java.util.Objects;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import org.dromara.dante.data.jpa.entity.AbstractSysEntity;
 import org.dromara.dante.logic.upms.constant.LogicUpmsConstants;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.UuidGenerator;
+
+import java.util.Objects;
 
 /**
  * <p>Description: 系统权限实体 </p>

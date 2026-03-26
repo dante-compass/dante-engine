@@ -43,6 +43,8 @@ import org.dromara.dante.logic.upms.constant.LogicUpmsConstants;
 import org.dromara.dante.logic.upms.domain.deserializer.SysEmployeeEmptyToNull;
 import org.dromara.dante.logic.upms.entity.hr.SysEmployee;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.UuidGenerator;
 import tools.jackson.databind.annotation.JsonDeserialize;
 
@@ -105,7 +107,8 @@ public class SysUser extends AbstractSysEntity {
 
     @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = LogicUpmsConstants.REGION_SYS_ROLE)
     @Schema(name = "用户角色")
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
+    @Fetch(FetchMode.SUBSELECT)
     @JoinTable(name = "sys_user_role",
             joinColumns = {@JoinColumn(name = "user_id")},
             inverseJoinColumns = {@JoinColumn(name = "role_id")},
