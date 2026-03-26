@@ -304,7 +304,7 @@ public class HeaderUtils {
 
     public static String getIp(HttpServletRequest httpServletRequest) {
         String ip = ServletUtil.getClientIP(httpServletRequest, "");
-        if (Strings.CS.equals(ip, "0:0:0:0:0:0:0:1")) {
+        if (Strings.CS.equals(ip, "0:0:0:0:0:0:0:1") || Strings.CS.equals(ip, "[0:0:0:0:0:0:0:1]")) {
             try {
                 return InetAddress.getLocalHost().getHostAddress();
             } catch (UnknownHostException e) {
