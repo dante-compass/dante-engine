@@ -33,6 +33,24 @@
 
 ---
 
+## 重要声明
+
+自 **v4.0.5.0** 版本起，Dante Cloud 核心库 Dante Engine 子项目全面开放。
+
+## 项目地址
+
+### 1. 核心组件库
+
+- **Gitee**：[https://gitee.com/dante-compass/dante-engine](https://gitee.com/dante-compass/dante-engine)
+- **Github**：[https://github.com/dante-compass/dante-engine](https://github.com/dante-compass/dante-engine)
+- **AtomGit**：[https://atomgit.com/dante-compass/dante-engine](https://atomgit.com/dante-compass/dante-engine)
+
+### 2. 前端工程
+
+- **Gitee**：[https://gitee.com/dante-compass/dante-cloud-ui](https://gitee.com/dante-compass/dante-cloud-ui)
+- **Github**：[https://github.com/dante-compass/dante-cloud-ui](https://github.com/dante-compass/dante-cloud-ui)
+- **AtomGit**：[https://atomgit.com/dante-compass/dante-cloud-ui](https://atomgit.com/dante-compass/dante-cloud-ui)
+
 ## 企业级技术中台与云原生微服务基座
 
 **Dante Cloud** 国内首个支持阻塞式和响应式服务并行的、开箱即用的企业级云原生微服务基座。是采用**领域驱动模型(DDD)**设计思想，以「**高质量代码、低安全漏洞**」为核心，基于 Spring 生态全域开源技术，高度**模块化和组件化设计**，支持**智能电视、IoT等物联网设备**认证，满足**国家三级等保要求**，支持**接口国密数字信封加解密**等一系列安全体系的一站式多租户微服务解决方案。独创的可以“**一套代码实现微服务和单体两种架构灵活切换**”的企业级应用系统。
