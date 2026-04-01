@@ -32,7 +32,7 @@
     <parent>
         <artifactId>dante-engine</artifactId>
         <groupId>org.dromara.dante</groupId>
-        <version>4.0.5.0</version>
+        <version>4.0.5.1</version>
     </parent>
 
     <artifactId>dante-cache</artifactId>
