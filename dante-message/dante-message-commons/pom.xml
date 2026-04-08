@@ -32,7 +32,7 @@
     <parent>
         <artifactId>dante-message</artifactId>
         <groupId>org.dromara.dante</groupId>
-        <version>4.0.5.1</version>
+        <version>4.0.5.2</version>
     </parent>
 
     <artifactId>dante-message-commons</artifactId>
