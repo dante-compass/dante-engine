@@ -26,8 +26,9 @@
 package org.dromara.dante.message.core.domain;
 
 import com.google.common.base.MoreObjects;
-import java.util.Objects;
 import org.dromara.dante.security.domain.AbstractRest;
+
+import java.util.Objects;
 
 /**
  * <p>Description: Controller 请求注解元数据封装实体 </p>

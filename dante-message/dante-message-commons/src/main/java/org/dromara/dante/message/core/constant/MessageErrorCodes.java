@@ -23,7 +23,7 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.message.core.constants;
+package org.dromara.dante.message.core.constant;
 
 import org.dromara.dante.core.feedback.InternalServerErrorFeedback;
 import org.dromara.dante.core.feedback.NotAcceptableFeedback;

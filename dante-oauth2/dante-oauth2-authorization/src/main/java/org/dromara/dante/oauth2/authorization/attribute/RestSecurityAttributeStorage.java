@@ -31,7 +31,7 @@ import org.apache.commons.collections4.MapUtils;
 import org.dromara.dante.cache.jetcache.utils.JetCacheUtils;
 import org.dromara.dante.oauth2.authorization.matcher.HerodotusPathPatternRequestMatcher;
 import org.dromara.dante.oauth2.authorization.matcher.HerodotusRequestMatcher;
-import org.dromara.dante.oauth2.commons.constants.OAuth2Constants;
+import org.dromara.dante.oauth2.commons.constant.OAuth2Constants;
 import org.dromara.dante.security.domain.HerodotusRequest;
 import org.dromara.dante.security.domain.HerodotusSecurityAttribute;
 import org.slf4j.Logger;

@@ -27,7 +27,7 @@ package org.dromara.dante.message.servlet.websocket.controller;
 
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.dromara.dante.message.core.constants.MessageConstants;
+import org.dromara.dante.message.core.constant.MessageConstants;
 import org.dromara.dante.message.core.domain.DialogueMessage;
 import org.dromara.dante.message.core.domain.WebSocketMessage;
 import org.dromara.dante.message.core.event.SendDialogueMessageEvent;

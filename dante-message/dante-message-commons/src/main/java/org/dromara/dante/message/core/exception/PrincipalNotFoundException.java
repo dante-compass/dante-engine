@@ -27,7 +27,7 @@ package org.dromara.dante.message.core.exception;
 
 import org.dromara.dante.core.domain.Feedback;
 import org.dromara.dante.core.exception.PlatformRuntimeException;
-import org.dromara.dante.message.core.constants.MessageErrorCodes;
+import org.dromara.dante.message.core.constant.MessageErrorCodes;
 
 /**
  * <p>Description: 无法找到 Principal 错误 </p>

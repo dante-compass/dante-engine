@@ -25,7 +25,7 @@
 
 package org.dromara.dante.message.core;
 
-import org.dromara.dante.message.core.constants.MessageConstants;
+import org.dromara.dante.message.core.constant.MessageConstants;
 
 /**
  * <p>Description: 默认消息发送器 </p>

@@ -26,8 +26,9 @@
 package org.dromara.dante.message.core.domain;
 
 import com.google.common.base.MoreObjects;
-import java.util.Objects;
 import org.dromara.dante.core.domain.BaseModel;
+
+import java.util.Objects;
 
 /**
  * <p>Description: 用户状态变更实体 </p>

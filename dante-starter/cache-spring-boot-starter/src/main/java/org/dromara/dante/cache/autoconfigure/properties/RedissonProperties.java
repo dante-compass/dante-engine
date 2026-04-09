@@ -28,7 +28,7 @@ package org.dromara.dante.cache.autoconfigure.properties;
 import com.google.common.base.MoreObjects;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.Strings;
-import org.dromara.dante.cache.commons.constants.CacheConstants;
+import org.dromara.dante.cache.commons.constant.CacheConstants;
 import org.dromara.dante.core.constant.FileExtensions;
 import org.dromara.dante.core.enums.Protocol;
 import org.redisson.config.ClusterServersConfig;

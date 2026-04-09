@@ -27,7 +27,7 @@ package org.dromara.dante.message.servlet.websocket.condition;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.Strings;
-import org.dromara.dante.message.core.constants.MessageConstants;
+import org.dromara.dante.message.core.constant.MessageConstants;
 import org.dromara.dante.message.servlet.websocket.enums.InstanceMode;
 import org.dromara.dante.spring.context.PropertyResolver;
 import org.slf4j.Logger;

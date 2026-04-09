@@ -36,7 +36,7 @@ import org.apache.commons.lang3.Strings;
 import org.dromara.dante.core.domain.SecretKey;
 import org.dromara.dante.core.enums.Protocol;
 import org.dromara.dante.web.support.crypto.DigitalEnvelopeProcessor;
-import org.dromara.dante.oauth2.commons.constants.OAuth2Constants;
+import org.dromara.dante.oauth2.commons.constant.OAuth2Constants;
 import org.dromara.dante.oauth2.commons.properties.OAuth2AuthenticationProperties;
 import org.dromara.dante.web.servlet.utils.SessionUtils;
 import org.springframework.boot.session.autoconfigure.SessionProperties;

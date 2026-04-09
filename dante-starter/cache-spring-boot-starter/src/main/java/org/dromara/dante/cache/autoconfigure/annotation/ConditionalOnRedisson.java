@@ -25,7 +25,7 @@
 
 package org.dromara.dante.cache.autoconfigure.annotation;
 
-import org.dromara.dante.cache.commons.constants.CacheConstants;
+import org.dromara.dante.cache.commons.constant.CacheConstants;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 
 import java.lang.annotation.*;

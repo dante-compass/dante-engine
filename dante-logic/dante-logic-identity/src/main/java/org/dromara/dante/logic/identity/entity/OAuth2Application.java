@@ -31,7 +31,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import org.dromara.dante.data.commons.enums.ApplicationType;
 import org.dromara.dante.logic.identity.definition.AbstractOAuth2RegisteredClient;
-import org.dromara.dante.oauth2.commons.constants.OAuth2Constants;
+import org.dromara.dante.oauth2.commons.constant.OAuth2Constants;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
