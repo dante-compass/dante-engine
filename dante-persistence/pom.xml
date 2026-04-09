@@ -21,6 +21,8 @@
         <module>dante-persistence-commons</module>
         <module>dante-persistence-sas-autoconfigure</module>
         <module>dante-persistence-sas-jpa</module>
+        <module>dante-persistence-sys-autoconfigure</module>
+        <module>dante-persistence-sys-jpa</module>
     </modules>
 
 </project>

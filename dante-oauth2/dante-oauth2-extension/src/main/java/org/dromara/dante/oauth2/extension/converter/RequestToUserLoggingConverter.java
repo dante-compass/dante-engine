@@ -1,36 +1,29 @@
 /*
- * Copyright 2020-2030 码匠君<herodotus@aliyun.com>
+ * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
  *
- * Dante Engine licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * Copyright (c) 2020-2030 郑庚伟 ZHENGGENGWEI (码匠君), <herodotus@aliyun.com> Licensed under the AGPL License
  *
- *    http://www.apache.org/licenses/LICENSE-2.0
+ * This file is part of Herodotus Stirrup.
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Herodotus Stirrup is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- * Dante Engine 是 Dante Cloud 系统核心组件库，采用 APACHE LICENSE 2.0 开源协议，您在使用过程中，需要注意以下几点：
+ * Herodotus Stirrup is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- * 1. 请不要删除和修改根目录下的LICENSE文件。
- * 2. 请不要删除和修改 Dante Engine 源码头部的版权声明。
- * 3. 请保留源码和相关描述文件的项目出处，作者声明等。
- * 4. 分发源码时候，请注明软件出处 <https://gitee.com/dromara/dante-cloud>
- * 5. 在修改包名，模块名称，项目代码等时，请注明软件出处 <https://gitee.com/dromara/dante-cloud>
- * 6. 若您的项目无法满足以上几点，可申请商业授权
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.herodotus.cn>.
  */
 
 package org.dromara.dante.oauth2.extension.converter;
 
-import cn.hutool.v7.http.useragent.UserAgent;
-import cn.hutool.v7.http.useragent.UserAgentUtil;
 import com.google.common.net.HttpHeaders;
 import jakarta.servlet.http.HttpServletRequest;
-import org.apache.commons.lang3.ObjectUtils;
-import org.dromara.dante.oauth2.extension.entity.OAuth2UserLogging;
+import org.dromara.dante.persistence.commons.domain.HerodotusUserLogging;
 import org.dromara.dante.security.utils.SecurityUtils;
 import org.dromara.dante.web.servlet.utils.HeaderUtils;
 import org.springframework.core.convert.converter.Converter;
@@ -38,12 +31,12 @@ import org.springframework.security.oauth2.server.authorization.OAuth2Authorizat
 import org.springframework.security.oauth2.server.authorization.authentication.OAuth2AccessTokenAuthenticationToken;
 
 /**
- * <p>Description: 请求转成 {@link OAuth2UserLogging} </p>
+ * <p>Description: 请求转成 {@link HerodotusUserLogging} </p>
  *
  * @author : gengwei.zheng
  * @date : 2024/12/12 17:18
  */
-public class RequestToUserLoggingConverter implements Converter<HttpServletRequest, OAuth2UserLogging> {
+public class RequestToUserLoggingConverter implements Converter<HttpServletRequest, HerodotusUserLogging> {
 
     private final String principal;
     private final String clientId;
@@ -64,32 +57,14 @@ public class RequestToUserLoggingConverter implements Converter<HttpServletReque
     }
 
     @Override
-    public OAuth2UserLogging convert(HttpServletRequest source) {
+    public HerodotusUserLogging convert(HttpServletRequest source) {
 
-        OAuth2UserLogging target = new OAuth2UserLogging();
+        HerodotusUserLogging target = new HerodotusUserLogging(source.getHeader(HttpHeaders.USER_AGENT));
         target.setPrincipalName(principal);
         target.setClientId(clientId);
         target.setIp(HeaderUtils.getIp(source));
         target.setOperation(operation);
 
-        withUserAgent(target, source);
-
         return target;
-    }
-
-    private void withUserAgent(OAuth2UserLogging target, HttpServletRequest source) {
-        UserAgent userAgent = UserAgentUtil.parse(source.getHeader(HttpHeaders.USER_AGENT));
-        if (ObjectUtils.isNotEmpty(userAgent)) {
-            target.setMobile(userAgent.isMobile());
-            target.setOsName(userAgent.getOs().getName());
-            target.setBrowserName(userAgent.getBrowser().getName());
-            target.setMobileBrowser(userAgent.getBrowser().isMobile());
-            target.setEngineName(userAgent.getEngine().getName());
-            target.setMobilePlatform(userAgent.getPlatform().isMobile());
-            target.setIphoneOrIpod(userAgent.getPlatform().isIPhoneOrIPod());
-            target.setIpad(userAgent.getPlatform().isIPad());
-            target.setIos(userAgent.getPlatform().isIos());
-            target.setAndroid(userAgent.getPlatform().isAndroid());
-        }
     }
 }

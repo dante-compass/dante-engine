@@ -27,7 +27,10 @@ package org.dromara.dante.persistence.sas.jpa.specification;
 
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.ObjectUtils;
+import org.dromara.dante.persistence.commons.definition.EnhanceOAuth2AuthorizationService;
+import org.dromara.dante.persistence.commons.domain.HerodotusAuthorizationDetails;
 import org.dromara.dante.persistence.commons.jackson.OAuth2JacksonProcessor;
+import org.dromara.dante.persistence.sas.jpa.converter.AuthorizationToDetailsConverter;
 import org.dromara.dante.persistence.sas.jpa.converter.HerodotusToOAuth2AuthorizationConverter;
 import org.dromara.dante.persistence.sas.jpa.converter.OAuth2ToHerodotusAuthorizationConverter;
 import org.dromara.dante.persistence.sas.jpa.entity.HerodotusAuthorization;
@@ -35,10 +38,11 @@ import org.dromara.dante.persistence.sas.jpa.service.HerodotusAuthorizationServi
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.oauth2.core.endpoint.OAuth2ParameterNames;
 import org.springframework.security.oauth2.core.oidc.endpoint.OidcParameterNames;
 import org.springframework.security.oauth2.server.authorization.OAuth2Authorization;
-import org.springframework.security.oauth2.server.authorization.OAuth2AuthorizationService;
 import org.springframework.security.oauth2.server.authorization.OAuth2TokenType;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClientRepository;
 import org.springframework.transaction.annotation.Transactional;
@@ -55,21 +59,22 @@ import java.util.stream.Collectors;
  * @author : gengwei.zheng
  * @date : 2022/2/25 22:16
  */
-public class JpaOAuth2AuthorizationService implements OAuth2AuthorizationService {
+public class JpaOAuth2AuthorizationService implements EnhanceOAuth2AuthorizationService {
 
     private static final Logger log = LoggerFactory.getLogger(JpaOAuth2AuthorizationService.class);
 
     private final HerodotusAuthorizationService herodotusAuthorizationService;
-    private final Converter<HerodotusAuthorization, OAuth2Authorization> herodotusToOAuth2Converter;
-    private final Converter<OAuth2Authorization, HerodotusAuthorization> oauth2ToHerodotusConverter;
+    private final Converter<HerodotusAuthorization, OAuth2Authorization> toOAuth2Converter;
+    private final Converter<OAuth2Authorization, HerodotusAuthorization> toHerodotusConverter;
+    private final Converter<HerodotusAuthorization, HerodotusAuthorizationDetails> toDetailsConverter;
 
     public JpaOAuth2AuthorizationService(HerodotusAuthorizationService herodotusAuthorizationService, RegisteredClientRepository registeredClientRepository) {
         this.herodotusAuthorizationService = herodotusAuthorizationService;
 
         OAuth2JacksonProcessor jacksonProcessor = OAuth2JacksonProcessor.builder().build();
-        this.herodotusToOAuth2Converter = new HerodotusToOAuth2AuthorizationConverter(jacksonProcessor, registeredClientRepository);
-        this.oauth2ToHerodotusConverter = new OAuth2ToHerodotusAuthorizationConverter(jacksonProcessor);
-
+        this.toOAuth2Converter = new HerodotusToOAuth2AuthorizationConverter(jacksonProcessor, registeredClientRepository);
+        this.toHerodotusConverter = new OAuth2ToHerodotusAuthorizationConverter(jacksonProcessor);
+        this.toDetailsConverter = new AuthorizationToDetailsConverter();
     }
 
     @Override
@@ -94,12 +99,14 @@ public class JpaOAuth2AuthorizationService implements OAuth2AuthorizationService
         return herodotusAuthorization.map(this::toObject).orElse(null);
     }
 
+    @Override
     public int findAuthorizationCount(String registeredClientId, String principalName) {
         int count = this.herodotusAuthorizationService.findAuthorizationCount(registeredClientId, principalName);
         log.debug("[Herodotus] |- Jpa OAuth2 Authorization Service findAuthorizationCount.");
         return count;
     }
 
+    @Override
     public List<OAuth2Authorization> findAvailableAuthorizations(String registeredClientId, String principalName) {
         List<HerodotusAuthorization> authorizations = this.herodotusAuthorizationService.findAvailableAuthorizations(registeredClientId, principalName);
         if (CollectionUtils.isNotEmpty(authorizations)) {
@@ -107,6 +114,23 @@ public class JpaOAuth2AuthorizationService implements OAuth2AuthorizationService
         }
 
         return new ArrayList<>();
+    }
+
+    @Override
+    public void deleteById(String id) {
+        herodotusAuthorizationService.deleteById(id);
+    }
+
+    @Override
+    public Page<HerodotusAuthorizationDetails> findByPage(int pageNumber, int pageSize, Sort.Direction direction, String... properties) {
+        Page<HerodotusAuthorization> pages = this.herodotusAuthorizationService.findByPage(pageNumber, pageSize, direction, properties);
+        return pages.map(toDetailsConverter::convert);
+    }
+
+    @Override
+    public Page<HerodotusAuthorizationDetails> findByPage(int pageNumber, int pageSize) {
+        Page<HerodotusAuthorization> pages = this.herodotusAuthorizationService.findByPage(pageNumber, pageSize);
+        return pages.map(toDetailsConverter::convert);
     }
 
     @Override
@@ -135,10 +159,10 @@ public class JpaOAuth2AuthorizationService implements OAuth2AuthorizationService
     }
 
     private OAuth2Authorization toObject(HerodotusAuthorization entity) {
-        return herodotusToOAuth2Converter.convert(entity);
+        return toOAuth2Converter.convert(entity);
     }
 
     private HerodotusAuthorization toEntity(OAuth2Authorization authorization) {
-        return oauth2ToHerodotusConverter.convert(authorization);
+        return toHerodotusConverter.convert(authorization);
     }
 }

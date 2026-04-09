@@ -23,41 +23,18 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.rest.identity.controller;
+package org.dromara.dante.persistence.sas.jpa.converter;
 
-import io.swagger.v3.oas.annotations.tags.Tag;
-import io.swagger.v3.oas.annotations.tags.Tags;
-import org.dromara.dante.data.jpa.service.BaseJpaWriteableService;
-import org.dromara.dante.data.rest.servlet.AbstractJpaEntityWriteableController;
+import org.dromara.dante.persistence.commons.converter.AbstractToAuthorizationDetailsConverter;
+import org.dromara.dante.persistence.commons.domain.HerodotusAuthorizationDetails;
 import org.dromara.dante.persistence.sas.jpa.entity.HerodotusAuthorization;
-import org.dromara.dante.persistence.sas.jpa.service.HerodotusAuthorizationService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 /**
- * <p>Description: OAuth2 认证管理接口 </p>
+ * <p>Description: {@link HerodotusAuthorization} 转 {@link HerodotusAuthorizationDetails} 转换器 </p>
  *
  * @author : gengwei.zheng
- * @date : 2022/3/1 18:52
+ * @date : 2024/12/21 0:17
  */
-@RestController
-@RequestMapping("/authorize/authorization")
-@Tags({
-        @Tag(name = "OAuth2 认证服务接口"),
-        @Tag(name = "OAuth2 认证管理接口")
-})
-public class OAuth2AuthorizationController extends AbstractJpaEntityWriteableController<HerodotusAuthorization, String> {
+public class AuthorizationToDetailsConverter extends AbstractToAuthorizationDetailsConverter<HerodotusAuthorization> {
 
-    private final HerodotusAuthorizationService herodotusAuthorizationService;
-
-    @Autowired
-    public OAuth2AuthorizationController(HerodotusAuthorizationService herodotusAuthorizationService) {
-        this.herodotusAuthorizationService = herodotusAuthorizationService;
-    }
-
-    @Override
-    public BaseJpaWriteableService<HerodotusAuthorization, String> getService() {
-        return this.herodotusAuthorizationService;
-    }
 }

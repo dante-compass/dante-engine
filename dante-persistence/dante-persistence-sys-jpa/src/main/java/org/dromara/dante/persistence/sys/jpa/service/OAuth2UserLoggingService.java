@@ -23,20 +23,14 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.oauth2.extension.service;
+package org.dromara.dante.persistence.sys.jpa.service;
 
-import cn.hutool.v7.http.server.servlet.ServletUtil;
-import cn.hutool.v7.http.useragent.UserAgent;
-import cn.hutool.v7.http.useragent.UserAgentUtil;
-import com.google.common.net.HttpHeaders;
 import jakarta.persistence.criteria.Predicate;
-import jakarta.servlet.http.HttpServletRequest;
-import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.dromara.dante.data.jpa.repository.BaseJpaRepository;
 import org.dromara.dante.data.jpa.service.AbstractJpaService;
-import org.dromara.dante.oauth2.extension.entity.OAuth2UserLogging;
-import org.dromara.dante.oauth2.extension.repository.OAuth2UserLoggingRepository;
+import org.dromara.dante.persistence.sys.jpa.entity.OAuth2UserLogging;
+import org.dromara.dante.persistence.sys.jpa.repository.OAuth2UserLoggingRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -59,15 +53,15 @@ public class OAuth2UserLoggingService extends AbstractJpaService<OAuth2UserLoggi
 
     private static final Logger log = LoggerFactory.getLogger(OAuth2UserLoggingService.class);
 
-    private final OAuth2UserLoggingRepository complianceRepository;
+    private final OAuth2UserLoggingRepository userLoggingRepository;
 
-    public OAuth2UserLoggingService(OAuth2UserLoggingRepository complianceRepository) {
-        this.complianceRepository = complianceRepository;
+    public OAuth2UserLoggingService(OAuth2UserLoggingRepository userLoggingRepository) {
+        this.userLoggingRepository = userLoggingRepository;
     }
 
     @Override
     public BaseJpaRepository<OAuth2UserLogging, String> getRepository() {
-        return complianceRepository;
+        return userLoggingRepository;
     }
 
     public Page<OAuth2UserLogging> findByCondition(int pageNumber, int pageSize, String principalName, String clientId, String ip) {
@@ -95,43 +89,5 @@ public class OAuth2UserLoggingService extends AbstractJpaService<OAuth2UserLoggi
         };
 
         return this.findByPage(specification, pageable);
-    }
-
-    public OAuth2UserLogging save(String principalName, String clientId, String operation, HttpServletRequest request) {
-        OAuth2UserLogging compliance = toEntity(principalName, clientId, operation, request);
-        log.debug("[Herodotus] |- Sign in user is [{}]", compliance);
-        return super.save(compliance);
-    }
-
-    private UserAgent getUserAgent(HttpServletRequest request) {
-        return UserAgentUtil.parse(request.getHeader(HttpHeaders.USER_AGENT));
-    }
-
-    private String getIp(HttpServletRequest request) {
-        return ServletUtil.getClientIP(request, "");
-    }
-
-    public OAuth2UserLogging toEntity(String principalName, String clientId, String operation, HttpServletRequest request) {
-        OAuth2UserLogging audit = new OAuth2UserLogging();
-        audit.setPrincipalName(principalName);
-        audit.setClientId(clientId);
-        audit.setOperation(operation);
-
-        UserAgent userAgent = getUserAgent(request);
-        if (ObjectUtils.isNotEmpty(userAgent)) {
-            audit.setIp(getIp(request));
-            audit.setMobile(userAgent.isMobile());
-            audit.setOsName(userAgent.getOs().getName());
-            audit.setBrowserName(userAgent.getBrowser().getName());
-            audit.setMobileBrowser(userAgent.getBrowser().isMobile());
-            audit.setEngineName(userAgent.getEngine().getName());
-            audit.setMobilePlatform(userAgent.getPlatform().isMobile());
-            audit.setIphoneOrIpod(userAgent.getPlatform().isIPhoneOrIPod());
-            audit.setIpad(userAgent.getPlatform().isIPad());
-            audit.setIos(userAgent.getPlatform().isIos());
-            audit.setAndroid(userAgent.getPlatform().isAndroid());
-        }
-
-        return audit;
     }
 }

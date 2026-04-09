@@ -63,8 +63,7 @@ public class OAuth2ToHerodotusAuthorizationConverter extends AbstractOAuth2Entit
         target.setAttributes(writeMap(source.getAttributes()));
         target.setState(source.getAttribute(OAuth2ParameterNames.STATE));
 
-        OAuth2Authorization.Token<OAuth2AuthorizationCode> authorizationCode =
-                source.getToken(OAuth2AuthorizationCode.class);
+        OAuth2Authorization.Token<OAuth2AuthorizationCode> authorizationCode = source.getToken(OAuth2AuthorizationCode.class);
         setTokenValues(
                 authorizationCode,
                 target::setAuthorizationCodeValue,
@@ -73,8 +72,7 @@ public class OAuth2ToHerodotusAuthorizationConverter extends AbstractOAuth2Entit
                 target::setAuthorizationCodeMetadata
         );
 
-        OAuth2Authorization.Token<OAuth2AccessToken> accessToken =
-                source.getToken(OAuth2AccessToken.class);
+        OAuth2Authorization.Token<OAuth2AccessToken> accessToken = source.getToken(OAuth2AccessToken.class);
         setTokenValues(
                 accessToken,
                 target::setAccessTokenValue,
@@ -91,8 +89,7 @@ public class OAuth2ToHerodotusAuthorizationConverter extends AbstractOAuth2Entit
             }
         }
 
-        OAuth2Authorization.Token<OAuth2RefreshToken> refreshToken =
-                source.getToken(OAuth2RefreshToken.class);
+        OAuth2Authorization.Token<OAuth2RefreshToken> refreshToken = source.getToken(OAuth2RefreshToken.class);
         setTokenValues(
                 refreshToken,
                 target::setRefreshTokenValue,
@@ -101,8 +98,7 @@ public class OAuth2ToHerodotusAuthorizationConverter extends AbstractOAuth2Entit
                 target::setRefreshTokenMetadata
         );
 
-        OAuth2Authorization.Token<OidcIdToken> oidcIdToken =
-                source.getToken(OidcIdToken.class);
+        OAuth2Authorization.Token<OidcIdToken> oidcIdToken = source.getToken(OidcIdToken.class);
         setTokenValues(
                 oidcIdToken,
                 target::setOidcIdTokenValue,
@@ -114,8 +110,7 @@ public class OAuth2ToHerodotusAuthorizationConverter extends AbstractOAuth2Entit
             target.setOidcIdTokenClaims(writeMap(oidcIdToken.getClaims()));
         }
 
-        OAuth2Authorization.Token<OAuth2UserCode> userCode =
-                source.getToken(OAuth2UserCode.class);
+        OAuth2Authorization.Token<OAuth2UserCode> userCode = source.getToken(OAuth2UserCode.class);
         setTokenValues(
                 userCode,
                 target::setUserCodeValue,
@@ -124,8 +119,7 @@ public class OAuth2ToHerodotusAuthorizationConverter extends AbstractOAuth2Entit
                 target::setUserCodeMetadata
         );
 
-        OAuth2Authorization.Token<OAuth2DeviceCode> deviceCode =
-                source.getToken(OAuth2DeviceCode.class);
+        OAuth2Authorization.Token<OAuth2DeviceCode> deviceCode = source.getToken(OAuth2DeviceCode.class);
         setTokenValues(
                 deviceCode,
                 target::setDeviceCodeValue,

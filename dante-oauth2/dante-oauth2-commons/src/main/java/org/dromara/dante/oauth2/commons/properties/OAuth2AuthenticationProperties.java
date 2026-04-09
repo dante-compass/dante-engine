@@ -31,6 +31,7 @@ import org.dromara.dante.core.constant.SymbolConstants;
 import org.dromara.dante.core.constant.SystemConstants;
 import org.dromara.dante.oauth2.commons.constant.OAuth2Constants;
 import org.dromara.dante.oauth2.commons.enums.SasPersistence;
+import org.dromara.dante.oauth2.commons.enums.SysPersistence;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.rememberme.AbstractRememberMeServices;
@@ -477,6 +478,10 @@ public class OAuth2AuthenticationProperties {
          * SAS 核心数据持久化方式
          */
         private SasPersistence sas = SasPersistence.JPA;
+        /**
+         * 系统核心数据持久化方式
+         */
+        private SysPersistence sys = SysPersistence.JPA;
 
         public Boolean getInitialized() {
             return initialized;
@@ -494,11 +499,20 @@ public class OAuth2AuthenticationProperties {
             this.sas = sas;
         }
 
+        public SysPersistence getSys() {
+            return sys;
+        }
+
+        public void setSys(SysPersistence sys) {
+            this.sys = sys;
+        }
+
         @Override
         public String toString() {
             return MoreObjects.toStringHelper(this)
                     .add("initialized", initialized)
                     .add("sas", sas)
+                    .add("sys", sys)
                     .toString();
         }
     }

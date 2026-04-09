@@ -23,38 +23,26 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.rest.identity.controller;
+package org.dromara.dante.persistence.sys.jpa.converter;
 
-import io.swagger.v3.oas.annotations.tags.Tag;
-import io.swagger.v3.oas.annotations.tags.Tags;
-import org.dromara.dante.data.jpa.service.BaseJpaWriteableService;
-import org.dromara.dante.data.rest.servlet.AbstractJpaEntityWriteableController;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.dromara.dante.persistence.commons.domain.HerodotusUserLogging;
+import org.dromara.dante.persistence.sys.jpa.definition.AbstractToOAuth2AuditRecordConverter;
+import org.dromara.dante.persistence.sys.jpa.entity.OAuth2UserLogging;
 
 /**
- * <p>Description: OAuth2ProductController </p>
+ * <p>Description: {@link HerodotusUserLogging} 转 {@link OAuth2UserLogging} </p>
  *
  * @author : gengwei.zheng
- * @date : 2023/5/15 16:37
+ * @date : 2025/1/3 15:11
  */
-@RestController
-@RequestMapping("/authorize/product")
-@Tags({
-        @Tag(name = "OAuth2 认证服务接口"),
-        @Tag(name = "物联网管理接口"),
-        @Tag(name = "物联网产品接口")
-})
-public class OAuth2ProductController extends AbstractJpaEntityWriteableController<OAuth2Product, String> {
-
-    private final OAuth2ProductService iotProductService;
-
-    public OAuth2ProductController(OAuth2ProductService iotProductService) {
-        this.iotProductService = iotProductService;
-    }
+public class ToOAuth2UserLoggingConverter extends AbstractToOAuth2AuditRecordConverter<HerodotusUserLogging, OAuth2UserLogging> {
 
     @Override
-    public BaseJpaWriteableService<OAuth2Product, String> getService() {
-        return iotProductService;
+    public OAuth2UserLogging getInstance(HerodotusUserLogging source) {
+        OAuth2UserLogging target = new OAuth2UserLogging();
+        target.setLoggingId(source.getLoggingId());
+        target.setOperation(source.getOperation());
+        target.setLocation(source.getLocation());
+        return target;
     }
 }

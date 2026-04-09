@@ -126,8 +126,13 @@ dante-engine
 ├    ├── dante-oauth2-authentication -- Spring Authorization Server 授权服务器核心功能封装模块
 ├    ├── dante-oauth2-authorization -- Spring Authorization Server 资源服务器核心功能封装模块
 ├    ├── dante-oauth2-commons -- OAuth2 共性通用代码模块
-├    ├── dante-oauth2-extension -- Spring Authorization Server 功能扩展模块
-├    └── dante-oauth2-persistence-jpa -- 以 JPA 作为 SAS 核心数据访问层代码实现模块
+├    └── dante-oauth2-extension -- Spring Authorization Server 功能扩展模块
+├── dante-persistence -- 数据存储层模块
+├    ├── dante-persistence-commons -- 数据存储通用代码模块
+├    ├── dante-persistence-sas-autoconfigure -- SAS 核心数据访问层模块自动配置
+├    ├── dante-persistence-sas-jpa -- 以 JPA 作为 SAS 核心数据访问层代码实现模块
+├    ├── dante-persistence-sys-autoconfigure -- 系统审计数据访问层模块自动配置
+├    └── dante-persistence-sys-jpa -- 以 JPA 作为系统审计数据访问层代码实现模块
 ├── dante-rest -- 系统内置功能 REST 接口模块
 ├    ├── dante-rest-oss -- 对象存储功能 REST 接口模块
 ├    ├── dante-rest-identity -- 身份认证功能 REST 接口模块

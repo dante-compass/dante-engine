@@ -26,7 +26,6 @@
 package org.dromara.dante.persistence.commons.definition;
 
 import org.dromara.dante.persistence.commons.domain.HerodotusUserLogging;
-import org.dromara.dante.persistence.commons.domain.IpProtection;
 
 import java.util.Map;
 
@@ -39,8 +38,6 @@ import java.util.Map;
 public interface HerodotusUserLoggingService {
 
     void save(HerodotusUserLogging herodotusUserLogging);
-
-    IpProtection protection(HerodotusUserLogging herodotusUserLogging);
 
     Map<String, Object> findByCondition(int pageNumber, int pageSize, String principalName, String clientId, String ip);
 

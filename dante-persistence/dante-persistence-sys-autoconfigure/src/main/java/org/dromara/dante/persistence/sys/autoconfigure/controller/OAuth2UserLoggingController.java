@@ -23,11 +23,12 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.rest.identity.controller;
+package org.dromara.dante.persistence.sys.autoconfigure.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
+import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -35,13 +36,12 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.tags.Tags;
 import jakarta.validation.constraints.NotNull;
 import org.dromara.dante.core.domain.Result;
-import org.dromara.dante.data.jpa.service.BaseJpaWriteableService;
-import org.dromara.dante.data.rest.servlet.AbstractJpaEntityWriteableController;
-import org.dromara.dante.oauth2.extension.entity.OAuth2UserLogging;
-import org.dromara.dante.oauth2.extension.service.OAuth2UserLoggingService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
+import org.dromara.dante.data.rest.servlet.PaginationController;
+import org.dromara.dante.persistence.commons.definition.HerodotusUserLoggingService;
+import org.dromara.dante.web.annotation.AccessLimited;
+import org.dromara.dante.web.definition.dto.Pager;
 import org.springframework.http.MediaType;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -62,22 +62,16 @@ import java.util.Map;
         @Tag(name = "OAuth2 应用安全合规接口"),
         @Tag(name = "OAuth2 审计管理接口")
 })
-public class OAuth2ComplianceController extends AbstractJpaEntityWriteableController<OAuth2UserLogging, String> {
+public class OAuth2UserLoggingController implements PaginationController {
 
-    private final OAuth2UserLoggingService complianceService;
+    private final HerodotusUserLoggingService userLoggingService;
 
-    @Autowired
-    public OAuth2ComplianceController(OAuth2UserLoggingService complianceService) {
-        this.complianceService = complianceService;
+    public OAuth2UserLoggingController(HerodotusUserLoggingService userLoggingService) {
+        this.userLoggingService = userLoggingService;
     }
 
-    @Override
-    public BaseJpaWriteableService<OAuth2UserLogging, String> getService() {
-        return complianceService;
-    }
-
-    @Operation(summary = "模糊条件查询合规信息", description = "根据动态输入的字段模糊查询合规信息",
-            responses = {@ApiResponse(description = "人员分页列表", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = Map.class)))})
+    @Operation(summary = "模糊条件查询用户日志信息", description = "根据动态输入的字段模糊查询合规信息",
+            responses = {@ApiResponse(description = "用户日志信息列表", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = Map.class)))})
     @Parameters({
             @Parameter(name = "pageNumber", required = true, description = "当前页码"),
             @Parameter(name = "pageSize", required = true, description = "每页显示数量"),
@@ -92,7 +86,22 @@ public class OAuth2ComplianceController extends AbstractJpaEntityWriteableContro
             @RequestParam(value = "principalName", required = false) String principalName,
             @RequestParam(value = "clientId", required = false) String clientId,
             @RequestParam(value = "ip", required = false) String ip) {
-        Page<OAuth2UserLogging> pages = complianceService.findByCondition(pageNumber, pageSize, principalName, clientId, ip);
-        return resultFromPage(pages);
+        Map<String, Object> data = userLoggingService.findByCondition(pageNumber, pageSize, principalName, clientId, ip);
+        return result(data);
+    }
+
+    @AccessLimited
+    @Operation(summary = "分页查询用户日志信息数据", description = "通过pageNumber和pageSize获取分页数据",
+            responses = {
+                    @ApiResponse(description = "用户日志信息列表", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = Map.class))),
+                    @ApiResponse(responseCode = "500", description = "查询失败")
+            })
+    @Parameters({
+            @Parameter(name = "pager", required = true, in = ParameterIn.QUERY, description = "分页Bo对象", schema = @Schema(implementation = Pager.class))
+    })
+    @GetMapping
+    public Result<Map<String, Object>> findByPage(@Validated Pager pager) {
+        Map<String, Object> data = userLoggingService.findByPage(pager.getPageNumber(), pager.getPageSize());
+        return result(data);
     }
 }

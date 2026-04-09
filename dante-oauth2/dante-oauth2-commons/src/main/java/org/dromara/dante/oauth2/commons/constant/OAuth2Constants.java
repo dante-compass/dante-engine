@@ -44,8 +44,12 @@ public interface OAuth2Constants extends BaseConstants {
 
     String ITEM_SIGN_IN_FAILURE_LIMITED_AUTO_UNLOCK = PROPERTY_SIGN_IN_FAILURE_LIMITED + ".auto-unlock";
     String ITEM_PERSISTENCE_SAS = PROPERTY_PERSISTENCE + ".sas";
+    String ITEM_PERSISTENCE_SYS = PROPERTY_PERSISTENCE + ".sys";
+
     String ITEM_FORMLOGIN_LOGINPAGEURL = PROPERTY_FORMLOGIN + ".login-page-url";
     String ITEM_AUTHORIZATION_CONSENT_URI = PROPERTY_OAUTH2_AUTHENTICATION + ".authorization-consent-uri";
+    String ITEM_DEVICE_VERIFICATION_SUCCESS_URI = PROPERTY_OAUTH2_AUTHENTICATION + ".device-verification-success-uri";
+    String ITEM_DEVICE_VERIFICATION_FAILURE_URI = PROPERTY_OAUTH2_AUTHENTICATION + ".device-verification-failure-uri";
 
     /**
      * ${herodotus.oauth2.authentication.authorization-consent-uri:/oauth2/consent}
@@ -61,8 +65,6 @@ public interface OAuth2Constants extends BaseConstants {
     String REGION_OAUTH2_PERMISSION = AREA_PREFIX + "oauth2:permission";
     String REGION_OAUTH2_SCOPE = AREA_PREFIX + "oauth2:scope";
     String REGION_OAUTH2_APPLICATION_SCOPE = AREA_PREFIX + "oauth2:application:scope";
-    String REGION_OAUTH2_PRODUCT = AREA_PREFIX + "oauth2:product";
-    String REGION_OAUTH2_DEVICE = AREA_PREFIX + "oauth2:device";
 
     String CACHE_NAME_TOKEN_SIGN_IN_FAILURE_LIMITED = CACHE_TOKEN_BASE_PREFIX + "sign_in:failure_limited:";
     String CACHE_NAME_TOKEN_LOCKED_USER_DETAIL = CACHE_TOKEN_BASE_PREFIX + "locked:user_details:";

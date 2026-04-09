@@ -30,7 +30,7 @@ import org.apache.commons.lang3.ObjectUtils;
 import org.dromara.dante.oauth2.authentication.utils.OAuth2EndpointUtils;
 import org.dromara.dante.oauth2.commons.exception.AccountEndpointLimitedException;
 import org.dromara.dante.oauth2.commons.properties.OAuth2AuthenticationProperties;
-import org.dromara.dante.persistence.sas.jpa.specification.JpaOAuth2AuthorizationService;
+import org.dromara.dante.persistence.commons.definition.EnhanceOAuth2AuthorizationService;
 import org.dromara.dante.security.constant.OAuth2ErrorKeys;
 import org.dromara.dante.security.service.EnhanceUserDetailsService;
 import org.slf4j.Logger;
@@ -121,8 +121,8 @@ public abstract class AbstractUserDetailsAuthenticationProvider extends Abstract
         }
 
         if (authenticationProperties.getSignInEndpointLimited().getEnabled() && !authenticationProperties.getSignInKickOutLimited().getEnabled()) {
-            if (authorizationService instanceof JpaOAuth2AuthorizationService jpaOAuth2AuthorizationService) {
-                int count = jpaOAuth2AuthorizationService.findAuthorizationCount(registeredClientId, user.getUsername());
+            if (authorizationService instanceof EnhanceOAuth2AuthorizationService enhanceOAuth2AuthorizationService) {
+                int count = enhanceOAuth2AuthorizationService.findAuthorizationCount(registeredClientId, user.getUsername());
                 if (count >= authenticationProperties.getSignInEndpointLimited().getMaximum()) {
                     throw new AccountEndpointLimitedException("Use same endpoint signIn exceed limit");
                 }
@@ -130,8 +130,8 @@ public abstract class AbstractUserDetailsAuthenticationProvider extends Abstract
         }
 
         if (!authenticationProperties.getSignInEndpointLimited().getEnabled() && authenticationProperties.getSignInKickOutLimited().getEnabled()) {
-            if (authorizationService instanceof JpaOAuth2AuthorizationService jpaOAuth2AuthorizationService) {
-                List<OAuth2Authorization> authorizations = jpaOAuth2AuthorizationService.findAvailableAuthorizations(registeredClientId, user.getUsername());
+            if (authorizationService instanceof EnhanceOAuth2AuthorizationService enhanceOAuth2AuthorizationService) {
+                List<OAuth2Authorization> authorizations = enhanceOAuth2AuthorizationService.findAvailableAuthorizations(registeredClientId, user.getUsername());
                 if (CollectionUtils.isNotEmpty(authorizations)) {
                     authorizations.forEach(authorization -> {
                         OAuth2Authorization.Token<OAuth2RefreshToken> refreshToken = authorization.getToken(OAuth2RefreshToken.class);
@@ -141,7 +141,7 @@ public abstract class AbstractUserDetailsAuthenticationProvider extends Abstract
                                     .build();
                         }
                         log.debug("[Herodotus] |- Sign in user [{}] with token id [{}] will be kicked out.", user.getUsername(), authorization.getId());
-                        jpaOAuth2AuthorizationService.save(authorization);
+                        enhanceOAuth2AuthorizationService.save(authorization);
                     });
                 }
             }

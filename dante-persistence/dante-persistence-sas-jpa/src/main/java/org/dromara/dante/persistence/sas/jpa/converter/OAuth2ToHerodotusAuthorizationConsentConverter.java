@@ -41,18 +41,19 @@ import java.util.Set;
  * @date : 2023/5/21 21:05
  */
 public class OAuth2ToHerodotusAuthorizationConsentConverter implements Converter<OAuth2AuthorizationConsent, HerodotusAuthorizationConsent> {
+
     @Override
-    public HerodotusAuthorizationConsent convert(OAuth2AuthorizationConsent authorizationConsent) {
-        HerodotusAuthorizationConsent entity = new HerodotusAuthorizationConsent();
-        entity.setRegisteredClientId(authorizationConsent.getRegisteredClientId());
-        entity.setPrincipalName(authorizationConsent.getPrincipalName());
+    public HerodotusAuthorizationConsent convert(OAuth2AuthorizationConsent source) {
+        HerodotusAuthorizationConsent target = new HerodotusAuthorizationConsent();
+        target.setRegisteredClientId(source.getRegisteredClientId());
+        target.setPrincipalName(source.getPrincipalName());
 
         Set<String> authorities = new HashSet<>();
-        for (GrantedAuthority authority : authorizationConsent.getAuthorities()) {
+        for (GrantedAuthority authority : source.getAuthorities()) {
             authorities.add(authority.getAuthority());
         }
-        entity.setAuthorities(StringUtils.collectionToCommaDelimitedString(authorities));
+        target.setAuthorities(StringUtils.collectionToCommaDelimitedString(authorities));
 
-        return entity;
+        return target;
     }
 }

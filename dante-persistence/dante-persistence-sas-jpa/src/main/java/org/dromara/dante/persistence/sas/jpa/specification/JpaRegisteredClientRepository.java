@@ -25,13 +25,14 @@
 
 package org.dromara.dante.persistence.sas.jpa.specification;
 
+import org.apache.commons.lang3.ObjectUtils;
+import org.dromara.dante.oauth2.commons.exception.RegisteredClientExistsException;
 import org.dromara.dante.persistence.commons.jackson.OAuth2JacksonProcessor;
 import org.dromara.dante.persistence.sas.jpa.converter.HerodotusToOAuth2RegisteredClientConverter;
 import org.dromara.dante.persistence.sas.jpa.converter.OAuth2ToHerodotusRegisteredClientConverter;
 import org.dromara.dante.persistence.sas.jpa.entity.HerodotusRegisteredClient;
 import org.dromara.dante.persistence.sas.jpa.service.HerodotusRegisteredClientService;
 import org.springframework.core.convert.converter.Converter;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClientRepository;
 
@@ -49,15 +50,21 @@ public class JpaRegisteredClientRepository implements RegisteredClientRepository
     private final Converter<HerodotusRegisteredClient, RegisteredClient> herodotusToOAuth2Converter;
     private final Converter<RegisteredClient, HerodotusRegisteredClient> oauth2ToHerodotusConverter;
 
-    public JpaRegisteredClientRepository(HerodotusRegisteredClientService herodotusRegisteredClientService, PasswordEncoder passwordEncoder) {
+    public JpaRegisteredClientRepository(HerodotusRegisteredClientService herodotusRegisteredClientService) {
         this.herodotusRegisteredClientService = herodotusRegisteredClientService;
         OAuth2JacksonProcessor jacksonProcessor = OAuth2JacksonProcessor.builder().build();
         this.herodotusToOAuth2Converter = new HerodotusToOAuth2RegisteredClientConverter(jacksonProcessor);
-        this.oauth2ToHerodotusConverter = new OAuth2ToHerodotusRegisteredClientConverter(jacksonProcessor, passwordEncoder);
+        this.oauth2ToHerodotusConverter = new OAuth2ToHerodotusRegisteredClientConverter(jacksonProcessor);
     }
 
     @Override
     public void save(RegisteredClient registeredClient) {
+        // findByClientId 是 SAS 关键操作，如果允许 clientId 重复，会导致查询失败。
+        // 客户端动态注册，默认会随机设置一个 RegisteredClient ID。这可能出现相同 clientId 的数据。
+        RegisteredClient old = findByClientId(registeredClient.getClientId());
+        if (ObjectUtils.isNotEmpty(old) && !old.getId().equals(registeredClient.getId())) {
+            throw new RegisteredClientExistsException("Registered client with id " + registeredClient.getClientId() + " already exists");
+        }
         this.herodotusRegisteredClientService.save(toEntity(registeredClient));
     }
 
@@ -70,10 +77,6 @@ public class JpaRegisteredClientRepository implements RegisteredClientRepository
     @Override
     public RegisteredClient findByClientId(String clientId) {
         return this.herodotusRegisteredClientService.findByClientId(clientId).map(this::toObject).orElse(null);
-    }
-
-    public void remove(String id) {
-        this.herodotusRegisteredClientService.deleteById(id);
     }
 
     private RegisteredClient toObject(HerodotusRegisteredClient herodotusRegisteredClient) {

@@ -26,11 +26,15 @@
 package org.dromara.dante.persistence.sas.autoconfigure;
 
 import jakarta.annotation.PostConstruct;
+import org.dromara.dante.persistence.sas.autoconfigure.controller.OAuth2AuthorizationController;
 import org.dromara.dante.persistence.sas.jpa.config.PersistenceSasJpaConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
+import org.springframework.security.oauth2.server.authorization.OAuth2AuthorizationService;
 
 /**
  * <p>Description: SAS 数据桥接自动配置 </p>
@@ -47,5 +51,13 @@ public class PersistenceSasAutoConfiguration {
     @PostConstruct
     public void postConstruct() {
         log.info("[Herodotus] |- Auto [Persistence SAS] Configure.");
+    }
+
+    @Bean
+    @ConditionalOnMissingBean
+    public OAuth2AuthorizationController oauth2AuthorizationController(OAuth2AuthorizationService auth2AuthorizationService) {
+        OAuth2AuthorizationController controller = new OAuth2AuthorizationController(auth2AuthorizationService);
+        log.trace("[Herodotus] |- Bean [OAuth2 Authorization Controller] Configure.");
+        return controller;
     }
 }

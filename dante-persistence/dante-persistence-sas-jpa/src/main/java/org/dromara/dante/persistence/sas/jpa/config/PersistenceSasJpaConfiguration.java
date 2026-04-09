@@ -29,11 +29,14 @@ import jakarta.annotation.PostConstruct;
 import org.dromara.dante.oauth2.commons.enums.SasPersistence;
 import org.dromara.dante.persistence.commons.condition.ConditionalOnSasPersistence;
 import org.dromara.dante.persistence.sas.jpa.service.HerodotusAuthorizationConsentService;
+import org.dromara.dante.persistence.sas.jpa.service.HerodotusAuthorizationResourceService;
 import org.dromara.dante.persistence.sas.jpa.service.HerodotusAuthorizationService;
 import org.dromara.dante.persistence.sas.jpa.service.HerodotusRegisteredClientService;
 import org.dromara.dante.persistence.sas.jpa.specification.JpaOAuth2AuthorizationConsentService;
+import org.dromara.dante.persistence.sas.jpa.specification.JpaOAuth2AuthorizationResourceService;
 import org.dromara.dante.persistence.sas.jpa.specification.JpaOAuth2AuthorizationService;
 import org.dromara.dante.persistence.sas.jpa.specification.JpaRegisteredClientRepository;
+import org.dromara.dante.security.service.OAuth2AuthorizationResourceService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -42,7 +45,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.server.authorization.OAuth2AuthorizationConsentService;
 import org.springframework.security.oauth2.server.authorization.OAuth2AuthorizationService;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClientRepository;
@@ -75,9 +77,9 @@ public class PersistenceSasJpaConfiguration {
 
     @Bean
     @ConditionalOnMissingBean
-    public RegisteredClientRepository registeredClientRepository(HerodotusRegisteredClientService herodotusRegisteredClientService, PasswordEncoder passwordEncoder) {
-        JpaRegisteredClientRepository jpaRegisteredClientRepository = new JpaRegisteredClientRepository(herodotusRegisteredClientService, passwordEncoder);
-        log.trace("[Herodotus] |- Bean [Jpa Registered Client Repository] Configure.");
+    public RegisteredClientRepository registeredClientRepository(HerodotusRegisteredClientService herodotusRegisteredClientService) {
+        JpaRegisteredClientRepository jpaRegisteredClientRepository = new JpaRegisteredClientRepository(herodotusRegisteredClientService);
+        log.trace("[Herodotus] |- Bean [JPA Registered Client Repository] Configure.");
         return jpaRegisteredClientRepository;
     }
 
@@ -85,7 +87,7 @@ public class PersistenceSasJpaConfiguration {
     @ConditionalOnMissingBean
     public OAuth2AuthorizationService authorizationService(HerodotusAuthorizationService herodotusAuthorizationService, RegisteredClientRepository registeredClientRepository) {
         JpaOAuth2AuthorizationService jpaOAuth2AuthorizationService = new JpaOAuth2AuthorizationService(herodotusAuthorizationService, registeredClientRepository);
-        log.trace("[Herodotus] |- Bean [Jpa OAuth2 Authorization Service] Configure.");
+        log.trace("[Herodotus] |- Bean [JPA OAuth2 Authorization Service] Configure.");
         return jpaOAuth2AuthorizationService;
     }
 
@@ -93,7 +95,15 @@ public class PersistenceSasJpaConfiguration {
     @ConditionalOnMissingBean
     public OAuth2AuthorizationConsentService authorizationConsentService(HerodotusAuthorizationConsentService herodotusAuthorizationConsentService, RegisteredClientRepository registeredClientRepository) {
         JpaOAuth2AuthorizationConsentService jpaOAuth2AuthorizationConsentService = new JpaOAuth2AuthorizationConsentService(herodotusAuthorizationConsentService, registeredClientRepository);
-        log.trace("[Herodotus] |- Bean [Jpa OAuth2 Authorization Consent Service] Configure.");
+        log.trace("[Herodotus] |- Bean [JPA OAuth2 Authorization Consent Service] Configure.");
         return jpaOAuth2AuthorizationConsentService;
+    }
+
+    @Bean
+    @ConditionalOnMissingBean
+    public OAuth2AuthorizationResourceService authorizationResourceService(HerodotusAuthorizationResourceService herodotusAuthorizationResourceService) {
+        JpaOAuth2AuthorizationResourceService service = new JpaOAuth2AuthorizationResourceService(herodotusAuthorizationResourceService);
+        log.trace("[Herodotus] |- Bean [JPA OAuth2 Authorization Resource Service] Configure.");
+        return service;
     }
 }

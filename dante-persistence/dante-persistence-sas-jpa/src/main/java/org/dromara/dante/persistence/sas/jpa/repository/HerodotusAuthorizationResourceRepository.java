@@ -23,16 +23,20 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.oauth2.extension.repository;
+package org.dromara.dante.persistence.sas.jpa.repository;
 
 import org.dromara.dante.data.jpa.repository.BaseJpaRepository;
-import org.dromara.dante.oauth2.extension.entity.OAuth2UserLogging;
+import org.dromara.dante.persistence.sas.jpa.entity.HerodotusAuthorizationResource;
+
+import java.util.Optional;
 
 /**
- * <p>Description: ActionAuditRepository </p>
+ * <p>Description: 认证资源数据 Repository </p>
  *
  * @author : gengwei.zheng
- * @date : 2022/7/7 20:39
+ * @date : 2025/2/25 17:28
  */
-public interface OAuth2UserLoggingRepository extends BaseJpaRepository<OAuth2UserLogging, String> {
+public interface HerodotusAuthorizationResourceRepository extends BaseJpaRepository<HerodotusAuthorizationResource, String> {
+
+    Optional<HerodotusAuthorizationResource> findByClientId(String clientId);
 }

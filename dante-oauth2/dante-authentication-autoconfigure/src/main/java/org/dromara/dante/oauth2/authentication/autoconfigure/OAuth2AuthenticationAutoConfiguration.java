@@ -29,7 +29,7 @@ import jakarta.annotation.PostConstruct;
 import org.dromara.dante.oauth2.authentication.autoconfigure.message.OAuth2AuthenticationMessageConfiguration;
 import org.dromara.dante.oauth2.authentication.config.OAuth2AuthenticationConfiguration;
 import org.dromara.dante.oauth2.commons.properties.OAuth2AuthenticationProperties;
-import org.dromara.dante.oauth2.persistence.sas.jpa.config.OAuth2PersistenceSasJpaConfiguration;
+import org.dromara.dante.persistence.sas.autoconfigure.PersistenceSasAutoConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
@@ -42,10 +42,9 @@ import org.springframework.context.annotation.Import;
  * @author : gengwei.zheng
  * @date : 2023/10/29 10:19
  */
-@AutoConfiguration
+@AutoConfiguration(after = {PersistenceSasAutoConfiguration.class})
 @EnableConfigurationProperties({OAuth2AuthenticationProperties.class})
 @Import({
-        OAuth2PersistenceSasJpaConfiguration.class,
         OAuth2AuthenticationConfiguration.class,
         OAuth2AuthenticationMessageConfiguration.class
 })
