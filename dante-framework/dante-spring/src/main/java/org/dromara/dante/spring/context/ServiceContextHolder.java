@@ -201,6 +201,14 @@ public class ServiceContextHolder {
         getServiceContext().setOssServiceName(ossServiceName);
     }
 
+    public static String getIotServiceName() {
+        return getServiceContext().getIotServiceName();
+    }
+
+    public static void setIotServiceName(String iotServiceName) {
+        getServiceContext().setIotServiceName(iotServiceName);
+    }
+
     public static String getGatewayServiceUri() {
         return getServiceContext().getGatewayServiceUri();
     }
@@ -239,6 +247,14 @@ public class ServiceContextHolder {
 
     public static void setOssServiceUri(String ossServiceUri) {
         getServiceContext().setOssServiceUri(ossServiceUri);
+    }
+
+    public static String getIotServiceUri() {
+        return getServiceContext().getIotServiceUri();
+    }
+
+    public static void setIotServiceUri(String iotServiceUri) {
+        getServiceContext().setIotServiceUri(iotServiceUri);
     }
 
     public static String getAuthorizationUri() {

@@ -107,16 +107,19 @@ public abstract class AbstractServiceContextHolderInitializer {
                 ServiceContextHolder.setUpmsServiceUri(issuerUri);
                 ServiceContextHolder.setMessageServiceUri(issuerUri);
                 ServiceContextHolder.setOssServiceUri(issuerUri);
+                ServiceContextHolder.setIotServiceUri(issuerUri);
             } else {
                 ServiceContextHolder.setUaaServiceName(endpointProperties.getUaaServiceName());
                 ServiceContextHolder.setUpmsServiceName(endpointProperties.getUpmsServiceName());
                 ServiceContextHolder.setMessageServiceName(endpointProperties.getMessageServiceName());
                 ServiceContextHolder.setOssServiceName(endpointProperties.getOssServiceName());
+                ServiceContextHolder.setIotServiceName(endpointProperties.getIotServiceName());
                 ServiceContextHolder.setGatewayServiceUri(endpointProperties.getGatewayServiceUri());
                 ServiceContextHolder.setUaaServiceUri(endpointProperties.getUaaServiceUri());
                 ServiceContextHolder.setUpmsServiceUri(endpointProperties.getUpmsServiceUri());
                 ServiceContextHolder.setMessageServiceUri(endpointProperties.getMessageServiceUri());
                 ServiceContextHolder.setOssServiceUri(endpointProperties.getOssServiceUri());
+                ServiceContextHolder.setIotServiceUri(endpointProperties.getIotServiceUri());
             }
 
             ServiceContextHolder.setAuthorizationUri(endpointProperties.getAuthorizationUri());

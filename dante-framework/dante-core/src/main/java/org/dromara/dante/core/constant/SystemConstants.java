@@ -141,4 +141,9 @@ public interface SystemConstants {
      */
     String SCOPE_CLIENT_READ = "client.read";
 
+    /**
+     * 物联网自定义属性
+     */
+    String PARAMETER__PRODUCT_KEY = "product_key";
+    String WEBHOOK_EMQX_URI = "/emqx/webhook";
 }

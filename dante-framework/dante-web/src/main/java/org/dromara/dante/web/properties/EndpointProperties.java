@@ -56,6 +56,10 @@ public class EndpointProperties {
      * 对象存储服务名称
      */
     private String ossServiceName;
+    /**
+     * 物联网服务名称
+     */
+    private String iotServiceName;
 
     /**
      * 统一网关服务地址。可以是IP+端口，可以是域名
@@ -78,6 +82,10 @@ public class EndpointProperties {
      * 对象存储服务地址
      */
     private String ossServiceUri;
+    /**
+     * 物联网服务地址
+     */
+    private String iotServiceUri;
     /**
      * OAuth2 Authorization Code 模式认证端点，/oauth2/authorize uri 地址，可修改为自定义地址
      */
@@ -203,6 +211,14 @@ public class EndpointProperties {
         this.ossServiceName = ossServiceName;
     }
 
+    public String getIotServiceName() {
+        return iotServiceName;
+    }
+
+    public void setIotServiceName(String iotServiceName) {
+        this.iotServiceName = iotServiceName;
+    }
+
     public String getGatewayServiceUri() {
         return gatewayServiceUri;
     }
@@ -241,6 +257,14 @@ public class EndpointProperties {
 
     public void setOssServiceUri(String ossServiceUri) {
         this.ossServiceUri = ossServiceUri;
+    }
+
+    public String getIotServiceUri() {
+        return WellFormedUtils.serviceUri(iotServiceUri, getIotServiceName(), getGatewayServiceUri(), "IOT");
+    }
+
+    public void setIotServiceUri(String iotServiceUri) {
+        this.iotServiceUri = iotServiceUri;
     }
 
     public String getAuthorizationUri() {

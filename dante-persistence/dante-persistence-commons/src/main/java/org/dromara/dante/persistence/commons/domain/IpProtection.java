@@ -21,7 +21,7 @@
 
 package org.dromara.dante.persistence.commons.domain;
 
-import cn.herodotus.stirrup.core.domain.BaseModel;
+import org.dromara.dante.core.domain.BaseModel;
 import com.google.common.base.MoreObjects;
 
 import java.util.Date;
