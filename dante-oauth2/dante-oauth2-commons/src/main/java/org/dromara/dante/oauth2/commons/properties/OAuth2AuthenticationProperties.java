@@ -30,6 +30,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.dromara.dante.core.constant.SymbolConstants;
 import org.dromara.dante.core.constant.SystemConstants;
 import org.dromara.dante.oauth2.commons.constant.OAuth2Constants;
+import org.dromara.dante.oauth2.commons.enums.SasPersistence;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.rememberme.AbstractRememberMeServices;
@@ -71,6 +72,11 @@ public class OAuth2AuthenticationProperties {
     private SignInKickOutLimited signInKickOutLimited = new SignInKickOutLimited();
 
     private FormLogin formLogin = new FormLogin();
+
+    /**
+     * 核心数据持久化方式
+     */
+    private Persistence persistence = new Persistence();
 
     public String getAuthorizationConsentUri() {
         return authorizationConsentUri;
@@ -118,6 +124,14 @@ public class OAuth2AuthenticationProperties {
 
     public void setFormLogin(FormLogin formLogin) {
         this.formLogin = formLogin;
+    }
+
+    public Persistence getPersistence() {
+        return persistence;
+    }
+
+    public void setPersistence(Persistence persistence) {
+        this.persistence = persistence;
     }
 
     @Override
@@ -449,6 +463,42 @@ public class OAuth2AuthenticationProperties {
                     .add("cookieMaxAge", cookieMaxAge)
                     .add("captchaEnabled", captchaEnabled)
                     .add("category", category)
+                    .toString();
+        }
+    }
+
+    public static class Persistence {
+
+        /**
+         * 是否初始化数据。
+         */
+        private Boolean initialized = Boolean.FALSE;
+        /**
+         * SAS 核心数据持久化方式
+         */
+        private SasPersistence sas = SasPersistence.JPA;
+
+        public Boolean getInitialized() {
+            return initialized;
+        }
+
+        public void setInitialized(Boolean initialized) {
+            this.initialized = initialized;
+        }
+
+        public SasPersistence getSas() {
+            return sas;
+        }
+
+        public void setSas(SasPersistence sas) {
+            this.sas = sas;
+        }
+
+        @Override
+        public String toString() {
+            return MoreObjects.toStringHelper(this)
+                    .add("initialized", initialized)
+                    .add("sas", sas)
                     .toString();
         }
     }

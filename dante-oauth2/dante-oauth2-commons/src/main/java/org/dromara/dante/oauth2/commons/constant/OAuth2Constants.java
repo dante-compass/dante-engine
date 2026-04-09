@@ -39,9 +39,11 @@ import org.springframework.security.web.authentication.ui.DefaultLoginPageGenera
 public interface OAuth2Constants extends BaseConstants {
 
     String PROPERTY_SIGN_IN_FAILURE_LIMITED = PROPERTY_OAUTH2_AUTHENTICATION + ".sign-in-failure-limited";
+    String PROPERTY_PERSISTENCE = PROPERTY_OAUTH2_AUTHENTICATION + ".persistence";
     String PROPERTY_FORMLOGIN = PROPERTY_OAUTH2_AUTHENTICATION + ".form-login";
 
     String ITEM_SIGN_IN_FAILURE_LIMITED_AUTO_UNLOCK = PROPERTY_SIGN_IN_FAILURE_LIMITED + ".auto-unlock";
+    String ITEM_PERSISTENCE_SAS = PROPERTY_PERSISTENCE + ".sas";
     String ITEM_FORMLOGIN_LOGINPAGEURL = PROPERTY_FORMLOGIN + ".login-page-url";
     String ITEM_AUTHORIZATION_CONSENT_URI = PROPERTY_OAUTH2_AUTHENTICATION + ".authorization-consent-uri";
 

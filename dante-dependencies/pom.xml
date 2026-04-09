@@ -248,6 +248,21 @@
             </dependency>
             <dependency>
                 <groupId>org.dromara.dante</groupId>
+                <artifactId>dante-persistence-commons</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.dromara.dante</groupId>
+                <artifactId>dante-persistence-sas-autoconfigure</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.dromara.dante</groupId>
+                <artifactId>dante-persistence-sas-jpa</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.dromara.dante</groupId>
                 <artifactId>cache-spring-boot-starter</artifactId>
                 <version>${project.version}</version>
             </dependency>
