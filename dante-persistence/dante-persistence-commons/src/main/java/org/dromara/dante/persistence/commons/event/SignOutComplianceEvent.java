@@ -23,29 +23,28 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.persistence.sas.autoconfigure;
+package org.dromara.dante.persistence.commons.event;
 
-import jakarta.annotation.PostConstruct;
-import org.dromara.dante.persistence.sas.jpa.config.PersistenceSasJpaConfiguration;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.boot.autoconfigure.AutoConfiguration;
-import org.springframework.context.annotation.Import;
+import jakarta.servlet.http.HttpServletRequest;
+import org.dromara.dante.spring.context.AbstractApplicationEvent;
+import org.springframework.security.oauth2.server.authorization.OAuth2Authorization;
 
 /**
- * <p>Description: SAS 数据桥接自动配置 </p>
+ * <p>Description: 用户退出系统合规性记录事件 </p>
  *
- * @author : gengwei_zheng
- * @date : 2026/4/9 21:38
+ * @author : gengwei.zheng
+ * @date : 2024/6/29 18:31
  */
-@AutoConfiguration
-@Import({PersistenceSasJpaConfiguration.class})
-public class PersistenceSasAutoConfiguration {
+public class SignOutComplianceEvent extends AbstractApplicationEvent<OAuth2Authorization> {
 
-    private static final Logger log = LoggerFactory.getLogger(PersistenceSasAutoConfiguration.class);
+    private final HttpServletRequest request;
 
-    @PostConstruct
-    public void postConstruct() {
-        log.info("[Herodotus] |- Auto [Persistence SAS] Configure.");
+    public SignOutComplianceEvent(OAuth2Authorization authorization, HttpServletRequest request) {
+        super(authorization);
+        this.request = request;
+    }
+
+    public HttpServletRequest getRequest() {
+        return request;
     }
 }

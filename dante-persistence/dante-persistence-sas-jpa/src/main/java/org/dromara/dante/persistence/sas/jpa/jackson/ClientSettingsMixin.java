@@ -23,29 +23,26 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.persistence.sas.autoconfigure;
+package org.dromara.dante.persistence.sas.jpa.jackson;
 
-import jakarta.annotation.PostConstruct;
-import org.dromara.dante.persistence.sas.jpa.config.PersistenceSasJpaConfiguration;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.boot.autoconfigure.AutoConfiguration;
-import org.springframework.context.annotation.Import;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import tools.jackson.databind.annotation.JsonDeserialize;
 
 /**
- * <p>Description: SAS 数据桥接自动配置 </p>
+ * <p>Description: ClientSettingsMixin </p>
  *
- * @author : gengwei_zheng
- * @date : 2026/4/9 21:38
+ * @author : gengwei.zheng
+ * @date : 2022/10/24 23:28
  */
-@AutoConfiguration
-@Import({PersistenceSasJpaConfiguration.class})
-public class PersistenceSasAutoConfiguration {
-
-    private static final Logger log = LoggerFactory.getLogger(PersistenceSasAutoConfiguration.class);
-
-    @PostConstruct
-    public void postConstruct() {
-        log.info("[Herodotus] |- Auto [Persistence SAS] Configure.");
-    }
+@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
+@JsonDeserialize(using = ClientSettingsDeserializer.class)
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonAutoDetect(
+        fieldVisibility = JsonAutoDetect.Visibility.ANY,
+        getterVisibility = JsonAutoDetect.Visibility.NONE,
+        isGetterVisibility = JsonAutoDetect.Visibility.NONE,
+        creatorVisibility = JsonAutoDetect.Visibility.ANY)
+public class ClientSettingsMixin {
 }

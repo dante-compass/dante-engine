@@ -23,29 +23,32 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.persistence.sas.autoconfigure;
+package org.dromara.dante.persistence.sas.jpa.jackson;
 
-import jakarta.annotation.PostConstruct;
-import org.dromara.dante.persistence.sas.jpa.config.PersistenceSasJpaConfiguration;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.boot.autoconfigure.AutoConfiguration;
-import org.springframework.context.annotation.Import;
+import org.dromara.dante.core.jackson.JsonNodeUtils;
+import org.springframework.security.oauth2.server.authorization.settings.ClientSettings;
+import tools.jackson.core.JacksonException;
+import tools.jackson.core.JsonParser;
+import tools.jackson.databind.DeserializationContext;
+import tools.jackson.databind.JsonNode;
+import tools.jackson.databind.ValueDeserializer;
+
+import java.util.Map;
 
 /**
- * <p>Description: SAS 数据桥接自动配置 </p>
+ * <p>Description: ClientSettingsDeserializer </p>
  *
- * @author : gengwei_zheng
- * @date : 2026/4/9 21:38
+ * @author : gengwei.zheng
+ * @date : 2022/10/24 23:18
  */
-@AutoConfiguration
-@Import({PersistenceSasJpaConfiguration.class})
-public class PersistenceSasAutoConfiguration {
+public class ClientSettingsDeserializer extends ValueDeserializer<ClientSettings> {
 
-    private static final Logger log = LoggerFactory.getLogger(PersistenceSasAutoConfiguration.class);
+    @Override
+    public ClientSettings deserialize(JsonParser parser, DeserializationContext context) throws JacksonException {
+        JsonNode jsonNode = context.readTree(parser);
 
-    @PostConstruct
-    public void postConstruct() {
-        log.info("[Herodotus] |- Auto [Persistence SAS] Configure.");
+        Map<String, Object> settings = JsonNodeUtils.findValue(jsonNode, "settings", JsonNodeUtils.STRING_OBJECT_MAP, context);
+
+        return ClientSettings.withSettings(settings).build();
     }
 }

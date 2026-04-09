@@ -26,12 +26,12 @@
 package org.dromara.dante.oauth2.persistence.sas.jpa.config;
 
 import jakarta.annotation.PostConstruct;
-import org.dromara.dante.oauth2.persistence.sas.jpa.service.HerodotusAuthorizationConsentService;
-import org.dromara.dante.oauth2.persistence.sas.jpa.service.HerodotusAuthorizationService;
-import org.dromara.dante.oauth2.persistence.sas.jpa.service.HerodotusRegisteredClientService;
-import org.dromara.dante.oauth2.persistence.sas.jpa.storage.JpaOAuth2AuthorizationConsentService;
-import org.dromara.dante.oauth2.persistence.sas.jpa.storage.JpaOAuth2AuthorizationService;
-import org.dromara.dante.oauth2.persistence.sas.jpa.storage.JpaRegisteredClientRepository;
+import org.dromara.dante.persistence.sas.jpa.service.HerodotusAuthorizationConsentService;
+import org.dromara.dante.persistence.sas.jpa.service.HerodotusAuthorizationService;
+import org.dromara.dante.persistence.sas.jpa.service.HerodotusRegisteredClientService;
+import org.dromara.dante.persistence.sas.jpa.specification.JpaOAuth2AuthorizationConsentService;
+import org.dromara.dante.persistence.sas.jpa.specification.JpaOAuth2AuthorizationService;
+import org.dromara.dante.persistence.sas.jpa.specification.JpaRegisteredClientRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;

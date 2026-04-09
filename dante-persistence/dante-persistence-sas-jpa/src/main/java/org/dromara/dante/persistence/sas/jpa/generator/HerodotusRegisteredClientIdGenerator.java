@@ -23,29 +23,25 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.persistence.sas.autoconfigure;
+package org.dromara.dante.persistence.sas.jpa.generator;
 
-import jakarta.annotation.PostConstruct;
-import org.dromara.dante.persistence.sas.jpa.config.PersistenceSasJpaConfiguration;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.boot.autoconfigure.AutoConfiguration;
-import org.springframework.context.annotation.Import;
+import org.hibernate.annotations.IdGeneratorType;
+
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+import static java.lang.annotation.ElementType.FIELD;
+import static java.lang.annotation.ElementType.METHOD;
 
 /**
- * <p>Description: SAS 数据桥接自动配置 </p>
+ * <p>Description: HerodotusRegisteredClientUuid 注解 </p>
  *
- * @author : gengwei_zheng
- * @date : 2026/4/9 21:38
+ * @author : gengwei.zheng
+ * @date : 2022/11/7 15:49
  */
-@AutoConfiguration
-@Import({PersistenceSasJpaConfiguration.class})
-public class PersistenceSasAutoConfiguration {
-
-    private static final Logger log = LoggerFactory.getLogger(PersistenceSasAutoConfiguration.class);
-
-    @PostConstruct
-    public void postConstruct() {
-        log.info("[Herodotus] |- Auto [Persistence SAS] Configure.");
-    }
+@IdGeneratorType(HerodotusRegisteredClientIdGeneratorType.class)
+@Retention(RetentionPolicy.RUNTIME)
+@Target({FIELD, METHOD})
+public @interface HerodotusRegisteredClientIdGenerator {
 }

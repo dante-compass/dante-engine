@@ -30,7 +30,7 @@ import org.dromara.dante.logic.identity.entity.OAuth2Scope;
 import org.dromara.dante.logic.identity.enums.AllJwsAlgorithm;
 import org.dromara.dante.logic.identity.enums.SignatureJwsAlgorithm;
 import org.dromara.dante.logic.identity.enums.TokenFormat;
-import org.dromara.dante.oauth2.persistence.sas.jpa.definition.RegisteredClientConverter;
+import org.dromara.dante.persistence.commons.definition.RegisteredClientConverter;
 import org.springframework.security.oauth2.jose.jws.JwsAlgorithm;
 import org.springframework.security.oauth2.jose.jws.MacAlgorithm;
 import org.springframework.security.oauth2.jose.jws.SignatureAlgorithm;

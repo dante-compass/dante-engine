@@ -25,7 +25,7 @@
 
 package org.dromara.dante.oauth2.persistence.sas.jpa.definition;
 
-import org.dromara.dante.oauth2.persistence.sas.jpa.jackson.OAuth2JacksonProcessor;
+import org.dromara.dante.persistence.commons.jackson.OAuth2JacksonProcessor;
 import org.dromara.dante.security.domain.RegisteredClientDetails;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
 
@@ -35,7 +35,7 @@ import org.springframework.security.oauth2.server.authorization.client.Registere
  * @author : gengwei.zheng
  * @date : 2023/5/12 23:07
  */
-public abstract class AbstractRegisteredClientConverter<S extends RegisteredClientDetails> extends AbstractOAuth2EntityConverter<S, RegisteredClient> implements RegisteredClientConverter<S> {
+public abstract class AbstractRegisteredClientConverter<S extends RegisteredClientDetails> extends org.dromara.dante.persistence.commons.converter.AbstractOAuth2EntityConverter<S, RegisteredClient> implements org.dromara.dante.persistence.commons.definition.RegisteredClientConverter<S> {
 
     public AbstractRegisteredClientConverter(OAuth2JacksonProcessor jacksonProcessor) {
         super(jacksonProcessor);
@@ -43,6 +43,6 @@ public abstract class AbstractRegisteredClientConverter<S extends RegisteredClie
 
     @Override
     public RegisteredClient convert(S details) {
-        return RegisteredClientConverter.super.convert(details);
+        return org.dromara.dante.persistence.commons.definition.RegisteredClientConverter.super.convert(details);
     }
 }

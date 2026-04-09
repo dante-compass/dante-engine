@@ -30,7 +30,7 @@ import org.apache.commons.lang3.ObjectUtils;
 import org.dromara.dante.oauth2.authentication.utils.OAuth2EndpointUtils;
 import org.dromara.dante.oauth2.commons.exception.AccountEndpointLimitedException;
 import org.dromara.dante.oauth2.commons.properties.OAuth2AuthenticationProperties;
-import org.dromara.dante.oauth2.persistence.sas.jpa.storage.JpaOAuth2AuthorizationService;
+import org.dromara.dante.persistence.sas.jpa.specification.JpaOAuth2AuthorizationService;
 import org.dromara.dante.security.constant.OAuth2ErrorKeys;
 import org.dromara.dante.security.service.EnhanceUserDetailsService;
 import org.slf4j.Logger;

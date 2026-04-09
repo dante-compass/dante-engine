@@ -23,29 +23,30 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.persistence.sas.autoconfigure;
+package org.dromara.dante.persistence.sas.jpa.repository;
 
-import jakarta.annotation.PostConstruct;
-import org.dromara.dante.persistence.sas.jpa.config.PersistenceSasJpaConfiguration;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.boot.autoconfigure.AutoConfiguration;
-import org.springframework.context.annotation.Import;
+import jakarta.persistence.QueryHint;
+import org.dromara.dante.data.jpa.repository.BaseJpaRepository;
+import org.dromara.dante.persistence.sas.jpa.entity.HerodotusRegisteredClient;
+import org.hibernate.jpa.AvailableHints;
+import org.springframework.data.jpa.repository.QueryHints;
+
+import java.util.Optional;
 
 /**
- * <p>Description: SAS 数据桥接自动配置 </p>
+ * <p>Description: HerodotusRegisteredClientRepository </p>
  *
- * @author : gengwei_zheng
- * @date : 2026/4/9 21:38
+ * @author : gengwei.zheng
+ * @date : 2022/2/25 21:05
  */
-@AutoConfiguration
-@Import({PersistenceSasJpaConfiguration.class})
-public class PersistenceSasAutoConfiguration {
+public interface HerodotusRegisteredClientRepository extends BaseJpaRepository<HerodotusRegisteredClient, String> {
 
-    private static final Logger log = LoggerFactory.getLogger(PersistenceSasAutoConfiguration.class);
-
-    @PostConstruct
-    public void postConstruct() {
-        log.info("[Herodotus] |- Auto [Persistence SAS] Configure.");
-    }
+    /**
+     * 根据 ClientId 查询 RegisteredClient
+     *
+     * @param clientId OAuth2 客户端ID
+     * @return OAuth2 客户端配置
+     */
+    @QueryHints(@QueryHint(name = AvailableHints.HINT_CACHEABLE, value = "true"))
+    Optional<HerodotusRegisteredClient> findByClientId(String clientId);
 }

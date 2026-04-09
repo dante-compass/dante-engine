@@ -37,7 +37,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.constraints.NotBlank;
 import org.apache.commons.lang3.ObjectUtils;
 import org.dromara.dante.core.domain.Result;
-import org.dromara.dante.oauth2.persistence.sas.jpa.event.SignOutComplianceEvent;
+import org.dromara.dante.persistence.commons.event.SignOutComplianceEvent;
 import org.dromara.dante.spring.context.ServiceContextHolder;
 import org.springframework.http.MediaType;
 import org.springframework.security.oauth2.server.authorization.OAuth2Authorization;

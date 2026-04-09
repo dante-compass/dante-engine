@@ -28,12 +28,24 @@ package org.dromara.dante.persistence.sas.jpa.config;
 import jakarta.annotation.PostConstruct;
 import org.dromara.dante.oauth2.commons.enums.SasPersistence;
 import org.dromara.dante.persistence.commons.condition.ConditionalOnSasPersistence;
+import org.dromara.dante.persistence.sas.jpa.service.HerodotusAuthorizationConsentService;
+import org.dromara.dante.persistence.sas.jpa.service.HerodotusAuthorizationService;
+import org.dromara.dante.persistence.sas.jpa.service.HerodotusRegisteredClientService;
+import org.dromara.dante.persistence.sas.jpa.specification.JpaOAuth2AuthorizationConsentService;
+import org.dromara.dante.persistence.sas.jpa.specification.JpaOAuth2AuthorizationService;
+import org.dromara.dante.persistence.sas.jpa.specification.JpaRegisteredClientRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.persistence.autoconfigure.EntityScan;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.oauth2.server.authorization.OAuth2AuthorizationConsentService;
+import org.springframework.security.oauth2.server.authorization.OAuth2AuthorizationService;
+import org.springframework.security.oauth2.server.authorization.client.RegisteredClientRepository;
 
 /**
  * <p>Description: 使用 JPA 作为底层存储的 SAS 桥接配置 </p>
@@ -59,5 +71,29 @@ public class PersistenceSasJpaConfiguration {
     @PostConstruct
     public void postConstruct() {
         log.debug("[Herodotus] |- Module [Persistence SAS JPA] Configure.");
+    }
+
+    @Bean
+    @ConditionalOnMissingBean
+    public RegisteredClientRepository registeredClientRepository(HerodotusRegisteredClientService herodotusRegisteredClientService, PasswordEncoder passwordEncoder) {
+        JpaRegisteredClientRepository jpaRegisteredClientRepository = new JpaRegisteredClientRepository(herodotusRegisteredClientService, passwordEncoder);
+        log.trace("[Herodotus] |- Bean [Jpa Registered Client Repository] Configure.");
+        return jpaRegisteredClientRepository;
+    }
+
+    @Bean
+    @ConditionalOnMissingBean
+    public OAuth2AuthorizationService authorizationService(HerodotusAuthorizationService herodotusAuthorizationService, RegisteredClientRepository registeredClientRepository) {
+        JpaOAuth2AuthorizationService jpaOAuth2AuthorizationService = new JpaOAuth2AuthorizationService(herodotusAuthorizationService, registeredClientRepository);
+        log.trace("[Herodotus] |- Bean [Jpa OAuth2 Authorization Service] Configure.");
+        return jpaOAuth2AuthorizationService;
+    }
+
+    @Bean
+    @ConditionalOnMissingBean
+    public OAuth2AuthorizationConsentService authorizationConsentService(HerodotusAuthorizationConsentService herodotusAuthorizationConsentService, RegisteredClientRepository registeredClientRepository) {
+        JpaOAuth2AuthorizationConsentService jpaOAuth2AuthorizationConsentService = new JpaOAuth2AuthorizationConsentService(herodotusAuthorizationConsentService, registeredClientRepository);
+        log.trace("[Herodotus] |- Bean [Jpa OAuth2 Authorization Consent Service] Configure.");
+        return jpaOAuth2AuthorizationConsentService;
     }
 }

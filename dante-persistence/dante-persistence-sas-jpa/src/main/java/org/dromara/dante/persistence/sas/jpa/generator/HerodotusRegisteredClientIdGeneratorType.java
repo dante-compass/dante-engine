@@ -23,29 +23,39 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.persistence.sas.autoconfigure;
+package org.dromara.dante.persistence.sas.jpa.generator;
 
-import jakarta.annotation.PostConstruct;
-import org.dromara.dante.persistence.sas.jpa.config.PersistenceSasJpaConfiguration;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.boot.autoconfigure.AutoConfiguration;
-import org.springframework.context.annotation.Import;
+import org.apache.commons.lang3.StringUtils;
+import org.dromara.dante.data.hibernate.generator.AbstractIdGeneratorType;
+import org.dromara.dante.persistence.sas.jpa.entity.HerodotusRegisteredClient;
+import org.hibernate.engine.spi.SharedSessionContractImplementor;
+import org.hibernate.generator.GeneratorCreationContext;
+
+import java.lang.reflect.Member;
 
 /**
- * <p>Description: SAS 数据桥接自动配置 </p>
+ * <p>Description: OAuth2RegisteredClient Id 生成器 </p>
+ * <p>
+ * 指定ID生成器，解决实体ID无法手动设置问题。
  *
- * @author : gengwei_zheng
- * @date : 2026/4/9 21:38
+ * @author : gengwei.zheng
+ * @date : 2022/1/22 17:50
  */
-@AutoConfiguration
-@Import({PersistenceSasJpaConfiguration.class})
-public class PersistenceSasAutoConfiguration {
+public class HerodotusRegisteredClientIdGeneratorType extends AbstractIdGeneratorType {
 
-    private static final Logger log = LoggerFactory.getLogger(PersistenceSasAutoConfiguration.class);
+    public HerodotusRegisteredClientIdGeneratorType(HerodotusRegisteredClientIdGenerator config, Member member, GeneratorCreationContext context) {
+        super(member);
+    }
 
-    @PostConstruct
-    public void postConstruct() {
-        log.info("[Herodotus] |- Auto [Persistence SAS] Configure.");
+    @Override
+    public Object generate(SharedSessionContractImplementor session, Object object) {
+
+        HerodotusRegisteredClient herodotusRegisteredClient = (HerodotusRegisteredClient) object;
+
+        if (StringUtils.isEmpty(herodotusRegisteredClient.getId())) {
+            return super.generate(session, object);
+        } else {
+            return herodotusRegisteredClient.getId();
+        }
     }
 }
