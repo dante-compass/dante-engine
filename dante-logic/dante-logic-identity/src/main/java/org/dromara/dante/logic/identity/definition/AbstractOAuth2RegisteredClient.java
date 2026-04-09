@@ -32,9 +32,9 @@ import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.MappedSuperclass;
 import org.dromara.dante.logic.identity.entity.OAuth2Scope;
-import org.dromara.dante.logic.identity.enums.AllJwsAlgorithm;
-import org.dromara.dante.logic.identity.enums.SignatureJwsAlgorithm;
-import org.dromara.dante.logic.identity.enums.TokenFormat;
+import org.dromara.dante.persistence.commons.enums.AllJwsAlgorithm;
+import org.dromara.dante.persistence.commons.enums.SignatureJwsAlgorithm;
+import org.dromara.dante.persistence.commons.enums.TokenFormat;
 import org.dromara.dante.persistence.sas.jpa.definition.AbstractRegisteredClient;
 
 import java.time.Duration;

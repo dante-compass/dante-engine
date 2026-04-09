@@ -26,7 +26,7 @@
 package org.dromara.dante.oauth2.authorization.autoconfigure.listener;
 
 import org.dromara.dante.core.jackson.JacksonUtils;
-import org.dromara.dante.message.core.domain.RestMapping;
+import org.dromara.dante.security.domain.attribute.RestMapping;
 import org.dromara.dante.oauth2.authorization.autoconfigure.bus.RemoteRestMappingGatherEvent;
 import org.dromara.dante.oauth2.authorization.autoconfigure.processor.SecurityAttributeDistributionProcessor;
 import org.slf4j.Logger;

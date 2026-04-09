@@ -35,7 +35,7 @@ import org.dromara.dante.oauth2.authorization.autoconfigure.processor.SecurityAt
 import org.dromara.dante.oauth2.authorization.autoconfigure.strategy.DefaultRestMappingScanEventManager;
 import org.dromara.dante.oauth2.authorization.config.OAuth2ServletAuthorizationConfiguration;
 import org.dromara.dante.oauth2.commons.properties.OAuth2Properties;
-import org.dromara.dante.security.domain.AttributeTransmitter;
+import org.dromara.dante.security.domain.attribute.AttributeTransmitter;
 import org.dromara.dante.security.exception.SecurityGlobalExceptionHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -25,7 +25,7 @@
 
 package org.dromara.dante.message.core.event;
 
-import org.dromara.dante.message.core.domain.RestMapping;
+import org.dromara.dante.security.domain.attribute.RestMapping;
 import org.dromara.dante.spring.context.AbstractApplicationEvent;
 
 import java.time.Clock;

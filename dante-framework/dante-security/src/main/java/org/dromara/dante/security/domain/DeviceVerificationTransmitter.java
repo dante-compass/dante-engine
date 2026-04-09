@@ -26,63 +26,31 @@
 package org.dromara.dante.security.domain;
 
 import com.google.common.base.MoreObjects;
-import org.dromara.dante.core.domain.BaseModel;
+
+import java.io.Serializable;
 
 /**
- * <p>Description: Rest 接口信息抽象定义 </p>
+ * <p>Description: 设备认证传输数据实体 </p>
  *
  * @author : gengwei.zheng
- * @date : 2024/12/10 18:43
+ * @date : 2025/2/28 17:34
  */
-public abstract class AbstractRest implements BaseModel {
+public class DeviceVerificationTransmitter implements Serializable {
 
-    private String requestMethod;
+    private String clientId;
 
-    private String serviceId;
-
-    private String url;
-
-    private String version;
-
-    public String getRequestMethod() {
-        return requestMethod;
+    public String getClientId() {
+        return clientId;
     }
 
-    public void setRequestMethod(String requestMethod) {
-        this.requestMethod = requestMethod;
-    }
-
-    public String getServiceId() {
-        return serviceId;
-    }
-
-    public void setServiceId(String serviceId) {
-        this.serviceId = serviceId;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    public String getVersion() {
-        return version;
-    }
-
-    public void setVersion(String version) {
-        this.version = version;
+    public void setClientId(String clientId) {
+        this.clientId = clientId;
     }
 
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("requestMethod", requestMethod)
-                .add("serviceId", serviceId)
-                .add("url", url)
-                .add("version", version)
+                .add("clientId", clientId)
                 .toString();
     }
 }

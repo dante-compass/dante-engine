@@ -26,7 +26,7 @@
 package org.dromara.dante.oauth2.authorization.autoconfigure.strategy;
 
 import org.dromara.dante.message.core.definition.strategy.RestMappingScanEventManager;
-import org.dromara.dante.message.core.domain.RestMapping;
+import org.dromara.dante.security.domain.attribute.RestMapping;
 import org.dromara.dante.message.core.event.RestMappingGatherEvent;
 import org.dromara.dante.oauth2.authorization.attribute.SecurityAttributeAnalyzer;
 import org.dromara.dante.oauth2.authorization.autoconfigure.bus.RemoteRestMappingGatherEvent;

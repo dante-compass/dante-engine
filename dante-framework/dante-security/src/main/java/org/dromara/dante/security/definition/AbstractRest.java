@@ -23,28 +23,66 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.logic.identity.customizer;
+package org.dromara.dante.security.definition;
 
-import org.dromara.dante.core.builder.EnumDictionaryBuilder;
-import org.dromara.dante.core.function.EnumDictionaryBuilderCustomizer;
-import org.dromara.dante.logic.identity.enums.*;
-import org.dromara.dante.security.enums.PermissionExpression;
+import com.google.common.base.MoreObjects;
+import org.dromara.dante.core.domain.BaseModel;
 
 /**
- * <p>Description: Identity 枚举数据字典定义器 </p>
+ * <p>Description: Rest 接口信息抽象定义 </p>
  *
  * @author : gengwei.zheng
- * @date : 2024/8/23 16:00
+ * @date : 2024/12/10 18:43
  */
-public class IdentityEnumDictionaryBuilderCustomizer implements EnumDictionaryBuilderCustomizer {
+public abstract class AbstractRest implements BaseModel {
+
+    private String requestMethod;
+
+    private String serviceId;
+
+    private String url;
+
+    private String version;
+
+    public String getRequestMethod() {
+        return requestMethod;
+    }
+
+    public void setRequestMethod(String requestMethod) {
+        this.requestMethod = requestMethod;
+    }
+
+    public String getServiceId() {
+        return serviceId;
+    }
+
+    public void setServiceId(String serviceId) {
+        this.serviceId = serviceId;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getVersion() {
+        return version;
+    }
+
+    public void setVersion(String version) {
+        this.version = version;
+    }
 
     @Override
-    public void customize(EnumDictionaryBuilder builder) {
-        builder.append(org.dromara.dante.persistence.commons.enums.AllJwsAlgorithm.getDictionaries());
-        builder.append(AuthenticationMethod.getDictionaries());
-        builder.append(GrantType.getDictionaries());
-        builder.append(org.dromara.dante.persistence.commons.enums.SignatureJwsAlgorithm.getDictionaries());
-        builder.append(org.dromara.dante.persistence.commons.enums.TokenFormat.getDictionaries());
-        builder.append(PermissionExpression.getDictionaries());
+    public String toString() {
+        return MoreObjects.toStringHelper(this)
+                .add("requestMethod", requestMethod)
+                .add("serviceId", serviceId)
+                .add("url", url)
+                .add("version", version)
+                .toString();
     }
 }

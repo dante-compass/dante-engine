@@ -26,7 +26,7 @@
 package org.dromara.dante.oauth2.authorization.autoconfigure.listener;
 
 import org.apache.commons.collections4.CollectionUtils;
-import org.dromara.dante.message.core.domain.RestMapping;
+import org.dromara.dante.security.domain.attribute.RestMapping;
 import org.dromara.dante.message.core.event.RestMappingGatherEvent;
 import org.dromara.dante.oauth2.authorization.autoconfigure.processor.SecurityAttributeDistributionProcessor;
 import org.slf4j.Logger;

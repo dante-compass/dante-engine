@@ -23,7 +23,7 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.logic.identity.enums;
+package org.dromara.dante.persistence.commons.enums;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -36,16 +36,14 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * <p>Description: OAuth2 Signature </p>
- * <p>
- * 由JSON Web算法（JWA）规范定义的加密算法的枚举，并由JSON Web签名（JWS）用于对JWS受保护标头和JWS有效载荷的内容进行数字签名。
+ * <p>Description: OAuth2 TokenJwsAlgorithm </p>
  *
  * @author : gengwei.zheng
- * @date : 2022/3/2 16:15
+ * @date : 2023/12/12 19:48
  */
-@Schema(name = "签名算法")
+@Schema(name = "全部Jws加密算法")
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
-public enum SignatureJwsAlgorithm implements DictionaryEnum {
+public enum AllJwsAlgorithm implements DictionaryEnum {
 
     /**
      * RSASSA-PKCS1-v1_5 using SHA-256 (Recommended)
@@ -54,7 +52,7 @@ public enum SignatureJwsAlgorithm implements DictionaryEnum {
     /**
      * RSASSA-PKCS1-v1_5 using SHA-384 (Optional)
      */
-    RS384("1", "签名算法RS384"),
+    RS384("1", "签名算法 RS384"),
     /**
      * RSASSA-PKCS1-v1_5 using SHA-512 (Optional)
      */
@@ -82,13 +80,25 @@ public enum SignatureJwsAlgorithm implements DictionaryEnum {
     /**
      * RSASSA-PSS using SHA-512 and MGF1 with SHA-512 (Optional)
      */
-    PS512("8", "签名算法 PS512");
+    PS512("8", "签名算法 PS512"),
+    /**
+     * HMAC using SHA-256 (Required)
+     */
+    HS256("9", "Mac算法 HS256"),
+    /**
+     * HMAC using SHA-384 (Optional)
+     */
+    HS384("10", "Mac算法 HS384"),
+    /**
+     * HMAC using SHA-512 (Optional)
+     */
+    HS512("11", "Mac算法 HS512");
 
-    private static final Map<Integer, SignatureJwsAlgorithm> INDEX_MAP = new HashMap<>();
+    private static final Map<Integer, AllJwsAlgorithm> INDEX_MAP = new HashMap<>();
     private static final List<Dictionary> DICTIONARIES = new ArrayList<>();
 
     static {
-        for (SignatureJwsAlgorithm algorithm : SignatureJwsAlgorithm.values()) {
+        for (AllJwsAlgorithm algorithm : AllJwsAlgorithm.values()) {
             INDEX_MAP.put(algorithm.ordinal(), algorithm);
             DICTIONARIES.add(algorithm.getDictionary(algorithm.name(), algorithm.ordinal()));
         }
@@ -99,12 +109,12 @@ public enum SignatureJwsAlgorithm implements DictionaryEnum {
     @Schema(name = "文字")
     private final String label;
 
-    SignatureJwsAlgorithm(String value, String label) {
+    AllJwsAlgorithm(String value, String label) {
         this.value = value;
         this.label = label;
     }
 
-    public static SignatureJwsAlgorithm get(Integer index) {
+    public static AllJwsAlgorithm get(Integer index) {
         return INDEX_MAP.get(index);
     }
 

@@ -23,12 +23,11 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.security.definition;
+package org.dromara.dante.oauth2.authorization.definition;
 
 import org.apache.commons.collections4.CollectionUtils;
 import org.dromara.dante.core.builder.SecurityMatcher;
-import org.dromara.dante.security.domain.HerodotusRequest;
-import org.dromara.dante.security.domain.HerodotusSecurityAttribute;
+import org.dromara.dante.oauth2.authorization.cache.HerodotusRequest;
 import org.dromara.dante.security.enums.PermissionExpression;
 
 import java.util.LinkedHashMap;

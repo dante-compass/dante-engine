@@ -23,7 +23,7 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.logic.identity.enums;
+package org.dromara.dante.persistence.commons.enums;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -36,28 +36,61 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * <p>Description: 令牌格式 </p>
+ * <p>Description: OAuth2 Signature </p>
+ * <p>
+ * 由JSON Web算法（JWA）规范定义的加密算法的枚举，并由JSON Web签名（JWS）用于对JWS受保护标头和JWS有效载荷的内容进行数字签名。
  *
  * @author : gengwei.zheng
- * @date : 2022/3/25 0:02
+ * @date : 2022/3/2 16:15
  */
-@Schema(name = "令牌格式")
+@Schema(name = "签名算法")
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
-public enum TokenFormat implements DictionaryEnum {
+public enum SignatureJwsAlgorithm implements DictionaryEnum {
 
     /**
-     * enum
+     * RSASSA-PKCS1-v1_5 using SHA-256 (Recommended)
      */
-    SELF_CONTAINED("self-contained", "自包含格式令牌"),
-    REFERENCE("reference", "引用（不透明）令牌");
+    RS256("0", "签名算法 RS256"),
+    /**
+     * RSASSA-PKCS1-v1_5 using SHA-384 (Optional)
+     */
+    RS384("1", "签名算法RS384"),
+    /**
+     * RSASSA-PKCS1-v1_5 using SHA-512 (Optional)
+     */
+    RS512("2", "签名算法 RS512"),
+    /**
+     * ECDSA using P-256 and SHA-256 (Recommended+)
+     */
+    ES256("3", "签名算法 ES256"),
+    /**
+     * ECDSA using P-384 and SHA-384 (Optional)
+     */
+    ES384("4", "签名算法 ES384"),
+    /**
+     * ECDSA using P-521 and SHA-512 (Optional)
+     */
+    ES512("5", "签名算法 ES512"),
+    /**
+     * RSASSA-PSS using SHA-256 and MGF1 with SHA-256 (Optional)
+     */
+    PS256("6", "签名算法 PS256"),
+    /**
+     * RSASSA-PSS using SHA-384 and MGF1 with SHA-384 (Optional)
+     */
+    PS384("7", "签名算法 PS384"),
+    /**
+     * RSASSA-PSS using SHA-512 and MGF1 with SHA-512 (Optional)
+     */
+    PS512("8", "签名算法 PS512");
 
-    private static final Map<Integer, TokenFormat> INDEX_MAP = new HashMap<>();
+    private static final Map<Integer, SignatureJwsAlgorithm> INDEX_MAP = new HashMap<>();
     private static final List<Dictionary> DICTIONARIES = new ArrayList<>();
 
     static {
-        for (TokenFormat format : TokenFormat.values()) {
-            INDEX_MAP.put(format.ordinal(), format);
-            DICTIONARIES.add(format.getDictionary(format.name(), format.ordinal()));
+        for (SignatureJwsAlgorithm algorithm : SignatureJwsAlgorithm.values()) {
+            INDEX_MAP.put(algorithm.ordinal(), algorithm);
+            DICTIONARIES.add(algorithm.getDictionary(algorithm.name(), algorithm.ordinal()));
         }
     }
 
@@ -66,12 +99,12 @@ public enum TokenFormat implements DictionaryEnum {
     @Schema(name = "文字")
     private final String label;
 
-    TokenFormat(String value, String label) {
+    SignatureJwsAlgorithm(String value, String label) {
         this.value = value;
         this.label = label;
     }
 
-    public static TokenFormat get(Integer index) {
+    public static SignatureJwsAlgorithm get(Integer index) {
         return INDEX_MAP.get(index);
     }
 

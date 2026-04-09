@@ -23,28 +23,33 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.logic.identity.customizer;
+package org.dromara.dante.security.definition;
 
-import org.dromara.dante.core.builder.EnumDictionaryBuilder;
-import org.dromara.dante.core.function.EnumDictionaryBuilderCustomizer;
-import org.dromara.dante.logic.identity.enums.*;
-import org.dromara.dante.security.enums.PermissionExpression;
+import org.dromara.dante.security.domain.RegisteredClientTransmitter;
 
 /**
- * <p>Description: Identity 枚举数据字典定义器 </p>
+ * <p>Description: 自定义认证管理器定义 </p>
  *
  * @author : gengwei.zheng
- * @date : 2024/8/23 16:00
+ * @date : 2024/10/9 17:37
  */
-public class IdentityEnumDictionaryBuilderCustomizer implements EnumDictionaryBuilderCustomizer {
+public interface AuthenticationManager {
 
-    @Override
-    public void customize(EnumDictionaryBuilder builder) {
-        builder.append(org.dromara.dante.persistence.commons.enums.AllJwsAlgorithm.getDictionaries());
-        builder.append(AuthenticationMethod.getDictionaries());
-        builder.append(GrantType.getDictionaries());
-        builder.append(org.dromara.dante.persistence.commons.enums.SignatureJwsAlgorithm.getDictionaries());
-        builder.append(org.dromara.dante.persistence.commons.enums.TokenFormat.getDictionaries());
-        builder.append(PermissionExpression.getDictionaries());
-    }
+    /**
+     * 关闭认证
+     * <p>
+     * 关闭认证，即删除 oauth2_registered_client 对应的数据
+     *
+     * @param id oauth2_registered_client 表中的ID
+     */
+    void disable(String id);
+
+    /**
+     * 开启认证
+     * <p>
+     * 开启认证，即在 oauth2_registered_client 添加对应的数据
+     *
+     * @param registeredClientTransmitter 手动创建 oauth2_registered_client 数据的必要信息 {@link RegisteredClientTransmitter}
+     */
+    void enable(RegisteredClientTransmitter registeredClientTransmitter);
 }
