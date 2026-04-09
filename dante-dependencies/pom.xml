@@ -42,7 +42,7 @@
 
     <description>Dante Cloud 云原生微服务基座组件库 Dante Engine Dependencies</description>
 
-    <url>https://github.com/dromara/dante-cloud</url>
+    <url>https://github.com/dante-compass/dante-engine</url>
 
     <licenses>
         <license>
@@ -53,9 +53,9 @@
     </licenses>
 
     <scm>
-        <url>https://github.com/dromara/dante-cloud</url>
-        <connection>scm:git:git@github.com:dromara/dante-cloud.git</connection>
-        <developerConnection>scm:git:git@github.com:dromara/dante-cloud.git</developerConnection>
+        <url>https://github.com/dante-compass/dante-engine</url>
+        <connection>scm:git:git@github.com:dante-compass/dante-engine.git</connection>
+        <developerConnection>scm:git:git@github.com:dante-compass/dante-engine.git</developerConnection>
     </scm>
 
     <organization>
