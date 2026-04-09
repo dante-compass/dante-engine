@@ -23,27 +23,49 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.data.mongodb.converter;
+package org.dromara.dante.data.commons.converter;
 
-import org.dromara.dante.data.commons.enums.DataItemStatus;
-import org.springframework.data.convert.PropertyValueConverter;
-import org.springframework.data.mongodb.core.convert.MongoConversionContext;
+import org.springframework.core.convert.converter.Converter;
 
 /**
- * <p>Description: {@link DataItemStatus} 枚举 Mongodb 环境转换器 </p>
+ * <p>Description: 多 Spring Data Module 实体转换器定义 </p>
  *
+ * @param <S> 转换源对象。不同的 Spring Data Module 对应的实体。
+ * @param <T> 转换目标对象
  * @author : gengwei.zheng
- * @date : 2025/3/31 15:27
+ * @date : 2025/4/17 16:28
  */
-public class DataItemStatusConverter implements PropertyValueConverter<DataItemStatus, Integer, MongoConversionContext> {
+
+public interface EntityConverter<S, T> extends Converter<S, T> {
+
+    /**
+     * 构造转换结果实体的实例
+     *
+     * @return 结果实体实例
+     */
+    T getInstance();
+
+    /**
+     * 转换子类中的专有属性
+     *
+     * @param source 转换源对象
+     * @param target 转换目标对象
+     */
+    void prepare(S source, T target);
+
+    /**
+     * 转换父类中共性属性
+     *
+     * @param source 转换源对象
+     * @param target 转换目标对象
+     */
+    void then(S source, T target);
 
     @Override
-    public DataItemStatus read(Integer value, MongoConversionContext context) {
-        return DataItemStatus.get(value);
-    }
-
-    @Override
-    public Integer write(DataItemStatus value, MongoConversionContext context) {
-        return value.ordinal();
+    default T convert(S source) {
+        T target = getInstance();
+        prepare(source, target);
+        then(source, target);
+        return target;
     }
 }

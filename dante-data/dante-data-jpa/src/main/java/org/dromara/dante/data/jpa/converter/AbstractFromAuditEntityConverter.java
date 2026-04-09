@@ -23,27 +23,23 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.data.mongodb.converter;
+package org.dromara.dante.data.jpa.converter;
 
-import org.dromara.dante.data.commons.enums.DataItemStatus;
-import org.springframework.data.convert.PropertyValueConverter;
-import org.springframework.data.mongodb.core.convert.MongoConversionContext;
+import org.dromara.dante.data.jpa.entity.AbstractAuditEntity;
 
 /**
- * <p>Description: {@link DataItemStatus} 枚举 Mongodb 环境转换器 </p>
+ * <p>Description: 统一 Module 实体转多 Spring Data Module 抽象 Module 实体通用属性转换器 </p>
  *
  * @author : gengwei.zheng
- * @date : 2025/3/31 15:27
+ * @date : 2025/4/17 16:37
  */
-public class DataItemStatusConverter implements PropertyValueConverter<DataItemStatus, Integer, MongoConversionContext> {
+public abstract class AbstractFromAuditEntityConverter<S extends org.dromara.dante.data.commons.entity.AbstractAuditEntity, T extends AbstractAuditEntity> extends AbstractFromEntityConverter<S, T> {
 
     @Override
-    public DataItemStatus read(Integer value, MongoConversionContext context) {
-        return DataItemStatus.get(value);
-    }
-
-    @Override
-    public Integer write(DataItemStatus value, MongoConversionContext context) {
-        return value.ordinal();
+    public void then(S source, T target) {
+        target.setCreateBy(source.getCreateBy());
+        target.setUpdateBy(source.getUpdateBy());
+        target.setReversion(source.getReversion());
+        super.then(source, target);
     }
 }
