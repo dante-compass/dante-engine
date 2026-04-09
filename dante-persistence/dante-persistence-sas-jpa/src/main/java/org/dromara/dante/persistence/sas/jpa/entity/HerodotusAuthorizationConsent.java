@@ -28,7 +28,7 @@ package org.dromara.dante.persistence.sas.jpa.entity;
 import com.google.common.base.MoreObjects;
 import jakarta.persistence.*;
 import org.dromara.dante.core.domain.BaseEntity;
-import org.dromara.dante.oauth2.commons.constant.OAuth2Constants;
+import org.dromara.dante.persistence.commons.constant.PersistenceConstants;
 import org.dromara.dante.persistence.sas.jpa.generator.HerodotusAuthorizationConsentId;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -46,7 +46,7 @@ import java.util.Objects;
         @Index(name = "oauth2_authorization_consent_pn_idx", columnList = "principal_name")})
 @IdClass(HerodotusAuthorizationConsentId.class)
 @Cacheable
-@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = OAuth2Constants.REGION_OAUTH2_AUTHORIZATION_CONSENT)
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = PersistenceConstants.REGION_OAUTH2_AUTHORIZATION_CONSENT)
 public class HerodotusAuthorizationConsent implements BaseEntity {
 
     @Id

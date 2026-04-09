@@ -25,11 +25,20 @@
 
 package org.dromara.dante.persistence.commons.constant;
 
+import org.dromara.dante.core.constant.BaseConstants;
+
 /**
- * <p>Description: TODO </p>
+ * <p>Description: Bridge Sas 模块常量 </p>
  *
  * @author : gengwei_zheng
  * @date : 2026/4/9 21:54
  */
-public interface PersistenceConstants {
+public interface PersistenceConstants extends BaseConstants {
+
+    String REGION_OAUTH2_AUTHORIZATION = AREA_PREFIX + "oauth2:authorization";
+    String REGION_OAUTH2_AUTHORIZATION_CONSENT = AREA_PREFIX + "oauth2:authorization:consent";
+    String REGION_OAUTH2_AUTHORIZATION_RESOURCE = AREA_PREFIX + "oauth2:authorization:resource";
+    String REGION_OAUTH2_REGISTERED_CLIENT = AREA_PREFIX + "oauth2:registered:client";
+
+    String REGION_OAUTH2_USER_LOGGING = AREA_PREFIX + "oauth2:user:logging";
 }

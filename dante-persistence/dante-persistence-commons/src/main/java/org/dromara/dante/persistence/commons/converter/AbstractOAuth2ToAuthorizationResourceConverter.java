@@ -23,17 +23,30 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.logic.identity.converter;
+package org.dromara.dante.persistence.commons.converter;
 
-import org.dromara.dante.logic.identity.definition.AbstractOAuth2RegisteredClientConverter;
-import org.dromara.dante.logic.identity.entity.OAuth2Device;
+import org.dromara.dante.security.domain.OAuth2AuthorizationResource;
+import org.dromara.dante.security.domain.RegisteredClientDetails;
+import org.springframework.core.convert.converter.Converter;
 
 /**
- * <p>Description: OAuth2Device 转 RegisteredClient 转换器 </p>
+ * <p>Description: 基础的 {@link OAuth2AuthorizationResource} 转换器 </p>
  *
  * @author : gengwei.zheng
- * @date : 2023/5/21 19:04
+ * @date : 2025/2/25 18:05
  */
-public class OAuth2DeviceToRegisteredClientConverter extends AbstractOAuth2RegisteredClientConverter<OAuth2Device> {
+public abstract class AbstractOAuth2ToAuthorizationResourceConverter<T extends RegisteredClientDetails> implements Converter<T, OAuth2AuthorizationResource> {
 
+    @Override
+    public OAuth2AuthorizationResource convert(T source) {
+
+        OAuth2AuthorizationResource target = new OAuth2AuthorizationResource();
+        target.setId(source.getId());
+        target.setClientId(source.getClientId());
+        target.setRedirectUris(source.getRedirectUris());
+        target.setClientName(source.getClientName());
+        target.setLogo(source.getLogo());
+
+        return target;
+    }
 }

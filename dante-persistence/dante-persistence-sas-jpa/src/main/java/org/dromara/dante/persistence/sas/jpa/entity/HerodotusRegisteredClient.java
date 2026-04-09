@@ -28,6 +28,7 @@ package org.dromara.dante.persistence.sas.jpa.entity;
 import com.google.common.base.MoreObjects;
 import jakarta.persistence.*;
 import org.dromara.dante.oauth2.commons.constant.OAuth2Constants;
+import org.dromara.dante.persistence.commons.constant.PersistenceConstants;
 import org.dromara.dante.persistence.sas.jpa.definition.AbstractRegisteredClient;
 import org.dromara.dante.persistence.sas.jpa.generator.HerodotusRegisteredClientIdGenerator;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -45,7 +46,7 @@ import java.util.Objects;
         @Index(name = "oauth2_registered_client_id_idx", columnList = "id"),
         @Index(name = "oauth2_registered_client_cid_idx", columnList = "client_id")})
 @Cacheable
-@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = OAuth2Constants.REGION_OAUTH2_REGISTERED_CLIENT)
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = PersistenceConstants.REGION_OAUTH2_REGISTERED_CLIENT)
 public class HerodotusRegisteredClient extends AbstractRegisteredClient {
 
     @Id

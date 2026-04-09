@@ -26,12 +26,15 @@
 package org.dromara.dante.logic.identity.definition;
 
 import cn.hutool.v7.core.data.id.IdUtil;
+import com.google.common.base.MoreObjects;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Column;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.MappedSuperclass;
 import org.dromara.dante.logic.identity.entity.OAuth2Scope;
+import org.dromara.dante.persistence.commons.definition.ClientSettingsDetails;
+import org.dromara.dante.persistence.commons.definition.TokenSettingsDetails;
 import org.dromara.dante.persistence.commons.enums.AllJwsAlgorithm;
 import org.dromara.dante.persistence.commons.enums.SignatureJwsAlgorithm;
 import org.dromara.dante.persistence.commons.enums.TokenFormat;
@@ -47,7 +50,7 @@ import java.util.Set;
  * @date : 2023/5/21 17:46
  */
 @MappedSuperclass
-public abstract class AbstractOAuth2RegisteredClient extends AbstractRegisteredClient {
+public abstract class AbstractOAuth2RegisteredClient extends AbstractRegisteredClient implements TokenSettingsDetails, ClientSettingsDetails {
 
     @Schema(name = "客户端Id", title = "默认为系统自动生成")
     @Column(name = "client_id", length = 100)
@@ -64,7 +67,7 @@ public abstract class AbstractOAuth2RegisteredClient extends AbstractRegisteredC
 
     @Schema(name = "是否需要认证确认", title = "如果客户端在执行授权码授予流时需要提供验证密钥质询和验证器, 默认False")
     @Column(name = "require_authorization_consent")
-    private Boolean requireAuthorizationConsent = Boolean.TRUE;
+    private Boolean requireAuthorizationConsent = Boolean.FALSE;
 
     @Schema(name = "客户端JSON Web密钥集的URL", title = "客户端JSON Web密钥集的URL")
     @Column(name = "jwk_set_url", length = 1000)
@@ -84,24 +87,24 @@ public abstract class AbstractOAuth2RegisteredClient extends AbstractRegisteredC
     /* --- TokenSettings Begin --- */
     @Schema(name = "授权码有效时间", title = "默认5分钟，使用 Duration 时间格式")
     @Column(name = "authorization_code_validity")
-    private Duration authorizationCodeValidity = Duration.ofMinutes(5);
+    private Duration authorizationCodeTimeToLive = Duration.ofMinutes(5);
 
     @Schema(name = "激活码有效时间", title = "默认5分钟，使用 Duration 时间格式")
     @Column(name = "device_code_validity")
-    private Duration deviceCodeValidity = Duration.ofMinutes(5);
+    private Duration deviceCodeTimeToLive = Duration.ofMinutes(5);
 
     @Schema(name = "AccessToken 有效时间", title = "默认5分钟，使用 Duration 时间格式")
     @Column(name = "access_token_validity")
-    private Duration accessTokenValidity = Duration.ofMinutes(5);
+    private Duration accessTokenTimeToLive = Duration.ofMinutes(5);
 
     @Schema(name = "RefreshToken 有效时间", title = "默认60分钟，使用 Duration 时间格式")
     @Column(name = "refresh_token_validity")
-    private Duration refreshTokenValidity = Duration.ofMinutes(60);
+    private Duration refreshTokenTimeToLive = Duration.ofMinutes(60);
 
     @Schema(name = "Access Token 格式", title = "OAuth 2.0令牌的标准数据格式")
     @Column(name = "access_token_format")
     @Enumerated(EnumType.ORDINAL)
-    private TokenFormat accessTokenFormat = TokenFormat.REFERENCE;
+    private TokenFormat tokenFormat = TokenFormat.REFERENCE;
 
     @Schema(name = "是否重用 Refresh Token", title = "默认值 True")
     @Column(name = "reuse_refresh_tokens")
@@ -115,6 +118,7 @@ public abstract class AbstractOAuth2RegisteredClient extends AbstractRegisteredC
     @Schema(name = "X509证书是否绑定 AccessToken", title = "默认值 false")
     @Column(name = "bound_access_token")
     private Boolean x509CertificateBoundAccessTokens = Boolean.FALSE;
+
     /* --- TokenSettings End --- */
 
     public abstract Set<OAuth2Scope> getScopes();
@@ -137,6 +141,7 @@ public abstract class AbstractOAuth2RegisteredClient extends AbstractRegisteredC
         this.clientSecret = clientSecret;
     }
 
+    @Override
     public Boolean getRequireProofKey() {
         return requireProofKey;
     }
@@ -145,6 +150,7 @@ public abstract class AbstractOAuth2RegisteredClient extends AbstractRegisteredC
         this.requireProofKey = requireProofKey;
     }
 
+    @Override
     public Boolean getRequireAuthorizationConsent() {
         return requireAuthorizationConsent;
     }
@@ -153,6 +159,7 @@ public abstract class AbstractOAuth2RegisteredClient extends AbstractRegisteredC
         this.requireAuthorizationConsent = requireAuthorizationConsent;
     }
 
+    @Override
     public String getJwkSetUrl() {
         return jwkSetUrl;
     }
@@ -161,6 +168,7 @@ public abstract class AbstractOAuth2RegisteredClient extends AbstractRegisteredC
         this.jwkSetUrl = jwkSetUrl;
     }
 
+    @Override
     public AllJwsAlgorithm getAuthenticationSigningAlgorithm() {
         return authenticationSigningAlgorithm;
     }
@@ -169,62 +177,7 @@ public abstract class AbstractOAuth2RegisteredClient extends AbstractRegisteredC
         this.authenticationSigningAlgorithm = authenticationSigningAlgorithm;
     }
 
-    public Duration getAuthorizationCodeValidity() {
-        return authorizationCodeValidity;
-    }
-
-    public void setAuthorizationCodeValidity(Duration authorizationCodeValidity) {
-        this.authorizationCodeValidity = authorizationCodeValidity;
-    }
-
-    public Duration getAccessTokenValidity() {
-        return accessTokenValidity;
-    }
-
-    public void setAccessTokenValidity(Duration accessTokenValidity) {
-        this.accessTokenValidity = accessTokenValidity;
-    }
-
-    public Duration getDeviceCodeValidity() {
-        return deviceCodeValidity;
-    }
-
-    public void setDeviceCodeValidity(Duration deviceCodeValidity) {
-        this.deviceCodeValidity = deviceCodeValidity;
-    }
-
-    public Duration getRefreshTokenValidity() {
-        return refreshTokenValidity;
-    }
-
-    public void setRefreshTokenValidity(Duration refreshTokenValidity) {
-        this.refreshTokenValidity = refreshTokenValidity;
-    }
-
-    public TokenFormat getAccessTokenFormat() {
-        return accessTokenFormat;
-    }
-
-    public void setAccessTokenFormat(TokenFormat accessTokenFormat) {
-        this.accessTokenFormat = accessTokenFormat;
-    }
-
-    public Boolean getReuseRefreshTokens() {
-        return reuseRefreshTokens;
-    }
-
-    public void setReuseRefreshTokens(Boolean reuseRefreshTokens) {
-        this.reuseRefreshTokens = reuseRefreshTokens;
-    }
-
-    public SignatureJwsAlgorithm getIdTokenSignatureAlgorithm() {
-        return idTokenSignatureAlgorithmJwsAlgorithm;
-    }
-
-    public void setIdTokenSignatureAlgorithm(SignatureJwsAlgorithm idTokenSignatureAlgorithmJwsAlgorithm) {
-        this.idTokenSignatureAlgorithmJwsAlgorithm = idTokenSignatureAlgorithmJwsAlgorithm;
-    }
-
+    @Override
     public String getX509CertificateSubjectDN() {
         return x509CertificateSubjectDN;
     }
@@ -233,6 +186,61 @@ public abstract class AbstractOAuth2RegisteredClient extends AbstractRegisteredC
         this.x509CertificateSubjectDN = x509CertificateSubjectDN;
     }
 
+    @Override
+    public Duration getAuthorizationCodeTimeToLive() {
+        return authorizationCodeTimeToLive;
+    }
+
+    public void setAuthorizationCodeTimeToLive(Duration authorizationCodeTimeToLive) {
+        this.authorizationCodeTimeToLive = authorizationCodeTimeToLive;
+    }
+
+    @Override
+    public Duration getDeviceCodeTimeToLive() {
+        return deviceCodeTimeToLive;
+    }
+
+    public void setDeviceCodeTimeToLive(Duration deviceCodeTimeToLive) {
+        this.deviceCodeTimeToLive = deviceCodeTimeToLive;
+    }
+
+    @Override
+    public Duration getAccessTokenTimeToLive() {
+        return accessTokenTimeToLive;
+    }
+
+    public void setAccessTokenTimeToLive(Duration accessTokenTimeToLive) {
+        this.accessTokenTimeToLive = accessTokenTimeToLive;
+    }
+
+    @Override
+    public Duration getRefreshTokenTimeToLive() {
+        return refreshTokenTimeToLive;
+    }
+
+    public void setRefreshTokenTimeToLive(Duration refreshTokenTimeToLive) {
+        this.refreshTokenTimeToLive = refreshTokenTimeToLive;
+    }
+
+    @Override
+    public TokenFormat getTokenFormat() {
+        return tokenFormat;
+    }
+
+    public void setTokenFormat(TokenFormat tokenFormat) {
+        this.tokenFormat = tokenFormat;
+    }
+
+    @Override
+    public Boolean getReuseRefreshTokens() {
+        return reuseRefreshTokens;
+    }
+
+    public void setReuseRefreshTokens(Boolean reuseRefreshTokens) {
+        this.reuseRefreshTokens = reuseRefreshTokens;
+    }
+
+    @Override
     public SignatureJwsAlgorithm getIdTokenSignatureAlgorithmJwsAlgorithm() {
         return idTokenSignatureAlgorithmJwsAlgorithm;
     }
@@ -241,11 +249,33 @@ public abstract class AbstractOAuth2RegisteredClient extends AbstractRegisteredC
         this.idTokenSignatureAlgorithmJwsAlgorithm = idTokenSignatureAlgorithmJwsAlgorithm;
     }
 
+    @Override
     public Boolean getX509CertificateBoundAccessTokens() {
         return x509CertificateBoundAccessTokens;
     }
 
     public void setX509CertificateBoundAccessTokens(Boolean x509CertificateBoundAccessTokens) {
         this.x509CertificateBoundAccessTokens = x509CertificateBoundAccessTokens;
+    }
+
+    @Override
+    public String toString() {
+        return MoreObjects.toStringHelper(this)
+                .add("clientId", clientId)
+                .add("clientSecret", clientSecret)
+                .add("requireProofKey", requireProofKey)
+                .add("requireAuthorizationConsent", requireAuthorizationConsent)
+                .add("jwkSetUrl", jwkSetUrl)
+                .add("authenticationSigningAlgorithm", authenticationSigningAlgorithm)
+                .add("x509CertificateSubjectDN", x509CertificateSubjectDN)
+                .add("authorizationCodeTimeToLive", authorizationCodeTimeToLive)
+                .add("deviceCodeTimeToLive", deviceCodeTimeToLive)
+                .add("accessTokenTimeToLive", accessTokenTimeToLive)
+                .add("refreshTokenTimeToLive", refreshTokenTimeToLive)
+                .add("tokenFormat", tokenFormat)
+                .add("reuseRefreshTokens", reuseRefreshTokens)
+                .add("idTokenSignatureAlgorithmJwsAlgorithm", idTokenSignatureAlgorithmJwsAlgorithm)
+                .add("x509CertificateBoundAccessTokens", x509CertificateBoundAccessTokens)
+                .toString();
     }
 }

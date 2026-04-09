@@ -23,16 +23,33 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.logic.identity.repository;
+package org.dromara.dante.persistence.commons.converter;
 
-import org.dromara.dante.data.jpa.repository.BaseJpaRepository;
-import org.dromara.dante.logic.identity.entity.OAuth2Product;
+import org.dromara.dante.persistence.commons.definition.AuthorizationDetails;
+import org.dromara.dante.persistence.commons.domain.HerodotusAuthorizationDetails;
+import org.springframework.core.convert.converter.Converter;
 
 /**
- * <p>Description: OAuth2ProductRepository </p>
+ * <p>Description: {@link HerodotusAuthorizationDetails} 通用转换器 </p>
  *
  * @author : gengwei.zheng
- * @date : 2023/5/15 16:29
+ * @date : 2024/12/21 9:51
  */
-public interface OAuth2ProductRepository extends BaseJpaRepository<OAuth2Product, String> {
+public abstract class AbstractToAuthorizationDetailsConverter<S extends AuthorizationDetails> implements Converter<S, HerodotusAuthorizationDetails> {
+
+    @Override
+    public HerodotusAuthorizationDetails convert(S source) {
+
+        HerodotusAuthorizationDetails target = new HerodotusAuthorizationDetails();
+        target.setId(source.getId());
+        target.setRegisteredClientId(source.getRegisteredClientId());
+        target.setPrincipalName(source.getPrincipalName());
+        target.setAuthorizationGrantType(source.getAuthorizationGrantType());
+        target.setAccessTokenIssuedAt(source.getAccessTokenIssuedAt());
+        target.setAccessTokenExpiresAt(source.getAccessTokenExpiresAt());
+        target.setRefreshTokenIssuedAt(source.getRefreshTokenIssuedAt());
+        target.setRefreshTokenExpiresAt(source.getRefreshTokenExpiresAt());
+
+        return target;
+    }
 }

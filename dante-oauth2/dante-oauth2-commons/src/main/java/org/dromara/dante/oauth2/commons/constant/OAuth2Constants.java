@@ -56,9 +56,6 @@ public interface OAuth2Constants extends BaseConstants {
      */
     String ANNOTATION_FORMLOGIN_LOGINPAGEURL = PLACEHOLDER_PREFIX + ITEM_FORMLOGIN_LOGINPAGEURL + SymbolConstants.COLON + DefaultLoginPageGeneratingFilter.DEFAULT_LOGIN_PAGE_URL + PLACEHOLDER_SUFFIX;
 
-    String REGION_OAUTH2_AUTHORIZATION = AREA_PREFIX + "oauth2:authorization";
-    String REGION_OAUTH2_AUTHORIZATION_CONSENT = AREA_PREFIX + "oauth2:authorization:consent";
-    String REGION_OAUTH2_REGISTERED_CLIENT = AREA_PREFIX + "oauth2:registered:client";
     String REGION_OAUTH2_APPLICATION = AREA_PREFIX + "oauth2:application";
     String REGION_OAUTH2_COMPLIANCE = AREA_PREFIX + "oauth2:compliance";
     String REGION_OAUTH2_PERMISSION = AREA_PREFIX + "oauth2:permission";

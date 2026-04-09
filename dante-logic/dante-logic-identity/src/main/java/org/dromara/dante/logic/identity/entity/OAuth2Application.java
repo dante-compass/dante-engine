@@ -121,6 +121,7 @@ public class OAuth2Application extends AbstractOAuth2RegisteredClient {
         this.abbreviation = abbreviation;
     }
 
+    @Override
     public String getLogo() {
         return logo;
     }
@@ -157,6 +158,11 @@ public class OAuth2Application extends AbstractOAuth2RegisteredClient {
     @Override
     public String getId() {
         return getApplicationId();
+    }
+
+    @Override
+    public String getClientName() {
+        return getApplicationName();
     }
 
     @Override

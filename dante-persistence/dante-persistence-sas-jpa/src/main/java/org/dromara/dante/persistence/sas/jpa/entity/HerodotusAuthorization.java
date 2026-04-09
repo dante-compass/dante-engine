@@ -28,7 +28,8 @@ package org.dromara.dante.persistence.sas.jpa.entity;
 import com.google.common.base.MoreObjects;
 import jakarta.persistence.*;
 import org.dromara.dante.core.domain.BaseEntity;
-import org.dromara.dante.oauth2.commons.constant.OAuth2Constants;
+import org.dromara.dante.persistence.commons.constant.PersistenceConstants;
+import org.dromara.dante.persistence.commons.definition.AuthorizationDetails;
 import org.dromara.dante.persistence.sas.jpa.generator.HerodotusAuthorizationIdGenerator;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -47,8 +48,8 @@ import java.time.LocalDateTime;
         @Index(name = "oauth2_authorization_pn_idx", columnList = "principal_name")}
 )
 @Cacheable
-@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = OAuth2Constants.REGION_OAUTH2_AUTHORIZATION)
-public class HerodotusAuthorization implements BaseEntity {
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = PersistenceConstants.REGION_OAUTH2_AUTHORIZATION)
+public class HerodotusAuthorization implements BaseEntity, AuthorizationDetails {
 
     @Id
     @HerodotusAuthorizationIdGenerator
@@ -154,6 +155,7 @@ public class HerodotusAuthorization implements BaseEntity {
     @Column(name = "device_code_metadata", columnDefinition = "TEXT")
     private String deviceCodeMetadata;
 
+    @Override
     public String getId() {
         return id;
     }
@@ -162,6 +164,7 @@ public class HerodotusAuthorization implements BaseEntity {
         this.id = id;
     }
 
+    @Override
     public String getRegisteredClientId() {
         return registeredClientId;
     }
@@ -170,6 +173,7 @@ public class HerodotusAuthorization implements BaseEntity {
         this.registeredClientId = registeredClientId;
     }
 
+    @Override
     public String getPrincipalName() {
         return principalName;
     }
@@ -178,6 +182,7 @@ public class HerodotusAuthorization implements BaseEntity {
         this.principalName = principalName;
     }
 
+    @Override
     public String getAuthorizationGrantType() {
         return authorizationGrantType;
     }
@@ -250,6 +255,7 @@ public class HerodotusAuthorization implements BaseEntity {
         this.accessTokenValue = accessTokenValue;
     }
 
+    @Override
     public LocalDateTime getAccessTokenIssuedAt() {
         return accessTokenIssuedAt;
     }
@@ -258,6 +264,7 @@ public class HerodotusAuthorization implements BaseEntity {
         this.accessTokenIssuedAt = accessTokenIssuedAt;
     }
 
+    @Override
     public LocalDateTime getAccessTokenExpiresAt() {
         return accessTokenExpiresAt;
     }
@@ -338,6 +345,7 @@ public class HerodotusAuthorization implements BaseEntity {
         this.refreshTokenValue = refreshTokenValue;
     }
 
+    @Override
     public LocalDateTime getRefreshTokenIssuedAt() {
         return refreshTokenIssuedAt;
     }
@@ -346,6 +354,7 @@ public class HerodotusAuthorization implements BaseEntity {
         this.refreshTokenIssuedAt = refreshTokenIssuedAt;
     }
 
+    @Override
     public LocalDateTime getRefreshTokenExpiresAt() {
         return refreshTokenExpiresAt;
     }
