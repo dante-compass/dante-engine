@@ -243,11 +243,6 @@
             </dependency>
             <dependency>
                 <groupId>org.dromara.dante</groupId>
-                <artifactId>dante-oauth2-persistence-jpa</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.dromara.dante</groupId>
                 <artifactId>dante-persistence-commons</artifactId>
                 <version>${project.version}</version>
             </dependency>

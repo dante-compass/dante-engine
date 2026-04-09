@@ -48,7 +48,6 @@
         <module>dante-oauth2-authorization</module>
         <module>dante-authorization-autoconfigure</module>
         <module>dante-authentication-autoconfigure</module>
-        <module>dante-oauth2-persistence-jpa</module>
         <module>dante-oauth2-extension</module>
     </modules>
 
