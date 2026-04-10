@@ -29,11 +29,11 @@ import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.collections4.MapUtils;
 import org.dromara.dante.core.constant.SymbolConstants;
 import org.dromara.dante.core.domain.view.vue.Option;
-import org.dromara.dante.logic.identity.entity.OAuth2Application;
 import org.dromara.dante.logic.identity.entity.OAuth2Scope;
-import org.dromara.dante.logic.identity.service.OAuth2ApplicationService;
 import org.dromara.dante.logic.identity.service.OAuth2ScopeService;
 import org.dromara.dante.oauth2.commons.constant.OAuth2Constants;
+import org.dromara.dante.security.domain.OAuth2AuthorizationResource;
+import org.dromara.dante.security.service.OAuth2AuthorizationResourceService;
 import org.dromara.dante.spring.context.ServiceContextHolder;
 import org.springframework.security.oauth2.core.endpoint.OAuth2ParameterNames;
 import org.springframework.security.oauth2.core.oidc.OidcScopes;
@@ -59,16 +59,16 @@ import java.util.stream.Collectors;
 @Controller
 public class OAuth2ConsentController {
 
-    private final OAuth2ApplicationService applicationService;
+    private final OAuth2AuthorizationResourceService authorizationResourceService;
     private final OAuth2AuthorizationConsentService authorizationConsentService;
-    private final OAuth2ScopeService scopeService;
+    private final OAuth2ScopeService auth2ScopeService;
 
     private Map<String, OAuth2Scope> dictionaries;
 
-    public OAuth2ConsentController(OAuth2ApplicationService applicationService, OAuth2AuthorizationConsentService authorizationConsentService, OAuth2ScopeService scopeService) {
-        this.applicationService = applicationService;
+    public OAuth2ConsentController(OAuth2AuthorizationResourceService authorizationResourceService, OAuth2AuthorizationConsentService authorizationConsentService, OAuth2ScopeService auth2ScopeService) {
+        this.authorizationResourceService = authorizationResourceService;
         this.authorizationConsentService = authorizationConsentService;
-        this.scopeService = scopeService;
+        this.auth2ScopeService = auth2ScopeService;
         initDictionaries();
     }
 
@@ -95,7 +95,7 @@ public class OAuth2ConsentController {
         // 之前已经授权过的scope
         Set<String> previouslyApprovedScopes = new HashSet<>();
         // 获取客户端注册信息
-        OAuth2Application application = this.applicationService.findByClientId(clientId);
+        OAuth2AuthorizationResource resource = this.authorizationResourceService.findByClientId(clientId);
         // 获取当前Client下用户之前的consent信息
         OAuth2AuthorizationConsent currentAuthorizationConsent = this.authorizationConsentService.findById(clientId, principal.getName());
         // 当前Client下用户已经授权的scope
@@ -116,7 +116,7 @@ public class OAuth2ConsentController {
             }
         }
 
-        Set<String> redirectUris = StringUtils.commaDelimitedListToSet(application.getRedirectUris());
+        Set<String> redirectUris = StringUtils.commaDelimitedListToSet(resource.getRedirectUris());
 
         //输出信息指consent页面
         model.addAttribute("clientId", clientId);
@@ -124,8 +124,8 @@ public class OAuth2ConsentController {
         model.addAttribute("scopesToAuthorize", withDescription(scopesToApprove));
         model.addAttribute("scopesPreviouslyAuthorized", withDescription(previouslyApprovedScopes));
         model.addAttribute("principalName", principal.getName());
-        model.addAttribute("applicationName", application.getApplicationName());
-        model.addAttribute("logo", application.getLogo());
+        model.addAttribute("applicationName", resource.getClientName());
+        model.addAttribute("logo", resource.getLogo());
         model.addAttribute("redirectUri", redirectUris.iterator().next());
         model.addAttribute("userCode", userCode);
         String action = ServiceContextHolder.getAuthorizationEndpoint();
@@ -137,7 +137,7 @@ public class OAuth2ConsentController {
     }
 
     private void initDictionaries() {
-        List<OAuth2Scope> scopes = scopeService.findAll();
+        List<OAuth2Scope> scopes = auth2ScopeService.findAll();
         if (CollectionUtils.isNotEmpty(scopes)) {
             if (MapUtils.isEmpty(dictionaries) || scopes.size() != dictionaries.size()) {
                 dictionaries = scopes.stream().collect(Collectors.toMap(OAuth2Scope::getScopeCode, item -> item));
