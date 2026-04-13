@@ -27,6 +27,7 @@ package org.dromara.dante.autoconfigure.file;
 
 import jakarta.annotation.PostConstruct;
 import org.dromara.dante.core.support.file.FileTemplate;
+import org.dromara.dante.core.support.file.JsonSchemaFileManager;
 import org.dromara.dante.core.support.file.OssTransformer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -66,5 +67,13 @@ public class FileAutoConfiguration {
         DefaultOssTransformer transformer = new DefaultOssTransformer();
         log.trace("[Herodotus] |- Bean [Default File Transformer] Configure.");
         return transformer;
+    }
+
+    @Bean
+    @ConditionalOnMissingBean
+    public JsonSchemaFileManager jsonSchemaFileManager(FileProperties fileProperties, FileTemplate fileTemplate, OssTransformer ossTransformer) {
+        DefaultJsonSchemaFileManager manager = new DefaultJsonSchemaFileManager(fileProperties, fileTemplate, ossTransformer);
+        log.trace("[Herodotus] |- Bean [Default JsonSchema File Manager] Configure.");
+        return manager;
     }
 }
