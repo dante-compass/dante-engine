@@ -23,23 +23,25 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.data.hibernate.dialect;
+package org.dromara.dante.hibernate.generator;
 
-import org.hibernate.dialect.PostgreSQLDialect;
-import org.hibernate.query.common.FetchClauseType;
+import org.hibernate.annotations.IdGeneratorType;
+
+import java.lang.annotation.Retention;
+import java.lang.annotation.Target;
+
+import static java.lang.annotation.ElementType.FIELD;
+import static java.lang.annotation.ElementType.METHOD;
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
- * <p>Description: 扩展 OpenGauss Dialect</p>
- * <p>
- * 解决 OpenGauss 兼容问题
+ * 雪花主键ID
  *
- * @author : gengwei.zheng
- * @date : 2024/5/30 17:46
+ * @author lkhsh
+ * @date 2023-07-14
  */
-public class OpenGaussDialect extends PostgreSQLDialect {
-
-    @Override
-    public boolean supportsFetchClause(FetchClauseType type) {
-        return false;
-    }
+@IdGeneratorType(SnowflakeIdGeneratorType.class)
+@Target({METHOD, FIELD})
+@Retention(RUNTIME)
+public @interface SnowflakeIdGenerator {
 }

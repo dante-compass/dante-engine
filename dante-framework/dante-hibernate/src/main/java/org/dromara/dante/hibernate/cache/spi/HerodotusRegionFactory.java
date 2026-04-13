@@ -23,7 +23,7 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.data.hibernate.cache.spi;
+package org.dromara.dante.hibernate.cache.spi;
 
 import cn.hutool.v7.extra.spring.SpringUtil;
 import org.hibernate.boot.spi.SessionFactoryOptions;

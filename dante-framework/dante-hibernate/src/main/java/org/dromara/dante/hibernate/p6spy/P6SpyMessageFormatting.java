@@ -23,7 +23,7 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.data.p6spy;
+package org.dromara.dante.hibernate.p6spy;
 
 import cn.hutool.v7.core.date.DateFormatPool;
 import com.p6spy.engine.spy.appender.MessageFormattingStrategy;

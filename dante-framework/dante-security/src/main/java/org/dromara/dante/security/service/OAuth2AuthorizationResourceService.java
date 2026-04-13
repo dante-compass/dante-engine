@@ -21,10 +21,10 @@
 
 package org.dromara.dante.security.service;
 
-import org.dromara.dante.security.domain.OAuth2AuthorizationResource;
-import org.dromara.dante.security.domain.RegisteredClientTransmitter;
 import org.apache.commons.lang3.SerializationUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.dromara.dante.security.domain.OAuth2AuthorizationResource;
+import org.dromara.dante.security.domain.RegisteredClientTransmitter;
 
 import java.util.Optional;
 

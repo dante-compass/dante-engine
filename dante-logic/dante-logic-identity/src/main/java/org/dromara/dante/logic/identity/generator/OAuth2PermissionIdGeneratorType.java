@@ -26,7 +26,7 @@
 package org.dromara.dante.logic.identity.generator;
 
 import org.apache.commons.lang3.StringUtils;
-import org.dromara.dante.data.hibernate.generator.AbstractIdGeneratorType;
+import org.dromara.dante.hibernate.generator.AbstractIdGeneratorType;
 import org.dromara.dante.logic.identity.entity.OAuth2Permission;
 import org.hibernate.engine.spi.SharedSessionContractImplementor;
 import org.hibernate.generator.GeneratorCreationContext;

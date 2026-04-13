@@ -23,7 +23,7 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.data.hibernate.generator;
+package org.dromara.dante.hibernate.generator;
 
 import cn.hutool.v7.core.data.id.IdUtil;
 import cn.hutool.v7.core.data.id.Snowflake;
