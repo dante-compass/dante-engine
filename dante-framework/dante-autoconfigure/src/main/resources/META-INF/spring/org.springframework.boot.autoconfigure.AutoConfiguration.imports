@@ -26,5 +26,6 @@
 org.dromara.dante.autoconfigure.ApplicationAutoConfiguration
 org.dromara.dante.autoconfigure.enums.EnumDictionaryAutoConfiguration
 org.dromara.dante.autoconfigure.error.ErrorCodeAutoConfiguration
+org.dromara.dante.autoconfigure.file.FileAutoConfiguration
 org.dromara.dante.autoconfigure.jackson.JacksonAutoConfiguration
 org.dromara.dante.autoconfigure.matcher.SecurityMatcherAutoConfiguration
