@@ -28,14 +28,13 @@ package org.dromara.dante.persistence.sas.jpa.config;
 import jakarta.annotation.PostConstruct;
 import org.dromara.dante.oauth2.commons.enums.SasPersistence;
 import org.dromara.dante.persistence.commons.condition.ConditionalOnSasPersistence;
+import org.dromara.dante.persistence.commons.definition.EnhanceAuthenticationManager;
+import org.dromara.dante.persistence.sas.jpa.repository.HerodotusRegisteredClientRepository;
 import org.dromara.dante.persistence.sas.jpa.service.HerodotusAuthorizationConsentService;
 import org.dromara.dante.persistence.sas.jpa.service.HerodotusAuthorizationResourceService;
 import org.dromara.dante.persistence.sas.jpa.service.HerodotusAuthorizationService;
 import org.dromara.dante.persistence.sas.jpa.service.HerodotusRegisteredClientService;
-import org.dromara.dante.persistence.sas.jpa.specification.JpaOAuth2AuthorizationConsentService;
-import org.dromara.dante.persistence.sas.jpa.specification.JpaOAuth2AuthorizationResourceService;
-import org.dromara.dante.persistence.sas.jpa.specification.JpaOAuth2AuthorizationService;
-import org.dromara.dante.persistence.sas.jpa.specification.JpaRegisteredClientRepository;
+import org.dromara.dante.persistence.sas.jpa.specification.*;
 import org.dromara.dante.security.service.OAuth2AuthorizationResourceService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -105,5 +104,13 @@ public class PersistenceSasJpaConfiguration {
         JpaOAuth2AuthorizationResourceService service = new JpaOAuth2AuthorizationResourceService(herodotusAuthorizationResourceService);
         log.trace("[Herodotus] |- Bean [JPA OAuth2 Authorization Resource Service] Configure.");
         return service;
+    }
+
+    @Bean
+    @ConditionalOnMissingBean
+    public EnhanceAuthenticationManager enhanceAuthenticationManager(HerodotusRegisteredClientRepository herodotusRegisteredClientRepository, RegisteredClientRepository registeredClientRepository, OAuth2AuthorizationResourceService authorizationResourceService) {
+        JpaEnhanceAuthenticationManager manager = new JpaEnhanceAuthenticationManager(herodotusRegisteredClientRepository, registeredClientRepository, authorizationResourceService);
+        log.trace("[Herodotus] |- Bean [JPA Enhance Authentication Manager] Configure.");
+        return manager;
     }
 }

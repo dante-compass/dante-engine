@@ -29,10 +29,10 @@ import io.swagger.v3.oas.annotations.Operation;
 import jakarta.annotation.PostConstruct;
 import org.dromara.dante.oauth2.authorization.attribute.RestSecurityAttributeStorage;
 import org.dromara.dante.oauth2.authorization.attribute.SecurityAttributeAnalyzer;
-import org.dromara.dante.oauth2.authorization.autoconfigure.listener.LocalRestMappingGatherListener;
+import org.dromara.dante.oauth2.authorization.autoconfigure.listener.LocalRestMappingCollectListener;
 import org.dromara.dante.oauth2.authorization.autoconfigure.listener.RemoteRestMappingGatherListener;
 import org.dromara.dante.oauth2.authorization.autoconfigure.processor.SecurityAttributeDistributionProcessor;
-import org.dromara.dante.oauth2.authorization.autoconfigure.strategy.DefaultRestMappingScanEventManager;
+import org.dromara.dante.oauth2.authorization.autoconfigure.strategy.DefaultRestMappingCollectEventManager;
 import org.dromara.dante.oauth2.authorization.config.OAuth2ServletAuthorizationConfiguration;
 import org.dromara.dante.oauth2.commons.properties.OAuth2Properties;
 import org.dromara.dante.security.domain.attribute.AttributeTransmitter;
@@ -53,13 +53,13 @@ import java.util.List;
  * <p>Description: OAuth2 资源服务器自动配置模块 </p>
  * <p>
  * 接口（资源服务器中提供的 REST API）聚合汇总，实现权限管控的主要逻辑：
- * 1. 各服务（资源服务器）启动完成之后，会自动执行 {@code RestMappingScanner} 对该服务中的 REST API 进行扫描，然后将扫描结果转换成 {@link AttributeTransmitter},通过 {@link DefaultRestMappingScanEventManager} 将数据以 Event（Local Event 或基于 Spring Cloud Bus 的 Remote Event）方式发送到接口权限管理服务（当前为 UPMS 服务）
+ * 1. 各服务（资源服务器）启动完成之后，会自动执行 {@code RestMappingScanner} 对该服务中的 REST API 进行扫描，然后将扫描结果转换成 {@link AttributeTransmitter},通过 {@link DefaultRestMappingCollectEventManager} 将数据以 Event（Local Event 或基于 Spring Cloud Bus 的 Remote Event）方式发送到接口权限管理服务（当前为 UPMS 服务）
  * 注意：
  * 1.1. 只有使用 Swagger {@link Operation} 注解标注过的 REST API 才会被扫描到。该措施主要为了强制编写 Swagger 说明
  * 1.2. UPMS 服务自身 REST API 也会进行聚合，但是不需要远程发送。
- * 1.3. {@link DefaultRestMappingScanEventManager} 在发送 Event 时，会提前调用 {@link SecurityAttributeAnalyzer#processLocalResourceMatchers()} 对服务本地配置的静态权限进行处理，放入到本地权限缓存中 {@link RestSecurityAttributeStorage}。
- * 2. UPMS 服务会使用 {@link LocalRestMappingGatherListener} 接收本地（UPMS自身）和使用 {@link RemoteRestMappingGatherListener} 接收其它服务的接口数据
- * 注意：单体架构就只有 {@link LocalRestMappingGatherListener} 会生效。 {@link RemoteRestMappingGatherListener} 依赖消息队列，仅在微服务架构下生效。
+ * 1.3. {@link DefaultRestMappingCollectEventManager} 在发送 Event 时，会提前调用 {@link SecurityAttributeAnalyzer#processLocalResourceMatchers()} 对服务本地配置的静态权限进行处理，放入到本地权限缓存中 {@link RestSecurityAttributeStorage}。
+ * 2. UPMS 服务会使用 {@link LocalRestMappingCollectListener} 接收本地（UPMS自身）和使用 {@link RemoteRestMappingGatherListener} 接收其它服务的接口数据
+ * 注意：单体架构就只有 {@link LocalRestMappingCollectListener} 会生效。 {@link RemoteRestMappingGatherListener} 依赖消息队列，仅在微服务架构下生效。
  * 3. UPMS 接收到各服务的扫描到的接口数据后，会调用 {@link SecurityAttributeDistributionProcessor#processRestMappings(List)} 方法，执行以下操作：
  * 3.1. 先将接口数据存入 {@code SysInterface} 表中。
  * 3.2. 查询 {@code SysInterface} 表中有的但是 {@code SysAttribute} 表中没有的数据，将这部分差异数据存入 {@code SysAttribute} 表中（注：该方法时为了规避 JPA 更新操作会全部字段覆盖同时兼顾性能的措施）

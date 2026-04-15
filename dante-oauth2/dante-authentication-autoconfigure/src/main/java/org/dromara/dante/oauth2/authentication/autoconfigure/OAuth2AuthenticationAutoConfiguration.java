@@ -26,7 +26,6 @@
 package org.dromara.dante.oauth2.authentication.autoconfigure;
 
 import jakarta.annotation.PostConstruct;
-import org.dromara.dante.oauth2.authentication.autoconfigure.message.OAuth2AuthenticationMessageConfiguration;
 import org.dromara.dante.oauth2.authentication.config.OAuth2AuthenticationConfiguration;
 import org.dromara.dante.oauth2.commons.properties.OAuth2AuthenticationProperties;
 import org.dromara.dante.persistence.sas.autoconfigure.PersistenceSasAutoConfiguration;
@@ -45,8 +44,7 @@ import org.springframework.context.annotation.Import;
 @AutoConfiguration(after = {PersistenceSasAutoConfiguration.class})
 @EnableConfigurationProperties({OAuth2AuthenticationProperties.class})
 @Import({
-        OAuth2AuthenticationConfiguration.class,
-        OAuth2AuthenticationMessageConfiguration.class
+        OAuth2AuthenticationConfiguration.class
 })
 public class OAuth2AuthenticationAutoConfiguration {
 

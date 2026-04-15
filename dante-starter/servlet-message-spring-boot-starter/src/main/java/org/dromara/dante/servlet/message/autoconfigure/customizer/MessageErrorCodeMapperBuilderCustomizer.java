@@ -28,7 +28,7 @@ package org.dromara.dante.servlet.message.autoconfigure.customizer;
 import org.dromara.dante.core.builder.ErrorCodeMapperBuilder;
 import org.dromara.dante.core.constant.ErrorCodeMapperBuilderOrdered;
 import org.dromara.dante.core.function.ErrorCodeMapperBuilderCustomizer;
-import org.dromara.dante.message.core.constant.MessageErrorCodes;
+import org.dromara.dante.message.commons.constant.MessageErrorCodes;
 import org.springframework.core.Ordered;
 
 /**

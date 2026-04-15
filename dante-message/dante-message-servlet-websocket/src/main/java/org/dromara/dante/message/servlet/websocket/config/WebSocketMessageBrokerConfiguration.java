@@ -28,7 +28,7 @@ package org.dromara.dante.message.servlet.websocket.config;
 import jakarta.annotation.PostConstruct;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.dromara.dante.message.core.constant.MessageConstants;
+import org.dromara.dante.message.commons.constant.MessageConstants;
 import org.dromara.dante.message.servlet.websocket.interceptor.WebSocketAuthenticationHandshakeInterceptor;
 import org.dromara.dante.message.servlet.websocket.interceptor.WebSocketChannelInterceptor;
 import org.dromara.dante.message.servlet.websocket.interceptor.WebSocketPrincipalHandshakeHandler;

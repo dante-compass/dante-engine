@@ -30,7 +30,7 @@ import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.dromara.dante.core.constant.SymbolConstants;
-import org.dromara.dante.message.core.definition.strategy.RestMappingScanEventManager;
+import org.dromara.dante.message.commons.definition.strategy.RestMappingCollectEventManager;
 import org.dromara.dante.security.domain.attribute.RestMapping;
 import org.dromara.dante.web.autoconfigure.initializer.AbstractRestMappingScanner;
 import org.dromara.dante.web.autoconfigure.properties.ServiceProperties;
@@ -62,8 +62,8 @@ public class RestMappingScanner extends AbstractRestMappingScanner {
     private static final Logger log = LoggerFactory.getLogger(RestMappingScanner.class);
     private final WebMvcProperties webMvcProperties;
 
-    public RestMappingScanner(WebMvcProperties webMvcProperties, ServiceProperties.Scan scan, RestMappingScanEventManager restMappingScanEventManager) {
-        super(scan, restMappingScanEventManager);
+    public RestMappingScanner(WebMvcProperties webMvcProperties, ServiceProperties.Scan scan, RestMappingCollectEventManager restMappingCollectEventManager) {
+        super(scan, restMappingCollectEventManager);
         this.webMvcProperties = webMvcProperties;
     }
 

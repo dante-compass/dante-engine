@@ -26,7 +26,7 @@
 package org.dromara.dante.webmvc.autoconfigure;
 
 import jakarta.annotation.PostConstruct;
-import org.dromara.dante.message.core.definition.strategy.RestMappingScanEventManager;
+import org.dromara.dante.message.commons.definition.strategy.RestMappingCollectEventManager;
 import org.dromara.dante.web.autoconfigure.properties.ServiceProperties;
 import org.dromara.dante.web.condition.ConditionalOnRestScanEnabled;
 import org.dromara.dante.webmvc.autoconfigure.initializer.RestMappingScanner;
@@ -47,7 +47,7 @@ import org.springframework.context.annotation.Configuration;
  * @date : 2022/1/16 18:40
  */
 @Configuration(proxyBeanMethods = false)
-@ConditionalOnClass(RestMappingScanEventManager.class)
+@ConditionalOnClass(RestMappingCollectEventManager.class)
 @ConditionalOnRestScanEnabled
 @EnableConfigurationProperties(ServiceProperties.class)
 public class WebMvcRestMappingScanConfiguration {
@@ -60,9 +60,9 @@ public class WebMvcRestMappingScanConfiguration {
     }
 
     @Bean
-    @ConditionalOnBean(RestMappingScanEventManager.class)
+    @ConditionalOnBean(RestMappingCollectEventManager.class)
     @ConditionalOnMissingBean
-    public RestMappingScanner restMappingScanner(WebMvcProperties webMvcProperties, ServiceProperties serviceProperties, RestMappingScanEventManager requestMappingScanManager) {
+    public RestMappingScanner restMappingScanner(WebMvcProperties webMvcProperties, ServiceProperties serviceProperties, RestMappingCollectEventManager requestMappingScanManager) {
         RestMappingScanner scanner = new RestMappingScanner(webMvcProperties, serviceProperties.getScan(), requestMappingScanManager);
         log.trace("[Herodotus] |- Bean [Servlet Rest Mapping Scanner] Configure.");
         return scanner;

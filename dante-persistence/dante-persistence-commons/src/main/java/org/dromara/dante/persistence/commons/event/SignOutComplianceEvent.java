@@ -26,7 +26,7 @@
 package org.dromara.dante.persistence.commons.event;
 
 import jakarta.servlet.http.HttpServletRequest;
-import org.dromara.dante.spring.context.AbstractApplicationEvent;
+import org.dromara.dante.message.commons.definition.event.AbstractApplicationEvent;
 import org.springframework.security.oauth2.server.authorization.OAuth2Authorization;
 
 /**

@@ -28,7 +28,7 @@ package org.dromara.dante.oauth2.authorization.definition;
 import org.apache.commons.collections4.CollectionUtils;
 import org.dromara.dante.core.builder.SecurityMatcher;
 import org.dromara.dante.oauth2.authorization.cache.HerodotusRequest;
-import org.dromara.dante.security.enums.PermissionExpression;
+import org.dromara.dante.oauth2.commons.enums.PermissionExpression;
 
 import java.util.LinkedHashMap;
 import java.util.List;

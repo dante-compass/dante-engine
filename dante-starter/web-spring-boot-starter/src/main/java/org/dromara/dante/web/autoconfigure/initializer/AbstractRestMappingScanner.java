@@ -34,7 +34,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.Strings;
 import org.dromara.dante.core.constant.SymbolConstants;
 import org.dromara.dante.core.utils.WellFormedUtils;
-import org.dromara.dante.message.core.definition.strategy.RestMappingScanEventManager;
+import org.dromara.dante.message.commons.definition.strategy.RestMappingCollectEventManager;
 import org.dromara.dante.security.domain.attribute.RestMapping;
 import org.dromara.dante.web.autoconfigure.properties.ServiceProperties;
 import org.dromara.dante.web.support.WebPropertyFinder;
@@ -62,11 +62,11 @@ public abstract class AbstractRestMappingScanner implements ApplicationListener<
     private static final Logger log = LoggerFactory.getLogger(AbstractRestMappingScanner.class);
 
     private final ServiceProperties.Scan scan;
-    private final RestMappingScanEventManager restMappingScanEventManager;
+    private final RestMappingCollectEventManager restMappingCollectEventManager;
 
-    protected AbstractRestMappingScanner(ServiceProperties.Scan scan, RestMappingScanEventManager restMappingScanEventManager) {
+    protected AbstractRestMappingScanner(ServiceProperties.Scan scan, RestMappingCollectEventManager restMappingCollectEventManager) {
         this.scan = scan;
-        this.restMappingScanEventManager = restMappingScanEventManager;
+        this.restMappingCollectEventManager = restMappingCollectEventManager;
     }
 
     @Override
@@ -167,7 +167,7 @@ public abstract class AbstractRestMappingScanner implements ApplicationListener<
      * @return 是否执行扫描
      */
     protected boolean notExecuteScanning() {
-        return !restMappingScanEventManager.isPerformScan();
+        return !restMappingCollectEventManager.isPerformScan();
     }
 
     /**
@@ -179,7 +179,7 @@ public abstract class AbstractRestMappingScanner implements ApplicationListener<
     protected void complete(String serviceId, List<RestMapping> resources) {
         if (CollectionUtils.isNotEmpty(resources)) {
             log.debug("[Herodotus] |- [R2] Request mapping scan found [{}] resources in service [{}], go to next stage!", serviceId, resources.size());
-            restMappingScanEventManager.postProcess(resources);
+            restMappingCollectEventManager.postProcess(resources);
         } else {
             log.debug("[Herodotus] |- [R2] Request mapping scan can not find any resources in service [{}]!", serviceId);
         }

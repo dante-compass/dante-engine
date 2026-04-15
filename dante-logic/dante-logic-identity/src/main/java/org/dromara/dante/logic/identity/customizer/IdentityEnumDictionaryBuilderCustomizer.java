@@ -29,7 +29,7 @@ import org.dromara.dante.core.builder.EnumDictionaryBuilder;
 import org.dromara.dante.core.function.EnumDictionaryBuilderCustomizer;
 import org.dromara.dante.logic.identity.enums.AuthenticationMethod;
 import org.dromara.dante.logic.identity.enums.GrantType;
-import org.dromara.dante.security.enums.PermissionExpression;
+import org.dromara.dante.oauth2.commons.enums.PermissionExpression;
 
 /**
  * <p>Description: Identity 枚举数据字典定义器 </p>

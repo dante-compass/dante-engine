@@ -27,10 +27,10 @@ package org.dromara.dante.message.servlet.websocket.controller;
 
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.dromara.dante.message.core.constant.MessageConstants;
-import org.dromara.dante.message.core.domain.DialogueMessage;
-import org.dromara.dante.message.core.domain.WebSocketMessage;
-import org.dromara.dante.message.core.event.SendDialogueMessageEvent;
+import org.dromara.dante.message.commons.constant.MessageConstants;
+import org.dromara.dante.message.commons.domain.DialogueMessage;
+import org.dromara.dante.message.commons.domain.WebSocketMessage;
+import org.dromara.dante.message.commons.event.SendDialogueMessageEvent;
 import org.dromara.dante.message.servlet.websocket.definition.WebSocketMessageSender;
 import org.dromara.dante.message.servlet.websocket.domain.WebSocketPrincipal;
 import org.dromara.dante.spring.context.AbstractApplicationContextAware;

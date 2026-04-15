@@ -52,13 +52,18 @@
         </dependency>
 
         <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-oauth2-jose</artifactId>
+            <groupId>org.dromara.dante</groupId>
+            <artifactId>dante-web</artifactId>
         </dependency>
 
         <dependency>
             <groupId>org.dromara.dante</groupId>
-            <artifactId>dante-web</artifactId>
+            <artifactId>dante-message-commons</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-oauth2-jose</artifactId>
         </dependency>
 
         <dependency>
