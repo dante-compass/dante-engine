@@ -64,7 +64,7 @@ public abstract class AbstractEnhanceAuthenticationManager implements EnhanceAut
     }
 
     @Override
-    public void resource(RegisteredClientTransmitter transmitter) {
+    public void addResource(RegisteredClientTransmitter transmitter) {
         authorizationResourceService.process(transmitter);
     }
 }

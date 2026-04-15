@@ -60,7 +60,7 @@ public interface EnhanceAuthenticationManager extends AuthenticationManager {
      * @param transmitter 手动创建 oauth2_registered_client 数据的必要信息 {@link RegisteredClientTransmitter}
      */
 
-    void resource(RegisteredClientTransmitter transmitter);
+    void addResource(RegisteredClientTransmitter transmitter);
 
     /**
      * 开启认证
@@ -103,7 +103,7 @@ public interface EnhanceAuthenticationManager extends AuthenticationManager {
                 .clientSettings(clientSettings.build())
                 .build();
         enable(registeredClient);
-        resource(transmitter);
+        addResource(transmitter);
     }
 
     /**

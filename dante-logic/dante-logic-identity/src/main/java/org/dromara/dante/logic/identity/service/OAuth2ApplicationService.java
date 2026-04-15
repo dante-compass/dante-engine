@@ -32,17 +32,16 @@ import org.dromara.dante.logic.identity.converter.OAuth2ApplicationToRegisteredC
 import org.dromara.dante.logic.identity.entity.OAuth2Application;
 import org.dromara.dante.logic.identity.entity.OAuth2Scope;
 import org.dromara.dante.logic.identity.repository.OAuth2ApplicationRepository;
-import org.dromara.dante.persistence.sas.jpa.repository.HerodotusRegisteredClientRepository;
-import org.dromara.dante.spring.exception.transaction.TransactionalRollbackException;
+import org.dromara.dante.persistence.commons.definition.EnhanceAuthenticationManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
-import org.springframework.security.oauth2.server.authorization.client.RegisteredClientRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 
@@ -57,15 +56,13 @@ public class OAuth2ApplicationService extends AbstractJpaService<OAuth2Applicati
 
     private static final Logger log = LoggerFactory.getLogger(OAuth2ApplicationService.class);
 
-    private final RegisteredClientRepository registeredClientRepository;
-    private final HerodotusRegisteredClientRepository herodotusRegisteredClientRepository;
     private final OAuth2ApplicationRepository applicationRepository;
+    private final EnhanceAuthenticationManager enhanceAuthenticationManager;
     private final Converter<OAuth2Application, RegisteredClient> objectConverter;
 
-    public OAuth2ApplicationService(RegisteredClientRepository registeredClientRepository, HerodotusRegisteredClientRepository herodotusRegisteredClientRepository, OAuth2ApplicationRepository applicationRepository) {
-        this.registeredClientRepository = registeredClientRepository;
-        this.herodotusRegisteredClientRepository = herodotusRegisteredClientRepository;
+    public OAuth2ApplicationService(OAuth2ApplicationRepository applicationRepository, EnhanceAuthenticationManager enhanceAuthenticationManager) {
         this.applicationRepository = applicationRepository;
+        this.enhanceAuthenticationManager = enhanceAuthenticationManager;
         this.objectConverter = new OAuth2ApplicationToRegisteredClientConverter();
     }
 
@@ -77,24 +74,26 @@ public class OAuth2ApplicationService extends AbstractJpaService<OAuth2Applicati
     @Override
     public OAuth2Application save(OAuth2Application entity) {
         OAuth2Application application = super.save(entity);
+        return initialize(application);
+    }
+
+    public OAuth2Application initialize(OAuth2Application application) {
         if (ObjectUtils.isNotEmpty(application)) {
-            registeredClientRepository.save(objectConverter.convert(application));
-            log.debug("[Herodotus] |- OAuth2ApplicationService saveOrUpdate.");
+            enhanceAuthenticationManager.enable(Objects.requireNonNull(objectConverter.convert(application)));
             return application;
         } else {
-            log.error("[Herodotus] |- OAuth2ApplicationService saveOrUpdate error, rollback data!");
+            log.error("[Herodotus] |- OAuth2ApplicationService saveOrUpdate error!");
             throw new NullPointerException("save or update OAuth2Application failed");
         }
     }
 
-    @Transactional(rollbackFor = TransactionalRollbackException.class)
     @Override
     public void deleteById(String id) {
         super.deleteById(id);
-        herodotusRegisteredClientRepository.deleteById(id);
+        enhanceAuthenticationManager.disable(id);
     }
 
-    @Transactional(rollbackFor = TransactionalRollbackException.class)
+    @Transactional(rollbackFor = Exception.class)
     public OAuth2Application authorize(String applicationId, String[] scopeIds) {
 
         Set<OAuth2Scope> scopes = new HashSet<>();

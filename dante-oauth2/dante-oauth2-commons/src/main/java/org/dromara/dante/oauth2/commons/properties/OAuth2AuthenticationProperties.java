@@ -54,6 +54,17 @@ public class OAuth2AuthenticationProperties {
     private String authorizationConsentUri = SystemConstants.OAUTH2_AUTHORIZATION_CONSENT_URI;
 
     /**
+     * 设备码授权模式验证成功跳转地址
+     */
+    private String deviceVerificationSuccessUri = SystemConstants.OAUTH2_DEVICE_VERIFICATION_SUCCESS_URI;
+
+    /**
+     * 设备码授权模式验证失败跳转地址
+     */
+    private String deviceVerificationFailureUri = SystemConstants.OAUTH2_DEVICE_VERIFICATION_FAILURE_URI;
+
+
+    /**
      * Ssl Bundle Provider 名称，该名称与 Spring SSL 配置匹配。
      */
     private String sslBundleProvider;
@@ -85,6 +96,22 @@ public class OAuth2AuthenticationProperties {
 
     public void setAuthorizationConsentUri(String authorizationConsentUri) {
         this.authorizationConsentUri = authorizationConsentUri;
+    }
+
+    public String getDeviceVerificationSuccessUri() {
+        return deviceVerificationSuccessUri;
+    }
+
+    public void setDeviceVerificationSuccessUri(String deviceVerificationSuccessUri) {
+        this.deviceVerificationSuccessUri = deviceVerificationSuccessUri;
+    }
+
+    public String getDeviceVerificationFailureUri() {
+        return deviceVerificationFailureUri;
+    }
+
+    public void setDeviceVerificationFailureUri(String deviceVerificationFailureUri) {
+        this.deviceVerificationFailureUri = deviceVerificationFailureUri;
     }
 
     public String getSslBundleProvider() {

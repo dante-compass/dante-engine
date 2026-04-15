@@ -31,6 +31,9 @@ import org.dromara.dante.oauth2.authentication.customizer.HerodotusJwtTokenCusto
 import org.dromara.dante.oauth2.authentication.customizer.HerodotusOpaqueTokenCustomizer;
 import org.dromara.dante.oauth2.authentication.response.DefaultOAuth2AuthenticationEventPublisher;
 import org.dromara.dante.oauth2.commons.properties.OAuth2AuthenticationProperties;
+import org.dromara.dante.oauth2.commons.strategy.OAuth2DeviceVerificationSuccessEventManager;
+import org.dromara.dante.oauth2.commons.strategy.OidcClientRegistrationSuccessEventManager;
+import org.dromara.dante.security.service.OAuth2AuthorizationResourceService;
 import org.dromara.dante.web.servlet.template.ThymeleafTemplateHandler;
 import org.dromara.dante.web.support.crypto.DigitalEnvelopeProcessor;
 import org.slf4j.Logger;
@@ -41,6 +44,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationEventPublisher;
 import org.springframework.security.authentication.event.AuthenticationFailureBadCredentialsEvent;
+import org.springframework.security.oauth2.server.authorization.client.RegisteredClientRepository;
 import org.springframework.security.oauth2.server.authorization.token.JwtEncodingContext;
 import org.springframework.security.oauth2.server.authorization.token.OAuth2TokenClaimsContext;
 import org.springframework.security.oauth2.server.authorization.token.OAuth2TokenCustomizer;
@@ -85,16 +89,23 @@ public class OAuth2AuthenticationConfiguration {
     }
 
     @Bean
-    @ConditionalOnMissingBean
     public OAuth2AuthenticationConfigurerManager oauth2AuthenticationConfigurerManager(
             ThymeleafTemplateHandler thymeleafTemplateHandler,
             DigitalEnvelopeProcessor digitalEnvelopeProcessor,
-            OAuth2AuthenticationProperties authenticationProperties) {
+            OAuth2AuthenticationProperties authenticationProperties,
+            RegisteredClientRepository registeredClientRepository,
+            OAuth2AuthorizationResourceService authorizationResourceService,
+            OidcClientRegistrationSuccessEventManager oidcClientRegistrationSuccessEventManager,
+            OAuth2DeviceVerificationSuccessEventManager deviceVerificationSuccessEventManager) {
 
         OAuth2AuthenticationConfigurerManager configurer = new OAuth2AuthenticationConfigurerManager(
                 thymeleafTemplateHandler,
                 digitalEnvelopeProcessor,
-                authenticationProperties);
+                authenticationProperties,
+                registeredClientRepository,
+                authorizationResourceService,
+                oidcClientRegistrationSuccessEventManager,
+                deviceVerificationSuccessEventManager);
         log.trace("[Herodotus] |- Bean [Servlet OAuth2 Authorization Server Configurer] Configure.");
         return configurer;
     }

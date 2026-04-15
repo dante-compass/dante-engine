@@ -28,6 +28,7 @@ package org.dromara.dante.rest.identity.controller;
 import org.apache.commons.lang3.StringUtils;
 import org.dromara.dante.core.constant.SymbolConstants;
 import org.dromara.dante.core.constant.SystemConstants;
+import org.dromara.dante.oauth2.commons.constant.OAuth2Constants;
 import org.springframework.security.oauth2.core.endpoint.OAuth2ParameterNames;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -50,9 +51,14 @@ public class OpenDeviceController {
         return "activation";
     }
 
-    @GetMapping(value = SystemConstants.OAUTH2_DEVICE_VERIFICATION_SUCCESS_URI)
-    public String activated() {
+    @GetMapping(value = OAuth2Constants.ANNOTATION_DEVICE_VERIFICATION_SUCCESS_URI)
+    public String activationAllowed() {
         return "activation-allowed";
+    }
+
+    @GetMapping(value = OAuth2Constants.ANNOTATION_DEVICE_VERIFICATION_FAILURE_URI)
+    public String activationDenied() {
+        return "activation-denied";
     }
 
     @GetMapping(value = "/", params = "success")

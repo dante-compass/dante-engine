@@ -56,6 +56,14 @@ public interface OAuth2Constants extends BaseConstants {
      */
     String ANNOTATION_AUTHORIZATION_CONSENT_URI = PLACEHOLDER_PREFIX + ITEM_AUTHORIZATION_CONSENT_URI + SymbolConstants.COLON + SystemConstants.OAUTH2_AUTHORIZATION_CONSENT_URI + PLACEHOLDER_SUFFIX;
     /**
+     * ${herodotus.oauth2.authentication.device-verification-success-uri:/device_activation_success}
+     */
+    String ANNOTATION_DEVICE_VERIFICATION_SUCCESS_URI = PLACEHOLDER_PREFIX + ITEM_DEVICE_VERIFICATION_SUCCESS_URI + SymbolConstants.COLON + SystemConstants.OAUTH2_DEVICE_VERIFICATION_SUCCESS_URI + PLACEHOLDER_SUFFIX;
+    /**
+     * ${herodotus.oauth2.authentication.device-verification-failure-uri:/device_activation_failure}
+     */
+    String ANNOTATION_DEVICE_VERIFICATION_FAILURE_URI = PLACEHOLDER_PREFIX + ITEM_DEVICE_VERIFICATION_FAILURE_URI + SymbolConstants.COLON + SystemConstants.OAUTH2_DEVICE_VERIFICATION_FAILURE_URI + PLACEHOLDER_SUFFIX;
+    /**
      * ${herodotus.oauth2.authentication.form-login.login-page-url:/login}
      */
     String ANNOTATION_FORMLOGIN_LOGINPAGEURL = PLACEHOLDER_PREFIX + ITEM_FORMLOGIN_LOGINPAGEURL + SymbolConstants.COLON + DefaultLoginPageGeneratingFilter.DEFAULT_LOGIN_PAGE_URL + PLACEHOLDER_SUFFIX;
