@@ -95,12 +95,14 @@ public class OAuth2ApplicationService extends AbstractJpaService<OAuth2Applicati
      * 向 SAS 数据表 oauth2_registered_client 同步增加 OAuth2 Client 数据，实现 OAuth2 支持（任何 OAuth2 应用首先必须要有 Client，即 oauth2_registered_client 中的数据）。
      * <p>
      * 注意：
-     * 该同步方法，不管是微服务架构还是单体架构，底层核心逻辑是“异步操作”，因此极端情况下就会存在“数据一致性”问题。
+     * 该同步方法，底层核心逻辑是“异步操作”，因此极端情况下就会存在“数据一致性”问题。
      * 正常情况下，因为添加应用操作并不是频繁性操作，所以异步操作可以满足需要。所以，当前默认采用的就是“异步”方式，这样也可以降低逻辑复杂度
      * <p>
      * 如果实际应用对此有强烈的一致性要求，那么需要自己扩展数据操作确认操作以及失败后的补偿操作，来确保一致性。
      * 数据确认操作：即可以在 {@link OAuth2Application} 中，增加一个状态，{@link OAuth2Application} 添加成功后设定为一个 例如：pending 的状态，待 oauth2_registered_client 数据同步成功之后，再返回一个 success 状态。这样来确保一致性。
      * 补偿操作：假设 {@link OAuth2Application} 数据一直是pending 的状态，那么就认为 oauth2_registered_client 未添加成功，可以增加例如手动或者其他方式
+     * <p>
+     * 注意事项：如果要做强一致性处理，除了当前的 {@link OAuth2Application} 以外，ThingsBrain 物联网平台中的 Product 和 Device 也是采用相同的逻辑，所以也需要做一致性处理。
      *
      * @param entity 数据对应实体
      * @return 数据对应实体

@@ -27,8 +27,6 @@ package org.dromara.dante.webmvc.autoconfigure.tenant;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.apache.commons.lang3.StringUtils;
-import org.dromara.dante.core.constant.SystemConstants;
 import org.dromara.dante.core.context.TenantContextHolder;
 import org.dromara.dante.web.servlet.utils.HeaderUtils;
 import org.dromara.dante.web.servlet.utils.SessionUtils;
@@ -49,19 +47,17 @@ public class MultiTenantInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
-        String tenantId = HeaderUtils.getHerodotusTenantId(request);
-        if (StringUtils.isBlank(tenantId)) {
-            tenantId = SystemConstants.TENANT_ID;
-        }
-        TenantContextHolder.setTenantId(tenantId);
-        log.debug("[Herodotus] |- TENANT ID is : [{}].", tenantId);
-
         String path = request.getRequestURI();
+        String method = request.getMethod();
+
+        log.debug("[Herodotus] |- CURRENT REQUEST: [{}] : [{}].", method, path);
+
+        String tenantId = HeaderUtils.getHerodotusTenantId(request);
+        TenantContextHolder.setTenantId(tenantId);
         String sessionId = SessionUtils.getSessionId(request);
         String herodotusSessionId = HeaderUtils.getHerodotusSessionId(request);
 
-        log.debug("[Herodotus] |- SESSION ID for [{}] is : [{}].", path, sessionId);
-        log.debug("[Herodotus] |- SESSION ID of HERODOTUS for [{}] is : [{}].", path, herodotusSessionId);
+        log.debug("[Herodotus] |- TENANT ID : [{}] - SESSION ID : [{}] - HERODOTUS SESSION ID : [{}].", tenantId, sessionId, herodotusSessionId);
 
         return true;
     }
