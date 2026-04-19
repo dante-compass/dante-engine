@@ -25,7 +25,7 @@
 
 package org.dromara.dante.autoconfigure.jackson;
 
-import org.dromara.dante.core.constant.JacksonCustomizerOrder;
+import org.dromara.dante.core.constant.BuilderCustomizerOrdered;
 import org.dromara.dante.spring.jackson.XssStringJsonDeserializer;
 import tools.jackson.core.json.JsonReadFeature;
 import tools.jackson.databind.SerializationFeature;
@@ -58,6 +58,6 @@ public class JacksonDefaultObjectMapperBuilderCustomizer implements JacksonJsonM
 
     @Override
     public int getOrder() {
-        return JacksonCustomizerOrder.CUSTOMIZER_DEFAULT;
+        return BuilderCustomizerOrdered.JACKSON__STANDARD;
     }
 }

@@ -27,7 +27,7 @@ package org.dromara.dante.assistant.access.customizer;
 
 import org.dromara.dante.assistant.access.constant.AccessErrorCodes;
 import org.dromara.dante.core.builder.ErrorCodeMapperBuilder;
-import org.dromara.dante.core.constant.ErrorCodeMapperBuilderOrdered;
+import org.dromara.dante.core.constant.BuilderCustomizerOrdered;
 import org.dromara.dante.core.function.ErrorCodeMapperBuilderCustomizer;
 import org.springframework.core.Ordered;
 
@@ -52,6 +52,6 @@ public class AccessErrorCodeMapperBuilderCustomizer implements ErrorCodeMapperBu
 
     @Override
     public int getOrder() {
-        return ErrorCodeMapperBuilderOrdered.ACCESS;
+        return BuilderCustomizerOrdered.ERROR_CODE__ACCESS;
     }
 }

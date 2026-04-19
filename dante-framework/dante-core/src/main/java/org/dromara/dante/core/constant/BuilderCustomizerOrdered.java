@@ -33,16 +33,22 @@ package org.dromara.dante.core.constant;
  * @author : gengwei.zheng
  * @date : 2023/9/26 21:20
  */
-public interface ErrorCodeMapperBuilderOrdered {
+public interface BuilderCustomizerOrdered {
 
     int STEP = 10;
 
-    int STANDARD = 0;
-    int CACHE = STANDARD + STEP;
-    int CAPTCHA = CACHE + STEP;
-    int OAUTH2 = CAPTCHA + STEP;
-    int REST = OAUTH2 + STEP;
-    int MESSAGE = REST + STEP;
-    int ACCESS = MESSAGE + STEP;
-    int OSS = ACCESS + STEP;
+    int ERROR_CODE__STANDARD = 0;
+    int ERROR_CODE__CONTAINER = ERROR_CODE__STANDARD + STEP;
+    int ERROR_CODE__CACHE = ERROR_CODE__CONTAINER + STEP;
+    int ERROR_CODE__CAPTCHA = ERROR_CODE__CACHE + STEP;
+    int ERROR_CODE__OAUTH2 = ERROR_CODE__CAPTCHA + STEP;
+    int ERROR_CODE__REST = ERROR_CODE__OAUTH2 + STEP;
+    int ERROR_CODE__MESSAGE = ERROR_CODE__REST + STEP;
+    int ERROR_CODE__ACCESS = ERROR_CODE__MESSAGE + STEP;
+    int ERROR_CODE__OSS = ERROR_CODE__ACCESS + STEP;
+    int ERROR_CODE__IP2REGION = ERROR_CODE__OSS + STEP;
+    int ERROR_CODE__PKI = ERROR_CODE__IP2REGION + STEP;
+    int ERROR_CODE__IOT_FACILITY = ERROR_CODE__PKI + STEP;
+
+    int JACKSON__STANDARD = 1;
 }

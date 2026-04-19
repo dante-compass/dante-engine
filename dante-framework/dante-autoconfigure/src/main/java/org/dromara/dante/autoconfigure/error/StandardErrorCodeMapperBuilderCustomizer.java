@@ -26,7 +26,7 @@
 package org.dromara.dante.autoconfigure.error;
 
 import org.dromara.dante.core.builder.ErrorCodeMapperBuilder;
-import org.dromara.dante.core.constant.ErrorCodeMapperBuilderOrdered;
+import org.dromara.dante.core.constant.BuilderCustomizerOrdered;
 import org.dromara.dante.core.constant.ErrorCodes;
 import org.dromara.dante.core.function.ErrorCodeMapperBuilderCustomizer;
 import org.springframework.core.Ordered;
@@ -99,6 +99,6 @@ public class StandardErrorCodeMapperBuilderCustomizer implements ErrorCodeMapper
 
     @Override
     public int getOrder() {
-        return ErrorCodeMapperBuilderOrdered.STANDARD;
+        return BuilderCustomizerOrdered.ERROR_CODE__STANDARD;
     }
 }
