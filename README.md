@@ -12,6 +12,7 @@
     <a href="https://nacos.io/docs/latest/overview/" target="_blank"><img src="https://shields.io/badge/Nacos-3.2.0-brightgreen.svg?logo=alibabadotcom" alt="Nacos 3.2.0"></a>
 </p>
 <p align="center">
+    <a href="https://deepwiki.com/dante-compass/dante-engine"><img src="https://deepwiki.com/badge.svg" alt="Ask DeepWiki"></a>
     <a href="#" target="_blank"><img src="https://shields.io/badge/Version-4.0.5.2-red.svg?logo=spring" alt="Version 4.0.5.2"></a>
     <a href="https://bell-sw.com/pages/downloads/#downloads" target="_blank"><img src="https://img.shields.io/badge/JDK-25%2B-green.svg?logo=openjdk" alt="Java 25"></a>
     <a href="./LICENSE"><img src="https://shields.io/badge/License-Apache--2.0-blue.svg?logo=apache" alt="License Apache 2.0"></a>
@@ -68,6 +69,11 @@ Dante Engine 为 Dante Cloud 微服务项目核心组件库，是 Dante Cloud �
 
 - **Gitee**：[https://gitee.com/dante-compass/herodotus-cloud-ui-vuetify](https://gitee.com/dante-compass/herodotus-cloud-ui-vuetify)
 - **Github**：[https://github.com/dante-compass/herodotus-cloud-ui-vuetify](https://github.com/dante-compass/herodotus-cloud-ui-vuetify)
+
+### 5. ThingsBrain 基于 Dante Cloud 的物联网平台（开发中）
+
+- **Gitee**：[https://gitee.com/dante-compass/thingsbrain](https://gitee.com/dante-compass/thingsbrain)
+- **Github**：[https://github.com/dante-compass/thingsbrain](https://github.com/dante-compass/thingsbrain)
 
 ## 开源协议
 
