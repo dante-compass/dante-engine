@@ -29,11 +29,11 @@ import com.alicp.jetcache.Cache;
 import com.alicp.jetcache.anno.CacheType;
 import org.apache.commons.collections4.MapUtils;
 import org.dromara.dante.cache.jetcache.utils.JetCacheUtils;
+import org.dromara.dante.oauth2.authorization.cache.HerodotusRequest;
+import org.dromara.dante.oauth2.authorization.definition.HerodotusSecurityAttribute;
 import org.dromara.dante.oauth2.authorization.matcher.HerodotusPathPatternRequestMatcher;
 import org.dromara.dante.oauth2.authorization.matcher.HerodotusRequestMatcher;
 import org.dromara.dante.oauth2.commons.constant.OAuth2Constants;
-import org.dromara.dante.oauth2.authorization.cache.HerodotusRequest;
-import org.dromara.dante.oauth2.authorization.definition.HerodotusSecurityAttribute;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.web.util.matcher.RequestMatcher;
@@ -248,7 +248,7 @@ public class RestSecurityAttributeStorage {
                     HerodotusRequestMatcher requestMatcher = HerodotusPathPatternRequestMatcher.withDefaults().matcher(matcher);
                     if (requestMatcher.matches(item)) {
                         result.remove(item);
-                        log.trace("[Herodotus] |- Pattern [{}] is conflict with [{}], so remove it.", item.getPattern(), matcher.getPattern());
+                        log.debug("[Herodotus] |- Request [{}]-{}-[{}] is conflict with pattern [{}]-{}-[{}], so remove it.", item.getHttpMethod(), item.getPattern(), item.getVersion(), matcher.getHttpMethod(), matcher.getPattern(), matcher.getVersion());
                     }
                 }
             }
