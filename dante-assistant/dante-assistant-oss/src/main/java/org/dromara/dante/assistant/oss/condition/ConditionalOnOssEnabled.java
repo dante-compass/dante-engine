@@ -23,33 +23,21 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.oss.autoconfigure;
+package org.dromara.dante.assistant.oss.condition;
 
-import jakarta.annotation.PostConstruct;
-import org.dromara.dante.assistant.oss.condition.ConditionalOnOssEnabled;
-import org.dromara.dante.rest.oss.config.RestOssConfiguration;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.boot.autoconfigure.AutoConfiguration;
-import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.Conditional;
+
+import java.lang.annotation.*;
 
 /**
- * <p>Description: 对象存储 Starter 自动配置 </p>
+ * <p>Description: Oss 开启条件注解 </p>
  *
  * @author : gengwei.zheng
- * @date : 2024/7/22 21:29
+ * @date : 2023/11/6 17:10
  */
-@AutoConfiguration(beforeName = {"org.dromara.dante.autoconfigure.file.FileAutoConfiguration"})
-@ConditionalOnOssEnabled
-@Import({
-        RestOssConfiguration.class
-})
-public class OssAutoConfiguration {
-
-    private static final Logger log = LoggerFactory.getLogger(OssAutoConfiguration.class);
-
-    @PostConstruct
-    public void postConstruct() {
-        log.info("[Herodotus] |- Starter [Oss] Configure.");
-    }
+@Target({ElementType.TYPE, ElementType.METHOD})
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+@Conditional(OnOssEnabledCondition.class)
+public @interface ConditionalOnOssEnabled {
 }

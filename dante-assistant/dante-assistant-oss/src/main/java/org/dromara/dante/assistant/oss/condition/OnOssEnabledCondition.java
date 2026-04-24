@@ -23,46 +23,34 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.autoconfigure.file;
+package org.dromara.dante.assistant.oss.condition;
 
-import org.dromara.dante.core.constant.SystemConstants;
-import org.dromara.dante.core.support.file.CompositeFileManager;
-import org.dromara.dante.core.support.file.FileTemplate;
-import org.dromara.dante.core.support.file.OssTransformer;
+import org.apache.commons.lang3.StringUtils;
+import org.dromara.dante.assistant.oss.constant.OssConstants;
+import org.dromara.dante.spring.context.PropertyResolver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.context.annotation.Condition;
+import org.springframework.context.annotation.ConditionContext;
+import org.springframework.core.type.AnnotatedTypeMetadata;
 
 /**
- * <p>Description:  </p>
+ * <p>Description: OSS 开启条件定义 </p>
  *
  * @author : gengwei.zheng
- * @date : 2026/1/5 17:16
+ * @date : 2023/11/6 17:07
  */
-public class DefaultCompositeFileManager implements CompositeFileManager {
+class OnOssEnabledCondition implements Condition {
 
-    private final FileTemplate fileTemplate;
-    private final OssTransformer ossTransformer;
-
-    public DefaultCompositeFileManager(FileTemplate fileTemplate, OssTransformer ossTransformer) {
-        this.fileTemplate = fileTemplate;
-        this.ossTransformer = ossTransformer;
-    }
+    private static final Logger log = LoggerFactory.getLogger(OnOssEnabledCondition.class);
 
     @Override
-    public OssTransformer getOssTransformer() {
-        return ossTransformer;
-    }
-
-    @Override
-    public FileTemplate getFileTemplate() {
-        return fileTemplate;
-    }
-
-    @Override
-    public String getDefaultDirectory() {
-        return "herodotus";
-    }
-
-    @Override
-    public String getDefaultBucketName() {
-        return SystemConstants.DEFAULT_BUCKET_NAME;
+    public boolean matches(ConditionContext context, AnnotatedTypeMetadata metadata) {
+        String endpoint = PropertyResolver.getProperty(context, OssConstants.ITEM_OSS_ENDPOINT);
+        String accessKey = PropertyResolver.getProperty(context, OssConstants.ITEM_OSS_ACCESS_KEY);
+        String secretKey = PropertyResolver.getProperty(context, OssConstants.ITEM_OSS_SECRET_KEY);
+        boolean result = StringUtils.isNotBlank(endpoint) && StringUtils.isNotBlank(accessKey) && StringUtils.isNotBlank(secretKey);
+        log.debug("[Herodotus] |- Condition [Oss Enabled] value is [{}]", result);
+        return result;
     }
 }

@@ -41,9 +41,9 @@ import org.dromara.dante.assistant.oss.entity.result.*;
 import org.dromara.dante.assistant.oss.service.base.S3TransferManagerService;
 import org.dromara.dante.assistant.oss.service.servlet.ServletObjectService;
 import org.dromara.dante.core.domain.Result;
+import org.dromara.dante.rest.oss.service.ServletObjectStreamService;
 import org.dromara.dante.spring.exception.oss.DownloadObjectException;
 import org.dromara.dante.spring.exception.oss.UploadObjectException;
-import org.dromara.dante.rest.oss.service.ServletObjectStreamService;
 import org.dromara.dante.web.annotation.AccessLimited;
 import org.dromara.dante.web.annotation.Idempotent;
 import org.dromara.dante.web.definition.Controller;
@@ -191,7 +191,7 @@ public class ServletObjectController implements Controller {
     @Operation(summary = "流式下载", description = "后台返回响应流，下载对应的对象",
             requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE)),
             responses = {
-                    @ApiResponse(description = "所有对象", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE)),
+                    @ApiResponse(description = "所有对象", content = @Content(mediaType = MediaType.APPLICATION_OCTET_STREAM_VALUE)),
                     @ApiResponse(responseCode = "200", description = "操作成功"),
                     @ApiResponse(responseCode = "500", description = "操作失败"),
                     @ApiResponse(responseCode = "503", description = "Server无法访问或未启动")
@@ -213,7 +213,7 @@ public class ServletObjectController implements Controller {
     @Operation(summary = "流式打开", description = "后台返回响应流，直接打开对应的对象",
             requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE)),
             responses = {
-                    @ApiResponse(description = "所有对象", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE)),
+                    @ApiResponse(description = "所有对象", content = @Content(mediaType = MediaType.APPLICATION_OCTET_STREAM_VALUE)),
                     @ApiResponse(responseCode = "200", description = "操作成功"),
                     @ApiResponse(responseCode = "500", description = "操作失败"),
                     @ApiResponse(responseCode = "503", description = "Server无法访问或未启动")
