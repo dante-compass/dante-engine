@@ -25,8 +25,17 @@
 
 package org.dromara.dante.logic.identity.converter;
 
-import org.dromara.dante.logic.identity.definition.AbstractOAuth2RegisteredClientConverter;
 import org.dromara.dante.logic.identity.entity.OAuth2Application;
+import org.dromara.dante.logic.identity.entity.OAuth2Scope;
+import org.dromara.dante.persistence.commons.converter.HerodotusToClientSettingsConverter;
+import org.dromara.dante.persistence.commons.converter.HerodotusToTokenSettingsConverter;
+import org.dromara.dante.persistence.commons.definition.RegisteredClientConverter;
+import org.springframework.core.convert.converter.Converter;
+import org.springframework.security.oauth2.server.authorization.settings.ClientSettings;
+import org.springframework.security.oauth2.server.authorization.settings.TokenSettings;
+
+import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * <p>Description: OAuth2Application 转 RegisteredClient 转换器 </p>
@@ -34,6 +43,29 @@ import org.dromara.dante.logic.identity.entity.OAuth2Application;
  * @author : gengwei.zheng
  * @date : 2023/5/21 19:04
  */
-public class OAuth2ApplicationToRegisteredClientConverter extends AbstractOAuth2RegisteredClientConverter<OAuth2Application> {
+public class OAuth2ApplicationToRegisteredClientConverter implements RegisteredClientConverter<OAuth2Application> {
 
+    private final Converter<OAuth2Application, ClientSettings> toClientSettings;
+    private final Converter<OAuth2Application, TokenSettings> toTokenSettings;
+
+    public OAuth2ApplicationToRegisteredClientConverter() {
+        this.toClientSettings = new HerodotusToClientSettingsConverter<>();
+        this.toTokenSettings = new HerodotusToTokenSettingsConverter<>();
+    }
+
+    @Override
+    public Set<String> getScopes(OAuth2Application details) {
+        Set<OAuth2Scope> clientScopes = details.getScopes();
+        return clientScopes.stream().map(OAuth2Scope::getScopeCode).collect(Collectors.toSet());
+    }
+
+    @Override
+    public ClientSettings getClientSettings(OAuth2Application details) {
+        return toClientSettings.convert(details);
+    }
+
+    @Override
+    public TokenSettings getTokenSettings(OAuth2Application details) {
+        return toTokenSettings.convert(details);
+    }
 }

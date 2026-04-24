@@ -1,0 +1,80 @@
+/*
+ * Copyright 2020-2030 码匠君<herodotus@aliyun.com>
+ *
+ * Dante Engine licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * Dante Engine 是 Dante Cloud 系统核心组件库，采用 APACHE LICENSE 2.0 开源协议，您在使用过程中，需要注意以下几点：
+ *
+ * 1. 请不要删除和修改根目录下的LICENSE文件。
+ * 2. 请不要删除和修改 Dante Engine 源码头部的版权声明。
+ * 3. 请保留源码和相关描述文件的项目出处，作者声明等。
+ * 4. 分发源码时候，请注明软件出处 <https://gitee.com/dromara/dante-cloud>
+ * 5. 在修改包名，模块名称，项目代码等时，请注明软件出处 <https://gitee.com/dromara/dante-cloud>
+ * 6. 若您的项目无法满足以上几点，可申请商业授权
+ */
+
+package org.dromara.dante.data.commons.entity;
+
+import org.dromara.dante.core.constant.SystemConstants;
+import org.dromara.dante.core.domain.BaseEntity;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.google.common.base.MoreObjects;
+import io.swagger.v3.oas.annotations.media.Schema;
+
+import java.util.Date;
+
+/**
+ * <p>Description: 可切换数据存储模式下核心实体基础属性定义 </p>
+ * <p>
+ * 不同的 Spring Data Module，即使实体属性一致，还是需要为不同 Spring Data Module 编写不同的实体。
+ * 例如系统支持 JPA 和 MongoDB 的切换，那么假设有个实体 A，就需要 JPA 和 MongoDB 需要各自定义自己的实体，即使属性完全一致 JPA 和 MongoDB 也无法直接使用同一个实体。因为 Spring Data 需要根据实体上的注解类型来与具体的 Repository 进行匹配。
+ * <p>
+ * 本类是用于定义不涉及Spring Data Module通用的不业务实体，使用时在结合需要转换成具体 Spring Data Module 对应的实体定义。
+ *
+ * @author : gengwei.zheng
+ * @date : 2025/3/31 13:00
+ */
+public abstract class AbstractEntity implements BaseEntity {
+
+    @Schema(name = "数据创建时间", title = "数据库审计通用字段", description = "该字段仅用于数据显示，具体的数据设置由各自 Spring Data Module 负责设置")
+    @JsonFormat(pattern = SystemConstants.DATE_TIME_FORMAT)
+    private Date createTime = new Date();
+
+    @Schema(name = "数据更新时间", title = "数据库审计通用字段", description = "该字段仅用于数据显示，具体的数据设置由各自 Spring Data Module 负责设置")
+    @JsonFormat(pattern = SystemConstants.DATE_TIME_FORMAT)
+    private Date updateTime = new Date();
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    @Override
+    public String toString() {
+        return MoreObjects.toStringHelper(this)
+                .add("createTime", createTime)
+                .add("updateTime", updateTime)
+                .toString();
+    }
+}

@@ -31,7 +31,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import org.dromara.dante.data.commons.enums.ApplicationType;
 import org.dromara.dante.logic.identity.definition.AbstractOAuth2RegisteredClient;
-import org.dromara.dante.oauth2.commons.constants.OAuth2Constants;
+import org.dromara.dante.oauth2.commons.constant.OAuth2Constants;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
@@ -121,6 +121,7 @@ public class OAuth2Application extends AbstractOAuth2RegisteredClient {
         this.abbreviation = abbreviation;
     }
 
+    @Override
     public String getLogo() {
         return logo;
     }
@@ -157,6 +158,11 @@ public class OAuth2Application extends AbstractOAuth2RegisteredClient {
     @Override
     public String getId() {
         return getApplicationId();
+    }
+
+    @Override
+    public String getClientName() {
+        return getApplicationName();
     }
 
     @Override

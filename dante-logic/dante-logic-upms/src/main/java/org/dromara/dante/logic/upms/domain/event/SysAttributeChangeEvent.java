@@ -26,7 +26,7 @@
 package org.dromara.dante.logic.upms.domain.event;
 
 import org.dromara.dante.logic.upms.entity.security.SysAttribute;
-import org.dromara.dante.spring.context.AbstractApplicationEvent;
+import org.dromara.dante.message.commons.definition.event.AbstractApplicationEvent;
 
 import java.time.Clock;
 

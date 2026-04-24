@@ -25,3 +25,4 @@
 
 org.dromara.dante.oauth2.authentication.autoconfigure.OAuth2AuthenticationAutoConfiguration
 org.dromara.dante.oauth2.authentication.autoconfigure.OAuth2IdentityAutoConfiguration
+org.dromara.dante.oauth2.authentication.autoconfigure.UaaServiceMessageAutoConfiguration

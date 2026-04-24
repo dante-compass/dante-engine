@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.dromara.dante</groupId>
+        <artifactId>dante-engine</artifactId>
+        <version>4.0.6.0</version>
+    </parent>
+
+    <artifactId>dante-persistence</artifactId>
+    <name>${project.artifactId}</name>
+
+    <packaging>pom</packaging>
+
+    <description>Dante Cloud 云原生微服务基座组件库核心数据持久化模块分组</description>
+
+    <modules>
+        <module>dante-persistence-commons</module>
+        <module>dante-persistence-sas-autoconfigure</module>
+        <module>dante-persistence-sas-jpa</module>
+        <module>dante-persistence-sys-autoconfigure</module>
+        <module>dante-persistence-sys-jpa</module>
+    </modules>
+
+</project>

@@ -26,7 +26,7 @@
 package org.dromara.dante.cache.commons.properties;
 
 import com.google.common.base.MoreObjects;
-import org.dromara.dante.cache.commons.constants.CacheConstants;
+import org.dromara.dante.cache.commons.constant.CacheConstants;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 import java.util.HashMap;

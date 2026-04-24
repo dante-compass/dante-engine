@@ -31,7 +31,7 @@
     <parent>
         <groupId>cn.herodotus.ecosystem</groupId>
         <artifactId>herodotus-ecosystem-dependencies</artifactId>
-        <version>4.0.5.2</version>
+        <version>4.0.6.0</version>
         <relativePath/>
     </parent>
 
@@ -42,7 +42,7 @@
 
     <description>Dante Cloud 云原生微服务基座组件库 Dante Engine Dependencies</description>
 
-    <url>https://github.com/dromara/dante-cloud</url>
+    <url>https://github.com/dante-compass/dante-engine</url>
 
     <licenses>
         <license>
@@ -53,9 +53,9 @@
     </licenses>
 
     <scm>
-        <url>https://github.com/dromara/dante-cloud</url>
-        <connection>scm:git:git@github.com:dromara/dante-cloud.git</connection>
-        <developerConnection>scm:git:git@github.com:dromara/dante-cloud.git</developerConnection>
+        <url>https://github.com/dante-compass/dante-engine</url>
+        <connection>scm:git:git@github.com:dante-compass/dante-engine.git</connection>
+        <developerConnection>scm:git:git@github.com:dante-compass/dante-engine.git</developerConnection>
     </scm>
 
     <organization>
@@ -243,7 +243,27 @@
             </dependency>
             <dependency>
                 <groupId>org.dromara.dante</groupId>
-                <artifactId>dante-oauth2-persistence-jpa</artifactId>
+                <artifactId>dante-persistence-commons</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.dromara.dante</groupId>
+                <artifactId>dante-persistence-sas-autoconfigure</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.dromara.dante</groupId>
+                <artifactId>dante-persistence-sas-jpa</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.dromara.dante</groupId>
+                <artifactId>dante-persistence-sys-autoconfigure</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.dromara.dante</groupId>
+                <artifactId>dante-persistence-sys-jpa</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

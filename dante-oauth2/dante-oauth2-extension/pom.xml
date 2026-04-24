@@ -31,7 +31,7 @@
     <parent>
         <groupId>org.dromara.dante</groupId>
         <artifactId>dante-oauth2</artifactId>
-        <version>4.0.5.2</version>
+        <version>4.0.6.0</version>
     </parent>
 
     <artifactId>dante-oauth2-extension</artifactId>
@@ -42,12 +42,7 @@
     <dependencies>
         <dependency>
             <groupId>org.dromara.dante</groupId>
-            <artifactId>dante-oauth2-persistence-jpa</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.dromara.dante</groupId>
-            <artifactId>dante-message-commons</artifactId>
+            <artifactId>dante-persistence-commons</artifactId>
         </dependency>
 
         <dependency>

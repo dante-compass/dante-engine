@@ -141,4 +141,23 @@ public interface SystemConstants {
      */
     String SCOPE_CLIENT_READ = "client.read";
 
+    /**
+     * 默认的存储桶名称
+     */
+    String DEFAULT_BUCKET_NAME = "herodotus-cloud";
+    /**
+     * 默认的证书存储目录
+     */
+    String DEFAULT_CERTIFICATE_DIRECTORY = "certificate";
+    /**
+     * 默认的 JSON Schema 存储目录
+     */
+    String DEFAULT_JSON_SCHEMA_DIRECTORY = "jsonschema";
+
+
+    /**
+     * 物联网自定义属性
+     */
+    String PARAMETER__PRODUCT_KEY = "product_key";
+    String WEBHOOK_EMQX_URI = "/emqx/webhook";
 }

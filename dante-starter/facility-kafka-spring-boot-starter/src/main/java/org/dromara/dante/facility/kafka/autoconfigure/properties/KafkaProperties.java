@@ -25,7 +25,7 @@
 
 package org.dromara.dante.facility.kafka.autoconfigure.properties;
 
-import org.dromara.dante.message.core.constants.MessageConstants;
+import org.dromara.dante.message.commons.constant.MessageConstants;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**

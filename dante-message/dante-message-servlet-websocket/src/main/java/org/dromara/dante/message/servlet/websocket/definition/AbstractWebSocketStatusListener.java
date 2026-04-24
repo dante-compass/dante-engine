@@ -27,7 +27,7 @@ package org.dromara.dante.message.servlet.websocket.definition;
 
 import org.apache.commons.lang3.ObjectUtils;
 import org.dromara.dante.cache.redis.utils.RedisBitMapUtils;
-import org.dromara.dante.message.core.constants.MessageConstants;
+import org.dromara.dante.message.commons.constant.MessageConstants;
 import org.dromara.dante.message.servlet.websocket.domain.WebSocketPrincipal;
 import org.dromara.dante.message.servlet.websocket.utils.WebSocketUtils;
 import org.slf4j.Logger;

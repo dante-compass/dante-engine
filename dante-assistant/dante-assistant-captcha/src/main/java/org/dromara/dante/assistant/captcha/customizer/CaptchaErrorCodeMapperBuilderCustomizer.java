@@ -27,7 +27,7 @@ package org.dromara.dante.assistant.captcha.customizer;
 
 import org.dromara.dante.assistant.captcha.constant.CaptchaErrorCodes;
 import org.dromara.dante.core.builder.ErrorCodeMapperBuilder;
-import org.dromara.dante.core.constant.ErrorCodeMapperBuilderOrdered;
+import org.dromara.dante.core.constant.BuilderCustomizerOrdered;
 import org.dromara.dante.core.function.ErrorCodeMapperBuilderCustomizer;
 import org.springframework.core.Ordered;
 
@@ -51,6 +51,6 @@ public class CaptchaErrorCodeMapperBuilderCustomizer implements ErrorCodeMapperB
 
     @Override
     public int getOrder() {
-        return ErrorCodeMapperBuilderOrdered.CAPTCHA;
+        return BuilderCustomizerOrdered.ERROR_CODE__CAPTCHA;
     }
 }

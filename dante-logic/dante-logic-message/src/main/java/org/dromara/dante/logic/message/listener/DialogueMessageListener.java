@@ -28,8 +28,8 @@ package org.dromara.dante.logic.message.listener;
 import org.apache.commons.lang3.ObjectUtils;
 import org.dromara.dante.logic.message.entity.DialogueDetail;
 import org.dromara.dante.logic.message.service.DialogueDetailService;
-import org.dromara.dante.message.core.domain.DialogueMessage;
-import org.dromara.dante.message.core.event.SendDialogueMessageEvent;
+import org.dromara.dante.message.commons.domain.DialogueMessage;
+import org.dromara.dante.message.commons.event.SendDialogueMessageEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 

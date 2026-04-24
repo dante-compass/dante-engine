@@ -26,8 +26,8 @@
 package org.dromara.dante.message.autoconfigure.stream;
 
 import org.apache.commons.lang3.ObjectUtils;
-import org.dromara.dante.message.core.domain.StreamMessage;
-import org.dromara.dante.message.core.event.StreamMessageSendingEvent;
+import org.dromara.dante.message.commons.domain.StreamMessage;
+import org.dromara.dante.message.commons.event.StreamMessageSendingEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cloud.stream.function.StreamBridge;

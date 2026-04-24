@@ -28,7 +28,7 @@ package org.dromara.dante.message.servlet.websocket.utils;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.dromara.dante.cache.redis.utils.RedisBitMapUtils;
-import org.dromara.dante.message.core.constants.MessageConstants;
+import org.dromara.dante.message.commons.constant.MessageConstants;
 import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.http.server.ServletServerHttpRequest;

@@ -29,7 +29,7 @@ import jakarta.annotation.Nonnull;
 import jakarta.annotation.PostConstruct;
 import org.dromara.dante.core.builder.EnumDictionaryBuilder;
 import org.dromara.dante.core.function.ErrorCodeMapperBuilderCustomizer;
-import org.dromara.dante.message.core.definition.strategy.EnumDictionaryGatherEventManager;
+import org.dromara.dante.message.commons.definition.strategy.EnumDictionaryCollectEventManager;
 import org.dromara.dante.spring.context.ServiceContextHolder;
 import org.dromara.dante.web.autoconfigure.config.SecureStampConfiguration;
 import org.dromara.dante.web.autoconfigure.config.SpringdocConfiguration;
@@ -106,7 +106,7 @@ public class WebAutoConfiguration implements ApplicationContextAware {
     }
 
     @Bean
-    public EnumDictionaryGather enumDictionaryGather(EnumDictionaryBuilder builder, EnumDictionaryGatherEventManager manager) {
+    public EnumDictionaryGather enumDictionaryGather(EnumDictionaryBuilder builder, EnumDictionaryCollectEventManager manager) {
         EnumDictionaryGather gather = new EnumDictionaryGather(builder, manager);
         log.debug("[Herodotus] |- Strategy [Enum Dictionary Gather] Configure.");
         return gather;

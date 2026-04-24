@@ -46,7 +46,8 @@ import java.util.Map;
 public enum MenuScenario implements DictionaryEnum {
 
     APP("0", "应用菜单"),
-    PERSONAL("1", "个人设置菜单");
+    PERSONAL("1", "个人设置菜单"),
+    TESTING("2", "测试用途菜单");
 
     private static final Map<Integer, MenuScenario> INDEX_MAP = new HashMap<>();
     private static final List<Dictionary> DICTIONARIES = new ArrayList<>();

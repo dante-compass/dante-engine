@@ -28,7 +28,7 @@ package org.dromara.dante.web.autoconfigure.initializer;
 import org.apache.commons.collections4.CollectionUtils;
 import org.dromara.dante.core.builder.EnumDictionaryBuilder;
 import org.dromara.dante.core.domain.Dictionary;
-import org.dromara.dante.message.core.definition.strategy.EnumDictionaryGatherEventManager;
+import org.dromara.dante.message.commons.definition.strategy.EnumDictionaryCollectEventManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
@@ -47,11 +47,11 @@ public class EnumDictionaryGather implements ApplicationListener<ApplicationRead
     private static final Logger log = LoggerFactory.getLogger(EnumDictionaryGather.class);
 
     private final EnumDictionaryBuilder enumDictionaryBuilder;
-    private final EnumDictionaryGatherEventManager enumDictionaryGatherEventManager;
+    private final EnumDictionaryCollectEventManager enumDictionaryCollectEventManager;
 
-    public EnumDictionaryGather(EnumDictionaryBuilder enumDictionaryBuilder, EnumDictionaryGatherEventManager enumDictionaryGatherEventManager) {
+    public EnumDictionaryGather(EnumDictionaryBuilder enumDictionaryBuilder, EnumDictionaryCollectEventManager enumDictionaryCollectEventManager) {
         this.enumDictionaryBuilder = enumDictionaryBuilder;
-        this.enumDictionaryGatherEventManager = enumDictionaryGatherEventManager;
+        this.enumDictionaryCollectEventManager = enumDictionaryCollectEventManager;
     }
 
     @Override
@@ -63,7 +63,7 @@ public class EnumDictionaryGather implements ApplicationListener<ApplicationRead
 
         if (CollectionUtils.isNotEmpty(dictionaries)) {
             log.debug("[Herodotus] |- [E2] Enum dictionary scan found [{}] resources in current service, go to next stage!", dictionaries.size());
-            enumDictionaryGatherEventManager.postProcess(dictionaries);
+            enumDictionaryCollectEventManager.postProcess(dictionaries);
         } else {
             log.debug("[Herodotus] |- [E2] Enum dictionary scan can not find any resources in current service!");
         }

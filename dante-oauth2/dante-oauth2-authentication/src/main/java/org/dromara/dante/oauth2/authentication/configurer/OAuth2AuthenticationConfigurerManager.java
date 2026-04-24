@@ -27,11 +27,14 @@ package org.dromara.dante.oauth2.authentication.configurer;
 
 import org.dromara.dante.oauth2.authentication.customizer.OAuth2ExceptionHandlingConfigurerCustomizer;
 import org.dromara.dante.oauth2.authentication.customizer.OAuth2FormLoginConfigurerCustomizer;
-import org.dromara.dante.oauth2.authentication.response.OAuth2AccessTokenResponseHandler;
-import org.dromara.dante.oauth2.authentication.response.OAuth2AuthenticationFailureHandler;
+import org.dromara.dante.oauth2.authentication.response.*;
 import org.dromara.dante.oauth2.commons.properties.OAuth2AuthenticationProperties;
+import org.dromara.dante.oauth2.commons.strategy.OAuth2DeviceVerificationSuccessEventManager;
+import org.dromara.dante.oauth2.commons.strategy.OidcClientRegistrationSuccessEventManager;
+import org.dromara.dante.security.service.OAuth2AuthorizationResourceService;
 import org.dromara.dante.web.servlet.template.ThymeleafTemplateHandler;
 import org.dromara.dante.web.support.crypto.DigitalEnvelopeProcessor;
+import org.springframework.security.oauth2.server.authorization.client.RegisteredClientRepository;
 
 /**
  * <p>Description: 授权服务器通用 Bean 配置器 </p>
@@ -50,17 +53,27 @@ public class OAuth2AuthenticationConfigurerManager {
     private final OAuth2ExceptionHandlingConfigurerCustomizer oauth2ExceptionHandlingConfigurerCustomizer;
     private final OAuth2AccessTokenResponseHandler oauth2AccessTokenResponseHandler;
     private final OAuth2AuthenticationFailureHandler oauth2AuthenticationFailureHandler;
+    private final OAuth2DeviceVerificationSuccessHandler oauth2DeviceVerificationSuccessHandler;
+    private final OAuth2DeviceVerificationFailureHandler oauth2DeviceVerificationFailureHandler;
+    private final OidcClientRegistrationSuccessHandler oidcClientRegistrationSuccessHandler;
 
     public OAuth2AuthenticationConfigurerManager(
             ThymeleafTemplateHandler thymeleafTemplateHandler,
             DigitalEnvelopeProcessor digitalEnvelopeProcessor,
-            OAuth2AuthenticationProperties oauth2AuthenticationProperties) {
+            OAuth2AuthenticationProperties oauth2AuthenticationProperties,
+            RegisteredClientRepository registeredClientRepository,
+            OAuth2AuthorizationResourceService authorizationResourceService,
+            OidcClientRegistrationSuccessEventManager oidcClientRegistrationSuccessEventManager,
+            OAuth2DeviceVerificationSuccessEventManager deviceVerificationSuccessEventManager) {
         this.digitalEnvelopeProcessor = digitalEnvelopeProcessor;
         this.oauth2AuthenticationProperties = oauth2AuthenticationProperties;
         this.oauth2FormLoginConfigurerCustomizer = new OAuth2FormLoginConfigurerCustomizer(oauth2AuthenticationProperties);
         this.oauth2ExceptionHandlingConfigurerCustomizer = new OAuth2ExceptionHandlingConfigurerCustomizer(oauth2AuthenticationProperties);
         this.oauth2AccessTokenResponseHandler = new OAuth2AccessTokenResponseHandler(digitalEnvelopeProcessor);
         this.oauth2AuthenticationFailureHandler = new OAuth2AuthenticationFailureHandler(thymeleafTemplateHandler);
+        this.oidcClientRegistrationSuccessHandler = new OidcClientRegistrationSuccessHandler(registeredClientRepository, authorizationResourceService, oidcClientRegistrationSuccessEventManager);
+        this.oauth2DeviceVerificationSuccessHandler = new OAuth2DeviceVerificationSuccessHandler(oauth2AuthenticationProperties.getDeviceVerificationSuccessUri(), deviceVerificationSuccessEventManager);
+        this.oauth2DeviceVerificationFailureHandler = new OAuth2DeviceVerificationFailureHandler(oauth2AuthenticationProperties.getDeviceVerificationFailureUri());
     }
 
     public DigitalEnvelopeProcessor getDigitalEnvelopeProcessor() {
@@ -85,5 +98,17 @@ public class OAuth2AuthenticationConfigurerManager {
 
     public OAuth2AuthenticationFailureHandler getOAuth2AuthenticationFailureHandler() {
         return oauth2AuthenticationFailureHandler;
+    }
+
+    public OAuth2DeviceVerificationSuccessHandler getOAuth2DeviceVerificationSuccessHandler() {
+        return oauth2DeviceVerificationSuccessHandler;
+    }
+
+    public OAuth2DeviceVerificationFailureHandler getOAuth2DeviceVerificationFailureHandler() {
+        return oauth2DeviceVerificationFailureHandler;
+    }
+
+    public OidcClientRegistrationSuccessHandler getOidcClientRegistrationSuccessHandler() {
+        return oidcClientRegistrationSuccessHandler;
     }
 }

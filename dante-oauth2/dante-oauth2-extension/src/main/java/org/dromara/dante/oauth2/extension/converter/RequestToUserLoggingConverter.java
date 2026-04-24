@@ -25,12 +25,9 @@
 
 package org.dromara.dante.oauth2.extension.converter;
 
-import cn.hutool.v7.http.useragent.UserAgent;
-import cn.hutool.v7.http.useragent.UserAgentUtil;
 import com.google.common.net.HttpHeaders;
 import jakarta.servlet.http.HttpServletRequest;
-import org.apache.commons.lang3.ObjectUtils;
-import org.dromara.dante.oauth2.extension.entity.OAuth2UserLogging;
+import org.dromara.dante.persistence.commons.domain.HerodotusUserLogging;
 import org.dromara.dante.security.utils.SecurityUtils;
 import org.dromara.dante.web.servlet.utils.HeaderUtils;
 import org.springframework.core.convert.converter.Converter;
@@ -38,12 +35,12 @@ import org.springframework.security.oauth2.server.authorization.OAuth2Authorizat
 import org.springframework.security.oauth2.server.authorization.authentication.OAuth2AccessTokenAuthenticationToken;
 
 /**
- * <p>Description: 请求转成 {@link OAuth2UserLogging} </p>
+ * <p>Description: 请求转成 {@link HerodotusUserLogging} </p>
  *
  * @author : gengwei.zheng
  * @date : 2024/12/12 17:18
  */
-public class RequestToUserLoggingConverter implements Converter<HttpServletRequest, OAuth2UserLogging> {
+public class RequestToUserLoggingConverter implements Converter<HttpServletRequest, HerodotusUserLogging> {
 
     private final String principal;
     private final String clientId;
@@ -64,32 +61,14 @@ public class RequestToUserLoggingConverter implements Converter<HttpServletReque
     }
 
     @Override
-    public OAuth2UserLogging convert(HttpServletRequest source) {
+    public HerodotusUserLogging convert(HttpServletRequest source) {
 
-        OAuth2UserLogging target = new OAuth2UserLogging();
+        HerodotusUserLogging target = new HerodotusUserLogging(source.getHeader(HttpHeaders.USER_AGENT));
         target.setPrincipalName(principal);
         target.setClientId(clientId);
         target.setIp(HeaderUtils.getIp(source));
         target.setOperation(operation);
 
-        withUserAgent(target, source);
-
         return target;
-    }
-
-    private void withUserAgent(OAuth2UserLogging target, HttpServletRequest source) {
-        UserAgent userAgent = UserAgentUtil.parse(source.getHeader(HttpHeaders.USER_AGENT));
-        if (ObjectUtils.isNotEmpty(userAgent)) {
-            target.setMobile(userAgent.isMobile());
-            target.setOsName(userAgent.getOs().getName());
-            target.setBrowserName(userAgent.getBrowser().getName());
-            target.setMobileBrowser(userAgent.getBrowser().isMobile());
-            target.setEngineName(userAgent.getEngine().getName());
-            target.setMobilePlatform(userAgent.getPlatform().isMobile());
-            target.setIphoneOrIpod(userAgent.getPlatform().isIPhoneOrIPod());
-            target.setIpad(userAgent.getPlatform().isIPad());
-            target.setIos(userAgent.getPlatform().isIos());
-            target.setAndroid(userAgent.getPlatform().isAndroid());
-        }
     }
 }

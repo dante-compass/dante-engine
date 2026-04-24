@@ -28,12 +28,11 @@ package org.dromara.dante.oauth2.extension.manager;
 import cn.hutool.v7.crypto.SecureUtil;
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.commons.lang3.ObjectUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.dromara.dante.cache.commons.exception.MaximumLimitExceededException;
 import org.dromara.dante.oauth2.extension.converter.RequestToUserLoggingConverter;
-import org.dromara.dante.oauth2.extension.entity.OAuth2UserLogging;
-import org.dromara.dante.oauth2.extension.service.OAuth2UserLoggingService;
 import org.dromara.dante.oauth2.extension.stamp.SignInFailureLimitedStampManager;
+import org.dromara.dante.persistence.commons.definition.HerodotusUserLoggingService;
+import org.dromara.dante.persistence.commons.domain.HerodotusUserLogging;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.convert.converter.Converter;
@@ -54,11 +53,11 @@ public class OAuth2ComplianceManager {
 
     private static final Logger log = LoggerFactory.getLogger(OAuth2ComplianceManager.class);
 
-    private final OAuth2UserLoggingService userLoggingService;
+    private final HerodotusUserLoggingService userLoggingService;
     private final OAuth2AccountStatusManager accountStatusManager;
     private final SignInFailureLimitedStampManager stampManager;
 
-    public OAuth2ComplianceManager(OAuth2UserLoggingService userLoggingService, OAuth2AccountStatusManager accountStatusManager, SignInFailureLimitedStampManager stampManager) {
+    public OAuth2ComplianceManager(HerodotusUserLoggingService userLoggingService, OAuth2AccountStatusManager accountStatusManager, SignInFailureLimitedStampManager stampManager) {
         this.userLoggingService = userLoggingService;
         this.accountStatusManager = accountStatusManager;
         this.stampManager = stampManager;
@@ -113,15 +112,13 @@ public class OAuth2ComplianceManager {
      * @param request 请求
      */
     public void signIn(OAuth2AccessTokenAuthenticationToken token, HttpServletRequest request) {
-        Converter<HttpServletRequest, OAuth2UserLogging> toUserLogging = new RequestToUserLoggingConverter(token);
-        OAuth2UserLogging userLogging = toUserLogging.convert(request);
+        Converter<HttpServletRequest, HerodotusUserLogging> toUserLogging = new RequestToUserLoggingConverter(token);
+        HerodotusUserLogging userLogging = toUserLogging.convert(request);
 
         if (ObjectUtils.isNotEmpty(userLogging)) {
-            OAuth2UserLogging result = userLoggingService.save(userLogging);
-            if (ObjectUtils.isNotEmpty(result) && StringUtils.isNotBlank(result.getPrincipalName())) {
-                // 清除登录失败标记
-                cleanSignInFailureTimes(result.getPrincipalName());
-            }
+            userLoggingService.save(userLogging);
+            // 清除登录失败标记
+            cleanSignInFailureTimes(userLogging.getPrincipalName());
         }
     }
 
@@ -132,8 +129,8 @@ public class OAuth2ComplianceManager {
      * @param request       请求
      */
     public void signOut(OAuth2Authorization authorization, HttpServletRequest request) {
-        Converter<HttpServletRequest, OAuth2UserLogging> toUserLogging = new RequestToUserLoggingConverter(authorization);
-        OAuth2UserLogging userLogging = toUserLogging.convert(request);
+        Converter<HttpServletRequest, HerodotusUserLogging> toUserLogging = new RequestToUserLoggingConverter(authorization);
+        HerodotusUserLogging userLogging = toUserLogging.convert(request);
 
         if (ObjectUtils.isNotEmpty(userLogging)) {
             userLoggingService.save(userLogging);

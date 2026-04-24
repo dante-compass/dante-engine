@@ -26,7 +26,7 @@
 package org.dromara.dante.message.servlet.websocket.config;
 
 import jakarta.annotation.PostConstruct;
-import org.dromara.dante.message.core.domain.WebSocketMessage;
+import org.dromara.dante.message.commons.domain.WebSocketMessage;
 import org.dromara.dante.message.servlet.websocket.annotation.ConditionalOnMultipleWebSocketInstance;
 import org.dromara.dante.message.servlet.websocket.annotation.ConditionalOnSingleWebSocketInstance;
 import org.dromara.dante.message.servlet.websocket.definition.WebSocketMessageSender;

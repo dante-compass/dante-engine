@@ -148,6 +148,7 @@ public interface ErrorCodes {
      */
     NotFoundFeedback NOT_FOUND = new NotFoundFeedback("您所请求的资源无法找到");
     NotFoundFeedback NO_RESOURCE_FOUND_EXCEPTION = new NotFoundFeedback("指定的资源未找到");
+    NotFoundFeedback NO_HANDLER_FOUND_EXCEPTION = new NotFoundFeedback("指定的Handler未找到");
 
     /**
      * 405.** 方法不允许 与405对应

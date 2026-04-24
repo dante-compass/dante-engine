@@ -26,12 +26,10 @@
 package org.dromara.dante.servlet.message.autoconfigure;
 
 import jakarta.annotation.PostConstruct;
-import org.dromara.dante.core.function.ErrorCodeMapperBuilderCustomizer;
 import org.dromara.dante.core.function.SecurityMatcherBuilderCustomizer;
 import org.dromara.dante.message.servlet.websocket.config.MessageWebSocketConfiguration;
 import org.dromara.dante.rest.message.annotation.EnableHerodotusRestMessage;
 import org.dromara.dante.servlet.container.autoconfigure.oauth2.ServletOAuth2AuthorizationAutoConfiguration;
-import org.dromara.dante.servlet.message.autoconfigure.customizer.MessageErrorCodeMapperBuilderCustomizer;
 import org.dromara.dante.servlet.message.autoconfigure.customizer.WebSocketSecurityMatcherBuilderCustomizer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -55,13 +53,6 @@ public class ServletMessageAutoConfiguration {
     @PostConstruct
     public void postConstruct() {
         log.info("[Herodotus] |- Starter [Servlet Message] Configure.");
-    }
-
-    @Bean
-    public ErrorCodeMapperBuilderCustomizer messageErrorCodeMapperBuilderCustomizer() {
-        MessageErrorCodeMapperBuilderCustomizer customizer = new MessageErrorCodeMapperBuilderCustomizer();
-        log.debug("[Herodotus] |- Strategy [Message ErrorCodeMapper Builder Customizer] Configure.");
-        return customizer;
     }
 
     @Bean

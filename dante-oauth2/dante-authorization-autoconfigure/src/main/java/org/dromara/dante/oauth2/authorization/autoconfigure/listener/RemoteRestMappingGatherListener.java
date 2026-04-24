@@ -26,9 +26,9 @@
 package org.dromara.dante.oauth2.authorization.autoconfigure.listener;
 
 import org.dromara.dante.core.jackson.JacksonUtils;
-import org.dromara.dante.message.core.domain.RestMapping;
-import org.dromara.dante.oauth2.authorization.autoconfigure.bus.RemoteRestMappingGatherEvent;
+import org.dromara.dante.oauth2.authorization.autoconfigure.bus.RemoteRestMappingCollectEvent;
 import org.dromara.dante.oauth2.authorization.autoconfigure.processor.SecurityAttributeDistributionProcessor;
+import org.dromara.dante.security.domain.attribute.RestMapping;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationListener;
@@ -38,14 +38,14 @@ import java.util.Optional;
 /**
  * <p>Description: SecurityMetadata远程变更事件监听 </p>
  * <p>
- * 所有服务启动完成，扫描 Rest 到所有接口之后，会通过发送 {@link RemoteRestMappingGatherEvent} 事件，将扫描到的接口数据发送到 UPMS
+ * 所有服务启动完成，扫描 Rest 到所有接口之后，会通过发送 {@link RemoteRestMappingCollectEvent} 事件，将扫描到的接口数据发送到 UPMS
  * <p>
- * {@link RemoteRestMappingGatherListener} 监听到 {@link RemoteRestMappingGatherEvent} 事件后，进行后续的处理。
+ * {@link RemoteRestMappingGatherListener} 监听到 {@link RemoteRestMappingCollectEvent} 事件后，进行后续的处理。
  *
  * @author : gengwei.zheng
  * @date : 2021/8/5 16:16
  */
-public class RemoteRestMappingGatherListener implements ApplicationListener<RemoteRestMappingGatherEvent> {
+public class RemoteRestMappingGatherListener implements ApplicationListener<RemoteRestMappingCollectEvent> {
 
     private static final Logger log = LoggerFactory.getLogger(RemoteRestMappingGatherListener.class);
 
@@ -56,7 +56,7 @@ public class RemoteRestMappingGatherListener implements ApplicationListener<Remo
     }
 
     @Override
-    public void onApplicationEvent(RemoteRestMappingGatherEvent event) {
+    public void onApplicationEvent(RemoteRestMappingCollectEvent event) {
 
         log.info("[Herodotus] |- Request mapping gather REMOTE listener, response service [{}] event!", event.getOriginService());
 

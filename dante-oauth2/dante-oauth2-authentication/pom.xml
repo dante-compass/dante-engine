@@ -33,7 +33,7 @@
     <parent>
         <artifactId>dante-oauth2</artifactId>
         <groupId>org.dromara.dante</groupId>
-        <version>4.0.5.2</version>
+        <version>4.0.6.0</version>
     </parent>
 
     <artifactId>dante-oauth2-authentication</artifactId>
@@ -42,10 +42,9 @@
     <description>Dante Cloud 云原生微服务基座组件库 Spring Authorization Server 授权服务器核心功能封装模块</description>
 
     <dependencies>
-
         <dependency>
             <groupId>org.dromara.dante</groupId>
-            <artifactId>dante-oauth2-persistence-jpa</artifactId>
+            <artifactId>dante-persistence-commons</artifactId>
         </dependency>
     </dependencies>
 

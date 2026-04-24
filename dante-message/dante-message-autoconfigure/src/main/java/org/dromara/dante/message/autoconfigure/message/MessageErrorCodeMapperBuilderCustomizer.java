@@ -27,9 +27,9 @@ package org.dromara.dante.message.autoconfigure.message;
 
 
 import org.dromara.dante.core.builder.ErrorCodeMapperBuilder;
-import org.dromara.dante.core.constant.ErrorCodeMapperBuilderOrdered;
+import org.dromara.dante.core.constant.BuilderCustomizerOrdered;
 import org.dromara.dante.core.function.ErrorCodeMapperBuilderCustomizer;
-import org.dromara.dante.message.core.constants.MessageErrorCodes;
+import org.dromara.dante.message.commons.constant.MessageErrorCodes;
 import org.springframework.core.Ordered;
 
 /**
@@ -49,6 +49,6 @@ public class MessageErrorCodeMapperBuilderCustomizer implements ErrorCodeMapperB
 
     @Override
     public int getOrder() {
-        return ErrorCodeMapperBuilderOrdered.MESSAGE;
+        return BuilderCustomizerOrdered.ERROR_CODE__MESSAGE;
     }
 }

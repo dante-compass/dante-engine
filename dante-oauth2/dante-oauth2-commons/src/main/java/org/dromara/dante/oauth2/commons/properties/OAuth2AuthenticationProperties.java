@@ -29,7 +29,9 @@ import com.google.common.base.MoreObjects;
 import org.apache.commons.lang3.StringUtils;
 import org.dromara.dante.core.constant.SymbolConstants;
 import org.dromara.dante.core.constant.SystemConstants;
-import org.dromara.dante.oauth2.commons.constants.OAuth2Constants;
+import org.dromara.dante.oauth2.commons.constant.OAuth2Constants;
+import org.dromara.dante.oauth2.commons.enums.SasPersistence;
+import org.dromara.dante.oauth2.commons.enums.SysPersistence;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.rememberme.AbstractRememberMeServices;
@@ -52,6 +54,17 @@ public class OAuth2AuthenticationProperties {
     private String authorizationConsentUri = SystemConstants.OAUTH2_AUTHORIZATION_CONSENT_URI;
 
     /**
+     * 设备码授权模式验证成功跳转地址
+     */
+    private String deviceVerificationSuccessUri = SystemConstants.OAUTH2_DEVICE_VERIFICATION_SUCCESS_URI;
+
+    /**
+     * 设备码授权模式验证失败跳转地址
+     */
+    private String deviceVerificationFailureUri = SystemConstants.OAUTH2_DEVICE_VERIFICATION_FAILURE_URI;
+
+
+    /**
      * Ssl Bundle Provider 名称，该名称与 Spring SSL 配置匹配。
      */
     private String sslBundleProvider;
@@ -72,12 +85,33 @@ public class OAuth2AuthenticationProperties {
 
     private FormLogin formLogin = new FormLogin();
 
+    /**
+     * 核心数据持久化方式
+     */
+    private Persistence persistence = new Persistence();
+
     public String getAuthorizationConsentUri() {
         return authorizationConsentUri;
     }
 
     public void setAuthorizationConsentUri(String authorizationConsentUri) {
         this.authorizationConsentUri = authorizationConsentUri;
+    }
+
+    public String getDeviceVerificationSuccessUri() {
+        return deviceVerificationSuccessUri;
+    }
+
+    public void setDeviceVerificationSuccessUri(String deviceVerificationSuccessUri) {
+        this.deviceVerificationSuccessUri = deviceVerificationSuccessUri;
+    }
+
+    public String getDeviceVerificationFailureUri() {
+        return deviceVerificationFailureUri;
+    }
+
+    public void setDeviceVerificationFailureUri(String deviceVerificationFailureUri) {
+        this.deviceVerificationFailureUri = deviceVerificationFailureUri;
     }
 
     public String getSslBundleProvider() {
@@ -118,6 +152,14 @@ public class OAuth2AuthenticationProperties {
 
     public void setFormLogin(FormLogin formLogin) {
         this.formLogin = formLogin;
+    }
+
+    public Persistence getPersistence() {
+        return persistence;
+    }
+
+    public void setPersistence(Persistence persistence) {
+        this.persistence = persistence;
     }
 
     @Override
@@ -449,6 +491,55 @@ public class OAuth2AuthenticationProperties {
                     .add("cookieMaxAge", cookieMaxAge)
                     .add("captchaEnabled", captchaEnabled)
                     .add("category", category)
+                    .toString();
+        }
+    }
+
+    public static class Persistence {
+
+        /**
+         * 是否初始化数据。
+         */
+        private Boolean initialized = Boolean.FALSE;
+        /**
+         * SAS 核心数据持久化方式
+         */
+        private SasPersistence sas = SasPersistence.JPA;
+        /**
+         * 系统核心数据持久化方式
+         */
+        private SysPersistence sys = SysPersistence.JPA;
+
+        public Boolean getInitialized() {
+            return initialized;
+        }
+
+        public void setInitialized(Boolean initialized) {
+            this.initialized = initialized;
+        }
+
+        public SasPersistence getSas() {
+            return sas;
+        }
+
+        public void setSas(SasPersistence sas) {
+            this.sas = sas;
+        }
+
+        public SysPersistence getSys() {
+            return sys;
+        }
+
+        public void setSys(SysPersistence sys) {
+            this.sys = sys;
+        }
+
+        @Override
+        public String toString() {
+            return MoreObjects.toStringHelper(this)
+                    .add("initialized", initialized)
+                    .add("sas", sas)
+                    .add("sys", sys)
                     .toString();
         }
     }

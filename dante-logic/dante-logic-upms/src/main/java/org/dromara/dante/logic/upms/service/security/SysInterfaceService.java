@@ -35,7 +35,7 @@ import org.dromara.dante.logic.upms.converter.RequestMappingToSysInterfaceConver
 import org.dromara.dante.logic.upms.entity.security.SysAttribute;
 import org.dromara.dante.logic.upms.entity.security.SysInterface;
 import org.dromara.dante.logic.upms.repository.security.SysInterfaceRepository;
-import org.dromara.dante.message.core.domain.RestMapping;
+import org.dromara.dante.security.domain.attribute.RestMapping;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;

@@ -26,7 +26,7 @@
 package org.dromara.dante.autoconfigure.error;
 
 import org.dromara.dante.core.builder.ErrorCodeMapperBuilder;
-import org.dromara.dante.core.constant.ErrorCodeMapperBuilderOrdered;
+import org.dromara.dante.core.constant.BuilderCustomizerOrdered;
 import org.dromara.dante.core.constant.ErrorCodes;
 import org.dromara.dante.core.function.ErrorCodeMapperBuilderCustomizer;
 import org.springframework.core.Ordered;
@@ -63,7 +63,7 @@ public class StandardErrorCodeMapperBuilderCustomizer implements ErrorCodeMapper
                         ErrorCodes.UNSUPPORTED_TOKEN_TYPE,
                         ErrorCodes.USERNAME_ALREADY_EXISTS,
                         ErrorCodes.FEIGN_DECODER_IO_EXCEPTION)
-                .notFound(ErrorCodes.NO_RESOURCE_FOUND_EXCEPTION)
+                .notFound(ErrorCodes.NO_RESOURCE_FOUND_EXCEPTION, ErrorCodes.NO_HANDLER_FOUND_EXCEPTION)
                 .preconditionFailed(ErrorCodes.INVALID_REDIRECT_URI,
                         ErrorCodes.INVALID_REQUEST,
                         ErrorCodes.INVALID_SCOPE,
@@ -99,6 +99,6 @@ public class StandardErrorCodeMapperBuilderCustomizer implements ErrorCodeMapper
 
     @Override
     public int getOrder() {
-        return ErrorCodeMapperBuilderOrdered.STANDARD;
+        return BuilderCustomizerOrdered.ERROR_CODE__STANDARD;
     }
 }

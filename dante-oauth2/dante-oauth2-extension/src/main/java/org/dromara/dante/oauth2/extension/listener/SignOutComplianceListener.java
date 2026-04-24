@@ -27,7 +27,7 @@ package org.dromara.dante.oauth2.extension.listener;
 
 import jakarta.servlet.http.HttpServletRequest;
 import org.dromara.dante.oauth2.extension.manager.OAuth2ComplianceManager;
-import org.dromara.dante.oauth2.persistence.sas.jpa.event.SignOutComplianceEvent;
+import org.dromara.dante.persistence.commons.event.SignOutComplianceEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.security.oauth2.server.authorization.OAuth2Authorization;
 

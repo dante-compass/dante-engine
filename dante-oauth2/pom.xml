@@ -32,7 +32,7 @@
     <parent>
         <artifactId>dante-engine</artifactId>
         <groupId>org.dromara.dante</groupId>
-        <version>4.0.5.2</version>
+        <version>4.0.6.0</version>
     </parent>
 
     <artifactId>dante-oauth2</artifactId>
@@ -48,7 +48,6 @@
         <module>dante-oauth2-authorization</module>
         <module>dante-authorization-autoconfigure</module>
         <module>dante-authentication-autoconfigure</module>
-        <module>dante-oauth2-persistence-jpa</module>
         <module>dante-oauth2-extension</module>
     </modules>
 

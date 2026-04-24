@@ -30,7 +30,7 @@ import org.springframework.data.convert.PropertyValueConverter;
 import org.springframework.data.mongodb.core.convert.MongoConversionContext;
 
 /**
- * <p>Description: {@link DataItemStatus} 转换器 </p>
+ * <p>Description: {@link DataItemStatus} 枚举 Mongodb 环境转换器 </p>
  *
  * @author : gengwei.zheng
  * @date : 2025/3/31 15:27

@@ -26,6 +26,7 @@
 package org.dromara.dante.oss.autoconfigure;
 
 import jakarta.annotation.PostConstruct;
+import org.dromara.dante.assistant.oss.condition.ConditionalOnOssEnabled;
 import org.dromara.dante.rest.oss.config.RestOssConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,7 +39,8 @@ import org.springframework.context.annotation.Import;
  * @author : gengwei.zheng
  * @date : 2024/7/22 21:29
  */
-@AutoConfiguration()
+@AutoConfiguration(beforeName = {"org.dromara.dante.autoconfigure.file.FileAutoConfiguration"})
+@ConditionalOnOssEnabled
 @Import({
         RestOssConfiguration.class
 })

@@ -27,7 +27,7 @@ package org.dromara.dante.oauth2.authorization.matcher;
 
 import jakarta.servlet.http.HttpServletRequest;
 import org.dromara.dante.oauth2.authorization.attribute.RestSecurityAttributeStorage;
-import org.dromara.dante.security.domain.HerodotusRequest;
+import org.dromara.dante.oauth2.authorization.cache.HerodotusRequest;
 import org.springframework.security.web.servlet.util.matcher.PathPatternRequestMatcher;
 import org.springframework.security.web.util.matcher.RequestMatcher;
 

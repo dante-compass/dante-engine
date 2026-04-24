@@ -33,7 +33,7 @@
     <parent>
         <groupId>cn.herodotus.ecosystem</groupId>
         <artifactId>herodotus-ecosystem-parent</artifactId>
-        <version>4.0.5.2</version>
+        <version>4.0.6.0</version>
         <relativePath/>
     </parent>
 
@@ -44,7 +44,7 @@
 
     <description>Dante Engine</description>
 
-    <url>https://github.com/dromara/dante-cloud</url>
+    <url>https://github.com/dante-compass/dante-engine</url>
 
     <licenses>
         <license>
@@ -55,9 +55,9 @@
     </licenses>
 
     <scm>
-        <url>https://github.com/dromara/dante-cloud</url>
-        <connection>scm:git:git@github.com:dromara/dante-cloud.git</connection>
-        <developerConnection>scm:git:git@github.com:dromara/dante-cloud.git</developerConnection>
+        <url>https://github.com/dante-compass/dante-engine</url>
+        <connection>scm:git:git@github.com:dante-compass/dante-engine.git</connection>
+        <developerConnection>scm:git:git@github.com:dante-compass/dante-engine.git</developerConnection>
     </scm>
 
     <organization>
@@ -147,6 +147,7 @@
         <module>dante-starter</module>
         <module>dante-message</module>
         <module>dante-oauth2</module>
+        <module>dante-persistence</module>
     </modules>
 
 </project>

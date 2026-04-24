@@ -25,7 +25,7 @@
 
 package org.dromara.dante.cache.redis.definition;
 
-import org.dromara.dante.cache.commons.constants.CacheConstants;
+import org.dromara.dante.cache.commons.constant.CacheConstants;
 import org.springframework.data.redis.core.StringRedisTemplate;
 
 import java.time.Duration;

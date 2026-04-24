@@ -27,8 +27,9 @@ package org.dromara.dante.logic.identity.customizer;
 
 import org.dromara.dante.core.builder.EnumDictionaryBuilder;
 import org.dromara.dante.core.function.EnumDictionaryBuilderCustomizer;
-import org.dromara.dante.logic.identity.enums.*;
-import org.dromara.dante.security.enums.PermissionExpression;
+import org.dromara.dante.logic.identity.enums.AuthenticationMethod;
+import org.dromara.dante.logic.identity.enums.GrantType;
+import org.dromara.dante.oauth2.commons.enums.PermissionExpression;
 
 /**
  * <p>Description: Identity 枚举数据字典定义器 </p>
@@ -40,11 +41,11 @@ public class IdentityEnumDictionaryBuilderCustomizer implements EnumDictionaryBu
 
     @Override
     public void customize(EnumDictionaryBuilder builder) {
-        builder.append(AllJwsAlgorithm.getDictionaries());
+        builder.append(org.dromara.dante.persistence.commons.enums.AllJwsAlgorithm.getDictionaries());
         builder.append(AuthenticationMethod.getDictionaries());
         builder.append(GrantType.getDictionaries());
-        builder.append(SignatureJwsAlgorithm.getDictionaries());
-        builder.append(TokenFormat.getDictionaries());
+        builder.append(org.dromara.dante.persistence.commons.enums.SignatureJwsAlgorithm.getDictionaries());
+        builder.append(org.dromara.dante.persistence.commons.enums.TokenFormat.getDictionaries());
         builder.append(PermissionExpression.getDictionaries());
     }
 }
