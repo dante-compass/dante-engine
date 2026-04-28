@@ -42,14 +42,14 @@ import java.util.List;
  * @author : gengwei.zheng
  * @date : 2024/8/23 17:09
  */
-public class EnumDictionaryGather implements ApplicationListener<ApplicationReadyEvent> {
+public class EnumDictionaryCollector implements ApplicationListener<ApplicationReadyEvent> {
 
-    private static final Logger log = LoggerFactory.getLogger(EnumDictionaryGather.class);
+    private static final Logger log = LoggerFactory.getLogger(EnumDictionaryCollector.class);
 
     private final EnumDictionaryBuilder enumDictionaryBuilder;
     private final EnumDictionaryCollectEventManager enumDictionaryCollectEventManager;
 
-    public EnumDictionaryGather(EnumDictionaryBuilder enumDictionaryBuilder, EnumDictionaryCollectEventManager enumDictionaryCollectEventManager) {
+    public EnumDictionaryCollector(EnumDictionaryBuilder enumDictionaryBuilder, EnumDictionaryCollectEventManager enumDictionaryCollectEventManager) {
         this.enumDictionaryBuilder = enumDictionaryBuilder;
         this.enumDictionaryCollectEventManager = enumDictionaryCollectEventManager;
     }

@@ -192,27 +192,35 @@ class ServiceContext {
      */
     private String deviceVerificationEndpoint = SystemConstants.OAUTH2_DEVICE_VERIFICATION_ENDPOINT;
     /**
-     * OAuth2 OIDC /connect/register uri 地址，可修改为自定义地址
+     * OAuth2 /oauth2/register uri 地址，可修改为自定义地址
+     */
+    private String clientRegistrationUri;
+    /**
+     * OAuth2 /oauth2/register 端点地址，可修改为自定义地址
+     */
+    private String clientRegistrationEndpoint = SystemConstants.OAUTH2_CLIENT_REGISTRATION_ENDPOINT;
+    /**
+     * OIDC /connect/register uri 地址，可修改为自定义地址
      */
     private String oidcClientRegistrationUri;
     /**
-     * OAuth2 OIDC /connect/register 端点地址，可修改为自定义地址
+     * OIDC /connect/register 端点地址，可修改为自定义地址
      */
     private String oidcClientRegistrationEndpoint = SystemConstants.OIDC_CLIENT_REGISTRATION_ENDPOINT;
     /**
-     * OAuth2 OIDC /connect/logout uri 地址，可修改为自定义地址
+     * OIDC /connect/logout uri 地址，可修改为自定义地址
      */
     private String oidcLogoutUri;
     /**
-     * OAuth2 OIDC /connect/logout 端点地址，可修改为自定义地址
+     * OIDC /connect/logout 端点地址，可修改为自定义地址
      */
     private String oidcLogoutEndpoint = SystemConstants.OIDC_LOGOUT_ENDPOINT;
     /**
-     * OAuth2 OIDC /userinfo uri 地址，可修改为自定义地址
+     * OIDC /userinfo uri 地址，可修改为自定义地址
      */
     private String oidcUserInfoUri;
     /**
-     * OAuth2 OIDC /userinfo 端点地址，可修改为自定义地址
+     * OIDC /userinfo 端点地址，可修改为自定义地址
      */
     private String oidcUserInfoEndpoint = SystemConstants.OIDC_USER_INFO_ENDPOINT;
     /**
@@ -516,6 +524,22 @@ class ServiceContext {
         this.deviceVerificationEndpoint = deviceVerificationEndpoint;
     }
 
+    public String getClientRegistrationUri() {
+        return clientRegistrationUri;
+    }
+
+    public void setClientRegistrationUri(String clientRegistrationUri) {
+        this.clientRegistrationUri = clientRegistrationUri;
+    }
+
+    public String getClientRegistrationEndpoint() {
+        return clientRegistrationEndpoint;
+    }
+
+    public void setClientRegistrationEndpoint(String clientRegistrationEndpoint) {
+        this.clientRegistrationEndpoint = clientRegistrationEndpoint;
+    }
+
     public String getOidcClientRegistrationUri() {
         return oidcClientRegistrationUri;
     }
@@ -589,11 +613,13 @@ class ServiceContext {
                 .add("upmsServiceName", upmsServiceName)
                 .add("messageServiceName", messageServiceName)
                 .add("ossServiceName", ossServiceName)
+                .add("iotServiceName", iotServiceName)
                 .add("gatewayServiceUri", gatewayServiceUri)
                 .add("uaaServiceUri", uaaServiceUri)
                 .add("upmsServiceUri", upmsServiceUri)
                 .add("messageServiceUri", messageServiceUri)
                 .add("ossServiceUri", ossServiceUri)
+                .add("iotServiceUri", iotServiceUri)
                 .add("authorizationUri", authorizationUri)
                 .add("authorizationEndpoint", authorizationEndpoint)
                 .add("pushedAuthorizationRequestUri", pushedAuthorizationRequestUri)
@@ -610,6 +636,8 @@ class ServiceContext {
                 .add("deviceAuthorizationEndpoint", deviceAuthorizationEndpoint)
                 .add("deviceVerificationUri", deviceVerificationUri)
                 .add("deviceVerificationEndpoint", deviceVerificationEndpoint)
+                .add("clientRegistrationUri", clientRegistrationUri)
+                .add("clientRegistrationEndpoint", clientRegistrationEndpoint)
                 .add("oidcClientRegistrationUri", oidcClientRegistrationUri)
                 .add("oidcClientRegistrationEndpoint", oidcClientRegistrationEndpoint)
                 .add("oidcLogoutUri", oidcLogoutUri)

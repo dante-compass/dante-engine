@@ -26,13 +26,13 @@
 package org.dromara.dante.web.autoconfigure.config;
 
 import jakarta.annotation.PostConstruct;
+import org.dromara.dante.web.autoconfigure.envelope.DefaultDigitalEnvelopeProcessor;
+import org.dromara.dante.web.autoconfigure.properties.SecureProperties;
+import org.dromara.dante.web.autoconfigure.stamp.AccessLimitedStampManager;
+import org.dromara.dante.web.autoconfigure.stamp.IdempotentStampManager;
 import org.dromara.dante.web.support.crypto.AsymmetricCryptoProcessor;
 import org.dromara.dante.web.support.crypto.DigitalEnvelopeProcessor;
 import org.dromara.dante.web.support.crypto.SymmetricCryptoProcessor;
-import org.dromara.dante.web.autoconfigure.properties.SecureProperties;
-import org.dromara.dante.web.autoconfigure.envelope.DefaultDigitalEnvelopeProcessor;
-import org.dromara.dante.web.autoconfigure.stamp.AccessLimitedStampManager;
-import org.dromara.dante.web.autoconfigure.stamp.IdempotentStampManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -49,9 +49,9 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration(proxyBeanMethods = false)
 @EnableConfigurationProperties({SecureProperties.class})
-public class SecureStampConfiguration {
+public class SecureConfiguration {
 
-    private static final Logger log = LoggerFactory.getLogger(SecureStampConfiguration.class);
+    private static final Logger log = LoggerFactory.getLogger(SecureConfiguration.class);
 
     @PostConstruct
     public void postConstruct() {

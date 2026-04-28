@@ -88,6 +88,7 @@ public interface SystemConstants {
     String OAUTH2_TOKEN_ENDPOINT = "/oauth2/token";
     String OAUTH2_TOKEN_REVOCATION_ENDPOINT = "/oauth2/revoke";
     String OAUTH2_TOKEN_INTROSPECTION_ENDPOINT = "/oauth2/introspect";
+    String OAUTH2_CLIENT_REGISTRATION_ENDPOINT = "/oauth2/register";
     String OAUTH2_DEVICE_AUTHORIZATION_ENDPOINT = "/oauth2/device_authorization";
     String OAUTH2_DEVICE_VERIFICATION_ENDPOINT = "/oauth2/device_verification";
     String OAUTH2_JWK_SET_ENDPOINT = "/oauth2/jwks";
