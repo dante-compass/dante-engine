@@ -37,50 +37,50 @@ import org.slf4j.LoggerFactory;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.oauth2.server.authorization.OAuth2ClientRegistration;
+import org.springframework.security.oauth2.server.authorization.authentication.OAuth2ClientRegistrationAuthenticationToken;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClientRepository;
-import org.springframework.security.oauth2.server.authorization.oidc.OidcClientRegistration;
-import org.springframework.security.oauth2.server.authorization.oidc.authentication.OidcClientRegistrationAuthenticationToken;
-import org.springframework.security.oauth2.server.authorization.oidc.http.converter.OidcClientRegistrationHttpMessageConverter;
+import org.springframework.security.oauth2.server.authorization.http.converter.OAuth2ClientRegistrationHttpMessageConverter;
 
 import java.io.IOException;
 
 /**
- * <p>Description: OIDC 客户端自动注册成功后续逻辑处理器 </p>
+ * <p>Description: OAuth2 客户端自动注册成功后续逻辑处理器 </p>
  *
  * @author : gengwei.zheng
  * @date : 2023/5/23 17:37
  */
-public class OidcClientRegistrationSuccessHandler extends AbstractClientRegistrationSuccessHandler<OidcClientRegistration> {
+public class OAuth2ClientRegistrationSuccessHandler extends AbstractClientRegistrationSuccessHandler<OAuth2ClientRegistration> {
 
-    private static final Logger log = LoggerFactory.getLogger(OidcClientRegistrationSuccessHandler.class);
+    private static final Logger log = LoggerFactory.getLogger(OAuth2ClientRegistrationSuccessHandler.class);
 
-    private final HttpMessageConverter<OidcClientRegistration> clientRegistrationHttpMessageConverter =
-            new OidcClientRegistrationHttpMessageConverter();
+    private final HttpMessageConverter<OAuth2ClientRegistration> clientRegistrationHttpMessageConverter =
+            new OAuth2ClientRegistrationHttpMessageConverter();
 
-    public OidcClientRegistrationSuccessHandler(RegisteredClientRepository registeredClientRepository, OAuth2AuthorizationResourceService authorizationResourceService, ClientRegistrationSuccessEventManager clientRegistrationSuccessEventManager) {
+    public OAuth2ClientRegistrationSuccessHandler(RegisteredClientRepository registeredClientRepository, OAuth2AuthorizationResourceService authorizationResourceService, ClientRegistrationSuccessEventManager clientRegistrationSuccessEventManager) {
         super(registeredClientRepository, authorizationResourceService, clientRegistrationSuccessEventManager);
     }
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
 
-        log.info("[Herodotus] |- OIDC client dynamic registration successful!");
+        log.info("[Herodotus] |- OAuth2 client dynamic registration successful!");
 
-        OidcClientRegistrationAuthenticationToken clientRegistrationAuthenticationToken =
-                (OidcClientRegistrationAuthenticationToken) authentication;
+        OAuth2ClientRegistrationAuthenticationToken clientRegistrationAuthenticationToken =
+                (OAuth2ClientRegistrationAuthenticationToken) authentication;
 
-        OidcClientRegistration clientRegistration = clientRegistrationAuthenticationToken.getClientRegistration();
+        OAuth2ClientRegistration clientRegistration = clientRegistrationAuthenticationToken.getClientRegistration();
 
         process(clientRegistration, (registration, id) -> {
-            Converter<OidcClientRegistration, RegisteredClientTransmitter> toTransmitter = new OidcClientRegistrationToRegisteredClientTransmitterConverter(id);
+            Converter<OAuth2ClientRegistration, RegisteredClientTransmitter> toTransmitter = new OAuth2ClientRegistrationToRegisteredClientTransmitterConverter(id);
             return toTransmitter.convert(registration);
         });
 
         this.clientRegistrationHttpMessageConverter.write(clientRegistration, null, writeOutputMessage(request, response));
     }
 
-    static class OidcClientRegistrationToRegisteredClientTransmitterConverter extends AbstractToRegisteredClientTransmitterConverter<OidcClientRegistration> {
-        public OidcClientRegistrationToRegisteredClientTransmitterConverter(String id) {
+    static class OAuth2ClientRegistrationToRegisteredClientTransmitterConverter extends AbstractToRegisteredClientTransmitterConverter<OAuth2ClientRegistration> {
+        public OAuth2ClientRegistrationToRegisteredClientTransmitterConverter(String id) {
             super(id);
         }
     }

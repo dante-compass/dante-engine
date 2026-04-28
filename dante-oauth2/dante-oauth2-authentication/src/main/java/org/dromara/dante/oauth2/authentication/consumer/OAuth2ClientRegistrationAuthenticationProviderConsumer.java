@@ -26,14 +26,13 @@
 package org.dromara.dante.oauth2.authentication.consumer;
 
 import org.dromara.dante.core.constant.SystemConstants;
-import org.dromara.dante.oauth2.authentication.converter.OidcClientRegistrationToRegisteredClientConverter;
-import org.dromara.dante.oauth2.authentication.converter.RegisteredClientToOidcClientRegistrationConverter;
+import org.dromara.dante.oauth2.authentication.converter.OAuth2ClientRegistrationToRegisteredClientConverter;
+import org.dromara.dante.oauth2.authentication.converter.RegisteredClientToOAuth2ClientRegistrationConverter;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.oauth2.server.authorization.OAuth2ClientRegistration;
+import org.springframework.security.oauth2.server.authorization.authentication.OAuth2ClientRegistrationAuthenticationProvider;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
-import org.springframework.security.oauth2.server.authorization.oidc.OidcClientRegistration;
-import org.springframework.security.oauth2.server.authorization.oidc.authentication.OidcClientConfigurationAuthenticationProvider;
-import org.springframework.security.oauth2.server.authorization.oidc.authentication.OidcClientRegistrationAuthenticationProvider;
 
 import java.util.List;
 import java.util.function.Consumer;
@@ -44,29 +43,26 @@ import java.util.function.Consumer;
  * @author : gengwei.zheng
  * @date : 2024/5/16 16:37
  */
-public class OidcClientRegistrationAuthenticationProviderConsumer implements Consumer<List<AuthenticationProvider>> {
+public class OAuth2ClientRegistrationAuthenticationProviderConsumer implements Consumer<List<AuthenticationProvider>> {
 
     private static final List<String> clientMetadata = List.of(SystemConstants.PARAMETER__PRODUCT_KEY);
     private final boolean isRemoteValidate;
 
-    public OidcClientRegistrationAuthenticationProviderConsumer(boolean isRemoteValidate) {
+    public OAuth2ClientRegistrationAuthenticationProviderConsumer(boolean isRemoteValidate) {
         this.isRemoteValidate = isRemoteValidate;
     }
 
     @Override
     public void accept(List<AuthenticationProvider> authenticationProviders) {
 
-        Converter<OidcClientRegistration, RegisteredClient> toRegisteredClientConverter =
-                new OidcClientRegistrationToRegisteredClientConverter(clientMetadata, isRemoteValidate);
-        Converter<RegisteredClient, OidcClientRegistration> toOidcClientRegistrationConverter =
-                new RegisteredClientToOidcClientRegistrationConverter(clientMetadata);
+        Converter<OAuth2ClientRegistration, RegisteredClient> toRegisteredClientConverter =
+                new OAuth2ClientRegistrationToRegisteredClientConverter(clientMetadata, isRemoteValidate);
+        Converter<RegisteredClient, OAuth2ClientRegistration> toOidcClientRegistrationConverter =
+                new RegisteredClientToOAuth2ClientRegistrationConverter(clientMetadata);
 
         authenticationProviders.forEach((authenticationProvider) -> {
-            if (authenticationProvider instanceof OidcClientRegistrationAuthenticationProvider provider) {
+            if (authenticationProvider instanceof OAuth2ClientRegistrationAuthenticationProvider provider) {
                 provider.setRegisteredClientConverter(toRegisteredClientConverter);
-                provider.setClientRegistrationConverter(toOidcClientRegistrationConverter);
-            }
-            if (authenticationProvider instanceof OidcClientConfigurationAuthenticationProvider provider) {
                 provider.setClientRegistrationConverter(toOidcClientRegistrationConverter);
             }
         });

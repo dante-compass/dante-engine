@@ -31,14 +31,13 @@ import org.dromara.dante.oauth2.authentication.customizer.HerodotusJwtTokenCusto
 import org.dromara.dante.oauth2.authentication.customizer.HerodotusOpaqueTokenCustomizer;
 import org.dromara.dante.oauth2.authentication.response.DefaultOAuth2AuthenticationEventPublisher;
 import org.dromara.dante.oauth2.commons.properties.OAuth2AuthenticationProperties;
+import org.dromara.dante.oauth2.commons.strategy.ClientRegistrationSuccessEventManager;
 import org.dromara.dante.oauth2.commons.strategy.OAuth2DeviceVerificationSuccessEventManager;
-import org.dromara.dante.oauth2.commons.strategy.OidcClientRegistrationSuccessEventManager;
 import org.dromara.dante.security.service.OAuth2AuthorizationResourceService;
 import org.dromara.dante.web.servlet.template.ThymeleafTemplateHandler;
 import org.dromara.dante.web.support.crypto.DigitalEnvelopeProcessor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -95,7 +94,7 @@ public class OAuth2AuthenticationConfiguration {
             OAuth2AuthenticationProperties authenticationProperties,
             RegisteredClientRepository registeredClientRepository,
             OAuth2AuthorizationResourceService authorizationResourceService,
-            OidcClientRegistrationSuccessEventManager oidcClientRegistrationSuccessEventManager,
+            ClientRegistrationSuccessEventManager clientRegistrationSuccessEventManager,
             OAuth2DeviceVerificationSuccessEventManager deviceVerificationSuccessEventManager) {
 
         OAuth2AuthenticationConfigurerManager configurer = new OAuth2AuthenticationConfigurerManager(
@@ -104,7 +103,7 @@ public class OAuth2AuthenticationConfiguration {
                 authenticationProperties,
                 registeredClientRepository,
                 authorizationResourceService,
-                oidcClientRegistrationSuccessEventManager,
+                clientRegistrationSuccessEventManager,
                 deviceVerificationSuccessEventManager);
         log.trace("[Herodotus] |- Bean [Servlet OAuth2 Authorization Server Configurer] Configure.");
         return configurer;

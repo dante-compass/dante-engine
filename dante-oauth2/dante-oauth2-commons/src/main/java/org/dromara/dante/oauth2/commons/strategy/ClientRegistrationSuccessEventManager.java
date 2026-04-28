@@ -34,5 +34,5 @@ import org.dromara.dante.security.domain.RegisteredClientTransmitter;
  * @author : gengwei.zheng
  * @date : 2024/8/21 21:56
  */
-public interface OidcClientRegistrationSuccessEventManager extends ApplicationStrategyEventManager<RegisteredClientTransmitter> {
+public interface ClientRegistrationSuccessEventManager extends ApplicationStrategyEventManager<RegisteredClientTransmitter> {
 }

@@ -25,34 +25,40 @@
 
 package org.dromara.dante.oauth2.authentication.converter;
 
+import org.apache.commons.lang3.ObjectUtils;
+import org.springframework.security.oauth2.server.authorization.OAuth2ClientRegistration;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
-import org.springframework.security.oauth2.server.authorization.oidc.OidcClientRegistration;
-import org.springframework.security.oauth2.server.authorization.oidc.converter.OidcClientRegistrationRegisteredClientConverter;
+import org.springframework.security.oauth2.server.authorization.converter.RegisteredClientOAuth2ClientRegistrationConverter;
 
 import java.util.List;
+import java.util.Map;
 
 /**
- * <p>Description: 自定义扩展的  {@link OidcClientRegistration} 转 {@link RegisteredClient} 转换器抽象定义 </p>
+ * <p>Description: 自定义扩展的 {@link RegisteredClient} 转  {@link OAuth2ClientRegistration} 转换器抽象定义 </p>
  * <p>
  * 主要为了解决在客户端自动注册时，增加自定属性。例如：物联网模式下增加 ProductKey
  *
- * @author : gengwei.zheng
- * @date : 2024/5/16 16:18
+ * @author : gengwei_zheng
+ * @date : 2026/4/27 18:01
  */
-public class OidcClientRegistrationToRegisteredClientConverter extends AbstractToRegisteredClientConverter<OidcClientRegistration> {
+public class RegisteredClientToOAuth2ClientRegistrationConverter extends AbstractFromRegisteredClientConverter<OAuth2ClientRegistration> {
 
+    private final RegisteredClientOAuth2ClientRegistrationConverter delegate;
 
-    private final OidcClientRegistrationRegisteredClientConverter delegate;
-
-    public OidcClientRegistrationToRegisteredClientConverter(List<String> clientMetadata, boolean isRemoteValidate) {
-        super(clientMetadata, isRemoteValidate);
-        this.delegate = new OidcClientRegistrationRegisteredClientConverter();
+    public RegisteredClientToOAuth2ClientRegistrationConverter(List<String> clientMetadata) {
+        super(clientMetadata);
+        this.delegate = new RegisteredClientOAuth2ClientRegistrationConverter();
     }
 
     @Override
-    protected RegisteredClient convertToRegisteredClient(OidcClientRegistration source) {
-        // 先使用 Spring Authorization Server 默认的 OidcClientRegistrationRegisteredClientConverter 将 OidcClientRegistration 转换为 RegisteredClient
-        // 默认的 OidcClientRegistrationRegisteredClientConverter 减少转换错误
-        return this.delegate.convert(source);
+    public OAuth2ClientRegistration convert(RegisteredClient source) {
+        OAuth2ClientRegistration clientRegistration = this.delegate.convert(source);
+
+        if (ObjectUtils.isNotEmpty(clientRegistration)) {
+            Map<String, Object> claims = updateClaims(source, clientRegistration);
+            return OAuth2ClientRegistration.withClaims(claims).build();
+        } else {
+            return clientRegistration;
+        }
     }
 }

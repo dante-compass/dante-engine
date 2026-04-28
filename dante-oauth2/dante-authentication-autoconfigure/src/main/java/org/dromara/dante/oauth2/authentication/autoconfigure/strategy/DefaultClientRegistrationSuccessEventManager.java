@@ -27,7 +27,7 @@ package org.dromara.dante.oauth2.authentication.autoconfigure.strategy;
 
 import org.dromara.dante.oauth2.authorization.autoconfigure.bus.RemoteOidcClientRegistrationSuccessEvent;
 import org.dromara.dante.oauth2.commons.event.OidcClientRegistrationSuccessEvent;
-import org.dromara.dante.oauth2.commons.strategy.OidcClientRegistrationSuccessEventManager;
+import org.dromara.dante.oauth2.commons.strategy.ClientRegistrationSuccessEventManager;
 import org.dromara.dante.security.domain.RegisteredClientTransmitter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,9 +40,9 @@ import org.slf4j.LoggerFactory;
  * @author : gengwei.zheng
  * @date : 2024/8/21 21:55
  */
-public class DefaultOidcClientRegistrationSuccessEventManager implements OidcClientRegistrationSuccessEventManager {
+public class DefaultClientRegistrationSuccessEventManager implements ClientRegistrationSuccessEventManager {
 
-    private static final Logger log = LoggerFactory.getLogger(DefaultOidcClientRegistrationSuccessEventManager.class);
+    private static final Logger log = LoggerFactory.getLogger(DefaultClientRegistrationSuccessEventManager.class);
 
     @Override
     public String getDestinationServiceName() {

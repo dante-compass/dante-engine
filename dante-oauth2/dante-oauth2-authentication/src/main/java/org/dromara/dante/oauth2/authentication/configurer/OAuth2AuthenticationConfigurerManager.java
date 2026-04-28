@@ -29,8 +29,8 @@ import org.dromara.dante.oauth2.authentication.customizer.OAuth2ExceptionHandlin
 import org.dromara.dante.oauth2.authentication.customizer.OAuth2FormLoginConfigurerCustomizer;
 import org.dromara.dante.oauth2.authentication.response.*;
 import org.dromara.dante.oauth2.commons.properties.OAuth2AuthenticationProperties;
+import org.dromara.dante.oauth2.commons.strategy.ClientRegistrationSuccessEventManager;
 import org.dromara.dante.oauth2.commons.strategy.OAuth2DeviceVerificationSuccessEventManager;
-import org.dromara.dante.oauth2.commons.strategy.OidcClientRegistrationSuccessEventManager;
 import org.dromara.dante.security.service.OAuth2AuthorizationResourceService;
 import org.dromara.dante.web.servlet.template.ThymeleafTemplateHandler;
 import org.dromara.dante.web.support.crypto.DigitalEnvelopeProcessor;
@@ -55,6 +55,7 @@ public class OAuth2AuthenticationConfigurerManager {
     private final OAuth2AuthenticationFailureHandler oauth2AuthenticationFailureHandler;
     private final OAuth2DeviceVerificationSuccessHandler oauth2DeviceVerificationSuccessHandler;
     private final OAuth2DeviceVerificationFailureHandler oauth2DeviceVerificationFailureHandler;
+    private final OAuth2ClientRegistrationSuccessHandler oauth2ClientRegistrationSuccessHandler;
     private final OidcClientRegistrationSuccessHandler oidcClientRegistrationSuccessHandler;
 
     public OAuth2AuthenticationConfigurerManager(
@@ -63,7 +64,7 @@ public class OAuth2AuthenticationConfigurerManager {
             OAuth2AuthenticationProperties oauth2AuthenticationProperties,
             RegisteredClientRepository registeredClientRepository,
             OAuth2AuthorizationResourceService authorizationResourceService,
-            OidcClientRegistrationSuccessEventManager oidcClientRegistrationSuccessEventManager,
+            ClientRegistrationSuccessEventManager clientRegistrationSuccessEventManager,
             OAuth2DeviceVerificationSuccessEventManager deviceVerificationSuccessEventManager) {
         this.digitalEnvelopeProcessor = digitalEnvelopeProcessor;
         this.oauth2AuthenticationProperties = oauth2AuthenticationProperties;
@@ -71,7 +72,8 @@ public class OAuth2AuthenticationConfigurerManager {
         this.oauth2ExceptionHandlingConfigurerCustomizer = new OAuth2ExceptionHandlingConfigurerCustomizer(oauth2AuthenticationProperties);
         this.oauth2AccessTokenResponseHandler = new OAuth2AccessTokenResponseHandler(digitalEnvelopeProcessor);
         this.oauth2AuthenticationFailureHandler = new OAuth2AuthenticationFailureHandler(thymeleafTemplateHandler);
-        this.oidcClientRegistrationSuccessHandler = new OidcClientRegistrationSuccessHandler(registeredClientRepository, authorizationResourceService, oidcClientRegistrationSuccessEventManager);
+        this.oauth2ClientRegistrationSuccessHandler = new OAuth2ClientRegistrationSuccessHandler(registeredClientRepository, authorizationResourceService, clientRegistrationSuccessEventManager);
+        this.oidcClientRegistrationSuccessHandler = new OidcClientRegistrationSuccessHandler(registeredClientRepository, authorizationResourceService, clientRegistrationSuccessEventManager);
         this.oauth2DeviceVerificationSuccessHandler = new OAuth2DeviceVerificationSuccessHandler(oauth2AuthenticationProperties.getDeviceVerificationSuccessUri(), deviceVerificationSuccessEventManager);
         this.oauth2DeviceVerificationFailureHandler = new OAuth2DeviceVerificationFailureHandler(oauth2AuthenticationProperties.getDeviceVerificationFailureUri());
     }
@@ -106,6 +108,10 @@ public class OAuth2AuthenticationConfigurerManager {
 
     public OAuth2DeviceVerificationFailureHandler getOAuth2DeviceVerificationFailureHandler() {
         return oauth2DeviceVerificationFailureHandler;
+    }
+
+    public OAuth2ClientRegistrationSuccessHandler getOAuth2ClientRegistrationSuccessHandler() {
+        return oauth2ClientRegistrationSuccessHandler;
     }
 
     public OidcClientRegistrationSuccessHandler getOidcClientRegistrationSuccessHandler() {

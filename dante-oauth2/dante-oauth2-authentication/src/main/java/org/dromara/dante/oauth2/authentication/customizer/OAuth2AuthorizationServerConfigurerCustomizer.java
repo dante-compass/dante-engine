@@ -27,6 +27,7 @@ package org.dromara.dante.oauth2.authentication.customizer;
 
 import org.dromara.dante.core.constant.SystemConstants;
 import org.dromara.dante.oauth2.authentication.configurer.OAuth2AuthenticationConfigurerManager;
+import org.dromara.dante.oauth2.authentication.consumer.OAuth2ClientRegistrationAuthenticationProviderConsumer;
 import org.dromara.dante.oauth2.authentication.consumer.OAuth2TokenEndpointAuthenticationProviderConsumer;
 import org.dromara.dante.oauth2.authentication.consumer.OidcClientRegistrationAuthenticationProviderConsumer;
 import org.dromara.dante.oauth2.authentication.provider.OAuth2ResourceOwnerPasswordAuthenticationConverter;
@@ -79,6 +80,11 @@ public class OAuth2AuthorizationServerConfigurerCustomizer implements Customizer
 
         configurer
                 .clientAuthentication(endpoint -> endpoint.errorResponseHandler(authenticationConfigurerManager.getOAuth2AuthenticationFailureHandler()))
+                .clientRegistrationEndpoint(endpoint -> {
+                    endpoint.errorResponseHandler(authenticationConfigurerManager.getOAuth2AuthenticationFailureHandler());
+                    endpoint.authenticationProviders(new OAuth2ClientRegistrationAuthenticationProviderConsumer(oauth2Properties.isRemoteValidate()));
+                    endpoint.clientRegistrationResponseHandler(authenticationConfigurerManager.getOAuth2ClientRegistrationSuccessHandler());
+                })
                 .authorizationEndpoint(endpoint -> {
                     endpoint.errorResponseHandler(authenticationConfigurerManager.getOAuth2AuthenticationFailureHandler());
                     endpoint.consentPage(authenticationConfigurerManager.getOAuth2AuthenticationProperties().getAuthorizationConsentUri());
