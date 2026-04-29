@@ -30,7 +30,7 @@ import org.springframework.boot.autoconfigure.condition.AllNestedConditions;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 
 /**
- * <p>Description: InfluxDB 3 开启条件 </p>
+ * <p>Description: InfluxDB3 开启条件 </p>
  *
  * @author : gengwei.zheng
  * @date : 2023/11/6 17:07

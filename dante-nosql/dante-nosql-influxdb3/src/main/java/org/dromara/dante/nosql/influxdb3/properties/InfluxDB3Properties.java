@@ -32,7 +32,7 @@ import org.dromara.dante.nosql.influxdb3.constant.InfluxDB3Constants;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
- * <p>Description: InfluxDB 3 配置属性 </p>
+ * <p>Description: InfluxDB3 配置属性 </p>
  *
  * @author : gengwei.zheng
  * @date : 2023/11/6 11:41
@@ -41,15 +41,15 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 public class InfluxDB3Properties {
 
     /**
-     * InfluxDB 3 连接访问地址
+     * InfluxDB3 连接访问地址
      */
     private String host;
     /**
-     * InfluxDB 3 Token。InfluxDB 3 使用 Token 访问服务端
+     * InfluxDB3 Token。InfluxDB3 使用 Token 访问服务端
      */
     private String token;
     /**
-     * InfluxDB 3 默认数据库。
+     * InfluxDB3 默认数据库。
      */
     private String database = SystemConstants.DEFAULT_BUCKET_NAME;
     /**

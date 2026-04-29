@@ -30,7 +30,7 @@ import org.springframework.context.annotation.Conditional;
 import java.lang.annotation.*;
 
 /**
- * <p>Description: InfluxDB 3 开启条件注解 </p>
+ * <p>Description: InfluxDB3 开启条件注解 </p>
  *
  * @author : gengwei.zheng
  * @date : 2023/11/6 17:10

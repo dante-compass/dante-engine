@@ -30,14 +30,14 @@ import org.dromara.dante.core.support.pool.AbstractObjectPool;
 import org.dromara.dante.core.support.pool.AbstractPooledObjectService;
 
 /**
- * <p>Description: 基础的 InfluxDB 3 操作服务 </p>
+ * <p>Description: 基础的 InfluxDB3 操作服务 </p>
  *
  * @author : gengwei.zheng
  * @date : 2023/11/6 20:26
  */
-public abstract class AbstractInfluxDB2Service extends AbstractPooledObjectService<InfluxDBClient> {
+public abstract class AbstractInfluxDB3Service extends AbstractPooledObjectService<InfluxDBClient> {
 
-    public AbstractInfluxDB2Service(AbstractObjectPool<InfluxDBClient> objectPool) {
+    public AbstractInfluxDB3Service(AbstractObjectPool<InfluxDBClient> objectPool) {
         super(objectPool);
     }
 }

@@ -31,7 +31,7 @@ import org.springframework.context.annotation.Import;
 import java.lang.annotation.*;
 
 /**
- * <p>Description: 手动开启 InfluxDB 3 注解 </p>
+ * <p>Description: 手动开启 InfluxDB3 注解 </p>
  * <p>
  * 模块中的内容相对独立，而且仅有一个 Configuration，同时无需考虑注入顺序的模块，则使用 @Enable 风格配置
  *

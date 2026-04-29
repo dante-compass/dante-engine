@@ -38,7 +38,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * <p>Description: InfluxDB NoSQL 配置 </p>
+ * <p>Description: NoSQL InfluxDB3 配置 </p>
  *
  * @author : gengwei.zheng
  * @date : 2024/9/29 15:41
@@ -52,15 +52,15 @@ public class NoSQLInfluxDB3Configuration {
 
     @PostConstruct
     public void postConstruct() {
-        log.debug("[Herodotus] |- Module [NoSQL InfluxDB2] Configure.");
+        log.debug("[Herodotus] |- Module [NoSQL InfluxDB3] Configure.");
     }
 
     @Bean
     @ConditionalOnMissingBean
-    public InfluxDB3ClientObjectPool influxdb2ClientObjectPool(InfluxDB3Properties influxdb3Properties) {
+    public InfluxDB3ClientObjectPool influxDB3ClientObjectPool(InfluxDB3Properties influxdb3Properties) {
         InfluxDB3ClientPooledObjectFactory factory = new InfluxDB3ClientPooledObjectFactory(influxdb3Properties);
         InfluxDB3ClientObjectPool pool = new InfluxDB3ClientObjectPool(factory, influxdb3Properties);
-        log.trace("[Herodotus] |- Bean [InfluxDB2 Client Object Pool] Configure.");
+        log.trace("[Herodotus] |- Bean [InfluxDB3 Client Object Pool] Configure.");
         return pool;
     }
 }

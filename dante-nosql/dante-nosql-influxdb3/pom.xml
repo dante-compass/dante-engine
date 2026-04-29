@@ -37,7 +37,7 @@
     <artifactId>dante-nosql-influxdb3</artifactId>
     <name>${project.artifactId}</name>
 
-    <description>Dante Cloud 云原生微服务基座组件库时序数据 InfluxDB 3 封装模块</description>
+    <description>Dante Cloud 云原生微服务基座组件库时序数据 InfluxDB3 封装模块</description>
 
     <dependencies>
         <dependency>
