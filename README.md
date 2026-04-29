@@ -128,6 +128,8 @@ dante-engine
 ├    ├── dante-message-autoconfigure -- 消息自动配置模块
 ├    ├── dante-message-commons -- 消息通用代码模块
 ├    └── dante-message-servlet-websocket -- 基于 Servlet 环境下的 Websocket 功能封装模块
+├── dante-nosql -- 消息模块
+├    └── dante-nosql-influxdb3 -- 时序数据 InfluxDB 3 封装模块
 ├── dante-oauth2 -- OAuth2 认证模块
 ├    ├── dante-authentication-autoconfigure -- OAuth2 授权服务器基础内容自动配置模块
 ├    ├── dante-authorization-autoconfigure -- OAuth2 资源服务器基础内容自动配置模块
@@ -157,6 +159,7 @@ dante-engine
 ├    ├── facility-tencent-spring-boot-starter -- 面向 Spring Cloud Tencent 的微服务基础设施适配模块 Starter
 ├    ├── fegin-client-spring-boot-starter -- Feign 客户端自动配置 Starter
 ├    ├── logging-spring-boot-starter -- 日志收集和聚合自动配置 Starter
+├    ├── nosql-spring-boot-starter -- NoSQL 自动配置 Starter
 ├    ├── oss-spring-boot-starter -- 基于 AWS SDK V2 对象存储自动配置 Starter
 ├    ├── reactive-container-spring-boot-starter -- Reactive 容器基础配置自动配置 Starter
 ├    ├── servlet-container-spring-boot-starter -- 基于 JPA 的多租户自动配置 Starter

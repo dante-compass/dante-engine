@@ -148,6 +148,7 @@
         <module>dante-message</module>
         <module>dante-oauth2</module>
         <module>dante-persistence</module>
+        <module>dante-nosql</module>
     </modules>
 
 </project>

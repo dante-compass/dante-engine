@@ -213,6 +213,11 @@
             </dependency>
             <dependency>
                 <groupId>org.dromara.dante</groupId>
+                <artifactId>dante-nosql-influxdb3</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.dromara.dante</groupId>
                 <artifactId>dante-authorization-autoconfigure</artifactId>
                 <version>${project.version}</version>
             </dependency>
@@ -314,6 +319,11 @@
             <dependency>
                 <groupId>org.dromara.dante</groupId>
                 <artifactId>logging-spring-boot-starter</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.dromara.dante</groupId>
+                <artifactId>nosql-spring-boot-starter</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

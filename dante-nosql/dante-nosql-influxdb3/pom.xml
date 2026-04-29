@@ -30,36 +30,25 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.dromara.dante</groupId>
-        <artifactId>dante-engine</artifactId>
+        <artifactId>dante-nosql</artifactId>
         <version>4.0.6.0</version>
     </parent>
 
-    <artifactId>dante-starter</artifactId>
+    <artifactId>dante-nosql-influxdb3</artifactId>
     <name>${project.artifactId}</name>
 
-    <description>Dante Cloud 云原生微服务基座组件库Starter模块分组</description>
+    <description>Dante Cloud 云原生微服务基座组件库时序数据 InfluxDB 3 封装模块</description>
 
-    <packaging>pom</packaging>
+    <dependencies>
+        <dependency>
+            <groupId>org.dromara.dante</groupId>
+            <artifactId>dante-spring</artifactId>
+        </dependency>
 
-    <modules>
-        <module>cache-spring-boot-starter</module>
-        <module>captcha-spring-boot-starter</module>
-        <module>data-mongodb-spring-boot-starter</module>
-        <module>data-rdbms-spring-boot-starter</module>
-        <module>facility-alibaba-spring-boot-starter</module>
-        <module>facility-gateway-spring-boot-starter</module>
-        <module>facility-kafka-spring-boot-starter</module>
-        <module>facility-tencent-spring-boot-starter</module>
-        <module>logging-spring-boot-starter</module>
-        <module>oss-spring-boot-starter</module>
-        <module>reactive-container-spring-boot-starter</module>
-        <module>servlet-container-spring-boot-starter</module>
-        <module>servlet-message-spring-boot-starter</module>
-        <module>tenant-spring-boot-starter</module>
-        <module>webmvc-spring-boot-starter</module>
-        <module>web-spring-boot-starter</module>
-        <module>feign-spring-boot-starter</module>
-        <module>nosql-spring-boot-starter</module>
-    </modules>
+        <dependency>
+            <groupId>com.influxdb</groupId>
+            <artifactId>influxdb3-java</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>
