@@ -66,7 +66,7 @@ public interface SystemConstants {
     /* ---------- 系统信息 ---------- */
 
     String DN_OU = "Herodotus Cloud";
-    String WEBSITE = "https://www.herodotus.vip";
+    String WEBSITE = "https://www.herodotus.cn";
     String COPYRIGHT_DETAILS = "AGPL-3.0 Licensed | Copyright © 2020-2030 码 匠 君";
     String SYSTEM_NAME = DN_OU;
     String PACKAGE_NAME = "org.dromara";

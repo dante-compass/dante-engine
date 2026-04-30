@@ -27,10 +27,10 @@
     <a href="https://github.com/dante-compass/dante-engine">Github 仓库</a> &nbsp; | &nbsp;
     <a href="https://gitee.com/dante-compass/dante-engine">Gitee 仓库</a> &nbsp; | &nbsp;
     <a href="https://atomgit.com/dante-compass/dante-engine">Atomgit 仓库</a> &nbsp; | &nbsp;
-    <a href="https://www.herodotus.vip">在线文档</a>
+    <a href="https://www.herodotus.cn">在线文档</a>
 </p>
 
-<h1 align="center"> 如果您觉得有帮助，请点右上角 "Star" 支持一下，谢谢！</h1>
+<h1 align="center"> 支持项目的方式除了 Fork、Pull 和 Download Zip，还可以点右上角 "Star"！</h1>
 
 ---
 
@@ -39,7 +39,7 @@
 1. 自 **v4.0.5.0** 版本起，Dante Cloud 核心库 Dante Engine 子项目全面开放。
 2. 自 **v4.0.5.1** 版本起，为了提升维护效率，Dante Cloud 企业版和开源版前端合并，新版本前端（Vuetify 版）源代码也全面开放。
 
-> 注意：新版前端（Vuetify 版）与旧版前端（Quasar 版）共享模块，开发时需要以（Vuetify 版）为主，详情参见：[前端【共享模块】](https://www.herodotus.vip/get-started/install/frontend.html#_5-%E5%85%B1%E4%BA%AB%E6%A8%A1%E5%9D%97)
+> 注意：新版前端（Vuetify 版）与旧版前端（Quasar 版）共享模块，开发时需要以（Vuetify 版）为主，详情参见：[前端【共享模块】](https://www.herodotus.cn/get-started/install/frontend.html#_5-%E5%85%B1%E4%BA%AB%E6%A8%A1%E5%9D%97)
 
 ## 项目介绍
 
@@ -197,7 +197,7 @@ dante-engine
 
 # [五]、安全测试
 
-Dante Cloud 已通过由第三方进行的软件出厂安全测试。详情参见：[安全测试](https://www.herodotus.vip/guide/security/compliance.html)
+Dante Cloud 已通过由第三方进行的软件出厂安全测试。详情参见：[安全测试](https://www.herodotus.cn/guide/security/compliance.html)
 
 # [六]、安全测试
 
