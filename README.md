@@ -30,7 +30,7 @@
     <a href="https://www.herodotus.cn">在线文档</a>
 </p>
 
-<h1 align="center"> 支持项目的方式除了 Fork、Pull 和 Download Zip，还可以点右上角 "Star"！</h1>
+<h1 align="center"> 支持本项目除了 Fork、Pull 和 Download Zip，还可以点右上角 "Star"！</h1>
 
 ---
 
