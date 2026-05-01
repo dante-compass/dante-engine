@@ -70,7 +70,6 @@ public class WebSocketAuthenticationHandshakeInterceptor implements HandshakeInt
         this.applicationContext = applicationContext;
     }
 
-
     @Override
     public boolean beforeHandshake(ServerHttpRequest request, ServerHttpResponse response, WebSocketHandler wsHandler, Map<String, Object> attributes) throws Exception {
 

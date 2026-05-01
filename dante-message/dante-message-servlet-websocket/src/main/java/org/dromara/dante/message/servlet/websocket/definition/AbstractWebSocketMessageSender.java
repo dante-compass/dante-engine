@@ -25,7 +25,7 @@
 
 package org.dromara.dante.message.servlet.websocket.definition;
 
-import org.dromara.dante.message.servlet.websocket.messaging.WebSocketMessagingTemplate;
+import org.dromara.dante.message.servlet.websocket.sender.WebSocketMessagingTemplate;
 
 /**
  * <p>Description: WebSocketMessageSender 抽象实现 </p>
@@ -42,12 +42,14 @@ public abstract class AbstractWebSocketMessageSender implements WebSocketMessage
     }
 
     @Override
-    public void toUser(String user, String destination, Object payload) {
-        webSocketMessagingTemplate.pointToPoint(user, destination, payload);
+    public void toUser(String userId, String destination, String payload) {
+        webSocketMessagingTemplate.pointToPoint(userId, destination, payload);
     }
 
     @Override
-    public void toAll(String destination, Object payload) {
+    public void toAll(String destination, String payload) {
         webSocketMessagingTemplate.broadcast(destination, payload);
     }
+
+
 }

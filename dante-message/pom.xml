@@ -46,6 +46,7 @@
         <module>dante-message-autoconfigure</module>
         <module>dante-message-commons</module>
         <module>dante-message-servlet-websocket</module>
+        <module>dante-message-emqx</module>
     </modules>
 
 </project>

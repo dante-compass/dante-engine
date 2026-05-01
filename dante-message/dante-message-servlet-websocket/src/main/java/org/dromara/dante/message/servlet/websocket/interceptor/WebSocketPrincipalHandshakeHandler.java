@@ -27,7 +27,6 @@ package org.dromara.dante.message.servlet.websocket.interceptor;
 
 import org.apache.commons.lang3.ObjectUtils;
 import org.dromara.dante.core.constant.SystemConstants;
-import org.dromara.dante.message.servlet.websocket.domain.WebSocketPrincipal;
 import org.dromara.dante.security.domain.UserPrincipal;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -54,9 +53,8 @@ public class WebSocketPrincipalHandshakeHandler extends DefaultHandshakeHandler 
         Object object = attributes.get(SystemConstants.PRINCIPAL);
 
         if (ObjectUtils.isNotEmpty(object) && object instanceof UserPrincipal details) {
-            WebSocketPrincipal webSocketPrincipal = new WebSocketPrincipal(details);
-            log.debug("[Herodotus] |- Determine user by request parameter, userId is  [{}].", webSocketPrincipal.getUserId());
-            return webSocketPrincipal;
+            log.debug("[Herodotus] |- Determine user by request parameter, userId is  [{}].", details.getId());
+            return details;
         }
 
         Principal principal = request.getPrincipal();

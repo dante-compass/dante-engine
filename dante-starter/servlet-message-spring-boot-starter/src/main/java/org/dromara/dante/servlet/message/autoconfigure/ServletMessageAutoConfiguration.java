@@ -27,7 +27,7 @@ package org.dromara.dante.servlet.message.autoconfigure;
 
 import jakarta.annotation.PostConstruct;
 import org.dromara.dante.core.function.SecurityMatcherBuilderCustomizer;
-import org.dromara.dante.message.servlet.websocket.config.MessageWebSocketConfiguration;
+import org.dromara.dante.message.servlet.websocket.annotation.EnableHerodotusServletWebSocket;
 import org.dromara.dante.rest.message.annotation.EnableHerodotusRestMessage;
 import org.dromara.dante.servlet.container.autoconfigure.oauth2.ServletOAuth2AuthorizationAutoConfiguration;
 import org.dromara.dante.servlet.message.autoconfigure.customizer.WebSocketSecurityMatcherBuilderCustomizer;
@@ -35,7 +35,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Import;
 
 /**
  * <p>Description: Servlet Message 自动配置 </p>
@@ -44,7 +43,7 @@ import org.springframework.context.annotation.Import;
  * @date : 2024/4/10 0:31
  */
 @AutoConfiguration(after = ServletOAuth2AuthorizationAutoConfiguration.class)
-@Import(MessageWebSocketConfiguration.class)
+@EnableHerodotusServletWebSocket
 @EnableHerodotusRestMessage
 public class ServletMessageAutoConfiguration {
 

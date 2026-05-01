@@ -25,7 +25,7 @@
 
 package org.dromara.dante.message.servlet.websocket.annotation;
 
-import org.dromara.dante.message.servlet.websocket.config.MessageWebSocketConfiguration;
+import org.dromara.dante.message.servlet.websocket.config.MessageServletWebSocketConfiguration;
 import org.springframework.context.annotation.Import;
 
 import java.lang.annotation.*;
@@ -41,6 +41,6 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE, ElementType.METHOD})
 @Documented
-@Import(MessageWebSocketConfiguration.class)
+@Import(MessageServletWebSocketConfiguration.class)
 public @interface EnableHerodotusServletWebSocket {
 }

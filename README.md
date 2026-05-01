@@ -127,6 +127,7 @@ dante-engine
 ├── dante-message -- 消息模块
 ├    ├── dante-message-autoconfigure -- 消息自动配置模块
 ├    ├── dante-message-commons -- 消息通用代码模块
+├    ├── dante-message-emqx -- Emqx 封装模块
 ├    └── dante-message-servlet-websocket -- 基于 Servlet 环境下的 Websocket 功能封装模块
 ├── dante-nosql -- 消息模块
 ├    └── dante-nosql-influxdb3 -- 时序数据 InfluxDB3 封装模块

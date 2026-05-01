@@ -48,7 +48,7 @@ public class DialogueMessage {
     @Schema(name = "发送人头像")
     private String receiverAvatar;
 
-    @Schema(name = "公告内容")
+    @Schema(name = "对话内容")
     private String content;
 
     @Schema(name = "对话ID")

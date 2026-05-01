@@ -29,10 +29,11 @@ import jakarta.annotation.PostConstruct;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.dromara.dante.message.commons.constant.MessageConstants;
+import org.dromara.dante.message.commons.properties.MessageProperties;
 import org.dromara.dante.message.servlet.websocket.interceptor.WebSocketAuthenticationHandshakeInterceptor;
 import org.dromara.dante.message.servlet.websocket.interceptor.WebSocketChannelInterceptor;
 import org.dromara.dante.message.servlet.websocket.interceptor.WebSocketPrincipalHandshakeHandler;
-import org.dromara.dante.message.servlet.websocket.properties.WebSocketProperties;
+import org.dromara.dante.message.servlet.websocket.properties.StompProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -54,20 +55,20 @@ import org.springframework.web.socket.config.annotation.WebSocketTransportRegist
  * @date : 2022/12/4 19:19
  */
 @Configuration(proxyBeanMethods = false)
-@EnableConfigurationProperties({WebSocketProperties.class})
+@EnableConfigurationProperties({MessageProperties.class, StompProperties.class})
 @EnableScheduling
 @EnableWebSocketMessageBroker
 public class WebSocketMessageBrokerConfiguration extends AbstractSessionWebSocketMessageBrokerConfigurer<Session> {
 
     private static final Logger log = LoggerFactory.getLogger(WebSocketMessageBrokerConfiguration.class);
 
-    private final WebSocketProperties webSocketProperties;
+    private final StompProperties stompProperties;
     private final WebSocketChannelInterceptor webSocketChannelInterceptor;
     private final WebSocketPrincipalHandshakeHandler webSocketPrincipalHandshakeHandler;
     private final WebSocketAuthenticationHandshakeInterceptor webSocketAuthenticationHandshakeInterceptor;
 
-    public WebSocketMessageBrokerConfiguration(WebSocketProperties webSocketProperties, WebSocketAuthenticationHandshakeInterceptor webSocketAuthenticationHandshakeInterceptor) {
-        this.webSocketProperties = webSocketProperties;
+    public WebSocketMessageBrokerConfiguration(StompProperties stompProperties, WebSocketAuthenticationHandshakeInterceptor webSocketAuthenticationHandshakeInterceptor) {
+        this.stompProperties = stompProperties;
         this.webSocketChannelInterceptor = new WebSocketChannelInterceptor();
         this.webSocketPrincipalHandshakeHandler = new WebSocketPrincipalHandshakeHandler();
         this.webSocketAuthenticationHandshakeInterceptor = webSocketAuthenticationHandshakeInterceptor;
@@ -92,13 +93,13 @@ public class WebSocketMessageBrokerConfiguration extends AbstractSessionWebSocke
          * 3. withSockJS()表示支持socktJS访问
          * 4. 添加自定义拦截器，这个拦截器是上一个demo自己定义的获取httpsession的拦截器
          */
-        registry.addEndpoint(webSocketProperties.getEndpoint())
+        registry.addEndpoint(stompProperties.getEndpoint())
                 .setAllowedOrigins("*")
                 .addInterceptors(webSocketAuthenticationHandshakeInterceptor)
                 .setHandshakeHandler(webSocketPrincipalHandshakeHandler)
                 .withSockJS();
 
-        registry.addEndpoint(webSocketProperties.getEndpoint())
+        registry.addEndpoint(stompProperties.getEndpoint())
                 .setAllowedOrigins("*")
                 .addInterceptors(webSocketAuthenticationHandshakeInterceptor)
                 .setHandshakeHandler(webSocketPrincipalHandshakeHandler);
@@ -142,7 +143,7 @@ public class WebSocketMessageBrokerConfiguration extends AbstractSessionWebSocke
          * 3. 可以配置心跳线程调度器 setHeartbeatValue这个不能单独设置，不然不起作用，要配合setTaskScheduler才可以生效
          *    调度器我们可以自己写一个，也可以自己使用默认的调度器 new DefaultManagedTaskScheduler()
          */
-        registry.enableSimpleBroker(MessageConstants.WEBSOCKET_CHANNEL_PROXY_BROADCAST, MessageConstants.WEBSOCKET_CHANNEL_PROXY_PERSONAL)
+        registry.enableSimpleBroker(MessageConstants.STOMP_CHANNEL_BROADCAST, MessageConstants.STOMP_CHANNEL_PERSONAL)
                 .setHeartbeatValue(new long[]{10000, 10000})
                 .setTaskScheduler(taskScheduler);
 
@@ -151,7 +152,7 @@ public class WebSocketMessageBrokerConfiguration extends AbstractSessionWebSocke
          * "/app" 为配置应用服务器的地址前缀，表示所有以/app 开头的客户端消息或请求
          *  都会路由到带有@MessageMapping 注解的方法中
          */
-        String[] applicationDestinationPrefixes = webSocketProperties.getApplicationPrefixes();
+        String[] applicationDestinationPrefixes = stompProperties.getApplicationPrefixes();
         if (ArrayUtils.isNotEmpty(applicationDestinationPrefixes)) {
             registry.setApplicationDestinationPrefixes(applicationDestinationPrefixes);
         }
@@ -164,8 +165,8 @@ public class WebSocketMessageBrokerConfiguration extends AbstractSessionWebSocke
          *    而不是 AnnotationMethodMessageHandler 或  SimpleBrokerMessageHandler
          *    or StompBrokerRelayMessageHandler，是在@SendToUser的URL前加“user+sessionId"组成
          */
-        if (StringUtils.isNotBlank(webSocketProperties.getUserDestinationPrefix())) {
-            registry.setUserDestinationPrefix(webSocketProperties.getUserDestinationPrefix());
+        if (StringUtils.isNotBlank(stompProperties.getUserDestinationPrefix())) {
+            registry.setUserDestinationPrefix(stompProperties.getUserDestinationPrefix());
         }
 
         /*

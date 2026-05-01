@@ -33,9 +33,9 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.tags.Tags;
 import org.apache.commons.lang3.StringUtils;
+import org.dromara.dante.cache.redis.utils.OnlineUserStat;
 import org.dromara.dante.core.domain.Result;
 import org.dromara.dante.message.servlet.websocket.definition.WebSocketMessageSender;
-import org.dromara.dante.message.servlet.websocket.utils.WebSocketUtils;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -82,7 +82,7 @@ public class WebSocketMessageController {
     @GetMapping(value = "/stat")
     public Result<Map<String, Object>> findAllStat() {
         Map<String, Object> stat = new HashMap<>();
-        stat.put("onlineCount", WebSocketUtils.getOnlineCount());
+        stat.put("onlineCount", OnlineUserStat.getCount());
         return Result.success("获取统计信息成功", stat);
     }
 }

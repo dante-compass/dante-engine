@@ -23,5 +23,8 @@
 # 6. 若您的项目无法满足以上几点，可申请商业授权
 #
 
+org.dromara.dante.message.autoconfigure.emqx.IntegrationEmqxAutoConfiguration
+org.dromara.dante.message.autoconfigure.event.IntegrationEventAutoConfiguration
 org.dromara.dante.message.autoconfigure.message.MessageAutoConfiguration
+org.dromara.dante.message.autoconfigure.mqtt.IntegrationMqttAutoConfiguration
 org.dromara.dante.message.autoconfigure.stream.StreamAutoConfiguration

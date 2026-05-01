@@ -49,6 +49,13 @@ public class MessageAutoConfiguration {
     }
 
     @Bean
+    public MessageSendingDispatcher messageSendingDispatcher() {
+        MessageSendingDispatcher dispatcher = new MessageSendingDispatcher();
+        log.trace("[Herodotus] |- Bean [Message Sending Dispatcher] Configure.");
+        return dispatcher;
+    }
+
+    @Bean
     public ErrorCodeMapperBuilderCustomizer messageErrorCodeMapperBuilderCustomizer() {
         MessageErrorCodeMapperBuilderCustomizer customizer = new MessageErrorCodeMapperBuilderCustomizer();
         log.debug("[Herodotus] |- Strategy [Message ErrorCodeMapper Builder Customizer] Configure.");

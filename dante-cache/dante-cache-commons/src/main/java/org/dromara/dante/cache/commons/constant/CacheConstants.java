@@ -37,4 +37,6 @@ public interface CacheConstants extends BaseConstants {
 
     String PROPERTY_REDIS_REDISSON = PROPERTY_SPRING_DATA + ".redisson";
     String ITEM_REDISSON_ENABLED = PROPERTY_REDIS_REDISSON + PROPERTY_ENABLED;
+
+    String ONLINE_USER_STAT = PROPERTY_PREFIX_SPRING + ":online:user";
 }

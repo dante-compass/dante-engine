@@ -29,13 +29,11 @@ import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.dromara.dante.message.commons.constant.MessageConstants;
 import org.dromara.dante.message.commons.domain.DialogueMessage;
-import org.dromara.dante.message.commons.domain.WebSocketMessage;
-import org.dromara.dante.message.commons.event.SendDialogueMessageEvent;
+import org.dromara.dante.message.commons.event.DialogueMessageReceivingEvent;
 import org.dromara.dante.message.servlet.websocket.definition.WebSocketMessageSender;
-import org.dromara.dante.message.servlet.websocket.domain.WebSocketPrincipal;
+import org.dromara.dante.message.servlet.websocket.domain.StompWebSocketMessage;
+import org.dromara.dante.security.domain.UserPrincipal;
 import org.dromara.dante.spring.context.AbstractApplicationContextAware;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.handler.annotation.SendTo;
@@ -50,8 +48,6 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class WebSocketPublishMessageController extends AbstractApplicationContextAware {
-
-    private static final Logger log = LoggerFactory.getLogger(WebSocketPublishMessageController.class);
 
     private final WebSocketMessageSender webSocketMessageSender;
 
@@ -79,19 +75,19 @@ public class WebSocketPublishMessageController extends AbstractApplicationContex
     @MessageMapping("/private/message")
     public void sendPrivateMessage(@Payload DialogueMessage detail, StompHeaderAccessor headerAccessor) {
 
-        WebSocketMessage response = new WebSocketMessage();
-        response.setUser(detail.getReceiverId());
+        StompWebSocketMessage response = new StompWebSocketMessage();
+        response.setUserId(detail.getReceiverId());
         response.setDestination(MessageConstants.WEBSOCKET_DESTINATION_PERSONAL_MESSAGE);
 
         if (StringUtils.isNotBlank(detail.getReceiverId()) && StringUtils.isNotBlank(detail.getReceiverName())) {
             if (StringUtils.isBlank(detail.getSenderId()) && StringUtils.isBlank(detail.getSenderName())) {
-                WebSocketPrincipal sender = (WebSocketPrincipal) headerAccessor.getUser();
-                detail.setSenderId(sender.getUserId());
-                detail.setSenderName(sender.getUsername());
+                UserPrincipal sender = (UserPrincipal) headerAccessor.getUser();
+                detail.setSenderId(sender.getId());
+                detail.setSenderName(sender.getName());
                 detail.setSenderAvatar(sender.getAvatar());
             }
 
-            this.publishEvent(new SendDialogueMessageEvent(detail));
+            this.publishEvent(new DialogueMessageReceivingEvent(detail));
 
             response.setPayload("私信发送成功");
         } else {

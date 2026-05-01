@@ -105,6 +105,8 @@ public interface SystemConstants {
     String MATCHER_WEBJARS = "/webjars/**";
 
     String KEY__USER_PRINCIPAL = "USER_PRINCIPAL";
+    String KEY__TIMESTAMP = "timestamp";
+    String KEY__RANDOM = "random";
 
     /**
      * Oauth2 模式类型

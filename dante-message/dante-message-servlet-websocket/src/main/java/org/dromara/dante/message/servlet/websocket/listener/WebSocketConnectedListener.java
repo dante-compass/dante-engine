@@ -25,11 +25,11 @@
 
 package org.dromara.dante.message.servlet.websocket.listener;
 
-import org.dromara.dante.message.servlet.websocket.definition.AbstractWebSocketStatusListener;
-import org.dromara.dante.message.servlet.websocket.definition.WebSocketMessageSender;
-import org.dromara.dante.message.servlet.websocket.domain.WebSocketPrincipal;
-import org.springframework.stereotype.Component;
 import org.springframework.web.socket.messaging.SessionConnectedEvent;
+
+import java.security.Principal;
+import java.util.function.Consumer;
+import java.util.function.Function;
 
 /**
  * <p>Description: WebSocketUserOnlineListener </p>
@@ -37,17 +37,8 @@ import org.springframework.web.socket.messaging.SessionConnectedEvent;
  * @author : gengwei.zheng
  * @date : 2022/12/29 22:17
  */
-@Component
-public class WebSocketConnectedListener extends AbstractWebSocketStatusListener<SessionConnectedEvent> {
-
-    public WebSocketConnectedListener(WebSocketMessageSender webSocketMessageSender) {
-        super(webSocketMessageSender);
-    }
-
-    @Override
-    public void onApplicationEvent(SessionConnectedEvent event) {
-        WebSocketPrincipal principal = (WebSocketPrincipal) event.getUser();
-
-        connected(principal);
+public class WebSocketConnectedListener extends AbstractServletPrincipalListener<SessionConnectedEvent> {
+    public WebSocketConnectedListener(Function<Principal, Integer> counter, Consumer<String> broadcast) {
+        super(counter, broadcast);
     }
 }
