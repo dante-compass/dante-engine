@@ -23,26 +23,26 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.web.constant;
+package org.dromara.dante.web.autoconfigure.stamp;
 
-import org.dromara.dante.core.constant.BaseConstants;
+import org.dromara.dante.cache.jetcache.stamp.AbstractStampManager;
+import org.dromara.dante.web.autoconfigure.properties.SecureProperties;
+import org.dromara.dante.web.constant.WebConstants;
 
 /**
- * <p>Description: Rest 模块常量 </p>
+ * <p>Description: 签名算法 </p>
  *
  * @author : gengwei.zheng
- * @date : 2022/1/19 23:13
+ * @date : 2025/9/24 17:43
  */
-public interface WebConstants extends BaseConstants {
+public class SignatureRandomStampManager extends AbstractStampManager<String, String> {
 
-    String PROPERTY_PREFIX_SWAGGER = PROPERTY_PREFIX_PLATFORM + ".swagger";
-    String PROPERTY_SERVICE_REST_SCAN = PROPERTY_PREFIX_SERVICE + ".scan";
+    public SignatureRandomStampManager(SecureProperties secureProperties) {
+        super(WebConstants.CACHE_NAME_TOKEN_SIGNATURE, secureProperties.getSignature().getExpire());
+    }
 
-    String ITEM_SCAN_ENABLED = PROPERTY_SERVICE_REST_SCAN + PROPERTY_ENABLED;
-    String ITEM_PROTECT_CRYPTO_STRATEGY = PROPERTY_PREFIX_DIGITAL_ENVELOPE + ".crypto-strategy";
-
-    String CACHE_NAME_TOKEN_IDEMPOTENT = CACHE_TOKEN_BASE_PREFIX + "idempotent:";
-    String CACHE_NAME_TOKEN_ACCESS_LIMITED = CACHE_TOKEN_BASE_PREFIX + "access_limited:";
-    String CACHE_NAME_TOKEN_SECURE_KEY = CACHE_TOKEN_BASE_PREFIX + "secure_key:";
-    String CACHE_NAME_TOKEN_SIGNATURE = CACHE_TOKEN_BASE_PREFIX + "signature:";
+    @Override
+    public String nextStamp(String key) {
+        return key;
+    }
 }

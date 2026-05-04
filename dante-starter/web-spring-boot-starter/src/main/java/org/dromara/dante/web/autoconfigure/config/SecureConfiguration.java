@@ -30,6 +30,9 @@ import org.dromara.dante.web.autoconfigure.envelope.DefaultDigitalEnvelopeProces
 import org.dromara.dante.web.autoconfigure.properties.SecureProperties;
 import org.dromara.dante.web.autoconfigure.stamp.AccessLimitedStampManager;
 import org.dromara.dante.web.autoconfigure.stamp.IdempotentStampManager;
+import org.dromara.dante.web.autoconfigure.stamp.SignatureRandomStampManager;
+import org.dromara.dante.web.autoconfigure.support.DefaultSignatureValidator;
+import org.dromara.dante.web.definition.SignatureValidator;
 import org.dromara.dante.web.support.crypto.AsymmetricCryptoProcessor;
 import org.dromara.dante.web.support.crypto.DigitalEnvelopeProcessor;
 import org.dromara.dante.web.support.crypto.SymmetricCryptoProcessor;
@@ -80,5 +83,21 @@ public class SecureConfiguration {
         AccessLimitedStampManager accessLimitedStampManager = new AccessLimitedStampManager(secureProperties);
         log.trace("[Herodotus] |- Bean [Access Limited Stamp Manager] Configure.");
         return accessLimitedStampManager;
+    }
+
+    @Bean
+    @ConditionalOnMissingBean
+    public SignatureRandomStampManager signatureRandomStampManager(SecureProperties secureProperties) {
+        SignatureRandomStampManager manager = new SignatureRandomStampManager(secureProperties);
+        log.trace("[Herodotus] |- Bean [Signature Random Stamp Manager] Configure.");
+        return manager;
+    }
+
+    @Bean
+    @ConditionalOnMissingBean
+    public SignatureValidator signatureValidator(SignatureRandomStampManager signatureRandomStampManager) {
+        DefaultSignatureValidator validator = new DefaultSignatureValidator(signatureRandomStampManager);
+        log.trace("[Herodotus] |- Bean [Signature Validator] Configure.");
+        return validator;
     }
 }

@@ -23,26 +23,47 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.web.constant;
+package org.dromara.dante.core.domain;
 
-import org.dromara.dante.core.constant.BaseConstants;
+import com.google.common.base.MoreObjects;
 
 /**
- * <p>Description: Rest 模块常量 </p>
+ * <p>Description: 签名验证结果 </p>
  *
  * @author : gengwei.zheng
- * @date : 2022/1/19 23:13
+ * @date : 2025/9/22 18:37
  */
-public interface WebConstants extends BaseConstants {
+public class SignatureValidationResult implements BaseModel {
 
-    String PROPERTY_PREFIX_SWAGGER = PROPERTY_PREFIX_PLATFORM + ".swagger";
-    String PROPERTY_SERVICE_REST_SCAN = PROPERTY_PREFIX_SERVICE + ".scan";
+    private final boolean valid;
+    private final String message;
 
-    String ITEM_SCAN_ENABLED = PROPERTY_SERVICE_REST_SCAN + PROPERTY_ENABLED;
-    String ITEM_PROTECT_CRYPTO_STRATEGY = PROPERTY_PREFIX_DIGITAL_ENVELOPE + ".crypto-strategy";
+    public SignatureValidationResult(boolean valid, String message) {
+        this.valid = valid;
+        this.message = message;
+    }
 
-    String CACHE_NAME_TOKEN_IDEMPOTENT = CACHE_TOKEN_BASE_PREFIX + "idempotent:";
-    String CACHE_NAME_TOKEN_ACCESS_LIMITED = CACHE_TOKEN_BASE_PREFIX + "access_limited:";
-    String CACHE_NAME_TOKEN_SECURE_KEY = CACHE_TOKEN_BASE_PREFIX + "secure_key:";
-    String CACHE_NAME_TOKEN_SIGNATURE = CACHE_TOKEN_BASE_PREFIX + "signature:";
+    public static SignatureValidationResult valid() {
+        return new SignatureValidationResult(true, null);
+    }
+
+    public static SignatureValidationResult invalid(String message) {
+        return new SignatureValidationResult(false, message);
+    }
+
+    public boolean isValid() {
+        return valid;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    @Override
+    public String toString() {
+        return MoreObjects.toStringHelper(this)
+                .add("valid", valid)
+                .add("message", message)
+                .toString();
+    }
 }

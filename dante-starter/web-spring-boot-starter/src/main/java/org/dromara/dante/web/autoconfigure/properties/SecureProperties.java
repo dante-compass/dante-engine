@@ -43,6 +43,7 @@ public class SecureProperties {
 
     private Idempotent idempotent = new Idempotent();
     private AccessLimited accessLimited = new AccessLimited();
+    private Signature signature = new Signature();
 
     public Idempotent getIdempotent() {
         return idempotent;
@@ -58,6 +59,14 @@ public class SecureProperties {
 
     public void setAccessLimited(AccessLimited accessLimited) {
         this.accessLimited = accessLimited;
+    }
+
+    public Signature getSignature() {
+        return signature;
+    }
+
+    public void setSignature(Signature signature) {
+        this.signature = signature;
     }
 
     public static class Idempotent implements Serializable {
@@ -115,6 +124,29 @@ public class SecureProperties {
         public String toString() {
             return MoreObjects.toStringHelper(this)
                     .add("maxTimes", maxTimes)
+                    .add("expire", expire)
+                    .toString();
+        }
+    }
+
+    public static class Signature implements Serializable {
+
+        /**
+         * 有效时间。对于 Timestamp 参数为有效时间范围，对于 Random 参数为数据缓存时间。
+         */
+        private Duration expire = Duration.ofMinutes(15);
+
+        public Duration getExpire() {
+            return expire;
+        }
+
+        public void setExpire(Duration expire) {
+            this.expire = expire;
+        }
+
+        @Override
+        public String toString() {
+            return MoreObjects.toStringHelper(this)
                     .add("expire", expire)
                     .toString();
         }
