@@ -23,22 +23,26 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.oauth2.authorization.autoconfigure.annotation;
+package org.dromara.dante.oauth2.authorization.autoconfigure.condition;
 
-import org.dromara.dante.oauth2.authorization.autoconfigure.config.AuthorizationEnhanceConfiguration;
-import org.springframework.context.annotation.Import;
-
-import java.lang.annotation.*;
+import org.dromara.dante.servlet.message.autoconfigure.ServletMessageAutoConfiguration;
+import org.springframework.boot.autoconfigure.condition.AnyNestedCondition;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 
 /**
- * <p>Description: 开启资源服务器增强功能 </p>
+ * <p>Description: 判断是否为 Message 服务条件 </p>
  *
  * @author : gengwei.zheng
- * @date : 2024/10/27 22:49
+ * @date : 2024/10/27 20:45
  */
-@Target({ElementType.TYPE, ElementType.METHOD})
-@Retention(RetentionPolicy.RUNTIME)
-@Documented
-@Import(AuthorizationEnhanceConfiguration.class)
-public @interface EnableAuthorizationEnhance {
+public final class IsMessageServiceCondition extends AnyNestedCondition {
+
+    public IsMessageServiceCondition() {
+        super(ConfigurationPhase.PARSE_CONFIGURATION);
+    }
+
+    @ConditionalOnClass(ServletMessageAutoConfiguration.class)
+    static final class OnServletMessageService {
+
+    }
 }

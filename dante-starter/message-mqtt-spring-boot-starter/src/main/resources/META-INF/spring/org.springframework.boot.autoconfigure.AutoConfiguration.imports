@@ -23,7 +23,4 @@
 # 6. 若您的项目无法满足以上几点，可申请商业授权
 #
 
-org.dromara.dante.oauth2.authorization.autoconfigure.OAuth2AuthorizationAutoConfiguration
-org.dromara.dante.oauth2.authorization.autoconfigure.ResourceServiceMessageAutoConfiguration
-org.dromara.dante.oauth2.authorization.autoconfigure.MessageServiceMessageAutoConfiguration
-org.dromara.dante.oauth2.authorization.autoconfigure.UpmsServiceMessageAutoConfiguration
+org.dromara.dante.message.mqtt.autoconfigure.MessageMqttAutoConfiguration

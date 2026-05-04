@@ -23,41 +23,42 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.oauth2.authorization.autoconfigure.strategy;
+package org.dromara.dante.oauth2.authorization.autoconfigure.listener;
 
-import org.dromara.dante.oauth2.authorization.autoconfigure.bus.RemoteEnableAuthenticationEvent;
-import org.dromara.dante.oauth2.commons.event.DisableAuthenticationEvent;
-import org.dromara.dante.oauth2.commons.strategy.DisableAuthenticationEventManager;
-import org.dromara.dante.spring.context.ServiceContextHolder;
+import org.dromara.dante.message.autoconfigure.message.MessageSendingDispatcher;
+import org.dromara.dante.oauth2.authorization.autoconfigure.bus.RemoteMessageSendingEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.ApplicationListener;
+
+import java.util.Optional;
 
 /**
- * <p>Description: 默认的手动关闭认证事件管理器 </p>
- * <p>
- * 目前主要用于物联网服务，实现一机一密和一型一密类型认证
+ * <p>Description: 远程统一消息发送事件监听器 </p>
  *
  * @author : gengwei.zheng
- * @date : 2024/8/21 16:14
+ * @date : 2024/10/26 16:18
  */
-public class DefaultDisableAuthenticationEventManager implements DisableAuthenticationEventManager {
+public class RemoteMessageSendingListener implements ApplicationListener<RemoteMessageSendingEvent> {
 
-    private static final Logger log = LoggerFactory.getLogger(DefaultDisableAuthenticationEventManager.class);
+    private static final Logger log = LoggerFactory.getLogger(RemoteMessageSendingListener.class);
 
-    @Override
-    public String getDestinationServiceName() {
-        return ServiceContextHolder.getUaaServiceName();
+    private final MessageSendingDispatcher messageSendingDispatcher;
+
+    public RemoteMessageSendingListener(MessageSendingDispatcher messageSendingDispatcher) {
+        this.messageSendingDispatcher = messageSendingDispatcher;
     }
 
     @Override
-    public void postLocalProcess(String data) {
-        log.debug("[Herodotus] |- [AUTHENTICATION-SWITCH] Publish local disable event.");
-        publishEvent(new DisableAuthenticationEvent(data));
-    }
+    public void onApplicationEvent(RemoteMessageSendingEvent event) {
 
-    @Override
-    public void postRemoteProcess(String data, String originService, String destinationService) {
-        log.debug("[Herodotus] |- [AUTHENTICATION-SWITCH] Publish remote disable event.");
-        publishEvent(new RemoteEnableAuthenticationEvent(data, originService, destinationService));
+        log.info("[Herodotus] |- Message sending REMOTE listener, response service [{}] event!", event.getOriginService());
+
+        String data = event.getData();
+
+        log.debug("[Herodotus] |- [M2] Message sending process BEGIN!");
+
+        Optional.ofNullable(data)
+                .ifPresent(messageSendingDispatcher::process);
     }
 }

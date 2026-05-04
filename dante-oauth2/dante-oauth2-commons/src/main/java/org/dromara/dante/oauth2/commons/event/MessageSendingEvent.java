@@ -23,22 +23,20 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.oauth2.authorization.autoconfigure.annotation;
+package org.dromara.dante.oauth2.commons.event;
 
-import org.dromara.dante.oauth2.authorization.autoconfigure.config.AuthorizationEnhanceConfiguration;
-import org.springframework.context.annotation.Import;
-
-import java.lang.annotation.*;
+import org.dromara.dante.message.commons.definition.Message;
+import org.dromara.dante.message.commons.definition.event.AbstractApplicationEvent;
 
 /**
- * <p>Description: 开启资源服务器增强功能 </p>
+ * <p>Description: 本地发送统一消息事件 </p>
  *
  * @author : gengwei.zheng
- * @date : 2024/10/27 22:49
+ * @date : 2024/10/26 0:08
  */
-@Target({ElementType.TYPE, ElementType.METHOD})
-@Retention(RetentionPolicy.RUNTIME)
-@Documented
-@Import(AuthorizationEnhanceConfiguration.class)
-public @interface EnableAuthorizationEnhance {
+public class MessageSendingEvent extends AbstractApplicationEvent<Message<?>> {
+
+    public MessageSendingEvent(Message<?> data) {
+        super(data);
+    }
 }

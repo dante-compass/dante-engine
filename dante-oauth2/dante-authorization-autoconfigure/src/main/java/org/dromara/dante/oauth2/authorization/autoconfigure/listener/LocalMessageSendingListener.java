@@ -23,22 +23,42 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.oauth2.authorization.autoconfigure.annotation;
+package org.dromara.dante.oauth2.authorization.autoconfigure.listener;
 
-import org.dromara.dante.oauth2.authorization.autoconfigure.config.AuthorizationEnhanceConfiguration;
-import org.springframework.context.annotation.Import;
+import org.dromara.dante.message.autoconfigure.message.MessageSendingDispatcher;
+import org.dromara.dante.message.commons.definition.Message;
+import org.dromara.dante.oauth2.commons.event.MessageSendingEvent;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.context.ApplicationListener;
 
-import java.lang.annotation.*;
+import java.util.Optional;
 
 /**
- * <p>Description: 开启资源服务器增强功能 </p>
+ * <p>Description: 本地消息发送监听器 </p>
  *
  * @author : gengwei.zheng
- * @date : 2024/10/27 22:49
+ * @date : 2024/10/26 16:22
  */
-@Target({ElementType.TYPE, ElementType.METHOD})
-@Retention(RetentionPolicy.RUNTIME)
-@Documented
-@Import(AuthorizationEnhanceConfiguration.class)
-public @interface EnableAuthorizationEnhance {
+public class LocalMessageSendingListener implements ApplicationListener<MessageSendingEvent> {
+
+    private static final Logger log = LoggerFactory.getLogger(LocalMessageSendingListener.class);
+
+    private final MessageSendingDispatcher messageSendingDispatcher;
+
+    public LocalMessageSendingListener(MessageSendingDispatcher messageSendingDispatcher) {
+        this.messageSendingDispatcher = messageSendingDispatcher;
+    }
+
+    @Override
+    public void onApplicationEvent(MessageSendingEvent event) {
+
+        log.info("[Herodotus] |- Message sending LOCAL listener, response event!");
+
+        Message<?> message = event.getData();
+
+        log.debug("[Herodotus] |- [M2] Message sending process BEGIN!");
+        Optional.ofNullable(message)
+                .ifPresent(messageSendingDispatcher::process);
+    }
 }

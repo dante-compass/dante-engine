@@ -23,22 +23,21 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.oauth2.authorization.autoconfigure.annotation;
+package org.dromara.dante.oauth2.authorization.autoconfigure.condition;
 
-import org.dromara.dante.oauth2.authorization.autoconfigure.config.AuthorizationEnhanceConfiguration;
-import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.Conditional;
 
 import java.lang.annotation.*;
 
 /**
- * <p>Description: 开启资源服务器增强功能 </p>
+ * <p>Description: Message服务条件注解 </p>
  *
  * @author : gengwei.zheng
- * @date : 2024/10/27 22:49
+ * @date : 2022/1/10 14:54
  */
-@Target({ElementType.TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
+@Target({ElementType.TYPE, ElementType.METHOD})
 @Documented
-@Import(AuthorizationEnhanceConfiguration.class)
-public @interface EnableAuthorizationEnhance {
+@Conditional(IsMessageServiceCondition.class)
+public @interface ConditionalOnMessageService {
 }

@@ -23,22 +23,30 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.oauth2.authorization.autoconfigure.annotation;
+package org.dromara.dante.oauth2.authorization.autoconfigure.bus;
 
-import org.dromara.dante.oauth2.authorization.autoconfigure.config.AuthorizationEnhanceConfiguration;
-import org.springframework.context.annotation.Import;
-
-import java.lang.annotation.*;
+import org.springframework.cloud.bus.event.RemoteApplicationEvent;
 
 /**
- * <p>Description: 开启资源服务器增强功能 </p>
+ * <p>Description: 远程统一消息发送事件 </p>
  *
  * @author : gengwei.zheng
- * @date : 2024/10/27 22:49
+ * @date : 2024/10/25 17:32
  */
-@Target({ElementType.TYPE, ElementType.METHOD})
-@Retention(RetentionPolicy.RUNTIME)
-@Documented
-@Import(AuthorizationEnhanceConfiguration.class)
-public @interface EnableAuthorizationEnhance {
+public class RemoteMessageSendingEvent extends RemoteApplicationEvent {
+
+    private String data;
+
+    public RemoteMessageSendingEvent() {
+        super();
+    }
+
+    public RemoteMessageSendingEvent(String data, String originService, String destinationService) {
+        super(data, originService, DEFAULT_DESTINATION_FACTORY.getDestination(destinationService));
+        this.data = data;
+    }
+
+    public String getData() {
+        return data;
+    }
 }

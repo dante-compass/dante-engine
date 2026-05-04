@@ -25,40 +25,38 @@
 
 package org.dromara.dante.oauth2.authorization.autoconfigure.strategy;
 
-import org.dromara.dante.oauth2.authorization.autoconfigure.bus.RemoteEnableAuthenticationEvent;
-import org.dromara.dante.oauth2.commons.event.EnableAuthenticationEvent;
-import org.dromara.dante.oauth2.commons.strategy.EnableAuthenticationEventManager;
-import org.dromara.dante.security.domain.RegisteredClientTransmitter;
+import org.dromara.dante.message.commons.definition.Message;
+import org.dromara.dante.message.commons.definition.strategy.MessageSendingEventManager;
+import org.dromara.dante.oauth2.authorization.autoconfigure.bus.RemoteMessageSendingEvent;
+import org.dromara.dante.oauth2.commons.event.MessageSendingEvent;
 import org.dromara.dante.spring.context.ServiceContextHolder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * <p>Description: 默认的手动开启认证事件管理器 </p>
- * <p>
- * 目前主要用于物联网服务，实现一机一密和一型一密类型认证
+ * <p>Description: 默认同一消息发送事件管理器 </p>
  *
  * @author : gengwei.zheng
- * @date : 2024/8/21 16:09
+ * @date : 2024/10/25 17:29
  */
-public class DefaultEnableAuthenticationEventManager implements EnableAuthenticationEventManager {
+public class DefaultMessageSendingEventManager implements MessageSendingEventManager {
 
-    private static final Logger log = LoggerFactory.getLogger(DefaultEnableAuthenticationEventManager.class);
+    private static final Logger log = LoggerFactory.getLogger(DefaultMessageSendingEventManager.class);
 
     @Override
     public String getDestinationServiceName() {
-        return ServiceContextHolder.getUaaServiceName();
+        return ServiceContextHolder.getMessageServiceName();
     }
 
     @Override
-    public void postLocalProcess(RegisteredClientTransmitter data) {
-        log.debug("[Herodotus] |- [AUTHENTICATION-SWITCH] Publish local enable event.");
-        publishEvent(new EnableAuthenticationEvent(data));
+    public void postLocalProcess(Message<?> data) {
+        log.debug("[Herodotus] |- [M1] Start sending message to message service from local!");
+        publishEvent(new MessageSendingEvent(data));
     }
 
     @Override
     public void postRemoteProcess(String data, String originService, String destinationService) {
-        log.debug("[Herodotus] |- [AUTHENTICATION-SWITCH] Publish remote enable event.");
-        publishEvent(new RemoteEnableAuthenticationEvent(data, originService, destinationService));
+        log.debug("[Herodotus] |- [M1] Start sending message to message service from remote!");
+        publishEvent(new RemoteMessageSendingEvent(data, originService, destinationService));
     }
 }

@@ -60,6 +60,7 @@
         <module>web-spring-boot-starter</module>
         <module>feign-spring-boot-starter</module>
         <module>nosql-spring-boot-starter</module>
+        <module>message-mqtt-spring-boot-starter</module>
     </modules>
 
 </project>
