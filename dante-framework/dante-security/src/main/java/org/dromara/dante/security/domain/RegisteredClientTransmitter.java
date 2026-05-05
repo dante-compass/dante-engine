@@ -26,6 +26,7 @@
 package org.dromara.dante.security.domain;
 
 import com.google.common.base.MoreObjects;
+import org.dromara.dante.security.definition.RegisteredClientDetails;
 
 /**
  * <p>Description: 开启关闭认证传输数据实体 </p>

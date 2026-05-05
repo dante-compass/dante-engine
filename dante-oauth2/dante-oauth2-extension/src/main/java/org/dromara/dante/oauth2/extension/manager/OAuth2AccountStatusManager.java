@@ -32,7 +32,7 @@ import org.dromara.dante.message.commons.domain.AccountStatus;
 import org.dromara.dante.oauth2.commons.strategy.AccountStatusChangedEventManager;
 import org.dromara.dante.oauth2.extension.stamp.LockedAccountStampManager;
 import org.dromara.dante.security.domain.HerodotusUser;
-import org.dromara.dante.security.service.EnhanceUserDetailsService;
+import org.dromara.dante.security.definition.EnhanceUserDetailsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.userdetails.UserDetailsService;

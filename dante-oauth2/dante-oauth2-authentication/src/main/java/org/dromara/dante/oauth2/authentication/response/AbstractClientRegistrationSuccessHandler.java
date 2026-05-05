@@ -31,7 +31,7 @@ import org.apache.commons.lang3.ObjectUtils;
 import org.dromara.dante.oauth2.commons.strategy.ClientRegistrationSuccessEventManager;
 import org.dromara.dante.security.domain.OAuth2AuthorizationResource;
 import org.dromara.dante.security.domain.RegisteredClientTransmitter;
-import org.dromara.dante.security.service.OAuth2AuthorizationResourceService;
+import org.dromara.dante.security.definition.OAuth2AuthorizationResourceService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpMethod;

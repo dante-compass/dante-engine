@@ -23,36 +23,14 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.security.domain;
-
-import java.security.Principal;
+package org.dromara.dante.security.definition;
 
 /**
- * <p>Description: Herodotus 平台用户 Principal 统一定义 </p>
+ * <p>Description: 自定义客户端详情接口 </p>
  *
  * @author : gengwei.zheng
- * @date : 2024/4/8 11:54
+ * @date : 2022/3/31 14:42
  */
-public interface HerodotusPrincipal extends Principal {
+public interface EnhanceClientDetailsService extends ClientDetailsService {
 
-    /**
-     * 获取用户ID
-     *
-     * @return 用户ID
-     */
-    String getId();
-
-    /**
-     * 获取用户头像
-     *
-     * @return 用户头像
-     */
-    String getAvatar();
-
-    /**
-     * 获取用户 Email
-     *
-     * @return 用户 Email
-     */
-    String getEmail();
 }

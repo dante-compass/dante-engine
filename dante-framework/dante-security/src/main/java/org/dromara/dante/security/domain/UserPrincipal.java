@@ -27,6 +27,7 @@ package org.dromara.dante.security.domain;
 
 import com.google.common.base.MoreObjects;
 import org.dromara.dante.core.constant.SystemConstants;
+import org.dromara.dante.security.definition.HerodotusPrincipal;
 
 import java.io.Serializable;
 import java.util.HashMap;

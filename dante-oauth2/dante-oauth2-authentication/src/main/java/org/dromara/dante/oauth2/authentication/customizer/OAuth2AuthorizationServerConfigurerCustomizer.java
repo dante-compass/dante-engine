@@ -33,7 +33,7 @@ import org.dromara.dante.oauth2.authentication.consumer.OidcClientRegistrationAu
 import org.dromara.dante.oauth2.authentication.provider.OAuth2ResourceOwnerPasswordAuthenticationConverter;
 import org.dromara.dante.oauth2.authentication.provider.OAuth2SocialCredentialsAuthenticationConverter;
 import org.dromara.dante.oauth2.commons.properties.OAuth2Properties;
-import org.dromara.dante.security.service.ClientDetailsService;
+import org.dromara.dante.security.definition.ClientDetailsService;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.oauth2.server.authorization.OAuth2AuthorizationServerConfigurer;

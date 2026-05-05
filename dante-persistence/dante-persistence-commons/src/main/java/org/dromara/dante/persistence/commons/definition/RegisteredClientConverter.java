@@ -27,7 +27,7 @@ package org.dromara.dante.persistence.commons.definition;
 
 import cn.hutool.v7.core.date.DateUtil;
 import org.dromara.dante.oauth2.commons.utils.OAuth2AuthenticationUtils;
-import org.dromara.dante.security.domain.RegisteredClientDetails;
+import org.dromara.dante.security.definition.RegisteredClientDetails;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
 import org.springframework.security.oauth2.server.authorization.settings.ClientSettings;

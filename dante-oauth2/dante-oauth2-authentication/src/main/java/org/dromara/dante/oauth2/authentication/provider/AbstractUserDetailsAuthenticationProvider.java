@@ -32,7 +32,7 @@ import org.dromara.dante.oauth2.commons.exception.AccountEndpointLimitedExceptio
 import org.dromara.dante.oauth2.commons.properties.OAuth2AuthenticationProperties;
 import org.dromara.dante.persistence.commons.definition.EnhanceOAuth2AuthorizationService;
 import org.dromara.dante.security.constant.OAuth2ErrorKeys;
-import org.dromara.dante.security.service.EnhanceUserDetailsService;
+import org.dromara.dante.security.definition.EnhanceUserDetailsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.support.MessageSourceAccessor;

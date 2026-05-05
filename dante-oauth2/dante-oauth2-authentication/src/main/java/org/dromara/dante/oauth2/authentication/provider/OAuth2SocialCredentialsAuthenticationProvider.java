@@ -33,7 +33,7 @@ import org.dromara.dante.oauth2.authentication.utils.OAuth2AuthenticationProvide
 import org.dromara.dante.oauth2.commons.exception.SocialCredentialsParameterBindingFailedException;
 import org.dromara.dante.oauth2.commons.properties.OAuth2AuthenticationProperties;
 import org.dromara.dante.security.domain.AccessPrincipal;
-import org.dromara.dante.security.service.EnhanceUserDetailsService;
+import org.dromara.dante.security.definition.EnhanceUserDetailsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.MutablePropertyValues;

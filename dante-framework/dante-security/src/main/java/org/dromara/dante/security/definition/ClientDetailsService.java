@@ -23,21 +23,25 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.security.service;
+package org.dromara.dante.security.definition;
 
-import org.dromara.dante.security.domain.AccessPrincipal;
-import org.dromara.dante.security.domain.HerodotusUser;
-import org.springframework.security.core.AuthenticationException;
+import org.dromara.dante.security.domain.HerodotusGrantedAuthority;
+
+import java.util.Set;
 
 /**
- * <p>Description: 系统用户服务策略定义 </p>
+ * <p>Description: 客户端操作基础接口 </p>
  *
  * @author : gengwei.zheng
- * @date : 2022/2/17 10:52
+ * @date : 2022/4/1 18:16
  */
-public interface StrategyUserDetailsService {
+public interface ClientDetailsService {
 
-    HerodotusUser findUserDetailsByUsername(String username) throws AuthenticationException;
-
-    HerodotusUser findUserDetailsBySocial(String source, AccessPrincipal accessPrincipal) throws AuthenticationException;
+    /**
+     * 根据客户端ID获取客户端权限
+     *
+     * @param clientId 客户端ID
+     * @return 客户端权限集合
+     */
+    Set<HerodotusGrantedAuthority> findAuthoritiesById(String clientId);
 }

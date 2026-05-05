@@ -27,7 +27,7 @@ package org.dromara.dante.persistence.commons.definition;
 
 import org.apache.commons.lang3.ObjectUtils;
 import org.dromara.dante.security.domain.RegisteredClientTransmitter;
-import org.dromara.dante.security.service.OAuth2AuthorizationResourceService;
+import org.dromara.dante.security.definition.OAuth2AuthorizationResourceService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;

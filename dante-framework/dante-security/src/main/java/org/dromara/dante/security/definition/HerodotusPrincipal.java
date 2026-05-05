@@ -23,41 +23,36 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.security.service;
+package org.dromara.dante.security.definition;
 
-import org.dromara.dante.security.domain.AccessPrincipal;
-import org.dromara.dante.security.domain.HerodotusUser;
-import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import java.security.Principal;
 
 /**
- * <p>Description: 自定义UserDetailsService接口，方便以后扩展 </p>
+ * <p>Description: Herodotus 平台用户 Principal 统一定义 </p>
  *
  * @author : gengwei.zheng
- * @date : 2021/1/17 12:49
+ * @date : 2024/4/8 11:54
  */
-public interface EnhanceUserDetailsService extends UserDetailsService {
+public interface HerodotusPrincipal extends Principal {
 
     /**
-     * 通过社交集成的唯一id，获取用户信息
-     * <p>
-     * 如果是短信验证码，openId就是手机号码
+     * 获取用户ID
      *
-     * @param accessPrincipal 社交登录提供的相关信息
-     * @param source          社交集成提供商类型
-     * @return {@link UserDetails}
-     * @throws UsernameNotFoundException 用户不存在
+     * @return 用户ID
      */
-    UserDetails loadUserBySocial(String source, AccessPrincipal accessPrincipal) throws AuthenticationException;
+    String getId();
 
     /**
-     * 系统用户名
+     * 获取用户头像
      *
-     * @param username 用户账号
-     * @return {@link HerodotusUser}
-     * @throws UsernameNotFoundException 用户不存在
+     * @return 用户头像
      */
-    HerodotusUser loadHerodotusUserByUsername(String username) throws UsernameNotFoundException;
+    String getAvatar();
+
+    /**
+     * 获取用户 Email
+     *
+     * @return 用户 Email
+     */
+    String getEmail();
 }
