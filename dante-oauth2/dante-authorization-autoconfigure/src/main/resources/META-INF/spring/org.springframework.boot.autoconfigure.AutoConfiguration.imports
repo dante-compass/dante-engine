@@ -25,4 +25,5 @@
 
 org.dromara.dante.oauth2.authorization.autoconfigure.OAuth2AuthorizationAutoConfiguration
 org.dromara.dante.oauth2.authorization.autoconfigure.ResourceServiceMessageAutoConfiguration
+org.dromara.dante.oauth2.authorization.autoconfigure.MessageServiceMessageAutoConfiguration
 org.dromara.dante.oauth2.authorization.autoconfigure.UpmsServiceMessageAutoConfiguration

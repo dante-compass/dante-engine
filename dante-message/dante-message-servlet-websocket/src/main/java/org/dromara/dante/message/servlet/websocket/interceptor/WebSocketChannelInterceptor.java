@@ -28,7 +28,7 @@ package org.dromara.dante.message.servlet.websocket.interceptor;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.dromara.dante.core.utils.TokenUtils;
-import org.dromara.dante.message.servlet.websocket.domain.WebSocketPrincipal;
+import org.dromara.dante.security.domain.UserPrincipal;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
@@ -65,7 +65,7 @@ public class WebSocketChannelInterceptor implements ChannelInterceptor {
 
         StompHeaderAccessor accessor = MessageHeaderAccessor.getAccessor(message, StompHeaderAccessor.class);
 
-        WebSocketPrincipal principal = (WebSocketPrincipal) accessor.getUser();
+        UserPrincipal principal = (UserPrincipal) accessor.getUser();
 
         if (ObjectUtils.isEmpty(principal)) {
             log.warn("[Herodotus] |- WebSocket channel cannot fetch user principal.");
@@ -95,7 +95,7 @@ public class WebSocketChannelInterceptor implements ChannelInterceptor {
                      * 2. 封装StompHeaderAccessor中后，可以在@Controller / @MessageMapping注解的方法中直接带上StompHeaderAccessor 就可以通过方法提供的 getUser()方法获取到这里封装user对象
                      * 3. 例如可以在这里拿到前端的信息进行登录鉴权
                      */
-                    WebSocketPrincipal user = (WebSocketPrincipal) accessor.getUser();
+                    UserPrincipal user = (UserPrincipal) accessor.getUser();
 
                     log.debug("[Herodotus] |- Authentication user [{}] transmit token [{}] from frontend.", user.getName(), token);
                 }

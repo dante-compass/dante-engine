@@ -26,7 +26,8 @@
 package org.dromara.dante.message.servlet.websocket.definition;
 
 import org.dromara.dante.message.commons.constant.MessageConstants;
-import org.dromara.dante.message.commons.domain.WebSocketMessage;
+import org.dromara.dante.message.commons.definition.AbstractBroadcastMessage;
+import org.dromara.dante.message.commons.definition.AbstractUserMessage;
 
 /**
  * <p>Description: WebSocket 消息发送操作定义 </p>
@@ -39,19 +40,19 @@ public interface WebSocketMessageSender {
     /**
      * 发送 WebSocket 点对点消息。发送信息给指定用户
      *
-     * @param user        用户唯一标识
+     * @param userId      用户唯一标识
      * @param destination 消息通道
      * @param payload     消息内容
      */
-    void toUser(String user, String destination, Object payload);
+    void toUser(String userId, String destination, String payload);
 
     /**
      * 送 WebSocket 点对点消息。发送信息给指定用户
      *
-     * @param webSocketMessage 消息实体 {@link WebSocketMessage}
+     * @param abstractUserMessage 消息实体 {@link AbstractUserMessage}
      */
-    default void toUser(WebSocketMessage webSocketMessage) {
-        toUser(webSocketMessage.getUser(), webSocketMessage.getDestination(), webSocketMessage.getPayload());
+    default void toUser(AbstractUserMessage<String> abstractUserMessage) {
+        toUser(abstractUserMessage.getUserId(), abstractUserMessage.getDestination(), abstractUserMessage.getPayload());
     }
 
     /**
@@ -60,14 +61,23 @@ public interface WebSocketMessageSender {
      * @param destination 消息通道
      * @param payload     消息内容
      */
-    void toAll(String destination, Object payload);
+    void toAll(String destination, String payload);
+
+    /**
+     * 送 WebSocket 点对点消息。发送信息给指定用户
+     *
+     * @param abstractBroadcastMessage 消息实体 {@link AbstractBroadcastMessage}
+     */
+    default void toAll(AbstractBroadcastMessage<String> abstractBroadcastMessage) {
+        toAll(abstractBroadcastMessage.getDestination(), abstractBroadcastMessage.getPayload());
+    }
 
     /**
      * 发送公告信息
      *
      * @param payload 消息内容
      */
-    default void announcement(Object payload) {
+    default void announcement(String payload) {
         toAll(MessageConstants.WEBSOCKET_DESTINATION_BROADCAST_NOTICE, payload);
     }
 
@@ -76,7 +86,7 @@ public interface WebSocketMessageSender {
      *
      * @param payload 消息内容
      */
-    default void online(Object payload) {
+    default void online(String payload) {
         toAll(MessageConstants.WEBSOCKET_DESTINATION_BROADCAST_ONLINE, payload);
     }
 }

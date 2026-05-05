@@ -31,7 +31,7 @@
     <parent>
         <groupId>cn.herodotus.ecosystem</groupId>
         <artifactId>herodotus-ecosystem-dependencies</artifactId>
-        <version>4.0.6.0</version>
+        <version>4.0.6.1</version>
         <relativePath/>
     </parent>
 
@@ -208,7 +208,17 @@
             </dependency>
             <dependency>
                 <groupId>org.dromara.dante</groupId>
+                <artifactId>dante-message-emqx</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.dromara.dante</groupId>
                 <artifactId>dante-message-servlet-websocket</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.dromara.dante</groupId>
+                <artifactId>dante-nosql-influxdb3</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -314,6 +324,16 @@
             <dependency>
                 <groupId>org.dromara.dante</groupId>
                 <artifactId>logging-spring-boot-starter</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.dromara.dante</groupId>
+                <artifactId>message-mqtt-spring-boot-starter</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.dromara.dante</groupId>
+                <artifactId>nosql-spring-boot-starter</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

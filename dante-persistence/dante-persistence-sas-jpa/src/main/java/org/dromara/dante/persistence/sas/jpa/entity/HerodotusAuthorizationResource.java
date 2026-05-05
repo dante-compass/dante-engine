@@ -31,7 +31,7 @@ import jakarta.persistence.*;
 import org.dromara.dante.data.jpa.entity.AbstractAuditEntity;
 import org.dromara.dante.persistence.commons.constant.PersistenceConstants;
 import org.dromara.dante.persistence.sas.jpa.generator.HerodotusAuthorizationResourceIdGenerator;
-import org.dromara.dante.security.domain.RegisteredClientDetails;
+import org.dromara.dante.security.definition.RegisteredClientDetails;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 /**

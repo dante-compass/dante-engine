@@ -32,10 +32,10 @@ import org.dromara.dante.oauth2.authentication.autoconfigure.listener.RemoteDisa
 import org.dromara.dante.oauth2.authentication.autoconfigure.listener.RemoteEnableAuthenticationListener;
 import org.dromara.dante.oauth2.authentication.autoconfigure.strategy.DefaultAccountStatusChangeEventManager;
 import org.dromara.dante.oauth2.authentication.autoconfigure.strategy.DefaultOAuth2DeviceVerificationSuccessEventManager;
-import org.dromara.dante.oauth2.authentication.autoconfigure.strategy.DefaultOidcClientRegistrationSuccessEventManager;
+import org.dromara.dante.oauth2.authentication.autoconfigure.strategy.DefaultClientRegistrationSuccessEventManager;
 import org.dromara.dante.oauth2.commons.strategy.AccountStatusChangedEventManager;
 import org.dromara.dante.oauth2.commons.strategy.OAuth2DeviceVerificationSuccessEventManager;
-import org.dromara.dante.oauth2.commons.strategy.OidcClientRegistrationSuccessEventManager;
+import org.dromara.dante.oauth2.commons.strategy.ClientRegistrationSuccessEventManager;
 import org.dromara.dante.persistence.commons.definition.EnhanceAuthenticationManager;
 import org.dromara.dante.spring.condition.ConditionalOnArchitecture;
 import org.dromara.dante.spring.enums.Architecture;
@@ -78,8 +78,8 @@ public class UaaServiceMessageAutoConfiguration {
     }
 
     @Bean
-    public OidcClientRegistrationSuccessEventManager oidcClientRegistrationSuccessEventManager() {
-        DefaultOidcClientRegistrationSuccessEventManager manager = new DefaultOidcClientRegistrationSuccessEventManager();
+    public ClientRegistrationSuccessEventManager oidcClientRegistrationSuccessEventManager() {
+        DefaultClientRegistrationSuccessEventManager manager = new DefaultClientRegistrationSuccessEventManager();
         log.trace("[Herodotus] |- Bean [Oidc Client Registration Success Event Manager] Configure.");
         return manager;
     }

@@ -26,6 +26,14 @@
 package org.dromara.dante.message.commons.domain;
 
 import com.google.common.base.MoreObjects;
+import org.apache.commons.lang3.ObjectUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.dromara.dante.message.commons.constant.MqttConstants;
+import org.springframework.messaging.Message;
+import org.springframework.messaging.MessageHeaders;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * <p>Description: Mqtt 类型消息参数实体 </p>
@@ -33,13 +41,16 @@ import com.google.common.base.MoreObjects;
  * @author : gengwei.zheng
  * @date : 2023/11/2 16:05
  */
-public class MqttMessage implements Message {
+public class MqttMessage implements Message<String> {
 
     private String topic;
     private String responseTopic;
     private String correlationData;
     private Integer qos;
     private String payload;
+
+    public MqttMessage() {
+    }
 
     public String getTopic() {
         return topic;
@@ -73,8 +84,35 @@ public class MqttMessage implements Message {
         this.qos = qos;
     }
 
+    @Override
     public String getPayload() {
         return payload;
+    }
+
+    @Override
+    public MessageHeaders getHeaders() {
+
+        Map<String, Object> headers = new HashMap<>();
+
+        headers.put(MqttConstants.MESSAGE_HEADER__HERODOTUS_EVENT_ROUTER, MqttConstants.MESSAGE_ROUTER_TO_MQTT);
+
+        if (StringUtils.isNotBlank(getTopic())) {
+            headers.put(MqttConstants.TOPIC, getTopic());
+        }
+
+        if (StringUtils.isNotBlank(getResponseTopic())) {
+            headers.put(MqttConstants.RESPONSE_TOPIC, getResponseTopic());
+        }
+
+        if (StringUtils.isNotBlank(getCorrelationData())) {
+            headers.put(MqttConstants.CORRELATION_DATA, getCorrelationData());
+        }
+
+        if (ObjectUtils.isNotEmpty(getQos())) {
+            headers.put(MqttConstants.QOS, getQos());
+        }
+
+        return new MessageHeaders(headers);
     }
 
     public void setPayload(String payload) {

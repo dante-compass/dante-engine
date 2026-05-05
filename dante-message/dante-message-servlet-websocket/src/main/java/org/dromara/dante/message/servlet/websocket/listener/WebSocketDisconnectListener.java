@@ -25,11 +25,11 @@
 
 package org.dromara.dante.message.servlet.websocket.listener;
 
-import org.dromara.dante.message.servlet.websocket.definition.AbstractWebSocketStatusListener;
-import org.dromara.dante.message.servlet.websocket.definition.WebSocketMessageSender;
-import org.dromara.dante.message.servlet.websocket.domain.WebSocketPrincipal;
-import org.springframework.stereotype.Component;
 import org.springframework.web.socket.messaging.SessionDisconnectEvent;
+
+import java.security.Principal;
+import java.util.function.Consumer;
+import java.util.function.Function;
 
 /**
  * <p>Description: WebSocketUserDisconnectListener </p>
@@ -37,17 +37,9 @@ import org.springframework.web.socket.messaging.SessionDisconnectEvent;
  * @author : gengwei.zheng
  * @date : 2022/12/29 22:30
  */
-@Component
-public class WebSocketDisconnectListener extends AbstractWebSocketStatusListener<SessionDisconnectEvent> {
+public class WebSocketDisconnectListener extends AbstractServletPrincipalListener<SessionDisconnectEvent> {
 
-    public WebSocketDisconnectListener(WebSocketMessageSender webSocketMessageSender) {
-        super(webSocketMessageSender);
-    }
-
-    @Override
-    public void onApplicationEvent(SessionDisconnectEvent event) {
-        WebSocketPrincipal principal = (WebSocketPrincipal) event.getUser();
-
-        disconnected(principal);
+    public WebSocketDisconnectListener(Function<Principal, Integer> counter, Consumer<String> broadcast) {
+        super(counter, broadcast);
     }
 }

@@ -1,107 +1,58 @@
 /*
- * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
+ * Copyright 2020-2030 码匠君<herodotus@aliyun.com>
  *
- * Copyright (c) 2020-2030 郑庚伟 ZHENGGENGWEI (码匠君), <herodotus@aliyun.com> Licensed under the AGPL License
+ * Dante Engine licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
  *
- * This file is part of Herodotus Stirrup.
+ *    http://www.apache.org/licenses/LICENSE-2.0
  *
- * Herodotus Stirrup is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Affero General Public License as published
- * by the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  *
- * Herodotus Stirrup is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Affero General Public License for more details.
+ * Dante Engine 是 Dante Cloud 系统核心组件库，采用 APACHE LICENSE 2.0 开源协议，您在使用过程中，需要注意以下几点：
  *
- * You should have received a copy of the GNU Affero General Public License
- * along with this program.  If not, see <https://www.herodotus.cn>.
+ * 1. 请不要删除和修改根目录下的LICENSE文件。
+ * 2. 请不要删除和修改 Dante Engine 源码头部的版权声明。
+ * 3. 请保留源码和相关描述文件的项目出处，作者声明等。
+ * 4. 分发源码时候，请注明软件出处 <https://gitee.com/dromara/dante-cloud>
+ * 5. 在修改包名，模块名称，项目代码等时，请注明软件出处 <https://gitee.com/dromara/dante-cloud>
+ * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
 package org.dromara.dante.oauth2.authentication.converter;
 
-import org.dromara.dante.core.constant.SymbolConstants;
-import org.dromara.dante.core.constant.SystemConstants;
-import org.dromara.dante.oauth2.authentication.utils.OAuth2EndpointUtils;
-import org.apache.commons.collections4.CollectionUtils;
-import org.apache.commons.lang3.Strings;
-import org.springframework.core.convert.converter.Converter;
-import org.springframework.security.oauth2.core.OAuth2ErrorCodes;
-import org.springframework.security.oauth2.jose.jws.SignatureAlgorithm;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
 import org.springframework.security.oauth2.server.authorization.oidc.OidcClientRegistration;
 import org.springframework.security.oauth2.server.authorization.oidc.converter.OidcClientRegistrationRegisteredClientConverter;
-import org.springframework.security.oauth2.server.authorization.settings.ClientSettings;
-import org.springframework.security.oauth2.server.authorization.settings.OAuth2TokenFormat;
-import org.springframework.security.oauth2.server.authorization.settings.TokenSettings;
 
 import java.util.List;
 
 /**
- * <p>Description: OidcClientRegistration 转 RegisteredClient 转换器</p>
+ * <p>Description: 自定义扩展的  {@link OidcClientRegistration} 转 {@link RegisteredClient} 转换器抽象定义 </p>
+ * <p>
+ * 主要为了解决在客户端自动注册时，增加自定属性。例如：物联网模式下增加 ProductKey
  *
  * @author : gengwei.zheng
  * @date : 2024/5/16 16:18
  */
-public class OidcClientRegistrationToRegisteredClientConverter implements Converter<OidcClientRegistration, RegisteredClient> {
+public class OidcClientRegistrationToRegisteredClientConverter extends AbstractToRegisteredClientConverter<OidcClientRegistration> {
 
-    private final List<String> clientMetadata;
+
     private final OidcClientRegistrationRegisteredClientConverter delegate;
-    private final boolean isRemoteValidate;
 
     public OidcClientRegistrationToRegisteredClientConverter(List<String> clientMetadata, boolean isRemoteValidate) {
-        this.clientMetadata = clientMetadata;
-        this.isRemoteValidate = isRemoteValidate;
+        super(clientMetadata, isRemoteValidate);
         this.delegate = new OidcClientRegistrationRegisteredClientConverter();
     }
 
-    private OAuth2TokenFormat getTokenFormat() {
-        if (isRemoteValidate) {
-            return OAuth2TokenFormat.REFERENCE;
-        } else {
-            return OAuth2TokenFormat.SELF_CONTAINED;
-        }
-    }
-
     @Override
-    public RegisteredClient convert(OidcClientRegistration oidcClientRegistration) {
+    protected RegisteredClient convertToRegisteredClient(OidcClientRegistration source) {
         // 先使用 Spring Authorization Server 默认的 OidcClientRegistrationRegisteredClientConverter 将 OidcClientRegistration 转换为 RegisteredClient
         // 默认的 OidcClientRegistrationRegisteredClientConverter 减少转换错误
-        RegisteredClient registeredClient = this.delegate.convert(oidcClientRegistration);
-
-        // 默认的 OidcClientRegistrationRegisteredClientConverter 会设置一些默认值，不好进行修改，使用 from 重新生成一份 RegisteredClient.Builder 以便设定参数。
-        RegisteredClient.Builder builder = RegisteredClient.from(registeredClient);
-
-        // 自定义动态注册属性。
-        ClientSettings.Builder clientSettingsBuilder = ClientSettings.withSettings(registeredClient.getClientSettings().getSettings());
-        if (CollectionUtils.isNotEmpty(this.clientMetadata)) {
-            // 检测是否有缺失的自定义参数，如果有则抛出错误
-            this.clientMetadata.stream()
-                    .filter(item -> !oidcClientRegistration.getClaims().containsKey(item))
-                    .findAny()
-                    .ifPresent(item -> OAuth2EndpointUtils.throwError(OAuth2ErrorCodes.INVALID_REQUEST, item));
-
-            oidcClientRegistration.getClaims().forEach((claim, value) -> {
-                if (this.clientMetadata.contains(claim)) {
-                    // 自定义动态注册属性存入到客户端设置中
-                    clientSettingsBuilder.setting(claim, value);
-
-                    // 如果包含 ProductKey 同时 clientId 为空。那么就重新设置 clientId。物联网 clientId 格式为 {ProductKey}.{DeviceName}
-                    if (Strings.CS.equals(claim, SystemConstants.PARAMETER__PRODUCT_KEY)) {
-                        builder.clientId(value + SymbolConstants.PERIOD + oidcClientRegistration.getClientName());
-                    }
-                }
-            });
-        }
-
-        builder.clientSettings(clientSettingsBuilder.build());
-
-        builder.tokenSettings(TokenSettings.builder()
-                .idTokenSignatureAlgorithm(SignatureAlgorithm.RS256)
-                .accessTokenFormat(getTokenFormat())
-                .build());
-
-        return builder.build();
+        return this.delegate.convert(source);
     }
 }

@@ -31,7 +31,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.MappedSuperclass;
 import org.dromara.dante.core.constant.SystemConstants;
 import org.dromara.dante.data.jpa.entity.AbstractSysEntity;
-import org.dromara.dante.security.domain.RegisteredClientDetails;
+import org.dromara.dante.security.definition.RegisteredClientDetails;
 import org.dromara.dante.spring.jackson.ArrayToCommaDelimitedStringDeserializer;
 import org.dromara.dante.spring.jackson.CommaDelimitedStringToSetSerializer;
 import org.hibernate.annotations.CreationTimestamp;

@@ -28,7 +28,7 @@ package org.dromara.dante.persistence.sas.jpa.specification;
 import jakarta.transaction.Transactional;
 import org.dromara.dante.persistence.commons.definition.AbstractEnhanceAuthenticationManager;
 import org.dromara.dante.persistence.sas.jpa.repository.HerodotusRegisteredClientRepository;
-import org.dromara.dante.security.service.OAuth2AuthorizationResourceService;
+import org.dromara.dante.security.definition.OAuth2AuthorizationResourceService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClientRepository;

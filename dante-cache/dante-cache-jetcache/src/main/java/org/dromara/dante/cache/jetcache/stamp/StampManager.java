@@ -141,6 +141,17 @@ public interface StampManager<K, V> {
     boolean check(K key, V value) throws StampParameterIllegalException, StampHasExpiredException, StampMismatchException;
 
     /**
+     * 判断缓存中是否存在某个 Key 值
+     *
+     * @param key 与Stamp对应的Key值
+     * @return true 存在，false 不存在
+     */
+    default boolean exist(K key) {
+        V value = this.get(key);
+        return ObjectUtils.isNotEmpty(value);
+    }
+
+    /**
      * 根据key读取Stamp
      *
      * @param key 存储数据Key值

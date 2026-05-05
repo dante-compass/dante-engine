@@ -385,6 +385,22 @@ public class ServiceContextHolder {
         getServiceContext().setDeviceVerificationEndpoint(deviceVerificationEndpoint);
     }
 
+    public static String getClientRegistrationUri() {
+        return getServiceContext().getClientRegistrationUri();
+    }
+
+    public static void setClientRegistrationUri(String clientRegistrationUri) {
+        getServiceContext().setClientRegistrationUri(clientRegistrationUri);
+    }
+
+    public static String getClientRegistrationEndpoint() {
+        return getServiceContext().getClientRegistrationEndpoint();
+    }
+
+    public static void setClientRegistrationEndpoint(String clientRegistrationEndpoint) {
+        getServiceContext().setClientRegistrationEndpoint(clientRegistrationEndpoint);
+    }
+
     public static String getOidcClientRegistrationUri() {
         return getServiceContext().getOidcClientRegistrationUri();
     }

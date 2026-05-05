@@ -44,4 +44,5 @@ public interface WebConstants extends BaseConstants {
     String CACHE_NAME_TOKEN_IDEMPOTENT = CACHE_TOKEN_BASE_PREFIX + "idempotent:";
     String CACHE_NAME_TOKEN_ACCESS_LIMITED = CACHE_TOKEN_BASE_PREFIX + "access_limited:";
     String CACHE_NAME_TOKEN_SECURE_KEY = CACHE_TOKEN_BASE_PREFIX + "secure_key:";
+    String CACHE_NAME_TOKEN_SIGNATURE = CACHE_TOKEN_BASE_PREFIX + "signature:";
 }

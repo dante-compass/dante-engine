@@ -31,7 +31,7 @@
     <parent>
         <groupId>org.dromara.dante</groupId>
         <artifactId>dante-engine</artifactId>
-        <version>4.0.6.0</version>
+        <version>4.0.6.1</version>
     </parent>
 
     <artifactId>dante-starter</artifactId>
@@ -59,6 +59,8 @@
         <module>webmvc-spring-boot-starter</module>
         <module>web-spring-boot-starter</module>
         <module>feign-spring-boot-starter</module>
+        <module>nosql-spring-boot-starter</module>
+        <module>message-mqtt-spring-boot-starter</module>
     </modules>
 
 </project>

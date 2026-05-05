@@ -66,7 +66,7 @@ public interface SystemConstants {
     /* ---------- 系统信息 ---------- */
 
     String DN_OU = "Herodotus Cloud";
-    String WEBSITE = "https://www.herodotus.vip";
+    String WEBSITE = "https://www.herodotus.cn";
     String COPYRIGHT_DETAILS = "AGPL-3.0 Licensed | Copyright © 2020-2030 码 匠 君";
     String SYSTEM_NAME = DN_OU;
     String PACKAGE_NAME = "org.dromara";
@@ -88,6 +88,7 @@ public interface SystemConstants {
     String OAUTH2_TOKEN_ENDPOINT = "/oauth2/token";
     String OAUTH2_TOKEN_REVOCATION_ENDPOINT = "/oauth2/revoke";
     String OAUTH2_TOKEN_INTROSPECTION_ENDPOINT = "/oauth2/introspect";
+    String OAUTH2_CLIENT_REGISTRATION_ENDPOINT = "/oauth2/register";
     String OAUTH2_DEVICE_AUTHORIZATION_ENDPOINT = "/oauth2/device_authorization";
     String OAUTH2_DEVICE_VERIFICATION_ENDPOINT = "/oauth2/device_verification";
     String OAUTH2_JWK_SET_ENDPOINT = "/oauth2/jwks";
@@ -104,6 +105,8 @@ public interface SystemConstants {
     String MATCHER_WEBJARS = "/webjars/**";
 
     String KEY__USER_PRINCIPAL = "USER_PRINCIPAL";
+    String KEY__TIMESTAMP = "timestamp";
+    String KEY__RANDOM = "random";
 
     /**
      * Oauth2 模式类型

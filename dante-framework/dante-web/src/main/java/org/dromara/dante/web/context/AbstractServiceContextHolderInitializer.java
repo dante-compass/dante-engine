@@ -138,6 +138,8 @@ public abstract class AbstractServiceContextHolderInitializer {
             ServiceContextHolder.setDeviceAuthorizationEndpoint(endpointProperties.getDeviceAuthorizationEndpoint());
             ServiceContextHolder.setDeviceVerificationUri(endpointProperties.getDeviceVerificationUri());
             ServiceContextHolder.setDeviceVerificationEndpoint(endpointProperties.getDeviceVerificationEndpoint());
+            ServiceContextHolder.setClientRegistrationUri(endpointProperties.getClientRegistrationUri());
+            ServiceContextHolder.setClientRegistrationEndpoint(endpointProperties.getClientRegistrationEndpoint());
             ServiceContextHolder.setOidcClientRegistrationUri(endpointProperties.getOidcClientRegistrationUri());
             ServiceContextHolder.setOidcClientRegistrationEndpoint(endpointProperties.getOidcClientRegistrationEndpoint());
             ServiceContextHolder.setOidcLogoutUri(endpointProperties.getOidcLogoutUri());

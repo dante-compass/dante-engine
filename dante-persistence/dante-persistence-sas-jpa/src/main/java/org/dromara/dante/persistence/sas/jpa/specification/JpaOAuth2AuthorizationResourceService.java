@@ -31,7 +31,7 @@ import org.dromara.dante.persistence.sas.jpa.entity.HerodotusAuthorizationResour
 import org.dromara.dante.persistence.sas.jpa.service.HerodotusAuthorizationResourceService;
 import org.dromara.dante.security.domain.OAuth2AuthorizationResource;
 import org.dromara.dante.security.domain.RegisteredClientTransmitter;
-import org.dromara.dante.security.service.OAuth2AuthorizationResourceService;
+import org.dromara.dante.security.definition.OAuth2AuthorizationResourceService;
 import org.springframework.core.convert.converter.Converter;
 
 /**

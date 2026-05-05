@@ -31,7 +31,7 @@
     <parent>
         <groupId>org.dromara.dante</groupId>
         <artifactId>dante-starter</artifactId>
-        <version>4.0.6.0</version>
+        <version>4.0.6.1</version>
     </parent>
 
     <artifactId>servlet-message-spring-boot-starter</artifactId>
@@ -43,6 +43,11 @@
         <dependency>
             <groupId>org.dromara.dante</groupId>
             <artifactId>dante-message-servlet-websocket</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.dromara.dante</groupId>
+            <artifactId>dante-message-autoconfigure</artifactId>
         </dependency>
 
         <dependency>
