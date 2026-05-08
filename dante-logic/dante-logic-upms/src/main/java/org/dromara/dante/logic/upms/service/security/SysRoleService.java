@@ -71,7 +71,7 @@ public class SysRoleService extends AbstractJpaService<SysRole, String> {
                     data.setPermissions(sysPermissions);
                     return data;
                 })
-                .map(this::saveAndFlush)
+                .map(this::save)
                 .orElse(null);
     }
 

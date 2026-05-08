@@ -126,7 +126,7 @@ public class SysElementService extends AbstractJpaService<SysElement, String> {
                     data.setRoles(sysRoles);
                     return data;
                 })
-                .map(this::saveAndFlush)
+                .map(this::save)
                 .orElse(null);
     }
 }

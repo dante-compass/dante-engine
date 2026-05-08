@@ -105,7 +105,7 @@ public class SecurityAttributeDistributionProcessor implements StrategyEventMana
             List<SysInterface> sysInterfaces = sysInterfaceService.findAllocatable();
             if (CollectionUtils.isNotEmpty(sysInterfaces)) {
                 List<SysAttribute> elements = toSysAttributes.convert(sysInterfaces);
-                List<SysAttribute> result = sysAttributeService.saveAllAndFlush(elements);
+                List<SysAttribute> result = sysAttributeService.saveAll(elements);
                 if (CollectionUtils.isNotEmpty(result)) {
                     log.debug("[Herodotus] |- Merge security attribute SUCCESS and FINISHED!");
                 } else {

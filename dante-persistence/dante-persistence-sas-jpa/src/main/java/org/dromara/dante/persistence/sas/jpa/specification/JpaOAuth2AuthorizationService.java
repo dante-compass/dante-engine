@@ -79,7 +79,7 @@ public class JpaOAuth2AuthorizationService implements EnhanceOAuth2Authorization
 
     @Override
     public void save(OAuth2Authorization authorization) {
-        this.herodotusAuthorizationService.saveAndFlush(toEntity(authorization));
+        this.herodotusAuthorizationService.save(toEntity(authorization));
     }
 
     @Transactional

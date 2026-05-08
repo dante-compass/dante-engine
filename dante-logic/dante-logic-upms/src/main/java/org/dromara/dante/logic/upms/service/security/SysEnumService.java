@@ -96,6 +96,6 @@ public class SysEnumService extends AbstractJpaService<SysEnum, String> {
 
     public List<SysEnum> storeDictionaries(List<Dictionary> dictionaries) {
         List<SysEnum> sysAuthorities = toSysEnums.convert(dictionaries);
-        return saveAllAndFlush(sysAuthorities);
+        return saveAll(sysAuthorities);
     }
 }

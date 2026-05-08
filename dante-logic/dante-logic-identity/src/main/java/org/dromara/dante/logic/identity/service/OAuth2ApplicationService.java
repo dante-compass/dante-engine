@@ -145,7 +145,7 @@ public class OAuth2ApplicationService extends AbstractJpaService<OAuth2Applicati
                     entity.setScopes(scopes);
                     return entity;
                 })
-                .map(this::saveAndFlush)
+                .map(this::save)
                 .orElse(null);
     }
 

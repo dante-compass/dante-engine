@@ -31,8 +31,8 @@ import org.dromara.dante.logic.identity.entity.OAuth2Application;
 import org.dromara.dante.logic.identity.entity.OAuth2Permission;
 import org.dromara.dante.logic.identity.entity.OAuth2Scope;
 import org.dromara.dante.logic.identity.service.OAuth2ApplicationService;
-import org.dromara.dante.security.domain.HerodotusGrantedAuthority;
 import org.dromara.dante.security.definition.EnhanceClientDetailsService;
+import org.dromara.dante.security.domain.HerodotusGrantedAuthority;
 
 import java.util.HashSet;
 import java.util.Set;

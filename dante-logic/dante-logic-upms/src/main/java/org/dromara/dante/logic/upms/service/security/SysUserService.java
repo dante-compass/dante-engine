@@ -87,7 +87,7 @@ public class SysUserService extends AbstractJpaService<SysUser, String> {
     public SysUser changePassword(String userId, String password) {
         SysUser sysUser = findByUserId(userId);
         sysUser.setPassword(SecurityUtils.encrypt(password));
-        return saveAndFlush(sysUser);
+        return save(sysUser);
     }
 
     public SysUser assign(String userId, String[] roleIds) {
@@ -127,7 +127,7 @@ public class SysUserService extends AbstractJpaService<SysUser, String> {
         if (CollectionUtils.isNotEmpty(sysRoles)) {
             sysUser.setRoles(sysRoles);
         }
-        return saveAndFlush(sysUser);
+        return save(sysUser);
     }
 
     private String enhance(String username) {

@@ -71,7 +71,7 @@ public class EnumDictionaryCollectProcessor {
             List<SysEnum> sysEnums = sysEnumService.findAllocatable();
             if (CollectionUtils.isNotEmpty(sysEnums)) {
                 List<SysDictionary> elements = toDictionaries.convert(sysEnums);
-                List<SysDictionary> result = sysDictionaryService.saveAllAndFlush(elements);
+                List<SysDictionary> result = sysDictionaryService.saveAll(elements);
                 if (CollectionUtils.isNotEmpty(result)) {
                     log.debug("[Herodotus] |- [E5] Merge system dictionary SUCCESS and FINISHED!");
                 } else {
