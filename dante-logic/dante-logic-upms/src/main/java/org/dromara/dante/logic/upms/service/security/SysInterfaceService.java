@@ -100,7 +100,7 @@ public class SysInterfaceService extends AbstractJpaService<SysInterface, String
 
     public List<SysInterface> storeRequestMappings(Collection<RestMapping> restMappings) {
         List<SysInterface> sysAuthorities = toSysInterfaces(restMappings);
-        return saveAllAndFlush(sysAuthorities);
+        return saveAll(sysAuthorities);
     }
 
     private List<SysInterface> toSysInterfaces(Collection<RestMapping> restMappings) {

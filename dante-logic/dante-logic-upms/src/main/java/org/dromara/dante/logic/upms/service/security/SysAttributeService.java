@@ -71,7 +71,7 @@ public class SysAttributeService extends AbstractJpaService<SysAttribute, String
                     data.setPermissions(sysPermissions);
                     return data;
                 })
-                .map(this::saveAndFlush)
+                .map(this::save)
                 .orElse(null);
     }
 

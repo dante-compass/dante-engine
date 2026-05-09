@@ -63,7 +63,7 @@ public class OAuth2ScopeService extends AbstractJpaService<OAuth2Scope, String> 
         return oldScope.map(entity -> {
                     entity.setPermissions(permissions);
                     return entity;
-                }).map(this::saveAndFlush)
+                }).map(this::save)
                 .orElse(null);
     }
 

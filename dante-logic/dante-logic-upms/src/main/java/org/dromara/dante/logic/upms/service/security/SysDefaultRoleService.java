@@ -66,7 +66,7 @@ public class SysDefaultRoleService extends AbstractJpaService<SysDefaultRole, St
         SysDefaultRole sysDefaultRole = sysDefaultRoleRepository.findByDefaultId(defaultId);
         if (ObjectUtils.isNotEmpty(sysDefaultRole) && ObjectUtils.isNotEmpty(sysRole)) {
             sysDefaultRole.setRole(sysRole);
-            return sysDefaultRoleRepository.saveAndFlush(sysDefaultRole);
+            return sysDefaultRoleRepository.save(sysDefaultRole);
         }
 
         return null;

@@ -251,7 +251,7 @@ public class SysEmployeeService extends AbstractJpaService<SysEmployee, String> 
                                 return item;
                             }).orElse(null);
                 })
-                .map(sysUserService::saveAndFlush)
+                .map(sysUserService::save)
                 .map(SysUser::getEmployee)
                 .orElse(null);
     }
@@ -266,7 +266,7 @@ public class SysEmployeeService extends AbstractJpaService<SysEmployee, String> 
     @Transactional(rollbackFor = TransactionalRollbackException.class)
     public boolean deployAllocatable(List<SysEmployee> sysEmployees, List<SysOwnership> sysOwnerships) {
         if (CollectionUtils.isNotEmpty(sysEmployees) && CollectionUtils.isNotEmpty(sysOwnerships)) {
-            List<SysEmployee> result = sysEmployeeRepository.saveAllAndFlush(sysEmployees);
+            List<SysEmployee> result = sysEmployeeRepository.saveAll(sysEmployees);
             if (CollectionUtils.isNotEmpty(result)) {
                 sysOwnershipService.saveAll(sysOwnerships);
                 return true;

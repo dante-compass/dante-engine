@@ -101,7 +101,7 @@ public class DefaultSocialAuthenticationHandler extends AbstractSocialAuthentica
             SysUser sysUser = new SysUser();
             sysUser.setUserId(userId);
             sysSocialUser.setUsers(ImmutableSet.<SysUser>builder().add(sysUser).build());
-            sysSocialUserService.saveAndFlush(sysSocialUser);
+            sysSocialUserService.save(sysSocialUser);
         }
     }
 
@@ -128,7 +128,7 @@ public class DefaultSocialAuthenticationHandler extends AbstractSocialAuthentica
     public void additionalSignInOperation(HerodotusUser herodotusUserDetails, SocialUserDetails newSocialUserDetails, SocialUserDetails oldSocialUserDetails) {
         if (newSocialUserDetails instanceof SysSocialUser newSysSocialUser && oldSocialUserDetails instanceof SysSocialUser oldSysSocialUser) {
             setSocialUserInfo(oldSysSocialUser, newSysSocialUser.getAccessToken(), newSysSocialUser.getExpireIn(), newSysSocialUser.getRefreshToken(), newSysSocialUser.getRefreshTokenExpireIn(), newSysSocialUser.getScope(), newSysSocialUser.getTokenType(), newSysSocialUser.getUid(), newSysSocialUser.getOpenId(), newSysSocialUser.getAccessCode(), newSysSocialUser.getUnionId());
-            sysSocialUserService.saveAndFlush(oldSysSocialUser);
+            sysSocialUserService.save(oldSysSocialUser);
         }
     }
 
