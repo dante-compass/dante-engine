@@ -143,6 +143,10 @@ public interface SystemConstants {
      * for OpenID Connect 1.0 Dynamic Client Configuration
      */
     String SCOPE_CLIENT_READ = "client.read";
+    /**
+     * for Dynamic Client Configuration
+     */
+    String TOKEN_FORMAT = "token_format";
 
     /**
      * 默认的存储桶名称

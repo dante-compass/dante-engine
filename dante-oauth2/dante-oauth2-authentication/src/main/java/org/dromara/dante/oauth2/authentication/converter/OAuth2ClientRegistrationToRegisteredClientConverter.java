@@ -43,8 +43,8 @@ public class OAuth2ClientRegistrationToRegisteredClientConverter extends Abstrac
 
     private final OAuth2ClientRegistrationRegisteredClientConverter delegate;
 
-    public OAuth2ClientRegistrationToRegisteredClientConverter(List<String> clientMetadata, boolean isRemoteValidate) {
-        super(clientMetadata, isRemoteValidate);
+    public OAuth2ClientRegistrationToRegisteredClientConverter(List<String> clientMetadata) {
+        super(clientMetadata);
         this.delegate = new OAuth2ClientRegistrationRegisteredClientConverter();
     }
 

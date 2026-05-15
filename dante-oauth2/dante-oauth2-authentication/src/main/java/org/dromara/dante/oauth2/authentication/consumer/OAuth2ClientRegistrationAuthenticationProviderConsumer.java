@@ -46,17 +46,12 @@ import java.util.function.Consumer;
 public class OAuth2ClientRegistrationAuthenticationProviderConsumer implements Consumer<List<AuthenticationProvider>> {
 
     private static final List<String> clientMetadata = List.of(SystemConstants.PARAMETER__PRODUCT_KEY);
-    private final boolean isRemoteValidate;
-
-    public OAuth2ClientRegistrationAuthenticationProviderConsumer(boolean isRemoteValidate) {
-        this.isRemoteValidate = isRemoteValidate;
-    }
 
     @Override
     public void accept(List<AuthenticationProvider> authenticationProviders) {
 
         Converter<OAuth2ClientRegistration, RegisteredClient> toRegisteredClientConverter =
-                new OAuth2ClientRegistrationToRegisteredClientConverter(clientMetadata, isRemoteValidate);
+                new OAuth2ClientRegistrationToRegisteredClientConverter(clientMetadata);
         Converter<RegisteredClient, OAuth2ClientRegistration> toOidcClientRegistrationConverter =
                 new RegisteredClientToOAuth2ClientRegistrationConverter(clientMetadata);
 

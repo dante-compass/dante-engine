@@ -34,18 +34,13 @@ import org.dromara.dante.oauth2.authorization.autoconfigure.listener.RemoteRestM
 import org.dromara.dante.oauth2.authorization.autoconfigure.processor.SecurityAttributeDistributionProcessor;
 import org.dromara.dante.oauth2.authorization.autoconfigure.strategy.DefaultRestMappingCollectEventManager;
 import org.dromara.dante.oauth2.authorization.config.OAuth2ServletAuthorizationConfiguration;
-import org.dromara.dante.oauth2.commons.properties.OAuth2Properties;
 import org.dromara.dante.security.domain.attribute.AttributeTransmitter;
-import org.dromara.dante.security.exception.SecurityGlobalExceptionHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.cloud.bus.jackson.RemoteApplicationEventScan;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.Import;
 import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 
 import java.util.List;
 
@@ -75,15 +70,10 @@ import java.util.List;
  * @date : 2023/10/28 14:22
  */
 @AutoConfiguration
-@EnableConfigurationProperties({OAuth2Properties.class})
 @EnableAsync
-@EnableAspectJAutoProxy(exposeProxy = true, proxyTargetClass = true)
+@EnableMethodSecurity(proxyTargetClass = true, securedEnabled = true, jsr250Enabled = true)
 @Import({
         OAuth2ServletAuthorizationConfiguration.class
-})
-@ComponentScan(basePackageClasses = SecurityGlobalExceptionHandler.class)
-@RemoteApplicationEventScan({
-        "org.dromara.dante.oauth2.authorization.autoconfigure.bus"
 })
 public class OAuth2AuthorizationAutoConfiguration {
 

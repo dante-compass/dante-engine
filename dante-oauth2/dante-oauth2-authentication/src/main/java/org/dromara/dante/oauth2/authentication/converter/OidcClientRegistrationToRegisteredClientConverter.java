@@ -44,8 +44,8 @@ public class OidcClientRegistrationToRegisteredClientConverter extends AbstractT
 
     private final OidcClientRegistrationRegisteredClientConverter delegate;
 
-    public OidcClientRegistrationToRegisteredClientConverter(List<String> clientMetadata, boolean isRemoteValidate) {
-        super(clientMetadata, isRemoteValidate);
+    public OidcClientRegistrationToRegisteredClientConverter(List<String> clientMetadata) {
+        super(clientMetadata);
         this.delegate = new OidcClientRegistrationRegisteredClientConverter();
     }
 

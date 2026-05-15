@@ -47,17 +47,12 @@ import java.util.function.Consumer;
 public class OidcClientRegistrationAuthenticationProviderConsumer implements Consumer<List<AuthenticationProvider>> {
 
     private static final List<String> clientMetadata = List.of(SystemConstants.PARAMETER__PRODUCT_KEY);
-    private final boolean isRemoteValidate;
-
-    public OidcClientRegistrationAuthenticationProviderConsumer(boolean isRemoteValidate) {
-        this.isRemoteValidate = isRemoteValidate;
-    }
 
     @Override
     public void accept(List<AuthenticationProvider> authenticationProviders) {
 
         Converter<OidcClientRegistration, RegisteredClient> toRegisteredClientConverter =
-                new OidcClientRegistrationToRegisteredClientConverter(clientMetadata, isRemoteValidate);
+                new OidcClientRegistrationToRegisteredClientConverter(clientMetadata);
         Converter<RegisteredClient, OidcClientRegistration> toOidcClientRegistrationConverter =
                 new RegisteredClientToOidcClientRegistrationConverter(clientMetadata);
 

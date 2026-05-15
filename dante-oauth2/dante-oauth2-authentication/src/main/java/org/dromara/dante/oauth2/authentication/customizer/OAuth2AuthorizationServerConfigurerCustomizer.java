@@ -32,7 +32,6 @@ import org.dromara.dante.oauth2.authentication.consumer.OAuth2TokenEndpointAuthe
 import org.dromara.dante.oauth2.authentication.consumer.OidcClientRegistrationAuthenticationProviderConsumer;
 import org.dromara.dante.oauth2.authentication.provider.OAuth2ResourceOwnerPasswordAuthenticationConverter;
 import org.dromara.dante.oauth2.authentication.provider.OAuth2SocialCredentialsAuthenticationConverter;
-import org.dromara.dante.oauth2.commons.properties.OAuth2Properties;
 import org.dromara.dante.security.definition.ClientDetailsService;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -58,14 +57,12 @@ public class OAuth2AuthorizationServerConfigurerCustomizer implements Customizer
     private final HttpSecurity httpSecurity;
     private final SessionRegistry sessionRegistry;
     private final ClientDetailsService clientDetailsService;
-    private final OAuth2Properties oauth2Properties;
     private final OAuth2AuthenticationConfigurerManager authenticationConfigurerManager;
 
-    public OAuth2AuthorizationServerConfigurerCustomizer(HttpSecurity httpSecurity, SessionRegistry sessionRegistry, ClientDetailsService clientDetailsService, OAuth2Properties oauth2Properties, OAuth2AuthenticationConfigurerManager authenticationConfigurerManager) {
+    public OAuth2AuthorizationServerConfigurerCustomizer(HttpSecurity httpSecurity, SessionRegistry sessionRegistry, ClientDetailsService clientDetailsService, OAuth2AuthenticationConfigurerManager authenticationConfigurerManager) {
         this.httpSecurity = httpSecurity;
         this.sessionRegistry = sessionRegistry;
         this.clientDetailsService = clientDetailsService;
-        this.oauth2Properties = oauth2Properties;
         this.authenticationConfigurerManager = authenticationConfigurerManager;
     }
 
@@ -82,7 +79,7 @@ public class OAuth2AuthorizationServerConfigurerCustomizer implements Customizer
                 .clientAuthentication(endpoint -> endpoint.errorResponseHandler(authenticationConfigurerManager.getOAuth2AuthenticationFailureHandler()))
                 .clientRegistrationEndpoint(endpoint -> {
                     endpoint.errorResponseHandler(authenticationConfigurerManager.getOAuth2AuthenticationFailureHandler());
-                    endpoint.authenticationProviders(new OAuth2ClientRegistrationAuthenticationProviderConsumer(oauth2Properties.isRemoteValidate()));
+                    endpoint.authenticationProviders(new OAuth2ClientRegistrationAuthenticationProviderConsumer());
                     endpoint.clientRegistrationResponseHandler(authenticationConfigurerManager.getOAuth2ClientRegistrationSuccessHandler());
                 })
                 .authorizationEndpoint(endpoint -> {
@@ -117,7 +114,7 @@ public class OAuth2AuthorizationServerConfigurerCustomizer implements Customizer
                 .tokenRevocationEndpoint(endpoint -> endpoint.errorResponseHandler(authenticationConfigurerManager.getOAuth2AuthenticationFailureHandler()))
                 .oidc(oidc -> oidc.clientRegistrationEndpoint(endpoint -> {
                             endpoint.errorResponseHandler(authenticationConfigurerManager.getOAuth2AuthenticationFailureHandler());
-                            endpoint.authenticationProviders(new OidcClientRegistrationAuthenticationProviderConsumer(oauth2Properties.isRemoteValidate()));
+                            endpoint.authenticationProviders(new OidcClientRegistrationAuthenticationProviderConsumer());
                             endpoint.clientRegistrationResponseHandler(authenticationConfigurerManager.getOidcClientRegistrationSuccessHandler());
                         })
                         .userInfoEndpoint(userInfo -> userInfo
