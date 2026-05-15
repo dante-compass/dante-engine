@@ -29,7 +29,6 @@ import org.dromara.dante.core.constant.SystemConstants;
 import org.dromara.dante.oauth2.authentication.configurer.OAuth2AuthenticationConfigurerManager;
 import org.dromara.dante.oauth2.authentication.consumer.OAuth2ClientRegistrationAuthenticationProviderConsumer;
 import org.dromara.dante.oauth2.authentication.consumer.OAuth2TokenEndpointAuthenticationProviderConsumer;
-import org.dromara.dante.oauth2.authentication.consumer.OidcClientRegistrationAuthenticationProviderConsumer;
 import org.dromara.dante.oauth2.authentication.provider.OAuth2ResourceOwnerPasswordAuthenticationConverter;
 import org.dromara.dante.oauth2.authentication.provider.OAuth2SocialCredentialsAuthenticationConverter;
 import org.dromara.dante.security.definition.ClientDetailsService;
@@ -112,12 +111,15 @@ public class OAuth2AuthorizationServerConfigurerCustomizer implements Customizer
                 })
                 .tokenIntrospectionEndpoint(endpoint -> endpoint.errorResponseHandler(authenticationConfigurerManager.getOAuth2AuthenticationFailureHandler()))
                 .tokenRevocationEndpoint(endpoint -> endpoint.errorResponseHandler(authenticationConfigurerManager.getOAuth2AuthenticationFailureHandler()))
-                .oidc(oidc -> oidc.clientRegistrationEndpoint(endpoint -> {
-                            endpoint.errorResponseHandler(authenticationConfigurerManager.getOAuth2AuthenticationFailureHandler());
-                            endpoint.authenticationProviders(new OidcClientRegistrationAuthenticationProviderConsumer());
-                            endpoint.clientRegistrationResponseHandler(authenticationConfigurerManager.getOidcClientRegistrationSuccessHandler());
-                        })
+                .oidc(oidc -> oidc
                         .userInfoEndpoint(userInfo -> userInfo
                                 .userInfoMapper(new HerodotusOidcUserInfoMapper())));
+//                .oidc(oidc -> oidc.clientRegistrationEndpoint(endpoint -> {
+//                            endpoint.errorResponseHandler(authenticationConfigurerManager.getOAuth2AuthenticationFailureHandler());
+//                            endpoint.authenticationProviders(new OidcClientRegistrationAuthenticationProviderConsumer());
+//                            endpoint.clientRegistrationResponseHandler(authenticationConfigurerManager.getOidcClientRegistrationSuccessHandler());
+//                        })
+//                        .userInfoEndpoint(userInfo -> userInfo
+//                                .userInfoMapper(new HerodotusOidcUserInfoMapper())));
     }
 }
