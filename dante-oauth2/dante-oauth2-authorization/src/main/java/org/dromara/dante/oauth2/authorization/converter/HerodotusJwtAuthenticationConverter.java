@@ -23,10 +23,9 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.oauth2.authorization.servlet;
+package org.dromara.dante.oauth2.authorization.converter;
 
 import org.dromara.dante.core.constant.SystemConstants;
-import org.dromara.dante.oauth2.authorization.converter.HerodotusJwtGrantedAuthoritiesConverter;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter;
 
 /**

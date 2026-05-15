@@ -25,11 +25,19 @@
 
 package org.dromara.dante.oauth2.authorization.servlet;
 
-import org.springframework.security.config.Customizer;
+import jakarta.servlet.http.HttpServletRequest;
+import org.dromara.dante.oauth2.authorization.converter.HerodotusJwtAuthenticationConverter;
+import org.dromara.dante.oauth2.authorization.definition.AbstractOAuth2ResourceServerCustomizer;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.AuthenticationManagerResolver;
+import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.oauth2.server.resource.OAuth2ResourceServerConfigurer;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
+import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationProvider;
+import org.springframework.security.oauth2.server.resource.authentication.OpaqueTokenAuthenticationProvider;
 import org.springframework.security.oauth2.server.resource.introspection.OpaqueTokenIntrospector;
+import org.springframework.security.oauth2.server.resource.web.BearerTokenResolver;
 import org.springframework.security.oauth2.server.resource.web.DefaultBearerTokenResolver;
 
 /**
@@ -38,27 +46,40 @@ import org.springframework.security.oauth2.server.resource.web.DefaultBearerToke
  * @author : gengwei.zheng
  * @date : 2023/8/31 23:27
  */
-public class OAuth2ResourceServerConfigurerCustomer implements Customizer<OAuth2ResourceServerConfigurer<HttpSecurity>> {
+public class OAuth2ResourceServerConfigurerCustomer extends AbstractOAuth2ResourceServerCustomizer<OAuth2ResourceServerConfigurer<HttpSecurity>> {
 
     private final JwtDecoder jwtDecoder;
     private final OpaqueTokenIntrospector opaqueTokenIntrospector;
-    private final boolean isRemoteValidate;
+    private final BearerTokenResolver bearerTokenResolver;
 
-    public OAuth2ResourceServerConfigurerCustomer(boolean isRemoteValidate, JwtDecoder jwtDecoder, OpaqueTokenIntrospector opaqueTokenIntrospector) {
+    public OAuth2ResourceServerConfigurerCustomer(JwtDecoder jwtDecoder, OpaqueTokenIntrospector opaqueTokenIntrospector) {
         this.jwtDecoder = jwtDecoder;
-        this.isRemoteValidate = isRemoteValidate;
         this.opaqueTokenIntrospector = opaqueTokenIntrospector;
+        this.bearerTokenResolver = new DefaultBearerTokenResolver();
     }
 
     @Override
     public void customize(OAuth2ResourceServerConfigurer<HttpSecurity> configurer) {
-        if (isRemoteValidate) {
-            configurer
-                    .opaqueToken(opaque -> opaque.introspector(opaqueTokenIntrospector));
-        } else {
-            configurer
-                    .jwt(jwt -> jwt.decoder(this.jwtDecoder).jwtAuthenticationConverter(new HerodotusJwtAuthenticationConverter()))
-                    .bearerTokenResolver(new DefaultBearerTokenResolver());
-        }
+        configurer.authenticationManagerResolver(getAuthenticationManagerResolver(this.jwtDecoder, this.opaqueTokenIntrospector));
+    }
+
+    private AuthenticationManagerResolver<HttpServletRequest> getAuthenticationManagerResolver(JwtDecoder jwtDecoder, OpaqueTokenIntrospector opaqueTokenIntrospector) {
+        return (request) -> isJwt(request) ? getJwtTokenAuthenticationManager(jwtDecoder) : getOpaqueTokenAuthenticationManager(opaqueTokenIntrospector);
+    }
+
+    private AuthenticationManager getOpaqueTokenAuthenticationManager(OpaqueTokenIntrospector opaqueTokenIntrospector) {
+        OpaqueTokenAuthenticationProvider opaqueTokenAuthenticationProvider = new OpaqueTokenAuthenticationProvider(opaqueTokenIntrospector);
+        return new ProviderManager(opaqueTokenAuthenticationProvider);
+    }
+
+    private AuthenticationManager getJwtTokenAuthenticationManager(JwtDecoder jwtDecoder) {
+        JwtAuthenticationProvider jwtAuthenticationProvider = new JwtAuthenticationProvider(jwtDecoder);
+        jwtAuthenticationProvider.setJwtAuthenticationConverter(new HerodotusJwtAuthenticationConverter());
+        return new ProviderManager(jwtAuthenticationProvider);
+    }
+
+    private boolean isJwt(HttpServletRequest request) {
+        String accessToken = bearerTokenResolver.resolve(request);
+        return isJwtToken(accessToken);
     }
 }

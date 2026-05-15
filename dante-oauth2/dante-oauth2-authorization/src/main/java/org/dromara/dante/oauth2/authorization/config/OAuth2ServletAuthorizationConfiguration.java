@@ -36,7 +36,6 @@ import org.dromara.dante.oauth2.authorization.servlet.OAuth2SessionManagementCon
 import org.dromara.dante.oauth2.authorization.servlet.ServletOAuth2AuthorizationConfigurerManager;
 import org.dromara.dante.oauth2.authorization.servlet.ServletOAuth2ResourceMatcherConfigurer;
 import org.dromara.dante.oauth2.authorization.servlet.ServletSecurityAuthorizationManager;
-import org.dromara.dante.oauth2.commons.properties.OAuth2Properties;
 import org.dromara.dante.web.servlet.template.ThymeleafTemplateHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -116,7 +115,6 @@ public class OAuth2ServletAuthorizationConfiguration {
     @ConditionalOnMissingBean
     public ServletOAuth2AuthorizationConfigurerManager servletOAuth2AuthorizationFacadeConfigurer(
             ThymeleafTemplateHandler thymeleafTemplateHandler,
-            OAuth2Properties oauth2Properties,
             JwtDecoder jwtDecoder,
             OpaqueTokenIntrospector opaqueTokenIntrospector,
             OAuth2SessionManagementConfigurerCustomer sessionManagementConfigurerCustomer,
@@ -124,7 +122,6 @@ public class OAuth2ServletAuthorizationConfiguration {
             ServletSecurityAuthorizationManager servletSecurityAuthorizationManager) {
         ServletOAuth2AuthorizationConfigurerManager configurer = new ServletOAuth2AuthorizationConfigurerManager(
                 thymeleafTemplateHandler,
-                oauth2Properties,
                 jwtDecoder,
                 opaqueTokenIntrospector,
                 sessionManagementConfigurerCustomer,

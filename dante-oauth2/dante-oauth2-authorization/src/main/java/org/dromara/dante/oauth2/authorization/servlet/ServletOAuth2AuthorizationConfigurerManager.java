@@ -25,7 +25,6 @@
 
 package org.dromara.dante.oauth2.authorization.servlet;
 
-import org.dromara.dante.oauth2.commons.properties.OAuth2Properties;
 import org.dromara.dante.web.servlet.template.ThymeleafTemplateHandler;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.security.oauth2.server.resource.introspection.OpaqueTokenIntrospector;
@@ -47,13 +46,12 @@ public class ServletOAuth2AuthorizationConfigurerManager {
 
     public ServletOAuth2AuthorizationConfigurerManager(
             ThymeleafTemplateHandler thymeleafTemplateHandler,
-            OAuth2Properties oauth2Properties,
             JwtDecoder jwtDecoder,
             OpaqueTokenIntrospector opaqueTokenIntrospector,
             OAuth2SessionManagementConfigurerCustomer oauth2SessionManagementConfigurerCustomer,
             ServletOAuth2ResourceMatcherConfigurer servletOAuth2ResourceMatcherConfigurer,
             ServletSecurityAuthorizationManager servletSecurityAuthorizationManager) {
-        this.oauth2ResourceServerConfigurerCustomer = new OAuth2ResourceServerConfigurerCustomer(oauth2Properties.isRemoteValidate(), jwtDecoder, opaqueTokenIntrospector);
+        this.oauth2ResourceServerConfigurerCustomer = new OAuth2ResourceServerConfigurerCustomer(jwtDecoder, opaqueTokenIntrospector);
         this.oauth2SessionManagementConfigurerCustomer = oauth2SessionManagementConfigurerCustomer;
         this.oauth2AuthorizeHttpRequestsConfigurerCustomer = new OAuth2AuthorizeHttpRequestsConfigurerCustomer(servletOAuth2ResourceMatcherConfigurer, servletSecurityAuthorizationManager);
         this.oauth2ExceptionHandlingConfigurerCustomizer = new OAuth2ExceptionHandlingConfigurerCustomizer(thymeleafTemplateHandler);
