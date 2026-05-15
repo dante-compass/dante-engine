@@ -25,16 +25,22 @@
 
 package org.dromara.dante.security.utils;
 
+import com.nimbusds.jose.JOSEObject;
+import com.nimbusds.jose.util.Base64URL;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.Strings;
 import org.dromara.dante.core.constant.SymbolConstants;
+import org.dromara.dante.core.utils.AccessTokenUtils;
 import org.dromara.dante.core.utils.WellFormedUtils;
 import org.dromara.dante.security.domain.UserPrincipal;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import java.text.ParseException;
 import java.util.Optional;
 
 /**
@@ -44,6 +50,8 @@ import java.util.Optional;
  * @date : 2025/10/19 15:17
  */
 public class SecurityUtils {
+
+    private static final Logger log = LoggerFactory.getLogger(SecurityUtils.class);
 
     public static final String PREFIX_ROLE = "ROLE_";
 
@@ -178,5 +186,31 @@ public class SecurityUtils {
      */
     public static String getEmail(Authentication authentication) {
         return findEmail(authentication).orElse(null);
+    }
+
+    /**
+     * 判断 AccessToken 是否 JWT Token
+     *
+     * @param accessToken Token
+     * @return true 是 JWT token；false AccessToken 为空或者是 Opaque Token
+     */
+    public static boolean isJwtToken(String accessToken) {
+        if (StringUtils.isEmpty(accessToken)) {
+            return false;
+        }
+
+        String realContent = AccessTokenUtils.extract(accessToken);
+
+        try {
+            Base64URL[] parts = JOSEObject.split(realContent);
+            // JWS(3段) 或 JWE(5段)
+            if (parts.length == 3 || parts.length == 5) {
+                return true;
+            }
+        } catch (ParseException e) {
+            log.warn("[Herodotus] |- Determine if JWT Token has failed!", e);
+        }
+
+        return false;
     }
 }

@@ -37,7 +37,7 @@ import org.dromara.dante.core.constant.SystemConstants;
  * @author : gengwei.zheng
  * @date : 2025/6/30 12:42
  */
-public class TokenUtils {
+public class AccessTokenUtils {
 
     /**
      * 拼装 Bearer Token 标准格式
@@ -66,7 +66,7 @@ public class TokenUtils {
      * @param token 以 Bearer 或者 Basic 开头的 Token 内容
      * @return true 格式正确，false 格式错误。
      */
-    public static boolean isToken(String token) {
+    public static boolean isAccessToken(String token) {
         if (StringUtils.isNotBlank(token)) {
             return Strings.CS.startsWith(token, SystemConstants.BEARER_TOKEN) || Strings.CS.startsWith(token, SystemConstants.BASIC_TOKEN);
         } else {
@@ -91,6 +91,6 @@ public class TokenUtils {
             }
         }
 
-        return null;
+        return token;
     }
 }

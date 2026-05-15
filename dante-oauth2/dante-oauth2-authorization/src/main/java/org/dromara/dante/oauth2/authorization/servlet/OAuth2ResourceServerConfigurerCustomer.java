@@ -27,10 +27,11 @@ package org.dromara.dante.oauth2.authorization.servlet;
 
 import jakarta.servlet.http.HttpServletRequest;
 import org.dromara.dante.oauth2.authorization.converter.HerodotusJwtAuthenticationConverter;
-import org.dromara.dante.oauth2.authorization.definition.AbstractOAuth2ResourceServerCustomizer;
+import org.dromara.dante.security.utils.SecurityUtils;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationManagerResolver;
 import org.springframework.security.authentication.ProviderManager;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.oauth2.server.resource.OAuth2ResourceServerConfigurer;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
@@ -46,7 +47,7 @@ import org.springframework.security.oauth2.server.resource.web.DefaultBearerToke
  * @author : gengwei.zheng
  * @date : 2023/8/31 23:27
  */
-public class OAuth2ResourceServerConfigurerCustomer extends AbstractOAuth2ResourceServerCustomizer<OAuth2ResourceServerConfigurer<HttpSecurity>> {
+public class OAuth2ResourceServerConfigurerCustomer implements Customizer<OAuth2ResourceServerConfigurer<HttpSecurity>> {
 
     private final JwtDecoder jwtDecoder;
     private final OpaqueTokenIntrospector opaqueTokenIntrospector;
@@ -80,6 +81,6 @@ public class OAuth2ResourceServerConfigurerCustomer extends AbstractOAuth2Resour
 
     private boolean isJwt(HttpServletRequest request) {
         String accessToken = bearerTokenResolver.resolve(request);
-        return isJwtToken(accessToken);
+        return SecurityUtils.isJwtToken(accessToken);
     }
 }
