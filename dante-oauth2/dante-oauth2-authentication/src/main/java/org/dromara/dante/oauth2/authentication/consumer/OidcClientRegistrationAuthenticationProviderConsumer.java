@@ -25,7 +25,6 @@
 
 package org.dromara.dante.oauth2.authentication.consumer;
 
-import org.dromara.dante.core.constant.SystemConstants;
 import org.dromara.dante.oauth2.authentication.converter.OidcClientRegistrationToRegisteredClientConverter;
 import org.dromara.dante.oauth2.authentication.converter.RegisteredClientToOidcClientRegistrationConverter;
 import org.springframework.core.convert.converter.Converter;
@@ -46,15 +45,13 @@ import java.util.function.Consumer;
  */
 public class OidcClientRegistrationAuthenticationProviderConsumer implements Consumer<List<AuthenticationProvider>> {
 
-    private static final List<String> clientMetadata = List.of(SystemConstants.PARAMETER__PRODUCT_KEY);
-
     @Override
     public void accept(List<AuthenticationProvider> authenticationProviders) {
 
         Converter<OidcClientRegistration, RegisteredClient> toRegisteredClientConverter =
-                new OidcClientRegistrationToRegisteredClientConverter(clientMetadata);
+                new OidcClientRegistrationToRegisteredClientConverter();
         Converter<RegisteredClient, OidcClientRegistration> toOidcClientRegistrationConverter =
-                new RegisteredClientToOidcClientRegistrationConverter(clientMetadata);
+                new RegisteredClientToOidcClientRegistrationConverter();
 
         authenticationProviders.forEach((authenticationProvider) -> {
             if (authenticationProvider instanceof OidcClientRegistrationAuthenticationProvider provider) {

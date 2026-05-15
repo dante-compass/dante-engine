@@ -25,7 +25,6 @@
 
 package org.dromara.dante.oauth2.authentication.converter;
 
-import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.Strings;
 import org.dromara.dante.core.constant.SymbolConstants;
@@ -36,8 +35,6 @@ import org.springframework.security.oauth2.server.authorization.client.Registere
 import org.springframework.security.oauth2.server.authorization.settings.ClientSettings;
 import org.springframework.security.oauth2.server.authorization.settings.OAuth2TokenFormat;
 import org.springframework.security.oauth2.server.authorization.settings.TokenSettings;
-
-import java.util.List;
 
 /**
  * <p>Description: SAS 客户端注册实体转 {@link RegisteredClient} 转换器抽象定义 </p>
@@ -51,12 +48,6 @@ import java.util.List;
  * @date : 2026/4/27 18:09
  */
 abstract class AbstractToRegisteredClientConverter<T extends AbstractOAuth2ClientRegistration> implements Converter<T, RegisteredClient> {
-
-    private final List<String> clientMetadata;
-
-    protected AbstractToRegisteredClientConverter(List<String> clientMetadata) {
-        this.clientMetadata = clientMetadata;
-    }
 
     protected abstract RegisteredClient convertToRegisteredClient(T source);
 
@@ -73,24 +64,19 @@ abstract class AbstractToRegisteredClientConverter<T extends AbstractOAuth2Clien
         ClientSettings.Builder clientSettingsBuilder = ClientSettings.withSettings(registeredClient.getClientSettings().getSettings());
         TokenSettings.Builder tokenSettingsBuilder = TokenSettings.withSettings(registeredClient.getTokenSettings().getSettings());
 
-        if (CollectionUtils.isNotEmpty(this.clientMetadata)) {
-            source.getClaims().forEach((claim, value) -> {
-                if (this.clientMetadata.contains(claim)) {
+        source.getClaims().forEach((claim, value) -> {
+            if (Strings.CI.equals(claim, SystemConstants.TOKEN_FORMAT)) {
+                tokenSettingsBuilder.accessTokenFormat(parseTokenFormat(value));
+            } else {
+                // 自定义动态注册属性存入到客户端设置中
+                clientSettingsBuilder.setting(claim, value);
 
-                    if (Strings.CI.equals(claim, SystemConstants.TOKEN_FORMAT)) {
-                        tokenSettingsBuilder.accessTokenFormat(parseTokenFormat(value));
-                    } else {
-                        // 自定义动态注册属性存入到客户端设置中
-                        clientSettingsBuilder.setting(claim, value);
-
-                        // 如果包含 ProductKey 同时 clientId 为空。那么就重新设置 clientId。物联网 clientId 格式为 {ProductKey}.{DeviceName}
-                        if (Strings.CS.equals(claim, SystemConstants.PARAMETER__PRODUCT_KEY)) {
-                            builder.clientId(value + SymbolConstants.PERIOD + source.getClientName());
-                        }
-                    }
+                // 如果包含 ProductKey 同时 clientId 为空。那么就重新设置 clientId。物联网 clientId 格式为 {ProductKey}.{DeviceName}
+                if (Strings.CS.equals(claim, SystemConstants.PARAMETER__PRODUCT_KEY)) {
+                    builder.clientId(value + SymbolConstants.PERIOD + source.getClientName());
                 }
-            });
-        }
+            }
+        });
 
         builder.clientSettings(clientSettingsBuilder.build());
         builder.tokenSettings(tokenSettingsBuilder.build());
