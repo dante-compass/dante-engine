@@ -64,17 +64,20 @@ abstract class AbstractToRegisteredClientConverter<T extends AbstractOAuth2Clien
         ClientSettings.Builder clientSettingsBuilder = ClientSettings.withSettings(registeredClient.getClientSettings().getSettings());
         TokenSettings.Builder tokenSettingsBuilder = TokenSettings.withSettings(registeredClient.getTokenSettings().getSettings());
 
+        // TokenSettings 的 builder() 方法会将 accessTokenFormat 格式默认设置为 OAuth2TokenFormat.SELF_CONTAINED。这里重新修改为 OAuth2TokenFormat.REFERENCE
+        tokenSettingsBuilder.accessTokenFormat(OAuth2TokenFormat.REFERENCE);
+
         source.getClaims().forEach((claim, value) -> {
             if (Strings.CI.equals(claim, SystemConstants.TOKEN_FORMAT)) {
                 tokenSettingsBuilder.accessTokenFormat(parseTokenFormat(value));
-            } else {
+            }
+
+            if (Strings.CS.equals(claim, SystemConstants.PARAMETER__PRODUCT_KEY)) {
                 // 自定义动态注册属性存入到客户端设置中
                 clientSettingsBuilder.setting(claim, value);
 
                 // 如果包含 ProductKey 同时 clientId 为空。那么就重新设置 clientId。物联网 clientId 格式为 {ProductKey}.{DeviceName}
-                if (Strings.CS.equals(claim, SystemConstants.PARAMETER__PRODUCT_KEY)) {
-                    builder.clientId(value + SymbolConstants.PERIOD + source.getClientName());
-                }
+                builder.clientId(value + SymbolConstants.PERIOD + source.getClientName());
             }
         });
 
