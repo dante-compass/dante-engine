@@ -23,7 +23,7 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.oauth2.authentication.customizer;
+package org.dromara.dante.oauth2.authentication.provider;
 
 import org.dromara.dante.core.constant.SystemConstants;
 import org.springframework.security.oauth2.core.AuthorizationGrantType;

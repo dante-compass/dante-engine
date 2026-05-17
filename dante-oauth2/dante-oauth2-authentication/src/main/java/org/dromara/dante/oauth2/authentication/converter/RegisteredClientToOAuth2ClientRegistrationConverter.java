@@ -30,7 +30,6 @@ import org.springframework.security.oauth2.server.authorization.OAuth2ClientRegi
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
 import org.springframework.security.oauth2.server.authorization.converter.RegisteredClientOAuth2ClientRegistrationConverter;
 
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -45,8 +44,7 @@ public class RegisteredClientToOAuth2ClientRegistrationConverter extends Abstrac
 
     private final RegisteredClientOAuth2ClientRegistrationConverter delegate;
 
-    public RegisteredClientToOAuth2ClientRegistrationConverter(List<String> clientMetadata) {
-        super(clientMetadata);
+    public RegisteredClientToOAuth2ClientRegistrationConverter() {
         this.delegate = new RegisteredClientOAuth2ClientRegistrationConverter();
     }
 

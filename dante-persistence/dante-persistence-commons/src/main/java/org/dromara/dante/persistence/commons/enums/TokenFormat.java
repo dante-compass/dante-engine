@@ -48,8 +48,8 @@ public enum TokenFormat implements DictionaryEnum {
     /**
      * enum
      */
-    SELF_CONTAINED("self-contained", "自包含格式令牌"),
-    REFERENCE("reference", "引用（不透明）令牌");
+    SELF_CONTAINED("self-contained", "JWT Token", "自包含格式令牌"),
+    REFERENCE("reference", "Opaque Token", "引用（不透明）令牌");
 
     private static final Map<Integer, TokenFormat> INDEX_MAP = new HashMap<>();
     private static final List<Dictionary> DICTIONARIES = new ArrayList<>();
@@ -65,10 +65,13 @@ public enum TokenFormat implements DictionaryEnum {
     private final String value;
     @Schema(name = "文字")
     private final String label;
+    @Schema(name = "说明")
+    private final String description;
 
-    TokenFormat(String value, String label) {
+    TokenFormat(String value, String label, String description) {
         this.value = value;
         this.label = label;
+        this.description = description;
     }
 
     public static TokenFormat get(Integer index) {
@@ -87,5 +90,9 @@ public enum TokenFormat implements DictionaryEnum {
     @Override
     public String getLabel() {
         return label;
+    }
+
+    public String getDescription() {
+        return description;
     }
 }

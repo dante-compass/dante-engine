@@ -25,21 +25,16 @@
 
 package org.dromara.dante.oauth2.authentication.converter;
 
-import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.Strings;
 import org.dromara.dante.core.constant.SymbolConstants;
 import org.dromara.dante.core.constant.SystemConstants;
-import org.dromara.dante.oauth2.authentication.utils.OAuth2EndpointUtils;
 import org.springframework.core.convert.converter.Converter;
-import org.springframework.security.oauth2.core.OAuth2ErrorCodes;
-import org.springframework.security.oauth2.jose.jws.SignatureAlgorithm;
 import org.springframework.security.oauth2.server.authorization.AbstractOAuth2ClientRegistration;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
 import org.springframework.security.oauth2.server.authorization.settings.ClientSettings;
 import org.springframework.security.oauth2.server.authorization.settings.OAuth2TokenFormat;
 import org.springframework.security.oauth2.server.authorization.settings.TokenSettings;
-
-import java.util.List;
 
 /**
  * <p>Description: SAS 客户端注册实体转 {@link RegisteredClient} 转换器抽象定义 </p>
@@ -54,22 +49,6 @@ import java.util.List;
  */
 abstract class AbstractToRegisteredClientConverter<T extends AbstractOAuth2ClientRegistration> implements Converter<T, RegisteredClient> {
 
-    private final List<String> clientMetadata;
-    private final boolean isRemoteValidate;
-
-    protected AbstractToRegisteredClientConverter(List<String> clientMetadata, boolean isRemoteValidate) {
-        this.clientMetadata = clientMetadata;
-        this.isRemoteValidate = isRemoteValidate;
-    }
-
-    private OAuth2TokenFormat getTokenFormat() {
-        if (isRemoteValidate) {
-            return OAuth2TokenFormat.REFERENCE;
-        } else {
-            return OAuth2TokenFormat.SELF_CONTAINED;
-        }
-    }
-
     protected abstract RegisteredClient convertToRegisteredClient(T source);
 
     @Override
@@ -83,33 +62,38 @@ abstract class AbstractToRegisteredClientConverter<T extends AbstractOAuth2Clien
 
         // 自定义动态注册属性。
         ClientSettings.Builder clientSettingsBuilder = ClientSettings.withSettings(registeredClient.getClientSettings().getSettings());
-        if (CollectionUtils.isNotEmpty(this.clientMetadata)) {
-            // 检测是否有缺失的自定义参数，如果有则抛出错误
-            this.clientMetadata.stream()
-                    .filter(item -> !source.getClaims().containsKey(item))
-                    .findAny()
-                    .ifPresent(item -> OAuth2EndpointUtils.throwError(OAuth2ErrorCodes.INVALID_REQUEST, item));
+        TokenSettings.Builder tokenSettingsBuilder = TokenSettings.withSettings(registeredClient.getTokenSettings().getSettings());
 
-            source.getClaims().forEach((claim, value) -> {
-                if (this.clientMetadata.contains(claim)) {
-                    // 自定义动态注册属性存入到客户端设置中
-                    clientSettingsBuilder.setting(claim, value);
+        // TokenSettings 的 builder() 方法会将 accessTokenFormat 格式默认设置为 OAuth2TokenFormat.SELF_CONTAINED。这里重新修改为 OAuth2TokenFormat.REFERENCE
+        tokenSettingsBuilder.accessTokenFormat(OAuth2TokenFormat.REFERENCE);
 
-                    // 如果包含 ProductKey 同时 clientId 为空。那么就重新设置 clientId。物联网 clientId 格式为 {ProductKey}.{DeviceName}
-                    if (Strings.CS.equals(claim, SystemConstants.PARAMETER__PRODUCT_KEY)) {
-                        builder.clientId(value + SymbolConstants.PERIOD + source.getClientName());
-                    }
-                }
-            });
-        }
+        source.getClaims().forEach((claim, value) -> {
+            if (Strings.CI.equals(claim, SystemConstants.TOKEN_FORMAT)) {
+                tokenSettingsBuilder.accessTokenFormat(parseTokenFormat(value));
+            }
+
+            if (Strings.CS.equals(claim, SystemConstants.PARAMETER__PRODUCT_KEY)) {
+                // 自定义动态注册属性存入到客户端设置中
+                clientSettingsBuilder.setting(claim, value);
+
+                // 如果包含 ProductKey 同时 clientId 为空。那么就重新设置 clientId。物联网 clientId 格式为 {ProductKey}.{DeviceName}
+                builder.clientId(value + SymbolConstants.PERIOD + source.getClientName());
+            }
+        });
 
         builder.clientSettings(clientSettingsBuilder.build());
-
-        builder.tokenSettings(TokenSettings.builder()
-                .idTokenSignatureAlgorithm(SignatureAlgorithm.RS256)
-                .accessTokenFormat(getTokenFormat())
-                .build());
+        builder.tokenSettings(tokenSettingsBuilder.build());
 
         return builder.build();
+    }
+
+    private OAuth2TokenFormat parseTokenFormat(Object value) {
+        if (ObjectUtils.isNotEmpty(value)) {
+            String tokenFormat = value.toString();
+            if (Strings.CI.equals(tokenFormat, OAuth2TokenFormat.SELF_CONTAINED.getValue())) {
+                return OAuth2TokenFormat.SELF_CONTAINED;
+            }
+        }
+        return OAuth2TokenFormat.REFERENCE;
     }
 }

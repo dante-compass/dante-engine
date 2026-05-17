@@ -25,7 +25,6 @@
 
 package org.dromara.dante.oauth2.authentication.consumer;
 
-import org.dromara.dante.core.constant.SystemConstants;
 import org.dromara.dante.oauth2.authentication.converter.OAuth2ClientRegistrationToRegisteredClientConverter;
 import org.dromara.dante.oauth2.authentication.converter.RegisteredClientToOAuth2ClientRegistrationConverter;
 import org.springframework.core.convert.converter.Converter;
@@ -45,20 +44,13 @@ import java.util.function.Consumer;
  */
 public class OAuth2ClientRegistrationAuthenticationProviderConsumer implements Consumer<List<AuthenticationProvider>> {
 
-    private static final List<String> clientMetadata = List.of(SystemConstants.PARAMETER__PRODUCT_KEY);
-    private final boolean isRemoteValidate;
-
-    public OAuth2ClientRegistrationAuthenticationProviderConsumer(boolean isRemoteValidate) {
-        this.isRemoteValidate = isRemoteValidate;
-    }
-
     @Override
     public void accept(List<AuthenticationProvider> authenticationProviders) {
 
         Converter<OAuth2ClientRegistration, RegisteredClient> toRegisteredClientConverter =
-                new OAuth2ClientRegistrationToRegisteredClientConverter(clientMetadata, isRemoteValidate);
+                new OAuth2ClientRegistrationToRegisteredClientConverter();
         Converter<RegisteredClient, OAuth2ClientRegistration> toOidcClientRegistrationConverter =
-                new RegisteredClientToOAuth2ClientRegistrationConverter(clientMetadata);
+                new RegisteredClientToOAuth2ClientRegistrationConverter();
 
         authenticationProviders.forEach((authenticationProvider) -> {
             if (authenticationProvider instanceof OAuth2ClientRegistrationAuthenticationProvider provider) {

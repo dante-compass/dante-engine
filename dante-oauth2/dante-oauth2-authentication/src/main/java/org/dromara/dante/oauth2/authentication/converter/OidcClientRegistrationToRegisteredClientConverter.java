@@ -29,8 +29,6 @@ import org.springframework.security.oauth2.server.authorization.client.Registere
 import org.springframework.security.oauth2.server.authorization.oidc.OidcClientRegistration;
 import org.springframework.security.oauth2.server.authorization.oidc.converter.OidcClientRegistrationRegisteredClientConverter;
 
-import java.util.List;
-
 /**
  * <p>Description: 自定义扩展的  {@link OidcClientRegistration} 转 {@link RegisteredClient} 转换器抽象定义 </p>
  * <p>
@@ -44,8 +42,7 @@ public class OidcClientRegistrationToRegisteredClientConverter extends AbstractT
 
     private final OidcClientRegistrationRegisteredClientConverter delegate;
 
-    public OidcClientRegistrationToRegisteredClientConverter(List<String> clientMetadata, boolean isRemoteValidate) {
-        super(clientMetadata, isRemoteValidate);
+    public OidcClientRegistrationToRegisteredClientConverter() {
         this.delegate = new OidcClientRegistrationRegisteredClientConverter();
     }
 

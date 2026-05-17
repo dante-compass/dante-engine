@@ -26,8 +26,6 @@
 package org.dromara.dante.servlet.container.autoconfigure.oauth2;
 
 import jakarta.annotation.PostConstruct;
-import org.dromara.dante.security.condition.ConditionalOnTokenFormat;
-import org.dromara.dante.security.condition.TokenFormat;
 import org.dromara.dante.security.definition.BearerTokenResolver;
 import org.dromara.dante.servlet.container.autoconfigure.context.ServletServiceContextAutoConfiguration;
 import org.slf4j.Logger;
@@ -60,7 +58,6 @@ public class ServletOAuth2AuthorizationAutoConfiguration {
 
     @Configuration(proxyBeanMethods = false)
     @ConditionalOnClass(OpaqueTokenIntrospector.class)
-    @ConditionalOnTokenFormat(TokenFormat.OPAQUE)
     static class OAuth2OpaqueTokenConfiguration {
 
         @Bean
@@ -73,23 +70,9 @@ public class ServletOAuth2AuthorizationAutoConfiguration {
 
         @Bean
         @ConditionalOnMissingBean
-        public BearerTokenResolver opaqueBearerTokenResolver(OpaqueTokenIntrospector OpaqueTokenIntrospector) {
-            HerodotusServletOpaqueTokenResolver resolver = new HerodotusServletOpaqueTokenResolver(OpaqueTokenIntrospector);
-            log.trace("[Herodotus] |- Bean [Herodotus Servlet Opaque Token Resolver] Configure.");
-            return resolver;
-        }
-    }
-
-    @Configuration(proxyBeanMethods = false)
-    @ConditionalOnClass(JwtDecoder.class)
-    @ConditionalOnTokenFormat(TokenFormat.JWT)
-    static class OAuth2JwtTokenConfiguration {
-
-        @Bean
-        @ConditionalOnMissingBean
-        public BearerTokenResolver jwtBearerTokenResolver(JwtDecoder jwtDecoder) {
-            HerodotusServletJwtTokenResolver resolver = new HerodotusServletJwtTokenResolver(jwtDecoder);
-            log.trace("[Herodotus] |- Bean [Herodotus Servlet JWT Token Resolver] Configure.");
+        public BearerTokenResolver herodotusBearerTokenResolver(JwtDecoder jwtDecoder, OpaqueTokenIntrospector OpaqueTokenIntrospector) {
+            HerodotusServletBearerTokenResolver resolver = new HerodotusServletBearerTokenResolver(jwtDecoder, OpaqueTokenIntrospector);
+            log.trace("[Herodotus] |- Bean [Herodotus Bearer Token Resolver] Configure.");
             return resolver;
         }
     }

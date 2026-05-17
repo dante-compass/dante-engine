@@ -27,13 +27,12 @@ package org.dromara.dante.oauth2.authentication.provider;
 
 import cn.hutool.v7.core.bean.BeanUtil;
 import org.dromara.dante.core.constant.SystemConstants;
-import org.dromara.dante.oauth2.authentication.customizer.HerodotusGrantType;
 import org.dromara.dante.oauth2.authentication.utils.DPoPProofVerifier;
 import org.dromara.dante.oauth2.authentication.utils.OAuth2AuthenticationProviderUtils;
 import org.dromara.dante.oauth2.commons.exception.SocialCredentialsParameterBindingFailedException;
 import org.dromara.dante.oauth2.commons.properties.OAuth2AuthenticationProperties;
-import org.dromara.dante.security.domain.AccessPrincipal;
 import org.dromara.dante.security.definition.EnhanceUserDetailsService;
+import org.dromara.dante.security.domain.AccessPrincipal;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.MutablePropertyValues;

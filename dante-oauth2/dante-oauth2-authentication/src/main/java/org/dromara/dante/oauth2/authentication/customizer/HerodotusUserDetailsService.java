@@ -26,10 +26,10 @@
 package org.dromara.dante.oauth2.authentication.customizer;
 
 import org.apache.commons.lang3.StringUtils;
-import org.dromara.dante.security.domain.AccessPrincipal;
-import org.dromara.dante.security.domain.HerodotusUser;
 import org.dromara.dante.security.definition.EnhanceUserDetailsService;
 import org.dromara.dante.security.definition.StrategyUserDetailsService;
+import org.dromara.dante.security.domain.AccessPrincipal;
+import org.dromara.dante.security.domain.HerodotusUser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.userdetails.UserDetails;

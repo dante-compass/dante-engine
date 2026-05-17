@@ -25,7 +25,7 @@
 
 package org.dromara.dante.oauth2.authentication.converter;
 
-import org.apache.commons.collections4.CollectionUtils;
+import org.dromara.dante.core.constant.SystemConstants;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.security.oauth2.server.authorization.AbstractOAuth2ClientRegistration;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
@@ -50,20 +50,14 @@ import java.util.stream.Collectors;
  */
 abstract class AbstractFromRegisteredClientConverter<T extends AbstractOAuth2ClientRegistration> implements Converter<RegisteredClient, T> {
 
-    private final List<String> clientMetadata;
-
-    protected AbstractFromRegisteredClientConverter(List<String> clientMetadata) {
-        this.clientMetadata = clientMetadata;
-    }
+    private static final List<String> CLIENT_METADATA = List.of(SystemConstants.PARAMETER__PRODUCT_KEY, SystemConstants.TOKEN_FORMAT);
 
     protected Map<String, Object> updateClaims(RegisteredClient registeredClient, T clientRegistration) {
         Map<String, Object> claims = new HashMap<>(clientRegistration.getClaims());
-        if (CollectionUtils.isNotEmpty(this.clientMetadata)) {
-            ClientSettings clientSettings = registeredClient.getClientSettings();
-            claims.putAll(this.clientMetadata.stream()
-                    .filter(metadata -> clientSettings.getSetting(metadata) != null)
-                    .collect(Collectors.toMap(Function.identity(), clientSettings::getSetting)));
-        }
+        ClientSettings clientSettings = registeredClient.getClientSettings();
+        claims.putAll(CLIENT_METADATA.stream()
+                .filter(metadata -> clientSettings.getSetting(metadata) != null)
+                .collect(Collectors.toMap(Function.identity(), clientSettings::getSetting)));
         return claims;
     }
 }

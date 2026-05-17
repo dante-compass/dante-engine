@@ -29,8 +29,6 @@ import org.springframework.security.oauth2.server.authorization.OAuth2ClientRegi
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
 import org.springframework.security.oauth2.server.authorization.converter.OAuth2ClientRegistrationRegisteredClientConverter;
 
-import java.util.List;
-
 /**
  * <p>Description: 自定义扩展的  {@link OAuth2ClientRegistration} 转 {@link RegisteredClient} 转换器抽象定义 </p>
  * <p>
@@ -43,8 +41,7 @@ public class OAuth2ClientRegistrationToRegisteredClientConverter extends Abstrac
 
     private final OAuth2ClientRegistrationRegisteredClientConverter delegate;
 
-    public OAuth2ClientRegistrationToRegisteredClientConverter(List<String> clientMetadata, boolean isRemoteValidate) {
-        super(clientMetadata, isRemoteValidate);
+    public OAuth2ClientRegistrationToRegisteredClientConverter() {
         this.delegate = new OAuth2ClientRegistrationRegisteredClientConverter();
     }
 

@@ -43,7 +43,7 @@ import org.springframework.security.oauth2.jwt.JwtException;
  * @author : gengwei.zheng
  * @date : 2024/4/8 16:48
  */
-public class HerodotusServletJwtTokenResolver implements BearerTokenResolver {
+class HerodotusServletJwtTokenResolver implements BearerTokenResolver {
 
     private final JwtDecoder jwtDecoder;
 

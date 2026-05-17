@@ -30,7 +30,6 @@ import org.springframework.security.oauth2.server.authorization.client.Registere
 import org.springframework.security.oauth2.server.authorization.oidc.OidcClientRegistration;
 import org.springframework.security.oauth2.server.authorization.oidc.converter.RegisteredClientOidcClientRegistrationConverter;
 
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -45,8 +44,7 @@ public class RegisteredClientToOidcClientRegistrationConverter extends AbstractF
 
     private final RegisteredClientOidcClientRegistrationConverter delegate;
 
-    public RegisteredClientToOidcClientRegistrationConverter(List<String> clientMetadata) {
-        super(clientMetadata);
+    public RegisteredClientToOidcClientRegistrationConverter() {
         this.delegate = new RegisteredClientOidcClientRegistrationConverter();
     }
 

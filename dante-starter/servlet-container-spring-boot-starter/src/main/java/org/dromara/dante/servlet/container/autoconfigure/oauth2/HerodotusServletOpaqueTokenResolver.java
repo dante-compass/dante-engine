@@ -43,7 +43,7 @@ import org.springframework.security.oauth2.server.resource.introspection.OpaqueT
  * @author : gengwei.zheng
  * @date : 2024/4/8 16:38
  */
-public class HerodotusServletOpaqueTokenResolver implements BearerTokenResolver {
+class HerodotusServletOpaqueTokenResolver implements BearerTokenResolver {
 
     private static final Logger log = LoggerFactory.getLogger(HerodotusServletOpaqueTokenResolver.class);
 

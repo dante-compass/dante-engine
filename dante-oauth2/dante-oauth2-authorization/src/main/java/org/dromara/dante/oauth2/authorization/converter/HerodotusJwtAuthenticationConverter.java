@@ -23,29 +23,23 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.security.condition;
+package org.dromara.dante.oauth2.authorization.converter;
 
-import org.springframework.context.annotation.Conditional;
-
-import java.lang.annotation.*;
+import org.dromara.dante.core.constant.SystemConstants;
+import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter;
 
 /**
- * <p>Description: {@link Conditional @Conditional} 当指定的 OAuth2 Token 格式属性配置时条件匹配</p>
+ * <p>Description: 扩展的 JwtAuthenticationConverter </p>
  *
  * @author : gengwei.zheng
- * @date : 2024/12/9 22:42
+ * @date : 2022/3/22 11:49
  */
+public class HerodotusJwtAuthenticationConverter extends JwtAuthenticationConverter {
 
-@Target({ElementType.TYPE, ElementType.METHOD})
-@Retention(RetentionPolicy.RUNTIME)
-@Documented
-@Conditional(OnTokenFormatCondition.class)
-public @interface ConditionalOnTokenFormat {
+    public HerodotusJwtAuthenticationConverter() {
+        HerodotusJwtGrantedAuthoritiesConverter grantedAuthoritiesConverter = new HerodotusJwtGrantedAuthoritiesConverter();
+        grantedAuthoritiesConverter.setAuthoritiesClaimName(SystemConstants.AUTHORITIES);
 
-    /**
-     * {@link TokenFormat accessTokenFormat} 属性必须配置.
-     *
-     * @return 预期的 AccessToken 格式
-     */
-    TokenFormat value();
+        this.setJwtGrantedAuthoritiesConverter(grantedAuthoritiesConverter);
+    }
 }
