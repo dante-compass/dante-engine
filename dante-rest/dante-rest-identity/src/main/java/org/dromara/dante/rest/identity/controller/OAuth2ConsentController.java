@@ -32,8 +32,8 @@ import org.dromara.dante.core.domain.view.vue.Option;
 import org.dromara.dante.logic.identity.entity.OAuth2Scope;
 import org.dromara.dante.logic.identity.service.OAuth2ScopeService;
 import org.dromara.dante.oauth2.commons.constant.OAuth2Constants;
-import org.dromara.dante.security.domain.OAuth2AuthorizationResource;
 import org.dromara.dante.security.definition.OAuth2AuthorizationResourceService;
+import org.dromara.dante.security.domain.OAuth2AuthorizationResource;
 import org.dromara.dante.spring.context.ServiceContextHolder;
 import org.springframework.security.oauth2.core.endpoint.OAuth2ParameterNames;
 import org.springframework.security.oauth2.core.oidc.OidcScopes;
@@ -116,8 +116,6 @@ public class OAuth2ConsentController {
             }
         }
 
-        Set<String> redirectUris = StringUtils.commaDelimitedListToSet(resource.getRedirectUris());
-
         //输出信息指consent页面
         model.addAttribute("clientId", clientId);
         model.addAttribute("state", state);
@@ -126,7 +124,7 @@ public class OAuth2ConsentController {
         model.addAttribute("principalName", principal.getName());
         model.addAttribute("applicationName", resource.getClientName());
         model.addAttribute("logo", resource.getLogo());
-        model.addAttribute("redirectUri", redirectUris.iterator().next());
+        model.addAttribute("redirectUri", getRedirectUri(resource));
         model.addAttribute("userCode", userCode);
         String action = ServiceContextHolder.getAuthorizationEndpoint();
         if (StringUtils.hasText(userCode)) {
@@ -143,6 +141,15 @@ public class OAuth2ConsentController {
                 dictionaries = scopes.stream().collect(Collectors.toMap(OAuth2Scope::getScopeCode, item -> item));
             }
         }
+    }
+
+    private String getRedirectUri(OAuth2AuthorizationResource resource) {
+        Set<String> redirectUris = StringUtils.commaDelimitedListToSet(resource.getRedirectUris());
+        if (CollectionUtils.isNotEmpty(redirectUris)) {
+            return redirectUris.iterator().next();
+        }
+
+        return null;
     }
 
     /**
