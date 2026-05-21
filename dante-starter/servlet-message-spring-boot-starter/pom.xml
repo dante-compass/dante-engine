@@ -57,7 +57,7 @@
 
         <dependency>
             <groupId>org.dromara.dante</groupId>
-            <artifactId>message-mail-spring-boot-starter</artifactId>
+            <artifactId>dante-message-autoconfigure</artifactId>
         </dependency>
     </dependencies>
 

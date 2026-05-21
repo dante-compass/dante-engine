@@ -61,7 +61,6 @@
         <module>feign-spring-boot-starter</module>
         <module>nosql-spring-boot-starter</module>
         <module>message-mqtt-spring-boot-starter</module>
-        <module>message-mail-spring-boot-starter</module>
     </modules>
 
 </project>

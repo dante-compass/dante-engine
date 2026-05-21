@@ -30,8 +30,14 @@ import org.dromara.dante.core.jackson.JacksonUtils;
 import org.dromara.dante.core.jackson.JsonNodeUtils;
 import org.dromara.dante.message.commons.definition.Message;
 import org.dromara.dante.message.commons.definition.enums.MessageCategory;
-import org.dromara.dante.message.commons.domain.*;
-import org.dromara.dante.message.commons.event.*;
+import org.dromara.dante.message.commons.domain.BroadcastMessage;
+import org.dromara.dante.message.commons.domain.MqttMessage;
+import org.dromara.dante.message.commons.domain.StreamMessage;
+import org.dromara.dante.message.commons.domain.UserMessage;
+import org.dromara.dante.message.commons.event.MqttMessageSendingEvent;
+import org.dromara.dante.message.commons.event.StreamMessageSendingEvent;
+import org.dromara.dante.message.commons.event.WebSocketBroadcastMessageSendingEvent;
+import org.dromara.dante.message.commons.event.WebSocketUserMessageSendingEvent;
 import org.dromara.dante.spring.context.AbstractApplicationContextAware;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -50,10 +56,6 @@ public class MessageSendingDispatcher extends AbstractApplicationContextAware {
 
     private static final Logger log = LoggerFactory.getLogger(MessageSendingDispatcher.class);
 
-    private static final TypeReference<MailMessage> MAIL_MESSAGE_TYPE_REFERENCE = new TypeReference<>() {
-    };
-    private static final TypeReference<MailNotification> MAIL_NOTIFICATION_TYPE_REFERENCE = new TypeReference<>() {
-    };
     private static final TypeReference<MqttMessage> MQTT_MESSAGE_TYPE_REFERENCE = new TypeReference<>() {
     };
     private static final TypeReference<BroadcastMessage> BROADCAST_MESSAGE_TYPE_REFERENCE = new TypeReference<>() {
@@ -69,12 +71,6 @@ public class MessageSendingDispatcher extends AbstractApplicationContextAware {
         log.debug("[Herodotus] |- [M3] Dispatch received local message to event!");
 
         switch (category) {
-            case MessageCategory.MAIL:
-                sendMail(() -> (MailMessage) message.getPayload());
-                break;
-            case MessageCategory.MAIL_NOTIFICATION:
-                sendMailNotification(() -> (MailNotification) message.getPayload());
-                break;
             case MessageCategory.MQTT:
                 sendMqtt(() -> (MqttMessage) message.getPayload());
                 break;
@@ -102,12 +98,6 @@ public class MessageSendingDispatcher extends AbstractApplicationContextAware {
 
         if (ObjectUtils.isNotEmpty(category)) {
             switch (category) {
-                case MessageCategory.MAIL:
-                    sendMail(() -> toObject(jsonNode, MAIL_MESSAGE_TYPE_REFERENCE));
-                    break;
-                case MessageCategory.MAIL_NOTIFICATION:
-                    sendMailNotification(() -> toObject(jsonNode, MAIL_NOTIFICATION_TYPE_REFERENCE));
-                    break;
                 case MessageCategory.MQTT:
                     sendMqtt(() -> toObject(jsonNode, MQTT_MESSAGE_TYPE_REFERENCE));
                     break;
@@ -128,14 +118,6 @@ public class MessageSendingDispatcher extends AbstractApplicationContextAware {
 
     private <T> T toObject(JsonNode jsonNode, TypeReference<T> valueTypeReference) {
         return JsonNodeUtils.findValue(jsonNode, "payload", valueTypeReference, JacksonUtils.getObjectMapper()._deserializationContext());
-    }
-
-    private void sendMail(Supplier<MailMessage> supplier) {
-        publishEvent(new MailMessageSendingEvent(supplier.get()));
-    }
-
-    private void sendMailNotification(Supplier<MailNotification> supplier) {
-        publishEvent(new MailNotificationSendingEvent(supplier.get()));
     }
 
     private void sendMqtt(Supplier<MqttMessage> supplier) {
