@@ -31,6 +31,7 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.oauth2.server.authorization.OAuth2ClientRegistration;
 import org.springframework.security.oauth2.server.authorization.authentication.OAuth2ClientRegistrationAuthenticationProvider;
+import org.springframework.security.oauth2.server.authorization.authentication.OAuth2ClientRegistrationAuthenticationValidator;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
 
 import java.util.List;
@@ -56,6 +57,10 @@ public class OAuth2ClientRegistrationAuthenticationProviderConsumer implements C
             if (authenticationProvider instanceof OAuth2ClientRegistrationAuthenticationProvider provider) {
                 provider.setRegisteredClientConverter(toRegisteredClientConverter);
                 provider.setClientRegistrationConverter(toOidcClientRegistrationConverter);
+                provider.setAuthenticationValidator(
+                        OAuth2ClientRegistrationAuthenticationValidator.DEFAULT_REDIRECT_URI_VALIDATOR
+                                .andThen(OAuth2ClientRegistrationAuthenticationValidator.DEFAULT_JWK_SET_URI_VALIDATOR)
+                                .andThen(OAuth2ClientRegistrationAuthenticationValidator.SIMPLE_SCOPE_VALIDATOR));
             }
         });
 

@@ -33,6 +33,7 @@ import org.springframework.security.oauth2.server.authorization.client.Registere
 import org.springframework.security.oauth2.server.authorization.oidc.OidcClientRegistration;
 import org.springframework.security.oauth2.server.authorization.oidc.authentication.OidcClientConfigurationAuthenticationProvider;
 import org.springframework.security.oauth2.server.authorization.oidc.authentication.OidcClientRegistrationAuthenticationProvider;
+import org.springframework.security.oauth2.server.authorization.oidc.authentication.OidcClientRegistrationAuthenticationValidator;
 
 import java.util.List;
 import java.util.function.Consumer;
@@ -57,6 +58,11 @@ public class OidcClientRegistrationAuthenticationProviderConsumer implements Con
             if (authenticationProvider instanceof OidcClientRegistrationAuthenticationProvider provider) {
                 provider.setRegisteredClientConverter(toRegisteredClientConverter);
                 provider.setClientRegistrationConverter(toOidcClientRegistrationConverter);
+                provider.setAuthenticationValidator(
+                        OidcClientRegistrationAuthenticationValidator.DEFAULT_REDIRECT_URI_VALIDATOR
+                                .andThen(OidcClientRegistrationAuthenticationValidator.DEFAULT_POST_LOGOUT_REDIRECT_URI_VALIDATOR)
+                                .andThen(OidcClientRegistrationAuthenticationValidator.DEFAULT_JWK_SET_URI_VALIDATOR)
+                                .andThen(OidcClientRegistrationAuthenticationValidator.SIMPLE_SCOPE_VALIDATOR));
             }
             if (authenticationProvider instanceof OidcClientConfigurationAuthenticationProvider provider) {
                 provider.setClientRegistrationConverter(toOidcClientRegistrationConverter);
