@@ -106,32 +106,27 @@ public class IntegrationMqttAutoConfiguration {
         return clientManager;
     }
 
-    @Bean(name = "mqttDefaultInbound")
-    public Mqttv5PahoMessageDrivenChannelAdapter mqttDefaultInbound(
+    @Bean
+    public IntegrationFlow mqttDefaultInboundFlow(
             ClientManager<IMqttAsyncClient, MqttConnectionOptions> clientManager,
             MqttProperties mqttProperties,
+            ApplicationEventPublishingMessageHandler applicationEventPublishingMessageHandler,
             @Qualifier(Channels.MQTT__DEFAULT_INBOUND_CHANNEL) MessageChannel mqttDefaultInboundChannel) {
+
         Mqttv5PahoMessageDrivenChannelAdapter adapter = new Mqttv5PahoMessageDrivenChannelAdapter(clientManager, ListUtils.toStringArray(mqttProperties.getDefaultSubscribes()));
         adapter.setManualAcks(false);
         adapter.setOutputChannel(mqttDefaultInboundChannel);
         adapter.setErrorChannelName(IntegrationContextUtils.ERROR_CHANNEL_BEAN_NAME);
         log.trace("[Herodotus] |- Bean [Mqtt v5 Paho Message Driven Channel Adapter] Configure.");
-        return adapter;
-    }
 
-    @Bean
-    public IntegrationFlow mqttDefaultInboundFlow(
-            @Qualifier("mqttDefaultInbound") Mqttv5PahoMessageDrivenChannelAdapter mqttDefaultInbound,
-            ApplicationEventPublishingMessageHandler applicationEventPublishingMessageHandler,
-            @Qualifier(Channels.EVENT__DEFAULT_OUTBOUND_CHANNEL) MessageChannel eventDefaultOutboundChannel) {
-        return IntegrationFlow.from(mqttDefaultInbound)
+        return IntegrationFlow.from(mqttDefaultInboundChannel)
                 .transform(new DefaultMessageToEventTransformer())
-                .channel(eventDefaultOutboundChannel)
+                .channel(MessageChannels.publishSubscribe(Channels.EVENT__DEFAULT_OUTBOUND_CHANNEL))
                 .handle(applicationEventPublishingMessageHandler)
                 .get();
     }
 
-    @Bean(name = "mqttDefaultOutbound")
+    @Bean
     @ServiceActivator(inputChannel = Channels.MQTT__DEFAULT_OUTBOUND_CHANNEL)
     public MessageHandler mqttDefaultOutbound(ClientManager<IMqttAsyncClient, MqttConnectionOptions> clientManager, MqttProperties mqttProperties) {
         Mqttv5PahoMessageHandler handler = new Mqttv5PahoMessageHandler(clientManager);

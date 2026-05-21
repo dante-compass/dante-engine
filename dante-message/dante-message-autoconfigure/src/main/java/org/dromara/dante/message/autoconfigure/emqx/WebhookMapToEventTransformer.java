@@ -39,7 +39,7 @@ import java.util.Map;
  * @author : gengwei.zheng
  * @date : 2023/11/30 16:00
  */
-public class WebhookMapToEventTransformer extends AbstractPayloadTransformer<Map<String, Object>, ApplicationEvent> {
+class WebhookMapToEventTransformer extends AbstractPayloadTransformer<Map<String, Object>, ApplicationEvent> {
 
     @Override
     protected ApplicationEvent transformPayload(Map<String, Object> payload) {

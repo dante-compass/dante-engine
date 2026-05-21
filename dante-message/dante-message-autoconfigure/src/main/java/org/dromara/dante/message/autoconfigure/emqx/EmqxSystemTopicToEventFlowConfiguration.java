@@ -63,7 +63,7 @@ import org.springframework.messaging.MessageChannel;
  */
 @Configuration(proxyBeanMethods = false)
 @ConditionalOnEventSource(EventSource.SYS_TOPIC)
-public class EmqxSystemTopicToEventFlowConfiguration {
+class EmqxSystemTopicToEventFlowConfiguration {
 
     private static final Logger log = LoggerFactory.getLogger(EmqxSystemTopicToEventFlowConfiguration.class);
 
@@ -89,7 +89,7 @@ public class EmqxSystemTopicToEventFlowConfiguration {
         messageProducer.setManualAcks(false);
         messageProducer.setOutputChannel(emqxSystemTopicInboundChannel);
 
-        return IntegrationFlow.from(messageProducer)
+        return IntegrationFlow.from(emqxSystemTopicInboundChannel)
                 .transform(new SystemClientByteArrayToEventTransformer())
                 .channel(MessageChannels.direct(Channels.EMQX_DEFAULT_EVENT_OUTBOUND_CHANNEL))
                 .handle(applicationEventPublishingMessageHandler)

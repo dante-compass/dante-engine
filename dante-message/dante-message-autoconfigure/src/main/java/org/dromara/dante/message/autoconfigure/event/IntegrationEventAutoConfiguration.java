@@ -36,6 +36,7 @@ import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.context.ApplicationEvent;
 import org.springframework.context.annotation.Bean;
 import org.springframework.integration.channel.PublishSubscribeChannel;
+import org.springframework.integration.config.EnableIntegration;
 import org.springframework.integration.dsl.IntegrationFlow;
 import org.springframework.integration.dsl.MessageChannels;
 import org.springframework.integration.event.inbound.ApplicationEventListeningMessageProducer;
@@ -54,6 +55,7 @@ import org.springframework.messaging.MessageChannel;
  * @date : 2024/6/14 23:36
  */
 @AutoConfiguration
+@EnableIntegration
 public class IntegrationEventAutoConfiguration {
 
     private static final Logger log = LoggerFactory.getLogger(IntegrationEventAutoConfiguration.class);

@@ -47,17 +47,17 @@
 
         <dependency>
             <groupId>org.dromara.dante</groupId>
-            <artifactId>dante-message-autoconfigure</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.dromara.dante</groupId>
             <artifactId>webmvc-spring-boot-starter</artifactId>
         </dependency>
 
         <dependency>
             <groupId>org.dromara.dante</groupId>
             <artifactId>dante-rest-message</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.dromara.dante</groupId>
+            <artifactId>dante-message-autoconfigure</artifactId>
         </dependency>
     </dependencies>
 

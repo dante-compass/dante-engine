@@ -40,5 +40,5 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Import(RestMessageConfiguration.class)
-public @interface EnableHerodotusRestMessage {
+public @interface EnableHerodotusServletMessageRest {
 }
