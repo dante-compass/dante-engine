@@ -33,18 +33,15 @@ import org.dromara.dante.message.emqx.condition.EventSource;
 import org.dromara.dante.message.emqx.event.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.ResolvableType;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
-import org.springframework.integration.channel.QueueChannel;
 import org.springframework.integration.dsl.IntegrationFlow;
 import org.springframework.integration.dsl.MessageChannels;
 import org.springframework.integration.event.outbound.ApplicationEventPublishingMessageHandler;
 import org.springframework.integration.http.dsl.Http;
-import org.springframework.messaging.MessageChannel;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -72,7 +69,7 @@ import java.util.Map;
  */
 @Configuration(proxyBeanMethods = false)
 @ConditionalOnEventSource(EventSource.WEBHOOK)
-public class EmqxWebhookToEventFlowConfiguration {
+class EmqxWebhookToEventFlowConfiguration {
 
     private static final Logger log = LoggerFactory.getLogger(EmqxWebhookToEventFlowConfiguration.class);
 
@@ -82,30 +79,18 @@ public class EmqxWebhookToEventFlowConfiguration {
     }
 
     /**
-     * Emqx Webhook Http 入站通道
-     *
-     * @return {@link QueueChannel}
-     */
-    @Bean(Channels.EMQX_DEFAULT_WEBHOOK_INBOUND_CHANNEL)
-    public MessageChannel emqxWebhookInboundChannel() {
-        return MessageChannels.direct().getObject();
-    }
-
-    /**
      * Emqx Webhook 事件转成系统 Event Flow
      *
      * @param applicationEventPublishingMessageHandler {@link ApplicationEventPublishingMessageHandler}
      * @return {@link IntegrationFlow}
      */
     @Bean
-    public IntegrationFlow emqxWebhookHttpToEventFlow(
-            ApplicationEventPublishingMessageHandler applicationEventPublishingMessageHandler,
-            @Qualifier(Channels.EMQX_DEFAULT_WEBHOOK_INBOUND_CHANNEL) MessageChannel emqxWebhookInboundChannel) {
+    public IntegrationFlow emqxWebhookHttpToEventFlow(ApplicationEventPublishingMessageHandler applicationEventPublishingMessageHandler) {
         return IntegrationFlow.from(Http.inboundChannelAdapter(SystemConstants.WEBHOOK_EMQX_URI)
                         .requestMapping(m -> m.methods(HttpMethod.POST))
                         .requestPayloadType(ResolvableType.forClass(Map.class, LinkedHashMap.class))
                         .statusCodeFunction(s -> HttpStatus.OK))
-                .channel(emqxWebhookInboundChannel)
+                .channel(MessageChannels.direct(Channels.EMQX_DEFAULT_WEBHOOK_INBOUND_CHANNEL))
                 .transform(new WebhookMapToEventTransformer())
                 .channel(MessageChannels.direct(Channels.EMQX_DEFAULT_EVENT_OUTBOUND_CHANNEL))
                 .handle(applicationEventPublishingMessageHandler)
