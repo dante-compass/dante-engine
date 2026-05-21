@@ -328,6 +328,11 @@
             </dependency>
             <dependency>
                 <groupId>org.dromara.dante</groupId>
+                <artifactId>message-mail-spring-boot-starter</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.dromara.dante</groupId>
                 <artifactId>message-mqtt-spring-boot-starter</artifactId>
                 <version>${project.version}</version>
             </dependency>
