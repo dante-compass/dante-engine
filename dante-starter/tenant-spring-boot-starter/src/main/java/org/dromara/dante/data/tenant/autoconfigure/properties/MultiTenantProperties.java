@@ -42,7 +42,7 @@ public class MultiTenantProperties {
     /**
      * 多租户数据源扫描包
      */
-    private String[] packageToScan = new String[]{"org.dromara.dante"};
+    private String[] packageToScan = new String[]{"org.dromara.dante", "org.dromara.dantecloud"};
 
     /**
      * 多租户模式，默认：discriminator
