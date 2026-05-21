@@ -27,6 +27,7 @@ package org.dromara.dante.message.autoconfigure.mqtt.gateway;
 
 import org.dromara.dante.message.commons.constant.Channels;
 import org.springframework.integration.annotation.MessagingGateway;
+import org.springframework.integration.context.IntegrationContextUtils;
 import org.springframework.integration.mqtt.support.MqttHeaders;
 import org.springframework.messaging.handler.annotation.Header;
 
@@ -36,7 +37,7 @@ import org.springframework.messaging.handler.annotation.Header;
  * @author : gengwei.zheng
  * @date : 2023/9/11 16:10
  */
-@MessagingGateway(defaultRequestChannel = Channels.MQTT__DEFAULT_OUTBOUND_CHANNEL)
+@MessagingGateway(defaultRequestChannel = Channels.MQTT__DEFAULT_OUTBOUND_CHANNEL, errorChannel = IntegrationContextUtils.ERROR_CHANNEL_BEAN_NAME)
 public interface MqttMessagingGateway {
 
     /**

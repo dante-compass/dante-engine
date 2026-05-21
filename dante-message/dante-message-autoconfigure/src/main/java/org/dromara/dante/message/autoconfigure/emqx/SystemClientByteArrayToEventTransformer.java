@@ -49,7 +49,7 @@ import java.nio.charset.StandardCharsets;
  * @author : gengwei.zheng
  * @date : 2023/12/9 14:35
  */
-public class SystemClientByteArrayToEventTransformer extends AbstractTransformer {
+class SystemClientByteArrayToEventTransformer extends AbstractTransformer {
 
     @Override
     protected Object doTransform(Message<?> message) {
