@@ -111,7 +111,8 @@ public class IntegrationMqttAutoConfiguration {
             ClientManager<IMqttAsyncClient, MqttConnectionOptions> clientManager,
             MqttProperties mqttProperties,
             ApplicationEventPublishingMessageHandler applicationEventPublishingMessageHandler,
-            @Qualifier(Channels.MQTT__DEFAULT_INBOUND_CHANNEL) MessageChannel mqttDefaultInboundChannel) {
+            @Qualifier(Channels.MQTT__DEFAULT_INBOUND_CHANNEL) MessageChannel mqttDefaultInboundChannel,
+            @Qualifier(Channels.EVENT__DEFAULT_OUTBOUND_CHANNEL) MessageChannel eventDefaultOutboundChannel) {
 
         Mqttv5PahoMessageDrivenChannelAdapter adapter = new Mqttv5PahoMessageDrivenChannelAdapter(clientManager, ListUtils.toStringArray(mqttProperties.getDefaultSubscribes()));
         adapter.setManualAcks(false);
@@ -121,7 +122,7 @@ public class IntegrationMqttAutoConfiguration {
 
         return IntegrationFlow.from(mqttDefaultInboundChannel)
                 .transform(new DefaultMessageToEventTransformer())
-                .channel(MessageChannels.publishSubscribe(Channels.EVENT__DEFAULT_OUTBOUND_CHANNEL))
+                .channel(eventDefaultOutboundChannel)
                 .handle(applicationEventPublishingMessageHandler)
                 .get();
     }
