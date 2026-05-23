@@ -34,6 +34,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.HttpSecurityBuilder;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.web.authentication.RememberMeServices;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.context.SecurityContextRepository;
 
@@ -49,12 +50,14 @@ import org.springframework.security.web.context.SecurityContextRepository;
 public class OAuth2FormLoginSecureConfigurer<H extends HttpSecurityBuilder<H>> extends AbstractHttpConfigurer<OAuth2FormLoginSecureConfigurer<H>, H> {
 
     private final UserDetailsService userDetailsService;
+    private final RememberMeServices rememberMeServices;
     private final OAuth2AuthenticationProperties authenticationProperties;
     private final CaptchaProcessor captchaProcessor;
     private final DigitalEnvelopeProcessor digitalEnvelopeProcessor;
 
-    public OAuth2FormLoginSecureConfigurer(UserDetailsService userDetailsService, OAuth2AuthenticationProperties authenticationProperties, CaptchaProcessor captchaProcessor, DigitalEnvelopeProcessor digitalEnvelopeProcessor) {
+    public OAuth2FormLoginSecureConfigurer(UserDetailsService userDetailsService, RememberMeServices rememberMeServices, OAuth2AuthenticationProperties authenticationProperties, CaptchaProcessor captchaProcessor, DigitalEnvelopeProcessor digitalEnvelopeProcessor) {
         this.userDetailsService = userDetailsService;
+        this.rememberMeServices = rememberMeServices;
         this.authenticationProperties = authenticationProperties;
         this.captchaProcessor = captchaProcessor;
         this.digitalEnvelopeProcessor = digitalEnvelopeProcessor;
@@ -67,6 +70,7 @@ public class OAuth2FormLoginSecureConfigurer<H extends HttpSecurityBuilder<H>> e
         SecurityContextRepository securityContextRepository = httpSecurity.getSharedObject(SecurityContextRepository.class);
 
         OAuth2FormLoginAuthenticationFilter filter = getOAuth2FormLoginAuthenticationFilter(authenticationManager, this.digitalEnvelopeProcessor, securityContextRepository);
+        filter.setRememberMeServices(rememberMeServices);
 
         OAuth2FormLoginAuthenticationProvider provider = new OAuth2FormLoginAuthenticationProvider(captchaProcessor, userDetailsService);
         provider.setHideUserNotFoundExceptions(false);
