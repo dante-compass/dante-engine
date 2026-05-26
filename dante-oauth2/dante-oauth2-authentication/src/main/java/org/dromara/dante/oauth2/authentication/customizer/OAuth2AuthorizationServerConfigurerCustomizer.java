@@ -32,7 +32,6 @@ import org.dromara.dante.oauth2.authentication.consumer.OAuth2TokenEndpointAuthe
 import org.dromara.dante.oauth2.authentication.provider.OAuth2ResourceOwnerPasswordAuthenticationConverter;
 import org.dromara.dante.oauth2.authentication.provider.OAuth2SocialCredentialsAuthenticationConverter;
 import org.dromara.dante.security.definition.ClientDetailsService;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.oauth2.server.authorization.OAuth2AuthorizationServerConfigurer;
@@ -44,7 +43,6 @@ import org.springframework.security.oauth2.server.authorization.web.authenticati
 import org.springframework.security.web.authentication.AuthenticationConverter;
 import org.springframework.security.web.authentication.DelegatingAuthenticationConverter;
 import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
-import org.springframework.security.web.servlet.util.matcher.PathPatternRequestMatcher;
 
 import java.util.Arrays;
 
@@ -80,7 +78,8 @@ public class OAuth2AuthorizationServerConfigurerCustomizer implements Customizer
                     // 默认 HttpSessionRequestCache 不支持 POST 类型请求，会导致 OAuth2 Device Flow 跳转到登录页面登录成功后，无法在重定向至设备验证页面，只会跳转到 '/'
                     // 指定 OAUTH2_DEVICE_VERIFICATION_ENDPOINT 对应路径可以实现请求缓存，以实现请求的重定向
                     HttpSessionRequestCache cache = new HttpSessionRequestCache();
-                    cache.setRequestMatcher(PathPatternRequestMatcher.withDefaults().matcher(HttpMethod.POST, SystemConstants.OAUTH2_DEVICE_VERIFICATION_ENDPOINT));
+                    HerodotusSavedRequestMatcher requestMatcher = new HerodotusSavedRequestMatcher();
+                    cache.setRequestMatcher(requestMatcher.create(httpSecurity));
                     cacheConfigurer.requestCache(cache);
                 });
 
