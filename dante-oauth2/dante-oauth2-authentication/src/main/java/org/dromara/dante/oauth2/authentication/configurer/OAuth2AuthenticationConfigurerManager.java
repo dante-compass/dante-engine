@@ -29,7 +29,7 @@ import org.dromara.dante.oauth2.authentication.customizer.OAuth2ExceptionHandlin
 import org.dromara.dante.oauth2.authentication.customizer.OAuth2FormLoginConfigurerCustomizer;
 import org.dromara.dante.oauth2.authentication.response.*;
 import org.dromara.dante.oauth2.commons.properties.OAuth2AuthenticationProperties;
-import org.dromara.dante.oauth2.commons.strategy.ClientRegistrationSuccessEventManager;
+import org.dromara.dante.oauth2.commons.strategy.OAuth2ClientRegistrationSuccessEventManager;
 import org.dromara.dante.oauth2.commons.strategy.OAuth2DeviceVerificationSuccessEventManager;
 import org.dromara.dante.security.definition.OAuth2AuthorizationResourceService;
 import org.dromara.dante.web.servlet.template.ThymeleafTemplateHandler;
@@ -64,7 +64,7 @@ public class OAuth2AuthenticationConfigurerManager {
             OAuth2AuthenticationProperties oauth2AuthenticationProperties,
             RegisteredClientRepository registeredClientRepository,
             OAuth2AuthorizationResourceService authorizationResourceService,
-            ClientRegistrationSuccessEventManager clientRegistrationSuccessEventManager,
+            OAuth2ClientRegistrationSuccessEventManager clientRegistrationSuccessEventManager,
             OAuth2DeviceVerificationSuccessEventManager deviceVerificationSuccessEventManager) {
         this.digitalEnvelopeProcessor = digitalEnvelopeProcessor;
         this.oauth2AuthenticationProperties = oauth2AuthenticationProperties;

@@ -31,11 +31,11 @@ import org.dromara.dante.oauth2.authentication.autoconfigure.listener.LocalEnabl
 import org.dromara.dante.oauth2.authentication.autoconfigure.listener.RemoteDisableAuthenticationListener;
 import org.dromara.dante.oauth2.authentication.autoconfigure.listener.RemoteEnableAuthenticationListener;
 import org.dromara.dante.oauth2.authentication.autoconfigure.strategy.DefaultAccountStatusChangeEventManager;
+import org.dromara.dante.oauth2.authentication.autoconfigure.strategy.DefaultOAuth2ClientRegistrationSuccessEventManager;
 import org.dromara.dante.oauth2.authentication.autoconfigure.strategy.DefaultOAuth2DeviceVerificationSuccessEventManager;
-import org.dromara.dante.oauth2.authentication.autoconfigure.strategy.DefaultClientRegistrationSuccessEventManager;
 import org.dromara.dante.oauth2.commons.strategy.AccountStatusChangedEventManager;
+import org.dromara.dante.oauth2.commons.strategy.OAuth2ClientRegistrationSuccessEventManager;
 import org.dromara.dante.oauth2.commons.strategy.OAuth2DeviceVerificationSuccessEventManager;
-import org.dromara.dante.oauth2.commons.strategy.ClientRegistrationSuccessEventManager;
 import org.dromara.dante.persistence.commons.definition.EnhanceAuthenticationManager;
 import org.dromara.dante.spring.condition.ConditionalOnArchitecture;
 import org.dromara.dante.spring.enums.Architecture;
@@ -78,9 +78,9 @@ public class UaaServiceMessageAutoConfiguration {
     }
 
     @Bean
-    public ClientRegistrationSuccessEventManager oidcClientRegistrationSuccessEventManager() {
-        DefaultClientRegistrationSuccessEventManager manager = new DefaultClientRegistrationSuccessEventManager();
-        log.trace("[Herodotus] |- Bean [Oidc Client Registration Success Event Manager] Configure.");
+    public OAuth2ClientRegistrationSuccessEventManager oauth2ClientRegistrationSuccessEventManager() {
+        DefaultOAuth2ClientRegistrationSuccessEventManager manager = new DefaultOAuth2ClientRegistrationSuccessEventManager();
+        log.trace("[Herodotus] |- Bean [OAuth2 Client Registration Success Event Manager] Configure.");
         return manager;
     }
 
