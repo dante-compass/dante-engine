@@ -45,11 +45,6 @@
             <groupId>org.dromara.dante</groupId>
             <artifactId>dante-security</artifactId>
         </dependency>
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-messaging</artifactId>
-        </dependency>
     </dependencies>
 
 </project>

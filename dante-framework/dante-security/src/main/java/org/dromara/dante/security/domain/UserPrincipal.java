@@ -28,6 +28,7 @@ package org.dromara.dante.security.domain;
 import com.google.common.base.MoreObjects;
 import org.dromara.dante.core.constant.SystemConstants;
 import org.dromara.dante.security.definition.HerodotusPrincipal;
+import org.springframework.messaging.simp.user.DestinationUserNameProvider;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -41,7 +42,7 @@ import java.util.Set;
  * @author : gengwei.zheng
  * @date : 2022/7/13 14:31
  */
-public class UserPrincipal implements HerodotusPrincipal, Serializable {
+public class UserPrincipal implements HerodotusPrincipal, DestinationUserNameProvider,  Serializable {
 
     private String id;
 
@@ -115,6 +116,11 @@ public class UserPrincipal implements HerodotusPrincipal, Serializable {
 
     public void setEmployeeId(String employeeId) {
         this.employeeId = employeeId;
+    }
+
+    @Override
+    public String getDestinationUserName() {
+        return getId();
     }
 
     public Map<String, Object> toMap() {
