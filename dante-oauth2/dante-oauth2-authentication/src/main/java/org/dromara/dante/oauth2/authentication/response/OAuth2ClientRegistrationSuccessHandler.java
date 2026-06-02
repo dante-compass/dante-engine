@@ -29,7 +29,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.dromara.dante.oauth2.authentication.converter.AbstractToRegisteredClientTransmitterConverter;
-import org.dromara.dante.oauth2.commons.strategy.ClientRegistrationSuccessEventManager;
+import org.dromara.dante.oauth2.commons.strategy.OAuth2ClientRegistrationSuccessEventManager;
 import org.dromara.dante.security.definition.OAuth2AuthorizationResourceService;
 import org.dromara.dante.security.domain.RegisteredClientTransmitter;
 import org.slf4j.Logger;
@@ -57,7 +57,7 @@ public class OAuth2ClientRegistrationSuccessHandler extends AbstractClientRegist
     private final HttpMessageConverter<OAuth2ClientRegistration> clientRegistrationHttpMessageConverter =
             new OAuth2ClientRegistrationHttpMessageConverter();
 
-    public OAuth2ClientRegistrationSuccessHandler(RegisteredClientRepository registeredClientRepository, OAuth2AuthorizationResourceService authorizationResourceService, ClientRegistrationSuccessEventManager clientRegistrationSuccessEventManager) {
+    public OAuth2ClientRegistrationSuccessHandler(RegisteredClientRepository registeredClientRepository, OAuth2AuthorizationResourceService authorizationResourceService, OAuth2ClientRegistrationSuccessEventManager clientRegistrationSuccessEventManager) {
         super(registeredClientRepository, authorizationResourceService, clientRegistrationSuccessEventManager);
     }
 

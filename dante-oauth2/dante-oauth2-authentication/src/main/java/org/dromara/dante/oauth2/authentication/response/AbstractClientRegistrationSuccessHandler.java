@@ -28,7 +28,7 @@ package org.dromara.dante.oauth2.authentication.response;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.apache.commons.lang3.ObjectUtils;
-import org.dromara.dante.oauth2.commons.strategy.ClientRegistrationSuccessEventManager;
+import org.dromara.dante.oauth2.commons.strategy.OAuth2ClientRegistrationSuccessEventManager;
 import org.dromara.dante.security.definition.OAuth2AuthorizationResourceService;
 import org.dromara.dante.security.domain.OAuth2AuthorizationResource;
 import org.dromara.dante.security.domain.RegisteredClientTransmitter;
@@ -60,9 +60,9 @@ abstract class AbstractClientRegistrationSuccessHandler<T extends AbstractOAuth2
 
     private final RegisteredClientRepository registeredClientRepository;
     private final OAuth2AuthorizationResourceService authorizationResourceService;
-    private final ClientRegistrationSuccessEventManager clientRegistrationSuccessEventManager;
+    private final OAuth2ClientRegistrationSuccessEventManager clientRegistrationSuccessEventManager;
 
-    AbstractClientRegistrationSuccessHandler(RegisteredClientRepository registeredClientRepository, OAuth2AuthorizationResourceService authorizationResourceService, ClientRegistrationSuccessEventManager clientRegistrationSuccessEventManager) {
+    AbstractClientRegistrationSuccessHandler(RegisteredClientRepository registeredClientRepository, OAuth2AuthorizationResourceService authorizationResourceService, OAuth2ClientRegistrationSuccessEventManager clientRegistrationSuccessEventManager) {
         this.registeredClientRepository = registeredClientRepository;
         this.authorizationResourceService = authorizationResourceService;
         this.clientRegistrationSuccessEventManager = clientRegistrationSuccessEventManager;
@@ -77,7 +77,7 @@ abstract class AbstractClientRegistrationSuccessHandler<T extends AbstractOAuth2
             if (ObjectUtils.isNotEmpty(registeredClient)) {
                 RegisteredClientTransmitter transmitter = transmit.apply(clientRegistration, registeredClient.getId());
                 authorizationResourceService.process(transmitter);
-                log.debug("[Herodotus] |- Synchronize client dynamic registration information!");
+                log.debug("[Herodotus] |- [OAUTH2-CLIENT-REGISTRATION] Synchronize client dynamic registration information!");
                 clientRegistrationSuccessEventManager.postProcess(transmitter);
             }
         }

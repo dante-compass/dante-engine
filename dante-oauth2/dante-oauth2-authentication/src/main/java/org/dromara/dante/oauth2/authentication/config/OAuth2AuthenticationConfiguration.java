@@ -31,7 +31,7 @@ import org.dromara.dante.oauth2.authentication.customizer.HerodotusJwtTokenCusto
 import org.dromara.dante.oauth2.authentication.customizer.HerodotusOpaqueTokenCustomizer;
 import org.dromara.dante.oauth2.authentication.response.DefaultOAuth2AuthenticationEventPublisher;
 import org.dromara.dante.oauth2.commons.properties.OAuth2AuthenticationProperties;
-import org.dromara.dante.oauth2.commons.strategy.ClientRegistrationSuccessEventManager;
+import org.dromara.dante.oauth2.commons.strategy.OAuth2ClientRegistrationSuccessEventManager;
 import org.dromara.dante.oauth2.commons.strategy.OAuth2DeviceVerificationSuccessEventManager;
 import org.dromara.dante.security.definition.OAuth2AuthorizationResourceService;
 import org.dromara.dante.web.servlet.template.ThymeleafTemplateHandler;
@@ -94,7 +94,7 @@ public class OAuth2AuthenticationConfiguration {
             OAuth2AuthenticationProperties authenticationProperties,
             RegisteredClientRepository registeredClientRepository,
             OAuth2AuthorizationResourceService authorizationResourceService,
-            ClientRegistrationSuccessEventManager clientRegistrationSuccessEventManager,
+            OAuth2ClientRegistrationSuccessEventManager clientRegistrationSuccessEventManager,
             OAuth2DeviceVerificationSuccessEventManager deviceVerificationSuccessEventManager) {
 
         OAuth2AuthenticationConfigurerManager configurer = new OAuth2AuthenticationConfigurerManager(

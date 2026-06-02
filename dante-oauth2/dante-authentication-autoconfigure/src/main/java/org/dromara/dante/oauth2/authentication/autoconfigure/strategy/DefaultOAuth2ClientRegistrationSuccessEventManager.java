@@ -25,9 +25,9 @@
 
 package org.dromara.dante.oauth2.authentication.autoconfigure.strategy;
 
-import org.dromara.dante.oauth2.authorization.autoconfigure.bus.RemoteOidcClientRegistrationSuccessEvent;
-import org.dromara.dante.oauth2.commons.event.OidcClientRegistrationSuccessEvent;
-import org.dromara.dante.oauth2.commons.strategy.ClientRegistrationSuccessEventManager;
+import org.dromara.dante.oauth2.authorization.autoconfigure.bus.RemoteOAuth2ClientRegistrationSuccessEvent;
+import org.dromara.dante.oauth2.commons.event.OAuth2ClientRegistrationSuccessEvent;
+import org.dromara.dante.oauth2.commons.strategy.OAuth2ClientRegistrationSuccessEventManager;
 import org.dromara.dante.security.domain.RegisteredClientTransmitter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,9 +40,9 @@ import org.slf4j.LoggerFactory;
  * @author : gengwei.zheng
  * @date : 2024/8/21 21:55
  */
-public class DefaultClientRegistrationSuccessEventManager implements ClientRegistrationSuccessEventManager {
+public class DefaultOAuth2ClientRegistrationSuccessEventManager implements OAuth2ClientRegistrationSuccessEventManager {
 
-    private static final Logger log = LoggerFactory.getLogger(DefaultClientRegistrationSuccessEventManager.class);
+    private static final Logger log = LoggerFactory.getLogger(DefaultOAuth2ClientRegistrationSuccessEventManager.class);
 
     @Override
     public String getDestinationServiceName() {
@@ -51,13 +51,13 @@ public class DefaultClientRegistrationSuccessEventManager implements ClientRegis
 
     @Override
     public void postLocalProcess(RegisteredClientTransmitter data) {
-        log.debug("[Herodotus] |- [OIDC-CLIENT-REGISTRATION] Start sync OidcClientRegistration process from local!");
-        publishEvent(new OidcClientRegistrationSuccessEvent(data));
+        log.debug("[Herodotus] |- [OAUTH2-CLIENT-REGISTRATION] Start sync OAuth2ClientRegistration process from local!");
+        publishEvent(new OAuth2ClientRegistrationSuccessEvent(data));
     }
 
     @Override
     public void postRemoteProcess(String data, String originService, String destinationService) {
-        log.debug("[Herodotus] |- [OIDC-CLIENT-REGISTRATION] Start sync OidcClientRegistration process from remote!");
-        publishEvent(new RemoteOidcClientRegistrationSuccessEvent(data, originService, destinationService));
+        log.debug("[Herodotus] |- [OAUTH2-CLIENT-REGISTRATION] Start sync OAuth2ClientRegistration process from remote!");
+        publishEvent(new RemoteOAuth2ClientRegistrationSuccessEvent(data, originService, destinationService));
     }
 }

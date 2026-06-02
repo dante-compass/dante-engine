@@ -170,7 +170,7 @@
             let tank = $('#tank').val();
             let fighter = $('#fighter').val();
             let missile = $('#missile').val();
-            let machine = $('#machine').val();
+            let machine = $('#machine').is(':checked');
 
             let data =  $.security.encryptSignInFormData(tank, fighter, missile, key)
 
@@ -182,7 +182,7 @@
             $(vulgarTycoon).val(data.encryptTank);
             $(beast).val(data.encryptFighter);
             $(graphic).val(data.encryptMissile);
-            $(anubis).val(machine);
+            $(anubis).val(machine ? 'on' : 'off');
         });
     });
 

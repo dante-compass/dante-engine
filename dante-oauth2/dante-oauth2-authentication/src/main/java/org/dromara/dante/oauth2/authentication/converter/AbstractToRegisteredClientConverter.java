@@ -26,6 +26,7 @@
 package org.dromara.dante.oauth2.authentication.converter;
 
 import org.apache.commons.lang3.ObjectUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.Strings;
 import org.dromara.dante.core.constant.SymbolConstants;
 import org.dromara.dante.core.constant.SystemConstants;
@@ -59,6 +60,11 @@ abstract class AbstractToRegisteredClientConverter<T extends AbstractOAuth2Clien
 
         // 默认的 XXXRegisteredClientConverter 会设置一些默认值，不好进行修改，使用 from 重新生成一份 RegisteredClient.Builder 以便设定参数。
         RegisteredClient.Builder builder = RegisteredClient.from(registeredClient);
+
+        // 如果指定了 ClientId，则用新值覆盖默认生成的值。
+        if (StringUtils.isNotBlank(source.getClientId())) {
+            builder.clientId(source.getClientId());
+        }
 
         // 自定义动态注册属性。
         ClientSettings.Builder clientSettingsBuilder = ClientSettings.withSettings(registeredClient.getClientSettings().getSettings());

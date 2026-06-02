@@ -42,6 +42,7 @@ import org.springframework.security.oauth2.server.authorization.web.authenticati
 import org.springframework.security.oauth2.server.authorization.web.authentication.OAuth2RefreshTokenAuthenticationConverter;
 import org.springframework.security.web.authentication.AuthenticationConverter;
 import org.springframework.security.web.authentication.DelegatingAuthenticationConverter;
+import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
 
 import java.util.Arrays;
 
@@ -72,7 +73,15 @@ public class OAuth2AuthorizationServerConfigurerCustomizer implements Customizer
         // 从 Spring Authorization Server 7.X（即合并值 Spring Security 主工程的版本之后），采用 httpSecurity.oauth2AuthorizationServer() 进行配置
         // 这种配置方式，必须要增加下面这段。通过 securityMatcher 的配置，实现与 DefaultSecurityAutoConfiguration 职责的区分。
         // 如果不设置这段，启动 UAA 时将会出现 AuthorizationAutoConfiguration 与 DefaultSecurityAutoConfiguration SecurityFilterChain 配置冲突而抛错无法启动问题
-        httpSecurity.securityMatcher(configurer.getEndpointsMatcher());
+        httpSecurity.securityMatcher(configurer.getEndpointsMatcher())
+                .requestCache(cacheConfigurer -> {
+                    // 默认 HttpSessionRequestCache 不支持 POST 类型请求，会导致 OAuth2 Device Flow 跳转到登录页面登录成功后，无法在重定向至设备验证页面，只会跳转到 '/'
+                    // 指定 OAUTH2_DEVICE_VERIFICATION_ENDPOINT 对应路径可以实现请求缓存，以实现请求的重定向
+                    HttpSessionRequestCache cache = new HttpSessionRequestCache();
+                    HerodotusSavedRequestMatcher requestMatcher = new HerodotusSavedRequestMatcher();
+                    cache.setRequestMatcher(requestMatcher.create(httpSecurity));
+                    cacheConfigurer.requestCache(cache);
+                });
 
         configurer
                 .clientAuthentication(endpoint -> endpoint.errorResponseHandler(authenticationConfigurerManager.getOAuth2AuthenticationFailureHandler()))

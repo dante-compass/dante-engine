@@ -23,20 +23,16 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.oauth2.commons.event;
+package org.dromara.dante.oauth2.commons.strategy;
 
-import org.dromara.dante.message.commons.definition.event.AbstractApplicationEvent;
+import org.dromara.dante.message.commons.definition.event.ApplicationStrategyEventManager;
 import org.dromara.dante.security.domain.RegisteredClientTransmitter;
 
 /**
- * <p>Description: OIDC 客户端注册成功本地事件 </p>
+ * <p>Description: 客户端注册成功事件管理器 </p>
  *
  * @author : gengwei.zheng
- * @date : 2024/3/15 21:21
+ * @date : 2024/8/21 21:56
  */
-public class OidcClientRegistrationSuccessEvent extends AbstractApplicationEvent<RegisteredClientTransmitter> {
-
-    public OidcClientRegistrationSuccessEvent(RegisteredClientTransmitter data) {
-        super(data);
-    }
+public interface OAuth2ClientRegistrationSuccessEventManager extends ApplicationStrategyEventManager<RegisteredClientTransmitter> {
 }

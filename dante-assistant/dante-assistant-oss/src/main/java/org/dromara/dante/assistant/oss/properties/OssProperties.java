@@ -67,6 +67,11 @@ public class OssProperties {
     private Duration preSignedExpires = Duration.ofMinutes(5);
 
     /**
+     * MinIO 使用 HTTPS 限制使用域名访问，站点填域名。需要启用路径样式访问
+     */
+    private Boolean usePathStyleAccess = Boolean.FALSE;
+
+    /**
      * 自定义 OSS 对象池参数配置
      */
     private Pool pool = new Pool();
@@ -114,6 +119,14 @@ public class OssProperties {
 
     public void setPreSignedExpires(Duration preSignedExpires) {
         this.preSignedExpires = preSignedExpires;
+    }
+
+    public Boolean getUsePathStyleAccess() {
+        return usePathStyleAccess;
+    }
+
+    public void setUsePathStyleAccess(Boolean usePathStyleAccess) {
+        this.usePathStyleAccess = usePathStyleAccess;
     }
 
     public Pool getPool() {
@@ -190,6 +203,7 @@ public class OssProperties {
                 .add("secretKey", secretKey)
                 .add("region", region)
                 .add("preSignedExpires", preSignedExpires)
+                .add("usePathStyleAccess", usePathStyleAccess)
                 .add("pool", pool)
                 .add("proxy", proxy)
                 .toString();

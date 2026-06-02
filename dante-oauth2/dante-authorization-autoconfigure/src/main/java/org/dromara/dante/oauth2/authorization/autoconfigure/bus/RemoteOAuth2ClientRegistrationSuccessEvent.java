@@ -23,16 +23,30 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.oauth2.commons.strategy;
+package org.dromara.dante.oauth2.authorization.autoconfigure.bus;
 
-import org.dromara.dante.message.commons.definition.event.ApplicationStrategyEventManager;
-import org.dromara.dante.security.domain.RegisteredClientTransmitter;
+import org.springframework.cloud.bus.event.RemoteApplicationEvent;
 
 /**
- * <p>Description: 客户端注册成功事件管理器 </p>
+ * <p>Description: OAuth2 客户端注册远程同步信息事件 </p>
  *
  * @author : gengwei.zheng
- * @date : 2024/8/21 21:56
+ * @date : 2024/8/21 21:27
  */
-public interface ClientRegistrationSuccessEventManager extends ApplicationStrategyEventManager<RegisteredClientTransmitter> {
+public class RemoteOAuth2ClientRegistrationSuccessEvent extends RemoteApplicationEvent {
+
+    private String data;
+
+    public RemoteOAuth2ClientRegistrationSuccessEvent() {
+        super();
+    }
+
+    public RemoteOAuth2ClientRegistrationSuccessEvent(String data, String originService, String destinationService) {
+        super(data, originService, DEFAULT_DESTINATION_FACTORY.getDestination(destinationService));
+        this.data = data;
+    }
+
+    public String getData() {
+        return data;
+    }
 }

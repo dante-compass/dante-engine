@@ -23,30 +23,20 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.oauth2.authorization.autoconfigure.bus;
+package org.dromara.dante.oauth2.commons.event;
 
-import org.springframework.cloud.bus.event.RemoteApplicationEvent;
+import org.dromara.dante.message.commons.definition.event.AbstractApplicationEvent;
+import org.dromara.dante.security.domain.RegisteredClientTransmitter;
 
 /**
- * <p>Description: Oidc 客户端注册远程同步信息事件 </p>
+ * <p>Description: OAuth2 客户端注册成功本地事件 </p>
  *
  * @author : gengwei.zheng
- * @date : 2024/8/21 21:27
+ * @date : 2024/3/15 21:21
  */
-public class RemoteOidcClientRegistrationSuccessEvent extends RemoteApplicationEvent {
+public class OAuth2ClientRegistrationSuccessEvent extends AbstractApplicationEvent<RegisteredClientTransmitter> {
 
-    private String data;
-
-    public RemoteOidcClientRegistrationSuccessEvent() {
-        super();
-    }
-
-    public RemoteOidcClientRegistrationSuccessEvent(String data, String originService, String destinationService) {
-        super(data, originService, DEFAULT_DESTINATION_FACTORY.getDestination(destinationService));
-        this.data = data;
-    }
-
-    public String getData() {
-        return data;
+    public OAuth2ClientRegistrationSuccessEvent(RegisteredClientTransmitter data) {
+        super(data);
     }
 }
