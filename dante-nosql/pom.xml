@@ -6,7 +6,7 @@
     <parent>
         <groupId>org.dromara.dante</groupId>
         <artifactId>dante-engine</artifactId>
-        <version>4.0.6.4</version>
+        <version>4.0.6.5</version>
     </parent>
 
     <artifactId>dante-nosql</artifactId>
