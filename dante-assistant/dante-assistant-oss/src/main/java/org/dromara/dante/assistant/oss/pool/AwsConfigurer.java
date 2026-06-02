@@ -30,6 +30,8 @@ import org.dromara.dante.assistant.oss.constant.OssConstants;
 import org.dromara.dante.assistant.oss.properties.OssProperties;
 import software.amazon.awssdk.auth.credentials.AwsBasicCredentials;
 import software.amazon.awssdk.auth.credentials.StaticCredentialsProvider;
+import software.amazon.awssdk.core.checksums.RequestChecksumCalculation;
+import software.amazon.awssdk.core.checksums.ResponseChecksumValidation;
 import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.s3.S3AsyncClient;
 import software.amazon.awssdk.services.s3.S3Configuration;
@@ -74,9 +76,11 @@ public record AwsConfigurer(OssProperties ossProperties) {
                 .credentialsProvider(createCredentialsProvider())
                 .endpointOverride(URI.create(ossProperties.getEndpoint()))
                 .region(of())
+                .forcePathStyle(ossProperties.getUsePathStyleAccess())
+                .requestChecksumCalculation(RequestChecksumCalculation.WHEN_REQUIRED)
+                .responseChecksumValidation(ResponseChecksumValidation.WHEN_REQUIRED)
                 .targetThroughputInGbps(20.0)
                 .minimumPartSizeInBytes(OssConstants.MIN_PART_SIZE)
-                .checksumValidationEnabled(false)
                 .build();
     }
 
@@ -88,17 +92,13 @@ public record AwsConfigurer(OssProperties ossProperties) {
      * @return {@link S3Presigner}
      */
     public S3Presigner createPresigner() {
-        // 创建 S3 配置对象
-        S3Configuration config = S3Configuration.builder()
-                .chunkedEncodingEnabled(false)
-                .pathStyleAccessEnabled(false)
-                .build();
-
         return S3Presigner.builder()
                 .region(of())
                 .endpointOverride(URI.create(ossProperties.getEndpoint()))
                 .credentialsProvider(createCredentialsProvider())
-                .serviceConfiguration(config)
+                .serviceConfiguration(S3Configuration.builder()
+                        .pathStyleAccessEnabled(ossProperties.getUsePathStyleAccess())
+                        .build())
                 .build();
     }
 
