@@ -36,7 +36,6 @@ import cn.hutool.v7.core.date.DateFormatPool;
 public interface SystemConstants {
 
     String NONE = "none";
-
     /**
      * 默认租户ID
      */
@@ -46,30 +45,26 @@ public interface SystemConstants {
      */
     String TREE_ROOT_ID = SymbolConstants.ZERO;
     /**
+     * 系统扫描接口默认包名
+     */
+    String PACKAGE_NAME = "org.dromara";
+    /**
      * 默认的时间日期格式
      */
-    String DATE_FORMAT = DateFormatPool.NORM_DATE_PATTERN;
-    String DATE_TIME_FORMAT = DateFormatPool.NORM_DATETIME_PATTERN;
-    String DATA_TYPE_STRING = "STRING";
-    String DATA_TYPE_NUMBER = "NUMBER";
-
-    String VIRTUAL_ASYNC_PREFIX = "async-";
-
+    String PATTERN__DATE = DateFormatPool.NORM_DATE_PATTERN;
+    String PATTERN__DATE_TIME = DateFormatPool.NORM_DATETIME_PATTERN;
     /**
-     * 大部分测试的测试资源，放入本地的 resources 目录即可满足。
-     * 但还是有部分测试资源，还是需要外部环境，才能验证具体的可用性。
-     * <p>
-     * 定义测试用途的通用目录，外部资源的统一使用和管控。
+     * 数据字典数据类型
      */
-    String TESTING_WINDOWS = "D:/workspaces/Testing";
+    String DATA_TYPE__STRING = "STRING";
+    String DATA_TYPE__NUMBER = "NUMBER";
 
     /* ---------- 系统信息 ---------- */
 
     String DN_OU = "Herodotus Cloud";
     String WEBSITE = "https://www.herodotus.cn";
-    String COPYRIGHT_DETAILS = "AGPL-3.0 Licensed | Copyright © 2020-2030 码 匠 君";
+    String COPYRIGHT_DETAILS = "Apache-2.0 Licensed | Copyright © 2020-2030 码 匠 君";
     String SYSTEM_NAME = DN_OU;
-    String PACKAGE_NAME = "org.dromara";
     String OPEN_API_SECURITY_SCHEME_BEARER_NAME = "HERODOTUS_AUTH";
 
 
@@ -79,7 +74,6 @@ public interface SystemConstants {
     String BEARER_TOKEN = BEARER_TYPE + SymbolConstants.SPACE;
     String BASIC_TYPE = "Basic";
     String BASIC_TOKEN = BASIC_TYPE + SymbolConstants.SPACE;
-
     /**
      * OAuth2 Default Endpoint
      */
@@ -95,19 +89,13 @@ public interface SystemConstants {
     String OIDC_CLIENT_REGISTRATION_ENDPOINT = "/connect/register";
     String OIDC_LOGOUT_ENDPOINT = "/connect/logout";
     String OIDC_USER_INFO_ENDPOINT = "/userinfo";
-
+    /**
+     * OAuth2 Custom Endpoint
+     */
     String OAUTH2_AUTHORIZATION_CONSENT_URI = "/oauth2/consent";
     String OAUTH2_DEVICE_ACTIVATION_URI = "/oauth2/device_activation";
     String OAUTH2_DEVICE_VERIFICATION_SUCCESS_URI = "/device_activated";
     String OAUTH2_DEVICE_VERIFICATION_FAILURE_URI = "/device_activation_failure";
-
-    String MATCHER_STATIC = "/static/**";
-    String MATCHER_WEBJARS = "/webjars/**";
-
-    String KEY__USER_PRINCIPAL = "USER_PRINCIPAL";
-    String KEY__TIMESTAMP = "timestamp";
-    String KEY__RANDOM = "random";
-
     /**
      * Oauth2 模式类型
      */
@@ -115,10 +103,9 @@ public interface SystemConstants {
     String PASSWORD = "password";
     String SOCIAL_CREDENTIALS = "social_credentials";
     /**
-     * Security User 相关属性
+     * OAuth2 Token Custom Attribute
      */
     String CODE = "code";
-
     String ROLES = "roles";
     String AUTHORITIES = "authorities";
     String EMPLOYEE_ID = "employeeId";
@@ -148,6 +135,25 @@ public interface SystemConstants {
      */
     String TOKEN_FORMAT = "token_format";
 
+    /* ---------- Security 相关常量 ---------- */
+
+    /**
+     * 静态资源指定模式
+     */
+    String MATCHER__STATIC = "/static/**";
+    String MATCHER__WEBJARS = "/webjars/**";
+    /**
+     * 默认用户 Session 属性
+     */
+    String SESSION__USER_PRINCIPAL = "USER_PRINCIPAL";
+    /**
+     * 签名算法属性
+     */
+    String KEY__TIMESTAMP = "timestamp";
+    String KEY__RANDOM = "random";
+
+    /* ---------- OSS 相关常量 ---------- */
+
     /**
      * 默认的存储桶名称
      */
@@ -161,10 +167,22 @@ public interface SystemConstants {
      */
     String DEFAULT_JSON_SCHEMA_DIRECTORY = "jsonschema";
 
+    /* ---------- IOT 相关常量 ---------- */
 
     /**
      * 物联网自定义属性
      */
     String PARAMETER__PRODUCT_KEY = "product_key";
-    String WEBHOOK_EMQX_URI = "/emqx/webhook";
+    String EMQX_WEBHOOK_URI = "/open/emqx/webhook";
+
+    /* ---------- 测试相关常量 ---------- */
+
+    /**
+     * 大部分测试的测试资源，放入本地的 resources 目录即可满足。
+     * 但还是有部分测试资源，还是需要外部环境，才能验证具体的可用性。
+     * <p>
+     * 定义测试用途的通用目录，外部资源的统一使用和管控。
+     */
+    String TESTING__WINDOWS_DEFAULT_FOLDER = "D:/workspaces/Testing";
+
 }

@@ -88,8 +88,8 @@ public class WebMvcAutoConfiguration implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler(SystemConstants.MATCHER_STATIC).addResourceLocations("classpath:/static/");
-        registry.addResourceHandler(SystemConstants.MATCHER_WEBJARS)
+        registry.addResourceHandler(SystemConstants.MATCHER__STATIC).addResourceLocations("classpath:/static/");
+        registry.addResourceHandler(SystemConstants.MATCHER__WEBJARS)
                 .addResourceLocations("classpath:/META-INF/resources/webjars/")
                 .resourceChain(false)
                 .addResolver(new LiteWebJarsResourceResolver());

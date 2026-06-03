@@ -123,7 +123,7 @@ public class OAuth2AccessTokenResponseHandler implements AuthenticationSuccessHa
             HttpSession session = request.getSession(false);
             if (ObjectUtils.isNotEmpty(session)) {
                 log.debug("[Herodotus] |- Adding user principal to session [{}].", sessionId);
-                session.setAttribute(SystemConstants.KEY__USER_PRINCIPAL, userPrincipal);
+                session.setAttribute(SystemConstants.SESSION__USER_PRINCIPAL, userPrincipal);
             }
         }
 

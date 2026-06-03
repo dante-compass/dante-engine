@@ -52,13 +52,13 @@ public abstract class AbstractEntity implements BaseEntity {
     @Schema(name = "数据创建时间", title = "数据库审计通用字段", description = "由 JPA 自动填充无需手动设置。改字段不允许更新")
     @Column(name = "create_time", updatable = false)
     @CreatedDate
-    @JsonFormat(pattern = SystemConstants.DATE_TIME_FORMAT)
+    @JsonFormat(pattern = SystemConstants.PATTERN__DATE_TIME)
     private Date createTime = new Date();
 
     @Schema(name = "数据更新时间", title = "数据库审计通用字段", description = "由 JPA 自动填充无需手动设置")
     @Column(name = "update_time")
     @LastModifiedDate
-    @JsonFormat(pattern = SystemConstants.DATE_TIME_FORMAT)
+    @JsonFormat(pattern = SystemConstants.PATTERN__DATE_TIME)
     private Date updateTime = new Date();
 
     public Date getCreateTime() {

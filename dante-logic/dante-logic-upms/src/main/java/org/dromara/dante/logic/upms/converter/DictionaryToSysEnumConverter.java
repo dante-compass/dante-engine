@@ -66,10 +66,10 @@ public class DictionaryToSysEnumConverter implements ListConverter<Dictionary, S
     private String getValueType(Dictionary source) {
         if (StringUtils.isNotBlank(source.getValue())) {
             if (StringUtils.isNumeric(source.getValue())) {
-                return SystemConstants.DATA_TYPE_NUMBER;
+                return SystemConstants.DATA_TYPE__NUMBER;
             }
         }
 
-        return SystemConstants.DATA_TYPE_STRING;
+        return SystemConstants.DATA_TYPE__STRING;
     }
 }

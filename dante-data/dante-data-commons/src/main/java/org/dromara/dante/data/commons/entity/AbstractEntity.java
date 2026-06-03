@@ -47,11 +47,11 @@ import java.util.Date;
 public abstract class AbstractEntity implements BaseEntity {
 
     @Schema(name = "数据创建时间", title = "数据库审计通用字段", description = "该字段仅用于数据显示，具体的数据设置由各自 Spring Data Module 负责设置")
-    @JsonFormat(pattern = SystemConstants.DATE_TIME_FORMAT)
+    @JsonFormat(pattern = SystemConstants.PATTERN__DATE_TIME)
     private Date createTime = new Date();
 
     @Schema(name = "数据更新时间", title = "数据库审计通用字段", description = "该字段仅用于数据显示，具体的数据设置由各自 Spring Data Module 负责设置")
-    @JsonFormat(pattern = SystemConstants.DATE_TIME_FORMAT)
+    @JsonFormat(pattern = SystemConstants.PATTERN__DATE_TIME)
     private Date updateTime = new Date();
 
     public Date getCreateTime() {

@@ -43,7 +43,7 @@ public class OssTestUtils {
     private final static String ENDPOINT = "http://192.168.101.10:9000";
     private final static String ACCESS_KEY = "0CVolH2VcdMoqcYXbxMK";
     private final static String SECRET_KEY = "DyLrGDx3kte7yUJIc1OobEwZ2dkyrxT38nR9byUl";
-    public final static String BASE_PATH = SystemConstants.TESTING_WINDOWS + File.separator + "oss";
+    public final static String BASE_PATH = SystemConstants.TESTING__WINDOWS_DEFAULT_FOLDER + File.separator + "oss";
     public final static String BASE_BUCKET = "herodotus-cloud";
 
     public static AssistantOssConfiguration getConfiguration() {
