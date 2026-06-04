@@ -76,11 +76,6 @@ public class IntegrationMqttAutoConfiguration {
         log.info("[Herodotus] |- Auto [Integration Mqtt] Configure.");
     }
 
-    @Bean(name = Channels.MQTT__DEFAULT_INBOUND_CHANNEL)
-    public MessageChannel mqttDefaultInboundChannel() {
-        return MessageChannels.publishSubscribe().getObject();
-    }
-
     @Bean(name = Channels.MQTT__DEFAULT_OUTBOUND_CHANNEL)
     public MessageChannel mqttDefaultOutboundChannel() {
         return MessageChannels.direct().getObject();
@@ -89,16 +84,18 @@ public class IntegrationMqttAutoConfiguration {
     @Bean
     public ClientManager<IMqttAsyncClient, MqttConnectionOptions> clientManager(MqttProperties mqttProperties) {
         MqttConnectionOptions options = new MqttConnectionOptions();
-        options.setUserName(mqttProperties.getUsername());
-        options.setPassword(ByteUtil.toBytes(mqttProperties.getPassword(), StandardCharsets.UTF_8));
         options.setCleanStart(mqttProperties.getCleanStart());
-        options.setKeepAliveInterval(NumberUtils.longToInt(mqttProperties.getKeepAliveInterval().getSeconds()));
-        options.setServerURIs(ListUtils.toStringArray(mqttProperties.getServerUrls()));
-        options.setAutomaticReconnect(mqttProperties.getAutomaticReconnect());
         options.setSessionExpiryInterval(mqttProperties.getSessionExpiryInterval().getSeconds());
+        options.setKeepAliveInterval(NumberUtils.longToInt(mqttProperties.getKeepAliveInterval().getSeconds()));
+        options.setAutomaticReconnect(mqttProperties.getAutomaticReconnect());
         options.setAutomaticReconnectDelay(
                 NumberUtils.longToInt(mqttProperties.getAutomaticReconnectMinDelay().getSeconds()),
                 NumberUtils.longToInt(mqttProperties.getAutomaticReconnectMaxDelay().getSeconds()));
+        options.setServerURIs(ListUtils.toStringArray(mqttProperties.getServerUrls()));
+        options.setUserName(mqttProperties.getUsername());
+        options.setPassword(ByteUtil.toBytes(mqttProperties.getPassword(), StandardCharsets.UTF_8));
+        options.setMaximumPacketSize(mqttProperties.getMaximumPacketSize());
+
         Mqttv5ClientManager clientManager = new Mqttv5ClientManager(options, mqttProperties.getClientId());
         clientManager.setPersistence(new MqttDefaultFilePersistence());
 
@@ -111,16 +108,15 @@ public class IntegrationMqttAutoConfiguration {
             ClientManager<IMqttAsyncClient, MqttConnectionOptions> clientManager,
             MqttProperties mqttProperties,
             ApplicationEventPublishingMessageHandler applicationEventPublishingMessageHandler,
-            @Qualifier(Channels.MQTT__DEFAULT_INBOUND_CHANNEL) MessageChannel mqttDefaultInboundChannel,
             @Qualifier(Channels.EVENT__DEFAULT_OUTBOUND_CHANNEL) MessageChannel eventDefaultOutboundChannel) {
 
-        Mqttv5PahoMessageDrivenChannelAdapter adapter = new Mqttv5PahoMessageDrivenChannelAdapter(clientManager, ListUtils.toStringArray(mqttProperties.getDefaultSubscribes()));
-        adapter.setManualAcks(false);
-        adapter.setOutputChannel(mqttDefaultInboundChannel);
-        adapter.setErrorChannelName(IntegrationContextUtils.ERROR_CHANNEL_BEAN_NAME);
+        Mqttv5PahoMessageDrivenChannelAdapter messageProducer = new Mqttv5PahoMessageDrivenChannelAdapter(clientManager, ListUtils.toStringArray(mqttProperties.getDefaultSubscribes()));
+        messageProducer.setManualAcks(false);
+        messageProducer.setOutputChannel(MessageChannels.publishSubscribe(Channels.MQTT__DEFAULT_INBOUND_CHANNEL).getObject());
+        messageProducer.setErrorChannelName(IntegrationContextUtils.ERROR_CHANNEL_BEAN_NAME);
         log.trace("[Herodotus] |- Bean [Mqtt v5 Paho Message Driven Channel Adapter] Configure.");
 
-        return IntegrationFlow.from(mqttDefaultInboundChannel)
+        return IntegrationFlow.from(messageProducer)
                 .transform(new DefaultMessageToEventTransformer())
                 .channel(eventDefaultOutboundChannel)
                 .handle(applicationEventPublishingMessageHandler)

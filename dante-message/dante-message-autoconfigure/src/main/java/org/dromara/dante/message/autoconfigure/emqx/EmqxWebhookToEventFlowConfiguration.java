@@ -90,9 +90,9 @@ class EmqxWebhookToEventFlowConfiguration {
                         .requestMapping(m -> m.methods(HttpMethod.POST))
                         .requestPayloadType(ResolvableType.forClass(Map.class, LinkedHashMap.class))
                         .statusCodeFunction(s -> HttpStatus.OK))
-                .channel(MessageChannels.direct(Channels.EMQX_DEFAULT_WEBHOOK_INBOUND_CHANNEL))
+                .channel(MessageChannels.direct(Channels.EMQX__DEFAULT_WEBHOOK_INBOUND_CHANNEL))
                 .transform(new WebhookMapToEventTransformer())
-                .channel(MessageChannels.direct(Channels.EMQX_DEFAULT_EVENT_OUTBOUND_CHANNEL))
+                .channel(MessageChannels.direct(Channels.EMQX__DEFAULT_EVENT_OUTBOUND_CHANNEL))
                 .handle(applicationEventPublishingMessageHandler)
                 .get();
     }

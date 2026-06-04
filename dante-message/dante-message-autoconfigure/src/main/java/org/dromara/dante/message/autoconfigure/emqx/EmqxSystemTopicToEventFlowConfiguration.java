@@ -37,15 +37,14 @@ import org.eclipse.paho.mqttv5.client.IMqttAsyncClient;
 import org.eclipse.paho.mqttv5.client.MqttConnectionOptions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.integration.context.IntegrationContextUtils;
 import org.springframework.integration.dsl.IntegrationFlow;
 import org.springframework.integration.dsl.MessageChannels;
 import org.springframework.integration.event.outbound.ApplicationEventPublishingMessageHandler;
 import org.springframework.integration.mqtt.core.ClientManager;
 import org.springframework.integration.mqtt.inbound.Mqttv5PahoMessageDrivenChannelAdapter;
-import org.springframework.messaging.MessageChannel;
 
 /**
  * <p>Description: Emqx 系统主题中 Client 相关监控内容转 ApplicationEvent 配置 </p>
@@ -57,6 +56,12 @@ import org.springframework.messaging.MessageChannel;
  * · $SYS/brokers/${node}/clients/disconnected - 上下线事件。当任意客户端下线时，EMQX 就会发布该主题的消息 {@link SystemClientDisconnectedEvent}
  * · $SYS/brokers/${node}/clients/subscribed - 订阅事件。当任意客户端订阅主题时，EMQX 就会发布该主题的消息 {@link SystemClientSubscribedEvent}
  * · $SYS/brokers/${node}/clients/unsubscribed - 取消订阅事件。当任意客户端取消订阅主题时，EMQX 就会发布该主题的消息 {@link SystemClientUnsubscribedEvent}
+ * <p>
+ * Emqx 6 主要对应 Emqx 客户端相关事件的系统主题变更为
+ * · $SYS/brokers/${node}/clients/${clientid}/connected
+ * · $SYS/brokers/${node}/clients/${clientid}/disconnected
+ * · $SYS/brokers/${node}/clients/${clientid}/subscribed
+ * · $SYS/brokers/${node}/clients/${clientid}/unsubscribed
  *
  * @author : gengwei.zheng
  * @date : 2023/12/5 16:02
@@ -67,31 +72,29 @@ class EmqxSystemTopicToEventFlowConfiguration {
 
     private static final Logger log = LoggerFactory.getLogger(EmqxSystemTopicToEventFlowConfiguration.class);
 
-    private static final String[] EMQX_MONITOR_TOPICS = new String[]{"$SYS/brokers/+/clients/#"};
+    private static final String[] EMQX_MONITOR_TOPICS = new String[]{
+            "$SYS/brokers/+/clients/+/connected",
+            "$SYS/brokers/+/clients/+/disconnected"};
 
     @PostConstruct
     public void postConstruct() {
         log.debug("[Herodotus] |- Module [Emqx $sys/client To Event Flow] Configure.");
     }
 
-    @Bean(Channels.EMQX_DEFAULT_SYSTEM_TOPIC_INBOUND_CHANNEL)
-    public MessageChannel emqxSystemTopicInboundChannel() {
-        return MessageChannels.publishSubscribe().getObject();
-    }
-
     @Bean
     public IntegrationFlow emqxSystemTopicToEventFlow(
             ClientManager<IMqttAsyncClient, MqttConnectionOptions> clientManager,
-            ApplicationEventPublishingMessageHandler applicationEventPublishingMessageHandler,
-            @Qualifier(Channels.EMQX_DEFAULT_SYSTEM_TOPIC_INBOUND_CHANNEL) MessageChannel emqxSystemTopicInboundChannel) {
-        Mqttv5PahoMessageDrivenChannelAdapter messageProducer = new Mqttv5PahoMessageDrivenChannelAdapter(clientManager, EMQX_MONITOR_TOPICS);
-        messageProducer.setPayloadType(String.class);
-        messageProducer.setManualAcks(false);
-        messageProducer.setOutputChannel(emqxSystemTopicInboundChannel);
+            ApplicationEventPublishingMessageHandler applicationEventPublishingMessageHandler) {
+        Mqttv5PahoMessageDrivenChannelAdapter adapter = new Mqttv5PahoMessageDrivenChannelAdapter(clientManager, EMQX_MONITOR_TOPICS);
+        adapter.setPayloadType(String.class);
+        adapter.setManualAcks(false);
+        adapter.setQos(0);
+        adapter.setOutputChannel(MessageChannels.publishSubscribe(Channels.EMQX__DEFAULT_SYSTEM_TOPIC_INBOUND_CHANNEL).getObject());
+        adapter.setErrorChannelName(IntegrationContextUtils.ERROR_CHANNEL_BEAN_NAME);
 
-        return IntegrationFlow.from(emqxSystemTopicInboundChannel)
+        return IntegrationFlow.from(adapter)
                 .transform(new SystemClientByteArrayToEventTransformer())
-                .channel(MessageChannels.direct(Channels.EMQX_DEFAULT_EVENT_OUTBOUND_CHANNEL))
+                .channel(MessageChannels.direct(Channels.EMQX__DEFAULT_EVENT_OUTBOUND_CHANNEL))
                 .handle(applicationEventPublishingMessageHandler)
                 .get();
     }

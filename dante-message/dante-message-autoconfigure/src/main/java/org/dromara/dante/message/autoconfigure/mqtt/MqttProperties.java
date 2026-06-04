@@ -129,11 +129,54 @@ public class MqttProperties {
      * 默认的 Qos 级别，默认值为：1
      */
     private Integer defaultQos = 1;
-
+    /**
+     * 最大允许数据包大小。单位字节，默认值 1MB
+     */
+    private Long maximumPacketSize = 1048576L;
     /**
      * 默认订阅的主题
      */
     private List<String> defaultSubscribes = List.of("herodotus.mqtt");
+
+    public List<String> getServerUrls() {
+        return serverUrls;
+    }
+
+    public void setServerUrls(List<String> serverUrls) {
+        this.serverUrls = serverUrls;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getClientId() {
+        return clientId;
+    }
+
+    public void setClientId(String clientId) {
+        this.clientId = clientId;
+    }
+
+    public Duration getKeepAliveInterval() {
+        return keepAliveInterval;
+    }
+
+    public void setKeepAliveInterval(Duration keepAliveInterval) {
+        this.keepAliveInterval = keepAliveInterval;
+    }
 
     public Boolean getAutomaticReconnect() {
         return automaticReconnect;
@@ -143,20 +186,20 @@ public class MqttProperties {
         this.automaticReconnect = automaticReconnect;
     }
 
-    public Duration getAutomaticReconnectMaxDelay() {
-        return automaticReconnectMaxDelay;
-    }
-
-    public void setAutomaticReconnectMaxDelay(Duration automaticReconnectMaxDelay) {
-        this.automaticReconnectMaxDelay = automaticReconnectMaxDelay;
-    }
-
     public Duration getAutomaticReconnectMinDelay() {
         return automaticReconnectMinDelay;
     }
 
     public void setAutomaticReconnectMinDelay(Duration automaticReconnectMinDelay) {
         this.automaticReconnectMinDelay = automaticReconnectMinDelay;
+    }
+
+    public Duration getAutomaticReconnectMaxDelay() {
+        return automaticReconnectMaxDelay;
+    }
+
+    public void setAutomaticReconnectMaxDelay(Duration automaticReconnectMaxDelay) {
+        this.automaticReconnectMaxDelay = automaticReconnectMaxDelay;
     }
 
     public Boolean getCleanStart() {
@@ -175,52 +218,12 @@ public class MqttProperties {
         this.sessionExpiryInterval = sessionExpiryInterval;
     }
 
-    public String getClientId() {
-        return clientId;
-    }
-
-    public void setClientId(String clientId) {
-        this.clientId = clientId;
-    }
-
-    public Integer getDefaultQos() {
-        return defaultQos;
-    }
-
-    public void setDefaultQos(Integer defaultQos) {
-        this.defaultQos = defaultQos;
-    }
-
     public String getTopicHeader() {
         return topicHeader;
     }
 
     public void setTopicHeader(String topicHeader) {
         this.topicHeader = topicHeader;
-    }
-
-    public Duration getKeepAliveInterval() {
-        return keepAliveInterval;
-    }
-
-    public void setKeepAliveInterval(Duration keepAliveInterval) {
-        this.keepAliveInterval = keepAliveInterval;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public List<String> getServerUrls() {
-        return serverUrls;
-    }
-
-    public void setServerUrls(List<String> serverUrls) {
-        this.serverUrls = serverUrls;
     }
 
     public String getTopicExpression() {
@@ -231,12 +234,20 @@ public class MqttProperties {
         this.topicExpression = topicExpression;
     }
 
-    public String getUsername() {
-        return username;
+    public Integer getDefaultQos() {
+        return defaultQos;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setDefaultQos(Integer defaultQos) {
+        this.defaultQos = defaultQos;
+    }
+
+    public Long getMaximumPacketSize() {
+        return maximumPacketSize;
+    }
+
+    public void setMaximumPacketSize(Long maximumPacketSize) {
+        this.maximumPacketSize = maximumPacketSize;
     }
 
     public List<String> getDefaultSubscribes() {
@@ -262,6 +273,7 @@ public class MqttProperties {
                 .add("topicHeader", topicHeader)
                 .add("topicExpression", topicExpression)
                 .add("defaultQos", defaultQos)
+                .add("maximumPacketSize", maximumPacketSize)
                 .toString();
     }
 }
