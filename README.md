@@ -12,17 +12,21 @@
     <a href="https://nacos.io/docs/latest/overview/" target="_blank"><img src="https://img.shields.io/badge/Nacos-3.2.2-brightgreen.svg?logo=alibabadotcom" alt="Nacos 3.2.2"></a>
 </p>
 <p align="center">
-    <a href="https://deepwiki.com/dante-compass/dante-engine" target="_blank"><img src="https://deepwiki.com/badge.svg" alt="Ask DeepWiki"></a>
-    <a href="https://github.com/dante-compass/dante-engine" target="_blank"><img src="https://img.shields.io/badge/Version-4.0.7.1-red.svg?logo=spring" alt="Version 4.0.7.1"></a>
+    <a href="https://my.oschina.net/pointerv" target="_blank"><img src="https://img.shields.io/badge/Author-%E7%A0%81%E5%8C%A0%E5%90%9B-orange" alt="码匠君"></a>
     <a href="https://bell-sw.com/pages/downloads/#downloads" target="_blank"><img src="https://img.shields.io/badge/JDK-25%2B-green.svg?logo=openjdk" alt="Java 25"></a>
-    <a href="./LICENSE"><img src="https://img.shields.io/badge/License-Apache--2.0-blue.svg?logo=apache" alt="License Apache 2.0"></a>
-    <a href="https://blog.csdn.net/Pointer_v" target="_blank"><img src="https://img.shields.io/badge/Author-%E7%A0%81%E5%8C%A0%E5%90%9B-orange" alt="码匠君"></a>
+    <a href="./LICENSE"><img src="https://shields.io/badge/License-Apache--2.0-blue.svg?logo=apache" alt="License Apache 2.0"></a>
+    <a href="https://github.com/dante-compass/dante-engine" target="_blank"><img src="https://img.shields.io/badge/Version-4.0.7.1-red.svg?logo=spring" alt="Version 4.0.7.1"></a>
+    <a href="https://github.com/dromara/dante-cloud" target="_blank"><img src="https://img.shields.io/badge/Dante%20Cloud-4.0.7.1-red.svg?logo=spring" alt="Dante Cloud 4.0.7.1"></a>
+    <a href="https://github.com/dante-compass/thingsbrain" target="_blank"><img src="https://img.shields.io/badge/ThingsBrain-4.0.7.1-red.svg?logo=spring" alt="ThingsBrain 4.0.7.1"></a>
+    <a href="https://github.com/dante-compass/dante-cloud-ui" target="_blank"><img src="https://img.shields.io/badge/Dante%20Cloud%20UI-4.0.7.1-blue.svg?logo=quasar" alt="Dante Cloud UI 4.0.7.1"></a>
+    <a href="https://github.com/dante-compass/herodotus-cloud-ui-vuetify" target="_blank"><img src="https://img.shields.io/badge/Dante%20Cloud%20UI(New)-4.0.7.1-blue.svg?logo=vuetify" alt="Dante Cloud UI(New) 4.0.7.1"></a>
     <a href="https://github.com/dante-compass/dante-engine"><img src="https://img.shields.io/github/stars/dante-compass/dante-engine.svg?label=Github%20Stars" alt="Github star"></a>
     <a href="https://github.com/dante-compass/dante-engine"><img src="https://img.shields.io/github/forks/dante-compass/dante-engine.svg?label=Github%20Forks" alt="Github fork"></a>
     <a href="https://gitee.com/dante-compass/dante-engine"><img src="https://gitee.com/dante-compass/dante-engine/badge/star.svg?theme=dark" alt="Gitee star"></a>
     <a href="https://gitee.com/dante-compass/dante-engine"><img src="https://gitee.com/dante-compass/dante-engine/badge/fork.svg?theme=dark" alt="Gitee fork"></a>
     <a href='https://atomgit.com/dante-compass/dante-engine'><img src='https://atomgit.com/dante-compass/dante-engine/star/badge.svg' alt='Atomgit star'></a>
     <a href="https://www.herodotus.cn"><img src="https://visitor-badge.laobi.icu/badge?page_id=dante-cloud&title=Total%20Visits" alt="Total Visits"></a>
+    <a href="https://deepwiki.com/dante-compass/dante-engine" target="_blank"><img src="https://deepwiki.com/badge.svg" alt="Ask DeepWiki"></a>
 </p>
 <p align="center">
     <a href="https://github.com/dante-compass/dante-engine">Github 仓库</a> &nbsp; | &nbsp;
