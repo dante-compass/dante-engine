@@ -18,8 +18,8 @@
     <a href="https://github.com/dante-compass/dante-engine" target="_blank"><img src="https://img.shields.io/badge/Version-4.0.7.1-red.svg?logo=spring" alt="Version 4.0.7.1"></a>
     <a href="https://github.com/dromara/dante-cloud" target="_blank"><img src="https://img.shields.io/badge/Dante%20Cloud-4.0.7.1-red.svg?logo=spring" alt="Dante Cloud 4.0.7.1"></a>
     <a href="https://github.com/dante-compass/thingsbrain" target="_blank"><img src="https://img.shields.io/badge/ThingsBrain-4.0.7.1-red.svg?logo=spring" alt="ThingsBrain 4.0.7.1"></a>
-    <a href="https://github.com/dante-compass/dante-cloud-ui" target="_blank"><img src="https://img.shields.io/badge/Dante%20Cloud%20UI-4.0.7.1-blue.svg?logo=quasar" alt="Dante Cloud UI 4.0.7.1"></a>
-    <a href="https://github.com/dante-compass/herodotus-cloud-ui-vuetify" target="_blank"><img src="https://img.shields.io/badge/Dante%20Cloud%20UI(New)-4.0.7.1-blue.svg?logo=vuetify" alt="Dante Cloud UI(New) 4.0.7.1"></a>
+    <a href="https://github.com/dante-compass/dante-cloud-ui" target="_blank"><img src="https://img.shields.io/badge/Dante%20Cloud%20UI-4.0.7.1-blue.svg?logo=quasar&logoColor=%23050A14" alt="Dante Cloud UI 4.0.7.1"></a>
+    <a href="https://github.com/dante-compass/herodotus-cloud-ui-vuetify" target="_blank"><img src="https://img.shields.io/badge/Dante%20Cloud%20UI(New)-4.0.7.1-blue.svg?logo=vuetify&logoColor=%231867C0" alt="Dante Cloud UI(New) 4.0.7.1"></a>
     <a href="https://github.com/dante-compass/dante-engine"><img src="https://img.shields.io/github/stars/dante-compass/dante-engine.svg?label=Github%20Stars" alt="Github star"></a>
     <a href="https://github.com/dante-compass/dante-engine"><img src="https://img.shields.io/github/forks/dante-compass/dante-engine.svg?label=Github%20Forks" alt="Github fork"></a>
     <a href="https://gitee.com/dante-compass/dante-engine"><img src="https://gitee.com/dante-compass/dante-engine/badge/star.svg?theme=dark" alt="Gitee star"></a>
