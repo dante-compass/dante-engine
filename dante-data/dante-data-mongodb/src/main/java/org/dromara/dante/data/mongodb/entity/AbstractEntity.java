@@ -45,12 +45,12 @@ public abstract class AbstractEntity implements BaseEntity {
 
     @Schema(name = "数据创建时间")
     @CreatedDate
-    @JsonFormat(pattern = SystemConstants.DATE_TIME_FORMAT)
+    @JsonFormat(pattern = SystemConstants.PATTERN__DATE_TIME)
     private Date createTime = new Date();
 
     @Schema(name = "数据更新时间")
     @LastModifiedDate
-    @JsonFormat(pattern = SystemConstants.DATE_TIME_FORMAT)
+    @JsonFormat(pattern = SystemConstants.PATTERN__DATE_TIME)
     private Date updateTime = new Date();
 
     public Date getCreateTime() {

@@ -37,6 +37,8 @@ import org.dromara.dante.message.emqx.event.SystemClientDisconnectedEvent;
 import org.dromara.dante.message.emqx.event.SystemClientSubscribedEvent;
 import org.dromara.dante.message.emqx.event.SystemClientUnsubscribedEvent;
 import org.dromara.dante.message.emqx.utils.EmqxMessageUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationEvent;
 import org.springframework.integration.transformer.AbstractTransformer;
 import org.springframework.messaging.Message;
@@ -51,9 +53,14 @@ import java.nio.charset.StandardCharsets;
  */
 class SystemClientByteArrayToEventTransformer extends AbstractTransformer {
 
+    private static final Logger log = LoggerFactory.getLogger(SystemClientByteArrayToEventTransformer.class);
+
     @Override
     protected Object doTransform(Message<?> message) {
         String topic = parseTopic(message);
+
+        log.debug("[Herodotus] |- Emqx system topic message from [{}].", topic);
+
         byte[] payload = EmqxMessageUtils.getPayload(message);
 
         return convert(topic, StringUtils.toEncodedString(payload, StandardCharsets.UTF_8));

@@ -50,13 +50,13 @@ import java.time.LocalDateTime;
 public abstract class AbstractRegisteredClient extends AbstractSysEntity implements RegisteredClientDetails {
 
     @Schema(name = "客户端ID发布日期", title = "客户端发布日期")
-    @JsonFormat(pattern = SystemConstants.DATE_TIME_FORMAT, locale = "GMT+8", shape = JsonFormat.Shape.STRING)
+    @JsonFormat(pattern = SystemConstants.PATTERN__DATE_TIME, locale = "GMT+8", shape = JsonFormat.Shape.STRING)
     @Column(name = "client_id_issued_at", nullable = false, updatable = false)
     @CreationTimestamp
     private LocalDateTime clientIdIssuedAt;
 
     @Schema(name = "客户端秘钥过期时间", title = "客户端秘钥过期时间")
-    @JsonFormat(pattern = SystemConstants.DATE_TIME_FORMAT, locale = "GMT+8", shape = JsonFormat.Shape.STRING)
+    @JsonFormat(pattern = SystemConstants.PATTERN__DATE_TIME, locale = "GMT+8", shape = JsonFormat.Shape.STRING)
     @Column(name = "client_secret_expires_at")
     private LocalDateTime clientSecretExpiresAt;
 

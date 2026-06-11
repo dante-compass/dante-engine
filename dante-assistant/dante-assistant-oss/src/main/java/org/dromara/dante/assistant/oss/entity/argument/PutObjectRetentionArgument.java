@@ -49,7 +49,7 @@ public class PutObjectRetentionArgument extends AbstractObjectVersionIdArgument 
 
     @Schema(name = "对象保留到期日期")
     @NotNull(message = "对象保存到期日期不能为空")
-    @JsonFormat(pattern = SystemConstants.DATE_FORMAT)
+    @JsonFormat(pattern = SystemConstants.PATTERN__DATE)
     private LocalDate retainUntilDate;
 
     public ObjectRetentionMode getRetentionMode() {

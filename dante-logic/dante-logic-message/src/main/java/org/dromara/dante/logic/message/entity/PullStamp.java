@@ -68,7 +68,7 @@ public class PullStamp implements BaseEntity {
 
     @Schema(name = "上次拉取时间")
     @Column(name = "latest_pull_time", updatable = false)
-    @JsonFormat(pattern = SystemConstants.DATE_TIME_FORMAT)
+    @JsonFormat(pattern = SystemConstants.PATTERN__DATE_TIME)
     private Date latestPullTime = new Date();
 
     public String getStampId() {

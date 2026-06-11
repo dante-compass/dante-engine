@@ -28,6 +28,8 @@ package org.dromara.dante.message.autoconfigure.emqx;
 import org.dromara.dante.core.jackson.JacksonUtils;
 import org.dromara.dante.message.emqx.domain.*;
 import org.dromara.dante.message.emqx.event.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationEvent;
 import org.springframework.integration.transformer.AbstractPayloadTransformer;
 
@@ -41,10 +43,15 @@ import java.util.Map;
  */
 class WebhookMapToEventTransformer extends AbstractPayloadTransformer<Map<String, Object>, ApplicationEvent> {
 
+    private static final Logger log = LoggerFactory.getLogger(WebhookMapToEventTransformer.class);
+
     @Override
     protected ApplicationEvent transformPayload(Map<String, Object> payload) {
         Object event = payload.get("event");
         String type = String.valueOf(event);
+
+        log.debug("[Herodotus] |- Emqx webhook  message for [{}].", type);
+
         return process(type, payload);
     }
 

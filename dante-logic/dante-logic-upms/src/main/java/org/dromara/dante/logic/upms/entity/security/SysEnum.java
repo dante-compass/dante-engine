@@ -75,7 +75,7 @@ public class SysEnum extends AbstractSysEntity {
 
     @Schema(name = "Value 数据类型")
     @Column(name = "value_type", length = 20)
-    private String valueType = SystemConstants.DATA_TYPE_STRING;
+    private String valueType = SystemConstants.DATA_TYPE__STRING;
 
     public String getCategory() {
         return category;

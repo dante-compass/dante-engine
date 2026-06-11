@@ -49,8 +49,8 @@ import java.util.Map;
 @Schema(name = "统一响应返回实体", description = "所有Rest接口统一返回的实体定义", example = "new Result<T>().ok().message(\"XXX\")")
 public class Result<T> extends Response<T, Integer> {
 
-    @Schema(name = "响应时间戳", pattern = SystemConstants.DATE_TIME_FORMAT)
-    @JsonFormat(pattern = SystemConstants.DATE_TIME_FORMAT)
+    @Schema(name = "响应时间戳", pattern = SystemConstants.PATTERN__DATE_TIME)
+    @JsonFormat(pattern = SystemConstants.PATTERN__DATE_TIME)
     private final Date timestamp = new Date();
 
     @Schema(name = "请求路径")

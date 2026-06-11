@@ -53,7 +53,7 @@ public class ServletSecurityUtils {
 
         HttpSession session = request.getSession(false);
         if (ObjectUtils.isNotEmpty(session)) {
-            Object object = session.getAttribute(SystemConstants.KEY__USER_PRINCIPAL);
+            Object object = session.getAttribute(SystemConstants.SESSION__USER_PRINCIPAL);
             if (object instanceof UserPrincipal) {
                 return (UserPrincipal) object;
             }

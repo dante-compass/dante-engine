@@ -48,7 +48,7 @@ public class GsonUtils {
     static {
         GSON_BUILDER.enableComplexMapKeySerialization();
         GSON_BUILDER.serializeNulls();
-        GSON_BUILDER.setDateFormat(SystemConstants.DATE_TIME_FORMAT);
+        GSON_BUILDER.setDateFormat(SystemConstants.PATTERN__DATE_TIME);
         GSON_BUILDER.disableHtmlEscaping();
     }
 

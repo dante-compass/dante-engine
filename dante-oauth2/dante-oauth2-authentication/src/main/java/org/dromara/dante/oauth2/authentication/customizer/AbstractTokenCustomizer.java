@@ -79,7 +79,7 @@ public abstract class AbstractTokenCustomizer {
             putUserInfo(attributes, details);
         }
 
-        attributes.put("license", "Apache-2.0 Licensed | Copyright © 2020-2023 码 匠 君");
+        attributes.put(SystemConstants.COPYRIGHT, SystemConstants.COPYRIGHT_DETAILS);
     }
 
     private void putUserInfo(Map<String, Object> attributes, Object object) {
