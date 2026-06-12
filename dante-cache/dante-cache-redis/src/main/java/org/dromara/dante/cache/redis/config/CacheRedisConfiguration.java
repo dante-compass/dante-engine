@@ -41,7 +41,6 @@ import org.springframework.data.redis.cache.RedisCacheWriter;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
-import org.springframework.data.redis.listener.RedisMessageListenerContainer;
 import org.springframework.data.redis.serializer.JacksonJsonRedisSerializer;
 import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
@@ -114,14 +113,6 @@ public class CacheRedisConfiguration {
     }
 
     @Bean
-    public RedisMessageListenerContainer redisMessageListenerContainer(RedisConnectionFactory connectionFactory) {
-        RedisMessageListenerContainer container = new RedisMessageListenerContainer();
-        container.setConnectionFactory(connectionFactory);
-        log.trace("[Herodotus] |- Bean [Redis Message Listener Container] Configure.");
-        return container;
-    }
-
-    @Bean
     public RedisCacheManager redisCacheManager(RedisConnectionFactory redisConnectionFactory, CacheProperties cacheProperties) {
         RedisCacheWriter redisCacheWriter = RedisCacheWriter.nonLockingRedisCacheWriter(redisConnectionFactory);
 
@@ -147,9 +138,5 @@ public class CacheRedisConfiguration {
     })
     static class RedisUtilsConfiguration {
 
-        @PostConstruct
-        public void postConstruct() {
-            log.debug("[Herodotus] |- Module [Cache Redis Utils] Configure.");
-        }
     }
 }
