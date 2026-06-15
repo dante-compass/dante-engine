@@ -25,7 +25,9 @@
 
 package org.dromara.dante.message.emqx.utils;
 
+import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.Strings;
+import org.dromara.dante.core.constant.SymbolConstants;
 import org.dromara.dante.message.emqx.domain.SystemTopic;
 import org.springframework.messaging.Message;
 
@@ -54,8 +56,26 @@ public class EmqxMessageUtils {
      * @param message Spring Integration 消息对象 {@link Message}
      * @return byte[] 类型消息内容
      */
-    public static byte[] getPayload(Message<?> message) {
-        return (byte[]) message.getPayload();
+    public static byte[] getPayloadAsBytes(Message<?> message) {
+        if (ObjectUtils.isNotEmpty(message.getPayload()) && message.getPayload() instanceof byte[] content) {
+            return content;
+        } else {
+            return new byte[0];
+        }
+    }
+
+    /**
+     * 获取 Emqx 消息负载
+     *
+     * @param message Spring Integration 消息对象 {@link Message}
+     * @return String 类型消息内容
+     */
+    public static String getPayloadAsString(Message<?> message) {
+        if (ObjectUtils.isNotEmpty(message.getPayload()) && message.getPayload() instanceof String content) {
+            return content;
+        } else {
+            return SymbolConstants.BLANK;
+        }
     }
 
     /**

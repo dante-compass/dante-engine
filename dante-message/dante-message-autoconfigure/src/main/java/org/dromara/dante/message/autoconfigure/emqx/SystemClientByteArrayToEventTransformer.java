@@ -43,8 +43,6 @@ import org.springframework.context.ApplicationEvent;
 import org.springframework.integration.transformer.AbstractTransformer;
 import org.springframework.messaging.Message;
 
-import java.nio.charset.StandardCharsets;
-
 /**
  * <p>Description: Emqx 系统主题消息转换成 Event 转换器 </p>
  *
@@ -61,9 +59,9 @@ class SystemClientByteArrayToEventTransformer extends AbstractTransformer {
 
         log.debug("[Herodotus] |- Emqx system topic message from [{}].", topic);
 
-        byte[] payload = EmqxMessageUtils.getPayload(message);
+        String payload = EmqxMessageUtils.getPayloadAsString(message);
 
-        return convert(topic, StringUtils.toEncodedString(payload, StandardCharsets.UTF_8));
+        return convert(topic, payload);
     }
 
     /**
