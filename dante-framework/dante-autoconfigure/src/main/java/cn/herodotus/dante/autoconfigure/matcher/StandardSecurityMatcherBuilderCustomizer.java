@@ -23,45 +23,29 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.autoconfigure.enums;
+package cn.herodotus.dante.autoconfigure.matcher;
 
-import jakarta.annotation.PostConstruct;
-import cn.herodotus.dante.core.builder.EnumDictionaryBuilder;
-import cn.herodotus.dante.core.function.EnumDictionaryBuilderCustomizer;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.boot.autoconfigure.AutoConfiguration;
-import org.springframework.context.annotation.Bean;
+import cn.herodotus.dante.core.builder.SecurityMatcher;
+import cn.herodotus.dante.core.function.SecurityMatcherBuilderCustomizer;
 
 import java.util.List;
 
 /**
- * <p>Description: 枚举字典自动配置 </p>
+ * <p>Description: 默认 SecurityMatcher 配置 </p>
  *
  * @author : gengwei.zheng
- * @date : 2024/8/23 15:52
+ * @date : 2025/12/13 18:53
  */
-@AutoConfiguration
-public class EnumDictionaryAutoConfiguration {
+public class StandardSecurityMatcherBuilderCustomizer implements SecurityMatcherBuilderCustomizer {
 
-    private static final Logger log = LoggerFactory.getLogger(EnumDictionaryAutoConfiguration.class);
-
-    @PostConstruct
-    public void postConstruct() {
-        log.info("[Herodotus] |- Auto [Enum Dictionary] Configure.");
-    }
-
-    @Bean
-    public EnumDictionaryBuilder enumDictionaryBuilder(List<EnumDictionaryBuilderCustomizer> customizers) {
-        EnumDictionaryBuilder builder = new EnumDictionaryBuilder();
-        customize(builder, customizers);
-        log.trace("[Herodotus] |- Bean [Enum Dictionary Builder] Configure.");
-        return builder;
-    }
-
-    private void customize(EnumDictionaryBuilder builder, List<EnumDictionaryBuilderCustomizer> customizers) {
-        for (EnumDictionaryBuilderCustomizer customizer : customizers) {
-            customizer.customize(builder);
-        }
+    @Override
+    public void customize(SecurityMatcher.Builder builder) {
+        // 每个服务都有 Swagger，所以统一配置 Swagger 静态资源
+        builder.staticResources(List.of(
+                "/swagger-ui.html",
+                "/swagger-ui/**",
+                "/swagger-resources/**",
+                "/v3/api-docs",
+                "/v3/api-docs/**"));
     }
 }

@@ -23,11 +23,11 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.autoconfigure.file;
+package cn.herodotus.dante.autoconfigure.file;
 
-import com.google.common.base.MoreObjects;
 import cn.herodotus.dante.core.constant.BaseConstants;
 import cn.herodotus.dante.core.constant.SystemConstants;
+import com.google.common.base.MoreObjects;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**

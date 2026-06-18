@@ -12,7 +12,7 @@
     <artifactId>dante-persistence-commons</artifactId>
     <name>${project.artifactId}</name>
 
-    <description>Dante Cloud 云原生微服务基座组件库 Drawloom 核心数据持久化通用代码模块</description>
+    <description>Dante Cloud 云原生微服务基座组件库核心数据持久化通用代码模块</description>
 
     <dependencies>
         <dependency>

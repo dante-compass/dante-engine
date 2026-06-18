@@ -15,7 +15,7 @@
 
     <packaging>pom</packaging>
 
-    <description>Dante Cloud 云原生微服务基座组件库 Drawloom 核心数据持久化模块分组</description>
+    <description>Dante Cloud 云原生微服务基座组件库核心数据持久化模块分组</description>
 
     <modules>
         <module>dante-persistence-commons</module>

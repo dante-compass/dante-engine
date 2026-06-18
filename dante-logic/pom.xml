@@ -39,7 +39,7 @@
 
     <packaging>pom</packaging>
 
-    <description>Dante Cloud 云原生微服务基座组件库 Drawloom 系统内置功能业务逻辑模块分组</description>
+    <description>Dante Cloud 云原生微服务基座组件库系统内置功能业务逻辑模块分组</description>
 
     <modules>
         <module>dante-logic-identity</module>

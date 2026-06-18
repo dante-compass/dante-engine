@@ -37,7 +37,7 @@
     <artifactId>data-rdbms-spring-boot-starter</artifactId>
     <name>${project.artifactId}</name>
 
-    <description>Dante Cloud 云原生微服务基座组件库 Drawloom 关系型数据库数据访问层自动配置 Starter</description>
+    <description>Dante Cloud 云原生微服务基座组件库关系型数据库数据访问层自动配置 Starter</description>
 
     <dependencies>
         <dependency>

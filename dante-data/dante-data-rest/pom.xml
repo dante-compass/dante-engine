@@ -37,7 +37,7 @@
     <artifactId>dante-data-rest</artifactId>
     <name>${project.artifactId}</name>
 
-    <description>Dante Cloud 云原生微服务基座组件库 Drawloom  REST 通用代码模块</description>
+    <description>Dante Cloud 云原生微服务基座组件库 REST 通用代码模块</description>
 
     <dependencies>
         <dependency>

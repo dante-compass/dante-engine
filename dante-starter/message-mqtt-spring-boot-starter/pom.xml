@@ -12,7 +12,7 @@
     <artifactId>message-mqtt-spring-boot-starter</artifactId>
     <name>${project.artifactId}</name>
 
-    <description>Dante Cloud 云原生微服务基座组件库 Drawloom 基于 Mqtt 消息自动配置Starter</description>
+    <description>Dante Cloud 云原生微服务基座组件库基于 Mqtt 消息自动配置Starter</description>
 
     <dependencies>
         <dependency>

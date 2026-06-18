@@ -23,11 +23,11 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.autoconfigure.matcher;
+package cn.herodotus.dante.autoconfigure.matcher;
 
-import jakarta.annotation.PostConstruct;
 import cn.herodotus.dante.core.builder.SecurityMatcher;
 import cn.herodotus.dante.core.function.SecurityMatcherBuilderCustomizer;
+import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;

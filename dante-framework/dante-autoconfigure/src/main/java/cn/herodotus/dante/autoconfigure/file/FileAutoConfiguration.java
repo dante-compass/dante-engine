@@ -23,12 +23,12 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.autoconfigure.file;
+package cn.herodotus.dante.autoconfigure.file;
 
-import jakarta.annotation.PostConstruct;
 import cn.herodotus.dante.core.support.file.FileTemplate;
 import cn.herodotus.dante.core.support.file.JsonSchemaFileManager;
 import cn.herodotus.dante.core.support.file.OssTransformer;
+import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;

@@ -23,31 +23,45 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.autoconfigure;
+package cn.herodotus.dante.autoconfigure.enums;
 
-import cn.hutool.v7.extra.spring.SpringUtil;
+import cn.herodotus.dante.core.builder.EnumDictionaryBuilder;
+import cn.herodotus.dante.core.function.EnumDictionaryBuilderCustomizer;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
-import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.Bean;
+
+import java.util.List;
 
 /**
- * <p>Description: 核心基础模块统一 Starter </p>
+ * <p>Description: 枚举字典自动配置 </p>
  *
  * @author : gengwei.zheng
- * @date : 2024/1/23 22:10
+ * @date : 2024/8/23 15:52
  */
 @AutoConfiguration
-@Import({
-        SpringUtil.class,
-})
-public class ApplicationAutoConfiguration {
+public class EnumDictionaryAutoConfiguration {
 
-    private static final Logger log = LoggerFactory.getLogger(ApplicationAutoConfiguration.class);
+    private static final Logger log = LoggerFactory.getLogger(EnumDictionaryAutoConfiguration.class);
 
     @PostConstruct
     public void postConstruct() {
-        log.info("[Herodotus] |- Auto [Application] Configure.");
+        log.info("[Herodotus] |- Auto [Enum Dictionary] Configure.");
+    }
+
+    @Bean
+    public EnumDictionaryBuilder enumDictionaryBuilder(List<EnumDictionaryBuilderCustomizer> customizers) {
+        EnumDictionaryBuilder builder = new EnumDictionaryBuilder();
+        customize(builder, customizers);
+        log.trace("[Herodotus] |- Bean [Enum Dictionary Builder] Configure.");
+        return builder;
+    }
+
+    private void customize(EnumDictionaryBuilder builder, List<EnumDictionaryBuilderCustomizer> customizers) {
+        for (EnumDictionaryBuilderCustomizer customizer : customizers) {
+            customizer.customize(builder);
+        }
     }
 }

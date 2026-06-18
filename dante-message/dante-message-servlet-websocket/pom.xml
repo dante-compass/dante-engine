@@ -37,7 +37,7 @@
     <artifactId>dante-message-servlet-websocket</artifactId>
     <name>${project.artifactId}</name>
 
-    <description>Dante Cloud 云原生微服务基座组件库 Drawloom 基于 Servlet 环境下的 Websocket 功能封装模块</description>
+    <description>Dante Cloud 云原生微服务基座组件库基于 Servlet 环境下的 Websocket 功能封装模块</description>
 
     <dependencies>
         <dependency>

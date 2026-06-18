@@ -23,11 +23,11 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.autoconfigure.jackson;
+package cn.herodotus.dante.autoconfigure.jackson;
 
-import jakarta.annotation.PostConstruct;
-import org.dromara.dante.autoconfigure.jackson.initializer.JacksonInitializer;
+import cn.herodotus.dante.autoconfigure.jackson.initializer.JacksonInitializer;
 import cn.herodotus.dante.spring.context.ServiceContextHolder;
+import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;

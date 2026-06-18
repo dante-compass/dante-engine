@@ -37,7 +37,7 @@
     <artifactId>dante-data-commons</artifactId>
     <name>${project.artifactId}</name>
 
-    <description>Dante Cloud 云原生微服务基座组件库 Drawloom 数据访问层的通用代码模块</description>
+    <description>Dante Cloud 云原生微服务基座组件库数据访问层的通用代码模块</description>
 
     <dependencies>
         <dependency>

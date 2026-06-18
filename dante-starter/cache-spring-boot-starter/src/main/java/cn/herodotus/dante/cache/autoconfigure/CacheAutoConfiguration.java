@@ -27,7 +27,7 @@ package cn.herodotus.dante.cache.autoconfigure;
 
 import com.alicp.jetcache.autoconfigure.JetCacheAutoConfiguration;
 import jakarta.annotation.PostConstruct;
-import org.dromara.dante.autoconfigure.jackson.JacksonAutoConfiguration;
+import cn.herodotus.dante.autoconfigure.jackson.JacksonAutoConfiguration;
 import cn.herodotus.dante.cache.autoconfigure.config.CacheRedissonConfiguration;
 import org.dromara.dante.cache.jetcache.config.CacheJetCacheConfiguration;
 import org.slf4j.Logger;

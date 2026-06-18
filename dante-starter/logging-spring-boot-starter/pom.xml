@@ -37,7 +37,7 @@
     <artifactId>logging-spring-boot-starter</artifactId>
     <name>${project.artifactId}</name>
 
-    <description>Dante Cloud 云原生微服务基座组件库 Drawloom 日志收集和聚合自动配置 Starter</description>
+    <description>Dante Cloud 云原生微服务基座组件库日志收集和聚合自动配置 Starter</description>
 
     <dependencies>
         <dependency>

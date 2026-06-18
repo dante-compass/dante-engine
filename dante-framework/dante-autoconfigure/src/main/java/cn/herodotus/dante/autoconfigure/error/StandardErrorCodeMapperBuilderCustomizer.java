@@ -23,7 +23,7 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.autoconfigure.error;
+package cn.herodotus.dante.autoconfigure.error;
 
 import cn.herodotus.dante.core.builder.ErrorCodeMapperBuilder;
 import cn.herodotus.dante.core.constant.BuilderCustomizerOrdered;

@@ -12,7 +12,7 @@
     <artifactId>feign-spring-boot-starter</artifactId>
     <name>${project.artifactId}</name>
 
-    <description>Dante Cloud 云原生微服务基座组件库 Drawloom  Feign 自动配置 Starter</description>
+    <description>Dante Cloud 云原生微服务基座组件库 Feign 自动配置 Starter</description>
 
     <dependencies>
         <dependency>

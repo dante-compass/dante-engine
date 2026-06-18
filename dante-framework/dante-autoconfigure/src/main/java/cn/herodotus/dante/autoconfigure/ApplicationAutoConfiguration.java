@@ -23,29 +23,31 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.autoconfigure.matcher;
+package cn.herodotus.dante.autoconfigure;
 
-import cn.herodotus.dante.core.builder.SecurityMatcher;
-import cn.herodotus.dante.core.function.SecurityMatcherBuilderCustomizer;
-
-import java.util.List;
+import cn.hutool.v7.extra.spring.SpringUtil;
+import jakarta.annotation.PostConstruct;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.boot.autoconfigure.AutoConfiguration;
+import org.springframework.context.annotation.Import;
 
 /**
- * <p>Description: 默认 SecurityMatcher 配置 </p>
+ * <p>Description: 核心基础模块统一 Starter </p>
  *
  * @author : gengwei.zheng
- * @date : 2025/12/13 18:53
+ * @date : 2024/1/23 22:10
  */
-public class StandardSecurityMatcherBuilderCustomizer implements SecurityMatcherBuilderCustomizer {
+@AutoConfiguration
+@Import({
+        SpringUtil.class,
+})
+public class ApplicationAutoConfiguration {
 
-    @Override
-    public void customize(SecurityMatcher.Builder builder) {
-        // 每个服务都有 Swagger，所以统一配置 Swagger 静态资源
-        builder.staticResources(List.of(
-                "/swagger-ui.html",
-                "/swagger-ui/**",
-                "/swagger-resources/**",
-                "/v3/api-docs",
-                "/v3/api-docs/**"));
+    private static final Logger log = LoggerFactory.getLogger(ApplicationAutoConfiguration.class);
+
+    @PostConstruct
+    public void postConstruct() {
+        log.info("[Herodotus] |- Auto [Application] Configure.");
     }
 }

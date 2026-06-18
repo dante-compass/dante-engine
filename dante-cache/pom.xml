@@ -38,7 +38,7 @@
     <artifactId>dante-cache</artifactId>
     <name>${project.artifactId}</name>
 
-    <description>Dante Cloud 云原生微服务基座组件库 Drawloom 缓存功能封装模块分组</description>
+    <description>Dante Cloud 云原生微服务基座组件库缓存功能封装模块分组</description>
 
     <packaging>pom</packaging>
 

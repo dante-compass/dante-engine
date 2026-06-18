@@ -23,34 +23,49 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.autoconfigure.file;
+package cn.herodotus.dante.autoconfigure.file;
 
+import cn.herodotus.dante.core.support.file.FileTemplate;
+import cn.herodotus.dante.core.support.file.JsonSchemaFileManager;
 import cn.herodotus.dante.core.support.file.OssTransformer;
 
-import java.nio.file.Path;
-
 /**
- * <p>Description: 默认的 FileTransformer </p>
+ * <p>Description: 默认的 JsonSchema文件管理器 </p>
  * <p>
- * 定义该类主要为了实现一种默认的 FileTransformer 的定义，方便 FileTransformer 的注入。
+ * 新加默认的 {@link DefaultJsonSchemaFileManager} 保证在没有添加 rpc-client-oss-spring-boot-starter 模块时仍旧可以使用 {@link JsonSchemaFileManager}。这种情况下对象存储的操作将会失效，仅能操作本地文件。
  *
  * @author : gengwei.zheng
- * @date : 2025/1/11 23:48
+ * @date : 2025/5/20 14:17
  */
-public class DefaultOssTransformer implements OssTransformer {
+public class DefaultJsonSchemaFileManager implements JsonSchemaFileManager {
 
-    @Override
-    public boolean upload(String bucketName, Path path) {
-        return true;
+    private final FileProperties fileProperties;
+    private final FileTemplate fileTemplate;
+    private final OssTransformer ossTransformer;
+
+    public DefaultJsonSchemaFileManager(FileProperties fileProperties, FileTemplate fileTemplate, OssTransformer ossTransformer) {
+        this.fileProperties = fileProperties;
+        this.fileTemplate = fileTemplate;
+        this.ossTransformer = ossTransformer;
     }
 
     @Override
-    public boolean download(String bucketName, Path path) {
-        return true;
+    public OssTransformer getOssTransformer() {
+        return ossTransformer;
     }
 
     @Override
-    public boolean remove(String bucketName, String fileName) {
-        return true;
+    public FileTemplate getFileTemplate() {
+        return fileTemplate;
+    }
+
+    @Override
+    public String getDefaultDirectory() {
+        return fileProperties.getJsonSchema().getDirectory();
+    }
+
+    @Override
+    public String getDefaultBucketName() {
+        return fileProperties.getJsonSchema().getBucketName();
     }
 }

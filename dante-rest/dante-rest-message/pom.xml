@@ -37,7 +37,7 @@
     <artifactId>dante-rest-message</artifactId>
     <name>${project.artifactId}</name>
 
-    <description>Dante Cloud 云原生微服务基座组件库 Drawloom 消息功能 Servlet 环境 REST 接口模块</description>
+    <description>Dante Cloud 云原生微服务基座组件库消息功能 Servlet 环境 REST 接口模块</description>
 
     <dependencies>
         <dependency>

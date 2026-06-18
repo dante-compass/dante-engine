@@ -37,7 +37,7 @@
     <artifactId>dante-data-jpa</artifactId>
     <name>${project.artifactId}</name>
 
-    <description>Dante Cloud 云原生微服务基座组件库 Drawloom 以 JPA 作为数据访问层的通用代码模块</description>
+    <description>Dante Cloud 云原生微服务基座组件库以 JPA 作为数据访问层的通用代码模块</description>
 
     <dependencies>
         <dependency>

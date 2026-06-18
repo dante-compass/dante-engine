@@ -23,29 +23,26 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.autoconfigure.jackson;
+package cn.herodotus.dante.autoconfigure.file;
 
-import org.apache.commons.collections4.CollectionUtils;
-import org.springframework.boot.jackson.autoconfigure.JsonMapperBuilderCustomizer;
-import org.springframework.core.Ordered;
-import tools.jackson.databind.JacksonModule;
-
-import java.util.List;
+import cn.herodotus.dante.core.support.file.FileTemplate;
 
 /**
- * <p>Description: 提取公共操作 </p>
+ * <p>Description: 系统默认文件操作模版 </p>
  *
  * @author : gengwei.zheng
- * @date : 2023/4/29 17:09
+ * @date : 2024/10/23 14:23
  */
-public interface JacksonJsonMapperBuilderCustomizer extends JsonMapperBuilderCustomizer, Ordered {
+public class DefaultFileTemplate implements FileTemplate {
 
-    default JacksonModule[] toArray(List<JacksonModule> modules) {
-        if (CollectionUtils.isNotEmpty(modules)) {
-            JacksonModule[] temps = new JacksonModule[modules.size()];
-            return modules.toArray(temps);
-        } else {
-            return new JacksonModule[]{};
-        }
+    private final FileProperties fileProperties;
+
+    public DefaultFileTemplate(FileProperties fileProperties) {
+        this.fileProperties = fileProperties;
+    }
+
+    @Override
+    public String getDefaultDestination() {
+        return this.fileProperties.getDestination();
     }
 }

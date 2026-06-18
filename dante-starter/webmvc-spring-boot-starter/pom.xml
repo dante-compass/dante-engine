@@ -37,7 +37,7 @@
     <artifactId>webmvc-spring-boot-starter</artifactId>
     <name>${project.artifactId}</name>
 
-    <description>Dante Cloud 云原生微服务基座组件库 Drawloom  WebMvc 类型应用自动配置 Starter</description>
+    <description>Dante Cloud 云原生微服务基座组件库 WebMvc 类型应用自动配置 Starter</description>
 
     <dependencies>
         <dependency>

@@ -23,41 +23,29 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.autoconfigure.jackson;
+package cn.herodotus.dante.autoconfigure.jackson;
 
-import cn.herodotus.dante.core.constant.BuilderCustomizerOrdered;
-import cn.herodotus.dante.spring.jackson.XssStringJsonDeserializer;
-import tools.jackson.core.json.JsonReadFeature;
-import tools.jackson.databind.SerializationFeature;
-import tools.jackson.databind.json.JsonMapper;
-import tools.jackson.databind.module.SimpleModule;
+import org.apache.commons.collections4.CollectionUtils;
+import org.springframework.boot.jackson.autoconfigure.JsonMapperBuilderCustomizer;
+import org.springframework.core.Ordered;
+import tools.jackson.databind.JacksonModule;
 
-import java.util.TimeZone;
+import java.util.List;
 
 /**
- * <p>Description: 默认 Jackson Custom 配置 </p>
+ * <p>Description: 提取公共操作 </p>
  *
  * @author : gengwei.zheng
- * @date : 2023/4/29 11:04
+ * @date : 2023/4/29 17:09
  */
-public class JacksonDefaultObjectMapperBuilderCustomizer implements JacksonJsonMapperBuilderCustomizer {
+public interface JacksonJsonMapperBuilderCustomizer extends JsonMapperBuilderCustomizer, Ordered {
 
-    @Override
-    public void customize(JsonMapper.Builder builder) {
-
-        builder.defaultTimeZone(TimeZone.getDefault());
-
-        builder.enable(SerializationFeature.ORDER_MAP_ENTRIES_BY_KEYS)
-                .enable(JsonReadFeature.ALLOW_SINGLE_QUOTES)
-                .enable(JsonReadFeature.ALLOW_UNESCAPED_CONTROL_CHARS);
-
-        SimpleModule simpleModule = new SimpleModule();
-        simpleModule.addDeserializer(String.class, new XssStringJsonDeserializer());
-        builder.addModule(simpleModule);
-    }
-
-    @Override
-    public int getOrder() {
-        return BuilderCustomizerOrdered.JACKSON__STANDARD;
+    default JacksonModule[] toArray(List<JacksonModule> modules) {
+        if (CollectionUtils.isNotEmpty(modules)) {
+            JacksonModule[] temps = new JacksonModule[modules.size()];
+            return modules.toArray(temps);
+        } else {
+            return new JacksonModule[]{};
+        }
     }
 }

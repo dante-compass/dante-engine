@@ -37,7 +37,7 @@
     <artifactId>web-spring-boot-starter</artifactId>
     <name>${project.artifactId}</name>
 
-    <description>Dante Cloud 云原生微服务基座组件库 Drawloom Web微服务通用Starter</description>
+    <description>Dante Cloud 云原生微服务基座组件库Web微服务通用Starter</description>
 
     <dependencies>
         <dependency>
