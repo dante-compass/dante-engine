@@ -23,7 +23,7 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.hibernate.dialect;
+package cn.herodotus.dante.hibernate.dialect;
 
 import org.hibernate.dialect.PostgreSQLDialect;
 import org.hibernate.query.common.FetchClauseType;
