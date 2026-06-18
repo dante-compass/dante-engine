@@ -31,7 +31,7 @@
 
     <parent>
         <artifactId>dante-cache</artifactId>
-        <groupId>cn.herodotus.drawloom</groupId>
+        <groupId>cn.herodotus.dante</groupId>
         <version>4.1.0.0</version>
     </parent>
 
@@ -42,17 +42,17 @@
 
     <dependencies>
         <dependency>
-            <groupId>cn.herodotus.drawloom</groupId>
+            <groupId>cn.herodotus.dante</groupId>
             <artifactId>dante-cache-commons</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>cn.herodotus.drawloom</groupId>
+            <groupId>cn.herodotus.dante</groupId>
             <artifactId>dante-cache-redis</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>cn.herodotus.drawloom</groupId>
+            <groupId>cn.herodotus.dante</groupId>
             <artifactId>dante-cache-caffeine</artifactId>
         </dependency>
 
