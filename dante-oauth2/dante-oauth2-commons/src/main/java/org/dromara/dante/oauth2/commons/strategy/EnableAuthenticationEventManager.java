@@ -26,7 +26,7 @@
 package org.dromara.dante.oauth2.commons.strategy;
 
 import org.dromara.dante.message.commons.definition.event.ApplicationStrategyEventManager;
-import org.dromara.dante.security.domain.RegisteredClientTransmitter;
+import cn.herodotus.dante.security.domain.RegisteredClientTransmitter;
 
 /**
  * <p>Description: 开启认证事件管理器 </p>

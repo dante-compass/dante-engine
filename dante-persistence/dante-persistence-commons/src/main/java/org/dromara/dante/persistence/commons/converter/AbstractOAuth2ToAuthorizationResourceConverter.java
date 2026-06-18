@@ -25,8 +25,8 @@
 
 package org.dromara.dante.persistence.commons.converter;
 
-import org.dromara.dante.security.definition.RegisteredClientDetails;
-import org.dromara.dante.security.domain.OAuth2AuthorizationResource;
+import cn.herodotus.dante.security.definition.RegisteredClientDetails;
+import cn.herodotus.dante.security.domain.OAuth2AuthorizationResource;
 import org.springframework.core.convert.converter.Converter;
 
 /**

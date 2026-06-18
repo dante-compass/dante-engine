@@ -42,7 +42,7 @@ import org.dromara.dante.logic.identity.entity.OAuth2Scope;
 import org.dromara.dante.logic.identity.service.OAuth2ScopeService;
 import org.dromara.dante.rest.identity.dto.OAuth2PermissionDto;
 import org.dromara.dante.rest.identity.dto.OAuth2ScopeDto;
-import org.dromara.dante.web.annotation.AccessLimited;
+import cn.herodotus.dante.web.annotation.AccessLimited;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;

@@ -28,7 +28,7 @@ package org.dromara.dante.message.commons.definition.strategy;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.dromara.dante.message.commons.definition.event.ApplicationStrategyEventManager;
-import org.dromara.dante.security.domain.attribute.RestMapping;
+import cn.herodotus.dante.security.domain.attribute.RestMapping;
 import cn.herodotus.dante.spring.context.ServiceContextHolder;
 
 import java.lang.annotation.Annotation;

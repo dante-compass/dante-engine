@@ -26,7 +26,7 @@
 package org.dromara.dante.assistant.captcha.domain;
 
 import com.google.common.base.MoreObjects;
-import org.dromara.dante.security.domain.captcha.Captcha;
+import cn.herodotus.dante.security.domain.captcha.Captcha;
 
 import java.util.Objects;
 

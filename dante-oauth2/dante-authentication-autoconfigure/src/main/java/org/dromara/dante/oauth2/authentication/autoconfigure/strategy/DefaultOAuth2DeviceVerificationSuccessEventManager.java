@@ -28,7 +28,7 @@ package org.dromara.dante.oauth2.authentication.autoconfigure.strategy;
 import org.dromara.dante.oauth2.authorization.autoconfigure.bus.RemoteOAuth2DeviceVerificationSuccessEvent;
 import org.dromara.dante.oauth2.commons.event.OAuth2DeviceVerificationSuccessEvent;
 import org.dromara.dante.oauth2.commons.strategy.OAuth2DeviceVerificationSuccessEventManager;
-import org.dromara.dante.security.domain.DeviceVerificationTransmitter;
+import cn.herodotus.dante.security.domain.DeviceVerificationTransmitter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

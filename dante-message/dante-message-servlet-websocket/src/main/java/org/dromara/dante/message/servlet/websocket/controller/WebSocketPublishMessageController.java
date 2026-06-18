@@ -32,7 +32,7 @@ import org.dromara.dante.message.commons.domain.DialogueMessage;
 import org.dromara.dante.message.commons.event.DialogueMessageReceivingEvent;
 import org.dromara.dante.message.servlet.websocket.definition.WebSocketMessageSender;
 import org.dromara.dante.message.servlet.websocket.domain.StompWebSocketMessage;
-import org.dromara.dante.security.domain.UserPrincipal;
+import cn.herodotus.dante.security.domain.UserPrincipal;
 import cn.herodotus.dante.spring.context.AbstractApplicationContextAware;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;

@@ -46,7 +46,7 @@ import org.dromara.dante.rest.identity.dto.Session;
 import org.dromara.dante.rest.identity.dto.SessionCreate;
 import org.dromara.dante.rest.identity.dto.SessionExchange;
 import org.dromara.dante.rest.identity.service.InterfaceSecurityService;
-import org.dromara.dante.web.annotation.Crypto;
+import cn.herodotus.dante.web.annotation.Crypto;
 import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;

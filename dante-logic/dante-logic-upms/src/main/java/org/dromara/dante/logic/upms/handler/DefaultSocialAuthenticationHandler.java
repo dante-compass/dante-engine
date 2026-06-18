@@ -41,8 +41,8 @@ import org.dromara.dante.logic.upms.service.security.SysSocialUserService;
 import org.dromara.dante.logic.upms.service.security.SysUserService;
 import org.dromara.dante.oauth2.commons.exception.SocialCredentialsParameterBindingFailedException;
 import org.dromara.dante.oauth2.commons.exception.UsernameAlreadyExistsException;
-import org.dromara.dante.security.domain.AccessPrincipal;
-import org.dromara.dante.security.domain.HerodotusUser;
+import cn.herodotus.dante.security.domain.AccessPrincipal;
+import cn.herodotus.dante.security.domain.HerodotusUser;
 import org.springframework.core.convert.converter.Converter;
 
 /**

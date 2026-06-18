@@ -30,7 +30,7 @@ import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import cn.herodotus.dante.core.domain.BaseEntity;
 import cn.herodotus.dante.core.domain.Result;
-import org.dromara.dante.web.definition.Controller;
+import cn.herodotus.dante.web.definition.Controller;
 
 import java.util.Map;
 

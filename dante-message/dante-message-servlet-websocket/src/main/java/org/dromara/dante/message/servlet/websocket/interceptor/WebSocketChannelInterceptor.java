@@ -28,7 +28,7 @@ package org.dromara.dante.message.servlet.websocket.interceptor;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import cn.herodotus.dante.core.utils.AccessTokenUtils;
-import org.dromara.dante.security.domain.UserPrincipal;
+import cn.herodotus.dante.security.domain.UserPrincipal;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;

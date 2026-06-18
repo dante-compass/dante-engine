@@ -31,7 +31,7 @@ import org.dromara.dante.oauth2.authentication.consumer.OAuth2ClientRegistration
 import org.dromara.dante.oauth2.authentication.consumer.OAuth2TokenEndpointAuthenticationProviderConsumer;
 import org.dromara.dante.oauth2.authentication.provider.OAuth2ResourceOwnerPasswordAuthenticationConverter;
 import org.dromara.dante.oauth2.authentication.provider.OAuth2SocialCredentialsAuthenticationConverter;
-import org.dromara.dante.security.definition.ClientDetailsService;
+import cn.herodotus.dante.security.definition.ClientDetailsService;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.oauth2.server.authorization.OAuth2AuthorizationServerConfigurer;

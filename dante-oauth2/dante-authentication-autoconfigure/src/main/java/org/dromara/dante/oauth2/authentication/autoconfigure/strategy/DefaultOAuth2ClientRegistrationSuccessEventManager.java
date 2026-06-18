@@ -28,7 +28,7 @@ package org.dromara.dante.oauth2.authentication.autoconfigure.strategy;
 import org.dromara.dante.oauth2.authorization.autoconfigure.bus.RemoteOAuth2ClientRegistrationSuccessEvent;
 import org.dromara.dante.oauth2.commons.event.OAuth2ClientRegistrationSuccessEvent;
 import org.dromara.dante.oauth2.commons.strategy.OAuth2ClientRegistrationSuccessEventManager;
-import org.dromara.dante.security.domain.RegisteredClientTransmitter;
+import cn.herodotus.dante.security.domain.RegisteredClientTransmitter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

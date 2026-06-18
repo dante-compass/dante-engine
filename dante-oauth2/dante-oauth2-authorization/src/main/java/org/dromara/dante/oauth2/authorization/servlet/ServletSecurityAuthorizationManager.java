@@ -35,7 +35,7 @@ import org.dromara.dante.oauth2.authorization.attribute.RestSecurityAttributeSto
 import org.dromara.dante.oauth2.authorization.cache.HerodotusRequest;
 import org.dromara.dante.oauth2.authorization.definition.HerodotusSecurityAttribute;
 import cn.herodotus.dante.spring.context.ServiceContextHolder;
-import org.dromara.dante.web.servlet.utils.HeaderUtils;
+import cn.herodotus.dante.web.servlet.utils.HeaderUtils;
 import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

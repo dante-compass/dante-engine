@@ -26,7 +26,7 @@
 package org.dromara.dante.oauth2.commons.event;
 
 import org.dromara.dante.message.commons.definition.event.AbstractApplicationEvent;
-import org.dromara.dante.security.domain.RegisteredClientTransmitter;
+import cn.herodotus.dante.security.domain.RegisteredClientTransmitter;
 
 /**
  * <p>Description: OAuth2 客户端注册成功本地事件 </p>

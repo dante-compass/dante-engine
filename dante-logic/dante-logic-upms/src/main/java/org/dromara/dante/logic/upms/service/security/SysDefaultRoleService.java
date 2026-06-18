@@ -31,7 +31,7 @@ import org.dromara.dante.data.jpa.service.AbstractJpaService;
 import org.dromara.dante.logic.upms.entity.security.SysDefaultRole;
 import org.dromara.dante.logic.upms.entity.security.SysRole;
 import org.dromara.dante.logic.upms.repository.security.SysDefaultRoleRepository;
-import org.dromara.dante.security.enums.AccountCategory;
+import cn.herodotus.dante.security.enums.AccountCategory;
 import org.springframework.stereotype.Service;
 
 /**

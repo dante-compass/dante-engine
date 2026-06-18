@@ -26,7 +26,7 @@
 package org.dromara.dante.oauth2.commons.event;
 
 import org.dromara.dante.message.commons.definition.event.AbstractApplicationEvent;
-import org.dromara.dante.security.domain.DeviceVerificationTransmitter;
+import cn.herodotus.dante.security.domain.DeviceVerificationTransmitter;
 
 /**
  * <p>Description: 设备验证成功本地事件 </p>

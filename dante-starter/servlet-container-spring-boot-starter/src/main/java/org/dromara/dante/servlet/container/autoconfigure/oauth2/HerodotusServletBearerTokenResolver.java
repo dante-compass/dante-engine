@@ -21,9 +21,9 @@
 
 package org.dromara.dante.servlet.container.autoconfigure.oauth2;
 
-import org.dromara.dante.security.definition.BearerTokenResolver;
-import org.dromara.dante.security.domain.UserPrincipal;
-import org.dromara.dante.security.utils.SecurityUtils;
+import cn.herodotus.dante.security.definition.BearerTokenResolver;
+import cn.herodotus.dante.security.domain.UserPrincipal;
+import cn.herodotus.dante.security.utils.SecurityUtils;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.security.oauth2.server.resource.introspection.OpaqueTokenIntrospector;
 

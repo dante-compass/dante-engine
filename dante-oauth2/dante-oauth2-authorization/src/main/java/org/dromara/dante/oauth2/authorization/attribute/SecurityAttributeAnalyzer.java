@@ -32,7 +32,7 @@ import cn.herodotus.dante.core.constant.SymbolConstants;
 import org.dromara.dante.oauth2.authorization.cache.HerodotusRequest;
 import org.dromara.dante.oauth2.authorization.definition.HerodotusSecurityAttribute;
 import org.dromara.dante.oauth2.authorization.servlet.ServletOAuth2ResourceMatcherConfigurer;
-import org.dromara.dante.security.domain.attribute.AttributeTransmitter;
+import cn.herodotus.dante.security.domain.attribute.AttributeTransmitter;
 import cn.herodotus.dante.spring.enums.UrlCategory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

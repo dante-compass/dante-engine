@@ -35,7 +35,7 @@ import org.dromara.dante.assistant.access.definition.AccessHandler;
 import org.dromara.dante.assistant.access.definition.domain.AccessResponse;
 import org.dromara.dante.assistant.access.definition.domain.AccessUserDetails;
 import org.dromara.dante.assistant.access.exception.AccessIdentityVerificationFailedException;
-import org.dromara.dante.security.domain.AccessPrincipal;
+import cn.herodotus.dante.security.domain.AccessPrincipal;
 
 /**
  * <p>Description: JustAuth 接入处理器 </p>

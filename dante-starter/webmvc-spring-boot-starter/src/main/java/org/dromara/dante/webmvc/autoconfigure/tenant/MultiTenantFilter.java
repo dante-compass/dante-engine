@@ -33,7 +33,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import org.apache.commons.lang3.StringUtils;
 import cn.herodotus.dante.core.constant.SystemConstants;
 import cn.herodotus.dante.core.context.TenantContextHolder;
-import org.dromara.dante.web.servlet.utils.HeaderUtils;
+import cn.herodotus.dante.web.servlet.utils.HeaderUtils;
 import org.springframework.web.filter.GenericFilterBean;
 
 import java.io.IOException;

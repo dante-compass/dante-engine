@@ -26,7 +26,7 @@
 package org.dromara.dante.oauth2.commons.strategy;
 
 import org.dromara.dante.message.commons.definition.event.ApplicationStrategyEventManager;
-import org.dromara.dante.security.domain.DeviceVerificationTransmitter;
+import cn.herodotus.dante.security.domain.DeviceVerificationTransmitter;
 
 /**
  * <p>Description: 设备激活成功事件管理器定义 </p>

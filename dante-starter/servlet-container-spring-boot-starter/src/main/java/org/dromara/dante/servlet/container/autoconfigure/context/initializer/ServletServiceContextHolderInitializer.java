@@ -25,9 +25,9 @@
 
 package org.dromara.dante.servlet.container.autoconfigure.context.initializer;
 
-import org.dromara.dante.web.context.AbstractServiceContextHolderInitializer;
-import org.dromara.dante.web.properties.EndpointProperties;
-import org.dromara.dante.web.properties.PlatformProperties;
+import cn.herodotus.dante.web.context.AbstractServiceContextHolderInitializer;
+import cn.herodotus.dante.web.properties.EndpointProperties;
+import cn.herodotus.dante.web.properties.PlatformProperties;
 import org.springframework.boot.web.server.autoconfigure.ServerProperties;
 import org.springframework.stereotype.Component;
 

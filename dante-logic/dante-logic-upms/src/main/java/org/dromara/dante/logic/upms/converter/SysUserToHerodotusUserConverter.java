@@ -31,9 +31,9 @@ import org.dromara.dante.data.commons.enums.DataItemStatus;
 import org.dromara.dante.logic.upms.entity.security.SysPermission;
 import org.dromara.dante.logic.upms.entity.security.SysRole;
 import org.dromara.dante.logic.upms.entity.security.SysUser;
-import org.dromara.dante.security.domain.HerodotusGrantedAuthority;
-import org.dromara.dante.security.domain.HerodotusUser;
-import org.dromara.dante.security.utils.SecurityUtils;
+import cn.herodotus.dante.security.domain.HerodotusGrantedAuthority;
+import cn.herodotus.dante.security.domain.HerodotusUser;
+import cn.herodotus.dante.security.utils.SecurityUtils;
 import org.springframework.core.convert.converter.Converter;
 
 import java.time.LocalDateTime;

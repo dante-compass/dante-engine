@@ -29,7 +29,7 @@ import cn.hutool.v7.core.date.DateUtil;
 import org.dromara.dante.persistence.commons.converter.AbstractOAuth2EntityConverter;
 import org.dromara.dante.persistence.commons.jackson.OAuth2JacksonProcessor;
 import org.dromara.dante.persistence.sas.jpa.entity.HerodotusRegisteredClient;
-import org.dromara.dante.security.utils.SecurityUtils;
+import cn.herodotus.dante.security.utils.SecurityUtils;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
 import org.springframework.util.StringUtils;
 

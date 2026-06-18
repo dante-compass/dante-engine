@@ -34,7 +34,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import cn.herodotus.dante.core.domain.BaseEntity;
 import cn.herodotus.dante.core.domain.Result;
 import org.dromara.dante.data.commons.service.BaseWriteAndPageService;
-import org.dromara.dante.web.annotation.Idempotent;
+import cn.herodotus.dante.web.annotation.Idempotent;
 import org.springframework.data.domain.Slice;
 import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;

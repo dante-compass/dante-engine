@@ -25,7 +25,7 @@
 
 package org.dromara.dante.servlet.container.autoconfigure.oauth2;
 
-import org.dromara.dante.security.definition.AbstractAuditorAware;
+import cn.herodotus.dante.security.definition.AbstractAuditorAware;
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;

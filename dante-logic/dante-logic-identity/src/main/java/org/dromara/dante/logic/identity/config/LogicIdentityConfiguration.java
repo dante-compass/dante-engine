@@ -30,7 +30,7 @@ import cn.herodotus.dante.core.function.EnumDictionaryBuilderCustomizer;
 import org.dromara.dante.logic.identity.customizer.IdentityEnumDictionaryBuilderCustomizer;
 import org.dromara.dante.logic.identity.definition.HerodotusClientDetailsService;
 import org.dromara.dante.logic.identity.service.OAuth2ApplicationService;
-import org.dromara.dante.security.definition.ClientDetailsService;
+import cn.herodotus.dante.security.definition.ClientDetailsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;

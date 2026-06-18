@@ -39,7 +39,7 @@ import org.dromara.dante.data.jpa.service.BaseJpaWriteableService;
 import org.dromara.dante.data.rest.servlet.AbstractJpaEntityWriteableController;
 import org.dromara.dante.logic.upms.entity.security.SysRole;
 import org.dromara.dante.logic.upms.service.security.SysRoleService;
-import org.dromara.dante.web.annotation.AccessLimited;
+import cn.herodotus.dante.web.annotation.AccessLimited;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 

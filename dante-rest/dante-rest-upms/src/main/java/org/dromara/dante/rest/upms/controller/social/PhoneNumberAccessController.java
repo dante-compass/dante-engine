@@ -33,7 +33,7 @@ import org.apache.commons.lang3.ObjectUtils;
 import org.dromara.dante.assistant.access.definition.domain.AccessResponse;
 import org.dromara.dante.assistant.access.factory.AccessHandlerStrategyFactory;
 import cn.herodotus.dante.core.domain.Result;
-import org.dromara.dante.security.enums.AccountCategory;
+import cn.herodotus.dante.security.enums.AccountCategory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;

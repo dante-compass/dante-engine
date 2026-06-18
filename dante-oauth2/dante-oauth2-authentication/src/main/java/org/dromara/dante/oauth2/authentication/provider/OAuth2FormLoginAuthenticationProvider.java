@@ -26,9 +26,9 @@
 package org.dromara.dante.oauth2.authentication.provider;
 
 import org.apache.commons.lang3.ObjectUtils;
-import org.dromara.dante.security.definition.CaptchaProcessor;
-import org.dromara.dante.security.domain.FormLoginWebAuthenticationDetails;
-import org.dromara.dante.security.domain.captcha.Verification;
+import cn.herodotus.dante.security.definition.CaptchaProcessor;
+import cn.herodotus.dante.security.domain.FormLoginWebAuthenticationDetails;
+import cn.herodotus.dante.security.domain.captcha.Verification;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

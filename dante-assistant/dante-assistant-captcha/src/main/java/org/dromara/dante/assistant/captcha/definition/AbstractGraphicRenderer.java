@@ -37,8 +37,8 @@ import org.dromara.dante.assistant.captcha.exception.CaptchaIsEmptyException;
 import org.dromara.dante.assistant.captcha.exception.CaptchaMismatchException;
 import org.dromara.dante.assistant.captcha.exception.CaptchaParameterIllegalException;
 import org.dromara.dante.assistant.captcha.provider.ResourceProvider;
-import org.dromara.dante.security.domain.captcha.Captcha;
-import org.dromara.dante.security.domain.captcha.Verification;
+import cn.herodotus.dante.security.domain.captcha.Captcha;
+import cn.herodotus.dante.security.domain.captcha.Verification;
 
 import java.awt.*;
 

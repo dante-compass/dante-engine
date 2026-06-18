@@ -39,7 +39,7 @@ import org.dromara.dante.logic.upms.domain.deserializer.SysUserEmptyToNull;
 import org.dromara.dante.logic.upms.entity.security.SysUser;
 import org.dromara.dante.logic.upms.enums.Gender;
 import org.dromara.dante.logic.upms.enums.Identity;
-import org.dromara.dante.security.enums.AccountCategory;
+import cn.herodotus.dante.security.enums.AccountCategory;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;

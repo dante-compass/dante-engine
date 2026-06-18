@@ -25,7 +25,7 @@
 
 package org.dromara.dante.assistant.captcha.domain;
 
-import org.dromara.dante.security.domain.captcha.Coordinate;
+import cn.herodotus.dante.security.domain.captcha.Coordinate;
 
 import java.util.List;
 

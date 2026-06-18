@@ -29,7 +29,7 @@ import cn.herodotus.dante.core.constant.SystemConstants;
 import org.dromara.dante.oauth2.authentication.utils.DPoPProofVerifier;
 import org.dromara.dante.oauth2.authentication.utils.OAuth2AuthenticationProviderUtils;
 import org.dromara.dante.oauth2.commons.properties.OAuth2AuthenticationProperties;
-import org.dromara.dante.security.definition.EnhanceUserDetailsService;
+import cn.herodotus.dante.security.definition.EnhanceUserDetailsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.BadCredentialsException;

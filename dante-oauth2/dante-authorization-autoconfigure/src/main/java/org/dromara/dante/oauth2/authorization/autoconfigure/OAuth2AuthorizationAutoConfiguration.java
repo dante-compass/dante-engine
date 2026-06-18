@@ -34,7 +34,7 @@ import org.dromara.dante.oauth2.authorization.autoconfigure.listener.RemoteRestM
 import org.dromara.dante.oauth2.authorization.autoconfigure.processor.SecurityAttributeDistributionProcessor;
 import org.dromara.dante.oauth2.authorization.autoconfigure.strategy.DefaultRestMappingCollectEventManager;
 import org.dromara.dante.oauth2.authorization.config.OAuth2ServletAuthorizationConfiguration;
-import org.dromara.dante.security.domain.attribute.AttributeTransmitter;
+import cn.herodotus.dante.security.domain.attribute.AttributeTransmitter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;

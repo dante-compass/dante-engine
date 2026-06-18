@@ -35,7 +35,7 @@ import cn.herodotus.dante.core.domain.BaseDomain;
 import cn.herodotus.dante.core.domain.BaseEntity;
 import cn.herodotus.dante.core.domain.Result;
 import org.dromara.dante.data.commons.service.BaseWriteAndSliceService;
-import org.dromara.dante.web.annotation.Idempotent;
+import cn.herodotus.dante.web.annotation.Idempotent;
 import org.springframework.data.domain.Slice;
 import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;

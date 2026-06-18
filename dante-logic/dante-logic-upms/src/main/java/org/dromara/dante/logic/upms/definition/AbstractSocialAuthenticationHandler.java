@@ -29,8 +29,8 @@ import org.apache.commons.lang3.ObjectUtils;
 import org.dromara.dante.assistant.access.exception.AccessIdentityVerificationFailedException;
 import org.dromara.dante.oauth2.commons.exception.SocialCredentialsUserBindingFailedException;
 import org.dromara.dante.oauth2.commons.exception.UsernameAlreadyExistsException;
-import org.dromara.dante.security.domain.AccessPrincipal;
-import org.dromara.dante.security.domain.HerodotusUser;
+import cn.herodotus.dante.security.domain.AccessPrincipal;
+import cn.herodotus.dante.security.domain.HerodotusUser;
 import org.springframework.security.core.AuthenticationException;
 
 /**

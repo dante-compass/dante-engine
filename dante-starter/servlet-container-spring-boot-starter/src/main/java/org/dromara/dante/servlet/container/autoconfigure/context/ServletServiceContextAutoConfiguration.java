@@ -26,9 +26,9 @@
 package org.dromara.dante.servlet.container.autoconfigure.context;
 
 import jakarta.annotation.PostConstruct;
-import org.dromara.dante.web.context.ServiceContextHolderInitializerListener;
-import org.dromara.dante.web.properties.EndpointProperties;
-import org.dromara.dante.web.properties.PlatformProperties;
+import cn.herodotus.dante.web.context.ServiceContextHolderInitializerListener;
+import cn.herodotus.dante.web.properties.EndpointProperties;
+import cn.herodotus.dante.web.properties.PlatformProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;

@@ -27,7 +27,7 @@ package org.dromara.dante.oauth2.authorization.servlet;
 
 import jakarta.servlet.http.HttpServletRequest;
 import org.dromara.dante.oauth2.authorization.converter.HerodotusJwtAuthenticationConverter;
-import org.dromara.dante.security.utils.SecurityUtils;
+import cn.herodotus.dante.security.utils.SecurityUtils;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationManagerResolver;
 import org.springframework.security.authentication.ProviderManager;

@@ -26,7 +26,7 @@
 package org.dromara.dante.message.commons.event;
 
 import org.dromara.dante.message.commons.definition.event.AbstractApplicationEvent;
-import org.dromara.dante.security.domain.attribute.RestMapping;
+import cn.herodotus.dante.security.domain.attribute.RestMapping;
 
 import java.time.Clock;
 import java.util.List;

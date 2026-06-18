@@ -30,7 +30,7 @@ import org.apache.commons.lang3.StringUtils;
 import cn.herodotus.dante.core.builder.SecurityMatcher;
 import org.dromara.dante.oauth2.authorization.definition.AbstractSecurityMatcherConfigurer;
 import org.dromara.dante.oauth2.authorization.properties.OAuth2AuthorizationProperties;
-import org.dromara.dante.security.utils.WebPathUtils;
+import cn.herodotus.dante.security.utils.WebPathUtils;
 import org.springframework.security.web.util.matcher.RequestMatcher;
 import org.springframework.web.servlet.resource.ResourceUrlProvider;
 

@@ -26,8 +26,8 @@
 package org.dromara.dante.assistant.captcha.definition;
 
 import org.dromara.dante.assistant.captcha.domain.Metadata;
-import org.dromara.dante.security.domain.captcha.Captcha;
-import org.dromara.dante.security.domain.captcha.Verification;
+import cn.herodotus.dante.security.domain.captcha.Captcha;
+import cn.herodotus.dante.security.domain.captcha.Verification;
 
 /**
  * <p>Description: 基础绘制器定义 </p>

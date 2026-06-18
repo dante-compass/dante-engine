@@ -35,7 +35,7 @@ import org.dromara.dante.persistence.sas.jpa.service.HerodotusAuthorizationResou
 import org.dromara.dante.persistence.sas.jpa.service.HerodotusAuthorizationService;
 import org.dromara.dante.persistence.sas.jpa.service.HerodotusRegisteredClientService;
 import org.dromara.dante.persistence.sas.jpa.specification.*;
-import org.dromara.dante.security.definition.OAuth2AuthorizationResourceService;
+import cn.herodotus.dante.security.definition.OAuth2AuthorizationResourceService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;

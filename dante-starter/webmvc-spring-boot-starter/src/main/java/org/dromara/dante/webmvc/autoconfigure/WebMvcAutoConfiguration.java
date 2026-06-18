@@ -27,7 +27,7 @@ package org.dromara.dante.webmvc.autoconfigure;
 
 import jakarta.annotation.PostConstruct;
 import cn.herodotus.dante.core.constant.SystemConstants;
-import org.dromara.dante.web.autoconfigure.WebAutoConfiguration;
+import cn.herodotus.dante.web.autoconfigure.WebAutoConfiguration;
 import org.dromara.dante.webmvc.autoconfigure.config.SecureConfiguration;
 import org.dromara.dante.webmvc.autoconfigure.config.TemplateConfiguration;
 import org.dromara.dante.webmvc.autoconfigure.config.TenantConfiguration;

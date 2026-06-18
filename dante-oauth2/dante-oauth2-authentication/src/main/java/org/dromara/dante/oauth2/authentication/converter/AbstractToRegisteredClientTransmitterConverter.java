@@ -26,7 +26,7 @@
 package org.dromara.dante.oauth2.authentication.converter;
 
 import cn.herodotus.dante.core.constant.SystemConstants;
-import org.dromara.dante.security.domain.RegisteredClientTransmitter;
+import cn.herodotus.dante.security.domain.RegisteredClientTransmitter;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.security.oauth2.server.authorization.AbstractOAuth2ClientRegistration;
 

@@ -36,7 +36,7 @@ import org.dromara.dante.oauth2.authorization.servlet.OAuth2SessionManagementCon
 import org.dromara.dante.oauth2.authorization.servlet.ServletOAuth2AuthorizationConfigurerManager;
 import org.dromara.dante.oauth2.authorization.servlet.ServletOAuth2ResourceMatcherConfigurer;
 import org.dromara.dante.oauth2.authorization.servlet.ServletSecurityAuthorizationManager;
-import org.dromara.dante.web.servlet.template.ThymeleafTemplateHandler;
+import cn.herodotus.dante.web.servlet.template.ThymeleafTemplateHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.ObjectProvider;

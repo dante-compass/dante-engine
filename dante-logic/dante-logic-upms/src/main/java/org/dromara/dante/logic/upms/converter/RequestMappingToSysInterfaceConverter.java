@@ -26,7 +26,7 @@
 package org.dromara.dante.logic.upms.converter;
 
 import org.dromara.dante.logic.upms.entity.security.SysInterface;
-import org.dromara.dante.security.domain.attribute.RestMapping;
+import cn.herodotus.dante.security.domain.attribute.RestMapping;
 import org.springframework.core.convert.converter.Converter;
 
 /**

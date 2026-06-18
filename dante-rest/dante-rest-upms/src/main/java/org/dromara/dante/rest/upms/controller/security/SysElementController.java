@@ -45,7 +45,7 @@ import org.dromara.dante.logic.upms.service.security.SysElementService;
 import org.dromara.dante.rest.upms.converter.SysElementToTreeNodeConverter;
 import org.dromara.dante.rest.upms.converter.SysElementsToElementsConverter;
 import org.dromara.dante.rest.upms.dto.Elements;
-import org.dromara.dante.web.annotation.AccessLimited;
+import cn.herodotus.dante.web.annotation.AccessLimited;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.data.domain.Page;
 import org.springframework.http.MediaType;

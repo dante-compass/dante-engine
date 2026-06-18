@@ -27,9 +27,9 @@ package org.dromara.dante.servlet.container.autoconfigure.oauth2;
 
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.dromara.dante.security.converter.UserPrincipalConverter;
-import org.dromara.dante.security.definition.BearerTokenResolver;
-import org.dromara.dante.security.domain.UserPrincipal;
+import cn.herodotus.dante.security.converter.UserPrincipalConverter;
+import cn.herodotus.dante.security.definition.BearerTokenResolver;
+import cn.herodotus.dante.security.domain.UserPrincipal;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.oauth2.core.OAuth2AuthenticatedPrincipal;

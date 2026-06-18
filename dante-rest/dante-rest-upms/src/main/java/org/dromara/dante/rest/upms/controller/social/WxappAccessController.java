@@ -35,7 +35,7 @@ import org.dromara.dante.assistant.access.definition.domain.AccessResponse;
 import org.dromara.dante.assistant.access.factory.AccessHandlerStrategyFactory;
 import cn.herodotus.dante.core.domain.Result;
 import org.dromara.dante.rest.upms.dto.WxappProfile;
-import org.dromara.dante.security.enums.AccountCategory;
+import cn.herodotus.dante.security.enums.AccountCategory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;

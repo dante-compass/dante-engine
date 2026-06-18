@@ -29,9 +29,9 @@ import org.apache.commons.lang3.ObjectUtils;
 import org.dromara.dante.assistant.captcha.definition.CaptchaRenderer;
 import org.dromara.dante.assistant.captcha.exception.CaptchaCategoryIsIncorrectException;
 import org.dromara.dante.assistant.captcha.exception.CaptchaHandlerNotExistException;
-import org.dromara.dante.security.definition.CaptchaProcessor;
-import org.dromara.dante.security.domain.captcha.Captcha;
-import org.dromara.dante.security.domain.captcha.Verification;
+import cn.herodotus.dante.security.definition.CaptchaProcessor;
+import cn.herodotus.dante.security.domain.captcha.Captcha;
+import cn.herodotus.dante.security.domain.captcha.Verification;
 import org.dromara.dante.assistant.captcha.enums.CaptchaCategory;
 
 import java.util.Map;

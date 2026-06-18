@@ -33,9 +33,9 @@ import org.dromara.dante.oauth2.authentication.response.DefaultOAuth2Authenticat
 import org.dromara.dante.oauth2.commons.properties.OAuth2AuthenticationProperties;
 import org.dromara.dante.oauth2.commons.strategy.OAuth2ClientRegistrationSuccessEventManager;
 import org.dromara.dante.oauth2.commons.strategy.OAuth2DeviceVerificationSuccessEventManager;
-import org.dromara.dante.security.definition.OAuth2AuthorizationResourceService;
-import org.dromara.dante.web.servlet.template.ThymeleafTemplateHandler;
-import org.dromara.dante.web.support.crypto.DigitalEnvelopeProcessor;
+import cn.herodotus.dante.security.definition.OAuth2AuthorizationResourceService;
+import cn.herodotus.dante.web.servlet.template.ThymeleafTemplateHandler;
+import cn.herodotus.dante.web.support.crypto.DigitalEnvelopeProcessor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;

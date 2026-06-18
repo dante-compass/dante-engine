@@ -26,7 +26,7 @@
 package org.dromara.dante.webmvc.autoconfigure.config;
 
 import jakarta.annotation.PostConstruct;
-import org.dromara.dante.web.servlet.template.ThymeleafTemplateHandler;
+import cn.herodotus.dante.web.servlet.template.ThymeleafTemplateHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;

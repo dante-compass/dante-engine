@@ -29,7 +29,7 @@ import jakarta.annotation.PostConstruct;
 import org.dromara.dante.oauth2.authorization.autoconfigure.strategy.DefaultAuthenticationManager;
 import org.dromara.dante.oauth2.authorization.autoconfigure.strategy.DefaultDisableAuthenticationEventManager;
 import org.dromara.dante.oauth2.authorization.autoconfigure.strategy.DefaultEnableAuthenticationEventManager;
-import org.dromara.dante.security.definition.AuthenticationManager;
+import cn.herodotus.dante.security.definition.AuthenticationManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;

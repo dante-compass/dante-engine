@@ -28,7 +28,7 @@ package org.dromara.dante.data.rest.servlet;
 import org.apache.commons.collections4.CollectionUtils;
 import cn.herodotus.dante.core.domain.BaseDomain;
 import cn.herodotus.dante.core.domain.Result;
-import org.dromara.dante.web.definition.Controller;
+import cn.herodotus.dante.web.definition.Controller;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Slice;
 

@@ -39,7 +39,7 @@ import org.dromara.dante.assistant.captcha.renderer.hutool.GifCaptchaRenderer;
 import org.dromara.dante.assistant.captcha.renderer.hutool.LineCaptchaRenderer;
 import org.dromara.dante.assistant.captcha.renderer.hutool.ShearCaptchaRenderer;
 import cn.herodotus.dante.core.function.ErrorCodeMapperBuilderCustomizer;
-import org.dromara.dante.security.definition.CaptchaProcessor;
+import cn.herodotus.dante.security.definition.CaptchaProcessor;
 import org.dromara.dante.assistant.captcha.enums.CaptchaCategory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -27,7 +27,7 @@ package org.dromara.dante.persistence.sas.jpa.converter;
 
 import org.dromara.dante.persistence.commons.converter.AbstractOAuth2ToAuthorizationResourceConverter;
 import org.dromara.dante.persistence.sas.jpa.entity.HerodotusAuthorizationResource;
-import org.dromara.dante.security.domain.OAuth2AuthorizationResource;
+import cn.herodotus.dante.security.domain.OAuth2AuthorizationResource;
 
 /**
  * <p>Description: {@link HerodotusAuthorizationResource} 转 {@link OAuth2AuthorizationResource} 转换器</p>
