@@ -29,7 +29,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>org.dromara.dante</groupId>
+        <groupId>cn.herodotus.drawloom</groupId>
         <artifactId>dante-data</artifactId>
         <version>4.1.0.0</version>
     </parent>
@@ -37,11 +37,11 @@
     <artifactId>dante-data-mongodb</artifactId>
     <name>${project.artifactId}</name>
 
-    <description>Dante Cloud 云原生微服务基座组件库以 Mongodb 作为数据访问层的通用代码模块</description>
+    <description>Dante Cloud 云原生微服务基座组件库 Drawloom 以 Mongodb 作为数据访问层的通用代码模块</description>
 
     <dependencies>
         <dependency>
-            <groupId>org.dromara.dante</groupId>
+            <groupId>cn.herodotus.drawloom</groupId>
             <artifactId>dante-data-commons</artifactId>
         </dependency>
 

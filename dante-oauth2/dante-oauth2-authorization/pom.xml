@@ -31,18 +31,18 @@
 
     <parent>
         <artifactId>dante-oauth2</artifactId>
-        <groupId>org.dromara.dante</groupId>
+        <groupId>cn.herodotus.drawloom</groupId>
         <version>4.1.0.0</version>
     </parent>
 
     <artifactId>dante-oauth2-authorization</artifactId>
     <name>${project.artifactId}</name>
 
-    <description>Dante Cloud 云原生微服务基座组件库 Spring Authorization Server 资源服务器核心功能封装模块</description>
+    <description>Dante Cloud 云原生微服务基座组件库 Drawloom  Spring Authorization Server 资源服务器核心功能封装模块</description>
 
     <dependencies>
         <dependency>
-            <groupId>org.dromara.dante</groupId>
+            <groupId>cn.herodotus.drawloom</groupId>
             <artifactId>dante-oauth2-commons</artifactId>
         </dependency>
 
@@ -53,7 +53,7 @@
         </dependency>
 
         <dependency>
-            <groupId>org.dromara.dante</groupId>
+            <groupId>cn.herodotus.drawloom</groupId>
             <artifactId>dante-cache-jetcache</artifactId>
         </dependency>
 

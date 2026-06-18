@@ -31,33 +31,33 @@
 
     <parent>
         <artifactId>dante-oauth2</artifactId>
-        <groupId>org.dromara.dante</groupId>
+        <groupId>cn.herodotus.drawloom</groupId>
         <version>4.1.0.0</version>
     </parent>
 
     <artifactId>dante-oauth2-commons</artifactId>
     <name>${project.artifactId}</name>
 
-    <description>Dante Cloud 云原生微服务基座组件库 OAuth2 共性通用代码模块</description>
+    <description>Dante Cloud 云原生微服务基座组件库 Drawloom  OAuth2 共性通用代码模块</description>
 
     <dependencies>
         <dependency>
-            <groupId>org.dromara.dante</groupId>
+            <groupId>cn.herodotus.drawloom</groupId>
             <artifactId>dante-data-commons</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>org.dromara.dante</groupId>
+            <groupId>cn.herodotus.drawloom</groupId>
             <artifactId>dante-security</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>org.dromara.dante</groupId>
+            <groupId>cn.herodotus.drawloom</groupId>
             <artifactId>dante-web</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>org.dromara.dante</groupId>
+            <groupId>cn.herodotus.drawloom</groupId>
             <artifactId>dante-message-commons</artifactId>
         </dependency>
 

@@ -31,18 +31,18 @@
 
     <parent>
         <artifactId>dante-cache</artifactId>
-        <groupId>org.dromara.dante</groupId>
+        <groupId>cn.herodotus.drawloom</groupId>
         <version>4.1.0.0</version>
     </parent>
 
     <artifactId>dante-cache-commons</artifactId>
     <name>${project.artifactId}</name>
 
-    <description>Dante Cloud 云原生微服务基座组件库缓存通用代码模块</description>
+    <description>Dante Cloud 云原生微服务基座组件库 Drawloom 缓存通用代码模块</description>
 
     <dependencies>
         <dependency>
-            <groupId>org.dromara.dante</groupId>
+            <groupId>cn.herodotus.drawloom</groupId>
             <artifactId>dante-spring</artifactId>
         </dependency>
     </dependencies>

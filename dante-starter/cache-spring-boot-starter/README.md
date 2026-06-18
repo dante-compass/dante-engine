@@ -6,7 +6,7 @@
 
 ```xml
 <dependency>
-  <groupId>org.dromara.dante</groupId>
+  <groupId>cn.herodotus.drawloom</groupId>
   <artifactId>cache-module-redisson</artifactId>
 </dependency>
 ```

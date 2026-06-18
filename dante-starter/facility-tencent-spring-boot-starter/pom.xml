@@ -30,7 +30,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.dromara.dante</groupId>
+        <groupId>cn.herodotus.drawloom</groupId>
         <artifactId>dante-starter</artifactId>
         <version>4.1.0.0</version>
     </parent>
@@ -38,12 +38,12 @@
     <artifactId>facility-tencent-spring-boot-starter</artifactId>
     <name>${project.artifactId}</name>
 
-    <description>Dante Cloud 云原生微服务基座组件库面向 Spring Cloud Tencent 的微服务基础设施适配模块 Starter</description>
+    <description>Dante Cloud 云原生微服务基座组件库 Drawloom 面向 Spring Cloud Tencent 的微服务基础设施适配模块 Starter</description>
 
     <dependencies>
 
         <dependency>
-            <groupId>org.dromara.dante</groupId>
+            <groupId>cn.herodotus.drawloom</groupId>
             <artifactId>dante-spring</artifactId>
         </dependency>
 
