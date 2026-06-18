@@ -25,8 +25,8 @@
 
 package org.dromara.dante.feign.autoconfigure.extension;
 
-import org.dromara.dante.core.domain.Result;
-import org.dromara.dante.core.exception.PlatformRuntimeException;
+import cn.herodotus.dante.core.domain.Result;
+import cn.herodotus.dante.core.exception.PlatformRuntimeException;
 
 /**
  * <p>Description: Feign Fallback 错误统一封装器 </p>

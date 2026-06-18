@@ -26,7 +26,7 @@
 package org.dromara.dante.rest.identity.config;
 
 import jakarta.annotation.PostConstruct;
-import org.dromara.dante.core.function.SecurityMatcherBuilderCustomizer;
+import cn.herodotus.dante.core.function.SecurityMatcherBuilderCustomizer;
 import org.dromara.dante.logic.identity.config.LogicIdentityConfiguration;
 import org.dromara.dante.oauth2.commons.properties.OAuth2AuthenticationProperties;
 import org.dromara.dante.rest.identity.customizer.IdentitySecurityMatcherBuilderCustomizer;

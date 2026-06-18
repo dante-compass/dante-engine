@@ -26,8 +26,8 @@
 package org.dromara.dante.hibernate.cache.spi;
 
 import org.apache.commons.lang3.ObjectUtils;
-import org.dromara.dante.core.domain.cache.HiberanteQueryKeyWrapper;
-import org.dromara.dante.core.domain.cache.HibernateCacheKeyWrapper;
+import cn.herodotus.dante.core.domain.cache.HiberanteQueryKeyWrapper;
+import cn.herodotus.dante.core.domain.cache.HibernateCacheKeyWrapper;
 import org.hibernate.cache.spi.QueryKey;
 import org.hibernate.cache.spi.support.DomainDataStorageAccess;
 import org.hibernate.engine.spi.SharedSessionContractImplementor;

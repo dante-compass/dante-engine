@@ -26,9 +26,9 @@
 package org.dromara.dante.autoconfigure.file;
 
 import jakarta.annotation.PostConstruct;
-import org.dromara.dante.core.support.file.FileTemplate;
-import org.dromara.dante.core.support.file.JsonSchemaFileManager;
-import org.dromara.dante.core.support.file.OssTransformer;
+import cn.herodotus.dante.core.support.file.FileTemplate;
+import cn.herodotus.dante.core.support.file.JsonSchemaFileManager;
+import cn.herodotus.dante.core.support.file.OssTransformer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;

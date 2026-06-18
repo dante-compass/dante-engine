@@ -25,7 +25,7 @@
 
 package org.dromara.dante.message.autoconfigure.emqx;
 
-import org.dromara.dante.core.jackson.JacksonUtils;
+import cn.herodotus.dante.core.jackson.JacksonUtils;
 import org.dromara.dante.message.emqx.domain.*;
 import org.dromara.dante.message.emqx.event.*;
 import org.slf4j.Logger;

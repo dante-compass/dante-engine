@@ -26,8 +26,8 @@
 package org.dromara.dante.message.autoconfigure.message;
 
 import org.apache.commons.lang3.ObjectUtils;
-import org.dromara.dante.core.jackson.JacksonUtils;
-import org.dromara.dante.core.jackson.JsonNodeUtils;
+import cn.herodotus.dante.core.jackson.JacksonUtils;
+import cn.herodotus.dante.core.jackson.JsonNodeUtils;
 import org.dromara.dante.message.commons.definition.Message;
 import org.dromara.dante.message.commons.definition.enums.MessageCategory;
 import org.dromara.dante.message.commons.domain.BroadcastMessage;

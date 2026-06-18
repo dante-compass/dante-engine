@@ -40,7 +40,7 @@ import org.dromara.dante.assistant.oss.entity.argument.*;
 import org.dromara.dante.assistant.oss.entity.result.*;
 import org.dromara.dante.assistant.oss.service.base.S3TransferManagerService;
 import org.dromara.dante.assistant.oss.service.servlet.ServletObjectService;
-import org.dromara.dante.core.domain.Result;
+import cn.herodotus.dante.core.domain.Result;
 import org.dromara.dante.rest.oss.service.ServletObjectStreamService;
 import org.dromara.dante.spring.exception.oss.DownloadObjectException;
 import org.dromara.dante.spring.exception.oss.UploadObjectException;

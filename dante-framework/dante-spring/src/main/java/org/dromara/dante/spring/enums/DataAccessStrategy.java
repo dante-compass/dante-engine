@@ -25,7 +25,7 @@
 
 package org.dromara.dante.spring.enums;
 
-import org.dromara.dante.core.constant.BaseConstants;
+import cn.herodotus.dante.core.constant.BaseConstants;
 import org.dromara.dante.spring.condition.ConditionEnum;
 import org.springframework.core.env.Environment;
 

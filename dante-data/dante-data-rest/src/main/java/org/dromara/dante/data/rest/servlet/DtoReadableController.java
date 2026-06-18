@@ -25,10 +25,10 @@
 
 package org.dromara.dante.data.rest.servlet;
 
-import org.dromara.dante.core.domain.BaseDomain;
-import org.dromara.dante.core.domain.BaseDto;
-import org.dromara.dante.core.domain.BaseEntity;
-import org.dromara.dante.core.domain.Result;
+import cn.herodotus.dante.core.domain.BaseDomain;
+import cn.herodotus.dante.core.domain.BaseDto;
+import cn.herodotus.dante.core.domain.BaseEntity;
+import cn.herodotus.dante.core.domain.Result;
 import org.dromara.dante.data.commons.service.BaseReadableService;
 import org.springframework.core.convert.converter.Converter;
 

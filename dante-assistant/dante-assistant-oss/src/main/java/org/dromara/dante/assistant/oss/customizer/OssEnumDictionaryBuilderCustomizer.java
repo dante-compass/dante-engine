@@ -27,8 +27,8 @@ package org.dromara.dante.assistant.oss.customizer;
 
 import org.dromara.dante.assistant.oss.enums.BucketVersioning;
 import org.dromara.dante.assistant.oss.enums.ObjectRetentionMode;
-import org.dromara.dante.core.builder.EnumDictionaryBuilder;
-import org.dromara.dante.core.function.EnumDictionaryBuilderCustomizer;
+import cn.herodotus.dante.core.builder.EnumDictionaryBuilder;
+import cn.herodotus.dante.core.function.EnumDictionaryBuilderCustomizer;
 
 /**
  * <p>Description: Assistant OSS 枚举数据字典定义器 </p>

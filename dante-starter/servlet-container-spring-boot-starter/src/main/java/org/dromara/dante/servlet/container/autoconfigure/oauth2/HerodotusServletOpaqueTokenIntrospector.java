@@ -28,7 +28,7 @@ package org.dromara.dante.servlet.container.autoconfigure.oauth2;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.dromara.dante.core.constant.SystemConstants;
+import cn.herodotus.dante.core.constant.SystemConstants;
 import org.dromara.dante.security.domain.HerodotusGrantedAuthority;
 import org.dromara.dante.spring.context.ServiceContextHolder;
 import org.springframework.boot.security.oauth2.server.resource.autoconfigure.OAuth2ResourceServerProperties;

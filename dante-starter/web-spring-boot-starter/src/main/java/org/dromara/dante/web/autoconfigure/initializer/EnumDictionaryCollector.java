@@ -26,8 +26,8 @@
 package org.dromara.dante.web.autoconfigure.initializer;
 
 import org.apache.commons.collections4.CollectionUtils;
-import org.dromara.dante.core.builder.EnumDictionaryBuilder;
-import org.dromara.dante.core.domain.Dictionary;
+import cn.herodotus.dante.core.builder.EnumDictionaryBuilder;
+import cn.herodotus.dante.core.domain.Dictionary;
 import org.dromara.dante.message.commons.definition.strategy.EnumDictionaryCollectEventManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

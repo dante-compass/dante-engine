@@ -28,7 +28,7 @@ package org.dromara.dante.web.servlet.template;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.apache.commons.lang3.StringUtils;
-import org.dromara.dante.core.domain.Result;
+import cn.herodotus.dante.core.domain.Result;
 import org.dromara.dante.web.servlet.utils.RequestUtils;
 import org.dromara.dante.web.servlet.utils.ResponseUtils;
 

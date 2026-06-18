@@ -28,7 +28,7 @@ package org.dromara.dante.rest.identity.dto;
 import com.google.common.base.MoreObjects;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
-import org.dromara.dante.core.domain.AbstractDto;
+import cn.herodotus.dante.core.domain.AbstractDto;
 
 /**
  * <p>Description: 机要传递实体 </p>

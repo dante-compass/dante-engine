@@ -25,7 +25,7 @@
 
 package org.dromara.dante.oauth2.extension.dto;
 
-import org.dromara.dante.core.domain.BaseDto;
+import cn.herodotus.dante.core.domain.BaseDto;
 
 /**
  * <p>Description: 用户错误状态信息 </p>

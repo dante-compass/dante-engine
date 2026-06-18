@@ -26,8 +26,8 @@
 package org.dromara.dante.nosql.influxdb3.properties;
 
 import com.google.common.base.MoreObjects;
-import org.dromara.dante.core.constant.SystemConstants;
-import org.dromara.dante.core.domain.Pool;
+import cn.herodotus.dante.core.constant.SystemConstants;
+import cn.herodotus.dante.core.domain.Pool;
 import org.dromara.dante.nosql.influxdb3.constant.InfluxDB3Constants;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

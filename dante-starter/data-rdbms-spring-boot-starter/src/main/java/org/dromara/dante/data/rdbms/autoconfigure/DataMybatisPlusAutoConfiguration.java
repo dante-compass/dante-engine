@@ -33,7 +33,7 @@ import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerIntercept
 import jakarta.annotation.PostConstruct;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.dromara.dante.core.constant.BaseConstants;
+import cn.herodotus.dante.core.constant.BaseConstants;
 import org.dromara.dante.data.rdbms.autoconfigure.enhance.HerodotusIdentifierGenerator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

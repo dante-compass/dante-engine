@@ -25,7 +25,7 @@
 
 package org.dromara.dante.cache.commons.exception;
 
-import org.dromara.dante.core.exception.PlatformException;
+import cn.herodotus.dante.core.exception.PlatformException;
 
 /**
  * <p>Description: Stamp签章校验错误 </p>

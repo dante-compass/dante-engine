@@ -28,7 +28,7 @@ package org.dromara.dante.assistant.captcha.renderer.graphic;
 import org.dromara.dante.assistant.captcha.domain.Metadata;
 import org.dromara.dante.assistant.captcha.provider.RandomProvider;
 import org.dromara.dante.assistant.captcha.provider.ResourceProvider;
-import org.dromara.dante.core.constant.RegexPool;
+import cn.herodotus.dante.core.constant.RegexPool;
 import org.dromara.dante.assistant.captcha.enums.CaptchaCategory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

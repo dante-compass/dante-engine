@@ -25,10 +25,10 @@
 
 package org.dromara.dante.web.autoconfigure.support;
 
-import org.dromara.dante.core.constant.SystemConstants;
-import org.dromara.dante.core.domain.SignatureValidationResult;
-import org.dromara.dante.core.enums.SignatureMethod;
-import org.dromara.dante.core.utils.SignatureUtils;
+import cn.herodotus.dante.core.constant.SystemConstants;
+import cn.herodotus.dante.core.domain.SignatureValidationResult;
+import cn.herodotus.dante.core.enums.SignatureMethod;
+import cn.herodotus.dante.core.utils.SignatureUtils;
 import org.dromara.dante.web.autoconfigure.stamp.SignatureRandomStampManager;
 import org.dromara.dante.web.definition.SignatureValidator;
 

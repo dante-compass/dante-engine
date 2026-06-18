@@ -35,7 +35,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.tags.Tags;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import org.dromara.dante.core.domain.Result;
+import cn.herodotus.dante.core.domain.Result;
 import org.dromara.dante.data.jpa.service.BaseJpaWriteableService;
 import org.dromara.dante.data.rest.servlet.AbstractJpaEntityWriteableController;
 import org.dromara.dante.logic.message.entity.DialogueContact;

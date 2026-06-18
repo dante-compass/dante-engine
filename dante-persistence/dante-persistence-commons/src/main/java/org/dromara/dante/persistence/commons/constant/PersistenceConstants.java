@@ -25,7 +25,7 @@
 
 package org.dromara.dante.persistence.commons.constant;
 
-import org.dromara.dante.core.constant.BaseConstants;
+import cn.herodotus.dante.core.constant.BaseConstants;
 
 /**
  * <p>Description: Bridge Sas 模块常量 </p>

@@ -26,7 +26,7 @@
 package org.dromara.dante.security.converter;
 
 import org.apache.commons.collections4.CollectionUtils;
-import org.dromara.dante.core.constant.SystemConstants;
+import cn.herodotus.dante.core.constant.SystemConstants;
 import org.dromara.dante.security.domain.HerodotusUser;
 import org.dromara.dante.security.domain.UserPrincipal;
 import org.springframework.security.oauth2.core.OAuth2AuthenticatedPrincipal;

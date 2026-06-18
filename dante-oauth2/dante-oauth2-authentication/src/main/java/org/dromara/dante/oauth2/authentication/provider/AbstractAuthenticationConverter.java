@@ -28,7 +28,7 @@ package org.dromara.dante.oauth2.authentication.provider;
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.dromara.dante.core.utils.ListUtils;
+import cn.herodotus.dante.core.utils.ListUtils;
 import org.dromara.dante.oauth2.authentication.utils.OAuth2EndpointUtils;
 import org.dromara.dante.security.constant.OAuth2ErrorKeys;
 import org.dromara.dante.web.exception.SessionInvalidException;

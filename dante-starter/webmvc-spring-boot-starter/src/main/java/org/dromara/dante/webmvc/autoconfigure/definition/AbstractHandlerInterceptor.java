@@ -28,7 +28,7 @@ package org.dromara.dante.webmvc.autoconfigure.definition;
 import cn.hutool.v7.crypto.SecureUtil;
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.commons.lang3.StringUtils;
-import org.dromara.dante.core.constant.SymbolConstants;
+import cn.herodotus.dante.core.constant.SymbolConstants;
 import org.dromara.dante.web.servlet.utils.SessionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

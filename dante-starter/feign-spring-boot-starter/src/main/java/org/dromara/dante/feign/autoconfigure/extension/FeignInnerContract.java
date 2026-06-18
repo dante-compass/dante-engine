@@ -27,7 +27,7 @@ package org.dromara.dante.feign.autoconfigure.extension;
 
 import feign.MethodMetadata;
 import org.apache.commons.lang3.ObjectUtils;
-import org.dromara.dante.core.constant.HerodotusHeaders;
+import cn.herodotus.dante.core.constant.HerodotusHeaders;
 import org.dromara.dante.feign.autoconfigure.annotation.Inner;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -25,8 +25,8 @@
 
 package org.dromara.dante.web.definition;
 
-import org.dromara.dante.core.domain.SignatureValidationResult;
-import org.dromara.dante.core.enums.SignatureMethod;
+import cn.herodotus.dante.core.domain.SignatureValidationResult;
+import cn.herodotus.dante.core.enums.SignatureMethod;
 
 import java.util.Map;
 

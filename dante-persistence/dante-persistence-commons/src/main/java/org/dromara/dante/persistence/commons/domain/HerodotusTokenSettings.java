@@ -26,7 +26,7 @@
 package org.dromara.dante.persistence.commons.domain;
 
 import com.google.common.base.MoreObjects;
-import org.dromara.dante.core.domain.BaseModel;
+import cn.herodotus.dante.core.domain.BaseModel;
 import org.dromara.dante.persistence.commons.definition.TokenSettingsDetails;
 import org.dromara.dante.persistence.commons.enums.SignatureJwsAlgorithm;
 import org.dromara.dante.persistence.commons.enums.TokenFormat;

@@ -25,8 +25,8 @@
 
 package org.dromara.dante.message.commons.constant;
 
-import org.dromara.dante.core.feedback.InternalServerErrorFeedback;
-import org.dromara.dante.core.feedback.NotAcceptableFeedback;
+import cn.herodotus.dante.core.feedback.InternalServerErrorFeedback;
+import cn.herodotus.dante.core.feedback.NotAcceptableFeedback;
 
 /**
  * <p>Description: WebSocket 统一错误代码定义 </p>

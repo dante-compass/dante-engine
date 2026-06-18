@@ -25,7 +25,7 @@
 
 package org.dromara.dante.autoconfigure.file;
 
-import org.dromara.dante.core.support.file.OssTransformer;
+import cn.herodotus.dante.core.support.file.OssTransformer;
 
 import java.nio.file.Path;
 

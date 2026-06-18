@@ -25,10 +25,10 @@
 
 package org.dromara.dante.autoconfigure.error;
 
-import org.dromara.dante.core.builder.ErrorCodeMapperBuilder;
-import org.dromara.dante.core.constant.BuilderCustomizerOrdered;
-import org.dromara.dante.core.constant.ErrorCodes;
-import org.dromara.dante.core.function.ErrorCodeMapperBuilderCustomizer;
+import cn.herodotus.dante.core.builder.ErrorCodeMapperBuilder;
+import cn.herodotus.dante.core.constant.BuilderCustomizerOrdered;
+import cn.herodotus.dante.core.constant.ErrorCodes;
+import cn.herodotus.dante.core.function.ErrorCodeMapperBuilderCustomizer;
 import org.springframework.core.Ordered;
 
 /**

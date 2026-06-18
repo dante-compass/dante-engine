@@ -25,7 +25,7 @@
 
 package org.dromara.dante.oauth2.authorization.properties;
 
-import org.dromara.dante.core.constant.BaseConstants;
+import cn.herodotus.dante.core.constant.BaseConstants;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 import java.util.List;

@@ -25,7 +25,7 @@
 
 package org.dromara.dante.logic.upms.constant;
 
-import org.dromara.dante.core.constant.BaseConstants;
+import cn.herodotus.dante.core.constant.BaseConstants;
 
 /**
  * <p>Description: Upms 模块常量 </p>

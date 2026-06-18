@@ -25,7 +25,7 @@
 
 package org.dromara.dante.data.commons.service;
 
-import org.dromara.dante.core.domain.BaseEntity;
+import cn.herodotus.dante.core.domain.BaseEntity;
 
 import java.io.Serializable;
 import java.util.List;

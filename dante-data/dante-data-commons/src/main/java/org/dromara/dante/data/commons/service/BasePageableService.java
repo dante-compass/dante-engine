@@ -25,7 +25,7 @@
 
 package org.dromara.dante.data.commons.service;
 
-import org.dromara.dante.core.domain.BaseEntity;
+import cn.herodotus.dante.core.domain.BaseEntity;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;

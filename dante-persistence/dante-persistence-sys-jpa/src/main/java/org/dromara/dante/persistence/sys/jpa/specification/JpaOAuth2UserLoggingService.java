@@ -25,7 +25,7 @@
 
 package org.dromara.dante.persistence.sys.jpa.specification;
 
-import org.dromara.dante.core.domain.Pagination;
+import cn.herodotus.dante.core.domain.Pagination;
 import org.dromara.dante.persistence.commons.definition.HerodotusUserLoggingService;
 import org.dromara.dante.persistence.commons.domain.HerodotusUserLogging;
 import org.dromara.dante.persistence.sys.jpa.converter.OAuth2ToUserLoggingConverter;

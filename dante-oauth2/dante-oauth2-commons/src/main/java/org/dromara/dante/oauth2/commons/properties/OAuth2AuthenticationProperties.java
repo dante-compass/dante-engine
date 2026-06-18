@@ -27,8 +27,8 @@ package org.dromara.dante.oauth2.commons.properties;
 
 import com.google.common.base.MoreObjects;
 import org.apache.commons.lang3.StringUtils;
-import org.dromara.dante.core.constant.SymbolConstants;
-import org.dromara.dante.core.constant.SystemConstants;
+import cn.herodotus.dante.core.constant.SymbolConstants;
+import cn.herodotus.dante.core.constant.SystemConstants;
 import org.dromara.dante.oauth2.commons.constant.OAuth2Constants;
 import org.dromara.dante.oauth2.commons.enums.SasPersistence;
 import org.dromara.dante.oauth2.commons.enums.SysPersistence;

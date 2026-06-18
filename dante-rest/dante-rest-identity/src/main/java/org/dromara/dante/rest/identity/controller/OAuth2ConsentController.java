@@ -27,8 +27,8 @@ package org.dromara.dante.rest.identity.controller;
 
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.collections4.MapUtils;
-import org.dromara.dante.core.constant.SymbolConstants;
-import org.dromara.dante.core.domain.view.vue.Option;
+import cn.herodotus.dante.core.constant.SymbolConstants;
+import cn.herodotus.dante.core.domain.view.vue.Option;
 import org.dromara.dante.logic.identity.entity.OAuth2Scope;
 import org.dromara.dante.logic.identity.service.OAuth2ScopeService;
 import org.dromara.dante.oauth2.commons.constant.OAuth2Constants;

@@ -28,7 +28,7 @@ package org.dromara.dante.message.emqx.definition.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.common.base.MoreObjects;
-import org.dromara.dante.core.constant.SystemConstants;
+import cn.herodotus.dante.core.constant.SystemConstants;
 import org.dromara.dante.spring.jackson.TimestampToLocalDateTimeDeserializer;
 import tools.jackson.databind.annotation.JsonDeserialize;
 

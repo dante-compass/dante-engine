@@ -25,7 +25,7 @@
 
 package org.dromara.dante.web.support.crypto;
 
-import org.dromara.dante.core.domain.SecretKey;
+import cn.herodotus.dante.core.domain.SecretKey;
 
 import java.time.Duration;
 

@@ -26,8 +26,8 @@
 package org.dromara.dante.assistant.access.exception;
 
 import org.dromara.dante.assistant.access.constant.AccessErrorCodes;
-import org.dromara.dante.core.domain.Feedback;
-import org.dromara.dante.core.exception.PlatformRuntimeException;
+import cn.herodotus.dante.core.domain.Feedback;
+import cn.herodotus.dante.core.exception.PlatformRuntimeException;
 
 /**
  * <p>Description: Access 配置错误 </p>

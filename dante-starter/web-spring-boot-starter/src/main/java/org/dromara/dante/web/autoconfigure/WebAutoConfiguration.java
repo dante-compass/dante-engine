@@ -26,8 +26,8 @@
 package org.dromara.dante.web.autoconfigure;
 
 import jakarta.annotation.PostConstruct;
-import org.dromara.dante.core.builder.EnumDictionaryBuilder;
-import org.dromara.dante.core.function.ErrorCodeMapperBuilderCustomizer;
+import cn.herodotus.dante.core.builder.EnumDictionaryBuilder;
+import cn.herodotus.dante.core.function.ErrorCodeMapperBuilderCustomizer;
 import org.dromara.dante.message.commons.definition.strategy.EnumDictionaryCollectEventManager;
 import org.dromara.dante.web.autoconfigure.config.SecureConfiguration;
 import org.dromara.dante.web.autoconfigure.config.SpringdocConfiguration;

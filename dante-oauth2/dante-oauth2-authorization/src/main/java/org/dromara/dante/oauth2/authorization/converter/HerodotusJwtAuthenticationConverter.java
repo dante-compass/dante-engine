@@ -25,7 +25,7 @@
 
 package org.dromara.dante.oauth2.authorization.converter;
 
-import org.dromara.dante.core.constant.SystemConstants;
+import cn.herodotus.dante.core.constant.SystemConstants;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter;
 
 /**

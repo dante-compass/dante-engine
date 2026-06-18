@@ -25,8 +25,8 @@
 
 package org.dromara.dante.data.rest.servlet;
 
-import org.dromara.dante.core.domain.BaseEntity;
-import org.dromara.dante.core.domain.Result;
+import cn.herodotus.dante.core.domain.BaseEntity;
+import cn.herodotus.dante.core.domain.Result;
 import org.dromara.dante.data.commons.service.BaseWriteAndSliceService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Slice;

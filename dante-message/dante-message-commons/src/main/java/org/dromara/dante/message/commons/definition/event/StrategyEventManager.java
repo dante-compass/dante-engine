@@ -26,7 +26,7 @@
 package org.dromara.dante.message.commons.definition.event;
 
 import org.apache.commons.lang3.Strings;
-import org.dromara.dante.core.jackson.JacksonUtils;
+import cn.herodotus.dante.core.jackson.JacksonUtils;
 import org.dromara.dante.spring.context.ServiceContextHolder;
 import org.springframework.context.ApplicationEvent;
 

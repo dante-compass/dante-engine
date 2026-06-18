@@ -25,7 +25,7 @@
 
 package org.dromara.dante.assistant.access.constant;
 
-import org.dromara.dante.core.constant.BaseConstants;
+import cn.herodotus.dante.core.constant.BaseConstants;
 
 /**
  * <p>Description: 接入模块常量 </p>

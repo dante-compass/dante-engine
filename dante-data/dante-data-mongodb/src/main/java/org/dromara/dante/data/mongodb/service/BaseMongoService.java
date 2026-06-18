@@ -25,7 +25,7 @@
 
 package org.dromara.dante.data.mongodb.service;
 
-import org.dromara.dante.core.domain.BaseEntity;
+import cn.herodotus.dante.core.domain.BaseEntity;
 import org.dromara.dante.data.commons.service.BasePageableService;
 import org.dromara.dante.data.commons.service.BaseWriteAndPageService;
 import org.dromara.dante.data.mongodb.repository.BaseMongoRepository;

@@ -33,7 +33,7 @@ import cn.hutool.v7.crypto.bc.ECKeyUtil;
 import cn.hutool.v7.crypto.bc.SmUtil;
 import org.bouncycastle.crypto.engines.SM2Engine;
 import org.bouncycastle.jcajce.provider.asymmetric.ec.BCECPublicKey;
-import org.dromara.dante.core.domain.SecretKey;
+import cn.herodotus.dante.core.domain.SecretKey;
 import org.dromara.dante.web.support.crypto.AsymmetricCryptoProcessor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

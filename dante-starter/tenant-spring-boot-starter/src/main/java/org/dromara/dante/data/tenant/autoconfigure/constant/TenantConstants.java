@@ -25,7 +25,7 @@
 
 package org.dromara.dante.data.tenant.autoconfigure.constant;
 
-import org.dromara.dante.core.constant.BaseConstants;
+import cn.herodotus.dante.core.constant.BaseConstants;
 
 /**
  * <p>Description: 租户常量 </p>

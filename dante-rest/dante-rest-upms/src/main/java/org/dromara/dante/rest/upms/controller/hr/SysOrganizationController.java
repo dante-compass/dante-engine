@@ -35,7 +35,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.constraints.NotNull;
 import org.apache.commons.lang3.ObjectUtils;
-import org.dromara.dante.core.domain.Result;
+import cn.herodotus.dante.core.domain.Result;
 import org.dromara.dante.data.jpa.service.BaseJpaWriteableService;
 import org.dromara.dante.data.rest.servlet.AbstractJpaEntityWriteableController;
 import org.dromara.dante.logic.upms.converter.SysOrganizationToTreeNodeConverter;

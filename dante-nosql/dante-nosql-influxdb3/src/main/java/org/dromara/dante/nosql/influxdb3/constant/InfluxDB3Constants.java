@@ -25,7 +25,7 @@
 
 package org.dromara.dante.nosql.influxdb3.constant;
 
-import org.dromara.dante.core.constant.BaseConstants;
+import cn.herodotus.dante.core.constant.BaseConstants;
 
 /**
  * <p>Description: TSDB InfluxDB3 模块常量 </p>

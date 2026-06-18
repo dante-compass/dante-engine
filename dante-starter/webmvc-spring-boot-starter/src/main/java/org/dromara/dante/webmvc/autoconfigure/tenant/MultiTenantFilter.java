@@ -31,8 +31,8 @@ import jakarta.servlet.ServletRequest;
 import jakarta.servlet.ServletResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.commons.lang3.StringUtils;
-import org.dromara.dante.core.constant.SystemConstants;
-import org.dromara.dante.core.context.TenantContextHolder;
+import cn.herodotus.dante.core.constant.SystemConstants;
+import cn.herodotus.dante.core.context.TenantContextHolder;
 import org.dromara.dante.web.servlet.utils.HeaderUtils;
 import org.springframework.web.filter.GenericFilterBean;
 

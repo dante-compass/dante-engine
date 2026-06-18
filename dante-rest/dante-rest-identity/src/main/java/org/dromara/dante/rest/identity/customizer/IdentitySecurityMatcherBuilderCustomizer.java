@@ -25,10 +25,10 @@
 
 package org.dromara.dante.rest.identity.customizer;
 
-import org.dromara.dante.core.builder.SecurityMatcher;
-import org.dromara.dante.core.constant.SymbolConstants;
-import org.dromara.dante.core.constant.SystemConstants;
-import org.dromara.dante.core.function.SecurityMatcherBuilderCustomizer;
+import cn.herodotus.dante.core.builder.SecurityMatcher;
+import cn.herodotus.dante.core.constant.SymbolConstants;
+import cn.herodotus.dante.core.constant.SystemConstants;
+import cn.herodotus.dante.core.function.SecurityMatcherBuilderCustomizer;
 import org.dromara.dante.oauth2.commons.properties.OAuth2AuthenticationProperties;
 
 import java.util.List;

@@ -26,7 +26,7 @@
 package org.dromara.dante.assistant.oss.definition.service;
 
 import org.dromara.dante.assistant.oss.pool.S3PresignerObjectPool;
-import org.dromara.dante.core.support.pool.AbstractPooledObjectService;
+import cn.herodotus.dante.core.support.pool.AbstractPooledObjectService;
 import software.amazon.awssdk.services.s3.presigner.S3Presigner;
 
 import java.util.function.Function;

@@ -26,7 +26,7 @@
 package org.dromara.dante.rest.identity.service;
 
 import org.apache.commons.lang3.ObjectUtils;
-import org.dromara.dante.core.domain.SecretKey;
+import cn.herodotus.dante.core.domain.SecretKey;
 import org.dromara.dante.security.utils.SecurityUtils;
 import org.dromara.dante.web.support.crypto.DigitalEnvelopeProcessor;
 import org.springframework.security.oauth2.core.OAuth2AuthenticationException;

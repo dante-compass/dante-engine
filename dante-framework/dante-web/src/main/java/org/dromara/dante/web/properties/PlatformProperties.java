@@ -26,7 +26,7 @@
 package org.dromara.dante.web.properties;
 
 import com.google.common.base.MoreObjects;
-import org.dromara.dante.core.enums.Protocol;
+import cn.herodotus.dante.core.enums.Protocol;
 import org.dromara.dante.spring.enums.Architecture;
 import org.dromara.dante.spring.enums.DataAccessStrategy;
 import org.dromara.dante.web.constant.WebConstants;

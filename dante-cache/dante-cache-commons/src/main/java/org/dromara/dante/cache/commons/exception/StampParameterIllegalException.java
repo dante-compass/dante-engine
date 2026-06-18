@@ -25,7 +25,7 @@
 
 package org.dromara.dante.cache.commons.exception;
 
-import org.dromara.dante.core.exception.PlatformException;
+import cn.herodotus.dante.core.exception.PlatformException;
 
 /**
  * <p>Description: 请求参数中缺少幂等Token错误 </p>

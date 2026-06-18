@@ -27,7 +27,7 @@ package org.dromara.dante.persistence.sas.jpa.jackson;
 
 import cn.hutool.v7.core.reflect.FieldUtil;
 import org.apache.commons.collections4.CollectionUtils;
-import org.dromara.dante.core.jackson.JsonNodeUtils;
+import cn.herodotus.dante.core.jackson.JsonNodeUtils;
 import org.dromara.dante.security.domain.HerodotusGrantedAuthority;
 import org.springframework.security.oauth2.core.ClientAuthenticationMethod;
 import org.springframework.security.oauth2.server.authorization.authentication.OAuth2ClientAuthenticationToken;

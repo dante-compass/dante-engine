@@ -25,8 +25,8 @@
 
 package org.dromara.dante.data.jpa.service;
 
-import org.dromara.dante.core.constant.SymbolConstants;
-import org.dromara.dante.core.domain.BaseEntity;
+import cn.herodotus.dante.core.constant.SymbolConstants;
+import cn.herodotus.dante.core.domain.BaseEntity;
 
 import java.io.Serializable;
 

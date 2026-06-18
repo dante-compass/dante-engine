@@ -25,7 +25,7 @@
 
 package org.dromara.dante.assistant.oss.pool;
 
-import org.dromara.dante.core.support.pool.AbstractObjectPool;
+import cn.herodotus.dante.core.support.pool.AbstractObjectPool;
 import software.amazon.awssdk.services.s3.presigner.S3Presigner;
 
 /**

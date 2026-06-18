@@ -25,10 +25,10 @@
 
 package org.dromara.dante.assistant.oss.constant;
 
-import org.dromara.dante.core.feedback.BadRequestFeedback;
-import org.dromara.dante.core.feedback.ConflictFeedback;
-import org.dromara.dante.core.feedback.ForbiddenFeedback;
-import org.dromara.dante.core.feedback.NotFoundFeedback;
+import cn.herodotus.dante.core.feedback.BadRequestFeedback;
+import cn.herodotus.dante.core.feedback.ConflictFeedback;
+import cn.herodotus.dante.core.feedback.ForbiddenFeedback;
+import cn.herodotus.dante.core.feedback.NotFoundFeedback;
 
 /**
  * <p>Description: 对象存储模块错误代码 </p>

@@ -27,7 +27,7 @@ package org.dromara.dante.oauth2.extension.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
-import org.dromara.dante.core.domain.BaseDto;
+import cn.herodotus.dante.core.domain.BaseDto;
 
 /**
  * <p>Description: 登录提示信息 </p>

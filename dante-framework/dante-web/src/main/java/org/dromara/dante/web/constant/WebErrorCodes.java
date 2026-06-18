@@ -25,7 +25,7 @@
 
 package org.dromara.dante.web.constant;
 
-import org.dromara.dante.core.feedback.NotAcceptableFeedback;
+import cn.herodotus.dante.core.feedback.NotAcceptableFeedback;
 
 /**
  * <p>Description: Cache 相关错误代码 </p>

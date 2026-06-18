@@ -31,7 +31,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotNull;
 import org.dromara.dante.assistant.oss.definition.argument.AbstractObjectVersionIdArgument;
 import org.dromara.dante.assistant.oss.enums.ObjectRetentionMode;
-import org.dromara.dante.core.constant.SystemConstants;
+import cn.herodotus.dante.core.constant.SystemConstants;
 
 import java.time.LocalDate;
 

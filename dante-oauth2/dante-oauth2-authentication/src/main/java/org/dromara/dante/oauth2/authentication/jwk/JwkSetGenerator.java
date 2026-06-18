@@ -32,7 +32,7 @@ import com.nimbusds.jose.util.Base64;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.dromara.dante.core.utils.SecurityProvider;
+import cn.herodotus.dante.core.utils.SecurityProvider;
 import org.dromara.dante.oauth2.commons.properties.OAuth2AuthenticationProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

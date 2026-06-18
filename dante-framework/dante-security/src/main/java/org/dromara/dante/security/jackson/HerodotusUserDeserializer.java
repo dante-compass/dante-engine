@@ -25,7 +25,7 @@
 
 package org.dromara.dante.security.jackson;
 
-import org.dromara.dante.core.jackson.JsonNodeUtils;
+import cn.herodotus.dante.core.jackson.JsonNodeUtils;
 import org.dromara.dante.security.domain.HerodotusGrantedAuthority;
 import org.dromara.dante.security.domain.HerodotusUser;
 import org.springframework.security.core.GrantedAuthority;

@@ -29,7 +29,7 @@ import com.google.common.base.MoreObjects;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
-import org.dromara.dante.core.constant.RegexPool;
+import cn.herodotus.dante.core.constant.RegexPool;
 
 /**
  * <p>Description: 对象存储Bucket通用请求参数抽象定义 </p>

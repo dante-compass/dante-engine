@@ -31,7 +31,7 @@ import org.dromara.dante.assistant.oss.entity.domain.ChecksumDomain;
 import org.dromara.dante.assistant.oss.entity.domain.ObjectLockDomain;
 import org.dromara.dante.assistant.oss.entity.domain.PutObjectDomain;
 import org.dromara.dante.assistant.oss.entity.domain.SsekmsDomain;
-import org.dromara.dante.core.utils.TimeUtils;
+import cn.herodotus.dante.core.utils.TimeUtils;
 import org.springframework.core.convert.converter.Converter;
 import software.amazon.awssdk.services.s3.model.PutObjectRequest;
 

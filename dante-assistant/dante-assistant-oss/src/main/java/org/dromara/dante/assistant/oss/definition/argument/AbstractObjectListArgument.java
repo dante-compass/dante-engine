@@ -27,7 +27,7 @@ package org.dromara.dante.assistant.oss.definition.argument;
 
 import com.google.common.base.MoreObjects;
 import io.swagger.v3.oas.annotations.media.Schema;
-import org.dromara.dante.core.constant.SymbolConstants;
+import cn.herodotus.dante.core.constant.SymbolConstants;
 
 /**
  * <p>Description: 对象列表相关通用请求参数 </p>

@@ -25,7 +25,7 @@
 
 package org.dromara.dante.autoconfigure.file;
 
-import org.dromara.dante.core.support.file.FileTemplate;
+import cn.herodotus.dante.core.support.file.FileTemplate;
 
 /**
  * <p>Description: 系统默认文件操作模版 </p>

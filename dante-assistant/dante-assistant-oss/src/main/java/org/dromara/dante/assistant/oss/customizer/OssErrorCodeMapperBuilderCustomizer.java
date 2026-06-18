@@ -26,9 +26,9 @@
 package org.dromara.dante.assistant.oss.customizer;
 
 import org.dromara.dante.assistant.oss.constant.OssErrorCode;
-import org.dromara.dante.core.builder.ErrorCodeMapperBuilder;
-import org.dromara.dante.core.constant.BuilderCustomizerOrdered;
-import org.dromara.dante.core.function.ErrorCodeMapperBuilderCustomizer;
+import cn.herodotus.dante.core.builder.ErrorCodeMapperBuilder;
+import cn.herodotus.dante.core.constant.BuilderCustomizerOrdered;
+import cn.herodotus.dante.core.function.ErrorCodeMapperBuilderCustomizer;
 import org.springframework.core.Ordered;
 
 /**

@@ -25,7 +25,7 @@
 
 package org.dromara.dante.persistence.sas.jpa.jackson;
 
-import org.dromara.dante.core.jackson.JacksonConstants;
+import cn.herodotus.dante.core.jackson.JacksonConstants;
 import org.springframework.security.jackson.SecurityJacksonModule;
 import org.springframework.security.oauth2.core.AuthorizationGrantType;
 import org.springframework.security.oauth2.core.ClientAuthenticationMethod;

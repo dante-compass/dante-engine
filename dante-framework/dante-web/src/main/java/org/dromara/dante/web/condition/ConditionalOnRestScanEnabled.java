@@ -25,7 +25,7 @@
 
 package org.dromara.dante.web.condition;
 
-import org.dromara.dante.core.constant.BaseConstants;
+import cn.herodotus.dante.core.constant.BaseConstants;
 import org.dromara.dante.web.constant.WebConstants;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBooleanProperty;
 

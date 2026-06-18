@@ -25,7 +25,7 @@
 
 package org.dromara.dante.data.tenant.autoconfigure.hibernate;
 
-import org.dromara.dante.core.context.TenantContextHolder;
+import cn.herodotus.dante.core.context.TenantContextHolder;
 import org.hibernate.cfg.AvailableSettings;
 import org.hibernate.context.spi.CurrentTenantIdentifierResolver;
 import org.slf4j.Logger;

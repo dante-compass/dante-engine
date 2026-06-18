@@ -25,7 +25,7 @@
 
 package org.dromara.dante.spring.jackson;
 
-import org.dromara.dante.core.utils.TimeUtils;
+import cn.herodotus.dante.core.utils.TimeUtils;
 import tools.jackson.core.JacksonException;
 import tools.jackson.core.JsonParser;
 import tools.jackson.databind.DeserializationContext;

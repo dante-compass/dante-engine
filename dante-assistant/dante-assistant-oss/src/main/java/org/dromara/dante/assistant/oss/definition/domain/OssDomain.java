@@ -25,7 +25,7 @@
 
 package org.dromara.dante.assistant.oss.definition.domain;
 
-import org.dromara.dante.core.domain.BaseModel;
+import cn.herodotus.dante.core.domain.BaseModel;
 
 /**
  * <p>Description: 对象存储共享实体统一定义 </p>

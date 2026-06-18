@@ -26,7 +26,7 @@
 package org.dromara.dante.assistant.captcha.exception;
 
 import org.dromara.dante.assistant.captcha.constant.CaptchaErrorCodes;
-import org.dromara.dante.core.domain.Feedback;
+import cn.herodotus.dante.core.domain.Feedback;
 
 /**
  * <p>Description: 验证码处理器不存在 </p>

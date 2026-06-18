@@ -28,11 +28,11 @@ package org.dromara.dante.rest.upms.converter;
 import cn.hutool.v7.core.tree.TreeNode;
 import org.apache.commons.lang3.BooleanUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.dromara.dante.core.domain.view.vue.BaseMeta;
-import org.dromara.dante.core.domain.view.vue.ChildMeta;
-import org.dromara.dante.core.domain.view.vue.ParentMeta;
-import org.dromara.dante.core.domain.view.vue.RootMeta;
-import org.dromara.dante.core.utils.WellFormedUtils;
+import cn.herodotus.dante.core.domain.view.vue.BaseMeta;
+import cn.herodotus.dante.core.domain.view.vue.ChildMeta;
+import cn.herodotus.dante.core.domain.view.vue.ParentMeta;
+import cn.herodotus.dante.core.domain.view.vue.RootMeta;
+import cn.herodotus.dante.core.utils.WellFormedUtils;
 import org.dromara.dante.logic.upms.entity.security.SysElement;
 import org.springframework.core.convert.converter.Converter;
 

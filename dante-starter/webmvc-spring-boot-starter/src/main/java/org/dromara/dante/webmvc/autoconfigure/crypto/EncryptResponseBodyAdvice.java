@@ -27,7 +27,7 @@ package org.dromara.dante.webmvc.autoconfigure.crypto;
 
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.dromara.dante.core.jackson.JacksonUtils;
+import cn.herodotus.dante.core.jackson.JacksonUtils;
 import org.dromara.dante.web.support.crypto.DigitalEnvelopeProcessor;
 import org.dromara.dante.web.annotation.Crypto;
 import org.dromara.dante.web.exception.SessionInvalidException;

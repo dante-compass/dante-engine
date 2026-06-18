@@ -27,8 +27,8 @@ package org.dromara.dante.message.autoconfigure.mqtt;
 
 import cn.hutool.v7.core.util.ByteUtil;
 import jakarta.annotation.PostConstruct;
-import org.dromara.dante.core.utils.ListUtils;
-import org.dromara.dante.core.utils.NumberUtils;
+import cn.herodotus.dante.core.utils.ListUtils;
+import cn.herodotus.dante.core.utils.NumberUtils;
 import org.dromara.dante.message.autoconfigure.event.IntegrationEventAutoConfiguration;
 import org.dromara.dante.message.autoconfigure.mqtt.gateway.MqttMessagingGateway;
 import org.dromara.dante.message.commons.constant.Channels;

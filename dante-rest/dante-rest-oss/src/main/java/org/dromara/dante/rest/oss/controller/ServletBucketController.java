@@ -42,7 +42,7 @@ import org.dromara.dante.assistant.oss.entity.result.DeleteBucketResult;
 import org.dromara.dante.assistant.oss.entity.result.ListBucketDetailsResult;
 import org.dromara.dante.assistant.oss.entity.result.PutBucketPolicyResult;
 import org.dromara.dante.assistant.oss.service.servlet.ServletBucketService;
-import org.dromara.dante.core.domain.Result;
+import cn.herodotus.dante.core.domain.Result;
 import org.dromara.dante.web.annotation.AccessLimited;
 import org.dromara.dante.web.annotation.Idempotent;
 import org.dromara.dante.web.definition.Controller;

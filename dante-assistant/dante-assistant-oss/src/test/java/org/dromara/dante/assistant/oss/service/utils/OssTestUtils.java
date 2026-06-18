@@ -28,7 +28,7 @@ package org.dromara.dante.assistant.oss.service.utils;
 import org.dromara.dante.assistant.oss.config.AssistantOssConfiguration;
 import org.dromara.dante.assistant.oss.pool.AwsConfigurer;
 import org.dromara.dante.assistant.oss.properties.OssProperties;
-import org.dromara.dante.core.constant.SystemConstants;
+import cn.herodotus.dante.core.constant.SystemConstants;
 
 import java.io.File;
 

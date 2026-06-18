@@ -27,7 +27,7 @@ package org.dromara.dante.web.context;
 
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.dromara.dante.core.utils.WellFormedUtils;
+import cn.herodotus.dante.core.utils.WellFormedUtils;
 import org.dromara.dante.spring.context.ServiceContextHolder;
 import org.dromara.dante.spring.enums.Architecture;
 import org.dromara.dante.web.properties.EndpointProperties;

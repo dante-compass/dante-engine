@@ -30,7 +30,7 @@ import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.dromara.dante.cache.commons.exception.StampHasExpiredException;
 import org.dromara.dante.cache.jetcache.stamp.AbstractStampManager;
-import org.dromara.dante.core.domain.SecretKey;
+import cn.herodotus.dante.core.domain.SecretKey;
 import org.dromara.dante.web.constant.WebConstants;
 import org.dromara.dante.web.exception.SessionInvalidException;
 import org.dromara.dante.web.support.crypto.AsymmetricCryptoProcessor;

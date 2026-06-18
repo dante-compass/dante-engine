@@ -25,7 +25,7 @@
 
 package org.dromara.dante.assistant.captcha.constant;
 
-import org.dromara.dante.core.feedback.NotAcceptableFeedback;
+import cn.herodotus.dante.core.feedback.NotAcceptableFeedback;
 
 /**
  * <p>Description: Captcha 模块错误代码 </p>

@@ -31,8 +31,8 @@ import com.google.common.base.MoreObjects;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Column;
 import jakarta.persistence.MappedSuperclass;
-import org.dromara.dante.core.constant.SystemConstants;
-import org.dromara.dante.core.domain.BaseEntity;
+import cn.herodotus.dante.core.constant.SystemConstants;
+import cn.herodotus.dante.core.domain.BaseEntity;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 

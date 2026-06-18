@@ -32,7 +32,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.apache.commons.lang3.ObjectUtils;
 import org.dromara.dante.assistant.access.definition.domain.AccessResponse;
 import org.dromara.dante.assistant.access.factory.AccessHandlerStrategyFactory;
-import org.dromara.dante.core.domain.Result;
+import cn.herodotus.dante.core.domain.Result;
 import org.dromara.dante.security.enums.AccountCategory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;

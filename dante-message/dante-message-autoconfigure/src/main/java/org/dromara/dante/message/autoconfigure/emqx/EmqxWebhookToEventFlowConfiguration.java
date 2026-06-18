@@ -26,7 +26,7 @@
 package org.dromara.dante.message.autoconfigure.emqx;
 
 import jakarta.annotation.PostConstruct;
-import org.dromara.dante.core.constant.SystemConstants;
+import cn.herodotus.dante.core.constant.SystemConstants;
 import org.dromara.dante.message.commons.constant.Channels;
 import org.dromara.dante.message.emqx.condition.ConditionalOnEventSource;
 import org.dromara.dante.message.emqx.condition.EventSource;

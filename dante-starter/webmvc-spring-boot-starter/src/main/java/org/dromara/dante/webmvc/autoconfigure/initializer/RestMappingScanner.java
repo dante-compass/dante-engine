@@ -29,7 +29,7 @@ import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.dromara.dante.core.constant.SymbolConstants;
+import cn.herodotus.dante.core.constant.SymbolConstants;
 import org.dromara.dante.message.commons.definition.strategy.RestMappingCollectEventManager;
 import org.dromara.dante.security.domain.attribute.RestMapping;
 import org.dromara.dante.web.autoconfigure.initializer.AbstractRestMappingScanner;

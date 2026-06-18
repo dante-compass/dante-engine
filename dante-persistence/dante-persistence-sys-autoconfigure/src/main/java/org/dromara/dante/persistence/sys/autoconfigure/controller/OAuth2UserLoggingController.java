@@ -35,7 +35,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.tags.Tags;
 import jakarta.validation.constraints.NotNull;
-import org.dromara.dante.core.domain.Result;
+import cn.herodotus.dante.core.domain.Result;
 import org.dromara.dante.data.rest.servlet.PaginationController;
 import org.dromara.dante.persistence.commons.definition.HerodotusUserLoggingService;
 import org.dromara.dante.web.annotation.AccessLimited;

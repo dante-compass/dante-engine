@@ -25,7 +25,7 @@
 
 package org.dromara.dante.security.jackson;
 
-import org.dromara.dante.core.jackson.JacksonConstants;
+import cn.herodotus.dante.core.jackson.JacksonConstants;
 import org.dromara.dante.security.domain.FormLoginWebAuthenticationDetails;
 import org.dromara.dante.security.domain.HerodotusGrantedAuthority;
 import org.dromara.dante.security.domain.HerodotusUser;

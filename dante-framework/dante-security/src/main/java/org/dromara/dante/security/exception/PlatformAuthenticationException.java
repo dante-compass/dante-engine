@@ -25,10 +25,10 @@
 
 package org.dromara.dante.security.exception;
 
-import org.dromara.dante.core.constant.ErrorCodes;
-import org.dromara.dante.core.domain.Feedback;
-import org.dromara.dante.core.domain.Result;
-import org.dromara.dante.core.exception.HerodotusException;
+import cn.herodotus.dante.core.constant.ErrorCodes;
+import cn.herodotus.dante.core.domain.Feedback;
+import cn.herodotus.dante.core.domain.Result;
+import cn.herodotus.dante.core.exception.HerodotusException;
 import org.springframework.security.core.AuthenticationException;
 
 /**

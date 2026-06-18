@@ -25,7 +25,7 @@
 
 package org.dromara.dante.web.exception;
 
-import org.dromara.dante.core.exception.PlatformRuntimeException;
+import cn.herodotus.dante.core.exception.PlatformRuntimeException;
 
 /**
  * <p>Description: 非法操作Exception </p>

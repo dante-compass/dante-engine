@@ -26,7 +26,7 @@
 package org.dromara.dante.assistant.access.condition;
 
 import org.dromara.dante.assistant.access.constant.AccessConstants;
-import org.dromara.dante.core.constant.BaseConstants;
+import cn.herodotus.dante.core.constant.BaseConstants;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 
 import java.lang.annotation.*;

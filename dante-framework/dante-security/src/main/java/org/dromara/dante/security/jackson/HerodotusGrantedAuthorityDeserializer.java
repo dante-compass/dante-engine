@@ -25,7 +25,7 @@
 
 package org.dromara.dante.security.jackson;
 
-import org.dromara.dante.core.jackson.JsonNodeUtils;
+import cn.herodotus.dante.core.jackson.JsonNodeUtils;
 import org.dromara.dante.security.domain.HerodotusGrantedAuthority;
 import tools.jackson.core.JacksonException;
 import tools.jackson.core.JsonParser;

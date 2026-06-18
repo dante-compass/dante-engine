@@ -26,8 +26,8 @@
 package org.dromara.dante.oauth2.authorization.config;
 
 import jakarta.annotation.PostConstruct;
-import org.dromara.dante.core.builder.SecurityMatcher;
-import org.dromara.dante.core.function.SecurityMatcherBuilderCustomizer;
+import cn.herodotus.dante.core.builder.SecurityMatcher;
+import cn.herodotus.dante.core.function.SecurityMatcherBuilderCustomizer;
 import org.dromara.dante.oauth2.authorization.attribute.RestSecurityAttributeStorage;
 import org.dromara.dante.oauth2.authorization.attribute.SecurityAttributeAnalyzer;
 import org.dromara.dante.oauth2.authorization.customizer.OAuth2AuthorizationSecurityMatcherBuilderCustomizer;

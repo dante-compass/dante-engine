@@ -25,8 +25,8 @@
 
 package org.dromara.dante.spring.exception.api;
 
-import org.dromara.dante.core.domain.Feedback;
-import org.dromara.dante.core.exception.PlatformRuntimeException;
+import cn.herodotus.dante.core.domain.Feedback;
+import cn.herodotus.dante.core.exception.PlatformRuntimeException;
 
 /**
  * <p>Description: Open API 请求失败错误 </p>

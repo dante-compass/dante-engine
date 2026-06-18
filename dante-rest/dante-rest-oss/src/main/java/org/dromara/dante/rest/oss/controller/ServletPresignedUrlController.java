@@ -34,7 +34,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.tags.Tags;
 import org.dromara.dante.assistant.oss.service.manager.PresignedUrlService;
-import org.dromara.dante.core.domain.Result;
+import cn.herodotus.dante.core.domain.Result;
 import org.dromara.dante.web.annotation.Idempotent;
 import org.dromara.dante.web.definition.Controller;
 import org.dromara.dante.web.definition.dto.OssPresigned;

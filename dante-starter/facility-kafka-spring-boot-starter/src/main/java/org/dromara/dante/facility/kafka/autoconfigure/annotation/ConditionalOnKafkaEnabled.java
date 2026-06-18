@@ -25,7 +25,7 @@
 
 package org.dromara.dante.facility.kafka.autoconfigure.annotation;
 
-import org.dromara.dante.core.constant.BaseConstants;
+import cn.herodotus.dante.core.constant.BaseConstants;
 import org.dromara.dante.message.commons.constant.MessageConstants;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 

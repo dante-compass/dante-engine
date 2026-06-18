@@ -27,7 +27,7 @@ package org.dromara.dante.data.tenant.autoconfigure.hibernate;
 
 import cn.hutool.v7.extra.spring.SpringUtil;
 import org.apache.commons.lang3.ObjectUtils;
-import org.dromara.dante.core.constant.SystemConstants;
+import cn.herodotus.dante.core.constant.SystemConstants;
 import org.dromara.dante.data.tenant.autoconfigure.factory.MultiTenantDataSourceFactory;
 import org.hibernate.cfg.AvailableSettings;
 import org.hibernate.engine.jdbc.connections.spi.AbstractDataSourceBasedMultiTenantConnectionProviderImpl;

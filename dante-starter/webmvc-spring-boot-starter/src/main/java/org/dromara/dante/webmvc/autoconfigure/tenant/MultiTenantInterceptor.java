@@ -27,7 +27,7 @@ package org.dromara.dante.webmvc.autoconfigure.tenant;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.dromara.dante.core.context.TenantContextHolder;
+import cn.herodotus.dante.core.context.TenantContextHolder;
 import org.dromara.dante.web.servlet.utils.HeaderUtils;
 import org.dromara.dante.web.servlet.utils.SessionUtils;
 import org.slf4j.Logger;

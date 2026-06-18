@@ -28,7 +28,7 @@ package org.dromara.dante.oauth2.authorization.attribute;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.Strings;
-import org.dromara.dante.core.constant.SymbolConstants;
+import cn.herodotus.dante.core.constant.SymbolConstants;
 import org.dromara.dante.oauth2.authorization.cache.HerodotusRequest;
 import org.dromara.dante.oauth2.authorization.definition.HerodotusSecurityAttribute;
 import org.dromara.dante.oauth2.authorization.servlet.ServletOAuth2ResourceMatcherConfigurer;

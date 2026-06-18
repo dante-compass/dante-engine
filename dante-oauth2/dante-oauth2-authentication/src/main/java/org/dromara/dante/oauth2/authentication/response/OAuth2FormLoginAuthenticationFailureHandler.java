@@ -31,7 +31,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.dromara.dante.core.domain.Result;
+import cn.herodotus.dante.core.domain.Result;
 import org.dromara.dante.security.exception.SecurityGlobalExceptionHandler;
 import org.dromara.dante.web.servlet.utils.SessionUtils;
 import org.slf4j.Logger;

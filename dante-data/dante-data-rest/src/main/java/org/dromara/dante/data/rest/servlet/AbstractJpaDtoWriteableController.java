@@ -25,8 +25,8 @@
 
 package org.dromara.dante.data.rest.servlet;
 
-import org.dromara.dante.core.domain.BaseDomain;
-import org.dromara.dante.core.domain.BaseEntity;
+import cn.herodotus.dante.core.domain.BaseDomain;
+import cn.herodotus.dante.core.domain.BaseEntity;
 import org.dromara.dante.data.jpa.service.BaseJpaWriteableService;
 
 import java.io.Serializable;

@@ -25,7 +25,7 @@
 
 package org.dromara.dante.security.definition;
 
-import org.dromara.dante.core.constant.SystemConstants;
+import cn.herodotus.dante.core.constant.SystemConstants;
 import org.dromara.dante.security.domain.HerodotusGrantedAuthority;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.oauth2.core.OAuth2AuthenticatedPrincipal;

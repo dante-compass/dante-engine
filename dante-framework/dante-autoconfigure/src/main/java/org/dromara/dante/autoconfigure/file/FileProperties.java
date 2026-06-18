@@ -26,8 +26,8 @@
 package org.dromara.dante.autoconfigure.file;
 
 import com.google.common.base.MoreObjects;
-import org.dromara.dante.core.constant.BaseConstants;
-import org.dromara.dante.core.constant.SystemConstants;
+import cn.herodotus.dante.core.constant.BaseConstants;
+import cn.herodotus.dante.core.constant.SystemConstants;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**

@@ -25,7 +25,7 @@
 
 package org.dromara.dante.oauth2.authentication.customizer;
 
-import org.dromara.dante.core.constant.SystemConstants;
+import cn.herodotus.dante.core.constant.SystemConstants;
 import org.dromara.dante.oauth2.authentication.configurer.OAuth2AuthenticationConfigurerManager;
 import org.dromara.dante.oauth2.authentication.consumer.OAuth2ClientRegistrationAuthenticationProviderConsumer;
 import org.dromara.dante.oauth2.authentication.consumer.OAuth2TokenEndpointAuthenticationProviderConsumer;

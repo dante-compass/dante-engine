@@ -25,7 +25,7 @@
 
 package org.dromara.dante.persistence.sas.jpa.jackson;
 
-import org.dromara.dante.core.jackson.JsonNodeUtils;
+import cn.herodotus.dante.core.jackson.JsonNodeUtils;
 import org.springframework.security.oauth2.server.authorization.settings.TokenSettings;
 import tools.jackson.core.JacksonException;
 import tools.jackson.core.JsonParser;

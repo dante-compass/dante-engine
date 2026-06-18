@@ -25,7 +25,7 @@
 
 package org.dromara.dante.oauth2.authentication.provider;
 
-import org.dromara.dante.core.constant.SystemConstants;
+import cn.herodotus.dante.core.constant.SystemConstants;
 import org.dromara.dante.oauth2.authentication.utils.DPoPProofVerifier;
 import org.dromara.dante.oauth2.authentication.utils.OAuth2AuthenticationProviderUtils;
 import org.dromara.dante.oauth2.commons.properties.OAuth2AuthenticationProperties;

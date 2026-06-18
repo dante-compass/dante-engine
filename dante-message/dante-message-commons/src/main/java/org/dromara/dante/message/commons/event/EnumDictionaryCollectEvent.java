@@ -25,7 +25,7 @@
 
 package org.dromara.dante.message.commons.event;
 
-import org.dromara.dante.core.domain.Dictionary;
+import cn.herodotus.dante.core.domain.Dictionary;
 import org.dromara.dante.message.commons.definition.event.AbstractApplicationEvent;
 
 import java.util.List;

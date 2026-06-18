@@ -27,7 +27,7 @@ package org.dromara.dante.cache.jetcache.enhance;
 
 import com.alicp.jetcache.Cache;
 import org.apache.commons.lang3.ObjectUtils;
-import org.dromara.dante.core.jackson.JacksonUtils;
+import cn.herodotus.dante.core.jackson.JacksonUtils;
 import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -28,7 +28,7 @@ package org.dromara.dante.rest.upms.dto;
 import com.google.common.base.MoreObjects;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotNull;
-import org.dromara.dante.core.domain.AbstractDto;
+import cn.herodotus.dante.core.domain.AbstractDto;
 
 /**
  * <p>Description: 删除人员归属参数BO对象 </p>

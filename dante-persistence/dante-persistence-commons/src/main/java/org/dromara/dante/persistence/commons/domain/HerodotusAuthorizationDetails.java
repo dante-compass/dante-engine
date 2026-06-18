@@ -26,7 +26,7 @@
 package org.dromara.dante.persistence.commons.domain;
 
 import com.google.common.base.MoreObjects;
-import org.dromara.dante.core.domain.BaseEntity;
+import cn.herodotus.dante.core.domain.BaseEntity;
 import org.dromara.dante.persistence.commons.definition.AuthorizationDetails;
 
 import java.time.LocalDateTime;

@@ -28,7 +28,7 @@ package org.dromara.dante.web.definition.utils;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.Strings;
-import org.dromara.dante.core.constant.SymbolConstants;
+import cn.herodotus.dante.core.constant.SymbolConstants;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 

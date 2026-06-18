@@ -27,7 +27,7 @@ package org.dromara.dante.web.autoconfigure.properties;
 
 import com.google.common.base.MoreObjects;
 import org.apache.commons.collections4.CollectionUtils;
-import org.dromara.dante.core.constant.SystemConstants;
+import cn.herodotus.dante.core.constant.SystemConstants;
 import org.dromara.dante.web.constant.WebConstants;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

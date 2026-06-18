@@ -36,7 +36,7 @@ import io.swagger.v3.oas.annotations.tags.Tags;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.constraints.NotBlank;
 import org.apache.commons.lang3.ObjectUtils;
-import org.dromara.dante.core.domain.Result;
+import cn.herodotus.dante.core.domain.Result;
 import org.dromara.dante.persistence.commons.event.SignOutComplianceEvent;
 import org.dromara.dante.spring.context.ServiceContextHolder;
 import org.springframework.http.MediaType;

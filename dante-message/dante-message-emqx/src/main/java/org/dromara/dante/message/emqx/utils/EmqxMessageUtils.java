@@ -27,7 +27,7 @@ package org.dromara.dante.message.emqx.utils;
 
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.Strings;
-import org.dromara.dante.core.constant.SymbolConstants;
+import cn.herodotus.dante.core.constant.SymbolConstants;
 import org.dromara.dante.message.emqx.domain.SystemTopic;
 import org.springframework.messaging.Message;
 

@@ -26,7 +26,7 @@
 package org.dromara.dante.security.domain;
 
 import com.google.common.base.MoreObjects;
-import org.dromara.dante.core.constant.SystemConstants;
+import cn.herodotus.dante.core.constant.SystemConstants;
 import org.dromara.dante.security.definition.HerodotusPrincipal;
 import org.springframework.messaging.simp.user.DestinationUserNameProvider;
 

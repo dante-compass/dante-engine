@@ -36,7 +36,7 @@ import me.zhyd.oauth.model.AuthCallback;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.dromara.dante.assistant.access.processor.JustAuthProcessor;
-import org.dromara.dante.core.domain.Result;
+import cn.herodotus.dante.core.domain.Result;
 import org.dromara.dante.rest.upms.event.AutomaticSignInEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;

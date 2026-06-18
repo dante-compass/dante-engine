@@ -25,7 +25,7 @@
 
 package org.dromara.dante.assistant.oss.definition.result;
 
-import org.dromara.dante.core.domain.BaseModel;
+import cn.herodotus.dante.core.domain.BaseModel;
 
 /**
  * <p>Description: 对象存储响应结果统一定义 </p>

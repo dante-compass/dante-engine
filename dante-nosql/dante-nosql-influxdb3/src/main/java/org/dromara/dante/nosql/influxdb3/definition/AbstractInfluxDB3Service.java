@@ -26,8 +26,8 @@
 package org.dromara.dante.nosql.influxdb3.definition;
 
 import com.influxdb.v3.client.InfluxDBClient;
-import org.dromara.dante.core.support.pool.AbstractObjectPool;
-import org.dromara.dante.core.support.pool.AbstractPooledObjectService;
+import cn.herodotus.dante.core.support.pool.AbstractObjectPool;
+import cn.herodotus.dante.core.support.pool.AbstractPooledObjectService;
 
 /**
  * <p>Description: 基础的 InfluxDB3 操作服务 </p>

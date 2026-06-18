@@ -26,7 +26,7 @@
 package org.dromara.dante.oauth2.authorization.autoconfigure.processor;
 
 import org.apache.commons.collections4.CollectionUtils;
-import org.dromara.dante.core.domain.Dictionary;
+import cn.herodotus.dante.core.domain.Dictionary;
 import org.dromara.dante.logic.upms.converter.SysEnumToSysDictionaryConverter;
 import org.dromara.dante.logic.upms.entity.security.SysDictionary;
 import org.dromara.dante.logic.upms.entity.security.SysEnum;

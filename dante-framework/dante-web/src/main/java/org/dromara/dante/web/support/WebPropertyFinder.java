@@ -26,7 +26,7 @@
 package org.dromara.dante.web.support;
 
 
-import org.dromara.dante.core.constant.BaseConstants;
+import cn.herodotus.dante.core.constant.BaseConstants;
 import org.dromara.dante.spring.context.PropertyResolver;
 import org.dromara.dante.web.constant.WebConstants;
 import org.springframework.context.ApplicationContext;

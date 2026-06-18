@@ -25,7 +25,7 @@
 
 package org.dromara.dante.persistence.commons.definition;
 
-import org.dromara.dante.core.constant.SystemConstants;
+import cn.herodotus.dante.core.constant.SystemConstants;
 import org.dromara.dante.security.definition.AuthenticationManager;
 import org.dromara.dante.security.domain.RegisteredClientTransmitter;
 import org.dromara.dante.spring.context.ServiceContextHolder;

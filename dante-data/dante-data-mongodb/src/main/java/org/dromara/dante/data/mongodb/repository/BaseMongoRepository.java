@@ -25,7 +25,7 @@
 
 package org.dromara.dante.data.mongodb.repository;
 
-import org.dromara.dante.core.domain.BaseEntity;
+import cn.herodotus.dante.core.domain.BaseEntity;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.repository.NoRepositoryBean;
 

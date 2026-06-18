@@ -29,7 +29,7 @@ import cn.hutool.v7.http.useragent.UserAgent;
 import cn.hutool.v7.http.useragent.UserAgentUtil;
 import com.google.common.base.MoreObjects;
 import org.apache.commons.lang3.ObjectUtils;
-import org.dromara.dante.core.domain.BaseModel;
+import cn.herodotus.dante.core.domain.BaseModel;
 
 import java.util.Date;
 

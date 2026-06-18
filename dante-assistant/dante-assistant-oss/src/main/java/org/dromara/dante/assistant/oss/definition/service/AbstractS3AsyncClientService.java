@@ -27,7 +27,7 @@ package org.dromara.dante.assistant.oss.definition.service;
 
 import org.dromara.dante.assistant.oss.exception.*;
 import org.dromara.dante.assistant.oss.pool.S3AsyncClientObjectPool;
-import org.dromara.dante.core.support.pool.AbstractPooledObjectService;
+import cn.herodotus.dante.core.support.pool.AbstractPooledObjectService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import software.amazon.awssdk.services.s3.S3AsyncClient;

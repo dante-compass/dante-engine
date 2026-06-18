@@ -26,7 +26,7 @@
 package org.dromara.dante.message.emqx.definition.domain;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.dromara.dante.core.domain.BaseModel;
+import cn.herodotus.dante.core.domain.BaseModel;
 
 import java.time.LocalDateTime;
 

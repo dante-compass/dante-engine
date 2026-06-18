@@ -25,8 +25,8 @@
 
 package org.dromara.dante.logic.message.customizer;
 
-import org.dromara.dante.core.builder.EnumDictionaryBuilder;
-import org.dromara.dante.core.function.EnumDictionaryBuilderCustomizer;
+import cn.herodotus.dante.core.builder.EnumDictionaryBuilder;
+import cn.herodotus.dante.core.function.EnumDictionaryBuilderCustomizer;
 import org.dromara.dante.logic.message.enums.NotificationCategory;
 
 /**

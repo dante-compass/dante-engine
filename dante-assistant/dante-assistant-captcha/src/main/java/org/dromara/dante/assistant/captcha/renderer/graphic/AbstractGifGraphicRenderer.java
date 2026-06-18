@@ -30,7 +30,7 @@ import com.madgag.gif.fmsware.AnimatedGifEncoder;
 import org.apache.commons.lang3.StringUtils;
 import org.dromara.dante.assistant.captcha.domain.Metadata;
 import org.dromara.dante.assistant.captcha.provider.ResourceProvider;
-import org.dromara.dante.core.constant.SymbolConstants;
+import cn.herodotus.dante.core.constant.SymbolConstants;
 
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;

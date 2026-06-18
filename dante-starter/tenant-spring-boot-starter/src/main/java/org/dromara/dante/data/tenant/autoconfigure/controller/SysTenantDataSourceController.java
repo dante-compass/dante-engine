@@ -34,7 +34,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.tags.Tags;
-import org.dromara.dante.core.domain.Result;
+import cn.herodotus.dante.core.domain.Result;
 import org.dromara.dante.data.jpa.service.BaseJpaWriteableService;
 import org.dromara.dante.data.rest.servlet.AbstractJpaEntityWriteableController;
 import org.dromara.dante.data.tenant.autoconfigure.entity.SysTenantDataSource;

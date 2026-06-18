@@ -27,7 +27,7 @@ package org.dromara.dante.persistence.sas.jpa.entity;
 
 import com.google.common.base.MoreObjects;
 import jakarta.persistence.*;
-import org.dromara.dante.core.domain.BaseEntity;
+import cn.herodotus.dante.core.domain.BaseEntity;
 import org.dromara.dante.persistence.commons.constant.PersistenceConstants;
 import org.dromara.dante.persistence.sas.jpa.generator.HerodotusAuthorizationConsentId;
 import org.hibernate.annotations.CacheConcurrencyStrategy;

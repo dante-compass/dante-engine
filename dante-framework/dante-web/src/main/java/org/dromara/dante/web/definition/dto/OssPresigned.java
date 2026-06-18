@@ -28,8 +28,8 @@ package org.dromara.dante.web.definition.dto;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
-import org.dromara.dante.core.constant.RegexPool;
-import org.dromara.dante.core.domain.AbstractDto;
+import cn.herodotus.dante.core.constant.RegexPool;
+import cn.herodotus.dante.core.domain.AbstractDto;
 import org.hibernate.validator.constraints.Length;
 
 /**

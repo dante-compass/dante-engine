@@ -25,8 +25,8 @@
 
 package org.dromara.dante.servlet.message.autoconfigure.customizer;
 
-import org.dromara.dante.core.builder.SecurityMatcher;
-import org.dromara.dante.core.function.SecurityMatcherBuilderCustomizer;
+import cn.herodotus.dante.core.builder.SecurityMatcher;
+import cn.herodotus.dante.core.function.SecurityMatcherBuilderCustomizer;
 
 import java.util.List;
 

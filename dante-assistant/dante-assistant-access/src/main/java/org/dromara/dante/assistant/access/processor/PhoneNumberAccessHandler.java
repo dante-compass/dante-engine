@@ -33,7 +33,7 @@ import org.dromara.dante.assistant.access.stamp.VerificationCodeStampManager;
 import org.dromara.dante.cache.commons.exception.StampHasExpiredException;
 import org.dromara.dante.cache.commons.exception.StampMismatchException;
 import org.dromara.dante.cache.commons.exception.StampParameterIllegalException;
-import org.dromara.dante.core.constant.SystemConstants;
+import cn.herodotus.dante.core.constant.SystemConstants;
 import org.dromara.dante.security.domain.AccessPrincipal;
 import org.dromara.sms4j.api.SmsBlend;
 import org.dromara.sms4j.api.entity.SmsResponse;

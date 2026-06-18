@@ -26,8 +26,8 @@
 package org.dromara.dante.autoconfigure.matcher;
 
 import jakarta.annotation.PostConstruct;
-import org.dromara.dante.core.builder.SecurityMatcher;
-import org.dromara.dante.core.function.SecurityMatcherBuilderCustomizer;
+import cn.herodotus.dante.core.builder.SecurityMatcher;
+import cn.herodotus.dante.core.function.SecurityMatcherBuilderCustomizer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;

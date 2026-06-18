@@ -26,8 +26,8 @@
 package org.dromara.dante.assistant.oss.exception;
 
 import org.dromara.dante.assistant.oss.constant.OssErrorCode;
-import org.dromara.dante.core.domain.Feedback;
-import org.dromara.dante.core.exception.PlatformRuntimeException;
+import cn.herodotus.dante.core.domain.Feedback;
+import cn.herodotus.dante.core.exception.PlatformRuntimeException;
 
 /**
  * <p>Description: 存储桶已存在 </p>

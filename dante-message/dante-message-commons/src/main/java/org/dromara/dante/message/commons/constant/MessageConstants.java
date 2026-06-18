@@ -25,7 +25,7 @@
 
 package org.dromara.dante.message.commons.constant;
 
-import org.dromara.dante.core.constant.BaseConstants;
+import cn.herodotus.dante.core.constant.BaseConstants;
 
 /**
  * <p>Description: 消息模块常量 </p>

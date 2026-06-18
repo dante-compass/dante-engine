@@ -34,7 +34,7 @@ import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.info.License;
 import io.swagger.v3.oas.models.servers.Server;
 import jakarta.annotation.PostConstruct;
-import org.dromara.dante.core.constant.SystemConstants;
+import cn.herodotus.dante.core.constant.SystemConstants;
 import org.dromara.dante.spring.context.ServiceContextHolder;
 import org.dromara.dante.web.condition.ConditionalOnSwaggerEnabled;
 import org.dromara.dante.web.definition.OpenApiServerResolver;

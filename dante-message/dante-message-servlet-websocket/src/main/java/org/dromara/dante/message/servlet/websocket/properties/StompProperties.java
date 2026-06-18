@@ -26,8 +26,8 @@
 package org.dromara.dante.message.servlet.websocket.properties;
 
 import org.apache.commons.collections4.CollectionUtils;
-import org.dromara.dante.core.constant.HerodotusHeaders;
-import org.dromara.dante.core.utils.WellFormedUtils;
+import cn.herodotus.dante.core.constant.HerodotusHeaders;
+import cn.herodotus.dante.core.utils.WellFormedUtils;
 import org.dromara.dante.message.commons.constant.MessageConstants;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

@@ -25,7 +25,7 @@
 
 package org.dromara.dante.cache.commons.constant;
 
-import org.dromara.dante.core.constant.BaseConstants;
+import cn.herodotus.dante.core.constant.BaseConstants;
 
 /**
  * <p>Description: Cache Property值常量 </p>

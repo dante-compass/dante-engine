@@ -26,8 +26,8 @@
 package org.dromara.dante.message.autoconfigure.emqx;
 
 import org.apache.commons.lang3.StringUtils;
-import org.dromara.dante.core.constant.SymbolConstants;
-import org.dromara.dante.core.jackson.JacksonUtils;
+import cn.herodotus.dante.core.constant.SymbolConstants;
+import cn.herodotus.dante.core.jackson.JacksonUtils;
 import org.dromara.dante.message.emqx.domain.SystemClientConnected;
 import org.dromara.dante.message.emqx.domain.SystemClientDisconnected;
 import org.dromara.dante.message.emqx.domain.SystemClientSubscribed;

@@ -26,8 +26,8 @@
 package org.dromara.dante.rest.identity.controller;
 
 import org.apache.commons.lang3.StringUtils;
-import org.dromara.dante.core.constant.SymbolConstants;
-import org.dromara.dante.core.constant.SystemConstants;
+import cn.herodotus.dante.core.constant.SymbolConstants;
+import cn.herodotus.dante.core.constant.SystemConstants;
 import org.dromara.dante.oauth2.commons.constant.OAuth2Constants;
 import org.springframework.security.oauth2.core.endpoint.OAuth2ParameterNames;
 import org.springframework.stereotype.Controller;

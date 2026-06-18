@@ -26,7 +26,7 @@
 package org.dromara.dante.nosql.influxdb3.pool;
 
 import com.influxdb.v3.client.InfluxDBClient;
-import org.dromara.dante.core.support.pool.AbstractObjectPool;
+import cn.herodotus.dante.core.support.pool.AbstractObjectPool;
 import org.dromara.dante.nosql.influxdb3.properties.InfluxDB3Properties;
 
 /**

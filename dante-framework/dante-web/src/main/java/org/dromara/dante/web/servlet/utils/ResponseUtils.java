@@ -26,8 +26,8 @@
 package org.dromara.dante.web.servlet.utils;
 
 import jakarta.servlet.http.HttpServletResponse;
-import org.dromara.dante.core.domain.Result;
-import org.dromara.dante.core.jackson.JacksonUtils;
+import cn.herodotus.dante.core.domain.Result;
+import cn.herodotus.dante.core.jackson.JacksonUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;

@@ -35,7 +35,7 @@ import org.dromara.dante.assistant.oss.entity.domain.PutObjectDomain;
 import org.dromara.dante.assistant.oss.entity.domain.SsekmsDomain;
 import org.dromara.dante.assistant.oss.entity.result.GetObjectResult;
 import org.dromara.dante.assistant.oss.utils.OssUtils;
-import org.dromara.dante.core.utils.TimeUtils;
+import cn.herodotus.dante.core.utils.TimeUtils;
 import software.amazon.awssdk.services.s3.model.GetObjectResponse;
 
 import java.util.Date;

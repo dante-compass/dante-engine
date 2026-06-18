@@ -25,7 +25,7 @@
 
 package org.dromara.dante.oauth2.authentication.autoconfigure.listener;
 
-import org.dromara.dante.core.jackson.JacksonUtils;
+import cn.herodotus.dante.core.jackson.JacksonUtils;
 import org.dromara.dante.oauth2.authorization.autoconfigure.bus.RemoteEnableAuthenticationEvent;
 import org.dromara.dante.persistence.commons.definition.EnhanceAuthenticationManager;
 import org.dromara.dante.security.domain.RegisteredClientTransmitter;

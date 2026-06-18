@@ -27,7 +27,7 @@ package org.dromara.dante.assistant.oss.properties;
 
 import com.google.common.base.MoreObjects;
 import org.dromara.dante.assistant.oss.constant.OssConstants;
-import org.dromara.dante.core.domain.Pool;
+import cn.herodotus.dante.core.domain.Pool;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 import java.time.Duration;

@@ -28,7 +28,7 @@ package org.dromara.dante.assistant.oss.converter.argument;
 import org.apache.commons.lang3.ObjectUtils;
 import org.dromara.dante.assistant.oss.entity.argument.GetObjectArgument;
 import org.dromara.dante.assistant.oss.entity.domain.SseCustomerDomain;
-import org.dromara.dante.core.utils.TimeUtils;
+import cn.herodotus.dante.core.utils.TimeUtils;
 import org.springframework.core.convert.converter.Converter;
 import software.amazon.awssdk.services.s3.model.GetObjectRequest;
 

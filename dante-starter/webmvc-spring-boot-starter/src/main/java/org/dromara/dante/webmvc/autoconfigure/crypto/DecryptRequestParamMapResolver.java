@@ -29,7 +29,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.Part;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.Strings;
-import org.dromara.dante.core.constant.SystemConstants;
+import cn.herodotus.dante.core.constant.SystemConstants;
 import org.dromara.dante.web.support.crypto.DigitalEnvelopeProcessor;
 import org.dromara.dante.web.annotation.Crypto;
 import org.dromara.dante.web.servlet.utils.SessionUtils;

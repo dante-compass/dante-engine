@@ -26,7 +26,7 @@
 package org.dromara.dante.security.domain.captcha;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import org.dromara.dante.core.domain.AbstractDto;
+import cn.herodotus.dante.core.domain.AbstractDto;
 
 /**
  * <p>Description: 验证码返回数据基础类 </p>

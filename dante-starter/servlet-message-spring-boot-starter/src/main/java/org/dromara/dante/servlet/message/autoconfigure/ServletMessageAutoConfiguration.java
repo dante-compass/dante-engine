@@ -26,7 +26,7 @@
 package org.dromara.dante.servlet.message.autoconfigure;
 
 import jakarta.annotation.PostConstruct;
-import org.dromara.dante.core.function.SecurityMatcherBuilderCustomizer;
+import cn.herodotus.dante.core.function.SecurityMatcherBuilderCustomizer;
 import org.dromara.dante.message.servlet.websocket.annotation.EnableHerodotusServletWebSocket;
 import org.dromara.dante.rest.message.annotation.EnableHerodotusServletMessageRest;
 import org.dromara.dante.servlet.message.autoconfigure.customizer.WebSocketSecurityMatcherBuilderCustomizer;

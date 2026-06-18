@@ -32,10 +32,10 @@ import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.ObjectUtils;
-import org.dromara.dante.core.constant.SystemConstants;
-import org.dromara.dante.core.domain.BaseDomain;
-import org.dromara.dante.core.domain.Pagination;
-import org.dromara.dante.core.domain.Result;
+import cn.herodotus.dante.core.constant.SystemConstants;
+import cn.herodotus.dante.core.domain.BaseDomain;
+import cn.herodotus.dante.core.domain.Pagination;
+import cn.herodotus.dante.core.domain.Result;
 import org.springframework.core.convert.converter.Converter;
 
 import java.util.List;

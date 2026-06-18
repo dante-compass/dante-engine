@@ -25,9 +25,9 @@
 
 package org.dromara.dante.spring.exception.feigin;
 
-import org.dromara.dante.core.constant.ErrorCodes;
-import org.dromara.dante.core.domain.Feedback;
-import org.dromara.dante.core.exception.PlatformRuntimeException;
+import cn.herodotus.dante.core.constant.ErrorCodes;
+import cn.herodotus.dante.core.domain.Feedback;
+import cn.herodotus.dante.core.exception.PlatformRuntimeException;
 
 /**
  * <p>Description: Feign 解码 IO 错误 </p>

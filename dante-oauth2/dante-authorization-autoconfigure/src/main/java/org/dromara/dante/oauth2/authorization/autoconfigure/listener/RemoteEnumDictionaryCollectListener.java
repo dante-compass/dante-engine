@@ -25,8 +25,8 @@
 
 package org.dromara.dante.oauth2.authorization.autoconfigure.listener;
 
-import org.dromara.dante.core.domain.Dictionary;
-import org.dromara.dante.core.jackson.JacksonUtils;
+import cn.herodotus.dante.core.domain.Dictionary;
+import cn.herodotus.dante.core.jackson.JacksonUtils;
 import org.dromara.dante.oauth2.authorization.autoconfigure.bus.RemoteEnumDictionaryCollectEvent;
 import org.dromara.dante.oauth2.authorization.autoconfigure.processor.EnumDictionaryCollectProcessor;
 import org.slf4j.Logger;
