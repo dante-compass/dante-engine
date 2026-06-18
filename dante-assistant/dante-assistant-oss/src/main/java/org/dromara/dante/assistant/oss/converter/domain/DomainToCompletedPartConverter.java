@@ -28,7 +28,7 @@ package org.dromara.dante.assistant.oss.converter.domain;
 import org.apache.commons.lang3.ObjectUtils;
 import org.dromara.dante.assistant.oss.entity.domain.CompletedPartDomain;
 import org.dromara.dante.assistant.oss.utils.OssUtils;
-import org.dromara.dante.spring.founction.ListConverter;
+import cn.herodotus.dante.spring.founction.ListConverter;
 import software.amazon.awssdk.services.s3.model.CompletedPart;
 
 /**

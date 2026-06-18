@@ -29,7 +29,7 @@ import org.dromara.dante.message.commons.domain.AccountStatus;
 import org.dromara.dante.oauth2.authorization.autoconfigure.bus.RemoteAccountStatusChangeEvent;
 import org.dromara.dante.oauth2.commons.event.AccountStatusChangeEvent;
 import org.dromara.dante.oauth2.commons.strategy.AccountStatusChangedEventManager;
-import org.dromara.dante.spring.context.ServiceContextHolder;
+import cn.herodotus.dante.spring.context.ServiceContextHolder;
 
 /**
  * <p>Description: 用户状态变更处理器 </p>

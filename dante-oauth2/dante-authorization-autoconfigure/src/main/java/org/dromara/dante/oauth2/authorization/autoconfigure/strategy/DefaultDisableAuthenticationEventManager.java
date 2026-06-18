@@ -28,7 +28,7 @@ package org.dromara.dante.oauth2.authorization.autoconfigure.strategy;
 import org.dromara.dante.oauth2.authorization.autoconfigure.bus.RemoteEnableAuthenticationEvent;
 import org.dromara.dante.oauth2.commons.event.DisableAuthenticationEvent;
 import org.dromara.dante.oauth2.commons.strategy.DisableAuthenticationEventManager;
-import org.dromara.dante.spring.context.ServiceContextHolder;
+import cn.herodotus.dante.spring.context.ServiceContextHolder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

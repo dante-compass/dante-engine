@@ -27,7 +27,7 @@ package org.dromara.dante.assistant.oss.condition;
 
 import org.apache.commons.lang3.StringUtils;
 import org.dromara.dante.assistant.oss.constant.OssConstants;
-import org.dromara.dante.spring.context.PropertyResolver;
+import cn.herodotus.dante.spring.context.PropertyResolver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Condition;

@@ -31,7 +31,7 @@ import cn.herodotus.dante.core.constant.SymbolConstants;
 import cn.herodotus.dante.core.constant.SystemConstants;
 import cn.herodotus.dante.core.domain.Dictionary;
 import org.dromara.dante.logic.upms.entity.security.SysEnum;
-import org.dromara.dante.spring.founction.ListConverter;
+import cn.herodotus.dante.spring.founction.ListConverter;
 
 /**
  * <p>Description: Dictionary 转 SysEnum 转换器 </p>

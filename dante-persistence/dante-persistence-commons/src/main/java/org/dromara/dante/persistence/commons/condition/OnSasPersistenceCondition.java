@@ -26,7 +26,7 @@
 package org.dromara.dante.persistence.commons.condition;
 
 import org.dromara.dante.oauth2.commons.enums.SasPersistence;
-import org.dromara.dante.spring.condition.AbstractEnumSpringBootCondition;
+import cn.herodotus.dante.spring.condition.AbstractEnumSpringBootCondition;
 
 import java.lang.annotation.Annotation;
 

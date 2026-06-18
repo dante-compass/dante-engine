@@ -25,7 +25,7 @@
 
 package org.dromara.dante.message.commons.condition;
 
-import org.dromara.dante.spring.condition.AbstractEnumSpringBootCondition;
+import cn.herodotus.dante.spring.condition.AbstractEnumSpringBootCondition;
 import org.springframework.context.annotation.Condition;
 
 import java.lang.annotation.Annotation;

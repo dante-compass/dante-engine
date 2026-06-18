@@ -34,7 +34,7 @@ import org.dromara.dante.logic.upms.entity.hr.SysDepartment;
 import org.dromara.dante.logic.upms.entity.hr.SysOrganization;
 import org.dromara.dante.logic.upms.enums.OrganizationCategory;
 import org.dromara.dante.logic.upms.repository.hr.SysOrganizationRepository;
-import org.dromara.dante.spring.exception.transaction.TransactionalRollbackException;
+import cn.herodotus.dante.spring.exception.transaction.TransactionalRollbackException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;

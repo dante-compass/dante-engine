@@ -32,8 +32,8 @@ import org.dromara.dante.oauth2.authorization.attribute.SecurityAttributeAnalyze
 import org.dromara.dante.oauth2.authorization.autoconfigure.listener.RemoteAttributeDistributionListener;
 import org.dromara.dante.oauth2.authorization.autoconfigure.strategy.DefaultEnumDictionaryCollectEventManager;
 import org.dromara.dante.oauth2.authorization.autoconfigure.strategy.DefaultRestMappingCollectEventManager;
-import org.dromara.dante.spring.condition.ConditionalOnArchitecture;
-import org.dromara.dante.spring.enums.Architecture;
+import cn.herodotus.dante.spring.condition.ConditionalOnArchitecture;
+import cn.herodotus.dante.spring.enums.Architecture;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;

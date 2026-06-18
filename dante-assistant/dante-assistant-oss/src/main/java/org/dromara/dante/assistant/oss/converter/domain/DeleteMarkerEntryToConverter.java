@@ -29,7 +29,7 @@ import cn.hutool.v7.core.date.DateUtil;
 import org.apache.commons.lang3.ObjectUtils;
 import org.dromara.dante.assistant.oss.entity.domain.ObjectVersionDomain;
 import org.dromara.dante.assistant.oss.entity.domain.OwnerDomain;
-import org.dromara.dante.spring.founction.ListConverter;
+import cn.herodotus.dante.spring.founction.ListConverter;
 import org.springframework.core.convert.converter.Converter;
 import software.amazon.awssdk.services.s3.model.DeleteMarkerEntry;
 import software.amazon.awssdk.services.s3.model.Owner;

@@ -31,7 +31,7 @@ import feign.codec.ErrorDecoder;
 import org.apache.commons.lang3.ObjectUtils;
 import cn.herodotus.dante.core.domain.Result;
 import cn.herodotus.dante.core.jackson.JacksonUtils;
-import org.dromara.dante.spring.exception.feigin.FeignDecodeIOException;
+import cn.herodotus.dante.spring.exception.feigin.FeignDecodeIOException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import tools.jackson.databind.JavaType;

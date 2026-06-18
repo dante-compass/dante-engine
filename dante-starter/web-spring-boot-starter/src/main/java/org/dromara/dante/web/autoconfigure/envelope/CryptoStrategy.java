@@ -26,7 +26,7 @@
 package org.dromara.dante.web.autoconfigure.envelope;
 
 import cn.herodotus.dante.core.constant.BaseConstants;
-import org.dromara.dante.spring.condition.ConditionEnum;
+import cn.herodotus.dante.spring.condition.ConditionEnum;
 import org.springframework.core.env.Environment;
 
 /**

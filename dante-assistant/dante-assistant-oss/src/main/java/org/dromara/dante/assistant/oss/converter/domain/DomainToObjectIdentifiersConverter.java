@@ -26,7 +26,7 @@
 package org.dromara.dante.assistant.oss.converter.domain;
 
 import org.dromara.dante.assistant.oss.entity.domain.DeletedDomain;
-import org.dromara.dante.spring.founction.ListConverter;
+import cn.herodotus.dante.spring.founction.ListConverter;
 import software.amazon.awssdk.services.s3.model.ObjectIdentifier;
 
 /**

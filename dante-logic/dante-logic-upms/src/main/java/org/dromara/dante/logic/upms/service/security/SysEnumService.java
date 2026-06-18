@@ -35,7 +35,7 @@ import org.dromara.dante.logic.upms.converter.DictionaryToSysEnumConverter;
 import org.dromara.dante.logic.upms.entity.security.SysDictionary;
 import org.dromara.dante.logic.upms.entity.security.SysEnum;
 import org.dromara.dante.logic.upms.repository.security.SysEnumRepository;
-import org.dromara.dante.spring.founction.ListConverter;
+import cn.herodotus.dante.spring.founction.ListConverter;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 

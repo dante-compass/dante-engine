@@ -29,7 +29,7 @@ import org.dromara.dante.message.commons.definition.Message;
 import org.dromara.dante.message.commons.definition.strategy.MessageSendingEventManager;
 import org.dromara.dante.oauth2.authorization.autoconfigure.bus.RemoteMessageSendingEvent;
 import org.dromara.dante.oauth2.commons.event.MessageSendingEvent;
-import org.dromara.dante.spring.context.ServiceContextHolder;
+import cn.herodotus.dante.spring.context.ServiceContextHolder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

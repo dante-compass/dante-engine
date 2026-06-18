@@ -39,8 +39,8 @@ import org.dromara.dante.oauth2.authorization.attribute.SecurityAttributeAnalyze
 import org.dromara.dante.oauth2.authorization.autoconfigure.bus.RemoteAttributeDistributionEvent;
 import org.dromara.dante.security.domain.attribute.AttributeTransmitter;
 import org.dromara.dante.security.domain.attribute.RestMapping;
-import org.dromara.dante.spring.context.ServiceContextHolder;
-import org.dromara.dante.spring.founction.ListConverter;
+import cn.herodotus.dante.spring.context.ServiceContextHolder;
+import cn.herodotus.dante.spring.founction.ListConverter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;

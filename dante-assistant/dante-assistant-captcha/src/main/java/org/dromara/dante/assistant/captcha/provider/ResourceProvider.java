@@ -38,7 +38,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.dromara.dante.assistant.captcha.enums.CaptchaResource;
 import org.dromara.dante.assistant.captcha.enums.FontStyle;
 import org.dromara.dante.assistant.captcha.properties.CaptchaProperties;
-import org.dromara.dante.spring.utils.ResourceResolverUtils;
+import cn.herodotus.dante.spring.utils.ResourceResolverUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.InitializingBean;

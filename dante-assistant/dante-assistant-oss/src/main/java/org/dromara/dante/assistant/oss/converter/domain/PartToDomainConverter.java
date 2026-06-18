@@ -29,7 +29,7 @@ import cn.hutool.v7.core.date.DateUtil;
 import org.dromara.dante.assistant.oss.entity.domain.ChecksumDomain;
 import org.dromara.dante.assistant.oss.entity.domain.PartDomain;
 import org.dromara.dante.assistant.oss.utils.OssUtils;
-import org.dromara.dante.spring.founction.ListConverter;
+import cn.herodotus.dante.spring.founction.ListConverter;
 import software.amazon.awssdk.services.s3.model.Part;
 
 /**

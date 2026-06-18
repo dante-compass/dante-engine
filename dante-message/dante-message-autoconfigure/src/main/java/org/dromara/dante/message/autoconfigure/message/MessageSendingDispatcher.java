@@ -38,7 +38,7 @@ import org.dromara.dante.message.commons.event.MqttMessageSendingEvent;
 import org.dromara.dante.message.commons.event.StreamMessageSendingEvent;
 import org.dromara.dante.message.commons.event.WebSocketBroadcastMessageSendingEvent;
 import org.dromara.dante.message.commons.event.WebSocketUserMessageSendingEvent;
-import org.dromara.dante.spring.context.AbstractApplicationContextAware;
+import cn.herodotus.dante.spring.context.AbstractApplicationContextAware;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import tools.jackson.core.type.TypeReference;

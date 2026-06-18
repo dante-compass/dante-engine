@@ -39,7 +39,7 @@ import org.dromara.dante.logic.upms.enums.Gender;
 import org.dromara.dante.logic.upms.enums.Identity;
 import org.dromara.dante.logic.upms.repository.hr.SysEmployeeRepository;
 import org.dromara.dante.logic.upms.service.security.SysUserService;
-import org.dromara.dante.spring.exception.transaction.TransactionalRollbackException;
+import cn.herodotus.dante.spring.exception.transaction.TransactionalRollbackException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;

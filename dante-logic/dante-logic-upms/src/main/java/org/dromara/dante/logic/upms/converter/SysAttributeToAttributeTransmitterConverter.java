@@ -29,7 +29,7 @@ import org.apache.commons.collections4.CollectionUtils;
 import org.dromara.dante.logic.upms.entity.security.SysAttribute;
 import org.dromara.dante.logic.upms.entity.security.SysPermission;
 import org.dromara.dante.security.domain.attribute.AttributeTransmitter;
-import org.dromara.dante.spring.founction.ListConverter;
+import cn.herodotus.dante.spring.founction.ListConverter;
 import org.springframework.util.StringUtils;
 
 import java.util.List;

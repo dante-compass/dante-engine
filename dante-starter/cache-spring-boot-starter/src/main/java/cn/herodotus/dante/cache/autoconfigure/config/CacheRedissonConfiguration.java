@@ -34,7 +34,7 @@ import cn.herodotus.dante.cache.autoconfigure.annotation.ConditionalOnRedisson;
 import cn.herodotus.dante.cache.autoconfigure.properties.RedissonProperties;
 import cn.herodotus.dante.core.constant.FileExtensions;
 import cn.herodotus.dante.core.constant.SymbolConstants;
-import org.dromara.dante.spring.utils.ResourceResolverUtils;
+import cn.herodotus.dante.spring.utils.ResourceResolverUtils;
 import org.redisson.Redisson;
 import org.redisson.api.RedissonClient;
 import org.redisson.codec.JsonJacksonCodec;

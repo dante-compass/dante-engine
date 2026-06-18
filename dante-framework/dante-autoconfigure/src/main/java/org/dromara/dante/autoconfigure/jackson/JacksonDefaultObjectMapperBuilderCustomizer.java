@@ -26,7 +26,7 @@
 package org.dromara.dante.autoconfigure.jackson;
 
 import cn.herodotus.dante.core.constant.BuilderCustomizerOrdered;
-import org.dromara.dante.spring.jackson.XssStringJsonDeserializer;
+import cn.herodotus.dante.spring.jackson.XssStringJsonDeserializer;
 import tools.jackson.core.json.JsonReadFeature;
 import tools.jackson.databind.SerializationFeature;
 import tools.jackson.databind.json.JsonMapper;

@@ -26,7 +26,7 @@
 package org.dromara.dante.data.tenant.autoconfigure.enums;
 
 import org.dromara.dante.data.tenant.autoconfigure.constant.TenantConstants;
-import org.dromara.dante.spring.condition.ConditionEnum;
+import cn.herodotus.dante.spring.condition.ConditionEnum;
 import org.springframework.core.env.Environment;
 
 /**

@@ -25,7 +25,7 @@
 
 package org.dromara.dante.web.context;
 
-import org.dromara.dante.spring.context.ServiceContextHolder;
+import cn.herodotus.dante.spring.context.ServiceContextHolder;
 import org.dromara.dante.web.support.WebPropertyFinder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

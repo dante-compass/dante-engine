@@ -30,7 +30,7 @@ import org.dromara.dante.assistant.oss.pool.AwsConfigurer;
 import org.dromara.dante.assistant.oss.pool.S3AsyncClientObjectPool;
 import org.dromara.dante.assistant.oss.properties.OssProperties;
 import org.dromara.dante.assistant.oss.service.utils.OssTestUtils;
-import org.dromara.dante.spring.utils.ResourceResolverUtils;
+import cn.herodotus.dante.spring.utils.ResourceResolverUtils;
 import org.junit.jupiter.api.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

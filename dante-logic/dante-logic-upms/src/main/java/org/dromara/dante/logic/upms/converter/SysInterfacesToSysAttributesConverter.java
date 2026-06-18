@@ -27,7 +27,7 @@ package org.dromara.dante.logic.upms.converter;
 
 import org.dromara.dante.logic.upms.entity.security.SysAttribute;
 import org.dromara.dante.logic.upms.entity.security.SysInterface;
-import org.dromara.dante.spring.founction.ListConverter;
+import cn.herodotus.dante.spring.founction.ListConverter;
 
 /**
  * <p>Description: List<SysInterface> 转 List<SysAttribute> 转换器 </p>

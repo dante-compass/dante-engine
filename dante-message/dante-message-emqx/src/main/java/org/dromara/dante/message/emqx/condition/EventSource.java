@@ -26,7 +26,7 @@
 package org.dromara.dante.message.emqx.condition;
 
 import org.dromara.dante.message.commons.constant.MessageConstants;
-import org.dromara.dante.spring.condition.ConditionEnum;
+import cn.herodotus.dante.spring.condition.ConditionEnum;
 import org.springframework.core.env.Environment;
 
 /**

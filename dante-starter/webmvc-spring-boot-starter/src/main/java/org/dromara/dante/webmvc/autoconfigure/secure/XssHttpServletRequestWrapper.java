@@ -29,7 +29,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletRequestWrapper;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.dromara.dante.spring.utils.XssUtils;
+import cn.herodotus.dante.spring.utils.XssUtils;
 
 import java.util.Arrays;
 import java.util.List;

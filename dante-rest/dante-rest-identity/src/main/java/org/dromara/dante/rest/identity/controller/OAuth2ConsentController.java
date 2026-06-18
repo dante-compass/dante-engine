@@ -34,7 +34,7 @@ import org.dromara.dante.logic.identity.service.OAuth2ScopeService;
 import org.dromara.dante.oauth2.commons.constant.OAuth2Constants;
 import org.dromara.dante.security.definition.OAuth2AuthorizationResourceService;
 import org.dromara.dante.security.domain.OAuth2AuthorizationResource;
-import org.dromara.dante.spring.context.ServiceContextHolder;
+import cn.herodotus.dante.spring.context.ServiceContextHolder;
 import org.springframework.security.oauth2.core.endpoint.OAuth2ParameterNames;
 import org.springframework.security.oauth2.core.oidc.OidcScopes;
 import org.springframework.security.oauth2.server.authorization.OAuth2AuthorizationConsent;

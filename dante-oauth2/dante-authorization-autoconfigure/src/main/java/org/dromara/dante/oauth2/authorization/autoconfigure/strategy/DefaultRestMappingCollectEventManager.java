@@ -30,7 +30,7 @@ import org.dromara.dante.message.commons.event.RestMappingCollectEvent;
 import org.dromara.dante.oauth2.authorization.attribute.SecurityAttributeAnalyzer;
 import org.dromara.dante.oauth2.authorization.autoconfigure.bus.RemoteRestMappingCollectEvent;
 import org.dromara.dante.security.domain.attribute.RestMapping;
-import org.dromara.dante.spring.context.ServiceContextHolder;
+import cn.herodotus.dante.spring.context.ServiceContextHolder;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 
 import java.lang.annotation.Annotation;

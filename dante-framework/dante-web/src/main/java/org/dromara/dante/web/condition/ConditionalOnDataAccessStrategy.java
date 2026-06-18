@@ -25,7 +25,7 @@
 
 package org.dromara.dante.web.condition;
 
-import org.dromara.dante.spring.enums.DataAccessStrategy;
+import cn.herodotus.dante.spring.enums.DataAccessStrategy;
 import org.springframework.context.annotation.Conditional;
 
 import java.lang.annotation.*;

@@ -28,7 +28,7 @@ package org.dromara.dante.persistence.commons.definition;
 import cn.herodotus.dante.core.constant.SystemConstants;
 import org.dromara.dante.security.definition.AuthenticationManager;
 import org.dromara.dante.security.domain.RegisteredClientTransmitter;
-import org.dromara.dante.spring.context.ServiceContextHolder;
+import cn.herodotus.dante.spring.context.ServiceContextHolder;
 import org.springframework.security.oauth2.core.AuthorizationGrantType;
 import org.springframework.security.oauth2.core.ClientAuthenticationMethod;
 import org.springframework.security.oauth2.jose.jws.SignatureAlgorithm;

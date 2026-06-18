@@ -26,7 +26,7 @@
 package org.dromara.dante.oauth2.commons.enums;
 
 import org.dromara.dante.oauth2.commons.constant.OAuth2Constants;
-import org.dromara.dante.spring.condition.ConditionEnum;
+import cn.herodotus.dante.spring.condition.ConditionEnum;
 import org.springframework.core.env.Environment;
 
 /**
