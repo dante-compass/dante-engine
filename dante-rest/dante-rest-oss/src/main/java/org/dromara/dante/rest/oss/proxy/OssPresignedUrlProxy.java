@@ -26,7 +26,7 @@
 package org.dromara.dante.rest.oss.proxy;
 
 import jakarta.servlet.http.HttpServletRequest;
-import org.dromara.dante.assistant.oss.properties.OssProperties;
+import cn.herodotus.dante.assistant.oss.properties.OssProperties;
 import org.springframework.http.*;
 import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.stereotype.Component;

@@ -27,10 +27,10 @@ package org.dromara.dante.rest.oss.service;
 
 import jakarta.servlet.http.HttpServletResponse;
 import org.apache.commons.io.IOUtils;
-import org.dromara.dante.assistant.oss.entity.argument.GetObjectArgument;
-import org.dromara.dante.assistant.oss.entity.domain.PutObjectDomain;
-import org.dromara.dante.assistant.oss.entity.result.GetObjectResult;
-import org.dromara.dante.assistant.oss.service.servlet.ServletObjectService;
+import cn.herodotus.dante.assistant.oss.entity.argument.GetObjectArgument;
+import cn.herodotus.dante.assistant.oss.entity.domain.PutObjectDomain;
+import cn.herodotus.dante.assistant.oss.entity.result.GetObjectResult;
+import cn.herodotus.dante.assistant.oss.service.servlet.ServletObjectService;
 import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Service;
 

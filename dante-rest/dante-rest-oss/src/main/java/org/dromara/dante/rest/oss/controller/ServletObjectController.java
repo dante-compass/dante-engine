@@ -25,6 +25,8 @@
 
 package org.dromara.dante.rest.oss.controller;
 
+import cn.herodotus.dante.assistant.oss.entity.argument.*;
+import cn.herodotus.dante.assistant.oss.entity.result.*;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
@@ -34,12 +36,10 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.tags.Tags;
 import jakarta.servlet.http.HttpServletResponse;
-import org.dromara.dante.assistant.oss.converter.result.ResponseToPutObjectResultConverter;
-import org.dromara.dante.assistant.oss.definition.converter.ResponseConverter;
-import org.dromara.dante.assistant.oss.entity.argument.*;
-import org.dromara.dante.assistant.oss.entity.result.*;
-import org.dromara.dante.assistant.oss.service.base.S3TransferManagerService;
-import org.dromara.dante.assistant.oss.service.servlet.ServletObjectService;
+import cn.herodotus.dante.assistant.oss.converter.result.ResponseToPutObjectResultConverter;
+import cn.herodotus.dante.assistant.oss.definition.converter.ResponseConverter;
+import cn.herodotus.dante.assistant.oss.service.base.S3TransferManagerService;
+import cn.herodotus.dante.assistant.oss.service.servlet.ServletObjectService;
 import cn.herodotus.dante.core.domain.Result;
 import org.dromara.dante.rest.oss.service.ServletObjectStreamService;
 import cn.herodotus.dante.spring.exception.oss.DownloadObjectException;

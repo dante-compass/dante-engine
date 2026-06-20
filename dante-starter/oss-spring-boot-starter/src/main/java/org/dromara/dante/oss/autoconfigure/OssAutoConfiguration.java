@@ -26,7 +26,7 @@
 package org.dromara.dante.oss.autoconfigure;
 
 import jakarta.annotation.PostConstruct;
-import org.dromara.dante.assistant.oss.condition.ConditionalOnOssEnabled;
+import cn.herodotus.dante.assistant.oss.condition.ConditionalOnOssEnabled;
 import org.dromara.dante.rest.oss.config.RestOssConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

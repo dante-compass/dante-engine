@@ -26,8 +26,8 @@
 package org.dromara.dante.captcha.autoconfigure;
 
 import jakarta.annotation.PostConstruct;
-import org.dromara.dante.assistant.captcha.config.AssistantCaptchaConfiguration;
-import org.dromara.dante.assistant.captcha.provider.ResourceProvider;
+import cn.herodotus.dante.assistant.captcha.config.AssistantCaptchaConfiguration;
+import cn.herodotus.dante.assistant.captcha.provider.ResourceProvider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
