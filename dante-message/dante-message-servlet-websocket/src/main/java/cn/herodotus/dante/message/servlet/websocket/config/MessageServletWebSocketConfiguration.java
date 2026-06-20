@@ -121,7 +121,7 @@ public class MessageServletWebSocketConfiguration {
             WebSocketMessageBrokerConfiguration.class,
     })
     @ComponentScan(basePackages = {
-            "org.dromara.dante.message.servlet.websocket.controller",
+            "cn.herodotus.dante.message.servlet.websocket.controller",
     })
     static class WebSocketConfiguration {
 

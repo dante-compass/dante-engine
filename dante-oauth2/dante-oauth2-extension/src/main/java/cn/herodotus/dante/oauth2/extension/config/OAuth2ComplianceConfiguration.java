@@ -46,8 +46,8 @@ import org.springframework.data.redis.listener.RedisMessageListenerContainer;
  */
 @Configuration(proxyBeanMethods = false)
 @ComponentScan(basePackages = {
-        "org.dromara.dante.oauth2.extension.stamp",
-        "org.dromara.dante.oauth2.extension.manager",
+        "cn.herodotus.dante.oauth2.extension.stamp",
+        "cn.herodotus.dante.oauth2.extension.manager",
 })
 public class OAuth2ComplianceConfiguration {
 

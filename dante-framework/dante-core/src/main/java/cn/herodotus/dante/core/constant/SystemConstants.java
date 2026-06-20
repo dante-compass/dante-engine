@@ -47,7 +47,7 @@ public interface SystemConstants {
     /**
      * 系统扫描接口默认包名
      */
-    String PACKAGE_NAME = "org.dromara";
+    String PACKAGE_NAME = "cn.herodotus";
     /**
      * 默认的时间日期格式
      */

@@ -52,7 +52,7 @@ import org.springframework.context.annotation.Configuration;
 @ConditionalOnUpmsService
 @EnableHerodotusLogicUpms
 @ComponentScan(basePackages = {
-        "org.dromara.dante.oauth2.authorization.autoconfigure.processor",
+        "cn.herodotus.dante.oauth2.authorization.autoconfigure.processor",
 })
 public class UpmsServiceMessageAutoConfiguration {
 

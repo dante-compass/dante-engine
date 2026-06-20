@@ -23,10 +23,10 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.message.autoconfigure.mqtt;
+package cn.herodotus.dante.message.autoconfigure.mqtt;
 
-import com.google.common.base.MoreObjects;
 import cn.herodotus.dante.message.commons.constant.MessageConstants;
+import com.google.common.base.MoreObjects;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.integration.mqtt.support.MqttHeaders;
 

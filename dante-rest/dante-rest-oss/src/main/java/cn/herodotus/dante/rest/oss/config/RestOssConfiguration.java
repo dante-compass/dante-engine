@@ -56,8 +56,8 @@ public class RestOssConfiguration {
     @Configuration(proxyBeanMethods = false)
     @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
     @ComponentScan(basePackages = {
-            "org.dromara.dante.rest.oss.service",
-            "org.dromara.dante.rest.oss.controller"
+            "cn.herodotus.dante.rest.oss.service",
+            "cn.herodotus.dante.rest.oss.controller"
     })
     static class ServletOssRestConfiguration {
 

@@ -83,7 +83,7 @@ public class ServiceProperties {
         }
 
         public List<String> getScanGroupIds() {
-            List<String> defaultGroupIds = Stream.of(SystemConstants.PACKAGE_NAME, "org.dromara").toList();
+            List<String> defaultGroupIds = Stream.of(SystemConstants.PACKAGE_NAME, "cn.herodotus").toList();
 
             if (CollectionUtils.isEmpty(this.scanGroupIds)) {
                 this.scanGroupIds = new ArrayList<>();

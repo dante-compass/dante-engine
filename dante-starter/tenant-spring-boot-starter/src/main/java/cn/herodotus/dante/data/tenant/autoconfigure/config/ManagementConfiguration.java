@@ -44,14 +44,14 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @Configuration(proxyBeanMethods = false)
 @ConditionalOnBooleanProperty(prefix = TenantConstants.PROPERTY_PREFIX_MULTI_TENANT, name = "management")
 @EntityScan(basePackages = {
-        "org.dromara.dante.data.tenant.autoconfigure.entity",
+        "cn.herodotus.dante.data.tenant.autoconfigure.entity",
 })
 @EnableJpaRepositories(basePackages = {
-        "org.dromara.dante.data.tenant.autoconfigure.repository",
+        "cn.herodotus.dante.data.tenant.autoconfigure.repository",
 })
 @ComponentScan(basePackages = {
-        "org.dromara.dante.data.tenant.autoconfigure.service",
-        "org.dromara.dante.data.tenant.autoconfigure.controller",
+        "cn.herodotus.dante.data.tenant.autoconfigure.service",
+        "cn.herodotus.dante.data.tenant.autoconfigure.controller",
 })
 class ManagementConfiguration {
 

@@ -51,7 +51,7 @@ public abstract class AbstractSystemTopic extends AbstractEmqxDomain {
     /**
      * 上线时间
      * <p>
-     * 该类的子类中，只有 {@code org.dromara.dante.message.emqx.domain.SystemClientConnected} 需要该属性，其它子类不需要。
+     * 该类的子类中，只有 {@code cn.herodotus.dante.message.emqx.domain.SystemClientConnected} 需要该属性，其它子类不需要。
      * 所以在此将其定义为 @JsonIgnore 避免不需要该属性的实体序列化时，包含该属性。
      *
      * @return 上线时间

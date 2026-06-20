@@ -23,7 +23,7 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.message.autoconfigure.emqx;
+package cn.herodotus.dante.message.autoconfigure.emqx;
 
 import cn.herodotus.dante.core.jackson.JacksonUtils;
 import cn.herodotus.dante.message.emqx.domain.*;

@@ -26,7 +26,7 @@
 package cn.herodotus.dante.oauth2.authorization.autoconfigure.listener;
 
 import cn.herodotus.dante.oauth2.authorization.autoconfigure.bus.RemoteMessageSendingEvent;
-import org.dromara.dante.message.autoconfigure.message.MessageSendingDispatcher;
+import cn.herodotus.dante.message.autoconfigure.message.MessageSendingDispatcher;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationListener;

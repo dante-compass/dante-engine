@@ -23,15 +23,15 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.message.autoconfigure.mqtt;
+package cn.herodotus.dante.message.autoconfigure.mqtt;
 
-import cn.hutool.v7.core.util.ByteUtil;
-import jakarta.annotation.PostConstruct;
 import cn.herodotus.dante.core.utils.ListUtils;
 import cn.herodotus.dante.core.utils.NumberUtils;
-import org.dromara.dante.message.autoconfigure.event.IntegrationEventAutoConfiguration;
-import org.dromara.dante.message.autoconfigure.mqtt.gateway.MqttMessagingGateway;
+import cn.herodotus.dante.message.autoconfigure.event.IntegrationEventAutoConfiguration;
+import cn.herodotus.dante.message.autoconfigure.mqtt.gateway.MqttMessagingGateway;
 import cn.herodotus.dante.message.commons.constant.Channels;
+import cn.hutool.v7.core.util.ByteUtil;
+import jakarta.annotation.PostConstruct;
 import org.eclipse.paho.mqttv5.client.IMqttAsyncClient;
 import org.eclipse.paho.mqttv5.client.MqttConnectionOptions;
 import org.eclipse.paho.mqttv5.client.persist.MqttDefaultFilePersistence;

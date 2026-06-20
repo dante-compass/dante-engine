@@ -57,13 +57,13 @@ import org.springframework.security.oauth2.server.authorization.client.Registere
 @Configuration(proxyBeanMethods = false)
 @ConditionalOnSasPersistence(SasPersistence.JPA)
 @EntityScan(basePackages = {
-        "org.dromara.dante.persistence.sas.jpa.entity"
+        "cn.herodotus.dante.persistence.sas.jpa.entity"
 })
 @EnableJpaRepositories(basePackages = {
-        "org.dromara.dante.persistence.sas.jpa.repository",
+        "cn.herodotus.dante.persistence.sas.jpa.repository",
 })
 @ComponentScan(basePackages = {
-        "org.dromara.dante.persistence.sas.jpa.service",
+        "cn.herodotus.dante.persistence.sas.jpa.service",
 })
 public class PersistenceSasJpaConfiguration {
 

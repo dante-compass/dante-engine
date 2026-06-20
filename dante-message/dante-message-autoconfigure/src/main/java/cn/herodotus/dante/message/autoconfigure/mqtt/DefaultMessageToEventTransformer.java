@@ -23,42 +23,27 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.message.autoconfigure.message;
+package cn.herodotus.dante.message.autoconfigure.mqtt;
 
-import jakarta.annotation.PostConstruct;
-import cn.herodotus.dante.core.function.ErrorCodeMapperBuilderCustomizer;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.boot.autoconfigure.AutoConfiguration;
-import org.springframework.context.annotation.Bean;
+import cn.herodotus.dante.message.commons.event.MqttMessageReceivingEvent;
+import org.springframework.integration.transformer.AbstractTransformer;
+import org.springframework.messaging.Message;
 
 /**
- * <p>Description: 统一消息配置 </p>
+ * <p>Description: 物模型消息转换为 ApplicationEvent 转换器 </p>
  *
  * @author : gengwei.zheng
- * @date : 2024/10/26 14:19
+ * @date : 2024/8/7 18:44
  */
-@AutoConfiguration
-public class MessageAutoConfiguration {
+public class DefaultMessageToEventTransformer extends AbstractTransformer {
 
-    private static final Logger log = LoggerFactory.getLogger(MessageAutoConfiguration.class);
-
-    @PostConstruct
-    public void postConstruct() {
-        log.info("[Herodotus] |- Auto [Message] Configure.");
+    @Override
+    protected Object doTransform(Message<?> message) {
+        return new MqttMessageReceivingEvent(message);
     }
 
-    @Bean
-    public MessageSendingDispatcher messageSendingDispatcher() {
-        MessageSendingDispatcher dispatcher = new MessageSendingDispatcher();
-        log.trace("[Herodotus] |- Bean [Message Sending Dispatcher] Configure.");
-        return dispatcher;
-    }
-
-    @Bean
-    public ErrorCodeMapperBuilderCustomizer messageErrorCodeMapperBuilderCustomizer() {
-        MessageErrorCodeMapperBuilderCustomizer customizer = new MessageErrorCodeMapperBuilderCustomizer();
-        log.debug("[Herodotus] |- Strategy [Message ErrorCodeMapper Builder Customizer] Configure.");
-        return customizer;
+    @Override
+    public String getComponentType() {
+        return this.getClass().getName();
     }
 }

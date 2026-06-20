@@ -39,7 +39,7 @@ import org.springframework.context.annotation.Import;
  * @author : gengwei.zheng
  * @date : 2024/7/22 21:29
  */
-@AutoConfiguration(beforeName = {"org.dromara.dante.autoconfigure.file.FileAutoConfiguration"})
+@AutoConfiguration(beforeName = {"cn.herodotus.dante.autoconfigure.file.FileAutoConfiguration"})
 @ConditionalOnOssEnabled
 @Import({
         RestOssConfiguration.class

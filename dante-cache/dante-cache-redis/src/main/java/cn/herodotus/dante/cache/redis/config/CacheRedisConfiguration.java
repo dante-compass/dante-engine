@@ -134,7 +134,7 @@ public class CacheRedisConfiguration {
 
     @Configuration(proxyBeanMethods = false)
     @ComponentScan({
-            "org.dromara.dante.cache.redis.utils"
+            "cn.herodotus.dante.cache.redis.utils"
     })
     static class RedisUtilsConfiguration {
 

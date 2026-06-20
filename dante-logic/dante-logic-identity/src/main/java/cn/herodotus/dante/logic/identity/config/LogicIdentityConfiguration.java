@@ -48,13 +48,13 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
  */
 @Configuration(proxyBeanMethods = false)
 @EntityScan(basePackages = {
-        "org.dromara.dante.logic.identity.entity"
+        "cn.herodotus.dante.logic.identity.entity"
 })
 @EnableJpaRepositories(basePackages = {
-        "org.dromara.dante.logic.identity.repository",
+        "cn.herodotus.dante.logic.identity.repository",
 })
 @ComponentScan(basePackages = {
-        "org.dromara.dante.logic.identity.service",
+        "cn.herodotus.dante.logic.identity.service",
 })
 public class LogicIdentityConfiguration {
 

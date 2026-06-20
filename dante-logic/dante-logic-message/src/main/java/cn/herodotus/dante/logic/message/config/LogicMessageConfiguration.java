@@ -44,14 +44,14 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
  */
 @Configuration(proxyBeanMethods = false)
 @EntityScan(basePackages = {
-        "org.dromara.dante.logic.message.entity"
+        "cn.herodotus.dante.logic.message.entity"
 })
 @EnableJpaRepositories(basePackages = {
-        "org.dromara.dante.logic.message.repository",
+        "cn.herodotus.dante.logic.message.repository",
 })
 @ComponentScan(basePackages = {
-        "org.dromara.dante.logic.message.service",
-        "org.dromara.dante.logic.message.listener",
+        "cn.herodotus.dante.logic.message.service",
+        "cn.herodotus.dante.logic.message.listener",
 })
 public class LogicMessageConfiguration {
 

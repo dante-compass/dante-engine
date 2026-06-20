@@ -23,27 +23,38 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.message.autoconfigure.mqtt;
+package cn.herodotus.dante.message.autoconfigure.stream;
 
-import cn.herodotus.dante.message.commons.event.MqttMessageReceivingEvent;
-import org.springframework.integration.transformer.AbstractTransformer;
-import org.springframework.messaging.Message;
+import jakarta.annotation.PostConstruct;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.boot.autoconfigure.AutoConfiguration;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
+import org.springframework.cloud.stream.function.FunctionConfiguration;
+import org.springframework.cloud.stream.function.StreamBridge;
+import org.springframework.context.annotation.Bean;
 
 /**
- * <p>Description: 物模型消息转换为 ApplicationEvent 转换器 </p>
+ * <p>Description: Stream 消息发送适配器配置 </p>
  *
  * @author : gengwei.zheng
- * @date : 2024/8/7 18:44
+ * @date : 2024/6/18 11:43
  */
-public class DefaultMessageToEventTransformer extends AbstractTransformer {
+@AutoConfiguration(after = FunctionConfiguration.class)
+@ConditionalOnBean(StreamBridge.class)
+public class StreamAutoConfiguration {
 
-    @Override
-    protected Object doTransform(Message<?> message) {
-        return new MqttMessageReceivingEvent(message);
+    private static final Logger log = LoggerFactory.getLogger(StreamAutoConfiguration.class);
+
+    @PostConstruct
+    public void postConstruct() {
+        log.info("[Herodotus] |- Auto [Stream] Configure.");
     }
 
-    @Override
-    public String getComponentType() {
-        return this.getClass().getName();
+    @Bean
+    public StreamMessageSendingAdapter streamMessageSendingAdapter(StreamBridge streamBridge) {
+        StreamMessageSendingAdapter adapter = new StreamMessageSendingAdapter(streamBridge);
+        log.trace("[Herodotus] |- Bean [Stream Message Sending Adapter] Configure.");
+        return adapter;
     }
 }

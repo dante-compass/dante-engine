@@ -23,11 +23,11 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.message.autoconfigure.stream;
+package cn.herodotus.dante.message.autoconfigure.stream;
 
-import org.apache.commons.lang3.ObjectUtils;
 import cn.herodotus.dante.message.commons.domain.StreamMessage;
 import cn.herodotus.dante.message.commons.event.StreamMessageSendingEvent;
+import org.apache.commons.lang3.ObjectUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cloud.stream.function.StreamBridge;

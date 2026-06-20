@@ -107,8 +107,8 @@ public class AssistantOssConfiguration {
 
     @Configuration(proxyBeanMethods = false)
     @ComponentScan(basePackages = {
-            "org.dromara.dante.assistant.oss.service.base",
-            "org.dromara.dante.assistant.oss.service.manager"
+            "cn.herodotus.dante.assistant.oss.service.base",
+            "cn.herodotus.dante.assistant.oss.service.manager"
     })
     static class AwsServiceConfiguration {
 
@@ -117,7 +117,7 @@ public class AssistantOssConfiguration {
     @Configuration(proxyBeanMethods = false)
     @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
     @ComponentScan(basePackages = {
-            "org.dromara.dante.assistant.oss.service.servlet"
+            "cn.herodotus.dante.assistant.oss.service.servlet"
     })
     static class ServletOssConfiguration {
 

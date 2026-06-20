@@ -23,38 +23,42 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.message.autoconfigure.stream;
+package cn.herodotus.dante.message.autoconfigure.message;
 
+import cn.herodotus.dante.core.function.ErrorCodeMapperBuilderCustomizer;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
-import org.springframework.cloud.stream.function.FunctionConfiguration;
-import org.springframework.cloud.stream.function.StreamBridge;
 import org.springframework.context.annotation.Bean;
 
 /**
- * <p>Description: Stream 消息发送适配器配置 </p>
+ * <p>Description: 统一消息配置 </p>
  *
  * @author : gengwei.zheng
- * @date : 2024/6/18 11:43
+ * @date : 2024/10/26 14:19
  */
-@AutoConfiguration(after = FunctionConfiguration.class)
-@ConditionalOnBean(StreamBridge.class)
-public class StreamAutoConfiguration {
+@AutoConfiguration
+public class MessageAutoConfiguration {
 
-    private static final Logger log = LoggerFactory.getLogger(StreamAutoConfiguration.class);
+    private static final Logger log = LoggerFactory.getLogger(MessageAutoConfiguration.class);
 
     @PostConstruct
     public void postConstruct() {
-        log.info("[Herodotus] |- Auto [Stream] Configure.");
+        log.info("[Herodotus] |- Auto [Message] Configure.");
     }
 
     @Bean
-    public StreamMessageSendingAdapter streamMessageSendingAdapter(StreamBridge streamBridge) {
-        StreamMessageSendingAdapter adapter = new StreamMessageSendingAdapter(streamBridge);
-        log.trace("[Herodotus] |- Bean [Stream Message Sending Adapter] Configure.");
-        return adapter;
+    public MessageSendingDispatcher messageSendingDispatcher() {
+        MessageSendingDispatcher dispatcher = new MessageSendingDispatcher();
+        log.trace("[Herodotus] |- Bean [Message Sending Dispatcher] Configure.");
+        return dispatcher;
+    }
+
+    @Bean
+    public ErrorCodeMapperBuilderCustomizer messageErrorCodeMapperBuilderCustomizer() {
+        MessageErrorCodeMapperBuilderCustomizer customizer = new MessageErrorCodeMapperBuilderCustomizer();
+        log.debug("[Herodotus] |- Strategy [Message ErrorCodeMapper Builder Customizer] Configure.");
+        return customizer;
     }
 }

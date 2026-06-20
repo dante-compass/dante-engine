@@ -23,7 +23,7 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.message.autoconfigure.mqtt.gateway;
+package cn.herodotus.dante.message.autoconfigure.mqtt.gateway;
 
 import cn.herodotus.dante.message.commons.constant.Channels;
 import org.springframework.integration.annotation.MessagingGateway;

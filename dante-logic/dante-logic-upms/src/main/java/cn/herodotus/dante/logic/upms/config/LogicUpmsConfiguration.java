@@ -52,16 +52,16 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
  */
 @Configuration(proxyBeanMethods = false)
 @EntityScan(basePackages = {
-        "org.dromara.dante.logic.upms.entity.security",
-        "org.dromara.dante.logic.upms.entity.hr",
+        "cn.herodotus.dante.logic.upms.entity.security",
+        "cn.herodotus.dante.logic.upms.entity.hr",
 })
 @EnableJpaRepositories(basePackages = {
-        "org.dromara.dante.logic.upms.repository.security",
-        "org.dromara.dante.logic.upms.repository.hr",
+        "cn.herodotus.dante.logic.upms.repository.security",
+        "cn.herodotus.dante.logic.upms.repository.hr",
 })
 @ComponentScan(basePackages = {
-        "org.dromara.dante.logic.upms.service.security",
-        "org.dromara.dante.logic.upms.service.hr",
+        "cn.herodotus.dante.logic.upms.service.security",
+        "cn.herodotus.dante.logic.upms.service.hr",
 })
 @Import({AssistantAccessConfiguration.class})
 public class LogicUpmsConfiguration {

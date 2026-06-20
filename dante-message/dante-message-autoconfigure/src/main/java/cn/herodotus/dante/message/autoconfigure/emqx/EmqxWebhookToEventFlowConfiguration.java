@@ -23,14 +23,14 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.message.autoconfigure.emqx;
+package cn.herodotus.dante.message.autoconfigure.emqx;
 
-import cn.herodotus.dante.message.emqx.event.*;
-import jakarta.annotation.PostConstruct;
 import cn.herodotus.dante.core.constant.SystemConstants;
 import cn.herodotus.dante.message.commons.constant.Channels;
 import cn.herodotus.dante.message.emqx.condition.ConditionalOnEventSource;
 import cn.herodotus.dante.message.emqx.condition.EventSource;
+import cn.herodotus.dante.message.emqx.event.*;
+import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;

@@ -67,7 +67,7 @@ public class ServletServiceContextAutoConfiguration {
      */
     @Configuration(proxyBeanMethods = false)
     @ComponentScan({
-            "org.dromara.dante.servlet.container.autoconfigure.context.initializer"
+            "cn.herodotus.dante.servlet.container.autoconfigure.context.initializer"
     })
     static class ServiceContextConfiguration {
 

@@ -23,9 +23,8 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.message.autoconfigure.message;
+package cn.herodotus.dante.message.autoconfigure.message;
 
-import org.apache.commons.lang3.ObjectUtils;
 import cn.herodotus.dante.core.jackson.JacksonUtils;
 import cn.herodotus.dante.core.jackson.JsonNodeUtils;
 import cn.herodotus.dante.message.commons.definition.Message;
@@ -39,6 +38,7 @@ import cn.herodotus.dante.message.commons.event.StreamMessageSendingEvent;
 import cn.herodotus.dante.message.commons.event.WebSocketBroadcastMessageSendingEvent;
 import cn.herodotus.dante.message.commons.event.WebSocketUserMessageSendingEvent;
 import cn.herodotus.dante.spring.context.AbstractApplicationContextAware;
+import org.apache.commons.lang3.ObjectUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import tools.jackson.core.type.TypeReference;

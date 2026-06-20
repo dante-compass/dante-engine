@@ -23,9 +23,8 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.message.autoconfigure.emqx;
+package cn.herodotus.dante.message.autoconfigure.emqx;
 
-import org.apache.commons.lang3.StringUtils;
 import cn.herodotus.dante.core.constant.SymbolConstants;
 import cn.herodotus.dante.core.jackson.JacksonUtils;
 import cn.herodotus.dante.message.emqx.domain.SystemClientConnected;
@@ -37,6 +36,7 @@ import cn.herodotus.dante.message.emqx.event.SystemClientDisconnectedEvent;
 import cn.herodotus.dante.message.emqx.event.SystemClientSubscribedEvent;
 import cn.herodotus.dante.message.emqx.event.SystemClientUnsubscribedEvent;
 import cn.herodotus.dante.message.emqx.utils.EmqxMessageUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationEvent;

@@ -48,13 +48,13 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @Configuration(proxyBeanMethods = false)
 @ConditionalOnSysPersistence(SysPersistence.JPA)
 @EntityScan(basePackages = {
-        "org.dromara.dante.persistence.sys.jpa.entity"
+        "cn.herodotus.dante.persistence.sys.jpa.entity"
 })
 @EnableJpaRepositories(basePackages = {
-        "org.dromara.dante.persistence.sys.jpa.repository",
+        "cn.herodotus.dante.persistence.sys.jpa.repository",
 })
 @ComponentScan(basePackages = {
-        "org.dromara.dante.persistence.sys.jpa.service",
+        "cn.herodotus.dante.persistence.sys.jpa.service",
 })
 public class PersistenceSysJpaConfiguration {
 

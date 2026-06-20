@@ -46,8 +46,8 @@ import org.springframework.context.annotation.Configuration;
 @Configuration(proxyBeanMethods = false)
 @ConditionalOnClass(LogicIdentityConfiguration.class)
 @ComponentScan(basePackages = {
-        "org.dromara.dante.rest.identity.service",
-        "org.dromara.dante.rest.identity.controller",
+        "cn.herodotus.dante.rest.identity.service",
+        "cn.herodotus.dante.rest.identity.controller",
 })
 public class RestIdentityConfiguration {
 
