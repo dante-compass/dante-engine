@@ -28,7 +28,7 @@ package org.dromara.dante.oauth2.authorization.autoconfigure.listener;
 import org.apache.commons.lang3.ObjectUtils;
 import cn.herodotus.dante.data.commons.enums.DataItemStatus;
 import cn.herodotus.dante.logic.upms.service.security.SysUserService;
-import org.dromara.dante.message.commons.domain.AccountStatus;
+import cn.herodotus.dante.message.commons.domain.AccountStatus;
 import org.dromara.dante.oauth2.commons.event.AccountStatusChangeEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

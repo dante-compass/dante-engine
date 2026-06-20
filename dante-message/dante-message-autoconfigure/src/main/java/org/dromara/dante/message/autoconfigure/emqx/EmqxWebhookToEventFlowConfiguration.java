@@ -25,12 +25,12 @@
 
 package org.dromara.dante.message.autoconfigure.emqx;
 
+import cn.herodotus.dante.message.emqx.event.*;
 import jakarta.annotation.PostConstruct;
 import cn.herodotus.dante.core.constant.SystemConstants;
-import org.dromara.dante.message.commons.constant.Channels;
-import org.dromara.dante.message.emqx.condition.ConditionalOnEventSource;
-import org.dromara.dante.message.emqx.condition.EventSource;
-import org.dromara.dante.message.emqx.event.*;
+import cn.herodotus.dante.message.commons.constant.Channels;
+import cn.herodotus.dante.message.emqx.condition.ConditionalOnEventSource;
+import cn.herodotus.dante.message.emqx.condition.EventSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;

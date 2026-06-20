@@ -26,7 +26,7 @@
 package org.dromara.dante.webmvc.autoconfigure;
 
 import jakarta.annotation.PostConstruct;
-import org.dromara.dante.message.commons.definition.strategy.RestMappingCollectEventManager;
+import cn.herodotus.dante.message.commons.definition.strategy.RestMappingCollectEventManager;
 import cn.herodotus.dante.web.autoconfigure.properties.ServiceProperties;
 import cn.herodotus.dante.web.condition.ConditionalOnRestScanEnabled;
 import org.dromara.dante.webmvc.autoconfigure.initializer.RestMappingScanner;

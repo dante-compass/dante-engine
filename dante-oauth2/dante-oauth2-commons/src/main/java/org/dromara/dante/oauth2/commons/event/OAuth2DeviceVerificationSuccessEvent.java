@@ -25,7 +25,7 @@
 
 package org.dromara.dante.oauth2.commons.event;
 
-import org.dromara.dante.message.commons.definition.event.AbstractApplicationEvent;
+import cn.herodotus.dante.message.commons.definition.event.AbstractApplicationEvent;
 import cn.herodotus.dante.security.domain.DeviceVerificationTransmitter;
 
 /**

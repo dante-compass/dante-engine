@@ -26,9 +26,9 @@
 package org.dromara.dante.message.autoconfigure.event;
 
 import jakarta.annotation.PostConstruct;
-import org.dromara.dante.message.commons.constant.Channels;
-import org.dromara.dante.message.commons.constant.MqttConstants;
-import org.dromara.dante.message.commons.event.MqttMessageSendingEvent;
+import cn.herodotus.dante.message.commons.constant.Channels;
+import cn.herodotus.dante.message.commons.constant.MqttConstants;
+import cn.herodotus.dante.message.commons.event.MqttMessageSendingEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;

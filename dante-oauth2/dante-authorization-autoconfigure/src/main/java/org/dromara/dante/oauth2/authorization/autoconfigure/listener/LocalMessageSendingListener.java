@@ -26,7 +26,7 @@
 package org.dromara.dante.oauth2.authorization.autoconfigure.listener;
 
 import org.dromara.dante.message.autoconfigure.message.MessageSendingDispatcher;
-import org.dromara.dante.message.commons.definition.Message;
+import cn.herodotus.dante.message.commons.definition.Message;
 import org.dromara.dante.oauth2.commons.event.MessageSendingEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

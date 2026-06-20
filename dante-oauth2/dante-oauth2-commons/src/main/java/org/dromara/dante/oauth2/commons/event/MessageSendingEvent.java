@@ -25,8 +25,8 @@
 
 package org.dromara.dante.oauth2.commons.event;
 
-import org.dromara.dante.message.commons.definition.Message;
-import org.dromara.dante.message.commons.definition.event.AbstractApplicationEvent;
+import cn.herodotus.dante.message.commons.definition.Message;
+import cn.herodotus.dante.message.commons.definition.event.AbstractApplicationEvent;
 
 /**
  * <p>Description: 本地发送统一消息事件 </p>

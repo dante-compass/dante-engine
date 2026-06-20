@@ -31,7 +31,7 @@ import cn.herodotus.dante.core.utils.ListUtils;
 import cn.herodotus.dante.core.utils.NumberUtils;
 import org.dromara.dante.message.autoconfigure.event.IntegrationEventAutoConfiguration;
 import org.dromara.dante.message.autoconfigure.mqtt.gateway.MqttMessagingGateway;
-import org.dromara.dante.message.commons.constant.Channels;
+import cn.herodotus.dante.message.commons.constant.Channels;
 import org.eclipse.paho.mqttv5.client.IMqttAsyncClient;
 import org.eclipse.paho.mqttv5.client.MqttConnectionOptions;
 import org.eclipse.paho.mqttv5.client.persist.MqttDefaultFilePersistence;

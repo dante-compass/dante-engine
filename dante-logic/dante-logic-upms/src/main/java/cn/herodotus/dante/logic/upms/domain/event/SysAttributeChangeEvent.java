@@ -26,7 +26,7 @@
 package cn.herodotus.dante.logic.upms.domain.event;
 
 import cn.herodotus.dante.logic.upms.entity.security.SysAttribute;
-import org.dromara.dante.message.commons.definition.event.AbstractApplicationEvent;
+import cn.herodotus.dante.message.commons.definition.event.AbstractApplicationEvent;
 
 import java.time.Clock;
 

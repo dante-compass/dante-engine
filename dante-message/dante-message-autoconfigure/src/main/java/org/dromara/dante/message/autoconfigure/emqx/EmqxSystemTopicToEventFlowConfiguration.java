@@ -26,13 +26,13 @@
 package org.dromara.dante.message.autoconfigure.emqx;
 
 import jakarta.annotation.PostConstruct;
-import org.dromara.dante.message.commons.constant.Channels;
-import org.dromara.dante.message.emqx.condition.ConditionalOnEventSource;
-import org.dromara.dante.message.emqx.condition.EventSource;
-import org.dromara.dante.message.emqx.event.SystemClientConnectedEvent;
-import org.dromara.dante.message.emqx.event.SystemClientDisconnectedEvent;
-import org.dromara.dante.message.emqx.event.SystemClientSubscribedEvent;
-import org.dromara.dante.message.emqx.event.SystemClientUnsubscribedEvent;
+import cn.herodotus.dante.message.commons.constant.Channels;
+import cn.herodotus.dante.message.emqx.condition.ConditionalOnEventSource;
+import cn.herodotus.dante.message.emqx.condition.EventSource;
+import cn.herodotus.dante.message.emqx.event.SystemClientConnectedEvent;
+import cn.herodotus.dante.message.emqx.event.SystemClientDisconnectedEvent;
+import cn.herodotus.dante.message.emqx.event.SystemClientSubscribedEvent;
+import cn.herodotus.dante.message.emqx.event.SystemClientUnsubscribedEvent;
 import org.eclipse.paho.mqttv5.client.IMqttAsyncClient;
 import org.eclipse.paho.mqttv5.client.MqttConnectionOptions;
 import org.slf4j.Logger;

@@ -28,8 +28,8 @@ package cn.herodotus.dante.logic.message.listener;
 import cn.herodotus.dante.logic.message.entity.DialogueDetail;
 import cn.herodotus.dante.logic.message.service.DialogueDetailService;
 import org.apache.commons.lang3.ObjectUtils;
-import org.dromara.dante.message.commons.domain.DialogueMessage;
-import org.dromara.dante.message.commons.event.DialogueMessageReceivingEvent;
+import cn.herodotus.dante.message.commons.domain.DialogueMessage;
+import cn.herodotus.dante.message.commons.event.DialogueMessageReceivingEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 

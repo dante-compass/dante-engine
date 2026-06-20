@@ -27,7 +27,7 @@ package org.dromara.dante.message.autoconfigure.emqx;
 
 import jakarta.annotation.PostConstruct;
 import org.dromara.dante.message.autoconfigure.mqtt.IntegrationMqttAutoConfiguration;
-import org.dromara.dante.message.emqx.properties.EmqxProperties;
+import cn.herodotus.dante.message.emqx.properties.EmqxProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;

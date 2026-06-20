@@ -26,7 +26,7 @@
 package org.dromara.dante.message.autoconfigure.mqtt;
 
 import com.google.common.base.MoreObjects;
-import org.dromara.dante.message.commons.constant.MessageConstants;
+import cn.herodotus.dante.message.commons.constant.MessageConstants;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.integration.mqtt.support.MqttHeaders;
 

@@ -34,7 +34,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.Strings;
 import cn.herodotus.dante.core.constant.SymbolConstants;
 import cn.herodotus.dante.core.utils.WellFormedUtils;
-import org.dromara.dante.message.commons.definition.strategy.RestMappingCollectEventManager;
+import cn.herodotus.dante.message.commons.definition.strategy.RestMappingCollectEventManager;
 import cn.herodotus.dante.security.domain.attribute.RestMapping;
 import cn.herodotus.dante.web.autoconfigure.properties.ServiceProperties;
 import cn.herodotus.dante.web.support.WebPropertyFinder;

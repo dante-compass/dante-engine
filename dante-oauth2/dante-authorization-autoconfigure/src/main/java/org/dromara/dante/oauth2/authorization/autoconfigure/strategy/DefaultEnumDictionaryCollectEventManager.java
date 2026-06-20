@@ -26,8 +26,8 @@
 package org.dromara.dante.oauth2.authorization.autoconfigure.strategy;
 
 import cn.herodotus.dante.core.domain.Dictionary;
-import org.dromara.dante.message.commons.definition.strategy.EnumDictionaryCollectEventManager;
-import org.dromara.dante.message.commons.event.EnumDictionaryCollectEvent;
+import cn.herodotus.dante.message.commons.definition.strategy.EnumDictionaryCollectEventManager;
+import cn.herodotus.dante.message.commons.event.EnumDictionaryCollectEvent;
 import org.dromara.dante.oauth2.authorization.autoconfigure.bus.RemoteEnumDictionaryCollectEvent;
 import cn.herodotus.dante.spring.context.ServiceContextHolder;
 

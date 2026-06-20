@@ -25,7 +25,7 @@
 
 package org.dromara.dante.message.autoconfigure.mqtt;
 
-import org.dromara.dante.message.commons.event.MqttMessageReceivingEvent;
+import cn.herodotus.dante.message.commons.event.MqttMessageReceivingEvent;
 import org.springframework.integration.transformer.AbstractTransformer;
 import org.springframework.messaging.Message;
 

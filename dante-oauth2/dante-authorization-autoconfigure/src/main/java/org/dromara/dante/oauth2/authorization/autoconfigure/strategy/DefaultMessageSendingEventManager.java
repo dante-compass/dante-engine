@@ -25,8 +25,8 @@
 
 package org.dromara.dante.oauth2.authorization.autoconfigure.strategy;
 
-import org.dromara.dante.message.commons.definition.Message;
-import org.dromara.dante.message.commons.definition.strategy.MessageSendingEventManager;
+import cn.herodotus.dante.message.commons.definition.Message;
+import cn.herodotus.dante.message.commons.definition.strategy.MessageSendingEventManager;
 import org.dromara.dante.oauth2.authorization.autoconfigure.bus.RemoteMessageSendingEvent;
 import org.dromara.dante.oauth2.commons.event.MessageSendingEvent;
 import cn.herodotus.dante.spring.context.ServiceContextHolder;

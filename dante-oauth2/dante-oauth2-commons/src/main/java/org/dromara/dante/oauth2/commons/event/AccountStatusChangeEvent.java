@@ -25,8 +25,8 @@
 
 package org.dromara.dante.oauth2.commons.event;
 
-import org.dromara.dante.message.commons.definition.event.AbstractApplicationEvent;
-import org.dromara.dante.message.commons.domain.AccountStatus;
+import cn.herodotus.dante.message.commons.definition.event.AbstractApplicationEvent;
+import cn.herodotus.dante.message.commons.domain.AccountStatus;
 
 import java.time.Clock;
 

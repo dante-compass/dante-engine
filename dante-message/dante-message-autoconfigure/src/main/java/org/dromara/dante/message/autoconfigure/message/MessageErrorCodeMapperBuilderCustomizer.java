@@ -29,7 +29,7 @@ package org.dromara.dante.message.autoconfigure.message;
 import cn.herodotus.dante.core.builder.ErrorCodeMapperBuilder;
 import cn.herodotus.dante.core.constant.BuilderCustomizerOrdered;
 import cn.herodotus.dante.core.function.ErrorCodeMapperBuilderCustomizer;
-import org.dromara.dante.message.commons.constant.MessageErrorCodes;
+import cn.herodotus.dante.message.commons.constant.MessageErrorCodes;
 import org.springframework.core.Ordered;
 
 /**

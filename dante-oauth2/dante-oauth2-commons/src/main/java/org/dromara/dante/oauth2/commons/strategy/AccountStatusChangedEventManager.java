@@ -25,8 +25,8 @@
 
 package org.dromara.dante.oauth2.commons.strategy;
 
-import org.dromara.dante.message.commons.definition.event.ApplicationStrategyEventManager;
-import org.dromara.dante.message.commons.domain.AccountStatus;
+import cn.herodotus.dante.message.commons.definition.event.ApplicationStrategyEventManager;
+import cn.herodotus.dante.message.commons.domain.AccountStatus;
 
 /**
  * <p>Description: 用户状态变更服务 </p>

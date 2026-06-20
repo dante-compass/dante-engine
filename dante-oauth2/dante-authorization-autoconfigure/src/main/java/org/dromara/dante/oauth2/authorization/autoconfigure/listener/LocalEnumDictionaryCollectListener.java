@@ -27,7 +27,7 @@ package org.dromara.dante.oauth2.authorization.autoconfigure.listener;
 
 import org.apache.commons.collections4.CollectionUtils;
 import cn.herodotus.dante.core.domain.Dictionary;
-import org.dromara.dante.message.commons.event.EnumDictionaryCollectEvent;
+import cn.herodotus.dante.message.commons.event.EnumDictionaryCollectEvent;
 import org.dromara.dante.oauth2.authorization.autoconfigure.processor.EnumDictionaryCollectProcessor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -30,7 +30,7 @@ import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import cn.herodotus.dante.core.constant.SymbolConstants;
-import org.dromara.dante.message.commons.definition.strategy.RestMappingCollectEventManager;
+import cn.herodotus.dante.message.commons.definition.strategy.RestMappingCollectEventManager;
 import cn.herodotus.dante.security.domain.attribute.RestMapping;
 import cn.herodotus.dante.web.autoconfigure.initializer.AbstractRestMappingScanner;
 import cn.herodotus.dante.web.autoconfigure.properties.ServiceProperties;

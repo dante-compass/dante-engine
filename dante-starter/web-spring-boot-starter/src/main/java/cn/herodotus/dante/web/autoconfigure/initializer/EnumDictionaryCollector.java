@@ -28,7 +28,7 @@ package cn.herodotus.dante.web.autoconfigure.initializer;
 import org.apache.commons.collections4.CollectionUtils;
 import cn.herodotus.dante.core.builder.EnumDictionaryBuilder;
 import cn.herodotus.dante.core.domain.Dictionary;
-import org.dromara.dante.message.commons.definition.strategy.EnumDictionaryCollectEventManager;
+import cn.herodotus.dante.message.commons.definition.strategy.EnumDictionaryCollectEventManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
