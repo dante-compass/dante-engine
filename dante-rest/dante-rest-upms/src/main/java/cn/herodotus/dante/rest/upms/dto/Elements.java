@@ -23,32 +23,48 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.oauth2.authorization.autoconfigure.condition;
+package cn.herodotus.dante.rest.upms.dto;
 
-import cn.herodotus.dante.rest.upms.config.RestUpmsConfiguration;
-import org.springframework.boot.autoconfigure.condition.AllNestedConditions;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
+import cn.herodotus.dante.core.domain.BaseDto;
+import cn.herodotus.dante.logic.upms.entity.security.SysElement;
+import cn.hutool.v7.core.tree.MapTree;
+import com.google.common.base.MoreObjects;
+
+import java.util.List;
 
 /**
- * <p>Description: 判断是否为 Upms 服务条件 </p>
+ * <p>Description: 前端页面元素 </p>
  *
  * @author : gengwei.zheng
- * @date : 2024/10/27 20:45
+ * @date : 2025/11/21 21:25
  */
-public final class IsUpmsServiceCondition extends AllNestedConditions {
+public class Elements implements BaseDto {
 
-    public IsUpmsServiceCondition() {
-        super(ConfigurationPhase.PARSE_CONFIGURATION);
+    private List<MapTree<String>> menus;
+
+    private List<SysElement> buttons;
+
+    public List<MapTree<String>> getMenus() {
+        return menus;
     }
 
-    @ConditionalOnClass(RestUpmsConfiguration.class)
-    static final class OnRestServletService {
-
+    public void setMenus(List<MapTree<String>> menus) {
+        this.menus = menus;
     }
 
-    @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
-    static final class OnServletApplication {
+    public List<SysElement> getButtons() {
+        return buttons;
+    }
 
+    public void setButtons(List<SysElement> buttons) {
+        this.buttons = buttons;
+    }
+
+    @Override
+    public String toString() {
+        return MoreObjects.toStringHelper(this)
+                .add("menus", menus)
+                .add("buttons", buttons)
+                .toString();
     }
 }

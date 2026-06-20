@@ -23,32 +23,22 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.oauth2.authorization.autoconfigure.condition;
+package cn.herodotus.dante.rest.upms.annotation;
 
 import cn.herodotus.dante.rest.upms.config.RestUpmsConfiguration;
-import org.springframework.boot.autoconfigure.condition.AllNestedConditions;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
+import org.springframework.context.annotation.Import;
+
+import java.lang.annotation.*;
 
 /**
- * <p>Description: 判断是否为 Upms 服务条件 </p>
+ * <p>Description: 开启 Rest Servlet Upms 模块注解 </p>
  *
  * @author : gengwei.zheng
- * @date : 2024/10/27 20:45
+ * @date : 2021/11/8 11:36
  */
-public final class IsUpmsServiceCondition extends AllNestedConditions {
-
-    public IsUpmsServiceCondition() {
-        super(ConfigurationPhase.PARSE_CONFIGURATION);
-    }
-
-    @ConditionalOnClass(RestUpmsConfiguration.class)
-    static final class OnRestServletService {
-
-    }
-
-    @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
-    static final class OnServletApplication {
-
-    }
+@Target({ElementType.TYPE, ElementType.METHOD})
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+@Import(RestUpmsConfiguration.class)
+public @interface EnableHerodotusRestUpms {
 }

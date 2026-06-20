@@ -23,32 +23,35 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.oauth2.authorization.autoconfigure.condition;
+package cn.herodotus.dante.rest.identity.dto;
 
-import cn.herodotus.dante.rest.upms.config.RestUpmsConfiguration;
-import org.springframework.boot.autoconfigure.condition.AllNestedConditions;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
+import com.google.common.base.MoreObjects;
 
 /**
- * <p>Description: 判断是否为 Upms 服务条件 </p>
+ * <p>Description: Session响应实体 </p>
  *
  * @author : gengwei.zheng
- * @date : 2024/10/27 20:45
+ * @date : 2021/10/2 11:42
  */
-public final class IsUpmsServiceCondition extends AllNestedConditions {
+public class Session extends SessionExchange {
 
-    public IsUpmsServiceCondition() {
-        super(ConfigurationPhase.PARSE_CONFIGURATION);
+    /**
+     * 本系统授权码模式校验参数
+     */
+    private String state;
+
+    public String getState() {
+        return state;
     }
 
-    @ConditionalOnClass(RestUpmsConfiguration.class)
-    static final class OnRestServletService {
-
+    public void setState(String state) {
+        this.state = state;
     }
 
-    @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
-    static final class OnServletApplication {
-
+    @Override
+    public String toString() {
+        return MoreObjects.toStringHelper(this)
+                .add("state", state)
+                .toString();
     }
 }

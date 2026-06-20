@@ -23,40 +23,45 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.servlet.message.autoconfigure;
+package cn.herodotus.dante.rest.identity.config;
 
-import jakarta.annotation.PostConstruct;
 import cn.herodotus.dante.core.function.SecurityMatcherBuilderCustomizer;
-import cn.herodotus.dante.message.servlet.websocket.annotation.EnableHerodotusServletWebSocket;
-import cn.herodotus.dante.rest.message.annotation.EnableHerodotusServletMessageRest;
-import org.dromara.dante.servlet.message.autoconfigure.customizer.WebSocketSecurityMatcherBuilderCustomizer;
+import cn.herodotus.dante.logic.identity.config.LogicIdentityConfiguration;
+import cn.herodotus.dante.oauth2.commons.properties.OAuth2AuthenticationProperties;
+import cn.herodotus.dante.rest.identity.customizer.IdentitySecurityMatcherBuilderCustomizer;
+import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.autoconfigure.AutoConfiguration;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 
 /**
- * <p>Description: Servlet Message 自动配置 </p>
+ * <p>Description: Servlet 环境身份认证管理 Rest 模块配置 </p>
  *
  * @author : gengwei.zheng
- * @date : 2024/4/10 0:31
+ * @date : 2024/3/16 21:48
  */
-@AutoConfiguration
-@EnableHerodotusServletWebSocket
-@EnableHerodotusServletMessageRest
-public class ServletMessageAutoConfiguration {
+@Configuration(proxyBeanMethods = false)
+@ConditionalOnClass(LogicIdentityConfiguration.class)
+@ComponentScan(basePackages = {
+        "org.dromara.dante.rest.identity.service",
+        "org.dromara.dante.rest.identity.controller",
+})
+public class RestIdentityConfiguration {
 
-    private static final Logger log = LoggerFactory.getLogger(ServletMessageAutoConfiguration.class);
+    private static final Logger log = LoggerFactory.getLogger(RestIdentityConfiguration.class);
 
     @PostConstruct
     public void postConstruct() {
-        log.info("[Herodotus] |- Starter [Servlet Message] Configure.");
+        log.debug("[Herodotus] |- Module [Rest Identity] Configure.");
     }
 
     @Bean
-    public SecurityMatcherBuilderCustomizer websocketSecurityMatcherBuilderCustomizer() {
-        WebSocketSecurityMatcherBuilderCustomizer customizer = new WebSocketSecurityMatcherBuilderCustomizer();
-        log.debug("[Herodotus] |- Strategy [WebSocket Security Matcher Builder Customizer] Configure.");
+    public SecurityMatcherBuilderCustomizer identitySecurityMatcherBuilderCustomizer(OAuth2AuthenticationProperties authenticationProperties) {
+        IdentitySecurityMatcherBuilderCustomizer customizer = new IdentitySecurityMatcherBuilderCustomizer(authenticationProperties);
+        log.debug("[Herodotus] |- Strategy [Identity Security Matcher Builder Customizer] Configure.");
         return customizer;
     }
 }

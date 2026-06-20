@@ -23,32 +23,39 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.oauth2.authorization.autoconfigure.condition;
+package cn.herodotus.dante.rest.upms.controller.security;
 
-import cn.herodotus.dante.rest.upms.config.RestUpmsConfiguration;
-import org.springframework.boot.autoconfigure.condition.AllNestedConditions;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
+import cn.herodotus.dante.data.jpa.service.BaseJpaWriteableService;
+import cn.herodotus.dante.data.rest.servlet.AbstractJpaEntityWriteableController;
+import cn.herodotus.dante.logic.upms.entity.security.SysInterface;
+import cn.herodotus.dante.logic.upms.service.security.SysInterfaceService;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import io.swagger.v3.oas.annotations.tags.Tags;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
- * <p>Description: 判断是否为 Upms 服务条件 </p>
+ * <p>Description: 系统应用程序接口 Controller </p>
  *
  * @author : gengwei.zheng
- * @date : 2024/10/27 20:45
+ * @date : 2023/3/9 5:05
  */
-public final class IsUpmsServiceCondition extends AllNestedConditions {
+@RestController
+@RequestMapping("/security/interface")
+@Tags({
+        @Tag(name = "用户安全管理接口"),
+        @Tag(name = "系统接口管理接口")
+})
+public class SysInterfaceController extends AbstractJpaEntityWriteableController<SysInterface, String> {
 
-    public IsUpmsServiceCondition() {
-        super(ConfigurationPhase.PARSE_CONFIGURATION);
+    private final SysInterfaceService sysInterfaceService;
+
+    public SysInterfaceController(SysInterfaceService sysInterfaceService) {
+        this.sysInterfaceService = sysInterfaceService;
     }
 
-    @ConditionalOnClass(RestUpmsConfiguration.class)
-    static final class OnRestServletService {
-
-    }
-
-    @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
-    static final class OnServletApplication {
-
+    @Override
+    public BaseJpaWriteableService<SysInterface, String> getService() {
+        return sysInterfaceService;
     }
 }

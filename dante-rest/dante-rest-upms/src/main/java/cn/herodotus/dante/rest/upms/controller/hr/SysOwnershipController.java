@@ -23,32 +23,35 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.oauth2.authorization.autoconfigure.condition;
+package cn.herodotus.dante.rest.upms.controller.hr;
 
-import cn.herodotus.dante.rest.upms.config.RestUpmsConfiguration;
-import org.springframework.boot.autoconfigure.condition.AllNestedConditions;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
+import cn.herodotus.dante.data.jpa.service.BaseJpaWriteableService;
+import cn.herodotus.dante.data.rest.servlet.AbstractJpaEntityWriteableController;
+import cn.herodotus.dante.logic.upms.entity.hr.SysOwnership;
+import cn.herodotus.dante.logic.upms.service.hr.SysOwnershipService;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
- * <p>Description: 判断是否为 Upms 服务条件 </p>
+ * <p>Description: 人事归属Controller </p>
  *
  * @author : gengwei.zheng
- * @date : 2024/10/27 20:45
+ * @date : 2021/7/15 16:36
  */
-public final class IsUpmsServiceCondition extends AllNestedConditions {
+@RestController
+@RequestMapping("/hr/ownership")
+@Tag(name = "人事归属管理接口")
+public class SysOwnershipController extends AbstractJpaEntityWriteableController<SysOwnership, String> {
 
-    public IsUpmsServiceCondition() {
-        super(ConfigurationPhase.PARSE_CONFIGURATION);
+    private final SysOwnershipService sysOwnershipService;
+
+    public SysOwnershipController(SysOwnershipService sysOwnershipService) {
+        this.sysOwnershipService = sysOwnershipService;
     }
 
-    @ConditionalOnClass(RestUpmsConfiguration.class)
-    static final class OnRestServletService {
-
-    }
-
-    @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
-    static final class OnServletApplication {
-
+    @Override
+    public BaseJpaWriteableService<SysOwnership, String> getService() {
+        return this.sysOwnershipService;
     }
 }

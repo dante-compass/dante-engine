@@ -23,32 +23,30 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.oauth2.authorization.autoconfigure.condition;
+package cn.herodotus.dante.rest.upms.event;
 
-import cn.herodotus.dante.rest.upms.config.RestUpmsConfiguration;
-import org.springframework.boot.autoconfigure.condition.AllNestedConditions;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
+import org.springframework.context.ApplicationEvent;
+
+import java.util.Map;
 
 /**
- * <p>Description: 判断是否为 Upms 服务条件 </p>
+ * <p>Description: 自动登录事件 </p>
+ * <p>
+ * JustAuth 接收到 Callback以后，统一走系统 /oauth/token 接口获取 Token
  *
  * @author : gengwei.zheng
- * @date : 2024/10/27 20:45
+ * @date : 2022/1/26 14:35
  */
-public final class IsUpmsServiceCondition extends AllNestedConditions {
+public class AutomaticSignInEvent extends ApplicationEvent {
 
-    public IsUpmsServiceCondition() {
-        super(ConfigurationPhase.PARSE_CONFIGURATION);
+    private final Map<String, Object> callbackParams;
+
+    public AutomaticSignInEvent(Map<String, Object> callbackParams) {
+        super(callbackParams);
+        this.callbackParams = callbackParams;
     }
 
-    @ConditionalOnClass(RestUpmsConfiguration.class)
-    static final class OnRestServletService {
-
-    }
-
-    @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
-    static final class OnServletApplication {
-
+    public Map<String, Object> getCallbackParams() {
+        return callbackParams;
     }
 }

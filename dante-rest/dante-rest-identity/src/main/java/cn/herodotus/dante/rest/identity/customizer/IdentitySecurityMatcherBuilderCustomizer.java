@@ -23,40 +23,40 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.servlet.message.autoconfigure;
+package cn.herodotus.dante.rest.identity.customizer;
 
-import jakarta.annotation.PostConstruct;
+import cn.herodotus.dante.core.builder.SecurityMatcher;
+import cn.herodotus.dante.core.constant.SymbolConstants;
+import cn.herodotus.dante.core.constant.SystemConstants;
 import cn.herodotus.dante.core.function.SecurityMatcherBuilderCustomizer;
-import cn.herodotus.dante.message.servlet.websocket.annotation.EnableHerodotusServletWebSocket;
-import cn.herodotus.dante.rest.message.annotation.EnableHerodotusServletMessageRest;
-import org.dromara.dante.servlet.message.autoconfigure.customizer.WebSocketSecurityMatcherBuilderCustomizer;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.boot.autoconfigure.AutoConfiguration;
-import org.springframework.context.annotation.Bean;
+import cn.herodotus.dante.oauth2.commons.properties.OAuth2AuthenticationProperties;
+
+import java.util.List;
 
 /**
- * <p>Description: Servlet Message 自动配置 </p>
+ * <p>Description: Identity 模块 SecurityMatcher 配置 </p>
  *
  * @author : gengwei.zheng
- * @date : 2024/4/10 0:31
+ * @date : 2025/12/13 21:44
  */
-@AutoConfiguration
-@EnableHerodotusServletWebSocket
-@EnableHerodotusServletMessageRest
-public class ServletMessageAutoConfiguration {
+public class IdentitySecurityMatcherBuilderCustomizer implements SecurityMatcherBuilderCustomizer {
 
-    private static final Logger log = LoggerFactory.getLogger(ServletMessageAutoConfiguration.class);
+    private final OAuth2AuthenticationProperties authenticationProperties;
 
-    @PostConstruct
-    public void postConstruct() {
-        log.info("[Herodotus] |- Starter [Servlet Message] Configure.");
+    public IdentitySecurityMatcherBuilderCustomizer(OAuth2AuthenticationProperties authenticationProperties) {
+        this.authenticationProperties = authenticationProperties;
     }
 
-    @Bean
-    public SecurityMatcherBuilderCustomizer websocketSecurityMatcherBuilderCustomizer() {
-        WebSocketSecurityMatcherBuilderCustomizer customizer = new WebSocketSecurityMatcherBuilderCustomizer();
-        log.debug("[Herodotus] |- Strategy [WebSocket Security Matcher Builder Customizer] Configure.");
-        return customizer;
+    @Override
+    public void customize(SecurityMatcher.Builder builder) {
+        // Identity 模块中包含 Webjars 和 Static 资源
+        builder.staticResources(List.of(
+                        SystemConstants.MATCHER__WEBJARS))
+                .permitAll(List.of(
+                        "/open/**",
+                        "/oauth2/sign-out",
+                        authenticationProperties.getFormLogin().getLoginPageUrl() + SymbolConstants.STAR))
+                .hasAuthenticated(List.of(
+                        authenticationProperties.getAuthorizationConsentUri()));
     }
 }

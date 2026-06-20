@@ -23,32 +23,51 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.oauth2.authorization.autoconfigure.condition;
+package cn.herodotus.dante.rest.identity.dto;
 
-import cn.herodotus.dante.rest.upms.config.RestUpmsConfiguration;
-import org.springframework.boot.autoconfigure.condition.AllNestedConditions;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
+import com.google.common.base.MoreObjects;
+import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.NotNull;
+
+import java.util.HashSet;
+import java.util.Set;
 
 /**
- * <p>Description: 判断是否为 Upms 服务条件 </p>
+ * <p>Description: OAuth2 Scope Dto </p>
  *
  * @author : gengwei.zheng
- * @date : 2024/10/27 20:45
+ * @date : 2022/4/1 13:55
  */
-public final class IsUpmsServiceCondition extends AllNestedConditions {
+@Schema(name = "OAuth2 范围请求 Dto")
+public class OAuth2ScopeDto {
 
-    public IsUpmsServiceCondition() {
-        super(ConfigurationPhase.PARSE_CONFIGURATION);
+    @Schema(name = "范围ID")
+    @NotNull(message = "范围ID不能为空")
+    private String scopeId;
+
+    @Schema(name = "范围权限列表")
+    private Set<OAuth2PermissionDto> permissions = new HashSet<>();
+
+    public String getScopeId() {
+        return scopeId;
     }
 
-    @ConditionalOnClass(RestUpmsConfiguration.class)
-    static final class OnRestServletService {
-
+    public void setScopeId(String scopeId) {
+        this.scopeId = scopeId;
     }
 
-    @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
-    static final class OnServletApplication {
+    public Set<OAuth2PermissionDto> getPermissions() {
+        return permissions;
+    }
 
+    public void setPermissions(Set<OAuth2PermissionDto> permissions) {
+        this.permissions = permissions;
+    }
+
+    @Override
+    public String toString() {
+        return MoreObjects.toStringHelper(this)
+                .add("scopeId", scopeId)
+                .toString();
     }
 }

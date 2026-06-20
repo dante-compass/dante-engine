@@ -23,32 +23,51 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.oauth2.authorization.autoconfigure.condition;
+package cn.herodotus.dante.rest.identity.dto;
 
-import cn.herodotus.dante.rest.upms.config.RestUpmsConfiguration;
-import org.springframework.boot.autoconfigure.condition.AllNestedConditions;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
+import cn.herodotus.dante.core.domain.AbstractDto;
+import com.google.common.base.MoreObjects;
+import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.NotBlank;
 
 /**
- * <p>Description: 判断是否为 Upms 服务条件 </p>
+ * <p>Description: 机要传递实体 </p>
  *
  * @author : gengwei.zheng
- * @date : 2024/10/27 20:45
+ * @date : 2021/10/2 16:29
  */
-public final class IsUpmsServiceCondition extends AllNestedConditions {
+@Schema(name = "机要传递实体")
+public class SessionExchange extends AbstractDto {
 
-    public IsUpmsServiceCondition() {
-        super(ConfigurationPhase.PARSE_CONFIGURATION);
+    @NotBlank(message = "confidential参数不能为空")
+    @Schema(name = "用后端RSA/SM2 PublicKey加密的前端RSA/SM2 PublicKey")
+    private String publicKey;
+
+    @NotBlank(message = "Session Key不能为空")
+    @Schema(name = "未登录前端身份标识")
+    private String sessionId;
+
+    public String getPublicKey() {
+        return publicKey;
     }
 
-    @ConditionalOnClass(RestUpmsConfiguration.class)
-    static final class OnRestServletService {
-
+    public void setPublicKey(String publicKey) {
+        this.publicKey = publicKey;
     }
 
-    @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
-    static final class OnServletApplication {
+    public String getSessionId() {
+        return sessionId;
+    }
 
+    public void setSessionId(String sessionId) {
+        this.sessionId = sessionId;
+    }
+
+    @Override
+    public String toString() {
+        return MoreObjects.toStringHelper(this)
+                .add("publicKey", publicKey)
+                .add("sessionId", sessionId)
+                .toString();
     }
 }

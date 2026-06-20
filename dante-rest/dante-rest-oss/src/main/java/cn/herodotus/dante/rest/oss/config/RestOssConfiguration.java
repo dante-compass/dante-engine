@@ -23,32 +23,43 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.oauth2.authorization.autoconfigure.condition;
+package cn.herodotus.dante.rest.oss.config;
 
-import cn.herodotus.dante.rest.upms.config.RestUpmsConfiguration;
-import org.springframework.boot.autoconfigure.condition.AllNestedConditions;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
+import cn.herodotus.dante.assistant.oss.config.AssistantOssConfiguration;
+import jakarta.annotation.PostConstruct;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 
 /**
- * <p>Description: 判断是否为 Upms 服务条件 </p>
+ * <p>Description: 对象存储REST模块配置类 </p>
  *
  * @author : gengwei.zheng
- * @date : 2024/10/27 20:45
+ * @date : 2024/7/22 18:10
  */
-public final class IsUpmsServiceCondition extends AllNestedConditions {
+@Configuration(proxyBeanMethods = false)
+@Import({
+        AssistantOssConfiguration.class
+})
+public class RestOssConfiguration {
 
-    public IsUpmsServiceCondition() {
-        super(ConfigurationPhase.PARSE_CONFIGURATION);
+    private static final Logger log = LoggerFactory.getLogger(RestOssConfiguration.class);
+
+    @PostConstruct
+    public void postConstruct() {
+        log.debug("[Herodotus] |- Module [Rest Oss] Configure.");
     }
 
-    @ConditionalOnClass(RestUpmsConfiguration.class)
-    static final class OnRestServletService {
-
-    }
-
+    @Configuration(proxyBeanMethods = false)
     @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
-    static final class OnServletApplication {
+    @ComponentScan(basePackages = {
+            "org.dromara.dante.rest.oss.service",
+            "org.dromara.dante.rest.oss.controller"
+    })
+    static class ServletOssRestConfiguration {
 
     }
 }
