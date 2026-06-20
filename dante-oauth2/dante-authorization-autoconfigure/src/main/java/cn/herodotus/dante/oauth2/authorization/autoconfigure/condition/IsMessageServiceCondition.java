@@ -25,7 +25,7 @@
 
 package cn.herodotus.dante.oauth2.authorization.autoconfigure.condition;
 
-import org.dromara.dante.servlet.message.autoconfigure.ServletMessageAutoConfiguration;
+import cn.herodotus.dante.servlet.message.autoconfigure.ServletMessageAutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.AnyNestedCondition;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 
