@@ -25,8 +25,8 @@
 
 package org.dromara.dante.data.tenant.autoconfigure.service;
 
-import org.dromara.dante.data.jpa.repository.BaseJpaRepository;
-import org.dromara.dante.data.jpa.service.AbstractJpaService;
+import cn.herodotus.dante.data.jpa.repository.BaseJpaRepository;
+import cn.herodotus.dante.data.jpa.service.AbstractJpaService;
 import org.dromara.dante.data.tenant.autoconfigure.entity.SysTenantDataSource;
 import org.dromara.dante.data.tenant.autoconfigure.repository.SysTenantDataSourceRepository;
 import org.slf4j.Logger;

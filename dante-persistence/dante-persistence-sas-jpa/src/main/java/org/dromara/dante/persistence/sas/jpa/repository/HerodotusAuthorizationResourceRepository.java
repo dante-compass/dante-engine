@@ -25,7 +25,7 @@
 
 package org.dromara.dante.persistence.sas.jpa.repository;
 
-import org.dromara.dante.data.jpa.repository.BaseJpaRepository;
+import cn.herodotus.dante.data.jpa.repository.BaseJpaRepository;
 import org.dromara.dante.persistence.sas.jpa.entity.HerodotusAuthorizationResource;
 
 import java.util.Optional;

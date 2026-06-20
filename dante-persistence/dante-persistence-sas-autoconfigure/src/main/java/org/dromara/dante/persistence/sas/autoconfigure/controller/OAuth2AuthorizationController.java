@@ -36,7 +36,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.tags.Tags;
 import org.apache.commons.lang3.ArrayUtils;
 import cn.herodotus.dante.core.domain.Result;
-import org.dromara.dante.data.rest.servlet.PaginationController;
+import cn.herodotus.dante.data.rest.servlet.PaginationController;
 import org.dromara.dante.persistence.commons.definition.EnhanceOAuth2AuthorizationService;
 import org.dromara.dante.persistence.commons.domain.HerodotusAuthorizationDetails;
 import cn.herodotus.dante.web.annotation.AccessLimited;

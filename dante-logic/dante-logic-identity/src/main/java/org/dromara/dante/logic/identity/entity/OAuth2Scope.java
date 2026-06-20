@@ -29,7 +29,7 @@ import com.google.common.base.MoreObjects;
 import jakarta.persistence.*;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.dromara.dante.data.jpa.entity.AbstractSysEntity;
+import cn.herodotus.dante.data.jpa.entity.AbstractSysEntity;
 import org.dromara.dante.oauth2.commons.constant.OAuth2Constants;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.Fetch;

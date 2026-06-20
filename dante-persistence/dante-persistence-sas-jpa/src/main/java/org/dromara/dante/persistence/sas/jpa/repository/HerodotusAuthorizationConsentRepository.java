@@ -26,7 +26,7 @@
 package org.dromara.dante.persistence.sas.jpa.repository;
 
 import jakarta.persistence.QueryHint;
-import org.dromara.dante.data.jpa.repository.BaseJpaRepository;
+import cn.herodotus.dante.data.jpa.repository.BaseJpaRepository;
 import org.dromara.dante.persistence.sas.jpa.entity.HerodotusAuthorizationConsent;
 import org.dromara.dante.persistence.sas.jpa.generator.HerodotusAuthorizationConsentId;
 import org.hibernate.jpa.AvailableHints;

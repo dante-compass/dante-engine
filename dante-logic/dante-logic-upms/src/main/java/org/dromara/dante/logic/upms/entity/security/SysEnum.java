@@ -29,7 +29,7 @@ import com.google.common.base.MoreObjects;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import cn.herodotus.dante.core.constant.SystemConstants;
-import org.dromara.dante.data.jpa.entity.AbstractSysEntity;
+import cn.herodotus.dante.data.jpa.entity.AbstractSysEntity;
 import org.dromara.dante.logic.upms.domain.generator.SysEnumIdGenerator;
 
 /**

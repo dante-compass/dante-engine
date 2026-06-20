@@ -32,7 +32,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.dromara.dante.data.jpa.entity.AbstractSysEntity;
+import cn.herodotus.dante.data.jpa.entity.AbstractSysEntity;
 import org.dromara.dante.logic.upms.constant.LogicUpmsConstants;
 import org.dromara.dante.logic.upms.definition.SocialUserDetails;
 import org.dromara.dante.logic.upms.domain.deserializer.SysUserEmptyToNull;

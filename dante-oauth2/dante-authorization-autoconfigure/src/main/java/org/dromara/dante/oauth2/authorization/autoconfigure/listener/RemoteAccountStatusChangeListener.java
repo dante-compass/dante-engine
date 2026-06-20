@@ -27,7 +27,7 @@ package org.dromara.dante.oauth2.authorization.autoconfigure.listener;
 
 import org.apache.commons.lang3.ObjectUtils;
 import cn.herodotus.dante.core.jackson.JacksonUtils;
-import org.dromara.dante.data.commons.enums.DataItemStatus;
+import cn.herodotus.dante.data.commons.enums.DataItemStatus;
 import org.dromara.dante.logic.upms.service.security.SysUserService;
 import org.dromara.dante.message.commons.domain.AccountStatus;
 import org.dromara.dante.oauth2.authorization.autoconfigure.bus.RemoteAccountStatusChangeEvent;

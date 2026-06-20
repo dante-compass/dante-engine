@@ -38,7 +38,7 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import org.apache.commons.lang3.ObjectUtils;
 import cn.herodotus.dante.core.domain.Result;
-import org.dromara.dante.data.rest.servlet.PaginationController;
+import cn.herodotus.dante.data.rest.servlet.PaginationController;
 import cn.herodotus.dante.security.definition.CaptchaProcessor;
 import cn.herodotus.dante.security.domain.captcha.Captcha;
 import cn.herodotus.dante.security.domain.captcha.Verification;

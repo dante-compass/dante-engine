@@ -28,7 +28,7 @@ package org.dromara.dante.data.tenant.autoconfigure.entity;
 import com.google.common.base.MoreObjects;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
-import org.dromara.dante.data.jpa.entity.AbstractSysEntity;
+import cn.herodotus.dante.data.jpa.entity.AbstractSysEntity;
 import org.dromara.dante.data.tenant.autoconfigure.constant.TenantConstants;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.UuidGenerator;

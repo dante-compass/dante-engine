@@ -26,8 +26,8 @@
 package org.dromara.dante.logic.message.service;
 
 import jakarta.persistence.criteria.Predicate;
-import org.dromara.dante.data.jpa.repository.BaseJpaRepository;
-import org.dromara.dante.data.jpa.service.AbstractJpaService;
+import cn.herodotus.dante.data.jpa.repository.BaseJpaRepository;
+import cn.herodotus.dante.data.jpa.service.AbstractJpaService;
 import org.dromara.dante.logic.message.entity.Dialogue;
 import org.dromara.dante.logic.message.entity.DialogueContact;
 import org.dromara.dante.logic.message.entity.DialogueDetail;

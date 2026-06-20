@@ -27,8 +27,8 @@ package org.dromara.dante.logic.upms.service.hr;
 
 import jakarta.persistence.criteria.Predicate;
 import org.apache.commons.lang3.ObjectUtils;
-import org.dromara.dante.data.jpa.repository.BaseJpaRepository;
-import org.dromara.dante.data.jpa.service.AbstractJpaService;
+import cn.herodotus.dante.data.jpa.repository.BaseJpaRepository;
+import cn.herodotus.dante.data.jpa.service.AbstractJpaService;
 import org.dromara.dante.logic.upms.entity.hr.SysDepartment;
 import org.dromara.dante.logic.upms.repository.hr.SysDepartmentRepository;
 import org.springframework.data.domain.Page;

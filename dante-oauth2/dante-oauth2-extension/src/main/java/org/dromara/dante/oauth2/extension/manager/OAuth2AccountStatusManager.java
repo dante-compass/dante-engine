@@ -27,7 +27,7 @@ package org.dromara.dante.oauth2.extension.manager;
 
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.dromara.dante.data.commons.enums.DataItemStatus;
+import cn.herodotus.dante.data.commons.enums.DataItemStatus;
 import org.dromara.dante.message.commons.domain.AccountStatus;
 import org.dromara.dante.oauth2.commons.strategy.AccountStatusChangedEventManager;
 import org.dromara.dante.oauth2.extension.stamp.LockedAccountStampManager;

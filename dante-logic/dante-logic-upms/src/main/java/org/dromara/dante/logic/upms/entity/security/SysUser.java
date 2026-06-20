@@ -38,7 +38,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.google.common.base.MoreObjects;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
-import org.dromara.dante.data.jpa.entity.AbstractSysEntity;
+import cn.herodotus.dante.data.jpa.entity.AbstractSysEntity;
 import org.dromara.dante.logic.upms.constant.LogicUpmsConstants;
 import org.dromara.dante.logic.upms.domain.deserializer.SysEmployeeEmptyToNull;
 import org.dromara.dante.logic.upms.entity.hr.SysEmployee;

@@ -25,8 +25,8 @@
 
 package org.dromara.dante.persistence.sas.jpa.service;
 
-import org.dromara.dante.data.jpa.repository.BaseJpaRepository;
-import org.dromara.dante.data.jpa.service.AbstractJpaService;
+import cn.herodotus.dante.data.jpa.repository.BaseJpaRepository;
+import cn.herodotus.dante.data.jpa.service.AbstractJpaService;
 import org.dromara.dante.persistence.sas.jpa.entity.HerodotusRegisteredClient;
 import org.dromara.dante.persistence.sas.jpa.repository.HerodotusRegisteredClientRepository;
 import org.slf4j.Logger;

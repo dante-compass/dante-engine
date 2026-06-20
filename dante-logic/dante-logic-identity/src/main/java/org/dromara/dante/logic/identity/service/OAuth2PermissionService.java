@@ -25,8 +25,8 @@
 
 package org.dromara.dante.logic.identity.service;
 
-import org.dromara.dante.data.jpa.repository.BaseJpaRepository;
-import org.dromara.dante.data.jpa.service.AbstractJpaService;
+import cn.herodotus.dante.data.jpa.repository.BaseJpaRepository;
+import cn.herodotus.dante.data.jpa.service.AbstractJpaService;
 import org.dromara.dante.logic.identity.entity.OAuth2Permission;
 import org.dromara.dante.logic.identity.repository.OAuth2PermissionRepository;
 import org.springframework.stereotype.Service;

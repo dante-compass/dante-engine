@@ -26,8 +26,8 @@
 package org.dromara.dante.logic.identity.service;
 
 import org.apache.commons.lang3.ObjectUtils;
-import org.dromara.dante.data.jpa.repository.BaseJpaRepository;
-import org.dromara.dante.data.jpa.service.AbstractJpaService;
+import cn.herodotus.dante.data.jpa.repository.BaseJpaRepository;
+import cn.herodotus.dante.data.jpa.service.AbstractJpaService;
 import org.dromara.dante.logic.identity.converter.OAuth2ApplicationToRegisteredClientConverter;
 import org.dromara.dante.logic.identity.entity.OAuth2Application;
 import org.dromara.dante.logic.identity.entity.OAuth2Scope;

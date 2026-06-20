@@ -28,7 +28,7 @@ package org.dromara.dante.persistence.sas.jpa.entity;
 import com.google.common.base.MoreObjects;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
-import org.dromara.dante.data.jpa.entity.AbstractAuditEntity;
+import cn.herodotus.dante.data.jpa.entity.AbstractAuditEntity;
 import org.dromara.dante.persistence.commons.constant.PersistenceConstants;
 import org.dromara.dante.persistence.sas.jpa.generator.HerodotusAuthorizationResourceIdGenerator;
 import cn.herodotus.dante.security.definition.RegisteredClientDetails;

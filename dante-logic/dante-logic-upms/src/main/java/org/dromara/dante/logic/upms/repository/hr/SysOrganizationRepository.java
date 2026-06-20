@@ -25,7 +25,7 @@
 
 package org.dromara.dante.logic.upms.repository.hr;
 
-import org.dromara.dante.data.jpa.repository.BaseJpaRepository;
+import cn.herodotus.dante.data.jpa.repository.BaseJpaRepository;
 import org.dromara.dante.logic.upms.entity.hr.SysOrganization;
 import org.dromara.dante.logic.upms.enums.OrganizationCategory;
 

@@ -25,8 +25,8 @@
 
 package org.dromara.dante.logic.upms.service.hr;
 
-import org.dromara.dante.data.jpa.repository.BaseJpaRepository;
-import org.dromara.dante.data.jpa.service.AbstractJpaService;
+import cn.herodotus.dante.data.jpa.repository.BaseJpaRepository;
+import cn.herodotus.dante.data.jpa.service.AbstractJpaService;
 import org.dromara.dante.logic.upms.entity.hr.SysOwnership;
 import org.dromara.dante.logic.upms.repository.hr.SysOwnershipRepository;
 import org.slf4j.Logger;

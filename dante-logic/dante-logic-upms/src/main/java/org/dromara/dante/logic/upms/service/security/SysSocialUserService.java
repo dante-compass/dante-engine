@@ -25,8 +25,8 @@
 
 package org.dromara.dante.logic.upms.service.security;
 
-import org.dromara.dante.data.jpa.repository.BaseJpaRepository;
-import org.dromara.dante.data.jpa.service.AbstractJpaService;
+import cn.herodotus.dante.data.jpa.repository.BaseJpaRepository;
+import cn.herodotus.dante.data.jpa.service.AbstractJpaService;
 import org.dromara.dante.logic.upms.entity.security.SysSocialUser;
 import org.dromara.dante.logic.upms.repository.security.SysSocialUserRepository;
 import org.springframework.stereotype.Service;

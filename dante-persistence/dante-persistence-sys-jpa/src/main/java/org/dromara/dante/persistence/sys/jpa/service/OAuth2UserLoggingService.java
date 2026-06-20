@@ -27,8 +27,8 @@ package org.dromara.dante.persistence.sys.jpa.service;
 
 import jakarta.persistence.criteria.Predicate;
 import org.apache.commons.lang3.StringUtils;
-import org.dromara.dante.data.jpa.repository.BaseJpaRepository;
-import org.dromara.dante.data.jpa.service.AbstractJpaService;
+import cn.herodotus.dante.data.jpa.repository.BaseJpaRepository;
+import cn.herodotus.dante.data.jpa.service.AbstractJpaService;
 import org.dromara.dante.persistence.sys.jpa.entity.OAuth2UserLogging;
 import org.dromara.dante.persistence.sys.jpa.repository.OAuth2UserLoggingRepository;
 import org.slf4j.Logger;

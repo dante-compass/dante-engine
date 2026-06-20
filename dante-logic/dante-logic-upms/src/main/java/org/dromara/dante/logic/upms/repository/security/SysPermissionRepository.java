@@ -25,7 +25,7 @@
 
 package org.dromara.dante.logic.upms.repository.security;
 
-import org.dromara.dante.data.jpa.repository.BaseJpaRepository;
+import cn.herodotus.dante.data.jpa.repository.BaseJpaRepository;
 import org.dromara.dante.logic.upms.entity.security.SysPermission;
 
 public interface SysPermissionRepository extends BaseJpaRepository<SysPermission, String> {

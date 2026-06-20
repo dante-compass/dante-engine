@@ -29,7 +29,7 @@ import com.google.common.base.MoreObjects;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Column;
 import jakarta.persistence.MappedSuperclass;
-import org.dromara.dante.data.jpa.entity.AbstractAuditEntity;
+import cn.herodotus.dante.data.jpa.entity.AbstractAuditEntity;
 
 /**
  * <p>Description: OAuth2 安全防护通用属性 </p>
