@@ -26,7 +26,7 @@
 package org.dromara.dante.message.servlet.websocket.config;
 
 import jakarta.annotation.PostConstruct;
-import org.dromara.dante.cache.redis.utils.OnlineUserStat;
+import cn.herodotus.dante.cache.redis.utils.OnlineUserStat;
 import org.dromara.dante.message.commons.condition.ConditionalOnInstanceMode;
 import org.dromara.dante.message.commons.condition.InstanceMode;
 import org.dromara.dante.message.servlet.websocket.definition.WebSocketMessageSender;

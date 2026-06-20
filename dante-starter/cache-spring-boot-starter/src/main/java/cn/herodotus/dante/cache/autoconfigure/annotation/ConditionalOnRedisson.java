@@ -25,7 +25,7 @@
 
 package cn.herodotus.dante.cache.autoconfigure.annotation;
 
-import org.dromara.dante.cache.commons.constant.CacheConstants;
+import cn.herodotus.dante.cache.commons.constant.CacheConstants;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 
 import java.lang.annotation.*;

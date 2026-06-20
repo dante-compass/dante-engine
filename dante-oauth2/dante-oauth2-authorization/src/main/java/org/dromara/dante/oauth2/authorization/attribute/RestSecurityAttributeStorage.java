@@ -28,7 +28,7 @@ package org.dromara.dante.oauth2.authorization.attribute;
 import com.alicp.jetcache.Cache;
 import com.alicp.jetcache.anno.CacheType;
 import org.apache.commons.collections4.MapUtils;
-import org.dromara.dante.cache.jetcache.utils.JetCacheUtils;
+import cn.herodotus.dante.cache.jetcache.utils.JetCacheUtils;
 import org.dromara.dante.oauth2.authorization.cache.HerodotusRequest;
 import org.dromara.dante.oauth2.authorization.definition.HerodotusSecurityAttribute;
 import org.dromara.dante.oauth2.authorization.matcher.HerodotusPathPatternRequestMatcher;

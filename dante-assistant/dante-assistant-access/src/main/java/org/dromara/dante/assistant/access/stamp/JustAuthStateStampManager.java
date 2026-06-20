@@ -29,7 +29,7 @@ import cn.hutool.v7.core.data.id.IdUtil;
 import me.zhyd.oauth.cache.AuthStateCache;
 import org.dromara.dante.assistant.access.constant.AccessConstants;
 import org.dromara.dante.assistant.access.properties.JustAuthProperties;
-import org.dromara.dante.cache.jetcache.stamp.AbstractStampManager;
+import cn.herodotus.dante.cache.jetcache.stamp.AbstractStampManager;
 
 import java.util.concurrent.TimeUnit;
 

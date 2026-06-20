@@ -33,7 +33,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.tags.Tags;
 import org.apache.commons.lang3.StringUtils;
-import org.dromara.dante.cache.redis.utils.OnlineUserStat;
+import cn.herodotus.dante.cache.redis.utils.OnlineUserStat;
 import cn.herodotus.dante.core.domain.Result;
 import org.dromara.dante.message.servlet.websocket.definition.WebSocketMessageSender;
 import org.springframework.http.MediaType;

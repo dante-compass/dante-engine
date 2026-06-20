@@ -26,7 +26,7 @@
 package cn.herodotus.dante.web.autoconfigure.stamp;
 
 import cn.hutool.v7.core.data.id.IdUtil;
-import org.dromara.dante.cache.jetcache.stamp.AbstractStampManager;
+import cn.herodotus.dante.cache.jetcache.stamp.AbstractStampManager;
 import cn.herodotus.dante.web.autoconfigure.properties.SecureProperties;
 import cn.herodotus.dante.web.constant.WebConstants;
 

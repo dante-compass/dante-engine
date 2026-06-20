@@ -28,7 +28,7 @@ package org.dromara.dante.oauth2.extension.manager;
 import cn.hutool.v7.crypto.SecureUtil;
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.commons.lang3.ObjectUtils;
-import org.dromara.dante.cache.commons.exception.MaximumLimitExceededException;
+import cn.herodotus.dante.cache.commons.exception.MaximumLimitExceededException;
 import org.dromara.dante.oauth2.extension.converter.RequestToUserLoggingConverter;
 import org.dromara.dante.oauth2.extension.stamp.SignInFailureLimitedStampManager;
 import org.dromara.dante.persistence.commons.definition.HerodotusUserLoggingService;

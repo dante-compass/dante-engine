@@ -29,7 +29,7 @@ import com.alicp.jetcache.autoconfigure.JetCacheAutoConfiguration;
 import jakarta.annotation.PostConstruct;
 import cn.herodotus.dante.autoconfigure.jackson.JacksonAutoConfiguration;
 import cn.herodotus.dante.cache.autoconfigure.config.CacheRedissonConfiguration;
-import org.dromara.dante.cache.jetcache.config.CacheJetCacheConfiguration;
+import cn.herodotus.dante.cache.jetcache.config.CacheJetCacheConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
