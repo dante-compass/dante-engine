@@ -32,10 +32,7 @@ import cn.herodotus.dante.logic.upms.entity.security.SysPermission;
 import cn.herodotus.dante.logic.upms.repository.security.SysAttributeRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 /**
  * <p>Description: SysAttributeService </p>
@@ -69,6 +66,10 @@ public class SysAttributeService extends AbstractJpaService<SysAttribute, String
         Optional<SysAttribute> sysAttribute = findById(attributeId);
         return sysAttribute.map(data -> {
                     data.setPermissions(sysPermissions);
+                    // 新版 Hibernate 不会监听实体中集合的变化，所以权限更新不会触发 @EntityListeners 监听
+                    // 手动设置一个更新时间，让实体状态产生变化，来触发 @EntityListeners
+                    // 规范的方式是增加 @Version，通过版本控制来实现实体状态的更新。目前使用最简单的办法。
+                    data.setUpdateTime(new Date());
                     return data;
                 })
                 .map(this::save)
