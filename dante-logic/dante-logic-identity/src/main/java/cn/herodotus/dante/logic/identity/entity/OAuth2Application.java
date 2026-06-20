@@ -31,7 +31,7 @@ import com.google.common.base.MoreObjects;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import org.dromara.dante.oauth2.commons.constant.OAuth2Constants;
+import cn.herodotus.dante.oauth2.commons.constant.OAuth2Constants;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;

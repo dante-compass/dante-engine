@@ -27,9 +27,9 @@ package cn.herodotus.dante.logic.identity.converter;
 
 import cn.herodotus.dante.logic.identity.entity.OAuth2Application;
 import cn.herodotus.dante.logic.identity.entity.OAuth2Scope;
-import org.dromara.dante.persistence.commons.converter.HerodotusToClientSettingsConverter;
-import org.dromara.dante.persistence.commons.converter.HerodotusToTokenSettingsConverter;
-import org.dromara.dante.persistence.commons.definition.RegisteredClientConverter;
+import cn.herodotus.dante.persistence.commons.converter.HerodotusToClientSettingsConverter;
+import cn.herodotus.dante.persistence.commons.converter.HerodotusToTokenSettingsConverter;
+import cn.herodotus.dante.persistence.commons.definition.RegisteredClientConverter;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.security.oauth2.server.authorization.settings.ClientSettings;
 import org.springframework.security.oauth2.server.authorization.settings.TokenSettings;

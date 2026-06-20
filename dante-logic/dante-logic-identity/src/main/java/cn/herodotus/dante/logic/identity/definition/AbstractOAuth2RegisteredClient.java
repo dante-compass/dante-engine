@@ -33,12 +33,12 @@ import jakarta.persistence.Column;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.MappedSuperclass;
-import org.dromara.dante.persistence.commons.definition.ClientSettingsDetails;
-import org.dromara.dante.persistence.commons.definition.TokenSettingsDetails;
-import org.dromara.dante.persistence.commons.enums.AllJwsAlgorithm;
-import org.dromara.dante.persistence.commons.enums.SignatureJwsAlgorithm;
-import org.dromara.dante.persistence.commons.enums.TokenFormat;
-import org.dromara.dante.persistence.sas.jpa.definition.AbstractRegisteredClient;
+import cn.herodotus.dante.persistence.commons.definition.ClientSettingsDetails;
+import cn.herodotus.dante.persistence.commons.definition.TokenSettingsDetails;
+import cn.herodotus.dante.persistence.commons.enums.AllJwsAlgorithm;
+import cn.herodotus.dante.persistence.commons.enums.SignatureJwsAlgorithm;
+import cn.herodotus.dante.persistence.commons.enums.TokenFormat;
+import cn.herodotus.dante.persistence.sas.jpa.definition.AbstractRegisteredClient;
 
 import java.time.Duration;
 import java.util.Set;

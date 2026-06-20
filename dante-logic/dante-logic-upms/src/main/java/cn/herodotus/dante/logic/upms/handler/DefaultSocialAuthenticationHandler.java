@@ -41,8 +41,8 @@ import cn.hutool.v7.core.bean.BeanUtil;
 import com.google.common.collect.ImmutableSet;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.dromara.dante.oauth2.commons.exception.SocialCredentialsParameterBindingFailedException;
-import org.dromara.dante.oauth2.commons.exception.UsernameAlreadyExistsException;
+import cn.herodotus.dante.oauth2.commons.exception.SocialCredentialsParameterBindingFailedException;
+import cn.herodotus.dante.oauth2.commons.exception.UsernameAlreadyExistsException;
 import org.springframework.core.convert.converter.Converter;
 
 /**

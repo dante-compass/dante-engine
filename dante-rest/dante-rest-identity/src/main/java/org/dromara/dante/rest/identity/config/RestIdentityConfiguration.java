@@ -28,7 +28,7 @@ package org.dromara.dante.rest.identity.config;
 import jakarta.annotation.PostConstruct;
 import cn.herodotus.dante.core.function.SecurityMatcherBuilderCustomizer;
 import cn.herodotus.dante.logic.identity.config.LogicIdentityConfiguration;
-import org.dromara.dante.oauth2.commons.properties.OAuth2AuthenticationProperties;
+import cn.herodotus.dante.oauth2.commons.properties.OAuth2AuthenticationProperties;
 import org.dromara.dante.rest.identity.customizer.IdentitySecurityMatcherBuilderCustomizer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

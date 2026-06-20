@@ -29,7 +29,7 @@ import cn.herodotus.dante.data.jpa.entity.AbstractSysEntity;
 import cn.herodotus.dante.logic.identity.generator.OAuth2PermissionIdGenerator;
 import com.google.common.base.MoreObjects;
 import jakarta.persistence.*;
-import org.dromara.dante.oauth2.commons.constant.OAuth2Constants;
+import cn.herodotus.dante.oauth2.commons.constant.OAuth2Constants;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 /**

@@ -31,7 +31,7 @@ import cn.herodotus.dante.core.constant.SymbolConstants;
 import cn.herodotus.dante.core.domain.view.vue.Option;
 import cn.herodotus.dante.logic.identity.entity.OAuth2Scope;
 import cn.herodotus.dante.logic.identity.service.OAuth2ScopeService;
-import org.dromara.dante.oauth2.commons.constant.OAuth2Constants;
+import cn.herodotus.dante.oauth2.commons.constant.OAuth2Constants;
 import cn.herodotus.dante.security.definition.OAuth2AuthorizationResourceService;
 import cn.herodotus.dante.security.domain.OAuth2AuthorizationResource;
 import cn.herodotus.dante.spring.context.ServiceContextHolder;

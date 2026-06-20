@@ -29,7 +29,10 @@ import cn.herodotus.dante.core.builder.EnumDictionaryBuilder;
 import cn.herodotus.dante.core.function.EnumDictionaryBuilderCustomizer;
 import cn.herodotus.dante.logic.identity.enums.AuthenticationMethod;
 import cn.herodotus.dante.logic.identity.enums.GrantType;
-import org.dromara.dante.oauth2.commons.enums.PermissionExpression;
+import cn.herodotus.dante.oauth2.commons.enums.PermissionExpression;
+import cn.herodotus.dante.persistence.commons.enums.AllJwsAlgorithm;
+import cn.herodotus.dante.persistence.commons.enums.SignatureJwsAlgorithm;
+import cn.herodotus.dante.persistence.commons.enums.TokenFormat;
 
 /**
  * <p>Description: Identity 枚举数据字典定义器 </p>
@@ -41,11 +44,11 @@ public class IdentityEnumDictionaryBuilderCustomizer implements EnumDictionaryBu
 
     @Override
     public void customize(EnumDictionaryBuilder builder) {
-        builder.append(org.dromara.dante.persistence.commons.enums.AllJwsAlgorithm.getDictionaries());
+        builder.append(AllJwsAlgorithm.getDictionaries());
         builder.append(AuthenticationMethod.getDictionaries());
         builder.append(GrantType.getDictionaries());
-        builder.append(org.dromara.dante.persistence.commons.enums.SignatureJwsAlgorithm.getDictionaries());
-        builder.append(org.dromara.dante.persistence.commons.enums.TokenFormat.getDictionaries());
+        builder.append(SignatureJwsAlgorithm.getDictionaries());
+        builder.append(TokenFormat.getDictionaries());
         builder.append(PermissionExpression.getDictionaries());
     }
 }

@@ -29,8 +29,8 @@ import cn.herodotus.dante.assistant.access.exception.AccessIdentityVerificationF
 import cn.herodotus.dante.security.domain.AccessPrincipal;
 import cn.herodotus.dante.security.domain.HerodotusUser;
 import org.apache.commons.lang3.ObjectUtils;
-import org.dromara.dante.oauth2.commons.exception.SocialCredentialsUserBindingFailedException;
-import org.dromara.dante.oauth2.commons.exception.UsernameAlreadyExistsException;
+import cn.herodotus.dante.oauth2.commons.exception.SocialCredentialsUserBindingFailedException;
+import cn.herodotus.dante.oauth2.commons.exception.UsernameAlreadyExistsException;
 import org.springframework.security.core.AuthenticationException;
 
 /**

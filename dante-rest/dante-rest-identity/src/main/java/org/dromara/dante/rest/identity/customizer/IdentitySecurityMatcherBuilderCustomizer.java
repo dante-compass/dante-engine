@@ -29,7 +29,7 @@ import cn.herodotus.dante.core.builder.SecurityMatcher;
 import cn.herodotus.dante.core.constant.SymbolConstants;
 import cn.herodotus.dante.core.constant.SystemConstants;
 import cn.herodotus.dante.core.function.SecurityMatcherBuilderCustomizer;
-import org.dromara.dante.oauth2.commons.properties.OAuth2AuthenticationProperties;
+import cn.herodotus.dante.oauth2.commons.properties.OAuth2AuthenticationProperties;
 
 import java.util.List;
 
