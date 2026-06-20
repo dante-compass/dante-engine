@@ -30,8 +30,8 @@ import cn.hutool.v7.core.tree.TreeNode;
 import cn.hutool.v7.core.tree.TreeUtil;
 import org.apache.commons.lang3.ObjectUtils;
 import cn.herodotus.dante.core.constant.SystemConstants;
-import org.dromara.dante.logic.upms.entity.security.SysElement;
-import org.dromara.dante.logic.upms.enums.ElementCategory;
+import cn.herodotus.dante.logic.upms.entity.security.SysElement;
+import cn.herodotus.dante.logic.upms.enums.ElementCategory;
 import org.dromara.dante.rest.upms.dto.Elements;
 import org.springframework.core.convert.converter.Converter;
 

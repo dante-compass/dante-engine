@@ -30,9 +30,9 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotNull;
 import org.apache.commons.collections4.CollectionUtils;
 import cn.herodotus.dante.core.domain.AbstractDto;
-import org.dromara.dante.logic.upms.entity.hr.SysDepartment;
-import org.dromara.dante.logic.upms.entity.hr.SysEmployee;
-import org.dromara.dante.logic.upms.entity.hr.SysOwnership;
+import cn.herodotus.dante.logic.upms.entity.hr.SysDepartment;
+import cn.herodotus.dante.logic.upms.entity.hr.SysEmployee;
+import cn.herodotus.dante.logic.upms.entity.hr.SysOwnership;
 
 import java.util.ArrayList;
 import java.util.HashSet;

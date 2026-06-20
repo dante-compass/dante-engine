@@ -25,8 +25,8 @@
 
 package org.dromara.dante.oauth2.authorization.autoconfigure.listener;
 
-import org.dromara.dante.logic.upms.domain.event.SysAttributeChangeEvent;
-import org.dromara.dante.logic.upms.entity.security.SysAttribute;
+import cn.herodotus.dante.logic.upms.domain.event.SysAttributeChangeEvent;
+import cn.herodotus.dante.logic.upms.entity.security.SysAttribute;
 import org.dromara.dante.oauth2.authorization.autoconfigure.processor.SecurityAttributeDistributionProcessor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

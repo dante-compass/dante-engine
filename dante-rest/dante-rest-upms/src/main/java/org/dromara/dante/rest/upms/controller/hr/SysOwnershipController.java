@@ -28,8 +28,8 @@ package org.dromara.dante.rest.upms.controller.hr;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import cn.herodotus.dante.data.jpa.service.BaseJpaWriteableService;
 import cn.herodotus.dante.data.rest.servlet.AbstractJpaEntityWriteableController;
-import org.dromara.dante.logic.upms.entity.hr.SysOwnership;
-import org.dromara.dante.logic.upms.service.hr.SysOwnershipService;
+import cn.herodotus.dante.logic.upms.entity.hr.SysOwnership;
+import cn.herodotus.dante.logic.upms.service.hr.SysOwnershipService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 

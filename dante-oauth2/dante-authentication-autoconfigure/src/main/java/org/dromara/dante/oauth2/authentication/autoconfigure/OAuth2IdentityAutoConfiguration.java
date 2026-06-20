@@ -26,7 +26,7 @@
 package org.dromara.dante.oauth2.authentication.autoconfigure;
 
 import jakarta.annotation.PostConstruct;
-import org.dromara.dante.logic.identity.config.LogicIdentityConfiguration;
+import cn.herodotus.dante.logic.identity.config.LogicIdentityConfiguration;
 import org.dromara.dante.oauth2.extension.config.OAuth2ExtensionConfiguration;
 import org.dromara.dante.rest.identity.config.RestIdentityConfiguration;
 import org.slf4j.Logger;

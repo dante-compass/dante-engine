@@ -27,12 +27,12 @@ package org.dromara.dante.oauth2.authorization.autoconfigure.processor;
 
 import com.google.common.collect.ImmutableList;
 import org.apache.commons.collections4.CollectionUtils;
-import org.dromara.dante.logic.upms.converter.SysAttributeToAttributeTransmitterConverter;
-import org.dromara.dante.logic.upms.converter.SysInterfacesToSysAttributesConverter;
-import org.dromara.dante.logic.upms.entity.security.SysAttribute;
-import org.dromara.dante.logic.upms.entity.security.SysInterface;
-import org.dromara.dante.logic.upms.service.security.SysAttributeService;
-import org.dromara.dante.logic.upms.service.security.SysInterfaceService;
+import cn.herodotus.dante.logic.upms.converter.SysAttributeToAttributeTransmitterConverter;
+import cn.herodotus.dante.logic.upms.converter.SysInterfacesToSysAttributesConverter;
+import cn.herodotus.dante.logic.upms.entity.security.SysAttribute;
+import cn.herodotus.dante.logic.upms.entity.security.SysInterface;
+import cn.herodotus.dante.logic.upms.service.security.SysAttributeService;
+import cn.herodotus.dante.logic.upms.service.security.SysInterfaceService;
 import org.dromara.dante.message.commons.definition.event.StrategyEventManager;
 import org.dromara.dante.message.commons.event.ApplicationReadinessEvent;
 import org.dromara.dante.oauth2.authorization.attribute.SecurityAttributeAnalyzer;

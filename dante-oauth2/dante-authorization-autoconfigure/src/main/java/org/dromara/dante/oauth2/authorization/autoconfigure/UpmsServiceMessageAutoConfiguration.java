@@ -26,8 +26,8 @@
 package org.dromara.dante.oauth2.authorization.autoconfigure;
 
 import jakarta.annotation.PostConstruct;
-import org.dromara.dante.logic.upms.annotation.EnableHerodotusLogicUpms;
-import org.dromara.dante.logic.upms.service.security.SysUserService;
+import cn.herodotus.dante.logic.upms.annotation.EnableHerodotusLogicUpms;
+import cn.herodotus.dante.logic.upms.service.security.SysUserService;
 import org.dromara.dante.oauth2.authorization.autoconfigure.condition.ConditionalOnUpmsService;
 import org.dromara.dante.oauth2.authorization.autoconfigure.listener.*;
 import org.dromara.dante.oauth2.authorization.autoconfigure.processor.EnumDictionaryCollectProcessor;

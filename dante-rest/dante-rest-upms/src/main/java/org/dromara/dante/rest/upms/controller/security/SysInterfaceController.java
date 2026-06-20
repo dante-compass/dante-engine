@@ -29,8 +29,8 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.tags.Tags;
 import cn.herodotus.dante.data.jpa.service.BaseJpaWriteableService;
 import cn.herodotus.dante.data.rest.servlet.AbstractJpaEntityWriteableController;
-import org.dromara.dante.logic.upms.entity.security.SysInterface;
-import org.dromara.dante.logic.upms.service.security.SysInterfaceService;
+import cn.herodotus.dante.logic.upms.entity.security.SysInterface;
+import cn.herodotus.dante.logic.upms.service.security.SysInterfaceService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 

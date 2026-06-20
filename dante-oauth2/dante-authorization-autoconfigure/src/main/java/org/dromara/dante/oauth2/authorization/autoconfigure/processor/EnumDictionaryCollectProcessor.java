@@ -27,11 +27,11 @@ package org.dromara.dante.oauth2.authorization.autoconfigure.processor;
 
 import org.apache.commons.collections4.CollectionUtils;
 import cn.herodotus.dante.core.domain.Dictionary;
-import org.dromara.dante.logic.upms.converter.SysEnumToSysDictionaryConverter;
-import org.dromara.dante.logic.upms.entity.security.SysDictionary;
-import org.dromara.dante.logic.upms.entity.security.SysEnum;
-import org.dromara.dante.logic.upms.service.security.SysDictionaryService;
-import org.dromara.dante.logic.upms.service.security.SysEnumService;
+import cn.herodotus.dante.logic.upms.converter.SysEnumToSysDictionaryConverter;
+import cn.herodotus.dante.logic.upms.entity.security.SysDictionary;
+import cn.herodotus.dante.logic.upms.entity.security.SysEnum;
+import cn.herodotus.dante.logic.upms.service.security.SysDictionaryService;
+import cn.herodotus.dante.logic.upms.service.security.SysEnumService;
 import cn.herodotus.dante.spring.founction.ListConverter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
