@@ -25,10 +25,10 @@
 
 package cn.herodotus.dante.persistence.sys.autoconfigure;
 
-import jakarta.annotation.PostConstruct;
 import cn.herodotus.dante.persistence.commons.definition.HerodotusUserLoggingService;
 import cn.herodotus.dante.persistence.sys.autoconfigure.controller.OAuth2UserLoggingController;
 import cn.herodotus.dante.persistence.sys.jpa.config.PersistenceSysJpaConfiguration;
+import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;

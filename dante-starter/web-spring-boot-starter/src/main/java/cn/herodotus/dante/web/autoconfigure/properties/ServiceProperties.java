@@ -25,10 +25,10 @@
 
 package cn.herodotus.dante.web.autoconfigure.properties;
 
-import com.google.common.base.MoreObjects;
-import org.apache.commons.collections4.CollectionUtils;
 import cn.herodotus.dante.core.constant.SystemConstants;
 import cn.herodotus.dante.web.constant.WebConstants;
+import com.google.common.base.MoreObjects;
+import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 import java.util.ArrayList;

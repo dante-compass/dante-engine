@@ -29,13 +29,13 @@ import cn.herodotus.dante.oauth2.authentication.configurer.OAuth2AuthenticationC
 import cn.herodotus.dante.oauth2.authentication.customizer.HerodotusJwtTokenCustomizer;
 import cn.herodotus.dante.oauth2.authentication.customizer.HerodotusOpaqueTokenCustomizer;
 import cn.herodotus.dante.oauth2.authentication.response.DefaultOAuth2AuthenticationEventPublisher;
+import cn.herodotus.dante.oauth2.commons.properties.OAuth2AuthenticationProperties;
+import cn.herodotus.dante.oauth2.commons.strategy.OAuth2ClientRegistrationSuccessEventManager;
+import cn.herodotus.dante.oauth2.commons.strategy.OAuth2DeviceVerificationSuccessEventManager;
 import cn.herodotus.dante.security.definition.OAuth2AuthorizationResourceService;
 import cn.herodotus.dante.web.servlet.template.ThymeleafTemplateHandler;
 import cn.herodotus.dante.web.support.crypto.DigitalEnvelopeProcessor;
 import jakarta.annotation.PostConstruct;
-import cn.herodotus.dante.oauth2.commons.properties.OAuth2AuthenticationProperties;
-import cn.herodotus.dante.oauth2.commons.strategy.OAuth2ClientRegistrationSuccessEventManager;
-import cn.herodotus.dante.oauth2.commons.strategy.OAuth2DeviceVerificationSuccessEventManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;

@@ -26,12 +26,12 @@
 package cn.herodotus.dante.oauth2.authentication.response;
 
 import cn.herodotus.dante.oauth2.authentication.converter.AbstractToRegisteredClientTransmitterConverter;
+import cn.herodotus.dante.oauth2.commons.strategy.OAuth2ClientRegistrationSuccessEventManager;
 import cn.herodotus.dante.security.definition.OAuth2AuthorizationResourceService;
 import cn.herodotus.dante.security.domain.RegisteredClientTransmitter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import cn.herodotus.dante.oauth2.commons.strategy.OAuth2ClientRegistrationSuccessEventManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.convert.converter.Converter;

@@ -26,6 +26,7 @@
 package cn.herodotus.dante.oauth2.authentication.jwk;
 
 import cn.herodotus.dante.core.utils.SecurityProvider;
+import cn.herodotus.dante.oauth2.commons.properties.OAuth2AuthenticationProperties;
 import com.nimbusds.jose.jwk.JWKSet;
 import com.nimbusds.jose.jwk.KeyUse;
 import com.nimbusds.jose.jwk.RSAKey;
@@ -33,7 +34,6 @@ import com.nimbusds.jose.util.Base64;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
-import cn.herodotus.dante.oauth2.commons.properties.OAuth2AuthenticationProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.ssl.SslBundle;

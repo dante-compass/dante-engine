@@ -27,9 +27,9 @@ package cn.herodotus.dante.logic.identity.entity;
 
 import cn.herodotus.dante.data.jpa.entity.AbstractSysEntity;
 import cn.herodotus.dante.logic.identity.generator.OAuth2PermissionIdGenerator;
+import cn.herodotus.dante.oauth2.commons.constant.OAuth2Constants;
 import com.google.common.base.MoreObjects;
 import jakarta.persistence.*;
-import cn.herodotus.dante.oauth2.commons.constant.OAuth2Constants;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 /**

@@ -25,11 +25,11 @@
 
 package cn.herodotus.dante.oauth2.authentication.response;
 
+import cn.herodotus.dante.oauth2.commons.strategy.OAuth2DeviceVerificationSuccessEventManager;
 import cn.herodotus.dante.security.domain.DeviceVerificationTransmitter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import cn.herodotus.dante.oauth2.commons.strategy.OAuth2DeviceVerificationSuccessEventManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.Authentication;

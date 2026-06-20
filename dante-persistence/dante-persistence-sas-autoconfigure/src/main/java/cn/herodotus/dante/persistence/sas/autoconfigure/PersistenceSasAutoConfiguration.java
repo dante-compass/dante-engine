@@ -25,9 +25,9 @@
 
 package cn.herodotus.dante.persistence.sas.autoconfigure;
 
-import jakarta.annotation.PostConstruct;
 import cn.herodotus.dante.persistence.sas.autoconfigure.controller.OAuth2AuthorizationController;
 import cn.herodotus.dante.persistence.sas.jpa.config.PersistenceSasJpaConfiguration;
+import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;

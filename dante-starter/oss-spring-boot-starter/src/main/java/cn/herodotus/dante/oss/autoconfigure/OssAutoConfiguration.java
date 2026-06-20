@@ -25,9 +25,9 @@
 
 package cn.herodotus.dante.oss.autoconfigure;
 
-import jakarta.annotation.PostConstruct;
 import cn.herodotus.dante.assistant.oss.condition.ConditionalOnOssEnabled;
 import cn.herodotus.dante.rest.oss.config.RestOssConfiguration;
+import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;

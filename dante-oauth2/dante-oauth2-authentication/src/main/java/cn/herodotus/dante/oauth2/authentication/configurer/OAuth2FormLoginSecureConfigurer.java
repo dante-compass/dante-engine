@@ -27,9 +27,9 @@ package cn.herodotus.dante.oauth2.authentication.configurer;
 
 import cn.herodotus.dante.oauth2.authentication.provider.OAuth2FormLoginAuthenticationProvider;
 import cn.herodotus.dante.oauth2.authentication.response.OAuth2FormLoginAuthenticationFailureHandler;
+import cn.herodotus.dante.oauth2.commons.properties.OAuth2AuthenticationProperties;
 import cn.herodotus.dante.security.definition.CaptchaProcessor;
 import cn.herodotus.dante.web.support.crypto.DigitalEnvelopeProcessor;
-import cn.herodotus.dante.oauth2.commons.properties.OAuth2AuthenticationProperties;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.HttpSecurityBuilder;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;

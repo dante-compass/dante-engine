@@ -26,8 +26,8 @@
 package cn.herodotus.dante.oauth2.extension.listener;
 
 import cn.herodotus.dante.oauth2.extension.manager.OAuth2ComplianceManager;
-import jakarta.servlet.http.HttpServletRequest;
 import cn.herodotus.dante.persistence.commons.event.SignOutComplianceEvent;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.context.ApplicationListener;
 import org.springframework.security.oauth2.server.authorization.OAuth2Authorization;
 

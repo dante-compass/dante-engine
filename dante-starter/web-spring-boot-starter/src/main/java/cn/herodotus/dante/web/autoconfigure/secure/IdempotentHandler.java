@@ -25,10 +25,10 @@
 
 package cn.herodotus.dante.web.autoconfigure.secure;
 
-import org.apache.commons.lang3.StringUtils;
 import cn.herodotus.dante.web.annotation.Idempotent;
 import cn.herodotus.dante.web.autoconfigure.stamp.IdempotentStampManager;
 import cn.herodotus.dante.web.exception.RepeatSubmissionException;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

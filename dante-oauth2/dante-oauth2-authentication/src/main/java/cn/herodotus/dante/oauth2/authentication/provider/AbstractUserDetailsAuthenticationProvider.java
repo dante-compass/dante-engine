@@ -26,13 +26,13 @@
 package cn.herodotus.dante.oauth2.authentication.provider;
 
 import cn.herodotus.dante.oauth2.authentication.utils.OAuth2EndpointUtils;
+import cn.herodotus.dante.oauth2.commons.exception.AccountEndpointLimitedException;
+import cn.herodotus.dante.oauth2.commons.properties.OAuth2AuthenticationProperties;
+import cn.herodotus.dante.persistence.commons.definition.EnhanceOAuth2AuthorizationService;
 import cn.herodotus.dante.security.constant.OAuth2ErrorKeys;
 import cn.herodotus.dante.security.definition.EnhanceUserDetailsService;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.ObjectUtils;
-import cn.herodotus.dante.oauth2.commons.exception.AccountEndpointLimitedException;
-import cn.herodotus.dante.oauth2.commons.properties.OAuth2AuthenticationProperties;
-import cn.herodotus.dante.persistence.commons.definition.EnhanceOAuth2AuthorizationService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.support.MessageSourceAccessor;

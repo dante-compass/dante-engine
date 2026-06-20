@@ -25,11 +25,11 @@
 
 package cn.herodotus.dante.oauth2.extension.converter;
 
+import cn.herodotus.dante.persistence.commons.domain.HerodotusUserLogging;
 import cn.herodotus.dante.security.utils.SecurityUtils;
 import cn.herodotus.dante.web.servlet.utils.HeaderUtils;
 import com.google.common.net.HttpHeaders;
 import jakarta.servlet.http.HttpServletRequest;
-import cn.herodotus.dante.persistence.commons.domain.HerodotusUserLogging;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.security.oauth2.server.authorization.OAuth2Authorization;
 import org.springframework.security.oauth2.server.authorization.authentication.OAuth2AccessTokenAuthenticationToken;

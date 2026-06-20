@@ -25,13 +25,13 @@
 
 package cn.herodotus.dante.oauth2.authorization.autoconfigure;
 
+import cn.herodotus.dante.message.autoconfigure.message.MessageSendingDispatcher;
 import cn.herodotus.dante.oauth2.authorization.autoconfigure.condition.ConditionalOnMessageService;
 import cn.herodotus.dante.oauth2.authorization.autoconfigure.listener.LocalMessageSendingListener;
 import cn.herodotus.dante.oauth2.authorization.autoconfigure.listener.RemoteMessageSendingListener;
 import cn.herodotus.dante.spring.condition.ConditionalOnArchitecture;
 import cn.herodotus.dante.spring.enums.Architecture;
 import jakarta.annotation.PostConstruct;
-import cn.herodotus.dante.message.autoconfigure.message.MessageSendingDispatcher;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;

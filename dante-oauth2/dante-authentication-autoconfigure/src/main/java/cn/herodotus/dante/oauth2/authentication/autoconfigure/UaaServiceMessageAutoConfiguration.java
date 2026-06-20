@@ -35,10 +35,10 @@ import cn.herodotus.dante.oauth2.authentication.autoconfigure.strategy.DefaultOA
 import cn.herodotus.dante.oauth2.commons.strategy.AccountStatusChangedEventManager;
 import cn.herodotus.dante.oauth2.commons.strategy.OAuth2ClientRegistrationSuccessEventManager;
 import cn.herodotus.dante.oauth2.commons.strategy.OAuth2DeviceVerificationSuccessEventManager;
+import cn.herodotus.dante.persistence.commons.definition.EnhanceAuthenticationManager;
 import cn.herodotus.dante.spring.condition.ConditionalOnArchitecture;
 import cn.herodotus.dante.spring.enums.Architecture;
 import jakarta.annotation.PostConstruct;
-import cn.herodotus.dante.persistence.commons.definition.EnhanceAuthenticationManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;

@@ -25,9 +25,9 @@
 
 package cn.herodotus.dante.oauth2.authorization.autoconfigure.listener;
 
+import cn.herodotus.dante.message.autoconfigure.message.MessageSendingDispatcher;
 import cn.herodotus.dante.message.commons.definition.Message;
 import cn.herodotus.dante.oauth2.commons.event.MessageSendingEvent;
-import cn.herodotus.dante.message.autoconfigure.message.MessageSendingDispatcher;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationListener;

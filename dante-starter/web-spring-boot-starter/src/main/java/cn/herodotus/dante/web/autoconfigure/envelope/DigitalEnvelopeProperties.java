@@ -25,8 +25,8 @@
 
 package cn.herodotus.dante.web.autoconfigure.envelope;
 
-import com.google.common.base.MoreObjects;
 import cn.herodotus.dante.core.constant.BaseConstants;
+import com.google.common.base.MoreObjects;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**

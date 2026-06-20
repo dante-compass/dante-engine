@@ -25,9 +25,9 @@
 
 package cn.herodotus.dante.servlet.container.autoconfigure.oauth2;
 
-import jakarta.annotation.PostConstruct;
 import cn.herodotus.dante.security.definition.BearerTokenResolver;
 import cn.herodotus.dante.servlet.container.autoconfigure.context.ServletServiceContextAutoConfiguration;
+import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;

@@ -25,11 +25,11 @@
 
 package cn.herodotus.dante.servlet.message.autoconfigure;
 
-import jakarta.annotation.PostConstruct;
 import cn.herodotus.dante.core.function.SecurityMatcherBuilderCustomizer;
 import cn.herodotus.dante.message.servlet.websocket.annotation.EnableHerodotusServletWebSocket;
 import cn.herodotus.dante.rest.message.annotation.EnableHerodotusServletMessageRest;
 import cn.herodotus.dante.servlet.message.autoconfigure.customizer.WebSocketSecurityMatcherBuilderCustomizer;
+import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;

@@ -25,12 +25,12 @@
 
 package cn.herodotus.dante.servlet.container.autoconfigure.oauth2;
 
-import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import cn.herodotus.dante.core.constant.SystemConstants;
 import cn.herodotus.dante.security.domain.HerodotusGrantedAuthority;
 import cn.herodotus.dante.spring.context.ServiceContextHolder;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.boot.security.oauth2.server.resource.autoconfigure.OAuth2ResourceServerProperties;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.core.convert.converter.Converter;

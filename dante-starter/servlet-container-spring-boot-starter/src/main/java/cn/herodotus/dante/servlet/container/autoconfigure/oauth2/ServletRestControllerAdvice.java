@@ -25,13 +25,13 @@
 
 package cn.herodotus.dante.servlet.container.autoconfigure.oauth2;
 
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import org.apache.commons.lang3.ObjectUtils;
 import cn.herodotus.dante.core.domain.Result;
 import cn.herodotus.dante.core.exception.PlatformRuntimeException;
 import cn.herodotus.dante.security.exception.PlatformAuthenticationException;
 import cn.herodotus.dante.security.exception.SecurityGlobalExceptionHandler;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.oauth2.core.OAuth2AuthenticationException;

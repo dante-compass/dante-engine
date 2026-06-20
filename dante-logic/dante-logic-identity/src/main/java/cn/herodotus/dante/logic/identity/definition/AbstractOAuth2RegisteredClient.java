@@ -26,6 +26,12 @@
 package cn.herodotus.dante.logic.identity.definition;
 
 import cn.herodotus.dante.logic.identity.entity.OAuth2Scope;
+import cn.herodotus.dante.persistence.commons.definition.ClientSettingsDetails;
+import cn.herodotus.dante.persistence.commons.definition.TokenSettingsDetails;
+import cn.herodotus.dante.persistence.commons.enums.AllJwsAlgorithm;
+import cn.herodotus.dante.persistence.commons.enums.SignatureJwsAlgorithm;
+import cn.herodotus.dante.persistence.commons.enums.TokenFormat;
+import cn.herodotus.dante.persistence.sas.jpa.definition.AbstractRegisteredClient;
 import cn.hutool.v7.core.data.id.IdUtil;
 import com.google.common.base.MoreObjects;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -33,12 +39,6 @@ import jakarta.persistence.Column;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.MappedSuperclass;
-import cn.herodotus.dante.persistence.commons.definition.ClientSettingsDetails;
-import cn.herodotus.dante.persistence.commons.definition.TokenSettingsDetails;
-import cn.herodotus.dante.persistence.commons.enums.AllJwsAlgorithm;
-import cn.herodotus.dante.persistence.commons.enums.SignatureJwsAlgorithm;
-import cn.herodotus.dante.persistence.commons.enums.TokenFormat;
-import cn.herodotus.dante.persistence.sas.jpa.definition.AbstractRegisteredClient;
 
 import java.time.Duration;
 import java.util.Set;

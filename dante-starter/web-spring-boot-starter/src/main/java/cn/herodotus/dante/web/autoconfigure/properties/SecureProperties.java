@@ -25,8 +25,8 @@
 
 package cn.herodotus.dante.web.autoconfigure.properties;
 
-import com.google.common.base.MoreObjects;
 import cn.herodotus.dante.web.constant.WebConstants;
+import com.google.common.base.MoreObjects;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 import java.io.Serializable;

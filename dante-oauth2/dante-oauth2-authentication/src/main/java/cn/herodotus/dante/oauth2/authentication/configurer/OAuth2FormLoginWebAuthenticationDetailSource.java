@@ -25,12 +25,12 @@
 
 package cn.herodotus.dante.oauth2.authentication.configurer;
 
+import cn.herodotus.dante.oauth2.commons.properties.OAuth2AuthenticationProperties;
 import cn.herodotus.dante.security.domain.FormLoginWebAuthenticationDetails;
 import cn.herodotus.dante.web.servlet.utils.SessionUtils;
 import cn.herodotus.dante.web.support.crypto.DigitalEnvelopeProcessor;
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.commons.lang3.StringUtils;
-import cn.herodotus.dante.oauth2.commons.properties.OAuth2AuthenticationProperties;
 import org.springframework.security.authentication.AuthenticationDetailsSource;
 
 /**

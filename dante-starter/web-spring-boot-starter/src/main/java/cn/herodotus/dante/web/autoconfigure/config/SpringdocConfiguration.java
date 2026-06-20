@@ -25,6 +25,10 @@
 
 package cn.herodotus.dante.web.autoconfigure.config;
 
+import cn.herodotus.dante.core.constant.SystemConstants;
+import cn.herodotus.dante.spring.context.ServiceContextHolder;
+import cn.herodotus.dante.web.condition.ConditionalOnSwaggerEnabled;
+import cn.herodotus.dante.web.definition.OpenApiServerResolver;
 import com.google.common.collect.ImmutableList;
 import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
 import io.swagger.v3.oas.annotations.security.*;
@@ -34,10 +38,6 @@ import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.info.License;
 import io.swagger.v3.oas.models.servers.Server;
 import jakarta.annotation.PostConstruct;
-import cn.herodotus.dante.core.constant.SystemConstants;
-import cn.herodotus.dante.spring.context.ServiceContextHolder;
-import cn.herodotus.dante.web.condition.ConditionalOnSwaggerEnabled;
-import cn.herodotus.dante.web.definition.OpenApiServerResolver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;

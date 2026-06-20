@@ -31,8 +31,8 @@ import cn.herodotus.dante.logic.identity.converter.OAuth2ApplicationToRegistered
 import cn.herodotus.dante.logic.identity.entity.OAuth2Application;
 import cn.herodotus.dante.logic.identity.entity.OAuth2Scope;
 import cn.herodotus.dante.logic.identity.repository.OAuth2ApplicationRepository;
-import org.apache.commons.lang3.ObjectUtils;
 import cn.herodotus.dante.persistence.commons.definition.EnhanceAuthenticationManager;
+import org.apache.commons.lang3.ObjectUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.convert.converter.Converter;

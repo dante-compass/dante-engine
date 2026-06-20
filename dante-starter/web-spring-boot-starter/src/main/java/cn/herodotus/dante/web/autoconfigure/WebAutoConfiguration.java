@@ -25,7 +25,6 @@
 
 package cn.herodotus.dante.web.autoconfigure;
 
-import jakarta.annotation.PostConstruct;
 import cn.herodotus.dante.core.builder.EnumDictionaryBuilder;
 import cn.herodotus.dante.core.function.ErrorCodeMapperBuilderCustomizer;
 import cn.herodotus.dante.message.commons.definition.strategy.EnumDictionaryCollectEventManager;
@@ -33,6 +32,7 @@ import cn.herodotus.dante.web.autoconfigure.config.SecureConfiguration;
 import cn.herodotus.dante.web.autoconfigure.config.SpringdocConfiguration;
 import cn.herodotus.dante.web.autoconfigure.customizer.WebErrorCodeMapperBuilderCustomizer;
 import cn.herodotus.dante.web.autoconfigure.initializer.EnumDictionaryCollector;
+import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;

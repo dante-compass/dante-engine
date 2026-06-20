@@ -25,10 +25,10 @@
 
 package cn.herodotus.dante.servlet.container.autoconfigure.context;
 
-import jakarta.annotation.PostConstruct;
 import cn.herodotus.dante.web.context.ServiceContextHolderInitializerListener;
 import cn.herodotus.dante.web.properties.EndpointProperties;
 import cn.herodotus.dante.web.properties.PlatformProperties;
+import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;

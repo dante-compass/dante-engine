@@ -28,12 +28,12 @@ package cn.herodotus.dante.oauth2.authentication.configurer;
 import cn.herodotus.dante.oauth2.authentication.customizer.OAuth2ExceptionHandlingConfigurerCustomizer;
 import cn.herodotus.dante.oauth2.authentication.customizer.OAuth2FormLoginConfigurerCustomizer;
 import cn.herodotus.dante.oauth2.authentication.response.*;
-import cn.herodotus.dante.security.definition.OAuth2AuthorizationResourceService;
-import cn.herodotus.dante.web.servlet.template.ThymeleafTemplateHandler;
-import cn.herodotus.dante.web.support.crypto.DigitalEnvelopeProcessor;
 import cn.herodotus.dante.oauth2.commons.properties.OAuth2AuthenticationProperties;
 import cn.herodotus.dante.oauth2.commons.strategy.OAuth2ClientRegistrationSuccessEventManager;
 import cn.herodotus.dante.oauth2.commons.strategy.OAuth2DeviceVerificationSuccessEventManager;
+import cn.herodotus.dante.security.definition.OAuth2AuthorizationResourceService;
+import cn.herodotus.dante.web.servlet.template.ThymeleafTemplateHandler;
+import cn.herodotus.dante.web.support.crypto.DigitalEnvelopeProcessor;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClientRepository;
 
 /**

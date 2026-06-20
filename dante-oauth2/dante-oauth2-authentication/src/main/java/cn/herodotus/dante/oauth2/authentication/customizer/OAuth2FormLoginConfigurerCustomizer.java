@@ -25,8 +25,8 @@
 
 package cn.herodotus.dante.oauth2.authentication.customizer;
 
-import org.apache.commons.lang3.StringUtils;
 import cn.herodotus.dante.oauth2.commons.properties.OAuth2AuthenticationProperties;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.FormLoginConfigurer;

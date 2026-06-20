@@ -25,8 +25,8 @@
 
 package cn.herodotus.dante.nosql.autoconfigure;
 
-import jakarta.annotation.PostConstruct;
 import cn.herodotus.dante.nosql.influxdb3.annotation.EnableHerodotusInfluxDB3;
+import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;

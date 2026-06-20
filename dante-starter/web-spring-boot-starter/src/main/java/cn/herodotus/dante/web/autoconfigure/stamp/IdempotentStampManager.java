@@ -25,10 +25,10 @@
 
 package cn.herodotus.dante.web.autoconfigure.stamp;
 
-import cn.hutool.v7.core.data.id.IdUtil;
 import cn.herodotus.dante.cache.jetcache.stamp.AbstractStampManager;
 import cn.herodotus.dante.web.autoconfigure.properties.SecureProperties;
 import cn.herodotus.dante.web.constant.WebConstants;
+import cn.hutool.v7.core.data.id.IdUtil;
 
 /**
  * <p>Description: 幂等Stamp管理 </p>

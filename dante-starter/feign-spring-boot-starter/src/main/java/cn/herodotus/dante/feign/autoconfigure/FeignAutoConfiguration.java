@@ -25,12 +25,12 @@
 
 package cn.herodotus.dante.feign.autoconfigure;
 
-import feign.*;
-import feign.codec.ErrorDecoder;
-import jakarta.annotation.PostConstruct;
 import cn.herodotus.dante.feign.autoconfigure.extension.FeignErrorDecoder;
 import cn.herodotus.dante.feign.autoconfigure.extension.FeignInnerContract;
 import cn.herodotus.dante.feign.autoconfigure.extension.FeignRequestInterceptor;
+import feign.*;
+import feign.codec.ErrorDecoder;
+import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;

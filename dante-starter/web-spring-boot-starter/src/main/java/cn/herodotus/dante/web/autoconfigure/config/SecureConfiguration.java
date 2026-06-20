@@ -25,7 +25,6 @@
 
 package cn.herodotus.dante.web.autoconfigure.config;
 
-import jakarta.annotation.PostConstruct;
 import cn.herodotus.dante.web.autoconfigure.envelope.DefaultDigitalEnvelopeProcessor;
 import cn.herodotus.dante.web.autoconfigure.properties.SecureProperties;
 import cn.herodotus.dante.web.autoconfigure.stamp.AccessLimitedStampManager;
@@ -36,6 +35,7 @@ import cn.herodotus.dante.web.definition.SignatureValidator;
 import cn.herodotus.dante.web.support.crypto.AsymmetricCryptoProcessor;
 import cn.herodotus.dante.web.support.crypto.DigitalEnvelopeProcessor;
 import cn.herodotus.dante.web.support.crypto.SymmetricCryptoProcessor;
+import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;

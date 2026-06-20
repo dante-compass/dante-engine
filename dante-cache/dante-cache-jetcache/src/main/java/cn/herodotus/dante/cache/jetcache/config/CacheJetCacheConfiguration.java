@@ -25,14 +25,14 @@
 
 package cn.herodotus.dante.cache.jetcache.config;
 
+import cn.herodotus.dante.cache.caffeine.config.CacheCaffeineConfiguration;
 import cn.herodotus.dante.cache.commons.properties.CacheProperties;
 import cn.herodotus.dante.cache.jetcache.enhance.HerodotusCacheManager;
 import cn.herodotus.dante.cache.jetcache.enhance.JetCacheCreateCacheFactory;
 import cn.herodotus.dante.cache.jetcache.utils.JetCacheUtils;
+import cn.herodotus.dante.cache.redis.config.CacheRedisConfiguration;
 import com.alicp.jetcache.CacheManager;
 import jakarta.annotation.PostConstruct;
-import cn.herodotus.dante.cache.caffeine.config.CacheCaffeineConfiguration;
-import cn.herodotus.dante.cache.redis.config.CacheRedisConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;

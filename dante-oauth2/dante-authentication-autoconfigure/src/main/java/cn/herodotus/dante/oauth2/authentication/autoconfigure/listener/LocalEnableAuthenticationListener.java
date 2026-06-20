@@ -26,8 +26,8 @@
 package cn.herodotus.dante.oauth2.authentication.autoconfigure.listener;
 
 import cn.herodotus.dante.oauth2.commons.event.EnableAuthenticationEvent;
-import cn.herodotus.dante.security.domain.RegisteredClientTransmitter;
 import cn.herodotus.dante.persistence.commons.definition.EnhanceAuthenticationManager;
+import cn.herodotus.dante.security.domain.RegisteredClientTransmitter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationListener;

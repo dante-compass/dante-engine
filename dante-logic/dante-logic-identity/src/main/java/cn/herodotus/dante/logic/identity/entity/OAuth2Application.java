@@ -27,11 +27,11 @@ package cn.herodotus.dante.logic.identity.entity;
 
 import cn.herodotus.dante.data.commons.enums.ApplicationType;
 import cn.herodotus.dante.logic.identity.definition.AbstractOAuth2RegisteredClient;
+import cn.herodotus.dante.oauth2.commons.constant.OAuth2Constants;
 import com.google.common.base.MoreObjects;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import cn.herodotus.dante.oauth2.commons.constant.OAuth2Constants;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
