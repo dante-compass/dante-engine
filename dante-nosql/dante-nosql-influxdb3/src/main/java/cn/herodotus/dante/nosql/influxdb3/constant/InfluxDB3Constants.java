@@ -23,43 +23,20 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.nosql.influxdb3.pool;
+package cn.herodotus.dante.nosql.influxdb3.constant;
 
-import com.influxdb.v3.client.InfluxDBClient;
-import org.apache.commons.pool2.BasePooledObjectFactory;
-import org.apache.commons.pool2.PooledObject;
-import org.apache.commons.pool2.impl.DefaultPooledObject;
-import org.dromara.dante.nosql.influxdb3.properties.InfluxDB3Properties;
+import cn.herodotus.dante.core.constant.BaseConstants;
 
 /**
- * <p>Description: InfluxDBClient 对象池对象工厂定义 </p>
+ * <p>Description: TSDB InfluxDB3 模块常量 </p>
  *
  * @author : gengwei.zheng
- * @date : 2023/11/6 13:03
+ * @date : 2024/5/2 22:06
  */
-public class InfluxDB3ClientPooledObjectFactory extends BasePooledObjectFactory<InfluxDBClient> {
+public interface InfluxDB3Constants extends BaseConstants {
 
-    private final InfluxDB3Properties influxdb3Properties;
+    String PROPERTY_NOSQL_INFLUXDB3 = PROPERTY_PREFIX_NOSQL + ".influxdb3";
 
-    public InfluxDB3ClientPooledObjectFactory(InfluxDB3Properties influxdb3Properties) {
-        this.influxdb3Properties = influxdb3Properties;
-    }
-
-    @Override
-    public InfluxDBClient create() throws Exception {
-        return InfluxDBClient.getInstance(
-                influxdb3Properties.getHost(),
-                influxdb3Properties.getToken().toCharArray(),
-                influxdb3Properties.getDatabase());
-    }
-
-    @Override
-    public PooledObject<InfluxDBClient> wrap(InfluxDBClient influxDBClient) {
-        return new DefaultPooledObject<>(influxDBClient);
-    }
-
-    @Override
-    public void destroyObject(PooledObject<InfluxDBClient> p) throws Exception {
-        p.getObject().close();
-    }
+    String ITEM_INFLUXDB3_HOST = PROPERTY_NOSQL_INFLUXDB3 + ".host";
+    String ITEM_INFLUXDB3_TOKEN = PROPERTY_NOSQL_INFLUXDB3 + ".token";
 }

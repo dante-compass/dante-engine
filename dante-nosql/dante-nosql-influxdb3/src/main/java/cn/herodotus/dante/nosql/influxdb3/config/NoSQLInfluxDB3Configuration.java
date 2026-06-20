@@ -23,13 +23,13 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.nosql.influxdb3.config;
+package cn.herodotus.dante.nosql.influxdb3.config;
 
+import cn.herodotus.dante.nosql.influxdb3.condition.ConditionalOnInfluxDB3;
+import cn.herodotus.dante.nosql.influxdb3.pool.InfluxDB3ClientObjectPool;
+import cn.herodotus.dante.nosql.influxdb3.pool.InfluxDB3ClientPooledObjectFactory;
+import cn.herodotus.dante.nosql.influxdb3.properties.InfluxDB3Properties;
 import jakarta.annotation.PostConstruct;
-import org.dromara.dante.nosql.influxdb3.condition.ConditionalOnInfluxDB3;
-import org.dromara.dante.nosql.influxdb3.pool.InfluxDB3ClientObjectPool;
-import org.dromara.dante.nosql.influxdb3.pool.InfluxDB3ClientPooledObjectFactory;
-import org.dromara.dante.nosql.influxdb3.properties.InfluxDB3Properties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;

@@ -23,21 +23,24 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.nosql.influxdb3.pool;
+package cn.herodotus.dante.nosql.influxdb3.annotation;
 
-import com.influxdb.v3.client.InfluxDBClient;
-import cn.herodotus.dante.core.support.pool.AbstractObjectPool;
-import org.dromara.dante.nosql.influxdb3.properties.InfluxDB3Properties;
+import cn.herodotus.dante.nosql.influxdb3.config.NoSQLInfluxDB3Configuration;
+import org.springframework.context.annotation.Import;
+
+import java.lang.annotation.*;
 
 /**
- * <p>Description: InfluxDBClient 对象池 </p>
+ * <p>Description: 手动开启 InfluxDB3 注解 </p>
+ * <p>
+ * 模块中的内容相对独立，而且仅有一个 Configuration，同时无需考虑注入顺序的模块，则使用 @Enable 风格配置
  *
  * @author : gengwei.zheng
- * @date : 2023/11/6 13:28
+ * @date : 2023/11/6 17:11
  */
-public class InfluxDB3ClientObjectPool extends AbstractObjectPool<InfluxDBClient> {
-
-    public InfluxDB3ClientObjectPool(InfluxDB3ClientPooledObjectFactory influxdb3ClientPooledObjectFactory, InfluxDB3Properties influxdb3Properties) {
-        super(influxdb3ClientPooledObjectFactory, influxdb3Properties.getPool());
-    }
+@Target({ElementType.TYPE, ElementType.METHOD})
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+@Import(NoSQLInfluxDB3Configuration.class)
+public @interface EnableHerodotusInfluxDB3 {
 }

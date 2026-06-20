@@ -23,20 +23,21 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.nosql.influxdb3.constant;
+package cn.herodotus.dante.nosql.influxdb3.definition;
 
-import cn.herodotus.dante.core.constant.BaseConstants;
+import cn.herodotus.dante.core.support.pool.AbstractObjectPool;
+import cn.herodotus.dante.core.support.pool.AbstractPooledObjectService;
+import com.influxdb.v3.client.InfluxDBClient;
 
 /**
- * <p>Description: TSDB InfluxDB3 模块常量 </p>
+ * <p>Description: 基础的 InfluxDB3 操作服务 </p>
  *
  * @author : gengwei.zheng
- * @date : 2024/5/2 22:06
+ * @date : 2023/11/6 20:26
  */
-public interface InfluxDB3Constants extends BaseConstants {
+public abstract class AbstractInfluxDB3Service extends AbstractPooledObjectService<InfluxDBClient> {
 
-    String PROPERTY_NOSQL_INFLUXDB3 = PROPERTY_PREFIX_NOSQL + ".influxdb3";
-
-    String ITEM_INFLUXDB3_HOST = PROPERTY_NOSQL_INFLUXDB3 + ".host";
-    String ITEM_INFLUXDB3_TOKEN = PROPERTY_NOSQL_INFLUXDB3 + ".token";
+    public AbstractInfluxDB3Service(AbstractObjectPool<InfluxDBClient> objectPool) {
+        super(objectPool);
+    }
 }

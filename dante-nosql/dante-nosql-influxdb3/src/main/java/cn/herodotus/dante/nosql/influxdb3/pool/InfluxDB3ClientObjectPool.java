@@ -23,21 +23,21 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.nosql.influxdb3.condition;
+package cn.herodotus.dante.nosql.influxdb3.pool;
 
-import org.springframework.context.annotation.Conditional;
-
-import java.lang.annotation.*;
+import cn.herodotus.dante.core.support.pool.AbstractObjectPool;
+import cn.herodotus.dante.nosql.influxdb3.properties.InfluxDB3Properties;
+import com.influxdb.v3.client.InfluxDBClient;
 
 /**
- * <p>Description: InfluxDB3 开启条件注解 </p>
+ * <p>Description: InfluxDBClient 对象池 </p>
  *
  * @author : gengwei.zheng
- * @date : 2023/11/6 17:10
+ * @date : 2023/11/6 13:28
  */
-@Target({ElementType.TYPE, ElementType.METHOD})
-@Retention(RetentionPolicy.RUNTIME)
-@Documented
-@Conditional(OnInfluxDB3Condition.class)
-public @interface ConditionalOnInfluxDB3 {
+public class InfluxDB3ClientObjectPool extends AbstractObjectPool<InfluxDBClient> {
+
+    public InfluxDB3ClientObjectPool(InfluxDB3ClientPooledObjectFactory influxdb3ClientPooledObjectFactory, InfluxDB3Properties influxdb3Properties) {
+        super(influxdb3ClientPooledObjectFactory, influxdb3Properties.getPool());
+    }
 }

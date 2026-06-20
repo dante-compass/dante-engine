@@ -23,9 +23,9 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.nosql.influxdb3.condition;
+package cn.herodotus.dante.nosql.influxdb3.condition;
 
-import org.dromara.dante.nosql.influxdb3.constant.InfluxDB3Constants;
+import cn.herodotus.dante.nosql.influxdb3.constant.InfluxDB3Constants;
 import org.springframework.boot.autoconfigure.condition.AllNestedConditions;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 

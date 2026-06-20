@@ -23,21 +23,21 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.nosql.influxdb3.definition;
+package cn.herodotus.dante.nosql.influxdb3.condition;
 
-import com.influxdb.v3.client.InfluxDBClient;
-import cn.herodotus.dante.core.support.pool.AbstractObjectPool;
-import cn.herodotus.dante.core.support.pool.AbstractPooledObjectService;
+import org.springframework.context.annotation.Conditional;
+
+import java.lang.annotation.*;
 
 /**
- * <p>Description: 基础的 InfluxDB3 操作服务 </p>
+ * <p>Description: InfluxDB3 开启条件注解 </p>
  *
  * @author : gengwei.zheng
- * @date : 2023/11/6 20:26
+ * @date : 2023/11/6 17:10
  */
-public abstract class AbstractInfluxDB3Service extends AbstractPooledObjectService<InfluxDBClient> {
-
-    public AbstractInfluxDB3Service(AbstractObjectPool<InfluxDBClient> objectPool) {
-        super(objectPool);
-    }
+@Target({ElementType.TYPE, ElementType.METHOD})
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+@Conditional(OnInfluxDB3Condition.class)
+public @interface ConditionalOnInfluxDB3 {
 }

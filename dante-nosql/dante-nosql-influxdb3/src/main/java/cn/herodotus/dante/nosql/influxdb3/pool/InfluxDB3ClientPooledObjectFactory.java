@@ -23,24 +23,43 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package org.dromara.dante.nosql.influxdb3.annotation;
+package cn.herodotus.dante.nosql.influxdb3.pool;
 
-import org.dromara.dante.nosql.influxdb3.config.NoSQLInfluxDB3Configuration;
-import org.springframework.context.annotation.Import;
-
-import java.lang.annotation.*;
+import cn.herodotus.dante.nosql.influxdb3.properties.InfluxDB3Properties;
+import com.influxdb.v3.client.InfluxDBClient;
+import org.apache.commons.pool2.BasePooledObjectFactory;
+import org.apache.commons.pool2.PooledObject;
+import org.apache.commons.pool2.impl.DefaultPooledObject;
 
 /**
- * <p>Description: 手动开启 InfluxDB3 注解 </p>
- * <p>
- * 模块中的内容相对独立，而且仅有一个 Configuration，同时无需考虑注入顺序的模块，则使用 @Enable 风格配置
+ * <p>Description: InfluxDBClient 对象池对象工厂定义 </p>
  *
  * @author : gengwei.zheng
- * @date : 2023/11/6 17:11
+ * @date : 2023/11/6 13:03
  */
-@Target({ElementType.TYPE, ElementType.METHOD})
-@Retention(RetentionPolicy.RUNTIME)
-@Documented
-@Import(NoSQLInfluxDB3Configuration.class)
-public @interface EnableHerodotusInfluxDB3 {
+public class InfluxDB3ClientPooledObjectFactory extends BasePooledObjectFactory<InfluxDBClient> {
+
+    private final InfluxDB3Properties influxdb3Properties;
+
+    public InfluxDB3ClientPooledObjectFactory(InfluxDB3Properties influxdb3Properties) {
+        this.influxdb3Properties = influxdb3Properties;
+    }
+
+    @Override
+    public InfluxDBClient create() throws Exception {
+        return InfluxDBClient.getInstance(
+                influxdb3Properties.getHost(),
+                influxdb3Properties.getToken().toCharArray(),
+                influxdb3Properties.getDatabase());
+    }
+
+    @Override
+    public PooledObject<InfluxDBClient> wrap(InfluxDBClient influxDBClient) {
+        return new DefaultPooledObject<>(influxDBClient);
+    }
+
+    @Override
+    public void destroyObject(PooledObject<InfluxDBClient> p) throws Exception {
+        p.getObject().close();
+    }
 }
