@@ -37,12 +37,13 @@
 
 ---
 
-## 重要声明
+## 重要说明
 
-1. 自 **v4.0.5.0** 版本起，Dante Cloud 核心库 Dante Engine 子项目全面开放。
-2. 自 **v4.0.5.1** 版本起，为了提升维护效率，Dante Cloud 企业版和开源版前端合并，新版本前端（Vuetify 版）源代码也全面开放。
+因 Maven 中央仓库将于 `2026年08月11日` 开启 **发布配额限制措施**（当前为普通用户每月限制发布 7 次、内容大小 80 M、文件数量 1000），所以为了不影响用户的正常使用，Dante Cloud 及 Dante Engine 将 Maven 坐标及包名由原来 Dromara 社区的 `org.dromara` 变更为 `cn.herodotus`。同时，Dante Cloud 也会同步降低发版频率。对由此给大家带来不便，深表歉意。
 
-> 注意：新版前端（Vuetify 版）与旧版前端（Quasar 版）共享模块，开发时需要以（Vuetify 版）为主，详情参见：[前端【共享模块】](https://www.herodotus.cn/get-started/install/frontend.html#_5-%E5%85%B1%E4%BA%AB%E6%A8%A1%E5%9D%97)
+本次坐标调整尽量将代码变化降到最低。如果您已经在使用 Dante Cloud 进行开发，升级 Dante Cloud 版本号之后，使用全局替换，将 `org.dromara` 替换为 `cn.herodotus`；如果条件允许，建议重新检出代码。
+
+Maven 中央仓库发布限制详情：[【原文地址】](https://central.sonatype.org/publish/maven-central-publishing-limits/)
 
 ## 项目介绍
 
