@@ -23,5 +23,5 @@
 # 6. 若您的项目无法满足以上几点，可申请商业授权
 #
 
-org.dromara.dante.reactive.container.autoconfigure.ReactiveContainerAutoConfiguration
-org.dromara.dante.reactive.container.autoconfigure.ReactiveWebExceptionAutoConfiguration
+cn.herodotus.dante.reactive.container.autoconfigure.ReactiveContainerAutoConfiguration
+cn.herodotus.dante.reactive.container.autoconfigure.ReactiveWebExceptionAutoConfiguration

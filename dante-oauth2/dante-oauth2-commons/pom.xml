@@ -31,7 +31,7 @@
 
     <parent>
         <artifactId>dante-oauth2</artifactId>
-        <groupId>org.dromara.dante</groupId>
+        <groupId>cn.herodotus.dante</groupId>
         <version>4.1.0.0</version>
     </parent>
 
@@ -42,22 +42,22 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.dromara.dante</groupId>
+            <groupId>cn.herodotus.dante</groupId>
             <artifactId>dante-data-commons</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>org.dromara.dante</groupId>
+            <groupId>cn.herodotus.dante</groupId>
             <artifactId>dante-security</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>org.dromara.dante</groupId>
+            <groupId>cn.herodotus.dante</groupId>
             <artifactId>dante-web</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>org.dromara.dante</groupId>
+            <groupId>cn.herodotus.dante</groupId>
             <artifactId>dante-message-commons</artifactId>
         </dependency>
 

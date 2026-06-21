@@ -31,7 +31,7 @@
 
     <parent>
         <artifactId>dante-engine</artifactId>
-        <groupId>org.dromara.dante</groupId>
+        <groupId>cn.herodotus.dante</groupId>
         <version>4.1.0.0</version>
     </parent>
 

@@ -23,9 +23,9 @@
 # 6. 若您的项目无法满足以上几点，可申请商业授权
 #
 
-org.dromara.dante.autoconfigure.ApplicationAutoConfiguration
-org.dromara.dante.autoconfigure.enums.EnumDictionaryAutoConfiguration
-org.dromara.dante.autoconfigure.error.ErrorCodeAutoConfiguration
-org.dromara.dante.autoconfigure.file.FileAutoConfiguration
-org.dromara.dante.autoconfigure.jackson.JacksonAutoConfiguration
-org.dromara.dante.autoconfigure.matcher.SecurityMatcherAutoConfiguration
+cn.herodotus.dante.autoconfigure.ApplicationAutoConfiguration
+cn.herodotus.dante.autoconfigure.enums.EnumDictionaryAutoConfiguration
+cn.herodotus.dante.autoconfigure.error.ErrorCodeAutoConfiguration
+cn.herodotus.dante.autoconfigure.file.FileAutoConfiguration
+cn.herodotus.dante.autoconfigure.jackson.JacksonAutoConfiguration
+cn.herodotus.dante.autoconfigure.matcher.SecurityMatcherAutoConfiguration

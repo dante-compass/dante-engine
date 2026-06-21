@@ -23,8 +23,8 @@
 # 6. 若您的项目无法满足以上几点，可申请商业授权
 #
 
-org.dromara.dante.servlet.container.autoconfigure.ServletContainerAutoConfiguration
-org.dromara.dante.servlet.container.autoconfigure.context.ServletServiceContextAutoConfiguration
-org.dromara.dante.servlet.container.autoconfigure.oauth2.ServletOAuth2AuthorizationAutoConfiguration
-org.dromara.dante.servlet.container.autoconfigure.restclient.RestClientAutoConfiguration
-org.dromara.dante.servlet.container.autoconfigure.session.ServletSessionAutoConfiguration
+cn.herodotus.dante.servlet.container.autoconfigure.ServletContainerAutoConfiguration
+cn.herodotus.dante.servlet.container.autoconfigure.context.ServletServiceContextAutoConfiguration
+cn.herodotus.dante.servlet.container.autoconfigure.oauth2.ServletOAuth2AuthorizationAutoConfiguration
+cn.herodotus.dante.servlet.container.autoconfigure.restclient.RestClientAutoConfiguration
+cn.herodotus.dante.servlet.container.autoconfigure.session.ServletSessionAutoConfiguration

@@ -35,7 +35,7 @@
         <relativePath/>
     </parent>
 
-    <groupId>org.dromara.dante</groupId>
+    <groupId>cn.herodotus.dante</groupId>
     <artifactId>dante-dependencies</artifactId>
     <name>${project.artifactId}</name>
     <packaging>pom</packaging>
@@ -77,302 +77,302 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>org.dromara.dante</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>dante-assistant-oss</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.dromara.dante</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>dante-assistant-access</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.dromara.dante</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>dante-assistant-captcha</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.dromara.dante</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>dante-cache-caffeine</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.dromara.dante</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>dante-cache-commons</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.dromara.dante</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>dante-cache-jetcache</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.dromara.dante</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>dante-cache-redis</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.dromara.dante</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>dante-data-commons</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.dromara.dante</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>dante-data-jpa</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.dromara.dante</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>dante-data-mongodb</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.dromara.dante</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>dante-data-rest</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.dromara.dante</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>dante-autoconfigure</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.dromara.dante</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>dante-core</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.dromara.dante</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>dante-hibernate</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.dromara.dante</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>dante-security</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.dromara.dante</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>dante-spring</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.dromara.dante</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>dante-web</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.dromara.dante</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>dante-logic-identity</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.dromara.dante</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>dante-logic-message</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.dromara.dante</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>dante-logic-upms</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.dromara.dante</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>dante-rest-oss</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.dromara.dante</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>dante-rest-identity</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.dromara.dante</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>dante-rest-message</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.dromara.dante</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>dante-rest-upms</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.dromara.dante</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>dante-message-autoconfigure</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.dromara.dante</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>dante-message-commons</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.dromara.dante</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>dante-message-emqx</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.dromara.dante</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>dante-message-servlet-websocket</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.dromara.dante</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>dante-nosql-influxdb3</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.dromara.dante</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>dante-authorization-autoconfigure</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.dromara.dante</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>dante-authentication-autoconfigure</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.dromara.dante</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>dante-oauth2-commons</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.dromara.dante</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>dante-oauth2-authentication</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.dromara.dante</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>dante-oauth2-authorization</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.dromara.dante</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>dante-oauth2-extension</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.dromara.dante</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>dante-persistence-commons</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.dromara.dante</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>dante-persistence-sas-autoconfigure</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.dromara.dante</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>dante-persistence-sas-jpa</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.dromara.dante</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>dante-persistence-sys-autoconfigure</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.dromara.dante</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>dante-persistence-sys-jpa</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.dromara.dante</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>cache-spring-boot-starter</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.dromara.dante</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>captcha-spring-boot-starter</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.dromara.dante</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>data-rdbms-spring-boot-starter</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.dromara.dante</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>data-mongodb-spring-boot-starter</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.dromara.dante</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>facility-alibaba-spring-boot-starter</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.dromara.dante</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>facility-gateway-spring-boot-starter</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.dromara.dante</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>facility-kafka-spring-boot-starter</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.dromara.dante</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>facility-tencent-spring-boot-starter</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.dromara.dante</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>feign-spring-boot-starter</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.dromara.dante</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>logging-spring-boot-starter</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.dromara.dante</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>message-mail-spring-boot-starter</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.dromara.dante</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>message-mqtt-spring-boot-starter</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.dromara.dante</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>nosql-spring-boot-starter</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.dromara.dante</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>oss-spring-boot-starter</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.dromara.dante</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>reactive-container-spring-boot-starter</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.dromara.dante</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>servlet-container-spring-boot-starter</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.dromara.dante</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>servlet-message-spring-boot-starter</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.dromara.dante</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>tenant-spring-boot-starter</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.dromara.dante</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>web-spring-boot-starter</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.dromara.dante</groupId>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>webmvc-spring-boot-starter</artifactId>
                 <version>${project.version}</version>
             </dependency>
