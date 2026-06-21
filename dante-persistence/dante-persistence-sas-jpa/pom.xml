@@ -6,7 +6,7 @@
     <parent>
         <groupId>cn.herodotus.dante</groupId>
         <artifactId>dante-persistence</artifactId>
-        <version>4.1.0.0</version>
+        <version>4.1.0.1</version>
     </parent>
 
     <artifactId>dante-persistence-sas-jpa</artifactId>
