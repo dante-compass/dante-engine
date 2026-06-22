@@ -258,11 +258,6 @@
             </dependency>
             <dependency>
                 <groupId>cn.herodotus.dante</groupId>
-                <artifactId>facility-gateway-spring-boot-starter</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>facility-kafka-spring-boot-starter</artifactId>
                 <version>${project.version}</version>
             </dependency>

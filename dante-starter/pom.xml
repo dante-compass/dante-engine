@@ -45,7 +45,6 @@
         <module>cache-spring-boot-starter</module>
         <module>data-rdbms-spring-boot-starter</module>
         <module>facility-alibaba-spring-boot-starter</module>
-        <module>facility-gateway-spring-boot-starter</module>
         <module>facility-kafka-spring-boot-starter</module>
         <module>facility-tencent-spring-boot-starter</module>
         <module>logging-spring-boot-starter</module>
