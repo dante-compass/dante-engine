@@ -72,7 +72,7 @@
 
         <dependency>
             <groupId>cn.herodotus.dante</groupId>
-            <artifactId>captcha-spring-boot-starter</artifactId>
+            <artifactId>dante-assistant-captcha</artifactId>
         </dependency>
 
         <dependency>

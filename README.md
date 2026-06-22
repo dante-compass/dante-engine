@@ -147,7 +147,6 @@ dante-engine
 ├    └── dante-rest-upms -- UPMS 功能 REST 接口模块
 ├── dante-starter -- Starters
 ├    ├── cache-spring-boot-starter -- 缓存自动配置 Starter
-├    ├── captcha-spring-boot-starter -- 验证码自动配置 Starter
 ├    ├── data-mongodb-spring-boot-starter -- MongoDB 数据访问层自动配置 Starter
 ├    ├── data-rdbms-spring-boot-starter -- 关系型数据库数据访问层自动配置 Starter
 ├    ├── facility-alibaba-spring-boot-starter -- 面向 Spring Cloud Alibaba 的微服务基础设施适配 Starter

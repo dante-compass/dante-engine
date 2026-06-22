@@ -253,11 +253,6 @@
             </dependency>
             <dependency>
                 <groupId>cn.herodotus.dante</groupId>
-                <artifactId>captcha-spring-boot-starter</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>data-rdbms-spring-boot-starter</artifactId>
                 <version>${project.version}</version>
             </dependency>

@@ -23,28 +23,28 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.captcha.autoconfigure;
+package cn.herodotus.dante.oauth2.authentication.autoconfigure;
 
-import cn.herodotus.dante.assistant.captcha.config.AssistantCaptchaConfiguration;
+import cn.herodotus.dante.assistant.captcha.annotation.EnableHerodotusCaptcha;
 import cn.herodotus.dante.assistant.captcha.provider.ResourceProvider;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
-import org.springframework.context.annotation.Import;
 
 /**
- * <p>Description: 验证码自动注入 </p>
+ * <p>Description: 验证码自动配置 </p>
+ * <p>
+ * 原本 Captcha 是有一个单独的 Starter。考虑到目前仅有认证服务器在使用 Captcha 模块，所以将原有 Starter 删除，改为使用 @Enable 方式开启。如果其它工程或者代码需要使用 Captcha，只需要在配置类中引用 @EnableHerodotusCaptcha 即可。
+ * 这样做核心为了减少模块数量。主要为了规避 Maven 中央库发布限制
  *
  * @author : gengwei.zheng
  * @date : 2022/1/18 21:12
  */
 @AutoConfiguration
 @ConditionalOnClass(ResourceProvider.class)
-@Import({
-        AssistantCaptchaConfiguration.class
-})
+@EnableHerodotusCaptcha
 public class CaptchaAutoConfiguration {
 
     private static final Logger log = LoggerFactory.getLogger(CaptchaAutoConfiguration.class);
