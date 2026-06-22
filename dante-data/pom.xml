@@ -43,7 +43,6 @@
 
     <modules>
         <module>dante-data-commons</module>
-        <module>dante-data-mongodb</module>
         <module>dante-data-jpa</module>
         <module>dante-data-rest</module>
     </modules>

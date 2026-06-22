@@ -50,11 +50,5 @@
             <artifactId>dante-data-jpa</artifactId>
             <optional>true</optional>
         </dependency>
-
-        <dependency>
-            <groupId>cn.herodotus.dante</groupId>
-            <artifactId>dante-data-mongodb</artifactId>
-            <optional>true</optional>
-        </dependency>
     </dependencies>
 </project>

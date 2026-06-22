@@ -109,7 +109,6 @@ dante-engine
 ├── dante-data -- 数据访问模块
 ├    ├── dante-data-commons -- 数据访问通用代码模块
 ├    ├── dante-data-jpa -- 以 JPA 作为数据访问层的通用代码模块
-├    ├── dante-data-mongodb -- 以 MongoDB 作为数据访问层的通用代码模块
 ├    └── dante-data-rest -- 关联数据访问层的REST开发通用代码模块
 ├── dante-dependencies -- 工程 Bom 定义，统一管理工程模块
 ├── dante-framework -- Dante Cloud 框架核心基础模块
@@ -147,7 +146,6 @@ dante-engine
 ├    └── dante-rest-upms -- UPMS 功能 REST 接口模块
 ├── dante-starter -- Starters
 ├    ├── cache-spring-boot-starter -- 缓存自动配置 Starter
-├    ├── data-mongodb-spring-boot-starter -- MongoDB 数据访问层自动配置 Starter
 ├    ├── data-rdbms-spring-boot-starter -- 关系型数据库数据访问层自动配置 Starter
 ├    ├── facility-alibaba-spring-boot-starter -- 面向 Spring Cloud Alibaba 的微服务基础设施适配 Starter
 ├    ├── facility-gateway-spring-boot-starter -- Alibaba Sentinel 在 Gateway 环境下基础设施适配 Starter
