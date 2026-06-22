@@ -23,14 +23,13 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.facility.kafka.autoconfigure;
+package cn.herodotus.dante.message.autoconfigure.kafka;
 
-import cn.herodotus.dante.facility.kafka.autoconfigure.annotation.ConditionalOnKafkaEnabled;
-import cn.herodotus.dante.facility.kafka.autoconfigure.properties.KafkaProperties;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -44,15 +43,15 @@ import org.springframework.kafka.core.ConsumerFactory;
  * @date : 2024/1/25 13:20
  */
 @AutoConfiguration
-@ConditionalOnKafkaEnabled
+@ConditionalOnClass({ConcurrentKafkaListenerContainerFactory.class})
 @EnableConfigurationProperties({KafkaProperties.class})
-public class FacilityKafkaAutoConfiguration {
+public class KafkaAutoConfiguration {
 
-    private static final Logger log = LoggerFactory.getLogger(FacilityKafkaAutoConfiguration.class);
+    private static final Logger log = LoggerFactory.getLogger(KafkaAutoConfiguration.class);
 
     @PostConstruct
     public void postConstruct() {
-        log.info("[Herodotus] |- Starter [Facility Kafka] Configure.");
+        log.info("[Herodotus] |- Auto [Kafka] Configure.");
     }
 
     @Bean

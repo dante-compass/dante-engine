@@ -79,6 +79,13 @@
             <artifactId>spring-cloud-stream</artifactId>
             <optional>true</optional>
         </dependency>
+
+        <!--Kafka-->
+        <dependency>
+            <groupId>org.springframework.kafka</groupId>
+            <artifactId>spring-kafka</artifactId>
+            <optional>true</optional>
+        </dependency>
     </dependencies>
 
 </project>

@@ -23,19 +23,30 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.feign.autoconfigure.annotation;
+package cn.herodotus.dante.message.autoconfigure.kafka;
 
-import java.lang.annotation.*;
+import cn.herodotus.dante.message.commons.constant.MessageConstants;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
- * <p>Description: Feign 内部调用标记注解 </p>
+ * <p>Description: 消息队列配置 </p>
  *
  * @author : gengwei.zheng
- * @date : 2022/5/31 12:10
+ * @date : 2021/8/7 23:55
  */
-@Target({ElementType.METHOD})
-@Retention(RetentionPolicy.RUNTIME)
-@Documented
-public @interface Inner {
+@ConfigurationProperties(prefix = MessageConstants.PROPERTY_MESSAGE_KAFKA)
+public class KafkaProperties {
 
+    /**
+     * Kakfa监听是否自动启动
+     */
+    private Boolean enabled = false;
+
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
 }
