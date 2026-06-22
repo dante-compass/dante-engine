@@ -156,7 +156,6 @@ dante-engine
 ├    ├── facility-tencent-spring-boot-starter -- 面向 Spring Cloud Tencent 的微服务基础设施适配模块 Starter
 ├    ├── fegin-client-spring-boot-starter -- Feign 客户端自动配置 Starter
 ├    ├── logging-spring-boot-starter -- 日志收集和聚合自动配置 Starter
-├    ├── nosql-spring-boot-starter -- NoSQL 自动配置 Starter
 ├    ├── oss-spring-boot-starter -- 基于 AWS SDK V2 对象存储自动配置 Starter
 ├    ├── reactive-container-spring-boot-starter -- Reactive 容器基础配置自动配置 Starter
 ├    ├── servlet-container-spring-boot-starter -- 基于 JPA 的多租户自动配置 Starter
