@@ -28,17 +28,14 @@ package cn.herodotus.dante.persistence.sas.jpa.config;
 import cn.herodotus.dante.oauth2.commons.enums.SasPersistence;
 import cn.herodotus.dante.persistence.commons.condition.ConditionalOnSasPersistence;
 import cn.herodotus.dante.persistence.commons.definition.EnhanceAuthenticationManager;
+import cn.herodotus.dante.persistence.commons.definition.HerodotusUserLoggingService;
 import cn.herodotus.dante.persistence.sas.jpa.repository.HerodotusRegisteredClientRepository;
-import cn.herodotus.dante.persistence.sas.jpa.service.HerodotusAuthorizationConsentService;
-import cn.herodotus.dante.persistence.sas.jpa.service.HerodotusAuthorizationResourceService;
-import cn.herodotus.dante.persistence.sas.jpa.service.HerodotusAuthorizationService;
-import cn.herodotus.dante.persistence.sas.jpa.service.HerodotusRegisteredClientService;
+import cn.herodotus.dante.persistence.sas.jpa.service.*;
 import cn.herodotus.dante.persistence.sas.jpa.specification.*;
 import cn.herodotus.dante.security.definition.OAuth2AuthorizationResourceService;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.persistence.autoconfigure.EntityScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -75,7 +72,6 @@ public class PersistenceSasJpaConfiguration {
     }
 
     @Bean
-    @ConditionalOnMissingBean
     public RegisteredClientRepository registeredClientRepository(HerodotusRegisteredClientService herodotusRegisteredClientService) {
         JpaRegisteredClientRepository jpaRegisteredClientRepository = new JpaRegisteredClientRepository(herodotusRegisteredClientService);
         log.trace("[Herodotus] |- Bean [JPA Registered Client Repository] Configure.");
@@ -83,7 +79,6 @@ public class PersistenceSasJpaConfiguration {
     }
 
     @Bean
-    @ConditionalOnMissingBean
     public OAuth2AuthorizationService authorizationService(HerodotusAuthorizationService herodotusAuthorizationService, RegisteredClientRepository registeredClientRepository) {
         JpaOAuth2AuthorizationService jpaOAuth2AuthorizationService = new JpaOAuth2AuthorizationService(herodotusAuthorizationService, registeredClientRepository);
         log.trace("[Herodotus] |- Bean [JPA OAuth2 Authorization Service] Configure.");
@@ -91,7 +86,6 @@ public class PersistenceSasJpaConfiguration {
     }
 
     @Bean
-    @ConditionalOnMissingBean
     public OAuth2AuthorizationConsentService authorizationConsentService(HerodotusAuthorizationConsentService herodotusAuthorizationConsentService, RegisteredClientRepository registeredClientRepository) {
         JpaOAuth2AuthorizationConsentService jpaOAuth2AuthorizationConsentService = new JpaOAuth2AuthorizationConsentService(herodotusAuthorizationConsentService, registeredClientRepository);
         log.trace("[Herodotus] |- Bean [JPA OAuth2 Authorization Consent Service] Configure.");
@@ -99,7 +93,6 @@ public class PersistenceSasJpaConfiguration {
     }
 
     @Bean
-    @ConditionalOnMissingBean
     public OAuth2AuthorizationResourceService authorizationResourceService(HerodotusAuthorizationResourceService herodotusAuthorizationResourceService) {
         JpaOAuth2AuthorizationResourceService service = new JpaOAuth2AuthorizationResourceService(herodotusAuthorizationResourceService);
         log.trace("[Herodotus] |- Bean [JPA OAuth2 Authorization Resource Service] Configure.");
@@ -107,10 +100,16 @@ public class PersistenceSasJpaConfiguration {
     }
 
     @Bean
-    @ConditionalOnMissingBean
     public EnhanceAuthenticationManager enhanceAuthenticationManager(HerodotusRegisteredClientRepository herodotusRegisteredClientRepository, RegisteredClientRepository registeredClientRepository, OAuth2AuthorizationResourceService authorizationResourceService) {
         JpaEnhanceAuthenticationManager manager = new JpaEnhanceAuthenticationManager(herodotusRegisteredClientRepository, registeredClientRepository, authorizationResourceService);
         log.trace("[Herodotus] |- Bean [JPA Enhance Authentication Manager] Configure.");
         return manager;
+    }
+
+    @Bean
+    public HerodotusUserLoggingService herodotusUserLoggingService(OAuth2UserLoggingService userLoggingService) {
+        JpaOAuth2UserLoggingService service = new JpaOAuth2UserLoggingService(userLoggingService);
+        log.trace("[Herodotus] |- Bean [JPA Use Logging Service] Configure.");
+        return service;
     }
 }

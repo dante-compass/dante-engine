@@ -42,12 +42,7 @@
     <dependencies>
         <dependency>
             <groupId>cn.herodotus.dante</groupId>
-            <artifactId>dante-persistence-sas-autoconfigure</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>cn.herodotus.dante</groupId>
-            <artifactId>dante-persistence-sys-autoconfigure</artifactId>
+            <artifactId>dante-persistence-autoconfigure</artifactId>
         </dependency>
 
         <dependency>

@@ -23,35 +23,26 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.oauth2.authentication.autoconfigure;
+package cn.herodotus.dante.persistence.sas.jpa.converter;
 
-import cn.herodotus.dante.oauth2.authentication.config.OAuth2AuthenticationConfiguration;
-import cn.herodotus.dante.oauth2.commons.properties.OAuth2AuthenticationProperties;
-import cn.herodotus.dante.persistence.autoconfigure.PersistenceSasAutoConfiguration;
-import jakarta.annotation.PostConstruct;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.boot.autoconfigure.AutoConfiguration;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.context.annotation.Import;
+import cn.herodotus.dante.persistence.commons.domain.HerodotusUserLogging;
+import cn.herodotus.dante.persistence.sas.jpa.definition.AbstractOAuth2ToAuditRecordConverter;
+import cn.herodotus.dante.persistence.sas.jpa.entity.OAuth2UserLogging;
 
 /**
- * <p>Description: OAuth2 授权服务器自动配置模块 </p>
+ * <p>Description: {@link OAuth2UserLogging} 转  {@link HerodotusUserLogging} 转换器 </p>
  *
  * @author : gengwei.zheng
- * @date : 2023/10/29 10:19
+ * @date : 2025/1/3 15:11
  */
-@AutoConfiguration(after = {PersistenceSasAutoConfiguration.class})
-@EnableConfigurationProperties({OAuth2AuthenticationProperties.class})
-@Import({
-        OAuth2AuthenticationConfiguration.class
-})
-public class OAuth2AuthenticationAutoConfiguration {
+public class OAuth2ToUserLoggingConverter extends AbstractOAuth2ToAuditRecordConverter<OAuth2UserLogging, HerodotusUserLogging> {
 
-    private static final Logger log = LoggerFactory.getLogger(OAuth2AuthenticationAutoConfiguration.class);
-
-    @PostConstruct
-    public void postConstruct() {
-        log.info("[Herodotus] |- Auto [OAuth2 Authentication] Configure.");
+    @Override
+    public HerodotusUserLogging getInstance(OAuth2UserLogging source) {
+        HerodotusUserLogging target = new HerodotusUserLogging();
+        target.setLoggingId(source.getLoggingId());
+        target.setOperation(source.getOperation());
+        target.setLocation(source.getLocation());
+        return target;
     }
 }

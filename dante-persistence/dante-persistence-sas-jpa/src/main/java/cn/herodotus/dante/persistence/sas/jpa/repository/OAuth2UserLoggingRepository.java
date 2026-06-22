@@ -23,35 +23,17 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.oauth2.authentication.autoconfigure;
+package cn.herodotus.dante.persistence.sas.jpa.repository;
 
-import cn.herodotus.dante.oauth2.authentication.config.OAuth2AuthenticationConfiguration;
-import cn.herodotus.dante.oauth2.commons.properties.OAuth2AuthenticationProperties;
-import cn.herodotus.dante.persistence.autoconfigure.PersistenceSasAutoConfiguration;
-import jakarta.annotation.PostConstruct;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.boot.autoconfigure.AutoConfiguration;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.context.annotation.Import;
+import cn.herodotus.dante.data.jpa.repository.BaseJpaRepository;
+import cn.herodotus.dante.persistence.sas.jpa.entity.OAuth2UserLogging;
 
 /**
- * <p>Description: OAuth2 授权服务器自动配置模块 </p>
+ * <p>Description: ActionAuditRepository </p>
  *
  * @author : gengwei.zheng
- * @date : 2023/10/29 10:19
+ * @date : 2022/7/7 20:39
  */
-@AutoConfiguration(after = {PersistenceSasAutoConfiguration.class})
-@EnableConfigurationProperties({OAuth2AuthenticationProperties.class})
-@Import({
-        OAuth2AuthenticationConfiguration.class
-})
-public class OAuth2AuthenticationAutoConfiguration {
+public interface OAuth2UserLoggingRepository extends BaseJpaRepository<OAuth2UserLogging, String> {
 
-    private static final Logger log = LoggerFactory.getLogger(OAuth2AuthenticationAutoConfiguration.class);
-
-    @PostConstruct
-    public void postConstruct() {
-        log.info("[Herodotus] |- Auto [OAuth2 Authentication] Configure.");
-    }
 }
