@@ -25,7 +25,7 @@
 
 package cn.herodotus.dante.oauth2.extension.stamp;
 
-import cn.herodotus.dante.cache.jetcache.stamp.AbstractCountStampManager;
+import cn.herodotus.dante.cache.definition.AbstractCountStampManager;
 import cn.herodotus.dante.oauth2.commons.constant.OAuth2Constants;
 import cn.herodotus.dante.oauth2.commons.properties.OAuth2AuthenticationProperties;
 import cn.herodotus.dante.oauth2.extension.dto.SignInErrorStatus;

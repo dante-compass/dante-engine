@@ -106,11 +106,6 @@ dante-engine
 ├    ├── dante-assistant-access -- 第三方登录接入辅助功能模块
 ├    ├── dante-assistant-captcha -- 验证码辅助功能模块
 ├    └── dante-assistant-oss -- AWS SDK V2 对象存储辅助功能模
-├── dante-cache -- 缓存功能模块
-├    ├── dante-cache-caffeine -- Caffeine 缓存功能封装模块
-├    ├── dante-cache-commons -- 缓存通用代码模块
-├    ├── dante-cache-jetcache -- JetCache 缓存功能封装模块
-├    └── dante-cache-redis -- Redis 缓存功能封装模块
 ├── dante-data -- 数据访问模块
 ├    ├── dante-data-commons -- 数据访问通用代码模块
 ├    ├── dante-data-jpa -- 以 JPA 作为数据访问层的通用代码模块
@@ -119,11 +114,12 @@ dante-engine
 ├── dante-dependencies -- 工程 Bom 定义，统一管理工程模块
 ├── dante-framework -- Dante Cloud 框架核心基础模块
 ├    ├── dante-autoconfigure -- 基础自动配置模块
+├    ├── dante-cache -- 缓存相关基础代码模块
 ├    ├── dante-core -- 核心定义模块
 ├    ├── dante-hibernate -- Hibernate 扩展模块
 ├    ├── dante-security -- Security 相关基础代码模块
 ├    ├── dante-spring -- SpringBoot 相关基础代码模块
-├    └── dante-web -- Web 服务 相关基础代码模块
+├    └── dante-web -- Web 服务相关基础代码模块
 ├── dante-logic -- 系统内置功能业务逻辑模块
 ├    ├── dante-logic-identity -- 身份认证功能业务逻辑模块
 ├    ├── dante-logic-message -- 系统消息业务逻辑模块

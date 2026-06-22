@@ -25,7 +25,7 @@
 
 package cn.herodotus.dante.oauth2.extension.manager;
 
-import cn.herodotus.dante.cache.commons.exception.MaximumLimitExceededException;
+import cn.herodotus.dante.cache.exception.MaximumLimitExceededException;
 import cn.herodotus.dante.oauth2.extension.converter.RequestToUserLoggingConverter;
 import cn.herodotus.dante.oauth2.extension.stamp.SignInFailureLimitedStampManager;
 import cn.herodotus.dante.persistence.commons.definition.HerodotusUserLoggingService;

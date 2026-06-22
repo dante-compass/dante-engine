@@ -25,7 +25,7 @@
 
 package cn.herodotus.dante.message.servlet.websocket.controller;
 
-import cn.herodotus.dante.cache.redis.utils.OnlineUserStat;
+import cn.herodotus.dante.cache.utils.OnlineUserStat;
 import cn.herodotus.dante.core.domain.Result;
 import cn.herodotus.dante.message.servlet.websocket.definition.WebSocketMessageSender;
 import io.swagger.v3.oas.annotations.Operation;

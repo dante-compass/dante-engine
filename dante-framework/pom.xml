@@ -42,11 +42,12 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>dante-core</module>
         <module>dante-autoconfigure</module>
+        <module>dante-cache</module>
+        <module>dante-core</module>
+        <module>dante-hibernate</module>
         <module>dante-security</module>
         <module>dante-spring</module>
         <module>dante-web</module>
-        <module>dante-hibernate</module>
     </modules>
 </project>

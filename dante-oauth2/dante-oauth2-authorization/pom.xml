@@ -54,7 +54,7 @@
 
         <dependency>
             <groupId>cn.herodotus.dante</groupId>
-            <artifactId>dante-cache-jetcache</artifactId>
+            <artifactId>dante-cache</artifactId>
         </dependency>
 
         <dependency>

@@ -25,8 +25,8 @@
 
 package cn.herodotus.dante.web.autoconfigure.envelope;
 
-import cn.herodotus.dante.cache.commons.exception.StampHasExpiredException;
-import cn.herodotus.dante.cache.jetcache.stamp.AbstractStampManager;
+import cn.herodotus.dante.cache.exception.StampHasExpiredException;
+import cn.herodotus.dante.cache.definition.AbstractStampManager;
 import cn.herodotus.dante.core.domain.SecretKey;
 import cn.herodotus.dante.web.constant.WebConstants;
 import cn.herodotus.dante.web.exception.SessionInvalidException;

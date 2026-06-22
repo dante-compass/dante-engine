@@ -25,7 +25,7 @@
 
 package cn.herodotus.dante.cache.autoconfigure.properties;
 
-import cn.herodotus.dante.cache.commons.constant.CacheConstants;
+import cn.herodotus.dante.cache.constant.CacheConstants;
 import cn.herodotus.dante.core.constant.FileExtensions;
 import cn.herodotus.dante.core.enums.Protocol;
 import com.google.common.base.MoreObjects;

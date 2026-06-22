@@ -139,7 +139,6 @@
     <modules>
         <module>dante-dependencies</module>
         <module>dante-assistant</module>
-        <module>dante-cache</module>
         <module>dante-data</module>
         <module>dante-framework</module>
         <module>dante-logic</module>

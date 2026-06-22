@@ -25,7 +25,7 @@
 
 package cn.herodotus.dante.message.servlet.websocket.config;
 
-import cn.herodotus.dante.cache.redis.utils.OnlineUserStat;
+import cn.herodotus.dante.cache.utils.OnlineUserStat;
 import cn.herodotus.dante.message.commons.condition.ConditionalOnInstanceMode;
 import cn.herodotus.dante.message.commons.condition.InstanceMode;
 import cn.herodotus.dante.message.servlet.websocket.definition.WebSocketMessageSender;
