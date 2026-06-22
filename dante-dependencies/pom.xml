@@ -283,11 +283,6 @@
             </dependency>
             <dependency>
                 <groupId>cn.herodotus.dante</groupId>
-                <artifactId>message-mqtt-spring-boot-starter</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>oss-spring-boot-starter</artifactId>
                 <version>${project.version}</version>
             </dependency>
