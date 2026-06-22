@@ -44,10 +44,6 @@
             <groupId>cn.herodotus.dante</groupId>
             <artifactId>dante-autoconfigure</artifactId>
         </dependency>
-        <dependency>
-            <groupId>cn.herodotus.dante</groupId>
-            <artifactId>dante-nosql-influxdb3</artifactId>
-        </dependency>
     </dependencies>
 
 </project>
