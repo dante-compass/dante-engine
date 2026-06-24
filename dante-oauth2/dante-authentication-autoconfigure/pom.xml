@@ -31,7 +31,7 @@
     <parent>
         <groupId>cn.herodotus.dante</groupId>
         <artifactId>dante-oauth2</artifactId>
-        <version>4.1.0.1</version>
+        <version>4.1.0.2</version>
     </parent>
 
     <artifactId>dante-authentication-autoconfigure</artifactId>
@@ -42,12 +42,7 @@
     <dependencies>
         <dependency>
             <groupId>cn.herodotus.dante</groupId>
-            <artifactId>dante-persistence-sas-autoconfigure</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>cn.herodotus.dante</groupId>
-            <artifactId>dante-persistence-sys-autoconfigure</artifactId>
+            <artifactId>dante-persistence-autoconfigure</artifactId>
         </dependency>
 
         <dependency>
@@ -77,7 +72,7 @@
 
         <dependency>
             <groupId>cn.herodotus.dante</groupId>
-            <artifactId>captcha-spring-boot-starter</artifactId>
+            <artifactId>dante-assistant-captcha</artifactId>
         </dependency>
 
         <dependency>

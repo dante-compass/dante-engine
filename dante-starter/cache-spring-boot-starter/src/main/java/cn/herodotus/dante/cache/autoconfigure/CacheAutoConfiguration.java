@@ -25,9 +25,8 @@
 
 package cn.herodotus.dante.cache.autoconfigure;
 
-import cn.herodotus.dante.autoconfigure.jackson.JacksonAutoConfiguration;
+import cn.herodotus.dante.cache.autoconfigure.config.CacheJetCacheConfiguration;
 import cn.herodotus.dante.cache.autoconfigure.config.CacheRedissonConfiguration;
-import cn.herodotus.dante.cache.jetcache.config.CacheJetCacheConfiguration;
 import com.alicp.jetcache.autoconfigure.JetCacheAutoConfiguration;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
@@ -42,7 +41,7 @@ import org.springframework.context.annotation.Import;
  * @date : 2024/4/18 23:51
  */
 
-@AutoConfiguration(after = {JacksonAutoConfiguration.class, JetCacheAutoConfiguration.class})
+@AutoConfiguration(after = {JetCacheAutoConfiguration.class}, afterName = {"cn.herodotus.dante.autoconfigure.jackson.JacksonAutoConfiguration"})
 @Import({
         CacheJetCacheConfiguration.class,
         CacheRedissonConfiguration.class,

@@ -26,3 +26,4 @@
 cn.herodotus.dante.oauth2.authentication.autoconfigure.OAuth2AuthenticationAutoConfiguration
 cn.herodotus.dante.oauth2.authentication.autoconfigure.OAuth2IdentityAutoConfiguration
 cn.herodotus.dante.oauth2.authentication.autoconfigure.UaaServiceMessageAutoConfiguration
+cn.herodotus.dante.oauth2.authentication.autoconfigure.CaptchaAutoConfiguration

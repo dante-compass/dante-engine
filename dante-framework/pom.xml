@@ -31,7 +31,7 @@
     <parent>
         <groupId>cn.herodotus.dante</groupId>
         <artifactId>dante-engine</artifactId>
-        <version>4.1.0.1</version>
+        <version>4.1.0.2</version>
     </parent>
 
     <artifactId>dante-framework</artifactId>
@@ -42,11 +42,12 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>dante-core</module>
         <module>dante-autoconfigure</module>
+        <module>dante-cache</module>
+        <module>dante-core</module>
+        <module>dante-hibernate</module>
         <module>dante-security</module>
         <module>dante-spring</module>
         <module>dante-web</module>
-        <module>dante-hibernate</module>
     </modules>
 </project>

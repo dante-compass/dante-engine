@@ -32,7 +32,7 @@
     <parent>
         <artifactId>dante-oauth2</artifactId>
         <groupId>cn.herodotus.dante</groupId>
-        <version>4.1.0.1</version>
+        <version>4.1.0.2</version>
     </parent>
 
     <artifactId>dante-oauth2-authorization</artifactId>
@@ -54,7 +54,7 @@
 
         <dependency>
             <groupId>cn.herodotus.dante</groupId>
-            <artifactId>dante-cache-jetcache</artifactId>
+            <artifactId>dante-cache</artifactId>
         </dependency>
 
         <dependency>

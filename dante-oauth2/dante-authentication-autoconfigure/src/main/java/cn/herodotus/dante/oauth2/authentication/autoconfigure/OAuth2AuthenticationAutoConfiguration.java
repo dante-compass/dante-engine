@@ -27,7 +27,7 @@ package cn.herodotus.dante.oauth2.authentication.autoconfigure;
 
 import cn.herodotus.dante.oauth2.authentication.config.OAuth2AuthenticationConfiguration;
 import cn.herodotus.dante.oauth2.commons.properties.OAuth2AuthenticationProperties;
-import cn.herodotus.dante.persistence.sas.autoconfigure.PersistenceSasAutoConfiguration;
+import cn.herodotus.dante.persistence.autoconfigure.PersistenceSasAutoConfiguration;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

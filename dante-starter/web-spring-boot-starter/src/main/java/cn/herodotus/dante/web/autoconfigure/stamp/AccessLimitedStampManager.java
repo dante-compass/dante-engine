@@ -25,7 +25,7 @@
 
 package cn.herodotus.dante.web.autoconfigure.stamp;
 
-import cn.herodotus.dante.cache.jetcache.stamp.AbstractStampManager;
+import cn.herodotus.dante.cache.definition.AbstractStampManager;
 import cn.herodotus.dante.web.autoconfigure.properties.SecureProperties;
 import cn.herodotus.dante.web.constant.WebConstants;
 import org.slf4j.Logger;

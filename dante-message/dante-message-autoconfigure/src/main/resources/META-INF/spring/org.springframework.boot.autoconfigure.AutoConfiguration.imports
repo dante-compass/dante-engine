@@ -25,6 +25,7 @@
 
 cn.herodotus.dante.message.autoconfigure.emqx.IntegrationEmqxAutoConfiguration
 cn.herodotus.dante.message.autoconfigure.event.IntegrationEventAutoConfiguration
+cn.herodotus.dante.message.autoconfigure.kafka.KafkaAutoConfiguration
 cn.herodotus.dante.message.autoconfigure.mqtt.IntegrationMqttAutoConfiguration
 cn.herodotus.dante.message.autoconfigure.stream.StreamAutoConfiguration
 cn.herodotus.dante.message.autoconfigure.message.MessageAutoConfiguration

@@ -33,7 +33,7 @@
     <parent>
         <groupId>cn.herodotus.ecosystem</groupId>
         <artifactId>herodotus-ecosystem-parent</artifactId>
-        <version>4.1.0.1</version>
+        <version>4.1.0.2</version>
         <relativePath/>
     </parent>
 
@@ -139,7 +139,6 @@
     <modules>
         <module>dante-dependencies</module>
         <module>dante-assistant</module>
-        <module>dante-cache</module>
         <module>dante-data</module>
         <module>dante-framework</module>
         <module>dante-logic</module>
@@ -148,7 +147,6 @@
         <module>dante-message</module>
         <module>dante-oauth2</module>
         <module>dante-persistence</module>
-        <module>dante-nosql</module>
     </modules>
 
 </project>

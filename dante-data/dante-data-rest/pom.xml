@@ -31,7 +31,7 @@
     <parent>
         <groupId>cn.herodotus.dante</groupId>
         <artifactId>dante-data</artifactId>
-        <version>4.1.0.1</version>
+        <version>4.1.0.2</version>
     </parent>
 
     <artifactId>dante-data-rest</artifactId>
@@ -48,12 +48,6 @@
         <dependency>
             <groupId>cn.herodotus.dante</groupId>
             <artifactId>dante-data-jpa</artifactId>
-            <optional>true</optional>
-        </dependency>
-
-        <dependency>
-            <groupId>cn.herodotus.dante</groupId>
-            <artifactId>dante-data-mongodb</artifactId>
             <optional>true</optional>
         </dependency>
     </dependencies>

@@ -31,7 +31,7 @@
     <parent>
         <groupId>cn.herodotus.ecosystem</groupId>
         <artifactId>herodotus-ecosystem-dependencies</artifactId>
-        <version>4.1.0.1</version>
+        <version>4.1.0.2</version>
         <relativePath/>
     </parent>
 
@@ -93,26 +93,6 @@
             </dependency>
             <dependency>
                 <groupId>cn.herodotus.dante</groupId>
-                <artifactId>dante-cache-caffeine</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.herodotus.dante</groupId>
-                <artifactId>dante-cache-commons</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.herodotus.dante</groupId>
-                <artifactId>dante-cache-jetcache</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.herodotus.dante</groupId>
-                <artifactId>dante-cache-redis</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>dante-data-commons</artifactId>
                 <version>${project.version}</version>
             </dependency>
@@ -123,17 +103,17 @@
             </dependency>
             <dependency>
                 <groupId>cn.herodotus.dante</groupId>
-                <artifactId>dante-data-mongodb</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>dante-data-rest</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>cn.herodotus.dante</groupId>
                 <artifactId>dante-autoconfigure</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.herodotus.dante</groupId>
+                <artifactId>dante-cache</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -218,11 +198,6 @@
             </dependency>
             <dependency>
                 <groupId>cn.herodotus.dante</groupId>
-                <artifactId>dante-nosql-influxdb3</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>dante-authorization-autoconfigure</artifactId>
                 <version>${project.version}</version>
             </dependency>
@@ -258,7 +233,7 @@
             </dependency>
             <dependency>
                 <groupId>cn.herodotus.dante</groupId>
-                <artifactId>dante-persistence-sas-autoconfigure</artifactId>
+                <artifactId>dante-persistence-autoconfigure</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -268,57 +243,12 @@
             </dependency>
             <dependency>
                 <groupId>cn.herodotus.dante</groupId>
-                <artifactId>dante-persistence-sys-autoconfigure</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.herodotus.dante</groupId>
-                <artifactId>dante-persistence-sys-jpa</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>cache-spring-boot-starter</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>cn.herodotus.dante</groupId>
-                <artifactId>captcha-spring-boot-starter</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>data-rdbms-spring-boot-starter</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.herodotus.dante</groupId>
-                <artifactId>data-mongodb-spring-boot-starter</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.herodotus.dante</groupId>
-                <artifactId>facility-alibaba-spring-boot-starter</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.herodotus.dante</groupId>
-                <artifactId>facility-gateway-spring-boot-starter</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.herodotus.dante</groupId>
-                <artifactId>facility-kafka-spring-boot-starter</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.herodotus.dante</groupId>
-                <artifactId>facility-tencent-spring-boot-starter</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.herodotus.dante</groupId>
-                <artifactId>feign-spring-boot-starter</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -329,16 +259,6 @@
             <dependency>
                 <groupId>cn.herodotus.dante</groupId>
                 <artifactId>message-mail-spring-boot-starter</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.herodotus.dante</groupId>
-                <artifactId>message-mqtt-spring-boot-starter</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.herodotus.dante</groupId>
-                <artifactId>nosql-spring-boot-starter</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

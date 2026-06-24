@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>cn.herodotus.dante</groupId>
+        <artifactId>dante-framework</artifactId>
+        <version>4.1.0.2</version>
+    </parent>
+
+    <artifactId>dante-cache</artifactId>
+    <name>${project.artifactId}</name>
+
+    <description>Dante Cloud 云原生微服务基座组件库框架缓存相关基础模块</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>cn.herodotus.dante</groupId>
+            <artifactId>dante-spring</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.ben-manes.caffeine</groupId>
+            <artifactId>caffeine</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.session</groupId>
+            <artifactId>spring-session-data-redis</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alicp.jetcache</groupId>
+            <artifactId>jetcache-anno</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <scope>compile</scope>
+            <optional>true</optional>
+        </dependency>
+    </dependencies>
+
+</project>

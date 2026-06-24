@@ -31,7 +31,7 @@
     <parent>
         <groupId>cn.herodotus.dante</groupId>
         <artifactId>dante-message</artifactId>
-        <version>4.1.0.1</version>
+        <version>4.1.0.2</version>
     </parent>
 
     <artifactId>dante-message-autoconfigure</artifactId>
@@ -77,6 +77,13 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-stream</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <!--Kafka-->
+        <dependency>
+            <groupId>org.springframework.kafka</groupId>
+            <artifactId>spring-kafka</artifactId>
             <optional>true</optional>
         </dependency>
     </dependencies>
