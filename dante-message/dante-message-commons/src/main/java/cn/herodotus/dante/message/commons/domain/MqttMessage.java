@@ -29,6 +29,7 @@ import cn.herodotus.dante.message.commons.constant.MqttConstants;
 import com.google.common.base.MoreObjects;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.jspecify.annotations.NullMarked;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.MessageHeaders;
 
@@ -85,11 +86,13 @@ public class MqttMessage implements Message<String> {
     }
 
     @Override
+    @NullMarked
     public String getPayload() {
         return payload;
     }
 
     @Override
+    @NullMarked
     public MessageHeaders getHeaders() {
 
         Map<String, Object> headers = new HashMap<>();
