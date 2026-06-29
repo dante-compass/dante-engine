@@ -54,26 +54,6 @@ public class MqttMessage implements Message<String> {
     public MqttMessage() {
     }
 
-    public MqttMessage(String topic, String payload) {
-        this(topic, payload, 0);
-    }
-
-    public MqttMessage(String topic, String payload, Integer qos) {
-        this(topic, payload, qos, null, null);
-    }
-
-    public MqttMessage(String topic, String payload, String responseTopic, byte[] correlationData) {
-        this(topic, payload, 0, responseTopic, correlationData);
-    }
-
-    public MqttMessage(String topic, String payload, Integer qos, String responseTopic, byte[] correlationData) {
-        this.topic = topic;
-        this.payload = payload;
-        this.qos = qos;
-        this.responseTopic = responseTopic;
-        this.correlationData = correlationData;
-    }
-
     public String getTopic() {
         return topic;
     }
