@@ -112,7 +112,6 @@ class EmqxSystemTopicToEventFlowConfiguration {
         Mqttv5PahoMessageDrivenChannelAdapter adapter = new Mqttv5PahoMessageDrivenChannelAdapter(clientManager, EMQX_MONITOR_TOPICS);
         adapter.setPayloadType(String.class);
         adapter.setManualAcks(false);
-        adapter.setQos(0);
         adapter.setOutputChannel(emqxDefaultSystemTopicInboundChannel);
         adapter.setErrorChannelName(IntegrationContextUtils.ERROR_CHANNEL_BEAN_NAME);
 
