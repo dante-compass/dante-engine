@@ -27,6 +27,7 @@ package cn.herodotus.dante.message.commons.domain;
 
 import cn.herodotus.dante.message.commons.constant.MqttConstants;
 import com.google.common.base.MoreObjects;
+import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -50,8 +51,30 @@ public class MqttMessage implements Message<String> {
     private Integer qos;
     private String responseTopic;
     private byte[] correlationData;
+    private final Map<String, Object> headers = new HashMap<>();
 
     public MqttMessage() {
+    }
+
+    public MqttMessage(String topic, String payload) {
+        this(topic, payload, 0);
+    }
+
+    public MqttMessage(String topic, String payload, Integer qos) {
+        this(topic, payload, qos, null, null);
+    }
+
+    public MqttMessage(String topic, String payload, String responseTopic, byte[] correlationData) {
+        this(topic, payload, 0, responseTopic, correlationData);
+    }
+
+    public MqttMessage(String topic, String payload, Integer qos, String responseTopic, byte[] correlationData) {
+        this.topic = topic;
+        this.payload = payload;
+        this.qos = qos;
+        this.responseTopic = responseTopic;
+        this.correlationData = correlationData;
+        addAttributeToHeaders();
     }
 
     public String getTopic() {
@@ -86,17 +109,7 @@ public class MqttMessage implements Message<String> {
         this.correlationData = correlationData;
     }
 
-    @Override
-    @NullMarked
-    public String getPayload() {
-        return payload;
-    }
-
-    @Override
-    @NullMarked
-    public MessageHeaders getHeaders() {
-
-        Map<String, Object> headers = new HashMap<>();
+    private void addAttributeToHeaders() {
 
         headers.put(MqttConstants.MESSAGE_HEADER__HERODOTUS_EVENT_ROUTER, MqttConstants.MESSAGE_ROUTER__TO_MQTT);
 
@@ -115,8 +128,30 @@ public class MqttMessage implements Message<String> {
         if (ObjectUtils.isNotEmpty(getQos())) {
             headers.put(MqttConstants.QOS, getQos());
         }
+    }
 
-        return new MessageHeaders(headers);
+    public void appendHeader(String key, Object value) {
+        this.headers.put(key, value);
+    }
+
+    public void appendHeaders(Map<String, Object> headers) {
+        this.headers.putAll(headers);
+    }
+
+    @Override
+    @NullMarked
+    public String getPayload() {
+        return payload;
+    }
+
+    @Override
+    @NullMarked
+    public MessageHeaders getHeaders() {
+        if (MapUtils.isEmpty(this.headers) || !this.headers.containsKey(MqttConstants.TOPIC)) {
+            addAttributeToHeaders();
+        }
+
+        return new MessageHeaders(this.headers);
     }
 
     public void setPayload(String payload) {
