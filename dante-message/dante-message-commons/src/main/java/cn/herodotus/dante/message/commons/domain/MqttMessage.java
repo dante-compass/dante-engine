@@ -27,6 +27,7 @@ package cn.herodotus.dante.message.commons.domain;
 
 import cn.herodotus.dante.message.commons.constant.MqttConstants;
 import com.google.common.base.MoreObjects;
+import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.jspecify.annotations.NullMarked;
@@ -45,12 +46,32 @@ import java.util.Map;
 public class MqttMessage implements Message<String> {
 
     private String topic;
-    private String responseTopic;
-    private String correlationData;
-    private Integer qos;
     private String payload;
+    private Integer qos;
+    private String responseTopic;
+    private byte[] correlationData;
 
     public MqttMessage() {
+    }
+
+    public MqttMessage(String topic, String payload) {
+        this(topic, payload, 0);
+    }
+
+    public MqttMessage(String topic, String payload, Integer qos) {
+        this(topic, payload, qos, null, null);
+    }
+
+    public MqttMessage(String topic, String payload, String responseTopic, byte[] correlationData) {
+        this(topic, payload, 0, responseTopic, correlationData);
+    }
+
+    public MqttMessage(String topic, String payload, Integer qos, String responseTopic, byte[] correlationData) {
+        this.topic = topic;
+        this.payload = payload;
+        this.qos = qos;
+        this.responseTopic = responseTopic;
+        this.correlationData = correlationData;
     }
 
     public String getTopic() {
@@ -61,6 +82,14 @@ public class MqttMessage implements Message<String> {
         this.topic = topic;
     }
 
+    public Integer getQos() {
+        return qos;
+    }
+
+    public void setQos(Integer qos) {
+        this.qos = qos;
+    }
+
     public String getResponseTopic() {
         return responseTopic;
     }
@@ -69,20 +98,12 @@ public class MqttMessage implements Message<String> {
         this.responseTopic = responseTopic;
     }
 
-    public String getCorrelationData() {
+    public byte[] getCorrelationData() {
         return correlationData;
     }
 
-    public void setCorrelationData(String correlationData) {
+    public void setCorrelationData(byte[] correlationData) {
         this.correlationData = correlationData;
-    }
-
-    public Integer getQos() {
-        return qos;
-    }
-
-    public void setQos(Integer qos) {
-        this.qos = qos;
     }
 
     @Override
@@ -107,7 +128,7 @@ public class MqttMessage implements Message<String> {
             headers.put(MqttConstants.RESPONSE_TOPIC, getResponseTopic());
         }
 
-        if (StringUtils.isNotBlank(getCorrelationData())) {
+        if (ArrayUtils.isNotEmpty(getCorrelationData())) {
             headers.put(MqttConstants.CORRELATION_DATA, getCorrelationData());
         }
 
@@ -126,10 +147,9 @@ public class MqttMessage implements Message<String> {
     public String toString() {
         return MoreObjects.toStringHelper(this)
                 .add("topic", topic)
-                .add("responseTopic", responseTopic)
-                .add("correlationData", correlationData)
-                .add("qos", qos)
                 .add("payload", payload)
+                .add("qos", qos)
+                .add("responseTopic", responseTopic)
                 .toString();
     }
 }
