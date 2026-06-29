@@ -34,41 +34,39 @@ package cn.herodotus.dante.message.commons.constant;
 public interface Channels {
 
     /**
-     * 统一的错误通道定义
-     */
-    String ERROR_CHANNEL = "errorChannel";
-    /**
      * Application Event 路由通道
      */
-    String EVENT_ROUTING_CHANNEL = "eventRoutingChannel";
+    String EVENT__ROUTING_CHANNEL = "eventRoutingChannel";
 
     /**
-     * EVENT 类型出站通道
+     * Mail 系统接收消息默认通道，目前通过 Event 进行接收
      */
-    String EVENT__DEFAULT_OUTBOUND_CHANNEL = "eventDefaultOutboundChannel";
+    String MAIL__DEFAULT_INBOUND_CHANNEL = "mailDefaultInboundChannel";
 
     /**
-     * Mail 系统接收 Event 通道
+     * Mail 系统发送消息默认通道
      */
-    String MAIL__EVENT_INBOUND_CHANNEL = "mailEventInboundChannel";
-
-    /**
-     * 默认的发送 Mail 通道
-     */
-    String MAIL__DEFAULT_SENDING_CHANNEL = "mailDefaultSendingChannel";
+    String MAIL__DEFAULT_OUTBOUND_CHANNEL = "mailDefaultOutboundChannel";
 
     /**
      * Mqtt 默认入站通道
      */
     String MQTT__DEFAULT_INBOUND_CHANNEL = "mqttDefaultInboundChannel";
+
+    /**
+     * Mqtt 默认入站通道
+     */
+    String MQTT__DEFAULT_INBOUND_TO_EVENT_CHANNEL = "mqttDefaultInboundToEventChannel";
+
     /**
      * Mqtt 默认出站通道
      */
     String MQTT__DEFAULT_OUTBOUND_CHANNEL = "mqttDefaultOutboundChannel";
+
     /**
      * Mqtt 默认入站通道
      */
-    String MQTT__THINGS_BRAIN_INBOUND_CHANNEL = "mqttThingBrainInboundChannel";
+    String MQTT__THINGSMESH_INBOUND_CHANNEL = "mqttThingsMeshInboundChannel";
 
     /**
      * Emqx 默认的监控指标数据数据 Mqtt 类型入站通道
@@ -79,7 +77,20 @@ public interface Channels {
      */
     String EMQX__DEFAULT_WEBHOOK_INBOUND_CHANNEL = "emqxDefaultWebhookInboundChannel";
     /**
-     * Emqx 默认的系统时间数据 EVENT 类型出站通道
+     * Emqx 默认的系统主题入站消息转 EVENT 通道
      */
-    String EMQX__DEFAULT_EVENT_OUTBOUND_CHANNEL = "emqxDefaultEventOutboundChannel";
+    String EMQX__DEFAULT_INBOUND_TO_EVENT_CHANNEL = "emqxDefaultInboundToEventChannel";
+
+    /**
+     * RSocket 消息默认 InBound Channel。当前定位主要用于基于 RSocket 的实现消息系统使用。
+     */
+    String RSOCKET__DEFAULT_INBOUND_CHANNEL = "rsocketDefaultInboundChannel";
+    /**
+     * RSocket OutBound Gateway。处理自定义 Message Gateway 消息通道。当前定位主要用于基于 RSocket 的实现消息发送使用。
+     */
+    String RSOCKET__GATEWAY_REQUEST_CHANNEL = "rsocketGatewayRequestChannel";
+    /**
+     * RSocket OutBound Gateway。处理自定义 Message Gateway 消息通道。当前定位主要用于基于 RSocket 的实现消息发送使用。
+     */
+    String RSOCKET__GATEWAY_RESPONSE_CHANNEL = "rsocketGatewayResponseChannel";
 }

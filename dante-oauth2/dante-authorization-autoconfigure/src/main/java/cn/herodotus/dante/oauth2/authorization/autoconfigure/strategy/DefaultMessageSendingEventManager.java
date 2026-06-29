@@ -50,13 +50,13 @@ public class DefaultMessageSendingEventManager implements MessageSendingEventMan
 
     @Override
     public void postLocalProcess(Message<?> data) {
-        log.debug("[Herodotus] |- [M1] Start sending message to message service from local!");
+        log.debug("[Herodotus] |- [M1] Start sending unified message to message service from local!");
         publishEvent(new MessageSendingEvent(data));
     }
 
     @Override
     public void postRemoteProcess(String data, String originService, String destinationService) {
-        log.debug("[Herodotus] |- [M1] Start sending message to message service from remote!");
+        log.debug("[Herodotus] |- [M1] Start sending unified message to message service from remote!");
         publishEvent(new RemoteMessageSendingEvent(data, originService, destinationService));
     }
 }

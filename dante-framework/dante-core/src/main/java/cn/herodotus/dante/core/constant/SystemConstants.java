@@ -173,7 +173,7 @@ public interface SystemConstants {
      * 物联网自定义属性
      */
     String PARAMETER__PRODUCT_KEY = "product_key";
-    String EMQX_WEBHOOK_URI = "/open/emqx/webhook";
+    String EMQX__WEBHOOK_URI = "/open/emqx/webhook";
 
     /* ---------- 测试相关常量 ---------- */
 

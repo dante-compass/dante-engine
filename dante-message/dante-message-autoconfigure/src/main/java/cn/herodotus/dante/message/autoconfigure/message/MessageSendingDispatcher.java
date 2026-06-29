@@ -68,7 +68,7 @@ public class MessageSendingDispatcher extends AbstractApplicationContextAware {
     public void process(Message<?> message) {
         MessageCategory category = message.getCategory();
 
-        log.debug("[Herodotus] |- [M3] Dispatch received local message to event!");
+        log.debug("[Herodotus] |- [M3] Dispatch received local unified message to event!");
 
         switch (category) {
             case MessageCategory.MQTT:
@@ -90,7 +90,7 @@ public class MessageSendingDispatcher extends AbstractApplicationContextAware {
 
     public void process(String data) {
 
-        log.debug("[Herodotus] |- [M3] Dispatch received remote message to event!");
+        log.debug("[Herodotus] |- [M3] Dispatch received remote unified message to event!");
 
         JsonNode jsonNode = JacksonUtils.toNode(data);
 

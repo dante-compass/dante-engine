@@ -97,7 +97,7 @@ public class MqttMessage implements Message<String> {
 
         Map<String, Object> headers = new HashMap<>();
 
-        headers.put(MqttConstants.MESSAGE_HEADER__HERODOTUS_EVENT_ROUTER, MqttConstants.MESSAGE_ROUTER_TO_MQTT);
+        headers.put(MqttConstants.MESSAGE_HEADER__HERODOTUS_EVENT_ROUTER, MqttConstants.MESSAGE_ROUTER__TO_MQTT);
 
         if (StringUtils.isNotBlank(getTopic())) {
             headers.put(MqttConstants.TOPIC, getTopic());
