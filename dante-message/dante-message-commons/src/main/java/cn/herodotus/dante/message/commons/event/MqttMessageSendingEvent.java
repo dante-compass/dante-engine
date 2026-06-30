@@ -65,18 +65,11 @@ public class MqttMessageSendingEvent extends AbstractApplicationEvent<MqttMessag
      * @param correlationData 关联数据
      */
     public MqttMessageSendingEvent(String topic, String payload, Integer qos, String responseTopic, byte[] correlationData) {
-        MqttMessage message = new MqttMessage();
-        message.setTopic(topic);
-        message.setPayload(payload);
-        message.setQos(qos);
-
-        if (StringUtils.isNotBlank(responseTopic)) {
-            message.setResponseTopic(responseTopic);
-        }
-
-        if (ArrayUtils.isNotEmpty(correlationData)) {
-            message.setCorrelationData(correlationData);
-        }
+        MqttMessage message = MqttMessage.with(topic, payload)
+                .qos(qos)
+                .responseTopic(responseTopic)
+                .correlationData(correlationData)
+                .build();
 
         this(message);
     }
