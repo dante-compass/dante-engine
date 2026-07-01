@@ -27,8 +27,10 @@ package cn.herodotus.dante.message.commons.domain;
 
 import cn.herodotus.dante.message.commons.constant.MqttConstants;
 import com.google.common.base.MoreObjects;
+import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.jspecify.annotations.NullMarked;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.MessageHeaders;
 
@@ -44,10 +46,11 @@ import java.util.Map;
 public class MqttMessage implements Message<String> {
 
     private String topic;
-    private String responseTopic;
-    private String correlationData;
-    private Integer qos;
     private String payload;
+    private Integer qos;
+    private String responseTopic;
+    private byte[] correlationData;
+    private Map<String, Object> headers;
 
     public MqttMessage() {
     }
@@ -60,22 +63,6 @@ public class MqttMessage implements Message<String> {
         this.topic = topic;
     }
 
-    public String getResponseTopic() {
-        return responseTopic;
-    }
-
-    public void setResponseTopic(String responseTopic) {
-        this.responseTopic = responseTopic;
-    }
-
-    public String getCorrelationData() {
-        return correlationData;
-    }
-
-    public void setCorrelationData(String correlationData) {
-        this.correlationData = correlationData;
-    }
-
     public Integer getQos() {
         return qos;
     }
@@ -84,49 +71,123 @@ public class MqttMessage implements Message<String> {
         this.qos = qos;
     }
 
+    public String getResponseTopic() {
+        return responseTopic;
+    }
+
+    public void setResponseTopic(String responseTopic) {
+        this.responseTopic = responseTopic;
+    }
+
+    public byte[] getCorrelationData() {
+        return correlationData;
+    }
+
+    public void setCorrelationData(byte[] correlationData) {
+        this.correlationData = correlationData;
+    }
+
+    private void setHeaders(Map<String, Object> headers) {
+        this.headers = headers;
+    }
+
     @Override
+    @NullMarked
     public String getPayload() {
         return payload;
     }
 
     @Override
+    @NullMarked
     public MessageHeaders getHeaders() {
-
-        Map<String, Object> headers = new HashMap<>();
-
-        headers.put(MqttConstants.MESSAGE_HEADER__HERODOTUS_EVENT_ROUTER, MqttConstants.MESSAGE_ROUTER_TO_MQTT);
-
-        if (StringUtils.isNotBlank(getTopic())) {
-            headers.put(MqttConstants.TOPIC, getTopic());
-        }
-
-        if (StringUtils.isNotBlank(getResponseTopic())) {
-            headers.put(MqttConstants.RESPONSE_TOPIC, getResponseTopic());
-        }
-
-        if (StringUtils.isNotBlank(getCorrelationData())) {
-            headers.put(MqttConstants.CORRELATION_DATA, getCorrelationData());
-        }
-
-        if (ObjectUtils.isNotEmpty(getQos())) {
-            headers.put(MqttConstants.QOS, getQos());
-        }
-
-        return new MessageHeaders(headers);
+        return new MessageHeaders(this.headers);
     }
 
     public void setPayload(String payload) {
         this.payload = payload;
     }
 
+    public static Builder with(String topic, String payload) {
+        return new Builder(topic, payload);
+    }
+
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
                 .add("topic", topic)
-                .add("responseTopic", responseTopic)
-                .add("correlationData", correlationData)
-                .add("qos", qos)
                 .add("payload", payload)
+                .add("qos", qos)
+                .add("responseTopic", responseTopic)
                 .toString();
+    }
+
+    public static class Builder {
+        private final String topic;
+        private final String payload;
+        private Integer qos = 0;
+        private String responseTopic;
+        private byte[] correlationData;
+        private final Map<String, Object> headers;
+
+        protected Builder(String topic, String payload) {
+            this.topic = topic;
+            this.payload = payload;
+            this.headers = new HashMap<>();
+        }
+
+        public Builder qos(Integer qos) {
+            this.qos = qos;
+            return this;
+        }
+
+        public Builder responseTopic(String responseTopic) {
+            this.responseTopic = responseTopic;
+            return this;
+        }
+
+        public Builder correlationData(byte[] correlationData) {
+            this.correlationData = correlationData;
+            return this;
+        }
+
+        public Builder header(String key, Object value) {
+            this.headers.put(key, value);
+            return this;
+        }
+
+        public Builder headers(Map<String, Object> headers) {
+            this.headers.putAll(headers);
+            return this;
+        }
+
+        public MqttMessage build() {
+            MqttMessage message = new MqttMessage();
+
+            headers.put(MqttConstants.MESSAGE_HEADER__HERODOTUS_EVENT_ROUTER, MqttConstants.MESSAGE_ROUTER__TO_MQTT);
+
+            message.setTopic(this.topic);
+            headers.put(MqttConstants.TOPIC, this.topic);
+
+            message.setPayload(payload);
+
+            if (ObjectUtils.isNotEmpty(this.qos)) {
+                message.setQos(this.qos);
+                headers.put(MqttConstants.QOS, this.qos);
+            }
+
+            if (StringUtils.isNotBlank(this.responseTopic)) {
+                message.setResponseTopic(responseTopic);
+                headers.put(MqttConstants.RESPONSE_TOPIC, this.responseTopic);
+            }
+
+            if (ArrayUtils.isNotEmpty(this.correlationData)) {
+                message.setCorrelationData(this.correlationData);
+                headers.put(MqttConstants.CORRELATION_DATA, this.correlationData);
+            }
+
+            message.setHeaders(this.headers);
+
+            return message;
+        }
     }
 }

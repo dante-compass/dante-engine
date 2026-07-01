@@ -35,8 +35,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.context.ApplicationEvent;
 import org.springframework.context.annotation.Bean;
-import org.springframework.integration.channel.PublishSubscribeChannel;
 import org.springframework.integration.config.EnableIntegration;
+import org.springframework.integration.context.IntegrationContextUtils;
 import org.springframework.integration.dsl.IntegrationFlow;
 import org.springframework.integration.dsl.MessageChannels;
 import org.springframework.integration.event.inbound.ApplicationEventListeningMessageProducer;
@@ -47,9 +47,9 @@ import org.springframework.messaging.MessageChannel;
 /**
  * <p>Description: Event 发送自动配置 </p>
  * <p>
- * 接收指定类型的 {@link ApplicationEvent} 消息，将其转发至 {@link Channels#EVENT_ROUTING_CHANNEL} 通道中。
+ * 接收指定类型的 {@link ApplicationEvent} 消息，将其转发至 {@link Channels#EVENT__ROUTING_CHANNEL} 通道中。
  * <p>
- * 接收到 {@link Channels#EVENT_ROUTING_CHANNEL} 通道中的消息后。根据 {@link Message} 中的 {@link MqttConstants#MESSAGE_HEADER__HERODOTUS_EVENT_ROUTER} Header 的值,将{@link Message} 转发至指定的通道中。
+ * 接收到 {@link Channels#EVENT__ROUTING_CHANNEL} 通道中的消息后。根据 {@link Message} 中的 {@link MqttConstants#MESSAGE_HEADER__HERODOTUS_EVENT_ROUTER} Header 的值,将{@link Message} 转发至指定的通道中。
  *
  * @author : gengwei.zheng
  * @date : 2024/6/14 23:36
@@ -66,33 +66,23 @@ public class IntegrationEventAutoConfiguration {
     }
 
     /**
-     * 统一定义的错误通道
+     * 整个系统中统一定义的错误通道
      *
-     * @return 直接通道 {@link org.springframework.integration.channel.DirectChannel}
+     * @return 错误通道 {@link MessageChannel}
      */
-    @Bean(Channels.ERROR_CHANNEL)
+    @Bean(IntegrationContextUtils.ERROR_CHANNEL_BEAN_NAME)
     public MessageChannel errorChannel() {
         return MessageChannels.publishSubscribe().getObject();
     }
 
     /**
-     * 统一订的事件路由通道，将事件路由到不同的通道
+     * 以 Bean 的形式定义 Event 路由通道。通过该种方式保证通道的唯一性。
      *
-     * @return 发布订阅通道 {@link PublishSubscribeChannel}
+     * @return Event 路由通道 {@link MessageChannel}
      */
-    @Bean(Channels.EVENT_ROUTING_CHANNEL)
+    @Bean(Channels.EVENT__ROUTING_CHANNEL)
     public MessageChannel eventRoutingChannel() {
-        return MessageChannels.publishSubscribe().getObject();
-    }
-
-    /**
-     * 分发事件默认的输出通道
-     *
-     * @return 发布订阅通道 {@link PublishSubscribeChannel}
-     */
-    @Bean(name = Channels.EVENT__DEFAULT_OUTBOUND_CHANNEL)
-    public MessageChannel eventDefaultOutboundChannel() {
-        return MessageChannels.publishSubscribe().getObject();
+        return MessageChannels.direct().getObject();
     }
 
     /**
@@ -111,33 +101,38 @@ public class IntegrationEventAutoConfiguration {
     }
 
     /**
-     * 接收指定类型的 {@link ApplicationEvent} 消息，将其转发至 {@link Channels#EVENT_ROUTING_CHANNEL} 通道中
+     * 接收指定类型的 {@link ApplicationEvent} 消息，将其转发至 {@link Channels#EVENT__ROUTING_CHANNEL} 通道中
+     * <p>
+     * 该配置主要用于系统的统一消息发送。因为不同的类型的消息，发送逻辑不同，所以目前只处理 {@link MqttMessageSendingEvent} 两种事件。
      *
-     * @param eventRoutingChannel 事件路由通道
      * @return {@link ApplicationEventListeningMessageProducer}
      */
     @Bean
-    public ApplicationEventListeningMessageProducer applicationEventListeningMessageProducer(@Qualifier(Channels.EVENT_ROUTING_CHANNEL) MessageChannel eventRoutingChannel) {
+    public ApplicationEventListeningMessageProducer applicationEventListeningMessageProducer(@Qualifier(Channels.EVENT__ROUTING_CHANNEL) MessageChannel eventRoutingChannel) {
         ApplicationEventListeningMessageProducer producer = new ApplicationEventListeningMessageProducer();
         producer.setEventTypes(MqttMessageSendingEvent.class);
         producer.setOutputChannel(eventRoutingChannel);
+        producer.setErrorChannelName(IntegrationContextUtils.ERROR_CHANNEL_BEAN_NAME);
         return producer;
     }
 
     /**
-     * 根据 {@link Message} 中的 {@link MqttConstants#MESSAGE_HEADER__HERODOTUS_EVENT_ROUTER} Header 的值,将{@link Message} 转发至指定的通道中。
+     * 接收 {@link Channels#EVENT__ROUTING_CHANNEL} 通道中的 {@link Message}，
+     * 根据 {@link Message} 中的 {@link MqttConstants#MESSAGE_HEADER__HERODOTUS_EVENT_ROUTER} Header 的值,将 {@link Message} 转发至指定的通道中,由不同的终端发送对应通道中的消息
      *
      * @return {@link IntegrationFlow}
      */
     @Bean
-    public IntegrationFlow eventRoutingFlow() {
-        log.debug("[Herodotus] |- [M4] Mail or Mqtt start to handle received message!");
-        return IntegrationFlow.from(Channels.EVENT_ROUTING_CHANNEL)
+    public IntegrationFlow eventRoutingFlow(@Qualifier(Channels.EVENT__ROUTING_CHANNEL) MessageChannel eventRoutingChannel) {
+        log.debug("[Herodotus] |- [UM4] Mail or Mqtt start to handle received message!");
+        return IntegrationFlow.from(eventRoutingChannel)
                 .route(Message.class,
                         message -> message.getHeaders().get(MqttConstants.MESSAGE_HEADER__HERODOTUS_EVENT_ROUTER, String.class),
-                        e -> e
-                                .channelMapping(MqttConstants.MESSAGE_ROUTER_TO_MAIL, Channels.MAIL__EVENT_INBOUND_CHANNEL)
-                                .channelMapping(MqttConstants.MESSAGE_ROUTER_TO_MQTT, Channels.MQTT__DEFAULT_OUTBOUND_CHANNEL)
+                        spec -> spec
+                                // 这里接收到的 mail 消息，是用于本系统自身内部，所以使用 mail inbound 通道
+                                .channelMapping(MqttConstants.MESSAGE_ROUTER__TO_MAIL, Channels.MAIL__DEFAULT_INBOUND_CHANNEL)
+                                // 这里接收到的 mqtt 消息，发送到 mqtt broker 的消息，是像系统以外发送的，所以使用 mqtt outbound 通道
+                                .channelMapping(MqttConstants.MESSAGE_ROUTER__TO_MQTT, Channels.MQTT__DEFAULT_OUTBOUND_CHANNEL)
                 )
                 .get();
     }

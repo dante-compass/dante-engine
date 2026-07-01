@@ -33,6 +33,7 @@ import cn.herodotus.dante.message.emqx.event.*;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.ResolvableType;
@@ -42,6 +43,7 @@ import org.springframework.integration.dsl.IntegrationFlow;
 import org.springframework.integration.dsl.MessageChannels;
 import org.springframework.integration.event.outbound.ApplicationEventPublishingMessageHandler;
 import org.springframework.integration.http.dsl.Http;
+import org.springframework.messaging.MessageChannel;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -79,20 +81,43 @@ class EmqxWebhookToEventFlowConfiguration {
     }
 
     /**
+     * Emqx 默认 Webhook 入站通道。通过该种方式保证通道的唯一性。
+     *
+     * @return Emqx 默认 Webhook 入站通道 {@link MessageChannel}
+     */
+    @Bean(name = Channels.EMQX__DEFAULT_WEBHOOK_INBOUND_CHANNEL)
+    public MessageChannel emqxDefaultWebhookInboundChannel() {
+        return MessageChannels.direct().getObject();
+    }
+
+    /**
+     * Emqx 默认入站消息转 Event通道。通过该种方式保证通道的唯一性。
+     *
+     * @return Emqx 默认入站消息转 Event通道 {@link MessageChannel}
+     */
+    @Bean(name = Channels.EMQX__DEFAULT_INBOUND_TO_EVENT_CHANNEL)
+    public MessageChannel emqxDefaultInboundToEventChannel() {
+        return MessageChannels.direct().getObject();
+    }
+
+    /**
      * Emqx Webhook 事件转成系统 Event Flow
      *
      * @param applicationEventPublishingMessageHandler {@link ApplicationEventPublishingMessageHandler}
      * @return {@link IntegrationFlow}
      */
     @Bean
-    public IntegrationFlow emqxWebhookHttpToEventFlow(ApplicationEventPublishingMessageHandler applicationEventPublishingMessageHandler) {
-        return IntegrationFlow.from(Http.inboundChannelAdapter(SystemConstants.EMQX_WEBHOOK_URI)
+    public IntegrationFlow emqxWebhookHttpToEventFlow(
+            ApplicationEventPublishingMessageHandler applicationEventPublishingMessageHandler,
+            @Qualifier(Channels.EMQX__DEFAULT_WEBHOOK_INBOUND_CHANNEL) MessageChannel emqxDefaultWebhookInboundChannel,
+            @Qualifier(Channels.EMQX__DEFAULT_INBOUND_TO_EVENT_CHANNEL) MessageChannel emqxDefaultInboundToEventChannel) {
+        return IntegrationFlow.from(Http.inboundChannelAdapter(SystemConstants.EMQX__WEBHOOK_URI)
                         .requestMapping(m -> m.methods(HttpMethod.POST))
                         .requestPayloadType(ResolvableType.forClass(Map.class, LinkedHashMap.class))
                         .statusCodeFunction(s -> HttpStatus.OK))
-                .channel(MessageChannels.direct(Channels.EMQX__DEFAULT_WEBHOOK_INBOUND_CHANNEL))
+                .channel(emqxDefaultWebhookInboundChannel)
                 .transform(new WebhookMapToEventTransformer())
-                .channel(MessageChannels.direct(Channels.EMQX__DEFAULT_EVENT_OUTBOUND_CHANNEL))
+                .channel(emqxDefaultInboundToEventChannel)
                 .handle(applicationEventPublishingMessageHandler)
                 .get();
     }

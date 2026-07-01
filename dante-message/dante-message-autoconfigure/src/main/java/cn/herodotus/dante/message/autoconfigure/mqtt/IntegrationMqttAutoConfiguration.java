@@ -76,11 +76,42 @@ public class IntegrationMqttAutoConfiguration {
         log.info("[Herodotus] |- Auto [Integration Mqtt] Configure.");
     }
 
+    /**
+     * Mqtt 默认消息出站通道。通过该种方式保证通道的唯一性。
+     *
+     * @return Mqtt 默认消息出站通道 {@link MessageChannel}
+     */
     @Bean(name = Channels.MQTT__DEFAULT_OUTBOUND_CHANNEL)
     public MessageChannel mqttDefaultOutboundChannel() {
         return MessageChannels.direct().getObject();
     }
 
+    /**
+     * Mqtt 默认消息入站通道。通过该种方式保证通道的唯一性。
+     *
+     * @return Mqtt 默认消息入站通道 {@link MessageChannel}
+     */
+    @Bean(name = Channels.MQTT__DEFAULT_INBOUND_CHANNEL)
+    public MessageChannel mqttDefaultInboundChannel() {
+        return MessageChannels.direct().getObject();
+    }
+
+    /**
+     * Mqtt 默认消息入站消息转 Event 通道。通过该种方式保证通道的唯一性。
+     *
+     * @return Mqtt 默认消息入站消息转 Event 通道 {@link MessageChannel}
+     */
+    @Bean(name = Channels.MQTT__DEFAULT_INBOUND_TO_EVENT_CHANNEL)
+    public MessageChannel mqttDefaultInboundToEventChannel() {
+        return MessageChannels.direct().getObject();
+    }
+
+    /**
+     * Mqtt 客户端配置
+     *
+     * @param mqttProperties 配置属性 {@link MqttProperties}
+     * @return Mqtt 客户端管理器 {@link ClientManager}
+     */
     @Bean
     public ClientManager<IMqttAsyncClient, MqttConnectionOptions> clientManager(MqttProperties mqttProperties) {
         MqttConnectionOptions options = new MqttConnectionOptions();
@@ -103,22 +134,34 @@ public class IntegrationMqttAutoConfiguration {
         return clientManager;
     }
 
+    /**
+     * Mqtt 默认的入站消息处理
+     *
+     * @param clientManager                            Mqtt 客户端管理器 {@link ClientManager}
+     * @param mqttProperties                           配置属性 {@link MqttProperties}
+     * @param applicationEventPublishingMessageHandler 发送 Event 消息处理器,见系统中统一定义的 {@link ApplicationEventPublishingMessageHandler}
+     * @return 集成 Flow {@link IntegrationFlow}
+     */
     @Bean
     public IntegrationFlow mqttDefaultInboundFlow(
             ClientManager<IMqttAsyncClient, MqttConnectionOptions> clientManager,
             MqttProperties mqttProperties,
             ApplicationEventPublishingMessageHandler applicationEventPublishingMessageHandler,
-            @Qualifier(Channels.EVENT__DEFAULT_OUTBOUND_CHANNEL) MessageChannel eventDefaultOutboundChannel) {
+            @Qualifier(Channels.MQTT__DEFAULT_INBOUND_CHANNEL) MessageChannel mqttDefaultInboundChannel,
+            @Qualifier(Channels.MQTT__DEFAULT_INBOUND_TO_EVENT_CHANNEL) MessageChannel mqttDefaultInboundToEventChannel) {
 
+        // 接收 mqtt 指定 topic 中的消息
         Mqttv5PahoMessageDrivenChannelAdapter messageProducer = new Mqttv5PahoMessageDrivenChannelAdapter(clientManager, ListUtils.toStringArray(mqttProperties.getDefaultSubscribes()));
         messageProducer.setManualAcks(false);
-        messageProducer.setOutputChannel(MessageChannels.publishSubscribe(Channels.MQTT__DEFAULT_INBOUND_CHANNEL).getObject());
+        messageProducer.setOutputChannel(mqttDefaultInboundChannel);
         messageProducer.setErrorChannelName(IntegrationContextUtils.ERROR_CHANNEL_BEAN_NAME);
         log.trace("[Herodotus] |- Bean [Mqtt v5 Paho Message Driven Channel Adapter] Configure.");
 
+        // 将 mqtt 指定 topic 中的消息，转换成 Event，通过 ApplicationEventPublishingMessageHandler 发送出去。
+        // 这种实现主要用于解决 mqtt 消息接收的解耦
         return IntegrationFlow.from(messageProducer)
                 .transform(new DefaultMessageToEventTransformer())
-                .channel(eventDefaultOutboundChannel)
+                .channel(mqttDefaultInboundToEventChannel)
                 .handle(applicationEventPublishingMessageHandler)
                 .get();
     }

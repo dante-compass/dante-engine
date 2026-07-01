@@ -83,7 +83,9 @@ abstract class AbstractToRegisteredClientConverter<T extends AbstractOAuth2Clien
                 clientSettingsBuilder.setting(claim, value);
 
                 // 如果包含 ProductKey 同时 clientId 为空。那么就重新设置 clientId。物联网 clientId 格式为 {ProductKey}.{DeviceName}
-                builder.clientId(value + SymbolConstants.PERIOD + source.getClientName());
+                if (StringUtils.isBlank(source.getClientId())) {
+                    builder.clientId(value + SymbolConstants.PERIOD + source.getClientName());
+                }
             }
         });
 

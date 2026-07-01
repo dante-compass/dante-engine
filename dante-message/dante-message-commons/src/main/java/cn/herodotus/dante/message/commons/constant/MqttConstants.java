@@ -53,6 +53,6 @@ public interface MqttConstants {
 
     String MESSAGE_HEADER__HERODOTUS_EVENT_ROUTER = "herodotus-event-router";
 
-    String MESSAGE_ROUTER_TO_MAIL = "mail-outbound";
-    String MESSAGE_ROUTER_TO_MQTT = "mqtt-outbound";
+    String MESSAGE_ROUTER__TO_MAIL = "mail-outbound";
+    String MESSAGE_ROUTER__TO_MQTT = "mqtt-outbound";
 }

@@ -37,6 +37,7 @@ import org.eclipse.paho.mqttv5.client.IMqttAsyncClient;
 import org.eclipse.paho.mqttv5.client.MqttConnectionOptions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.integration.context.IntegrationContextUtils;
@@ -45,6 +46,7 @@ import org.springframework.integration.dsl.MessageChannels;
 import org.springframework.integration.event.outbound.ApplicationEventPublishingMessageHandler;
 import org.springframework.integration.mqtt.core.ClientManager;
 import org.springframework.integration.mqtt.inbound.Mqttv5PahoMessageDrivenChannelAdapter;
+import org.springframework.messaging.MessageChannel;
 
 /**
  * <p>Description: Emqx 系统主题中 Client 相关监控内容转 ApplicationEvent 配置 </p>
@@ -81,20 +83,41 @@ class EmqxSystemTopicToEventFlowConfiguration {
         log.debug("[Herodotus] |- Module [Emqx $sys/client To Event Flow] Configure.");
     }
 
+    /**
+     * Emqx 默认系统主题入站通道。通过该种方式保证通道的唯一性。
+     *
+     * @return Emqx 默认系统主题入站通道 {@link MessageChannel}
+     */
+    @Bean(name = Channels.EMQX__DEFAULT_SYSTEM_TOPIC_INBOUND_CHANNEL)
+    public MessageChannel emqxDefaultSystemTopicInboundChannel() {
+        return MessageChannels.direct().getObject();
+    }
+
+    /**
+     * Emqx 默认入站消息转 Event通道。通过该种方式保证通道的唯一性。
+     *
+     * @return Emqx 默认入站消息转 Event通道 {@link MessageChannel}
+     */
+    @Bean(name = Channels.EMQX__DEFAULT_INBOUND_TO_EVENT_CHANNEL)
+    public MessageChannel emqxDefaultInboundToEventChannel() {
+        return MessageChannels.direct().getObject();
+    }
+
     @Bean
     public IntegrationFlow emqxSystemTopicToEventFlow(
             ClientManager<IMqttAsyncClient, MqttConnectionOptions> clientManager,
-            ApplicationEventPublishingMessageHandler applicationEventPublishingMessageHandler) {
+            ApplicationEventPublishingMessageHandler applicationEventPublishingMessageHandler,
+            @Qualifier(Channels.EMQX__DEFAULT_SYSTEM_TOPIC_INBOUND_CHANNEL) MessageChannel emqxDefaultSystemTopicInboundChannel,
+            @Qualifier(Channels.EMQX__DEFAULT_INBOUND_TO_EVENT_CHANNEL) MessageChannel emqxDefaultInboundToEventChannel) {
         Mqttv5PahoMessageDrivenChannelAdapter adapter = new Mqttv5PahoMessageDrivenChannelAdapter(clientManager, EMQX_MONITOR_TOPICS);
         adapter.setPayloadType(String.class);
         adapter.setManualAcks(false);
-        adapter.setQos(0);
-        adapter.setOutputChannel(MessageChannels.publishSubscribe(Channels.EMQX__DEFAULT_SYSTEM_TOPIC_INBOUND_CHANNEL).getObject());
+        adapter.setOutputChannel(emqxDefaultSystemTopicInboundChannel);
         adapter.setErrorChannelName(IntegrationContextUtils.ERROR_CHANNEL_BEAN_NAME);
 
         return IntegrationFlow.from(adapter)
                 .transform(new SystemClientByteArrayToEventTransformer())
-                .channel(MessageChannels.direct(Channels.EMQX__DEFAULT_EVENT_OUTBOUND_CHANNEL))
+                .channel(emqxDefaultInboundToEventChannel)
                 .handle(applicationEventPublishingMessageHandler)
                 .get();
     }

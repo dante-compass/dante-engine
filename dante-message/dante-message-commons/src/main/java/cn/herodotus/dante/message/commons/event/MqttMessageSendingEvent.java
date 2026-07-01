@@ -27,8 +27,11 @@ package cn.herodotus.dante.message.commons.event;
 
 import cn.herodotus.dante.message.commons.definition.event.AbstractApplicationEvent;
 import cn.herodotus.dante.message.commons.domain.MqttMessage;
+import cn.hutool.v7.core.util.ByteUtil;
+import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.StringUtils;
 
-import java.time.Clock;
+import java.nio.charset.StandardCharsets;
 
 /**
  * <p>Description: Mqtt 类型消息 </p>
@@ -38,11 +41,40 @@ import java.time.Clock;
  */
 public class MqttMessageSendingEvent extends AbstractApplicationEvent<MqttMessage> {
 
-    public MqttMessageSendingEvent(MqttMessage data) {
-        super(data);
+    /**
+     * 构建 Mqtt 消息发布事件
+     *
+     * @param topic           主题
+     * @param payload         内容
+     * @param qos             Qos
+     * @param responseTopic   响应主题
+     * @param correlationData 关联数据
+     */
+    public MqttMessageSendingEvent(String topic, String payload, Integer qos, String responseTopic, String correlationData) {
+        byte[] correlationDataBytes = StringUtils.isNotBlank(correlationData) ? ByteUtil.toBytes(correlationData, StandardCharsets.UTF_8) : null;
+        this(topic, payload, qos, responseTopic, correlationDataBytes);
     }
 
-    public MqttMessageSendingEvent(MqttMessage data, Clock clock) {
-        super(data, clock);
+    /**
+     * 构建 Mqtt 消息发布事件
+     *
+     * @param topic           主题
+     * @param payload         内容
+     * @param qos             Qos
+     * @param responseTopic   响应主题
+     * @param correlationData 关联数据
+     */
+    public MqttMessageSendingEvent(String topic, String payload, Integer qos, String responseTopic, byte[] correlationData) {
+        MqttMessage message = MqttMessage.with(topic, payload)
+                .qos(qos)
+                .responseTopic(responseTopic)
+                .correlationData(correlationData)
+                .build();
+
+        this(message);
+    }
+
+    public MqttMessageSendingEvent(MqttMessage message) {
+        super(message);
     }
 }
