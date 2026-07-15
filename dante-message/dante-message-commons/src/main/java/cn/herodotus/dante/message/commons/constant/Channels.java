@@ -66,7 +66,7 @@ public interface Channels {
     /**
      * Mqtt 默认入站通道
      */
-    String MQTT__THINGSMESH_INBOUND_CHANNEL = "mqttThingsMeshInboundChannel";
+    String MQTT__THINGSBRAIN_INBOUND_CHANNEL = "mqttThingsBrainInboundChannel";
 
     /**
      * Emqx 默认的监控指标数据数据 Mqtt 类型入站通道

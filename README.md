@@ -9,17 +9,17 @@
     <a href="https://spring.io/projects/spring-cloud" target="_blank"><img src="https://img.shields.io/badge/Spring%20Cloud-2025.1.2-blue.svg?logo=springboot" alt="Spring Cloud 2025.1.2"></a>
     <a href="https://github.com/alibaba/spring-cloud-alibaba" target="_blank"><img src="https://img.shields.io/badge/Spring%20Cloud%20Alibaba-2025.1.0.0-blue.svg?logo=alibabadotcom" alt="Spring Cloud Alibaba 2025.1.0.0"></a>
     <a href="https://github.com/Tencent/spring-cloud-tencent" target="_blank"><img src="https://img.shields.io/badge/Spring%20Cloud%20Tencent-2.1.2.0--2025.0.2-blue.svg?logo=qq" alt="Spring Cloud Tencent 2.1.2.0-2025.0.2"></a>
-    <a href="https://nacos.io/docs/latest/overview/" target="_blank"><img src="https://img.shields.io/badge/Nacos-3.2.2-brightgreen.svg?logo=alibabadotcom" alt="Nacos 3.2.2"></a>
+    <a href="https://nacos.io/docs/latest/overview/" target="_blank"><img src="https://img.shields.io/badge/Nacos-3.2.3-brightgreen.svg?logo=alibabadotcom" alt="Nacos 3.2.3"></a>
 </p>
 <p align="center">
     <a href="https://my.oschina.net/pointerv" target="_blank"><img src="https://img.shields.io/badge/Author-%E7%A0%81%E5%8C%A0%E5%90%9B-orange" alt="码匠君"></a>
     <a href="./LICENSE"><img src="https://img.shields.io/badge/License-Apache--2.0-blue.svg?logo=apache" alt="License Apache 2.0"></a>
     <a href="https://bell-sw.com/pages/downloads/#downloads" target="_blank"><img src="https://img.shields.io/badge/JDK-25%2B-green.svg?logo=openjdk" alt="Java 25"></a>
-    <a href="https://github.com/dante-compass/dante-engine" target="_blank"><img src="https://img.shields.io/badge/Version-4.1.0.3-red.svg?logo=spring" alt="Version 4.1.0.3"></a>
-    <a href="https://github.com/dromara/dante-cloud" target="_blank"><img src="https://img.shields.io/badge/Dante%20Cloud-4.1.0.3-red.svg?logo=spring" alt="Dante Cloud 4.1.0.3"></a>
-    <a href="https://github.com/dante-compass/thingsbrain" target="_blank"><img src="https://img.shields.io/badge/ThingsBrain-4.1.0.3-red.svg?logo=spring" alt="ThingsBrain 4.1.0.3"></a>
-    <a href="https://github.com/dante-compass/dante-cloud-ui" target="_blank"><img src="https://img.shields.io/badge/Dante%20Cloud%20UI-4.1.0.3-blue.svg?logo=quasar&logoColor=%23050A14" alt="Dante Cloud UI 4.1.0.3"></a>
-    <a href="https://github.com/dante-compass/herodotus-cloud-ui-vuetify" target="_blank"><img src="https://img.shields.io/badge/Dante%20Cloud%20UI(New)-4.1.0.3-blue.svg?logo=vuetify&logoColor=%231867C0" alt="Dante Cloud UI(New) 4.1.0.3"></a>
+    <a href="https://github.com/dante-compass/dante-engine" target="_blank"><img src="https://img.shields.io/badge/Version-4.1.0.4-red.svg?logo=spring" alt="Version 4.1.0.4"></a>
+    <a href="https://github.com/dromara/dante-cloud" target="_blank"><img src="https://img.shields.io/badge/Dante%20Cloud-4.1.0.4-red.svg?logo=spring" alt="Dante Cloud 4.1.0.4"></a>
+    <a href="https://github.com/dante-compass/thingsbrain" target="_blank"><img src="https://img.shields.io/badge/ThingsBrain-4.1.0.4-red.svg?logo=spring" alt="ThingsBrain 4.1.0.4"></a>
+    <a href="https://github.com/dante-compass/dante-cloud-ui" target="_blank"><img src="https://img.shields.io/badge/Dante%20Cloud%20UI-4.1.0.4-blue.svg?logo=quasar&logoColor=%23050A14" alt="Dante Cloud UI 4.1.0.4"></a>
+    <a href="https://github.com/dante-compass/herodotus-cloud-ui-vuetify" target="_blank"><img src="https://img.shields.io/badge/Dante%20Cloud%20UI(New)-4.1.0.4-blue.svg?logo=vuetify&logoColor=%231867C0" alt="Dante Cloud UI(New) 4.1.0.4"></a>
     <a href="https://github.com/dante-compass/dante-engine"><img src="https://img.shields.io/github/stars/dante-compass/dante-engine.svg?label=Github%20Stars" alt="Github star"></a>
     <a href="https://github.com/dante-compass/dante-engine"><img src="https://img.shields.io/github/forks/dante-compass/dante-engine.svg?label=Github%20Forks" alt="Github fork"></a>
     <a href="https://gitee.com/dante-compass/dante-engine"><img src="https://gitee.com/dante-compass/dante-engine/badge/star.svg?theme=dark" alt="Gitee star"></a>
@@ -56,37 +56,7 @@
 
 Dante Engine 为 Dante Cloud 微服务项目核心组件库，是 Dante Cloud 项目核心内容。单独提取一个工程，一方面便于多项目共享代码，提升代码维护的便捷性；另一方面，Dante Engine 已经提前编译完成并发布中央仓库，可以极大地提升 Dante Cloud 主工程的编译效率。
 
-# [一]、项目地址
-
-## 1. Dante Cloud 主工程
-
-- **Gitee**：[https://gitee.com/dromara/dante-cloud](https://gitee.com/dromara/dante-cloud)
-- **Github**：[https://github.com/dromara/dante-cloud](https://github.com/dromara/dante-cloud)
-- **AtomGit**：[https://atomgit.com/dromara/dante-cloud](https://atomgit.com/dromara/dante-cloud)
-
-## 2. Dante Engine 核心组件库
-
-- **Gitee**：[https://gitee.com/dante-compass/dante-engine](https://gitee.com/dante-compass/dante-engine)
-- **Github**：[https://github.com/dante-compass/dante-engine](https://github.com/dante-compass/dante-engine)
-- **AtomGit**：[https://atomgit.com/dante-compass/dante-engine](https://atomgit.com/dante-compass/dante-engine)
-
-## 3. UI 前端工程（旧版）
-
-- **Gitee**：[https://gitee.com/dante-compass/dante-cloud-ui](https://gitee.com/dante-compass/dante-cloud-ui)
-- **Github**：[https://github.com/dante-compass/dante-cloud-ui](https://github.com/dante-compass/dante-cloud-ui)
-- **AtomGit**：[https://atomgit.com/dante-compass/dante-cloud-ui](https://atomgit.com/dante-compass/dante-cloud-ui)
-
-## 4. UI 前端工程（新版）
-
-- **Gitee**：[https://gitee.com/dante-compass/herodotus-cloud-ui-vuetify](https://gitee.com/dante-compass/herodotus-cloud-ui-vuetify)
-- **Github**：[https://github.com/dante-compass/herodotus-cloud-ui-vuetify](https://github.com/dante-compass/herodotus-cloud-ui-vuetify)
-
-## 5. ThingsBrain 基于 Dante Cloud 的物联网平台（加速开发中...）
-
-- **Gitee**：[https://gitee.com/dante-compass/thingsbrain](https://gitee.com/dante-compass/thingsbrain)
-- **Github**：[https://github.com/dante-compass/thingsbrain](https://github.com/dante-compass/thingsbrain)
-
-# [二]、开源协议
+# [一]、开源协议
 
 ## 1. 协议声明
 
@@ -105,7 +75,13 @@ Dante Engine 为 Dante Cloud 微服务项目核心组件库，是 Dante Cloud �
 
 如果您确实需要删除作者或版权信息，需要争得作者同意及授权。或者在 [【使用公司及组织】](https://gitee.com/dromara/dante-cloud/issues/ICAOHG) 下进行登记，经作者整理登记信息形成表格后，可视为正式授权。
 
-# [三]、工程结构
+# [二]、工程结构
+
+`Dante Cloud` 自 2.7.X 版本起，由原有单一的工程拆分为 `Dante Cloud` 和 `Dante Engine` 两个工程。`Dante Cloud` 为主要应用运行以及子模块组合工程，`Dante Engine` 为核心组件库工程。
+
+该种设计是对于原有工程代码高度抽象，不仅可以提升底层通用代码的复用性，让代码不局限于 `Dante Cloud` 项目本身还可以为更多的项目所使用。用户使用 `Dante Cloud`，收获的不仅是一套微服务系统，更是一套可以灵活拆分和状态装配的组件库。可以像乐高一样随意组合搭建您自己的应用系统。
+
+**主工程以及前端工程代码地址，详见下方【项目地址】章节！**
 
 ```shell
 dante-engine
@@ -165,7 +141,7 @@ dante-engine
 └──  readme -- README 相关素材放置目录
 ```
 
-# [四]、版本分支
+# [三]、版本分支
 
 ## 1. 版本号说明
 
@@ -189,6 +165,35 @@ dante-engine
 |         2.7.X          | Spring Boot 2.7 和 Spring Cloud 2021.0.X | JDK 8     | 历史版本，停止维护      | 基于 Spring Boot 2.7 时代开发的代码分支，稳定可用，不再维护                      |
 | spring-security-oauth2 | Spring Boot 2.6 和 Spring Cloud 2021.0.X | JDK 8     | 历史代码，不再维护      | 基于原 Spring Security OAuth2 实现的微服务，稳定可用，因相关组件均不在维护，所以该版本不再维护 |
 
+# [四]、项目地址
+
+## 1. Dante Cloud 主工程
+
+- **Gitee**：[https://gitee.com/dromara/dante-cloud](https://gitee.com/dromara/dante-cloud)
+- **Github**：[https://github.com/dromara/dante-cloud](https://github.com/dromara/dante-cloud)
+- **AtomGit**：[https://atomgit.com/dromara/dante-cloud](https://atomgit.com/dromara/dante-cloud)
+
+## 2. Dante Engine 核心组件库
+
+- **Gitee**：[https://gitee.com/dante-compass/dante-engine](https://gitee.com/dante-compass/dante-engine)
+- **Github**：[https://github.com/dante-compass/dante-engine](https://github.com/dante-compass/dante-engine)
+- **AtomGit**：[https://atomgit.com/dante-compass/dante-engine](https://atomgit.com/dante-compass/dante-engine)
+
+## 3. UI 前端工程（旧版）
+
+- **Gitee**：[https://gitee.com/dante-compass/dante-cloud-ui](https://gitee.com/dante-compass/dante-cloud-ui)
+- **Github**：[https://github.com/dante-compass/dante-cloud-ui](https://github.com/dante-compass/dante-cloud-ui)
+- **AtomGit**：[https://atomgit.com/dante-compass/dante-cloud-ui](https://atomgit.com/dante-compass/dante-cloud-ui)
+
+## 4. UI 前端工程（新版）
+
+- **Gitee**：[https://gitee.com/dante-compass/herodotus-cloud-ui-vuetify](https://gitee.com/dante-compass/herodotus-cloud-ui-vuetify)
+- **Github**：[https://github.com/dante-compass/herodotus-cloud-ui-vuetify](https://github.com/dante-compass/herodotus-cloud-ui-vuetify)
+
+## 5. ThingsBrain 基于 Dante Cloud 的物联网平台（加速开发中...）
+
+- **Gitee**：[https://gitee.com/dante-compass/thingsbrain](https://gitee.com/dante-compass/thingsbrain)
+- **Github**：[https://github.com/dante-compass/thingsbrain](https://github.com/dante-compass/thingsbrain)
 
 # [五]、安全测试
 
