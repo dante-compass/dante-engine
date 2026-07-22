@@ -31,7 +31,7 @@ import cn.hutool.v7.http.useragent.UserAgentUtil;
 import com.google.common.base.MoreObjects;
 import org.apache.commons.lang3.ObjectUtils;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
  * <p>Description: 审计记录抽象定义 </p>
@@ -65,9 +65,9 @@ public abstract class AbstractAuditRecord implements BaseModel {
 
     private String browserEngineVersion;
 
-    private Date createTime = new Date();
+    private LocalDateTime createTime = LocalDateTime.now();
 
-    private Date updateTime = new Date();
+    private LocalDateTime updateTime = LocalDateTime.now();
 
     protected AbstractAuditRecord() {
     }
@@ -172,19 +172,19 @@ public abstract class AbstractAuditRecord implements BaseModel {
         this.browserEngineVersion = browserEngineVersion;
     }
 
-    public Date getCreateTime() {
+    public LocalDateTime getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Date createTime) {
+    public void setCreateTime(LocalDateTime createTime) {
         this.createTime = createTime;
     }
 
-    public Date getUpdateTime() {
+    public LocalDateTime getUpdateTime() {
         return updateTime;
     }
 
-    public void setUpdateTime(Date updateTime) {
+    public void setUpdateTime(LocalDateTime updateTime) {
         this.updateTime = updateTime;
     }
 

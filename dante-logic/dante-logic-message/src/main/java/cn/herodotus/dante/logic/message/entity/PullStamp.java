@@ -35,7 +35,7 @@ import jakarta.persistence.*;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.UuidGenerator;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
  * <p>Description: 信息拉取标记 </p>
@@ -69,7 +69,7 @@ public class PullStamp implements BaseEntity {
     @Schema(name = "上次拉取时间")
     @Column(name = "latest_pull_time", updatable = false)
     @JsonFormat(pattern = SystemConstants.PATTERN__DATE_TIME)
-    private Date latestPullTime = new Date();
+    private LocalDateTime latestPullTime = LocalDateTime.now();
 
     public String getStampId() {
         return stampId;
@@ -95,11 +95,11 @@ public class PullStamp implements BaseEntity {
         this.source = source;
     }
 
-    public Date getLatestPullTime() {
+    public LocalDateTime getLatestPullTime() {
         return latestPullTime;
     }
 
-    public void setLatestPullTime(Date latestPullTime) {
+    public void setLatestPullTime(LocalDateTime latestPullTime) {
         this.latestPullTime = latestPullTime;
     }
 

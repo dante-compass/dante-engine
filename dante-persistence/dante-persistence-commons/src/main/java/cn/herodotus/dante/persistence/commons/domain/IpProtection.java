@@ -28,6 +28,7 @@ package cn.herodotus.dante.persistence.commons.domain;
 import cn.herodotus.dante.core.domain.BaseModel;
 import com.google.common.base.MoreObjects;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
@@ -57,7 +58,7 @@ public class IpProtection implements BaseModel {
     /**
      * 上次登录时间
      */
-    private Date lastSignInTime;
+    private LocalDateTime lastSignInTime;
     /**
      * 本次登录IP地址
      */
@@ -69,7 +70,7 @@ public class IpProtection implements BaseModel {
     /**
      * 本次登录时间
      */
-    private Date currentSignInTime;
+    private LocalDateTime currentSignInTime;
     /**
      * 是否为常规登录地址
      */
@@ -99,11 +100,11 @@ public class IpProtection implements BaseModel {
         this.currentLocation = currentLocation;
     }
 
-    public Date getCurrentSignInTime() {
+    public LocalDateTime getCurrentSignInTime() {
         return currentSignInTime;
     }
 
-    public void setCurrentSignInTime(Date currentSignInTime) {
+    public void setCurrentSignInTime(LocalDateTime currentSignInTime) {
         this.currentSignInTime = currentSignInTime;
     }
 
@@ -123,11 +124,11 @@ public class IpProtection implements BaseModel {
         this.lastLocation = lastLocation;
     }
 
-    public Date getLastSignInTime() {
+    public LocalDateTime getLastSignInTime() {
         return lastSignInTime;
     }
 
-    public void setLastSignInTime(Date lastSignInTime) {
+    public void setLastSignInTime(LocalDateTime lastSignInTime) {
         this.lastSignInTime = lastSignInTime;
     }
 
