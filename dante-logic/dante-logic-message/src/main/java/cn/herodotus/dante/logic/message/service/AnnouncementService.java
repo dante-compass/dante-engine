@@ -31,7 +31,7 @@ import cn.herodotus.dante.logic.message.entity.Announcement;
 import cn.herodotus.dante.logic.message.repository.AnnouncementRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -54,7 +54,7 @@ public class AnnouncementService extends AbstractJpaService<Announcement, String
         return announcementRepository;
     }
 
-    public List<Announcement> pullAnnouncements(Date stamp) {
+    public List<Announcement> pullAnnouncements(LocalDateTime stamp) {
         return announcementRepository.findAllByCreateTimeAfter(stamp);
     }
 }

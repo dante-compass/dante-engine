@@ -32,7 +32,7 @@ import cn.herodotus.dante.logic.message.repository.PullStampRepository;
 import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
  * <p>Description: MessagePullStampService </p>
@@ -65,7 +65,7 @@ public class PullStampService extends AbstractJpaService<PullStamp, String> {
             stamp = new PullStamp();
             stamp.setUserId(userId);
         }
-        stamp.setLatestPullTime(new Date());
+        stamp.setLatestPullTime(LocalDateTime.now());
 
         return this.save(stamp);
     }

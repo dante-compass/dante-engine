@@ -46,7 +46,7 @@
         </dependency>
 
         <dependency>
-            <groupId>p6spy</groupId>
+            <groupId>cn.unikue.forkextension.p6spy</groupId>
             <artifactId>p6spy</artifactId>
         </dependency>
 
