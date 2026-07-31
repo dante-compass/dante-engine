@@ -187,19 +187,21 @@ public interface BaseJpaReadableService<E extends BaseEntity, ID extends Seriali
      * @return 分页数据
      */
     default Page<E> findByPage(Specification<E> specification, int pageNumber, int pageSize) {
-        return getRepository().findAll(specification, PageRequest.of(pageNumber, pageSize));
+        return findByPage(specification, PageRequest.of(pageNumber, pageSize));
     }
 
     /**
      * 查询分页数据
      *
-     * @param pageNumber 当前页码, 起始页码 0
-     * @param pageSize   每页显示的数据条数
-     * @param direction  {@link Sort.Direction}
+     * @param specification {@link Specification}
+     * @param pageNumber    当前页码, 起始页码 0
+     * @param pageSize      每页显示的数据条数
+     * @param direction     排序方向 {@link Sort.Direction}
+     * @param properties    需要排序的字段
      * @return 分页数据
      */
-    default Page<E> findByPage(int pageNumber, int pageSize, Sort.Direction direction) {
-        return findByPage(PageRequest.of(pageNumber, pageSize, direction));
+    default Page<E> findByPage(Specification<E> specification, int pageNumber, int pageSize, Sort.Direction direction, String... properties) {
+        return findByPage(specification, PageRequest.of(pageNumber, pageSize, direction, properties));
     }
 
     /**
