@@ -33,6 +33,7 @@ import cn.herodotus.dante.logic.upms.entity.security.SysUser;
 import cn.herodotus.dante.logic.upms.enums.Gender;
 import cn.herodotus.dante.logic.upms.enums.Identity;
 import cn.herodotus.dante.security.enums.AccountCategory;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.google.common.base.MoreObjects;
@@ -147,8 +148,9 @@ public class SysEmployee extends AbstractSysEntity implements SocialUserDetails 
     private Set<SysDepartment> departments = new HashSet<>();
 
     @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = LogicUpmsConstants.REGION_SYS_USER)
-    @JsonDeserialize(using = SysUserEmptyToNull.class)
     @OneToOne(mappedBy = "employee", cascade = CascadeType.ALL)
+    @JsonDeserialize(using = SysUserEmptyToNull.class)
+    @JsonBackReference
     private SysUser user;
 
     public SysUser getUser() {

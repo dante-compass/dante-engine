@@ -38,6 +38,7 @@ import cn.herodotus.dante.logic.upms.constant.LogicUpmsConstants;
 import cn.herodotus.dante.logic.upms.domain.deserializer.SysEmployeeEmptyToNull;
 import cn.herodotus.dante.logic.upms.entity.hr.SysEmployee;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.google.common.base.MoreObjects;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -136,7 +137,6 @@ public class SysUser extends AbstractSysEntity {
      * <p>
      * 因为 @ManyToMany 使用的是集合，空对象不会被转成对象Set进去。
      */
-    @JsonDeserialize(using = SysEmployeeEmptyToNull.class)
     @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = LogicUpmsConstants.REGION_SYS_EMPLOYEE)
     @Schema(name = "人员")
     @OneToOne(fetch = FetchType.LAZY)
@@ -145,6 +145,8 @@ public class SysUser extends AbstractSysEntity {
             inverseJoinColumns = {@JoinColumn(name = "employee_id")},
             uniqueConstraints = {@UniqueConstraint(columnNames = {"user_id", "employee_id"})},
             indexes = {@Index(name = "sys_user_employee_sid_idx", columnList = "user_id"), @Index(name = "sys_user_employee_eid_idx", columnList = "employee_id")})
+    @JsonManagedReference
+    @JsonDeserialize(using = SysEmployeeEmptyToNull.class)
     private SysEmployee employee;
 
     public String getPhoneNumber() {
