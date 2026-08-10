@@ -25,7 +25,7 @@
 
 package cn.herodotus.dante.oauth2.commons.event;
 
-import cn.herodotus.dante.message.commons.definition.event.AbstractApplicationEvent;
+import cn.herodotus.dante.spring.event.AbstractApplicationEvent;
 
 /**
  * <p>Description: 关闭认证事件 </p>

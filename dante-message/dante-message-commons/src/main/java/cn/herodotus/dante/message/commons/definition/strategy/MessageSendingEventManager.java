@@ -27,7 +27,7 @@ package cn.herodotus.dante.message.commons.definition.strategy;
 
 import cn.herodotus.dante.message.commons.definition.Message;
 import cn.herodotus.dante.message.commons.definition.enums.MessageCategory;
-import cn.herodotus.dante.message.commons.definition.event.ApplicationStrategyEventManager;
+import cn.herodotus.dante.spring.event.ApplicationStrategyEventManager;
 import cn.herodotus.dante.message.commons.domain.BroadcastMessage;
 import cn.herodotus.dante.message.commons.domain.MqttMessage;
 import cn.herodotus.dante.message.commons.domain.UserMessage;

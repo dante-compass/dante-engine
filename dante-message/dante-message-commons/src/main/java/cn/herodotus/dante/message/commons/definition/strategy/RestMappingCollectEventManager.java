@@ -25,7 +25,7 @@
 
 package cn.herodotus.dante.message.commons.definition.strategy;
 
-import cn.herodotus.dante.message.commons.definition.event.ApplicationStrategyEventManager;
+import cn.herodotus.dante.spring.event.ApplicationStrategyEventManager;
 import cn.herodotus.dante.security.domain.attribute.RestMapping;
 import cn.herodotus.dante.spring.context.ServiceContextHolder;
 import org.apache.commons.collections4.MapUtils;

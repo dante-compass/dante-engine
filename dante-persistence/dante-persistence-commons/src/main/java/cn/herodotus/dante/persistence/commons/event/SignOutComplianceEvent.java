@@ -25,7 +25,7 @@
 
 package cn.herodotus.dante.persistence.commons.event;
 
-import cn.herodotus.dante.message.commons.definition.event.AbstractApplicationEvent;
+import cn.herodotus.dante.spring.event.AbstractApplicationEvent;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.security.oauth2.server.authorization.OAuth2Authorization;
 
