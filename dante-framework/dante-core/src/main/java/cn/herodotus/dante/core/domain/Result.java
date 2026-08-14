@@ -269,14 +269,14 @@ public class Result<T> extends Response<T, Integer> {
     public Map<String, Object> toModel() {
         Map<String, Object> result = createModel();
         result.put("data", getData());
-        result.put("error", error);
+        result.put(SystemConstants.STATUS__ERROR, error);
         return result;
     }
 
     public Map<String, Object> toErrorModel() {
         Map<String, Object> result = createModel();
         result.put("exception", getData());
-        result.put("error", ObjectUtils.isNotEmpty(getError()) ? getError().getDetail() : StringUtils.EMPTY);
+        result.put(SystemConstants.STATUS__ERROR, ObjectUtils.isNotEmpty(getError()) ? getError().getDetail() : StringUtils.EMPTY);
 //        result.put("trace", ObjectUtils.isNotEmpty(getError()) ? getError().getStackTrace() : null);
         return result;
     }
