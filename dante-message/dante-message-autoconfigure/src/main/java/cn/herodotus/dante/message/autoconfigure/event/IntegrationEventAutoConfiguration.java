@@ -103,7 +103,7 @@ public class IntegrationEventAutoConfiguration {
     /**
      * 接收指定类型的 {@link ApplicationEvent} 消息，将其转发至 {@link Channels#EVENT__ROUTING_CHANNEL} 通道中
      * <p>
-     * 该配置主要用于系统的统一消息发送。因为不同的类型的消息，发送逻辑不同，所以目前只处理 {@link MqttMessageSendingEvent} 两种事件。
+     * 该配置主要用于系统的统一消息发送。因为不同的类型的消息，发送逻辑不同，所以目前只处理 {@link MailMessageSendingEvent} 和 {@link MqttMessageSendingEvent} 两种事件。
      *
      * @return {@link ApplicationEventListeningMessageProducer}
      */

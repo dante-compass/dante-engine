@@ -51,7 +51,6 @@ class WebhookMapToEventTransformer extends AbstractPayloadTransformer<Map<String
         String type = String.valueOf(event);
 
         log.debug("[Herodotus] |- Emqx webhook  message for [{}].", type);
-
         return process(type, payload);
     }
 

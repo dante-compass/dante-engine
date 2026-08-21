@@ -151,15 +151,15 @@ public class IntegrationMqttAutoConfiguration {
             @Qualifier(Channels.MQTT__DEFAULT_INBOUND_TO_EVENT_CHANNEL) MessageChannel mqttDefaultInboundToEventChannel) {
 
         // 接收 mqtt 指定 topic 中的消息
-        Mqttv5PahoMessageDrivenChannelAdapter messageProducer = new Mqttv5PahoMessageDrivenChannelAdapter(clientManager, ListUtils.toStringArray(mqttProperties.getDefaultSubscribes()));
-        messageProducer.setManualAcks(false);
-        messageProducer.setOutputChannel(mqttDefaultInboundChannel);
-        messageProducer.setErrorChannelName(IntegrationContextUtils.ERROR_CHANNEL_BEAN_NAME);
+        Mqttv5PahoMessageDrivenChannelAdapter adapter = new Mqttv5PahoMessageDrivenChannelAdapter(clientManager, ListUtils.toStringArray(mqttProperties.getDefaultSubscribes()));
+        adapter.setManualAcks(false);
+        adapter.setOutputChannel(mqttDefaultInboundChannel);
+        adapter.setErrorChannelName(IntegrationContextUtils.ERROR_CHANNEL_BEAN_NAME);
         log.trace("[Herodotus] |- Bean [Mqtt v5 Paho Message Driven Channel Adapter] Configure.");
 
         // 将 mqtt 指定 topic 中的消息，转换成 Event，通过 ApplicationEventPublishingMessageHandler 发送出去。
         // 这种实现主要用于解决 mqtt 消息接收的解耦
-        return IntegrationFlow.from(messageProducer)
+        return IntegrationFlow.from(adapter)
                 .transform(new DefaultMessageToEventTransformer())
                 .channel(mqttDefaultInboundToEventChannel)
                 .handle(applicationEventPublishingMessageHandler)
