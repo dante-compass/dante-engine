@@ -31,6 +31,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.google.common.base.MoreObjects;
 import io.swagger.v3.oas.annotations.media.Schema;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
@@ -48,25 +49,25 @@ public abstract class AbstractEntity implements BaseEntity {
 
     @Schema(name = "数据创建时间", title = "数据库审计通用字段", description = "该字段仅用于数据显示，具体的数据设置由各自 Spring Data Module 负责设置")
     @JsonFormat(pattern = SystemConstants.PATTERN__DATE_TIME)
-    private Date createTime = new Date();
+    private LocalDateTime createTime = LocalDateTime.now();
 
     @Schema(name = "数据更新时间", title = "数据库审计通用字段", description = "该字段仅用于数据显示，具体的数据设置由各自 Spring Data Module 负责设置")
     @JsonFormat(pattern = SystemConstants.PATTERN__DATE_TIME)
-    private Date updateTime = new Date();
+    private LocalDateTime updateTime = LocalDateTime.now();
 
-    public Date getCreateTime() {
+    public LocalDateTime getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Date createTime) {
+    public void setCreateTime(LocalDateTime createTime) {
         this.createTime = createTime;
     }
 
-    public Date getUpdateTime() {
+    public LocalDateTime getUpdateTime() {
         return updateTime;
     }
 
-    public void setUpdateTime(Date updateTime) {
+    public void setUpdateTime(LocalDateTime updateTime) {
         this.updateTime = updateTime;
     }
 

@@ -25,7 +25,7 @@
 
 package cn.herodotus.dante.message.commons.event;
 
-import cn.herodotus.dante.message.commons.definition.event.AbstractApplicationEvent;
+import cn.herodotus.dante.spring.event.AbstractApplicationEvent;
 import cn.herodotus.dante.message.commons.domain.BroadcastMessage;
 
 /**

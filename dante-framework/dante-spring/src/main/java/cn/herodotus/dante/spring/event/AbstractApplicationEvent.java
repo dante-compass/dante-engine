@@ -23,29 +23,33 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.message.commons.definition.event;
+package cn.herodotus.dante.spring.event;
+
+import org.springframework.context.ApplicationEvent;
+
+import java.time.Clock;
 
 /**
- * <p>Description: 应用策略事件 </p>
+ * <p>Description: 自定义 Application Event 基础类 </p>
  *
  * @author : gengwei.zheng
- * @date : 2022/3/29 7:26
+ * @date : 2022/2/4 15:14
  */
-public interface ApplicationStrategyEventManager<T> extends StrategyEventManager<T> {
+public abstract class AbstractApplicationEvent<T> extends ApplicationEvent {
 
-    /**
-     * 目的服务名称
-     *
-     * @return 服务名称
-     */
-    String getDestinationServiceName();
+    private final T data;
 
-    /**
-     * 发送事件
-     *
-     * @param data 事件携带数据
-     */
-    default void postProcess(T data) {
-        postProcess(getDestinationServiceName(), data);
+    public AbstractApplicationEvent(T data) {
+        super(data);
+        this.data = data;
+    }
+
+    public AbstractApplicationEvent(T data, Clock clock) {
+        super(data, clock);
+        this.data = data;
+    }
+
+    public T getData() {
+        return data;
     }
 }

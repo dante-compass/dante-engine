@@ -41,6 +41,10 @@ public interface SystemConstants {
      */
     String TENANT_ID = "public";
     /**
+     * 默认的 API 版本
+     */
+    String API_VERSION = "v1";
+    /**
      * 默认树形结构根节点
      */
     String TREE_ROOT_ID = SymbolConstants.ZERO;
@@ -58,15 +62,30 @@ public interface SystemConstants {
      */
     String DATA_TYPE__STRING = "STRING";
     String DATA_TYPE__NUMBER = "NUMBER";
+    /**
+     * gRPC 服务发现协议
+     */
+    String GRPC__DISCOVERY_SCHEMA = "discovery";
+    String GRPC__DISCOVERY_PROTOCOL = GRPC__DISCOVERY_SCHEMA + ":///";
+    /**
+     * 常用状态值
+     */
+    String STATUS__SUCCESS = "success";
+    String STATUS__FAILURE = "failure";
+    String STATUS__ERROR = "error";
 
     /* ---------- 系统信息 ---------- */
 
+    String DN_CN = "*.herodotus.cn";
+    String DN_C = "CN";
+    String DN_ST = "YUNNAN";
+    String DN_L = "KUNMING";
+    String DN_O = "Herodotus";
     String DN_OU = "Herodotus Cloud";
     String WEBSITE = "https://www.herodotus.cn";
-    String COPYRIGHT_DETAILS = "Apache-2.0 Licensed | Copyright © 2020-2030 码 匠 君";
+    String COPYRIGHT_DETAILS = "AGPL-3.0 Licensed | Copyright © 2020-2030 码 匠 君";
     String SYSTEM_NAME = DN_OU;
     String OPEN_API_SECURITY_SCHEME_BEARER_NAME = "HERODOTUS_AUTH";
-
 
     /* ---------- OAuth2 相关常量 ---------- */
 
@@ -89,19 +108,23 @@ public interface SystemConstants {
     String OIDC_CLIENT_REGISTRATION_ENDPOINT = "/connect/register";
     String OIDC_LOGOUT_ENDPOINT = "/connect/logout";
     String OIDC_USER_INFO_ENDPOINT = "/userinfo";
+    String WEBAUTHN_AUTHENTICATE_OPTIONS_ENDPOINT = "/webauthn/authenticate/options";
+    String WEBAUTHN_REGISTER_OPTIONS_ENDPOINT = "/webauthn/register/options";
+    String WEBAUTHN_REGISTER_ENDPOINT = "/webauthn/register";
     /**
      * OAuth2 Custom Endpoint
      */
     String OAUTH2_AUTHORIZATION_CONSENT_URI = "/oauth2/consent";
     String OAUTH2_DEVICE_ACTIVATION_URI = "/oauth2/device_activation";
-    String OAUTH2_DEVICE_VERIFICATION_SUCCESS_URI = "/device_activated";
+    String OAUTH2_DEVICE_VERIFICATION_SUCCESS_URI = "/device_activation_success";
     String OAUTH2_DEVICE_VERIFICATION_FAILURE_URI = "/device_activation_failure";
     /**
-     * Oauth2 模式类型
+     * OAuth2 模式类型
      */
     String USERNAME = "username";
     String PASSWORD = "password";
     String SOCIAL_CREDENTIALS = "social_credentials";
+    String WEBAUTHN_CREDENTIALS = "webauthn_credentials";
     /**
      * OAuth2 Token Custom Attribute
      */
@@ -115,7 +138,7 @@ public interface SystemConstants {
     String LICENSE = "license";
     String COPYRIGHT = "copyright";
     /**
-     * 从 OidcScope 中拷贝的默认 Scope 方便以后使用
+     * 从 OidcScope 中拷贝的 OAuth2 默认 Scope 方便以后使用
      */
     String SCOPE_OPENID = "openid";
     String SCOPE_EMAIL = "email";
@@ -142,6 +165,7 @@ public interface SystemConstants {
      */
     String MATCHER__STATIC = "/static/**";
     String MATCHER__WEBJARS = "/webjars/**";
+    String MATCHER__BPMN = "/engine-rest/**";
     /**
      * 默认用户 Session 属性
      */
@@ -149,7 +173,13 @@ public interface SystemConstants {
     /**
      * 签名算法属性
      */
+    String KEY__PRODUCT_KEY = "productKey";
+    String KEY__DEVICE_NAME = "deviceName";
+    String KEY__CLIENT_ID = "clientId";
+    String KEY__SECURE_MODE = "securemode";
+    String KEY__SIGNATURE_METHOD = "signMethod";
     String KEY__TIMESTAMP = "timestamp";
+    String KEY__AUTH_TYPE = "authType";
     String KEY__RANDOM = "random";
 
     /* ---------- OSS 相关常量 ---------- */
@@ -183,6 +213,6 @@ public interface SystemConstants {
      * <p>
      * 定义测试用途的通用目录，外部资源的统一使用和管控。
      */
-    String TESTING__WINDOWS_DEFAULT_FOLDER = "D:/workspaces/Testing";
+    String TESTING__WINDOWS_DEFAULT_FOLDER = "D:/workspaces/testing";
 
 }

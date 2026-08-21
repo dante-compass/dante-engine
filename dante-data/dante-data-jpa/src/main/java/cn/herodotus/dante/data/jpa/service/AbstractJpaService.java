@@ -27,6 +27,13 @@ package cn.herodotus.dante.data.jpa.service;
 
 import cn.herodotus.dante.core.constant.SymbolConstants;
 import cn.herodotus.dante.core.domain.BaseEntity;
+import cn.herodotus.dante.data.jpa.entity.AbstractEntity;
+import com.google.common.reflect.TypeToken;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 
 import java.io.Serializable;
 
@@ -40,5 +47,26 @@ public abstract class AbstractJpaService<E extends BaseEntity, ID extends Serial
 
     protected String like(String property) {
         return SymbolConstants.PERCENT + property + SymbolConstants.PERCENT;
+    }
+
+    /**
+     * 给条件搜索统一增加按照 updateTime 排序支持
+     *
+     * @param specification 声明{@link Specification}
+     * @param pageNumber    当前页码
+     * @param pageSize      每页显示数量
+     * @return 分页数据 {@link Page}
+     */
+    protected Page<E> findByCondition(Specification<E> specification, int pageNumber, int pageSize) {
+
+        Pageable pageable = PageRequest.of(pageNumber, pageSize);
+
+        TypeToken<E> typeToken = new TypeToken<>(getClass()) {
+        };
+        if (typeToken.isSubtypeOf(AbstractEntity.class)) {
+            pageable = PageRequest.of(pageNumber, pageSize, Sort.by(Sort.Direction.DESC, "updateTime"));
+        }
+
+        return findByPage(specification, pageable);
     }
 }

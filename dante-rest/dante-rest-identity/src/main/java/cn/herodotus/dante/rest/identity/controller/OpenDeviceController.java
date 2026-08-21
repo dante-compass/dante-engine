@@ -61,7 +61,7 @@ public class OpenDeviceController {
         return "activation-denied";
     }
 
-    @GetMapping(value = "/", params = "success")
+    @GetMapping(value = "/", params = SystemConstants.STATUS__SUCCESS)
     public String success() {
         return "activation-allowed";
     }

@@ -116,7 +116,7 @@ public class MqttProperties {
      * <p>
      * 当客户端确定不再需要该会话时，应以会话过期间隔设为0的方式断开连接。
      */
-    private Duration sessionExpiryInterval = Duration.ofSeconds(600);
+    private Duration sessionExpiryInterval = Duration.ofDays(1);
     /**
      * 默认的主题。如果消息中不存在 mqtt_topic 头，则使用该值作为默认主题。
      */

@@ -36,7 +36,7 @@ import jakarta.persistence.MappedSuperclass;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
  * <p>Description: 通用的基础实体定义 </p>
@@ -53,27 +53,27 @@ public abstract class AbstractEntity implements BaseEntity {
     @Column(name = "create_time", updatable = false)
     @CreatedDate
     @JsonFormat(pattern = SystemConstants.PATTERN__DATE_TIME)
-    private Date createTime = new Date();
+    private LocalDateTime createTime = LocalDateTime.now();
 
     @Schema(name = "数据更新时间", title = "数据库审计通用字段", description = "由 JPA 自动填充无需手动设置")
     @Column(name = "update_time")
     @LastModifiedDate
     @JsonFormat(pattern = SystemConstants.PATTERN__DATE_TIME)
-    private Date updateTime = new Date();
+    private LocalDateTime updateTime = LocalDateTime.now();
 
-    public Date getCreateTime() {
+    public LocalDateTime getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Date createTime) {
+    public void setCreateTime(LocalDateTime createTime) {
         this.createTime = createTime;
     }
 
-    public Date getUpdateTime() {
+    public LocalDateTime getUpdateTime() {
         return updateTime;
     }
 
-    public void setUpdateTime(Date updateTime) {
+    public void setUpdateTime(LocalDateTime updateTime) {
         this.updateTime = updateTime;
     }
 

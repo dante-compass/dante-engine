@@ -25,10 +25,9 @@
 
 package cn.herodotus.dante.message.commons.event;
 
-import cn.herodotus.dante.message.commons.definition.event.AbstractApplicationEvent;
+import cn.herodotus.dante.spring.event.AbstractApplicationEvent;
 import cn.herodotus.dante.message.commons.domain.MqttMessage;
 import cn.hutool.v7.core.util.ByteUtil;
-import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import java.nio.charset.StandardCharsets;

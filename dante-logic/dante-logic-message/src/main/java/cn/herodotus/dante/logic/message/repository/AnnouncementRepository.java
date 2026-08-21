@@ -31,7 +31,7 @@ import jakarta.persistence.QueryHint;
 import org.hibernate.jpa.AvailableHints;
 import org.springframework.data.jpa.repository.QueryHints;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -43,5 +43,5 @@ import java.util.List;
 public interface AnnouncementRepository extends BaseJpaRepository<Announcement, String> {
 
     @QueryHints(@QueryHint(name = AvailableHints.HINT_CACHEABLE, value = "true"))
-    List<Announcement> findAllByCreateTimeAfter(Date stamp);
+    List<Announcement> findAllByCreateTimeAfter(LocalDateTime stamp);
 }

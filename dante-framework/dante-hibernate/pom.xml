@@ -31,7 +31,7 @@
     <parent>
         <groupId>cn.herodotus.dante</groupId>
         <artifactId>dante-framework</artifactId>
-        <version>4.1.0.4</version>
+        <version>4.1.1.0</version>
     </parent>
 
     <artifactId>dante-hibernate</artifactId>
@@ -46,7 +46,7 @@
         </dependency>
 
         <dependency>
-            <groupId>p6spy</groupId>
+            <groupId>cn.unikue.forkextension.p6spy</groupId>
             <artifactId>p6spy</artifactId>
         </dependency>
 

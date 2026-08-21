@@ -31,7 +31,7 @@ import cn.herodotus.dante.logic.upms.entity.security.SysAttribute;
 import cn.herodotus.dante.logic.upms.entity.security.SysInterface;
 import cn.herodotus.dante.logic.upms.service.security.SysAttributeService;
 import cn.herodotus.dante.logic.upms.service.security.SysInterfaceService;
-import cn.herodotus.dante.message.commons.definition.event.StrategyEventManager;
+import cn.herodotus.dante.spring.event.StrategyEventManager;
 import cn.herodotus.dante.message.commons.event.ApplicationReadinessEvent;
 import cn.herodotus.dante.oauth2.authorization.attribute.SecurityAttributeAnalyzer;
 import cn.herodotus.dante.oauth2.authorization.autoconfigure.bus.RemoteAttributeDistributionEvent;
