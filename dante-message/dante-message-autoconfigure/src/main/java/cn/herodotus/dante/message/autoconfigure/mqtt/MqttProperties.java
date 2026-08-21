@@ -261,6 +261,7 @@ public class MqttProperties {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
+                .add("serverUrls", serverUrls)
                 .add("username", username)
                 .add("password", password)
                 .add("clientId", clientId)
@@ -274,6 +275,7 @@ public class MqttProperties {
                 .add("topicExpression", topicExpression)
                 .add("defaultQos", defaultQos)
                 .add("maximumPacketSize", maximumPacketSize)
+                .add("defaultSubscribes", defaultSubscribes)
                 .toString();
     }
 }
