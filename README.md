@@ -37,21 +37,6 @@
 
 ---
 
-## 重要说明
-
-因 Maven 中央仓库将于 `2026年08月11日` 开启 **发布配额限制措施**（当前为普通用户每月限制发布 7 次、内容大小 80 M、文件数量 1000）， Maven 中央仓库发布限制详情：[【原文地址】](https://central.sonatype.org/publish/maven-central-publishing-limits/)
-
-为了降低 Maven 中央仓库新措施对项目的影响，对项目进行了多项重构措施：
-
-1. 将 Maven 坐标及包名由原来 Dromara 社区的 `org.dromara` 变更为 `cn.herodotus`
-2. 将工程代码进行重构，对可以合并的模块进行了合并，对不必要的或者使用率较低模块，特别是 Starter 类型模块，进行了删减。
-
-由于 Dante Cloud 模块较多，虽然做了大量的努力，但始终无法在保持模块合理性的前提下，满足 Maven 中央文件数量的限制（向中央仓库发布一个 jar 是按照 24 个文件计算，包含：signatures, checksums, source jars, javadocs）
-
-为此，将会降低项目向 Maven 中央仓库的发布频率和次数，仅对重要的版本更新向中央仓库推送发布。所以，后续在使用本项目时，大多数情形下需要用户自己编译 Dante Engine 工程代码。
-
-> 当前 Maven 中央仓库的限制规则并不完全确定，可能会存在调整，Dante Cloud 会结合变化情况，适时调整发布策略。您也可以点个 Star 持续关注更新！
-
 ## 项目介绍
 
 Dante Engine 为 Dante Cloud 微服务项目核心组件库，是 Dante Cloud 项目核心内容。单独提取一个工程，一方面便于多项目共享代码，提升代码维护的便捷性；另一方面，Dante Engine 已经提前编译完成并发布中央仓库，可以极大地提升 Dante Cloud 主工程的编译效率。
