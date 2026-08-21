@@ -26,10 +26,12 @@
 package cn.herodotus.dante.oauth2.authorization.autoconfigure;
 
 import cn.herodotus.dante.message.commons.definition.strategy.EnumDictionaryCollectEventManager;
+import cn.herodotus.dante.message.commons.definition.strategy.MessageSendingEventManager;
 import cn.herodotus.dante.message.commons.definition.strategy.RestMappingCollectEventManager;
 import cn.herodotus.dante.oauth2.authorization.attribute.SecurityAttributeAnalyzer;
 import cn.herodotus.dante.oauth2.authorization.autoconfigure.listener.RemoteAttributeDistributionListener;
 import cn.herodotus.dante.oauth2.authorization.autoconfigure.strategy.DefaultEnumDictionaryCollectEventManager;
+import cn.herodotus.dante.oauth2.authorization.autoconfigure.strategy.DefaultMessageSendingEventManager;
 import cn.herodotus.dante.oauth2.authorization.autoconfigure.strategy.DefaultRestMappingCollectEventManager;
 import cn.herodotus.dante.spring.condition.ConditionalOnArchitecture;
 import cn.herodotus.dante.spring.enums.Architecture;
@@ -78,6 +80,14 @@ public class ResourceServiceMessageAutoConfiguration {
         log.trace("[Herodotus] |- Bean [Enum Dictionary Gather Manager] Configure.");
         return manager;
     }
+
+    @Bean
+    public MessageSendingEventManager messageSendingEventManager() {
+        DefaultMessageSendingEventManager manager = new DefaultMessageSendingEventManager();
+        log.trace("[Herodotus] |- Bean [Unified Message Sending Event Manager] Configure.");
+        return manager;
+    }
+
 
     @Configuration(proxyBeanMethods = false)
     @ConditionalOnClass(StreamBusBridge.class)
