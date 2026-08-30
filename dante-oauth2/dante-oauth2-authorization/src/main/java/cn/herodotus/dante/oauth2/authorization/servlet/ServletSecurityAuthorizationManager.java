@@ -148,11 +148,11 @@ public class ServletSecurityAuthorizationManager implements AuthorizationManager
             version = apiVersionStrategy.resolveVersion(request);
         }
 
-        log.debug("[Herodotus] |- Finding security attribute use : [{}] - [{}]", method, path);
+        log.debug("[Herodotus] |- Finding security attribute use : [{}] - [{}] - [{}]", method, path, version);
 
-        List<HerodotusSecurityAttribute> configAttributes = this.restSecurityAttributeStorage.getConfigAttribute(url, method, version);
+        List<HerodotusSecurityAttribute> configAttributes = this.restSecurityAttributeStorage.getConfigAttribute(path, method, version);
         if (CollectionUtils.isNotEmpty(configAttributes)) {
-            log.debug("[Herodotus] |- Get configAttributes from local storage for : [{}] - [{}]", url, method);
+            log.debug("[Herodotus] |- Get configAttributes from local storage for : [{}] - [{}] - [{}]", method, path, version);
             return configAttributes;
         } else {
             LinkedHashMap<HerodotusRequest, List<HerodotusSecurityAttribute>> compatible = this.restSecurityAttributeStorage.getCompatible();
@@ -161,7 +161,7 @@ public class ServletSecurityAuthorizationManager implements AuthorizationManager
                 for (Map.Entry<HerodotusRequest, List<HerodotusSecurityAttribute>> entry : compatible.entrySet()) {
                     RequestMatcher.MatchResult matchResult = matches(request, entry.getKey());
                     if (matchResult.isMatch()) {
-                        log.debug("[Herodotus] |- Request match the wildcard [{}] - [{}]", entry.getKey(), entry.getValue());
+                        log.debug("[Herodotus] |- Request match the wildcard [{}] - [{}] - [{}]", entry.getKey(), entry.getValue(), version);
                         return entry.getValue();
                     }
                 }
