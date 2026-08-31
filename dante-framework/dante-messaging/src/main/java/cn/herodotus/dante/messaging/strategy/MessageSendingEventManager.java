@@ -23,14 +23,14 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.messaging.definition.strategy;
+package cn.herodotus.dante.messaging.strategy;
 
 import cn.herodotus.dante.messaging.definition.Message;
-import cn.herodotus.dante.messaging.definition.enums.MessageCategory;
+import cn.herodotus.dante.messaging.enums.MessageCategory;
 import cn.herodotus.dante.messaging.domain.BroadcastMessage;
 import cn.herodotus.dante.messaging.domain.MqttMessage;
 import cn.herodotus.dante.messaging.domain.UserMessage;
-import cn.herodotus.dante.spring.event.ApplicationStrategyEventManager;
+import cn.herodotus.dante.messaging.definition.event.ApplicationStrategyEventManager;
 
 /**
  * <p>Description: 统一消息发送事件管理器定义 </p>

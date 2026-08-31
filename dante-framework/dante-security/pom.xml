@@ -50,6 +50,7 @@
             <artifactId>jakarta.servlet-api</artifactId>
         </dependency>
 
+        <!--UserPrincipal 实现接口需要依赖 spring-messaging。如果将 UserPrincipal 移动到 dante-messaging 将会增加代码耦合性-->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-messaging</artifactId>

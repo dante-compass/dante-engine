@@ -23,9 +23,9 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.security.domain.attribute;
+package cn.herodotus.dante.messaging.domain;
 
-import cn.herodotus.dante.security.definition.AbstractRest;
+import cn.herodotus.dante.messaging.definition.AbstractRest;
 import com.google.common.base.MoreObjects;
 
 import java.util.Objects;

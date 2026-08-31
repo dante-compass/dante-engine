@@ -29,7 +29,7 @@ import cn.herodotus.dante.core.constant.SymbolConstants;
 import cn.herodotus.dante.oauth2.authorization.cache.HerodotusRequest;
 import cn.herodotus.dante.oauth2.authorization.definition.HerodotusSecurityAttribute;
 import cn.herodotus.dante.oauth2.authorization.servlet.ServletOAuth2ResourceMatcherConfigurer;
-import cn.herodotus.dante.security.domain.attribute.AttributeTransmitter;
+import cn.herodotus.dante.messaging.domain.AttributeTransmitter;
 import cn.herodotus.dante.spring.enums.UrlCategory;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.StringUtils;

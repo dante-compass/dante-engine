@@ -23,33 +23,23 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.spring.event;
+package cn.herodotus.dante.messaging.strategy;
 
-import org.springframework.context.ApplicationEvent;
+import cn.herodotus.dante.core.domain.Dictionary;
+import cn.herodotus.dante.messaging.definition.event.ApplicationStrategyEventManager;
 
-import java.time.Clock;
+import java.util.List;
 
 /**
- * <p>Description: 自定义 Application Event 基础类 </p>
+ * <p>Description: 枚举数据字典收集事件管理器 </p>
+ * <p>
+ * 微服务架构下：服务启动时，会扫描服务中枚举字典信息，通过该事件管理器发送远程事件将扫描结果发送至 UPMS 服务中进行聚合存储。UPMS 服务本身也需要扫描枚举字典，但不需要发送远程事件，使用本地事件即可
+ * 单体架构下：仅需要发送本地事件即可。
+ * <p>
+ * 该事件管理器会自动判断在具体场景下，使用远程事件还是本地事件
  *
  * @author : gengwei.zheng
- * @date : 2022/2/4 15:14
+ * @date : 2024/8/23 17:02
  */
-public abstract class AbstractApplicationEvent<T> extends ApplicationEvent {
-
-    private final T data;
-
-    public AbstractApplicationEvent(T data) {
-        super(data);
-        this.data = data;
-    }
-
-    public AbstractApplicationEvent(T data, Clock clock) {
-        super(data, clock);
-        this.data = data;
-    }
-
-    public T getData() {
-        return data;
-    }
+public interface EnumDictionaryCollectEventManager extends ApplicationStrategyEventManager<List<Dictionary>> {
 }

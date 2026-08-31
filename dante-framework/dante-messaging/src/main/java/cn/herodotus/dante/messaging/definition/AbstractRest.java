@@ -23,15 +23,66 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.messaging.definition.enums;
+package cn.herodotus.dante.messaging.definition;
+
+import cn.herodotus.dante.core.domain.BaseModel;
+import com.google.common.base.MoreObjects;
 
 /**
- * <p>Description: 消息类别 </p>
+ * <p>Description: Rest 接口信息抽象定义 </p>
  *
  * @author : gengwei.zheng
- * @date : 2024/10/28 21:35
+ * @date : 2024/12/10 18:43
  */
-public enum MessageCategory {
+public abstract class AbstractRest implements BaseModel {
 
-    MAIL, MAIL_NOTIFICATION, MQTT, STREAM, RSOCKET_BROADCAST, RSOCKET_USER, WEBSOCKET_BROADCAST, WEBSOCKET_USER;
+    private String requestMethod;
+
+    private String serviceId;
+
+    private String url;
+
+    private String version;
+
+    public String getRequestMethod() {
+        return requestMethod;
+    }
+
+    public void setRequestMethod(String requestMethod) {
+        this.requestMethod = requestMethod;
+    }
+
+    public String getServiceId() {
+        return serviceId;
+    }
+
+    public void setServiceId(String serviceId) {
+        this.serviceId = serviceId;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getVersion() {
+        return version;
+    }
+
+    public void setVersion(String version) {
+        this.version = version;
+    }
+
+    @Override
+    public String toString() {
+        return MoreObjects.toStringHelper(this)
+                .add("requestMethod", requestMethod)
+                .add("serviceId", serviceId)
+                .add("url", url)
+                .add("version", version)
+                .toString();
+    }
 }

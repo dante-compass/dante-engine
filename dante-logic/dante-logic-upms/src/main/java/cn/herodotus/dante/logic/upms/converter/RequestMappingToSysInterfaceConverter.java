@@ -26,7 +26,7 @@
 package cn.herodotus.dante.logic.upms.converter;
 
 import cn.herodotus.dante.logic.upms.entity.security.SysInterface;
-import cn.herodotus.dante.security.domain.attribute.RestMapping;
+import cn.herodotus.dante.messaging.domain.RestMapping;
 import org.springframework.core.convert.converter.Converter;
 
 /**

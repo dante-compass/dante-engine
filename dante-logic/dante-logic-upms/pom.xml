@@ -42,11 +42,6 @@
     <dependencies>
         <dependency>
             <groupId>cn.herodotus.dante</groupId>
-            <artifactId>dante-messaging</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>cn.herodotus.dante</groupId>
             <artifactId>dante-oauth2-commons</artifactId>
         </dependency>
 

@@ -32,7 +32,7 @@ import cn.herodotus.dante.oauth2.authorization.autoconfigure.listener.RemoteRest
 import cn.herodotus.dante.oauth2.authorization.autoconfigure.processor.SecurityAttributeDistributionProcessor;
 import cn.herodotus.dante.oauth2.authorization.autoconfigure.strategy.DefaultRestMappingCollectEventManager;
 import cn.herodotus.dante.oauth2.authorization.config.OAuth2ServletAuthorizationConfiguration;
-import cn.herodotus.dante.security.domain.attribute.AttributeTransmitter;
+import cn.herodotus.dante.messaging.domain.AttributeTransmitter;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;

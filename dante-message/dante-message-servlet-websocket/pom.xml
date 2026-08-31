@@ -47,6 +47,11 @@
 
         <dependency>
             <groupId>cn.herodotus.dante</groupId>
+            <artifactId>dante-security</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.herodotus.dante</groupId>
             <artifactId>dante-data-rest</artifactId>
         </dependency>
 

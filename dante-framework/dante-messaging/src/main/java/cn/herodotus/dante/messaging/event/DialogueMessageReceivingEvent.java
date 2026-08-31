@@ -26,7 +26,7 @@
 package cn.herodotus.dante.messaging.event;
 
 import cn.herodotus.dante.messaging.domain.DialogueMessage;
-import cn.herodotus.dante.spring.event.AbstractApplicationEvent;
+import cn.herodotus.dante.messaging.definition.event.AbstractApplicationEvent;
 
 import java.time.Clock;
 

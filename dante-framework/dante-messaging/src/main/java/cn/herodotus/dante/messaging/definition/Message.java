@@ -25,7 +25,7 @@
 
 package cn.herodotus.dante.messaging.definition;
 
-import cn.herodotus.dante.messaging.definition.enums.MessageCategory;
+import cn.herodotus.dante.messaging.enums.MessageCategory;
 import com.google.common.base.MoreObjects;
 
 import java.io.Serializable;

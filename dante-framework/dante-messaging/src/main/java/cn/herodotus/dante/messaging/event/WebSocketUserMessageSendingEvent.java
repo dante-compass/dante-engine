@@ -26,7 +26,7 @@
 package cn.herodotus.dante.messaging.event;
 
 import cn.herodotus.dante.messaging.domain.UserMessage;
-import cn.herodotus.dante.spring.event.AbstractApplicationEvent;
+import cn.herodotus.dante.messaging.definition.event.AbstractApplicationEvent;
 
 /**
  * <p>Description: WebSocket 类型消息发送事件 </p>

@@ -23,66 +23,33 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.security.definition;
+package cn.herodotus.dante.messaging.definition.event;
 
-import cn.herodotus.dante.core.domain.BaseModel;
-import com.google.common.base.MoreObjects;
+import org.springframework.context.ApplicationEvent;
+
+import java.time.Clock;
 
 /**
- * <p>Description: Rest 接口信息抽象定义 </p>
+ * <p>Description: 自定义 Application Event 基础类 </p>
  *
  * @author : gengwei.zheng
- * @date : 2024/12/10 18:43
+ * @date : 2022/2/4 15:14
  */
-public abstract class AbstractRest implements BaseModel {
+public abstract class AbstractApplicationEvent<T> extends ApplicationEvent {
 
-    private String requestMethod;
+    private final T data;
 
-    private String serviceId;
-
-    private String url;
-
-    private String version;
-
-    public String getRequestMethod() {
-        return requestMethod;
+    public AbstractApplicationEvent(T data) {
+        super(data);
+        this.data = data;
     }
 
-    public void setRequestMethod(String requestMethod) {
-        this.requestMethod = requestMethod;
+    public AbstractApplicationEvent(T data, Clock clock) {
+        super(data, clock);
+        this.data = data;
     }
 
-    public String getServiceId() {
-        return serviceId;
-    }
-
-    public void setServiceId(String serviceId) {
-        this.serviceId = serviceId;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    public String getVersion() {
-        return version;
-    }
-
-    public void setVersion(String version) {
-        this.version = version;
-    }
-
-    @Override
-    public String toString() {
-        return MoreObjects.toStringHelper(this)
-                .add("requestMethod", requestMethod)
-                .add("serviceId", serviceId)
-                .add("url", url)
-                .add("version", version)
-                .toString();
+    public T getData() {
+        return data;
     }
 }

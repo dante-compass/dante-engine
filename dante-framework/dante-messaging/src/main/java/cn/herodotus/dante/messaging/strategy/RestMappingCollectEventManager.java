@@ -23,11 +23,11 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.messaging.definition.strategy;
+package cn.herodotus.dante.messaging.strategy;
 
-import cn.herodotus.dante.security.domain.attribute.RestMapping;
+import cn.herodotus.dante.messaging.domain.RestMapping;
 import cn.herodotus.dante.spring.context.ServiceContextHolder;
-import cn.herodotus.dante.spring.event.ApplicationStrategyEventManager;
+import cn.herodotus.dante.messaging.definition.event.ApplicationStrategyEventManager;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.ObjectUtils;
 

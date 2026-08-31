@@ -175,7 +175,7 @@ dante-engine
 - **Gitee**：[https://gitee.com/dante-compass/herodotus-cloud-ui-vuetify](https://gitee.com/dante-compass/herodotus-cloud-ui-vuetify)
 - **Github**：[https://github.com/dante-compass/herodotus-cloud-ui-vuetify](https://github.com/dante-compass/herodotus-cloud-ui-vuetify)
 
-## 5. ThingsBrain 基于 Dante Cloud 的物联网平台（加速开发中...）
+## 5. ThingsBrain 基于 Dante Cloud 的物联网平台
 
 - **Gitee**：[https://gitee.com/dante-compass/thingsbrain](https://gitee.com/dante-compass/thingsbrain)
 - **Github**：[https://github.com/dante-compass/thingsbrain](https://github.com/dante-compass/thingsbrain)
@@ -197,17 +197,17 @@ Dante Cloud 已通过由第三方进行的软件出厂安全测试。详情参�
 
 ## 赞助人列表
 
-| 序号 |                    赞助人                     |    赞助时间    | 序号 |                      赞助人                       |    赞助时间    | 序号 |                   赞助人                    |    赞助时间    |
-|:--:|:------------------------------------------:|:----------:|:--:|:----------------------------------------------:|:----------:|:--:|:----------------------------------------:|:----------:|
-| 1  |                   ご沉默菋噵                    | 2021-10-25 | 2  |    [偷土豆的人](https://gitee.com/dongzongyang)     | 2021-11-24 | 3  |    [lorron](https://gitee.com/lorron)    | 2022-04-04 |
-| 4  |                    在云端                     | 2022-12-26 | 5  |        [西晽](https://gitee.com/syllvin)         | 2022-12-27 | 6  | [p911gt3rs](https://gitee.com/p911gt3rs) | 2023-01-03 |
-| 7  |     [jacsty](https://gitee.com/jacsty)     | 2023-01-31 | 8  |  [hubert_rust](https://gitee.com/hubert_rust)  | 2023-03-16 | 9  |   [Zkey Z](https://gitee.com/zkeyzvip)   | 2023-03-18 |
-| 10 |      [志国欧巴](https://gitee.com/zzgf16)      | 2023-03-27 | 11 |  [michael](https://gitee.com/yiminyangguang)   | 2023-04-07 | 12 |  [大叔丨小巷](https://gitee.com/yushui_wang)  | 2023-04-11 |
-| 13 |   [sun_left](https://gitee.com/sun_left)   | 2023-04-19 | 14 | [time、sand](https://gitee.com/tzy15680905763)  | 2023-07-06 | 15 |   [印第安老斑鸠](https://gitee.com/deadncut)   | 2023-09-09 |
-| 16 |                    一阵风                     | 2023-12-10 | 17 |                      Jack                      | 2024-03-01 | 18 | [onehelper](https://gitee.com/onehelper) | 2024-05-24 |
-| 19 | [宁哥](https://gitee.com/seabuckthorn-syrup) | 2024-05-29 | 20 | [cryptoneedle](https://gitee.com/cryptoneedle) | 2024-11-01 | 21 |                  别吓跑我的鱼                  | 2025-01-10 |
-| 22 |   [代码裁缝](https://gitee.com/code-tailor)    | 2025-03-01 | 23 |                    Go ahead                    | 2025-03-10 | 24 |    [hoku](https://gitee.com/hoku888)     | 2025-06-18 |
-| 25 |                     飞翔                     | 2025-07-19 | 26 |                                                |            | 27 |                                          |            |
+| 序号 |                    赞助人                    |  赞助时间  | 序号 |                     赞助人                     |  赞助时间  | 序号 |                   赞助人                    |  赞助时间  |
+|:----:|:--------------------------------------------:|:----------:|:----:|:----------------------------------------------:|:----------:|:----:|:-------------------------------------------:|:----------:|
+|  1   |                  ご沉默菋噵                  | 2021-10-25 |  2   |  [偷土豆的人](https://gitee.com/dongzongyang)  | 2021-11-24 |  3   |     [lorron](https://gitee.com/lorron)      | 2022-04-04 |
+|  4   |                    在云端                    | 2022-12-26 |  5   |       [西晽](https://gitee.com/syllvin)        | 2022-12-27 |  6   |  [p911gt3rs](https://gitee.com/p911gt3rs)   | 2023-01-03 |
+|  7   |      [jacsty](https://gitee.com/jacsty)      | 2023-01-31 |  8   |  [hubert_rust](https://gitee.com/hubert_rust)  | 2023-03-16 |  9   |    [Zkey Z](https://gitee.com/zkeyzvip)     | 2023-03-18 |
+|  10  |     [志国欧巴](https://gitee.com/zzgf16)     | 2023-03-27 |  11  |  [michael](https://gitee.com/yiminyangguang)   | 2023-04-07 |  12  | [大叔丨小巷](https://gitee.com/yushui_wang) | 2023-04-11 |
+|  13  |    [sun_left](https://gitee.com/sun_left)    | 2023-04-19 |  14  | [time、sand](https://gitee.com/tzy15680905763) | 2023-07-06 |  15  | [印第安老斑鸠](https://gitee.com/deadncut)  | 2023-09-09 |
+|  16  |                    一阵风                    | 2023-12-10 |  17  |                      Jack                      | 2024-03-01 |  18  |  [onehelper](https://gitee.com/onehelper)   | 2024-05-24 |
+|  19  | [宁哥](https://gitee.com/seabuckthorn-syrup) | 2024-05-29 |  20  | [cryptoneedle](https://gitee.com/cryptoneedle) | 2024-11-01 |  21  |                别吓跑我的鱼                 | 2025-01-10 |
+|  22  |  [代码裁缝](https://gitee.com/code-tailor)   | 2025-03-01 |  23  |                    Go ahead                    | 2025-03-10 |  24  |      [hoku](https://gitee.com/hoku888)      | 2025-06-18 |
+|  25  |                     飞翔                     | 2025-07-19 |  26  |                                                |            |  27  |                                             |            |
 
 # [八]、关注我
 

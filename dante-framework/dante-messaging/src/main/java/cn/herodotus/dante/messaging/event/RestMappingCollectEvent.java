@@ -25,8 +25,8 @@
 
 package cn.herodotus.dante.messaging.event;
 
-import cn.herodotus.dante.security.domain.attribute.RestMapping;
-import cn.herodotus.dante.spring.event.AbstractApplicationEvent;
+import cn.herodotus.dante.messaging.domain.RestMapping;
+import cn.herodotus.dante.messaging.definition.event.AbstractApplicationEvent;
 
 import java.time.Clock;
 import java.util.List;

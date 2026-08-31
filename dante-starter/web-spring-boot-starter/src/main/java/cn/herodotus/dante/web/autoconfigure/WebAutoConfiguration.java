@@ -27,7 +27,7 @@ package cn.herodotus.dante.web.autoconfigure;
 
 import cn.herodotus.dante.core.builder.EnumDictionaryBuilder;
 import cn.herodotus.dante.core.function.ErrorCodeMapperBuilderCustomizer;
-import cn.herodotus.dante.messaging.definition.strategy.EnumDictionaryCollectEventManager;
+import cn.herodotus.dante.messaging.strategy.EnumDictionaryCollectEventManager;
 import cn.herodotus.dante.web.autoconfigure.config.SecureConfiguration;
 import cn.herodotus.dante.web.autoconfigure.config.SpringdocConfiguration;
 import cn.herodotus.dante.web.autoconfigure.customizer.WebErrorCodeMapperBuilderCustomizer;

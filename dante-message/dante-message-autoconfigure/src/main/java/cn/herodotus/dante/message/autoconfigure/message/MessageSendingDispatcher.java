@@ -28,7 +28,7 @@ package cn.herodotus.dante.message.autoconfigure.message;
 import cn.herodotus.dante.core.jackson.JacksonUtils;
 import cn.herodotus.dante.core.jackson.JsonNodeUtils;
 import cn.herodotus.dante.messaging.definition.Message;
-import cn.herodotus.dante.messaging.definition.enums.MessageCategory;
+import cn.herodotus.dante.messaging.enums.MessageCategory;
 import cn.herodotus.dante.messaging.domain.BroadcastMessage;
 import cn.herodotus.dante.messaging.domain.MqttMessage;
 import cn.herodotus.dante.messaging.domain.StreamMessage;

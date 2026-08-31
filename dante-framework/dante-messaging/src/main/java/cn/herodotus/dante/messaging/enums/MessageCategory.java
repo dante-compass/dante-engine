@@ -23,29 +23,15 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.spring.event;
+package cn.herodotus.dante.messaging.enums;
 
 /**
- * <p>Description: 应用策略事件 </p>
+ * <p>Description: 消息类别 </p>
  *
  * @author : gengwei.zheng
- * @date : 2022/3/29 7:26
+ * @date : 2024/10/28 21:35
  */
-public interface ApplicationStrategyEventManager<T> extends StrategyEventManager<T> {
+public enum MessageCategory {
 
-    /**
-     * 目的服务名称
-     *
-     * @return 服务名称
-     */
-    String getDestinationServiceName();
-
-    /**
-     * 发送事件
-     *
-     * @param data 事件携带数据
-     */
-    default void postProcess(T data) {
-        postProcess(getDestinationServiceName(), data);
-    }
+    MAIL, MAIL_NOTIFICATION, MQTT, STREAM, RSOCKET_BROADCAST, RSOCKET_USER, WEBSOCKET_BROADCAST, WEBSOCKET_USER;
 }

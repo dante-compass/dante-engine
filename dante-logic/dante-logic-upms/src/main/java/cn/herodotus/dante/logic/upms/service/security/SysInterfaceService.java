@@ -31,7 +31,7 @@ import cn.herodotus.dante.logic.upms.converter.RequestMappingToSysInterfaceConve
 import cn.herodotus.dante.logic.upms.entity.security.SysAttribute;
 import cn.herodotus.dante.logic.upms.entity.security.SysInterface;
 import cn.herodotus.dante.logic.upms.repository.security.SysInterfaceRepository;
-import cn.herodotus.dante.security.domain.attribute.RestMapping;
+import cn.herodotus.dante.messaging.domain.RestMapping;
 import jakarta.persistence.criteria.Predicate;
 import jakarta.persistence.criteria.Root;
 import jakarta.persistence.criteria.Subquery;

@@ -27,7 +27,7 @@ package cn.herodotus.dante.oauth2.authorization.autoconfigure.listener;
 
 import cn.herodotus.dante.messaging.event.RestMappingCollectEvent;
 import cn.herodotus.dante.oauth2.authorization.autoconfigure.processor.SecurityAttributeDistributionProcessor;
-import cn.herodotus.dante.security.domain.attribute.RestMapping;
+import cn.herodotus.dante.messaging.domain.RestMapping;
 import org.apache.commons.collections4.CollectionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
