@@ -24,11 +24,13 @@
  */
 package cn.herodotus.dante.oauth2.authentication.utils;
 
+import org.jspecify.annotations.Nullable;
 import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
 import org.springframework.security.oauth2.core.OAuth2Error;
 import org.springframework.security.oauth2.core.OAuth2ErrorCodes;
 import org.springframework.security.oauth2.jwt.*;
 import org.springframework.security.oauth2.server.authorization.authentication.OAuth2AuthorizationGrantAuthenticationToken;
+import org.springframework.util.Assert;
 import org.springframework.util.StringUtils;
 
 /**
@@ -47,23 +49,25 @@ public final class DPoPProofVerifier {
     private DPoPProofVerifier() {
     }
 
-    public static Jwt verifyIfAvailable(OAuth2AuthorizationGrantAuthenticationToken authorizationGrantAuthentication) {
+    public static @Nullable Jwt verifyIfAvailable(OAuth2AuthorizationGrantAuthenticationToken authorizationGrantAuthentication) {
         String dPoPProof = (String) authorizationGrantAuthentication.getAdditionalParameters().get("dpop_proof");
         if (!StringUtils.hasText(dPoPProof)) {
             return null;
         }
 
         String method = (String) authorizationGrantAuthentication.getAdditionalParameters().get("dpop_method");
+        Assert.hasText(method, "dpop_method cannot be empty");
         String targetUri = (String) authorizationGrantAuthentication.getAdditionalParameters().get("dpop_target_uri");
+        Assert.hasText(targetUri, "dpop_target_uri cannot be empty");
 
         Jwt dPoPProofJwt;
         try {
             // @formatter:off
-			DPoPProofContext dPoPProofContext = DPoPProofContext.withDPoPProof(dPoPProof)
-					.method(method)
-					.targetUri(targetUri)
-					.build();
-			// @formatter:on
+            DPoPProofContext dPoPProofContext = DPoPProofContext.withDPoPProof(dPoPProof)
+                    .method(method)
+                    .targetUri(targetUri)
+                    .build();
+            // @formatter:on
             JwtDecoder dPoPProofVerifier = dPoPProofVerifierFactory.createDecoder(dPoPProofContext);
             dPoPProofJwt = dPoPProofVerifier.decode(dPoPProof);
         } catch (Exception ex) {

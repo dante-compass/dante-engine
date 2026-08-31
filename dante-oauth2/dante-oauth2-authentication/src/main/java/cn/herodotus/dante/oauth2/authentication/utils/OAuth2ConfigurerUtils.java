@@ -26,9 +26,6 @@ package cn.herodotus.dante.oauth2.authentication.utils;
 
 import com.nimbusds.jose.jwk.source.JWKSource;
 import com.nimbusds.jose.proc.SecurityContext;
-import org.springframework.beans.factory.BeanFactoryUtils;
-import org.springframework.beans.factory.NoSuchBeanDefinitionException;
-import org.springframework.beans.factory.NoUniqueBeanDefinitionException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.core.ResolvableType;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -43,9 +40,6 @@ import org.springframework.security.oauth2.server.authorization.client.Registere
 import org.springframework.security.oauth2.server.authorization.settings.AuthorizationServerSettings;
 import org.springframework.security.oauth2.server.authorization.token.*;
 import org.springframework.util.Assert;
-import org.springframework.util.StringUtils;
-
-import java.util.Map;
 
 /**
  * <p>Description: OAuth 2.0 Configurers 工具方法类</p>
@@ -62,12 +56,12 @@ public final class OAuth2ConfigurerUtils {
     private OAuth2ConfigurerUtils() {
     }
 
-    public static String withMultipleIssuersPattern(String endpointUri) {
+    static String withMultipleIssuersPattern(String endpointUri) {
         Assert.hasText(endpointUri, "endpointUri cannot be empty");
         return endpointUri.startsWith("/") ? "/**" + endpointUri : "/**/" + endpointUri;
     }
 
-    public static RegisteredClientRepository getRegisteredClientRepository(HttpSecurity httpSecurity) {
+    static RegisteredClientRepository getRegisteredClientRepository(HttpSecurity httpSecurity) {
         RegisteredClientRepository registeredClientRepository = httpSecurity
                 .getSharedObject(RegisteredClientRepository.class);
         if (registeredClientRepository == null) {
@@ -90,7 +84,7 @@ public final class OAuth2ConfigurerUtils {
         return authorizationService;
     }
 
-    public static OAuth2AuthorizationConsentService getAuthorizationConsentService(HttpSecurity httpSecurity) {
+    static OAuth2AuthorizationConsentService getAuthorizationConsentService(HttpSecurity httpSecurity) {
         OAuth2AuthorizationConsentService authorizationConsentService = httpSecurity
                 .getSharedObject(OAuth2AuthorizationConsentService.class);
         if (authorizationConsentService == null) {
@@ -157,7 +151,7 @@ public final class OAuth2ConfigurerUtils {
     }
 
     @SuppressWarnings("unchecked")
-    public static JWKSource<SecurityContext> getJwkSource(HttpSecurity httpSecurity) {
+    static JWKSource<SecurityContext> getJwkSource(HttpSecurity httpSecurity) {
         JWKSource<SecurityContext> jwkSource = httpSecurity.getSharedObject(JWKSource.class);
         if (jwkSource == null) {
             ResolvableType type = ResolvableType.forClassWithGenerics(JWKSource.class, SecurityContext.class);
@@ -199,7 +193,7 @@ public final class OAuth2ConfigurerUtils {
         };
     }
 
-    public static AuthorizationServerSettings getAuthorizationServerSettings(HttpSecurity httpSecurity) {
+    static AuthorizationServerSettings getAuthorizationServerSettings(HttpSecurity httpSecurity) {
         AuthorizationServerSettings authorizationServerSettings = httpSecurity
                 .getSharedObject(AuthorizationServerSettings.class);
         if (authorizationServerSettings == null) {
@@ -209,42 +203,17 @@ public final class OAuth2ConfigurerUtils {
         return authorizationServerSettings;
     }
 
-    public static <T> T getBean(HttpSecurity httpSecurity, Class<T> type) {
-        return httpSecurity.getSharedObject(ApplicationContext.class).getBean(type);
+    static <T> T getBean(HttpSecurity httpSecurity, Class<T> type) {
+        return httpSecurity.getSharedObject(ApplicationContext.class).getBeanProvider(type).getObject();
+    }
+
+    static <T> T getOptionalBean(HttpSecurity httpSecurity, Class<T> type) {
+        return httpSecurity.getSharedObject(ApplicationContext.class).getBeanProvider(type).getIfUnique();
     }
 
     @SuppressWarnings("unchecked")
-    public static <T> T getBean(HttpSecurity httpSecurity, ResolvableType type) {
-        ApplicationContext context = httpSecurity.getSharedObject(ApplicationContext.class);
-        String[] names = context.getBeanNamesForType(type);
-        if (names.length == 1) {
-            return (T) context.getBean(names[0]);
-        }
-        if (names.length > 1) {
-            throw new NoUniqueBeanDefinitionException(type, names);
-        }
-        throw new NoSuchBeanDefinitionException(type);
-    }
-
-    public static <T> T getOptionalBean(HttpSecurity httpSecurity, Class<T> type) {
-        Map<String, T> beansMap = BeanFactoryUtils
-                .beansOfTypeIncludingAncestors(httpSecurity.getSharedObject(ApplicationContext.class), type);
-        if (beansMap.size() > 1) {
-            throw new NoUniqueBeanDefinitionException(type, beansMap.size(),
-                    "Expected single matching bean of type '" + type.getName() + "' but found " + beansMap.size() + ": "
-                            + StringUtils.collectionToCommaDelimitedString(beansMap.keySet()));
-        }
-        return (!beansMap.isEmpty() ? beansMap.values().iterator().next() : null);
-    }
-
-    @SuppressWarnings("unchecked")
-    public static <T> T getOptionalBean(HttpSecurity httpSecurity, ResolvableType type) {
-        ApplicationContext context = httpSecurity.getSharedObject(ApplicationContext.class);
-        String[] names = context.getBeanNamesForType(type);
-        if (names.length > 1) {
-            throw new NoUniqueBeanDefinitionException(type, names);
-        }
-        return (names.length == 1) ? (T) context.getBean(names[0]) : null;
+    static <T> T getOptionalBean(HttpSecurity httpSecurity, ResolvableType type) {
+        return (T) httpSecurity.getSharedObject(ApplicationContext.class).getBeanProvider(type).getIfUnique();
     }
 
 }

@@ -58,7 +58,7 @@ public class OAuth2SocialCredentialsAuthenticationConverter extends AbstractAuth
             return null;
         }
 
-        MultiValueMap<String, String> parameters = OAuth2EndpointUtils.getParameters(request);
+        MultiValueMap<String, String> parameters = OAuth2EndpointUtils.getFormParameters(request);
 
         // scope (OPTIONAL)
         String scope = OAuth2EndpointUtils.checkOptionalParameter(parameters, OAuth2ParameterNames.SCOPE);

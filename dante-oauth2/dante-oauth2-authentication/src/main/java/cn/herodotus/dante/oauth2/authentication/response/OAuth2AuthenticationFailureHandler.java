@@ -70,7 +70,7 @@ public class OAuth2AuthenticationFailureHandler extends AbstractResponseHandler 
 
         log.warn("[Herodotus] |- Authentication operation failure!");
 
-        MultiValueMap<String, String> parameters = OAuth2EndpointUtils.getParameters(request);
+        MultiValueMap<String, String> parameters = OAuth2EndpointUtils.getFormParameters(request);
         String deviceCode = parameters.getFirst(OAuth2ParameterNames.DEVICE_CODE);
         // 兼容 Device Grant 错误处理
         // Device Grant 需要 SAS 原始出错信息，如果采用原有 SecurityGlobalExceptionHandler 处理方式，将导致前端获取到错误的错误信息

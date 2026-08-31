@@ -26,15 +26,17 @@
 package cn.herodotus.dante.oauth2.authentication.utils;
 
 import jakarta.servlet.http.HttpServletRequest;
-import org.springframework.security.oauth2.core.OAuth2AccessToken;
-import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
-import org.springframework.security.oauth2.core.OAuth2Error;
-import org.springframework.security.oauth2.core.OAuth2ErrorCodes;
+import org.springframework.security.oauth2.core.*;
+import org.springframework.security.oauth2.core.endpoint.OAuth2ParameterNames;
+import org.springframework.security.oauth2.core.endpoint.PkceParameterNames;
+import org.springframework.util.Assert;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.util.StringUtils;
 
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 /**
@@ -54,15 +56,87 @@ public class OAuth2EndpointUtils {
     private OAuth2EndpointUtils() {
     }
 
-    public static MultiValueMap<String, String> getParameters(HttpServletRequest request) {
+    public static MultiValueMap<String, String> getFormParameters(HttpServletRequest request) {
         Map<String, String[]> parameterMap = request.getParameterMap();
-        MultiValueMap<String, String> parameters = new LinkedMultiValueMap<>(parameterMap.size());
+        MultiValueMap<String, String> parameters = new LinkedMultiValueMap<>();
         parameterMap.forEach((key, values) -> {
-            for (String value : values) {
-                parameters.add(key, value);
+            String queryString = StringUtils.hasText(request.getQueryString()) ? request.getQueryString() : "";
+            // If not query parameter then it's a form parameter
+            if (!queryString.contains(key)) {
+                for (String value : values) {
+                    parameters.add(key, value);
+                }
             }
         });
         return parameters;
+    }
+
+    static MultiValueMap<String, String> getQueryParameters(HttpServletRequest request) {
+        Map<String, String[]> parameterMap = request.getParameterMap();
+        MultiValueMap<String, String> parameters = new LinkedMultiValueMap<>();
+        parameterMap.forEach((key, values) -> {
+            String queryString = StringUtils.hasText(request.getQueryString()) ? request.getQueryString() : "";
+            if (queryString.contains(key)) {
+                for (String value : values) {
+                    parameters.add(key, value);
+                }
+            }
+        });
+        return parameters;
+    }
+
+    static Map<String, Object> getParametersIfMatchesAuthorizationCodeGrantRequest(HttpServletRequest request, String... exclusions) {
+        if (!matchesAuthorizationCodeGrantRequest(request)) {
+            return Collections.emptyMap();
+        }
+        MultiValueMap<String, String> multiValueParameters = "GET".equals(request.getMethod())
+                ? getQueryParameters(request) : getFormParameters(request);
+        for (String exclusion : exclusions) {
+            multiValueParameters.remove(exclusion);
+        }
+
+        Map<String, Object> parameters = new HashMap<>();
+        multiValueParameters.forEach(
+                (key, value) -> parameters.put(key, (value.size() == 1) ? value.get(0) : value.toArray(new String[0])));
+
+        return parameters;
+    }
+
+    static boolean matchesAuthorizationCodeGrantRequest(HttpServletRequest request) {
+        return AuthorizationGrantType.AUTHORIZATION_CODE.getValue()
+                .equals(request.getParameter(OAuth2ParameterNames.GRANT_TYPE))
+                && request.getParameter(OAuth2ParameterNames.CODE) != null;
+    }
+
+    static boolean matchesPkceTokenRequest(HttpServletRequest request) {
+        return matchesAuthorizationCodeGrantRequest(request)
+                && request.getParameter(PkceParameterNames.CODE_VERIFIER) != null;
+    }
+
+    public static void validateAndAddDPoPParametersIfAvailable(HttpServletRequest request, Map<String, Object> additionalParameters) {
+        final String dPoPProofHeaderName = OAuth2AccessToken.TokenType.DPOP.getValue();
+        String dPoPProof = request.getHeader(dPoPProofHeaderName);
+        if (StringUtils.hasText(dPoPProof)) {
+            if (Collections.list(request.getHeaders(dPoPProofHeaderName)).size() != 1) {
+                throwError(OAuth2ErrorCodes.INVALID_REQUEST, dPoPProofHeaderName, ACCESS_TOKEN_REQUEST_ERROR_URI);
+            } else {
+                additionalParameters.put("dpop_proof", dPoPProof);
+                additionalParameters.put("dpop_method", request.getMethod());
+                additionalParameters.put("dpop_target_uri", request.getRequestURL().toString());
+            }
+        }
+    }
+
+    static String normalizeUserCode(String userCode) {
+        Assert.hasText(userCode, "userCode cannot be empty");
+        StringBuilder sb = new StringBuilder(userCode.toUpperCase(Locale.ENGLISH).replaceAll("[^A-Z\\d]+", ""));
+        Assert.isTrue(sb.length() == 8, "userCode must be exactly 8 alpha/numeric characters");
+        sb.insert(4, '-');
+        return sb.toString();
+    }
+
+    static boolean validateUserCode(String userCode) {
+        return (userCode != null && userCode.toUpperCase(Locale.ENGLISH).replaceAll("[^A-Z\\d]+", "").length() == 8);
     }
 
     public static void throwError(String errorCode, String parameterName) {
@@ -119,20 +193,5 @@ public class OAuth2EndpointUtils {
 
     public static String checkOptionalParameter(MultiValueMap<String, String> parameters, String parameterName) {
         return checkOptionalParameter(parameters, parameterName, OAuth2ErrorCodes.INVALID_REQUEST);
-    }
-
-    public static void validateAndAddDPoPParametersIfAvailable(HttpServletRequest request,
-                                                               Map<String, Object> additionalParameters) {
-        final String dPoPProofHeaderName = OAuth2AccessToken.TokenType.DPOP.getValue();
-        String dPoPProof = request.getHeader(dPoPProofHeaderName);
-        if (StringUtils.hasText(dPoPProof)) {
-            if (Collections.list(request.getHeaders(dPoPProofHeaderName)).size() != 1) {
-                throwError(OAuth2ErrorCodes.INVALID_REQUEST, dPoPProofHeaderName, ACCESS_TOKEN_REQUEST_ERROR_URI);
-            } else {
-                additionalParameters.put("dpop_proof", dPoPProof);
-                additionalParameters.put("dpop_method", request.getMethod());
-                additionalParameters.put("dpop_target_uri", request.getRequestURL().toString());
-            }
-        }
     }
 }
