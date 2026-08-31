@@ -25,9 +25,9 @@
 
 package cn.herodotus.dante.message.servlet.websocket.controller;
 
-import cn.herodotus.dante.message.commons.constant.MessageConstants;
-import cn.herodotus.dante.message.commons.domain.DialogueMessage;
-import cn.herodotus.dante.message.commons.event.DialogueMessageReceivingEvent;
+import cn.herodotus.dante.messaging.constant.MessageConstants;
+import cn.herodotus.dante.messaging.domain.DialogueMessage;
+import cn.herodotus.dante.messaging.event.DialogueMessageReceivingEvent;
 import cn.herodotus.dante.message.servlet.websocket.definition.WebSocketMessageSender;
 import cn.herodotus.dante.message.servlet.websocket.domain.StompWebSocketMessage;
 import cn.herodotus.dante.security.domain.UserPrincipal;

@@ -26,7 +26,7 @@
 package cn.herodotus.dante.oauth2.commons.event;
 
 import cn.herodotus.dante.spring.event.AbstractApplicationEvent;
-import cn.herodotus.dante.message.commons.domain.AccountStatus;
+import cn.herodotus.dante.messaging.domain.AccountStatus;
 
 import java.time.Clock;
 

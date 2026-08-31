@@ -26,7 +26,7 @@
 package cn.herodotus.dante.oauth2.authorization.autoconfigure.listener;
 
 import cn.herodotus.dante.core.domain.Dictionary;
-import cn.herodotus.dante.message.commons.event.EnumDictionaryCollectEvent;
+import cn.herodotus.dante.messaging.event.EnumDictionaryCollectEvent;
 import cn.herodotus.dante.oauth2.authorization.autoconfigure.processor.EnumDictionaryCollectProcessor;
 import org.apache.commons.collections4.CollectionUtils;
 import org.slf4j.Logger;

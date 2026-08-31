@@ -25,8 +25,8 @@
 
 package cn.herodotus.dante.message.autoconfigure.stream;
 
-import cn.herodotus.dante.message.commons.domain.StreamMessage;
-import cn.herodotus.dante.message.commons.event.StreamMessageSendingEvent;
+import cn.herodotus.dante.messaging.domain.StreamMessage;
+import cn.herodotus.dante.messaging.event.StreamMessageSendingEvent;
 import org.apache.commons.lang3.ObjectUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

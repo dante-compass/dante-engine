@@ -26,7 +26,7 @@
 package cn.herodotus.dante.oauth2.authorization.autoconfigure.listener;
 
 import cn.herodotus.dante.message.autoconfigure.message.MessageSendingDispatcher;
-import cn.herodotus.dante.message.commons.definition.Message;
+import cn.herodotus.dante.messaging.definition.Message;
 import cn.herodotus.dante.oauth2.commons.event.MessageSendingEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

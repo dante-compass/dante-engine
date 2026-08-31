@@ -49,5 +49,6 @@
         <module>dante-security</module>
         <module>dante-spring</module>
         <module>dante-web</module>
+        <module>dante-messaging</module>
     </modules>
 </project>

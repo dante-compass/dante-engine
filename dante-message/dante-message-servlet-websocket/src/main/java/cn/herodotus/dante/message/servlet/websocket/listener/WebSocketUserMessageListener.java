@@ -25,8 +25,8 @@
 
 package cn.herodotus.dante.message.servlet.websocket.listener;
 
-import cn.herodotus.dante.message.commons.domain.UserMessage;
-import cn.herodotus.dante.message.commons.event.WebSocketUserMessageSendingEvent;
+import cn.herodotus.dante.messaging.domain.UserMessage;
+import cn.herodotus.dante.messaging.event.WebSocketUserMessageSendingEvent;
 import cn.herodotus.dante.message.servlet.websocket.definition.WebSocketMessageSender;
 import cn.hutool.v7.core.bean.BeanUtil;
 import org.slf4j.Logger;

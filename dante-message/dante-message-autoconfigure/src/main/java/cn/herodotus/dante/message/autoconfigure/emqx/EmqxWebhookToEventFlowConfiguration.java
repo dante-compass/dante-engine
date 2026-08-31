@@ -26,7 +26,7 @@
 package cn.herodotus.dante.message.autoconfigure.emqx;
 
 import cn.herodotus.dante.core.constant.SystemConstants;
-import cn.herodotus.dante.message.commons.constant.Channels;
+import cn.herodotus.dante.messaging.constant.Channels;
 import cn.herodotus.dante.message.emqx.condition.ConditionalOnEventSource;
 import cn.herodotus.dante.message.emqx.condition.EventSource;
 import cn.herodotus.dante.message.emqx.event.*;

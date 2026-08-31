@@ -25,8 +25,8 @@
 
 package cn.herodotus.dante.oauth2.authorization.autoconfigure.strategy;
 
-import cn.herodotus.dante.message.commons.definition.strategy.RestMappingCollectEventManager;
-import cn.herodotus.dante.message.commons.event.RestMappingCollectEvent;
+import cn.herodotus.dante.messaging.definition.strategy.RestMappingCollectEventManager;
+import cn.herodotus.dante.messaging.event.RestMappingCollectEvent;
 import cn.herodotus.dante.oauth2.authorization.attribute.SecurityAttributeAnalyzer;
 import cn.herodotus.dante.oauth2.authorization.autoconfigure.bus.RemoteRestMappingCollectEvent;
 import cn.herodotus.dante.security.domain.attribute.RestMapping;

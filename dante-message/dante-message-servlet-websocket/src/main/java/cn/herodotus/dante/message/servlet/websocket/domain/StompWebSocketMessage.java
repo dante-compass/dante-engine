@@ -25,7 +25,7 @@
 
 package cn.herodotus.dante.message.servlet.websocket.domain;
 
-import cn.herodotus.dante.message.commons.definition.AbstractUserMessage;
+import cn.herodotus.dante.messaging.definition.AbstractUserMessage;
 
 /**
  * <p>Description: 基于 Stomp 的 WebSocket 消息实体 </p>

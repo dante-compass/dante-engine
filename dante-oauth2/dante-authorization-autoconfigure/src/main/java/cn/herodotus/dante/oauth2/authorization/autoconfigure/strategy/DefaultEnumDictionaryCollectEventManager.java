@@ -26,8 +26,8 @@
 package cn.herodotus.dante.oauth2.authorization.autoconfigure.strategy;
 
 import cn.herodotus.dante.core.domain.Dictionary;
-import cn.herodotus.dante.message.commons.definition.strategy.EnumDictionaryCollectEventManager;
-import cn.herodotus.dante.message.commons.event.EnumDictionaryCollectEvent;
+import cn.herodotus.dante.messaging.definition.strategy.EnumDictionaryCollectEventManager;
+import cn.herodotus.dante.messaging.event.EnumDictionaryCollectEvent;
 import cn.herodotus.dante.oauth2.authorization.autoconfigure.bus.RemoteEnumDictionaryCollectEvent;
 import cn.herodotus.dante.spring.context.ServiceContextHolder;
 

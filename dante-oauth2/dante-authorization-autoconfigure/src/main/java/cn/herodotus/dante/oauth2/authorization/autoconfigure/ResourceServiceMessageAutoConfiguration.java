@@ -25,9 +25,9 @@
 
 package cn.herodotus.dante.oauth2.authorization.autoconfigure;
 
-import cn.herodotus.dante.message.commons.definition.strategy.EnumDictionaryCollectEventManager;
-import cn.herodotus.dante.message.commons.definition.strategy.MessageSendingEventManager;
-import cn.herodotus.dante.message.commons.definition.strategy.RestMappingCollectEventManager;
+import cn.herodotus.dante.messaging.definition.strategy.EnumDictionaryCollectEventManager;
+import cn.herodotus.dante.messaging.definition.strategy.MessageSendingEventManager;
+import cn.herodotus.dante.messaging.definition.strategy.RestMappingCollectEventManager;
 import cn.herodotus.dante.oauth2.authorization.attribute.SecurityAttributeAnalyzer;
 import cn.herodotus.dante.oauth2.authorization.autoconfigure.listener.RemoteAttributeDistributionListener;
 import cn.herodotus.dante.oauth2.authorization.autoconfigure.strategy.DefaultEnumDictionaryCollectEventManager;

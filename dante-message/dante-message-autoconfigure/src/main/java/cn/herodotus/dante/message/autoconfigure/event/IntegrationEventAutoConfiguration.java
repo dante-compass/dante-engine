@@ -25,9 +25,9 @@
 
 package cn.herodotus.dante.message.autoconfigure.event;
 
-import cn.herodotus.dante.message.commons.constant.Channels;
-import cn.herodotus.dante.message.commons.constant.MqttConstants;
-import cn.herodotus.dante.message.commons.event.MqttMessageSendingEvent;
+import cn.herodotus.dante.messaging.constant.Channels;
+import cn.herodotus.dante.messaging.constant.MqttConstants;
+import cn.herodotus.dante.messaging.event.MqttMessageSendingEvent;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

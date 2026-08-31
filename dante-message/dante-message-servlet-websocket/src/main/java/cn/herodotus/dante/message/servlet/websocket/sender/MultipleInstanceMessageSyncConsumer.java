@@ -25,7 +25,7 @@
 
 package cn.herodotus.dante.message.servlet.websocket.sender;
 
-import cn.herodotus.dante.message.commons.constant.MessageConstants;
+import cn.herodotus.dante.messaging.constant.MessageConstants;
 import cn.herodotus.dante.message.servlet.websocket.domain.StompWebSocketMessage;
 import org.apache.commons.lang3.Strings;
 

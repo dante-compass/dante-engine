@@ -25,8 +25,8 @@
 
 package cn.herodotus.dante.oauth2.authorization.autoconfigure.strategy;
 
-import cn.herodotus.dante.message.commons.definition.Message;
-import cn.herodotus.dante.message.commons.definition.strategy.MessageSendingEventManager;
+import cn.herodotus.dante.messaging.definition.Message;
+import cn.herodotus.dante.messaging.definition.strategy.MessageSendingEventManager;
 import cn.herodotus.dante.oauth2.authorization.autoconfigure.bus.RemoteMessageSendingEvent;
 import cn.herodotus.dante.oauth2.commons.event.MessageSendingEvent;
 import cn.herodotus.dante.spring.context.ServiceContextHolder;

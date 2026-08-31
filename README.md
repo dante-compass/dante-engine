@@ -84,6 +84,7 @@ dante-engine
 ├    ├── dante-cache -- 缓存相关基础代码模块
 ├    ├── dante-core -- 核心定义模块
 ├    ├── dante-hibernate -- Hibernate 扩展模块
+├    ├── dante-messaging -- Messaging 相关基础代码模块
 ├    ├── dante-security -- Security 相关基础代码模块
 ├    ├── dante-spring -- SpringBoot 相关基础代码模块
 ├    └── dante-web -- Web 服务相关基础代码模块
@@ -93,7 +94,6 @@ dante-engine
 ├    └── dante-logic-upms -- UPMS 业务逻辑模块
 ├── dante-message -- 消息模块
 ├    ├── dante-message-autoconfigure -- 消息自动配置模块
-├    ├── dante-message-commons -- 消息通用代码模块
 ├    ├── dante-message-emqx -- Emqx 封装模块
 ├    └── dante-message-servlet-websocket -- 基于 Servlet 环境下的 Websocket 功能封装模块
 ├── dante-oauth2 -- OAuth2 认证模块

@@ -25,7 +25,7 @@
 
 package cn.herodotus.dante.webmvc.autoconfigure;
 
-import cn.herodotus.dante.message.commons.definition.strategy.RestMappingCollectEventManager;
+import cn.herodotus.dante.messaging.definition.strategy.RestMappingCollectEventManager;
 import cn.herodotus.dante.web.autoconfigure.properties.ServiceProperties;
 import cn.herodotus.dante.web.condition.ConditionalOnRestScanEnabled;
 import cn.herodotus.dante.webmvc.autoconfigure.initializer.RestMappingScanner;

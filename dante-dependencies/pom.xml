@@ -128,6 +128,11 @@
             </dependency>
             <dependency>
                 <groupId>cn.herodotus.dante</groupId>
+                <artifactId>dante-messaging</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.herodotus.dante</groupId>
                 <artifactId>dante-security</artifactId>
                 <version>${project.version}</version>
             </dependency>
@@ -179,11 +184,6 @@
             <dependency>
                 <groupId>cn.herodotus.dante</groupId>
                 <artifactId>dante-message-autoconfigure</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.herodotus.dante</groupId>
-                <artifactId>dante-message-commons</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
