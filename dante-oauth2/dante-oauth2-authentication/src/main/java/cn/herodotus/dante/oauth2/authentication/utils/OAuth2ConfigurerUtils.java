@@ -203,16 +203,16 @@ public final class OAuth2ConfigurerUtils {
         return authorizationServerSettings;
     }
 
-    static <T> T getBean(HttpSecurity httpSecurity, Class<T> type) {
+    public static <T> T getBean(HttpSecurity httpSecurity, Class<T> type) {
         return httpSecurity.getSharedObject(ApplicationContext.class).getBeanProvider(type).getObject();
     }
 
-    static <T> T getOptionalBean(HttpSecurity httpSecurity, Class<T> type) {
+    public static <T> T getOptionalBean(HttpSecurity httpSecurity, Class<T> type) {
         return httpSecurity.getSharedObject(ApplicationContext.class).getBeanProvider(type).getIfUnique();
     }
 
     @SuppressWarnings("unchecked")
-    static <T> T getOptionalBean(HttpSecurity httpSecurity, ResolvableType type) {
+    public static <T> T getOptionalBean(HttpSecurity httpSecurity, ResolvableType type) {
         return (T) httpSecurity.getSharedObject(ApplicationContext.class).getBeanProvider(type).getIfUnique();
     }
 
