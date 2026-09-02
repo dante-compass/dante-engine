@@ -138,17 +138,17 @@ dante-engine
 
 ## 2. 分支说明
 
-|          分支名称          | 对应 Spring 生态版本                          | 对应 JDK 版本 | 用途             | 现状                                                          |
-|:----------------------:|-----------------------------------------|-----------|----------------|-------------------------------------------------------------|
-|         master         | Spring Boot 4.1 和 Spring Cloud 2025.1.3 | JDK 25    | 主要发布分支         | 推荐使用代码分支                                                    |
-|        develop         | Spring Boot 4.1 和 Spring Cloud 2025.1.3 | JDK 25    | Development 分支 | 新功能、ISSUE 均以此分支作为开发，发布后会 PR 至 master 分支                     |
-|         4.0.X          | Spring Boot 4.0 和 Spring Cloud 2025.1.1 | JDK 25    | 历史版本，停止维护      | 基于 Spring Boot 4.0 时代开发的代码分支，稳定可用，停止维护                      |
-|         3.5.X          | Spring Boot 3.5 和 Spring Cloud 2025.0.X | JDK 17    | 历史版本，停止维护      | 基于 Spring Boot 3.5 时代开发的代码分支，稳定可用，停止维护                      |
-|         3.4.X          | Spring Boot 3.4 和 Spring Cloud 2024.0.X | JDK 17    | 历史版本，停止维护      | 基于 Spring Boot 3.4 时代开发的代码分支，稳定可用，停止维护                      |
-|      3.2.X-3.3.X       | Spring Boot 3.3 和 Spring Cloud 2023.0.X | JDK 17    | 历史版本，停止维护      | 基于 Spring Boot 3.3 时代开发的代码分支，稳定可用，停止维护                      |
-|         3.1.X          | Spring Boot 3.1 和 Spring Cloud 2022.0.X | JDK 17    | 历史版本，停止维护      | 基于 Spring Boot 3.1 时代开发的代码分支，稳定可用，停止维护                      |
-|         2.7.X          | Spring Boot 2.7 和 Spring Cloud 2021.0.X | JDK 8     | 历史版本，停止维护      | 基于 Spring Boot 2.7 时代开发的代码分支，稳定可用，停止维护                      |
-| spring-security-oauth2 | Spring Boot 2.6 和 Spring Cloud 2021.0.X | JDK 8     | 历史代码，不再维护      | 基于原 Spring Security OAuth2 实现的微服务，稳定可用，因相关组件均不在维护，所以该版本停止维护 |
+|        分支名称        | 对应 Spring 生态版本                     | 对应 JDK 版本 | 用途               | 现状                                                                                           |
+|:----------------------:|------------------------------------------|---------------|--------------------|------------------------------------------------------------------------------------------------|
+|         master         | Spring Boot 4.1 和 Spring Cloud 2025.1.3 | JDK 25        | 主要发布分支       | 推荐使用代码分支                                                                               |
+|        develop         | Spring Boot 4.1 和 Spring Cloud 2025.1.3 | JDK 25        | Development 分支   | 新功能、ISSUE 均以此分支作为开发，发布后会 PR 至 master 分支                                   |
+|         4.0.X          | Spring Boot 4.0 和 Spring Cloud 2025.1.1 | JDK 25        | 历史版本，停止维护 | 基于 Spring Boot 4.0 时代开发的代码分支，稳定可用，停止维护                                    |
+|         3.5.X          | Spring Boot 3.5 和 Spring Cloud 2025.0.X | JDK 17        | 历史版本，停止维护 | 基于 Spring Boot 3.5 时代开发的代码分支，稳定可用，停止维护                                    |
+|         3.4.X          | Spring Boot 3.4 和 Spring Cloud 2024.0.X | JDK 17        | 历史版本，停止维护 | 基于 Spring Boot 3.4 时代开发的代码分支，稳定可用，停止维护                                    |
+|      3.2.X-3.3.X       | Spring Boot 3.3 和 Spring Cloud 2023.0.X | JDK 17        | 历史版本，停止维护 | 基于 Spring Boot 3.3 时代开发的代码分支，稳定可用，停止维护                                    |
+|         3.1.X          | Spring Boot 3.1 和 Spring Cloud 2022.0.X | JDK 17        | 历史版本，停止维护 | 基于 Spring Boot 3.1 时代开发的代码分支，稳定可用，停止维护                                    |
+|         2.7.X          | Spring Boot 2.7 和 Spring Cloud 2021.0.X | JDK 8         | 历史版本，停止维护 | 基于 Spring Boot 2.7 时代开发的代码分支，稳定可用，停止维护                                    |
+| spring-security-oauth2 | Spring Boot 2.6 和 Spring Cloud 2021.0.X | JDK 8         | 历史代码，不再维护 | 基于原 Spring Security OAuth2 实现的微服务，稳定可用，因相关组件均不在维护，所以该版本停止维护 |
 
 # [四]、项目地址
 
