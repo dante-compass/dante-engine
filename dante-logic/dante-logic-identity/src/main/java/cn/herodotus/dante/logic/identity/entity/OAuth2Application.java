@@ -28,10 +28,12 @@ package cn.herodotus.dante.logic.identity.entity;
 import cn.herodotus.dante.data.commons.enums.ApplicationType;
 import cn.herodotus.dante.logic.identity.definition.AbstractOAuth2RegisteredClient;
 import cn.herodotus.dante.oauth2.commons.constant.OAuth2Constants;
+import cn.herodotus.dante.security.domain.OAuth2ClientType;
 import com.google.common.base.MoreObjects;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import org.apache.commons.lang3.ObjectUtils;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
@@ -163,6 +165,19 @@ public class OAuth2Application extends AbstractOAuth2RegisteredClient {
     @Override
     public String getClientName() {
         return getApplicationName();
+    }
+
+    @Override
+    public String getClientType() {
+        if (ObjectUtils.isNotEmpty(getApplicationType())) {
+            return switch (getApplicationType()) {
+                case IOT -> OAuth2ClientType.IOT.getValue();
+                case NATIVE -> OAuth2ClientType.NATIVE.getValue();
+                default -> OAuth2ClientType.WEB.getValue();
+            };
+        }
+
+        return super.getClientType();
     }
 
     @Override

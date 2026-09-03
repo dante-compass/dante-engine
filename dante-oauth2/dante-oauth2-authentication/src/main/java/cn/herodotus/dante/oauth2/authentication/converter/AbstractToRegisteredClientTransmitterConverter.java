@@ -57,6 +57,8 @@ public class AbstractToRegisteredClientTransmitterConverter<T extends AbstractOA
         target.setRedirectUris(org.springframework.util.StringUtils.collectionToCommaDelimitedString(source.getRedirectUris()));
         // 在 OidcClientRegistrationToRegisteredClientConverter 或 OAuth2ClientRegistrationToRegisteredClientConverter 中已经判断过 ProductKey 是否为空，这里就不重复判断。
         target.setParentClientId(source.getClaims().get(SystemConstants.PARAMETER__PRODUCT_KEY).toString());
+        // 在 OidcClientRegistrationToRegisteredClientConverter 或 OAuth2ClientRegistrationToRegisteredClientConverter 中已经设置过 ApplicationType 默认值。
+        target.setClientType(source.getClaims().get(SystemConstants.PARAMETER__APPLICATION_TYPE).toString());
         return target;
     }
 }

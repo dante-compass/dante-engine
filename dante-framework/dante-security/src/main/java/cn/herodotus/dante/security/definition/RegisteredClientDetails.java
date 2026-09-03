@@ -25,6 +25,7 @@
 
 package cn.herodotus.dante.security.definition;
 
+import cn.herodotus.dante.security.domain.OAuth2ClientType;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.Strings;
 
@@ -108,6 +109,15 @@ public interface RegisteredClientDetails extends Serializable {
      * @return 客户端名称
      */
     String getClientName();
+
+    /**
+     * 客户端类别，主要用于区分客户端动态注册时的来源。
+     *
+     * @return 客户端类别
+     */
+    default String getClientType() {
+        return OAuth2ClientType.WEB.getValue();
+    }
 
     /**
      * 重定向地址。OAuth2 中的 redirectUris。

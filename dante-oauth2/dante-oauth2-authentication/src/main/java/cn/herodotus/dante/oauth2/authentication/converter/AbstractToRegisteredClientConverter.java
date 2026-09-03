@@ -27,6 +27,7 @@ package cn.herodotus.dante.oauth2.authentication.converter;
 
 import cn.herodotus.dante.core.constant.SymbolConstants;
 import cn.herodotus.dante.core.constant.SystemConstants;
+import cn.herodotus.dante.security.domain.OAuth2ClientType;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.Strings;
@@ -72,9 +73,11 @@ abstract class AbstractToRegisteredClientConverter<T extends AbstractOAuth2Clien
 
         // TokenSettings 的 builder() 方法会将 accessTokenFormat 格式默认设置为 OAuth2TokenFormat.SELF_CONTAINED。这里重新修改为 OAuth2TokenFormat.REFERENCE
         tokenSettingsBuilder.accessTokenFormat(OAuth2TokenFormat.REFERENCE);
+        // clientSettingsBuilder 没有提供检测方法，所以先提前设定一个默认值，如果 source 设定了 SystemConstants.PARAMETER__APPLICATION_TYPE 后面可以使用新值覆盖。
+        clientSettingsBuilder.setting(SystemConstants.PARAMETER__APPLICATION_TYPE, OAuth2ClientType.WEB);
 
         source.getClaims().forEach((claim, value) -> {
-            if (Strings.CI.equals(claim, SystemConstants.TOKEN_FORMAT)) {
+            if (Strings.CI.equals(claim, SystemConstants.PARAMETER__TOKEN_FORMAT)) {
                 tokenSettingsBuilder.accessTokenFormat(parseTokenFormat(value));
             }
 
@@ -86,6 +89,10 @@ abstract class AbstractToRegisteredClientConverter<T extends AbstractOAuth2Clien
                 if (StringUtils.isBlank(source.getClientId())) {
                     builder.clientId(value + SymbolConstants.PERIOD + source.getClientName());
                 }
+            }
+
+            if (Strings.CS.equals(claim, SystemConstants.PARAMETER__APPLICATION_TYPE)) {
+                clientSettingsBuilder.setting(claim, value);
             }
         });
 

@@ -50,7 +50,10 @@ import java.util.stream.Collectors;
  */
 abstract class AbstractFromRegisteredClientConverter<T extends AbstractOAuth2ClientRegistration> implements Converter<RegisteredClient, T> {
 
-    private static final List<String> CLIENT_METADATA = List.of(SystemConstants.PARAMETER__PRODUCT_KEY, SystemConstants.TOKEN_FORMAT);
+    private static final List<String> CLIENT_METADATA = List.of(
+            SystemConstants.PARAMETER__PRODUCT_KEY,
+            SystemConstants.PARAMETER__TOKEN_FORMAT,
+            SystemConstants.PARAMETER__APPLICATION_TYPE);
 
     protected Map<String, Object> updateClaims(RegisteredClient registeredClient, T clientRegistration) {
         Map<String, Object> claims = new HashMap<>(clientRegistration.getClaims());

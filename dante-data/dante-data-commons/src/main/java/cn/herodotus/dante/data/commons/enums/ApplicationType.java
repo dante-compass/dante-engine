@@ -53,7 +53,8 @@ public enum ApplicationType implements DictionaryEnum {
     APP("2", "手机APP应用"),
     WAP("3", "手机网页应用"),
     MINI("4", "小程序应用"),
-    IOT("5", "物联网应用");
+    IOT("5", "物联网应用"),
+    NATIVE("6", "桌面应用");
 
     private static final Map<Integer, ApplicationType> INDEX_MAP = new HashMap<>();
     private static final List<Dictionary> DICTIONARIES = new ArrayList<>();

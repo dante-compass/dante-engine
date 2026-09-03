@@ -44,6 +44,8 @@ public class RegisteredClientTransmitter implements RegisteredClientDetails {
 
     private String clientName;
 
+    private String clientType;
+
     private String parentClientId;
 
     private String redirectUris;
@@ -84,6 +86,15 @@ public class RegisteredClientTransmitter implements RegisteredClientDetails {
 
     public void setClientName(String clientName) {
         this.clientName = clientName;
+    }
+
+    @Override
+    public String getClientType() {
+        return clientType;
+    }
+
+    public void setClientType(String clientType) {
+        this.clientType = clientType;
     }
 
     @Override

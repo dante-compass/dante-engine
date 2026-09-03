@@ -156,7 +156,9 @@ public interface SystemConstants {
     /**
      * for Dynamic Client Configuration
      */
-    String TOKEN_FORMAT = "token_format";
+    String PARAMETER__PRODUCT_KEY = "product_key";
+    String PARAMETER__TOKEN_FORMAT = "token_format";
+    String PARAMETER__APPLICATION_TYPE  = "application_type";
 
     /* ---------- Security 相关常量 ---------- */
 
@@ -202,7 +204,6 @@ public interface SystemConstants {
     /**
      * 物联网自定义属性
      */
-    String PARAMETER__PRODUCT_KEY = "product_key";
     String EMQX__WEBHOOK_URI = "/open/emqx/webhook";
 
     /* ---------- 测试相关常量 ---------- */
