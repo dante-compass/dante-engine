@@ -33,7 +33,7 @@ import cn.herodotus.dante.oauth2.commons.properties.OAuth2AuthenticationProperti
 import cn.herodotus.dante.oauth2.commons.strategy.OAuth2ClientRegistrationSuccessEventManager;
 import cn.herodotus.dante.oauth2.commons.strategy.OAuth2DeviceVerificationSuccessEventManager;
 import cn.herodotus.dante.security.definition.OAuth2AuthorizationResourceService;
-import cn.herodotus.dante.web.servlet.template.ThymeleafTemplateHandler;
+import cn.herodotus.dante.web.definition.template.ServletTemplateHandler;
 import cn.herodotus.dante.web.support.crypto.DigitalEnvelopeProcessor;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
@@ -89,7 +89,7 @@ public class OAuth2AuthenticationConfiguration {
 
     @Bean
     public OAuth2AuthenticationConfigurerManager oauth2AuthenticationConfigurerManager(
-            ThymeleafTemplateHandler thymeleafTemplateHandler,
+            ServletTemplateHandler servletTemplateHandler,
             DigitalEnvelopeProcessor digitalEnvelopeProcessor,
             OAuth2AuthenticationProperties authenticationProperties,
             RegisteredClientRepository registeredClientRepository,
@@ -98,7 +98,7 @@ public class OAuth2AuthenticationConfiguration {
             OAuth2DeviceVerificationSuccessEventManager deviceVerificationSuccessEventManager) {
 
         OAuth2AuthenticationConfigurerManager configurer = new OAuth2AuthenticationConfigurerManager(
-                thymeleafTemplateHandler,
+                servletTemplateHandler,
                 digitalEnvelopeProcessor,
                 authenticationProperties,
                 registeredClientRepository,

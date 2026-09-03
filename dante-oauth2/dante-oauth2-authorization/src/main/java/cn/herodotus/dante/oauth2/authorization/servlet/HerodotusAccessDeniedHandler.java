@@ -26,8 +26,8 @@
 package cn.herodotus.dante.oauth2.authorization.servlet;
 
 import cn.herodotus.dante.security.exception.SecurityGlobalExceptionHandler;
-import cn.herodotus.dante.web.servlet.template.AbstractResponseHandler;
-import cn.herodotus.dante.web.servlet.template.ThymeleafTemplateHandler;
+import cn.herodotus.dante.web.definition.template.ServletTemplateHandler;
+import cn.herodotus.dante.web.servlet.response.AbstractResponseHandler;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -48,8 +48,8 @@ public class HerodotusAccessDeniedHandler extends AbstractResponseHandler implem
 
     private static final Logger log = LoggerFactory.getLogger(HerodotusAccessDeniedHandler.class);
 
-    public HerodotusAccessDeniedHandler(ThymeleafTemplateHandler templateHandler) {
-        super(templateHandler);
+    public HerodotusAccessDeniedHandler(ServletTemplateHandler servletTemplateHandler) {
+        super(servletTemplateHandler);
     }
 
     @Override

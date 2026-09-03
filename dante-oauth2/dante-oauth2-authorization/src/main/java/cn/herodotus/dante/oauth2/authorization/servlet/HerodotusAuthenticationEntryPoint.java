@@ -25,15 +25,18 @@
 
 package cn.herodotus.dante.oauth2.authorization.servlet;
 
+import cn.herodotus.dante.core.domain.Result;
 import cn.herodotus.dante.security.exception.SecurityGlobalExceptionHandler;
-import cn.herodotus.dante.web.servlet.template.AbstractResponseHandler;
-import cn.herodotus.dante.web.servlet.template.ThymeleafTemplateHandler;
+import cn.herodotus.dante.web.definition.template.ServletTemplateHandler;
+import cn.herodotus.dante.web.servlet.response.AbstractResponseHandler;
+import cn.herodotus.dante.web.servlet.utils.RequestUtils;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.oauth2.server.resource.web.BearerTokenAuthenticationEntryPoint;
 import org.springframework.security.web.AuthenticationEntryPoint;
 
 import java.io.IOException;
@@ -47,9 +50,10 @@ import java.io.IOException;
 public class HerodotusAuthenticationEntryPoint extends AbstractResponseHandler implements AuthenticationEntryPoint {
 
     private static final Logger log = LoggerFactory.getLogger(HerodotusAuthenticationEntryPoint.class);
+    private final AuthenticationEntryPoint bearerTokenAuthenticationEntryPoint = new BearerTokenAuthenticationEntryPoint();
 
-    public HerodotusAuthenticationEntryPoint(ThymeleafTemplateHandler templateHandler) {
-        super(templateHandler);
+    public HerodotusAuthenticationEntryPoint(ServletTemplateHandler servletTemplateHandler) {
+        super(servletTemplateHandler);
     }
 
     @Override
@@ -57,6 +61,14 @@ public class HerodotusAuthenticationEntryPoint extends AbstractResponseHandler i
 
         log.warn("[Herodotus] |- Not authenticated for request [{}],which in servlet service!", request.getRequestURI());
 
-        process(request, response, () -> SecurityGlobalExceptionHandler.resolveSecurityException(exception, request.getRequestURI()));
+        Result<String> result = SecurityGlobalExceptionHandler.resolveSecurityException(exception, request.getRequestURI());
+
+        if (RequestUtils.isHtml(request)) {
+            rendererHtml(request, response, result);
+        } else {
+            // 支持返回 WWW-Authenticate 头
+            bearerTokenAuthenticationEntryPoint.commence(request, response, exception);
+            rendererJson(request, response, result);
+        }
     }
 }

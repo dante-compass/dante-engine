@@ -25,7 +25,7 @@
 
 package cn.herodotus.dante.oauth2.authorization.servlet;
 
-import cn.herodotus.dante.web.servlet.template.ThymeleafTemplateHandler;
+import cn.herodotus.dante.web.definition.template.ServletTemplateHandler;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.security.oauth2.server.resource.introspection.OpaqueTokenIntrospector;
 
@@ -45,7 +45,7 @@ public class ServletOAuth2AuthorizationConfigurerManager {
     private final OAuth2ExceptionHandlingConfigurerCustomizer oauth2ExceptionHandlingConfigurerCustomizer;
 
     public ServletOAuth2AuthorizationConfigurerManager(
-            ThymeleafTemplateHandler thymeleafTemplateHandler,
+            ServletTemplateHandler servletTemplateHandler,
             JwtDecoder jwtDecoder,
             OpaqueTokenIntrospector opaqueTokenIntrospector,
             OAuth2SessionManagementConfigurerCustomer oauth2SessionManagementConfigurerCustomer,
@@ -54,7 +54,7 @@ public class ServletOAuth2AuthorizationConfigurerManager {
         this.oauth2ResourceServerConfigurerCustomer = new OAuth2ResourceServerConfigurerCustomer(jwtDecoder, opaqueTokenIntrospector);
         this.oauth2SessionManagementConfigurerCustomer = oauth2SessionManagementConfigurerCustomer;
         this.oauth2AuthorizeHttpRequestsConfigurerCustomer = new OAuth2AuthorizeHttpRequestsConfigurerCustomer(servletOAuth2ResourceMatcherConfigurer, servletSecurityAuthorizationManager);
-        this.oauth2ExceptionHandlingConfigurerCustomizer = new OAuth2ExceptionHandlingConfigurerCustomizer(thymeleafTemplateHandler);
+        this.oauth2ExceptionHandlingConfigurerCustomizer = new OAuth2ExceptionHandlingConfigurerCustomizer(servletTemplateHandler);
     }
 
     public OAuth2ResourceServerConfigurerCustomer getOAuth2ResourceServerConfigurerCustomer() {

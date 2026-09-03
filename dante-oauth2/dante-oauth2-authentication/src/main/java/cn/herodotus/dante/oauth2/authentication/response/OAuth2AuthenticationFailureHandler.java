@@ -27,8 +27,8 @@ package cn.herodotus.dante.oauth2.authentication.response;
 
 import cn.herodotus.dante.oauth2.authentication.utils.OAuth2EndpointUtils;
 import cn.herodotus.dante.security.exception.SecurityGlobalExceptionHandler;
-import cn.herodotus.dante.web.servlet.template.AbstractResponseHandler;
-import cn.herodotus.dante.web.servlet.template.ThymeleafTemplateHandler;
+import cn.herodotus.dante.web.definition.template.ServletTemplateHandler;
+import cn.herodotus.dante.web.servlet.response.AbstractResponseHandler;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -61,8 +61,8 @@ public class OAuth2AuthenticationFailureHandler extends AbstractResponseHandler 
 
     private final HttpMessageConverter<OAuth2Error> errorHttpMessageConverter = new OAuth2ErrorHttpMessageConverter();
 
-    public OAuth2AuthenticationFailureHandler(ThymeleafTemplateHandler templateHandler) {
-        super(templateHandler);
+    public OAuth2AuthenticationFailureHandler(ServletTemplateHandler servletTemplateHandler) {
+        super(servletTemplateHandler);
     }
 
     @Override

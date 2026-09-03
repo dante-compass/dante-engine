@@ -23,9 +23,9 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.web.servlet.template;
+package cn.herodotus.dante.webmvc.autoconfigure.template;
 
-import cn.herodotus.dante.core.domain.Result;
+import cn.herodotus.dante.web.definition.template.ServletTemplateHandler;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.thymeleaf.context.Context;
@@ -44,16 +44,12 @@ import java.util.Map;
  * @author : gengwei.zheng
  * @date : 2025/3/7 17:11
  */
-public class ThymeleafTemplateHandler {
+public class DefaultThymeleafTemplateHandler implements ServletTemplateHandler {
 
     private final SpringTemplateEngine springTemplateEngine;
 
-    public ThymeleafTemplateHandler(SpringTemplateEngine springTemplateEngine) {
+    public DefaultThymeleafTemplateHandler(SpringTemplateEngine springTemplateEngine) {
         this.springTemplateEngine = springTemplateEngine;
-    }
-
-    public String renderToError(HttpServletRequest request, HttpServletResponse response, Result<String> result) {
-        return render(request, response, "error", result.toErrorModel());
     }
 
     public String render(String template, Map<String, Object> model) {
@@ -62,6 +58,7 @@ public class ThymeleafTemplateHandler {
         return springTemplateEngine.process(template, context);
     }
 
+    @Override
     public String render(HttpServletRequest request, HttpServletResponse response, String template, Map<String, Object> model) {
         final IWebExchange webExchange = JakartaServletWebApplication
                 .buildApplication(request.getServletContext())

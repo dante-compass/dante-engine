@@ -23,32 +23,26 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.oauth2.authorization.servlet;
+package cn.herodotus.dante.web.definition.template;
 
-import cn.herodotus.dante.web.definition.template.ServletTemplateHandler;
-import org.springframework.security.config.Customizer;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configurers.ExceptionHandlingConfigurer;
+import cn.herodotus.dante.core.constant.SystemConstants;
+import cn.herodotus.dante.core.domain.Result;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+import java.util.Map;
 
 /**
- * <p>Description: 授权服务器错误处理自定义器 </p>
+ * <p>Description: 阻塞式 Template 处理器 </p>
  *
- * @author : gengwei.zheng
- * @date : 2025/3/7 22:27
+ * @author : gengwei_zheng
+ * @date : 2026/9/2 23:38
  */
-public class OAuth2ExceptionHandlingConfigurerCustomizer implements Customizer<ExceptionHandlingConfigurer<HttpSecurity>> {
+public interface ServletTemplateHandler {
 
-    private final ServletTemplateHandler servletTemplateHandler;
-
-    public OAuth2ExceptionHandlingConfigurerCustomizer(ServletTemplateHandler servletTemplateHandler) {
-        this.servletTemplateHandler = servletTemplateHandler;
+    default String renderToError(HttpServletRequest request, HttpServletResponse response, Result<String> result) {
+        return render(request, response, SystemConstants.STATUS__ERROR, result.toErrorModel());
     }
 
-    @Override
-    public void customize(ExceptionHandlingConfigurer<HttpSecurity> configurer) {
-        configurer
-                .authenticationEntryPoint(new HerodotusAuthenticationEntryPoint(servletTemplateHandler))
-                .accessDeniedHandler(new HerodotusAccessDeniedHandler(servletTemplateHandler));
-    }
+    String render(HttpServletRequest request, HttpServletResponse response, String template, Map<String, Object> model);
 }
-

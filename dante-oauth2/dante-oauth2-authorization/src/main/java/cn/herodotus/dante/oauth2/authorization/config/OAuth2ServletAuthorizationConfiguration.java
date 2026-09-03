@@ -35,7 +35,7 @@ import cn.herodotus.dante.oauth2.authorization.servlet.OAuth2SessionManagementCo
 import cn.herodotus.dante.oauth2.authorization.servlet.ServletOAuth2AuthorizationConfigurerManager;
 import cn.herodotus.dante.oauth2.authorization.servlet.ServletOAuth2ResourceMatcherConfigurer;
 import cn.herodotus.dante.oauth2.authorization.servlet.ServletSecurityAuthorizationManager;
-import cn.herodotus.dante.web.servlet.template.ThymeleafTemplateHandler;
+import cn.herodotus.dante.web.definition.template.ServletTemplateHandler;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -114,14 +114,14 @@ public class OAuth2ServletAuthorizationConfiguration {
     @Bean
     @ConditionalOnMissingBean
     public ServletOAuth2AuthorizationConfigurerManager servletOAuth2AuthorizationFacadeConfigurer(
-            ThymeleafTemplateHandler thymeleafTemplateHandler,
+            ServletTemplateHandler servletTemplateHandler,
             JwtDecoder jwtDecoder,
             OpaqueTokenIntrospector opaqueTokenIntrospector,
             OAuth2SessionManagementConfigurerCustomer sessionManagementConfigurerCustomer,
             ServletOAuth2ResourceMatcherConfigurer servletOAuth2ResourceMatcherConfigurer,
             ServletSecurityAuthorizationManager servletSecurityAuthorizationManager) {
         ServletOAuth2AuthorizationConfigurerManager configurer = new ServletOAuth2AuthorizationConfigurerManager(
-                thymeleafTemplateHandler,
+                servletTemplateHandler,
                 jwtDecoder,
                 opaqueTokenIntrospector,
                 sessionManagementConfigurerCustomer,

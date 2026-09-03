@@ -26,8 +26,8 @@
 package cn.herodotus.dante.webmvc.autoconfigure.initializer;
 
 import cn.herodotus.dante.core.constant.SymbolConstants;
-import cn.herodotus.dante.messaging.strategy.RestMappingCollectEventManager;
 import cn.herodotus.dante.messaging.domain.RestMapping;
+import cn.herodotus.dante.messaging.strategy.RestMappingCollectEventManager;
 import cn.herodotus.dante.web.autoconfigure.initializer.AbstractRestMappingScanner;
 import cn.herodotus.dante.web.autoconfigure.properties.ServiceProperties;
 import cn.herodotus.dante.web.support.WebPropertyFinder;

@@ -23,9 +23,10 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.web.servlet.template;
+package cn.herodotus.dante.web.servlet.response;
 
 import cn.herodotus.dante.core.domain.Result;
+import cn.herodotus.dante.web.definition.template.ServletTemplateHandler;
 import cn.herodotus.dante.web.servlet.utils.RequestUtils;
 import cn.herodotus.dante.web.servlet.utils.ResponseUtils;
 import jakarta.servlet.http.HttpServletRequest;
@@ -42,10 +43,10 @@ import java.util.function.Supplier;
  */
 public abstract class AbstractResponseHandler {
 
-    private final ThymeleafTemplateHandler templateHandler;
+    private final ServletTemplateHandler servletTemplateHandler;
 
-    protected AbstractResponseHandler(ThymeleafTemplateHandler templateHandler) {
-        this.templateHandler = templateHandler;
+    protected AbstractResponseHandler(ServletTemplateHandler servletTemplateHandler) {
+        this.servletTemplateHandler = servletTemplateHandler;
     }
 
     protected void process(HttpServletRequest request, HttpServletResponse response, Supplier<Result<String>> supplier) {
@@ -53,15 +54,23 @@ public abstract class AbstractResponseHandler {
         Result<String> result = supplier.get();
 
         if (RequestUtils.isHtml(request)) {
-            String content = templateHandler.renderToError(request, response, result);
-            if (StringUtils.isNotBlank(content)) {
-                ResponseUtils.renderHtml(response, result.getStatus(), content);
-            } else {
-                // 主要防止 Thymeleaf 模版转换有异常，做一项保护。
-                ResponseUtils.renderResult(response, result);
-            }
+            rendererHtml(request, response, result);
         } else {
+            rendererJson(request, response, result);
+        }
+    }
+
+    protected void rendererHtml(HttpServletRequest request, HttpServletResponse response, Result<String> result) {
+        String content = servletTemplateHandler.renderToError(request, response, result);
+        if (StringUtils.isNotBlank(content)) {
+            ResponseUtils.renderHtml(response, result.getStatus(), content);
+        } else {
+            // 主要防止 Thymeleaf 模版转换有异常，做一项保护。
             ResponseUtils.renderResult(response, result);
         }
+    }
+
+    protected void rendererJson(HttpServletRequest request, HttpServletResponse response, Result<String> result) {
+        ResponseUtils.renderResult(response, result);
     }
 }

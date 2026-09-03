@@ -25,7 +25,8 @@
 
 package cn.herodotus.dante.webmvc.autoconfigure.config;
 
-import cn.herodotus.dante.web.servlet.template.ThymeleafTemplateHandler;
+import cn.herodotus.dante.web.definition.template.ServletTemplateHandler;
+import cn.herodotus.dante.webmvc.autoconfigure.template.DefaultThymeleafTemplateHandler;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -52,9 +53,9 @@ public class TemplateConfiguration {
 
     @Bean
     @ConditionalOnMissingBean
-    public ThymeleafTemplateHandler thymeleafTemplateHandler(SpringTemplateEngine springTemplateEngine) {
-        ThymeleafTemplateHandler handler = new ThymeleafTemplateHandler(springTemplateEngine);
-        log.trace("[Herodotus] |- Bean [Servlet Thymeleaf Template Handler] Configure.");
+    public ServletTemplateHandler servletTemplateHandler(SpringTemplateEngine springTemplateEngine) {
+        DefaultThymeleafTemplateHandler handler = new DefaultThymeleafTemplateHandler(springTemplateEngine);
+        log.trace("[Herodotus] |- Bean [Servlet Template Handler] Configure.");
         return handler;
     }
 }
