@@ -119,6 +119,20 @@ public interface SystemConstants {
     String OAUTH2_DEVICE_VERIFICATION_SUCCESS_URI = "/device_activation_success";
     String OAUTH2_DEVICE_VERIFICATION_FAILURE_URI = "/device_activation_failure";
     /**
+     * for Dynamic Client Configuration
+     */
+    String PARAMETER__PRODUCT_KEY = "product_key";
+    String PARAMETER__TOKEN_FORMAT = "token_format";
+    String PARAMETER__APPLICATION_TYPE  = "application_type";
+    String PARAMETER__RESOURCE_IDS = "resource_ids";
+    String PARAMETER__RESOURCE = "resource";
+    /**
+     * OAuth2 Setting Names
+     */
+    String SETTINGS_NAMESPACE = "settings.";
+    String CLIENT_SETTINGS_NAMESPACE = SETTINGS_NAMESPACE.concat("client.");
+    String CLIENT_SETTINGS__RESOURCE_IDS = CLIENT_SETTINGS_NAMESPACE.concat(PARAMETER__RESOURCE_IDS);
+    /**
      * OAuth2 模式类型
      */
     String USERNAME = "username";
@@ -153,12 +167,7 @@ public interface SystemConstants {
      * for OpenID Connect 1.0 Dynamic Client Configuration
      */
     String SCOPE_CLIENT_READ = "client.read";
-    /**
-     * for Dynamic Client Configuration
-     */
-    String PARAMETER__PRODUCT_KEY = "product_key";
-    String PARAMETER__TOKEN_FORMAT = "token_format";
-    String PARAMETER__APPLICATION_TYPE  = "application_type";
+
 
     /* ---------- Security 相关常量 ---------- */
 

@@ -26,6 +26,8 @@
 package cn.herodotus.dante.oauth2.authentication.converter;
 
 import cn.herodotus.dante.core.constant.SystemConstants;
+import cn.herodotus.dante.oauth2.authentication.utils.OAuth2SettingUtils;
+import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.security.oauth2.server.authorization.AbstractOAuth2ClientRegistration;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
@@ -55,9 +57,24 @@ abstract class AbstractFromRegisteredClientConverter<T extends AbstractOAuth2Cli
             SystemConstants.PARAMETER__TOKEN_FORMAT,
             SystemConstants.PARAMETER__APPLICATION_TYPE);
 
+    private final boolean supportResourceIndicators;
+
+    AbstractFromRegisteredClientConverter(boolean supportResourceIndicators) {
+        this.supportResourceIndicators = supportResourceIndicators;
+    }
+
     protected Map<String, Object> updateClaims(RegisteredClient registeredClient, T clientRegistration) {
         Map<String, Object> claims = new HashMap<>(clientRegistration.getClaims());
         ClientSettings clientSettings = registeredClient.getClientSettings();
+
+        // 支持 OAuth2.0 中的资源标识符功能
+        if (supportResourceIndicators) {
+            List<String> resourceIds = OAuth2SettingUtils.getResourceIds(clientSettings);
+            if (CollectionUtils.isNotEmpty(resourceIds)) {
+                claims.put(SystemConstants.PARAMETER__RESOURCE_IDS, resourceIds);
+            }
+        }
+
         claims.putAll(CLIENT_METADATA.stream()
                 .filter(metadata -> clientSettings.getSetting(metadata) != null)
                 .collect(Collectors.toMap(Function.identity(), clientSettings::getSetting)));

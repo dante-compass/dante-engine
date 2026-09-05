@@ -26,14 +26,23 @@
 package cn.herodotus.dante.oauth2.authentication.customizer;
 
 import cn.herodotus.dante.core.constant.SystemConstants;
+import cn.herodotus.dante.oauth2.authentication.utils.OAuth2SettingUtils;
 import cn.herodotus.dante.security.domain.HerodotusUser;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.oauth2.core.AuthorizationGrantType;
+import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
+import org.springframework.security.oauth2.core.OAuth2ErrorCodes;
+import org.springframework.security.oauth2.core.endpoint.OAuth2AuthorizationRequest;
 import org.springframework.security.oauth2.core.endpoint.OAuth2ParameterNames;
 import org.springframework.security.oauth2.server.authorization.authentication.OAuth2AccessTokenAuthenticationToken;
+import org.springframework.security.oauth2.server.authorization.authentication.OAuth2AuthorizationCodeAuthenticationToken;
+import org.springframework.security.oauth2.server.authorization.authentication.OAuth2ClientCredentialsAuthenticationToken;
+import org.springframework.security.oauth2.server.authorization.token.OAuth2TokenClaimNames;
+import org.springframework.security.oauth2.server.authorization.token.OAuth2TokenContext;
 
 import java.util.Map;
 import java.util.Set;
@@ -46,6 +55,12 @@ import java.util.stream.Collectors;
  * @date : 2022/10/12 10:20
  */
 public abstract class AbstractTokenCustomizer {
+
+    private final boolean supportResourceIndicators;
+
+    protected AbstractTokenCustomizer(boolean supportResourceIndicators) {
+        this.supportResourceIndicators = supportResourceIndicators;
+    }
 
     protected void appendAll(Map<String, Object> attributes, Authentication authentication, Set<String> authorizedScopes) {
 
@@ -88,6 +103,40 @@ public abstract class AbstractTokenCustomizer {
             attributes.put(SystemConstants.ROLES, principal.getRoles());
             attributes.put(SystemConstants.AVATAR, principal.getAvatar());
             attributes.put(SystemConstants.EMPLOYEE_ID, principal.getEmployeeId());
+        }
+    }
+
+    protected void appendResource(Map<String, Object> attributes, OAuth2TokenContext context) {
+        if (supportResourceIndicators) {
+            processResource(attributes, context);
+        }
+    }
+
+    private void processResource(Map<String, Object> attributes, OAuth2TokenContext context) {
+        if (AuthorizationGrantType.AUTHORIZATION_CODE.equals(context.getAuthorizationGrantType())) {
+            OAuth2AuthorizationRequest authorizationRequest = context.getAuthorization().getAttribute(OAuth2AuthorizationRequest.class.getName());
+            String authorizationRequestResource = (String) authorizationRequest.getAdditionalParameters().get(SystemConstants.PARAMETER__RESOURCE);
+
+            OAuth2AuthorizationCodeAuthenticationToken authorizationCodeAuthentication = context.getAuthorizationGrant();
+            String tokenRequestResource = (String) authorizationCodeAuthentication.getAdditionalParameters().get(SystemConstants.PARAMETER__RESOURCE);
+
+            // Compare resource parameter from authorization request against resource parameter from access token request
+            if (OAuth2SettingUtils.unavailable(authorizationRequestResource, tokenRequestResource)) {
+                throw new OAuth2AuthenticationException(OAuth2ErrorCodes.INVALID_REQUEST);
+            }
+
+            attributes.put(OAuth2TokenClaimNames.AUD, authorizationRequestResource);
+
+        } else if (AuthorizationGrantType.CLIENT_CREDENTIALS.equals(context.getAuthorizationGrantType())) {
+            OAuth2ClientCredentialsAuthenticationToken clientCredentialsAuthentication = context.getAuthorizationGrant();
+            String resource = (String) clientCredentialsAuthentication.getAdditionalParameters().get(SystemConstants.PARAMETER__RESOURCE);
+
+            // Compare resource parameter against registered resource ID's
+            if (OAuth2SettingUtils.unavailable(context.getRegisteredClient().getClientSettings(), resource)) {
+                throw new OAuth2AuthenticationException(OAuth2ErrorCodes.INVALID_REQUEST);
+            }
+
+            attributes.put(OAuth2TokenClaimNames.AUD, resource);
         }
     }
 }

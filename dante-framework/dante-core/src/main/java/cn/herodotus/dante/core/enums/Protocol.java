@@ -41,18 +41,18 @@ public enum Protocol {
     REDISS("rediss://", "rediss");
 
     private final String format;
-    private final String prefix;
+    private final String schema;
 
-    Protocol(String format, String prefix) {
+    Protocol(String format, String schema) {
         this.format = format;
-        this.prefix = prefix;
+        this.schema = schema;
     }
 
     public String getFormat() {
         return format;
     }
 
-    public String getPrefix() {
-        return prefix;
+    public String getSchema() {
+        return schema;
     }
 }

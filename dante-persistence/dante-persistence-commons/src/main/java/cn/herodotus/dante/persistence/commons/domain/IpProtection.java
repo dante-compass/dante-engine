@@ -29,7 +29,6 @@ import cn.herodotus.dante.core.domain.BaseModel;
 import com.google.common.base.MoreObjects;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 /**
  * <p>Description: IP 地址保护信息实体 </p>

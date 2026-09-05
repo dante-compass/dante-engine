@@ -27,6 +27,7 @@ package cn.herodotus.dante.oauth2.authentication.customizer;
 
 import cn.herodotus.dante.core.constant.SystemConstants;
 import cn.herodotus.dante.oauth2.authentication.configurer.OAuth2AuthenticationConfigurerManager;
+import cn.herodotus.dante.oauth2.authentication.consumer.OAuth2AuthorizationAuthenticationProviderConsumer;
 import cn.herodotus.dante.oauth2.authentication.consumer.OAuth2ClientRegistrationAuthenticationProviderConsumer;
 import cn.herodotus.dante.oauth2.authentication.consumer.OAuth2TokenEndpointAuthenticationProviderConsumer;
 import cn.herodotus.dante.oauth2.authentication.consumer.OidcClientRegistrationAuthenticationProviderConsumer;
@@ -88,11 +89,12 @@ public class OAuth2AuthorizationServerConfigurerCustomizer implements Customizer
                 .clientAuthentication(endpoint -> endpoint.errorResponseHandler(authenticationConfigurerManager.getOAuth2AuthenticationFailureHandler()))
                 .clientRegistrationEndpoint(endpoint -> {
                     endpoint.errorResponseHandler(authenticationConfigurerManager.getOAuth2AuthenticationFailureHandler());
-                    endpoint.authenticationProviders(new OAuth2ClientRegistrationAuthenticationProviderConsumer());
+                    endpoint.authenticationProviders(new OAuth2ClientRegistrationAuthenticationProviderConsumer(authenticationConfigurerManager.getOAuth2AuthenticationProperties().getSupportResourceIndicators()));
                     endpoint.clientRegistrationResponseHandler(authenticationConfigurerManager.getOAuth2ClientRegistrationSuccessHandler());
                 })
                 .authorizationEndpoint(endpoint -> {
                     endpoint.errorResponseHandler(authenticationConfigurerManager.getOAuth2AuthenticationFailureHandler());
+                    endpoint.authenticationProviders(new OAuth2AuthorizationAuthenticationProviderConsumer(authenticationConfigurerManager.getOAuth2AuthenticationProperties().getSupportResourceIndicators()));
                     endpoint.consentPage(authenticationConfigurerManager.getOAuth2AuthenticationProperties().getAuthorizationConsentUri());
                 })
                 .deviceAuthorizationEndpoint(endpoint -> {
@@ -123,7 +125,7 @@ public class OAuth2AuthorizationServerConfigurerCustomizer implements Customizer
                 .tokenRevocationEndpoint(endpoint -> endpoint.errorResponseHandler(authenticationConfigurerManager.getOAuth2AuthenticationFailureHandler()))
                 .oidc(oidc -> oidc.clientRegistrationEndpoint(endpoint -> {
                             endpoint.errorResponseHandler(authenticationConfigurerManager.getOAuth2AuthenticationFailureHandler());
-                            endpoint.authenticationProviders(new OidcClientRegistrationAuthenticationProviderConsumer());
+                            endpoint.authenticationProviders(new OidcClientRegistrationAuthenticationProviderConsumer(authenticationConfigurerManager.getOAuth2AuthenticationProperties().getSupportResourceIndicators()));
                             endpoint.clientRegistrationResponseHandler(authenticationConfigurerManager.getOidcClientRegistrationSuccessHandler());
                         })
                         .userInfoEndpoint(userInfo -> userInfo

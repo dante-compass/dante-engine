@@ -24,6 +24,11 @@
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-oauth2-authorization-server</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>cn.herodotus.dante</groupId>
+            <artifactId>dante-cache</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

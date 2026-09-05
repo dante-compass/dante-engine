@@ -22,31 +22,25 @@
  * 5. 在修改包名，模块名称，项目代码等时，请注明软件出处 <https://gitee.com/dromara/dante-cloud>
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
+package cn.herodotus.dante.persistence.commons.definition;
 
-package cn.herodotus.dante.oauth2.extension.dto;
-
-import cn.herodotus.dante.core.domain.BaseDto;
-import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.validation.constraints.NotBlank;
+import org.springframework.security.oauth2.server.authorization.OAuth2ClientRegistration;
 
 /**
- * <p>Description: 登录提示信息 </p>
+ * Validate Client ID Metadata obtained from an OAuth2 client.
  *
- * @author : gengwei.zheng
- * @date : 2022/7/8 20:52
+ * @see <a href=
+ * "https://datatracker.ietf.org/doc/draft-ietf-oauth-client-id-metadata-document/">OAuth
+ * Client ID Metadata Document</a>
  */
-@Schema(name = "登录错误提示信息")
-public class SignInErrorPrompt implements BaseDto {
+public interface ClientMetadataValidator {
 
-    @NotBlank(message = "登录用户名不能为空")
-    @Schema(name = "登录用户名", title = "必须是有效的用户名")
-    private String username;
+    /**
+     * Validate metadata fetched for a CIMD client.
+     *
+     * @param clientIdUrl        the client ID
+     * @param clientRegistration the client metadata
+     */
+    boolean validate(String clientIdUrl, OAuth2ClientRegistration clientRegistration);
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
 }

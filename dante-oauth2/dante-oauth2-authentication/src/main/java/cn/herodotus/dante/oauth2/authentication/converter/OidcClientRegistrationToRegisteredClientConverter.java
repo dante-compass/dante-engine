@@ -39,10 +39,10 @@ import org.springframework.security.oauth2.server.authorization.oidc.converter.O
  */
 public class OidcClientRegistrationToRegisteredClientConverter extends AbstractToRegisteredClientConverter<OidcClientRegistration> {
 
-
     private final OidcClientRegistrationRegisteredClientConverter delegate;
 
-    public OidcClientRegistrationToRegisteredClientConverter() {
+    public OidcClientRegistrationToRegisteredClientConverter(boolean supportResourceIndicators) {
+        super(supportResourceIndicators);
         this.delegate = new OidcClientRegistrationRegisteredClientConverter();
     }
 
