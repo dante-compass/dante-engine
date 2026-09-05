@@ -576,7 +576,7 @@ public class OAuth2AuthenticationProperties {
         /**
          * 是否开启 CIMD功能，默认关闭
          */
-        private Boolean enabled = false;
+        private Boolean enabled = Boolean.TRUE;
         /**
          * 缓存最大时间，默认 24 小时
          */
@@ -584,11 +584,11 @@ public class OAuth2AuthenticationProperties {
         /**
          * 是否允许 Http 类型的 Client Identifier
          */
-        private Boolean allowHttpUrlForClientIdentifier;
+        private Boolean allowHttpUrlForClientIdentifier = Boolean.TRUE;
         /**
          * 是否允许 Loopback 类型 Host 的 Client Identifier
          */
-        private Boolean allowLoopbackHostForClientIdentifier;
+        private Boolean allowLoopbackHostForClientIdentifier = Boolean.TRUE;
 
         public Boolean getEnabled() {
             return enabled;
