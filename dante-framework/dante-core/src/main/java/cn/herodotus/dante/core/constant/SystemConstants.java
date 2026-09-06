@@ -126,6 +126,8 @@ public interface SystemConstants {
     String PARAMETER__APPLICATION_TYPE  = "application_type";
     String PARAMETER__RESOURCE_IDS = "resource_ids";
     String PARAMETER__RESOURCE = "resource";
+    String PARAMETER__CLIENT_ID_METADATA_DOCUMENT_SUPPORTED = "client_id_metadata_document_supported";
+
     /**
      * OAuth2 Setting Names
      */
