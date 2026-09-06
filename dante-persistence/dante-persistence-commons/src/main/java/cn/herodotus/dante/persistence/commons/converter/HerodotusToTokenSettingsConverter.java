@@ -45,21 +45,22 @@ public class HerodotusToTokenSettingsConverter<S extends TokenSettingsDetails> i
 
     @Override
     public TokenSettings convert(S source) {
-        TokenSettings.Builder tokenSettingsBuilder = TokenSettings.builder();
-        tokenSettingsBuilder.authorizationCodeTimeToLive(source.getAuthorizationCodeTimeToLive());
-        tokenSettingsBuilder.accessTokenTimeToLive(source.getAccessTokenTimeToLive());
-        tokenSettingsBuilder.accessTokenFormat(convert(source.getTokenFormat()));
-        tokenSettingsBuilder.deviceCodeTimeToLive(source.getDeviceCodeTimeToLive());
+        TokenSettings.Builder tokenSettings = TokenSettings.builder();
+        tokenSettings.authorizationCodeTimeToLive(source.getAuthorizationCodeTimeToLive());
+        tokenSettings.accessTokenTimeToLive(source.getAccessTokenTimeToLive());
+        tokenSettings.accessTokenFormat(convert(source.getTokenFormat()));
+        tokenSettings.deviceCodeTimeToLive(source.getDeviceCodeTimeToLive());
         // 是否可重用刷新令牌
-        tokenSettingsBuilder.reuseRefreshTokens(source.getReuseRefreshTokens());
+        tokenSettings.reuseRefreshTokens(source.getReuseRefreshTokens());
         // refreshToken 的有效期
-        tokenSettingsBuilder.refreshTokenTimeToLive(source.getRefreshTokenTimeToLive());
-        tokenSettingsBuilder.x509CertificateBoundAccessTokens(source.getX509CertificateBoundAccessTokens());
+        tokenSettings.refreshTokenTimeToLive(source.getRefreshTokenTimeToLive());
+        tokenSettings.x509CertificateBoundAccessTokens(source.getX509CertificateBoundAccessTokens());
         SignatureJwsAlgorithm signatureJwsAlgorithm = source.getIdTokenSignatureAlgorithmJwsAlgorithm();
         if (ObjectUtils.isNotEmpty(signatureJwsAlgorithm)) {
-            tokenSettingsBuilder.idTokenSignatureAlgorithm(SignatureAlgorithm.from(signatureJwsAlgorithm.name()));
+            SignatureAlgorithm algorithm = SignatureAlgorithm.from(signatureJwsAlgorithm.name());
+            tokenSettings.idTokenSignatureAlgorithm(ObjectUtils.isNotEmpty(algorithm) ? algorithm : SignatureAlgorithm.RS256);
         }
-        return tokenSettingsBuilder.build();
+        return tokenSettings.build();
     }
 
     private OAuth2TokenFormat convert(TokenFormat tokenFormat) {

@@ -25,6 +25,7 @@
 
 package cn.herodotus.dante.persistence.commons.converter;
 
+import cn.herodotus.dante.core.constant.SystemConstants;
 import cn.herodotus.dante.persistence.commons.domain.HerodotusClientSettings;
 import cn.herodotus.dante.persistence.commons.enums.AllJwsAlgorithm;
 import org.apache.commons.lang3.ObjectUtils;
@@ -58,6 +59,18 @@ public class OAuth2ToClientSettingsConverter implements Converter<ClientSettings
             if (jwsAlgorithm instanceof MacAlgorithm macAlgorithm) {
                 target.setAuthenticationSigningAlgorithm(AllJwsAlgorithm.valueOf(macAlgorithm.name()));
             }
+        }
+
+        if (source.getSettings().containsKey(SystemConstants.PARAMETER__PRODUCT_KEY)) {
+            target.setParentClientId(source.getSetting(SystemConstants.PARAMETER__PRODUCT_KEY));
+        }
+
+        if (source.getSettings().containsKey(SystemConstants.PARAMETER__APPLICATION_TYPE)) {
+            target.setClientType(source.getSetting(SystemConstants.PARAMETER__APPLICATION_TYPE));
+        }
+
+        if (source.getSettings().containsKey(SystemConstants.PARAMETER__RESOURCE_IDS)) {
+            target.setResourceIds(source.getSetting(SystemConstants.PARAMETER__RESOURCE_IDS));
         }
 
         target.setX509CertificateSubjectDN(source.getX509CertificateSubjectDN());

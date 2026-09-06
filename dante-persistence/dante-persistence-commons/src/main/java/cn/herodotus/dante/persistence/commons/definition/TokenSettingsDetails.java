@@ -27,11 +27,15 @@ package cn.herodotus.dante.persistence.commons.definition;
 
 import cn.herodotus.dante.persistence.commons.enums.SignatureJwsAlgorithm;
 import cn.herodotus.dante.persistence.commons.enums.TokenFormat;
+import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
+import org.springframework.security.oauth2.server.authorization.settings.TokenSettings;
 
 import java.time.Duration;
 
 /**
  * <p>Description: Token设置详情定义 </p>
+ * <p>
+ * 对应 Spring Authorization Server 中，客户端 {@link RegisteredClient} 中 {@link TokenSettings} 的属性
  *
  * @author : gengwei.zheng
  * @date : 2024/12/21 21:51

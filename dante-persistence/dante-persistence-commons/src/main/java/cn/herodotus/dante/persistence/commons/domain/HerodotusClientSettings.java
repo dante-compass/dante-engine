@@ -48,6 +48,12 @@ public class HerodotusClientSettings implements BaseModel, ClientSettingsDetails
 
     private String x509CertificateSubjectDN;
 
+    private String parentClientId;
+
+    private String clientType;
+
+    private String resourceIds;
+
     @Override
     public Boolean getRequireProofKey() {
         return requireProofKey;
@@ -94,6 +100,33 @@ public class HerodotusClientSettings implements BaseModel, ClientSettingsDetails
     }
 
     @Override
+    public String getParentClientId() {
+        return parentClientId;
+    }
+
+    public void setParentClientId(String parentClientId) {
+        this.parentClientId = parentClientId;
+    }
+
+    @Override
+    public String getClientType() {
+        return clientType;
+    }
+
+    public void setClientType(String clientType) {
+        this.clientType = clientType;
+    }
+
+    @Override
+    public String getResourceIds() {
+        return resourceIds;
+    }
+
+    public void setResourceIds(String resourceIds) {
+        this.resourceIds = resourceIds;
+    }
+
+    @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
                 .add("requireProofKey", requireProofKey)
@@ -101,6 +134,9 @@ public class HerodotusClientSettings implements BaseModel, ClientSettingsDetails
                 .add("jwkSetUrl", jwkSetUrl)
                 .add("authenticationSigningAlgorithm", authenticationSigningAlgorithm)
                 .add("x509CertificateSubjectDN", x509CertificateSubjectDN)
+                .add("parentClientId", parentClientId)
+                .add("clientType", clientType)
+                .add("resourceIds", resourceIds)
                 .toString();
     }
 }

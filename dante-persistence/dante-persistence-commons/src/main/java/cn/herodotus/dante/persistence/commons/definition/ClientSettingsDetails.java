@@ -26,14 +26,19 @@
 package cn.herodotus.dante.persistence.commons.definition;
 
 import cn.herodotus.dante.persistence.commons.enums.AllJwsAlgorithm;
+import cn.herodotus.dante.security.definition.ExtendedClientSettingsDetails;
+import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
+import org.springframework.security.oauth2.server.authorization.settings.ClientSettings;
 
 /**
  * <p>Description: 客户端设置详情定义 </p>
+ * <p>
+ * 对应 Spring Authorization Server 中，客户端 {@link RegisteredClient} 中 {@link ClientSettings} 的属性
  *
  * @author : gengwei.zheng
  * @date : 2024/12/21 21:46
  */
-public interface ClientSettingsDetails {
+public interface ClientSettingsDetails extends ExtendedClientSettingsDetails {
 
     Boolean getRequireProofKey();
 

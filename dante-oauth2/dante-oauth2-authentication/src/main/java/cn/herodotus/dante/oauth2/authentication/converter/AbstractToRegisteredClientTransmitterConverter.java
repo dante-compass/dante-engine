@@ -27,6 +27,7 @@ package cn.herodotus.dante.oauth2.authentication.converter;
 
 import cn.herodotus.dante.core.constant.SystemConstants;
 import cn.herodotus.dante.security.domain.RegisteredClientTransmitter;
+import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.security.oauth2.server.authorization.AbstractOAuth2ClientRegistration;
 
@@ -59,6 +60,11 @@ public class AbstractToRegisteredClientTransmitterConverter<T extends AbstractOA
         target.setParentClientId(source.getClaims().get(SystemConstants.PARAMETER__PRODUCT_KEY).toString());
         // 在 OidcClientRegistrationToRegisteredClientConverter 或 OAuth2ClientRegistrationToRegisteredClientConverter 中已经设置过 ApplicationType 默认值。
         target.setClientType(source.getClaims().get(SystemConstants.PARAMETER__APPLICATION_TYPE).toString());
+
+        Object resourceIds = source.getClaims().get(SystemConstants.PARAMETER__RESOURCE_IDS);
+        if (ObjectUtils.isEmpty(resourceIds)) {
+            target.setResourceIds(source.getClaims().get(SystemConstants.PARAMETER__RESOURCE_IDS).toString());
+        }
         return target;
     }
 }

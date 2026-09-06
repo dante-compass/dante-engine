@@ -80,7 +80,7 @@ abstract class AbstractToRegisteredClientConverter<T extends AbstractOAuth2Clien
         // TokenSettings 的 builder() 方法会将 accessTokenFormat 格式默认设置为 OAuth2TokenFormat.SELF_CONTAINED。这里重新修改为 OAuth2TokenFormat.REFERENCE
         tokenSettingsBuilder.accessTokenFormat(OAuth2TokenFormat.REFERENCE);
         // clientSettingsBuilder 没有提供检测方法，所以先提前设定一个默认值，如果 source 设定了 SystemConstants.PARAMETER__APPLICATION_TYPE 后面可以使用新值覆盖。
-        clientSettingsBuilder.setting(SystemConstants.PARAMETER__APPLICATION_TYPE, OAuth2ClientType.WEB);
+        clientSettingsBuilder.setting(SystemConstants.PARAMETER__APPLICATION_TYPE, OAuth2ClientType.WEB.getValue());
 
         // 支持 OAuth2.0 中的资源标识符功能
         if (supportResourceIndicators) {

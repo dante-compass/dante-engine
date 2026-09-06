@@ -50,6 +50,8 @@ public class RegisteredClientTransmitter implements RegisteredClientDetails {
 
     private String redirectUris;
 
+    private String resourceIds;
+
     private String logo;
 
     @Override
@@ -125,12 +127,22 @@ public class RegisteredClientTransmitter implements RegisteredClientDetails {
     }
 
     @Override
+    public String getResourceIds() {
+        return resourceIds;
+    }
+
+    public void setResourceIds(String resourceIds) {
+        this.resourceIds = resourceIds;
+    }
+
+    @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
                 .add("id", id)
                 .add("clientId", clientId)
                 .add("clientSecret", clientSecret)
                 .add("clientName", clientName)
+                .add("clientType", clientType)
                 .add("parentClientId", parentClientId)
                 .add("redirectUris", redirectUris)
                 .add("logo", logo)

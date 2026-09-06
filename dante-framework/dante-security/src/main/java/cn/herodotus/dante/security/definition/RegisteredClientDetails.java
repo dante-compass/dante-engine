@@ -25,11 +25,9 @@
 
 package cn.herodotus.dante.security.definition;
 
-import cn.herodotus.dante.security.domain.OAuth2ClientType;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.Strings;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
@@ -78,7 +76,7 @@ import java.time.LocalDateTime;
  * @author : gengwei.zheng
  * @date : 2023/5/12 23:10
  */
-public interface RegisteredClientDetails extends Serializable {
+public interface RegisteredClientDetails extends ExtendedClientSettingsDetails {
 
     /**
      * 数据ID，即存入数据库的主键
@@ -109,15 +107,6 @@ public interface RegisteredClientDetails extends Serializable {
      * @return 客户端名称
      */
     String getClientName();
-
-    /**
-     * 客户端类别，主要用于区分客户端动态注册时的来源。
-     *
-     * @return 客户端类别
-     */
-    default String getClientType() {
-        return OAuth2ClientType.WEB.getValue();
-    }
 
     /**
      * 重定向地址。OAuth2 中的 redirectUris。
@@ -158,22 +147,6 @@ public interface RegisteredClientDetails extends Serializable {
     }
 
     /**
-     * 上级客户端ID。主要用于客户端动态注册场景。
-     * <p>
-     * 标准的客户端动态注册，不需要上级客户端的任何信息，仅需要通过上级客户端生成 "Initial" Access Token 即可。
-     * <p>
-     * 在物联网场景下，Product 是 Device 的上级客户端，一方面需要将 Product 与 Device 进行关联，另一方面 Device 需要用到 ProductKey 信息。
-     * 所以将 ProductKey 信息作为一项必要的认证数据进行传输，即将其作为 Device 的 Parent Client ID，来实现信息的关联。
-     * <p>
-     * 目前，系统中除了物联网设备动态注册外，暂时还没有其它功能需求会使用到 Parent Client ID
-     *
-     * @return 上级客户端ID
-     */
-    default String getParentClientId() {
-        return null;
-    }
-
-    /**
      * 是否为客户端动态注册
      * <p>
      * OIDC 动态注册时，需要一个 "initial" access token。顾名思义就是需要指定另外一个 OAuth2 Client 来预先生成一个 access token，利用该 access token 才能进行动态注册。
@@ -183,7 +156,7 @@ public interface RegisteredClientDetails extends Serializable {
      *
      * @return 是否为初始客户端
      */
-    default boolean isRegistrationClient() {
+    default boolean isRegistration() {
         return (StringUtils.isNotBlank(getParentClientId()) && StringUtils.isNotBlank(getClientId())) && !Strings.CS.equals(getParentClientId(), getClientId());
     }
 }

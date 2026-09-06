@@ -47,6 +47,7 @@ public abstract class AbstractRegisteredClientTransmitterConverter<S extends Reg
         target.setClientType(source.getClientType());
         target.setParentClientId(source.getParentClientId());
         target.setRedirectUris(source.getRedirectUris());
+        target.setRedirectUris(source.getRedirectUris());
         target.setLogo(source.getLogo());
         return target;
     }

@@ -72,7 +72,7 @@ public interface OAuth2AuthorizationResourceService {
      */
     default void process(RegisteredClientTransmitter transmitter) {
         RegisteredClientTransmitter clone = SerializationUtils.clone(transmitter);
-        if (transmitter.isRegistrationClient()) {
+        if (transmitter.isRegistration()) {
             // 查询上级客户端，使用上级客户端的资源作为动态注册客户端的资源
             OAuth2AuthorizationResource parentResource = findByClientId(transmitter.getParentClientId());
 
