@@ -133,7 +133,7 @@ public interface SystemConstants {
      */
     String SETTINGS_NAMESPACE = "settings.";
     String CLIENT_SETTINGS_NAMESPACE = SETTINGS_NAMESPACE.concat("client.");
-    String CLIENT_SETTINGS__RESOURCE_IDS = CLIENT_SETTINGS_NAMESPACE.concat(PARAMETER__RESOURCE_IDS);
+    String CLIENT_SETTINGS_NAMESPACE__RESOURCE_IDS = CLIENT_SETTINGS_NAMESPACE.concat(PARAMETER__RESOURCE_IDS);
     /**
      * OAuth2 模式类型
      */

@@ -29,7 +29,7 @@ import cn.herodotus.dante.core.constant.SystemConstants;
 import cn.herodotus.dante.persistence.commons.definition.ClientSettingsDetails;
 import cn.herodotus.dante.persistence.commons.domain.HerodotusClientSettings;
 import cn.herodotus.dante.persistence.commons.enums.AllJwsAlgorithm;
-import cn.herodotus.dante.security.domain.OAuth2ClientType;
+import cn.herodotus.dante.persistence.commons.utils.OAuth2SettingUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.security.oauth2.jose.jws.MacAlgorithm;
@@ -54,19 +54,8 @@ public class HerodotusToClientSettingsConverter<S extends ClientSettingsDetails>
             clientSettings.jwkSetUrl(source.getJwkSetUrl());
         }
 
-        // 支持 OAuth2 Resource Indicator 所需配置
-        if (StringUtils.hasText(source.getResourceIds())) {
-            clientSettings.setting(SystemConstants.PARAMETER__RESOURCE_IDS, source.getResourceIds());
-        }
-        // 支持客户端动态注册指定注册来源。默认指定为 'web'
-        if (StringUtils.hasText(source.getClientType())) {
-            clientSettings.setting(SystemConstants.PARAMETER__APPLICATION_TYPE, source.getClientType());
-        } else {
-            clientSettings.setting(SystemConstants.PARAMETER__APPLICATION_TYPE, OAuth2ClientType.WEB.getValue());
-        }
-
-        if (StringUtils.hasText(source.getParentClientId())) {
-            clientSettings.setting(SystemConstants.PARAMETER__PRODUCT_KEY, source.getParentClientId());
+        if (StringUtils.hasText(source.getX509CertificateSubjectDN())) {
+            clientSettings.x509CertificateSubjectDN(source.getX509CertificateSubjectDN());
         }
 
         AllJwsAlgorithm allJwsAlgorithm = source.getAuthenticationSigningAlgorithm();
@@ -81,8 +70,15 @@ public class HerodotusToClientSettingsConverter<S extends ClientSettingsDetails>
                 clientSettings.tokenEndpointAuthenticationSigningAlgorithm(ObjectUtils.isNotEmpty(algorithm) ? algorithm : MacAlgorithm.HS256);
             }
         }
-        if (StringUtils.hasText(source.getX509CertificateSubjectDN())) {
-            clientSettings.x509CertificateSubjectDN(source.getX509CertificateSubjectDN());
+
+        // 支持 OAuth2 Resource Indicator 所需配置
+        OAuth2SettingUtils.setResourceIds(clientSettings, source.getResourceIds());
+
+        // 支持客户端动态注册指定注册来源。默认指定为 'web'
+        OAuth2SettingUtils.setClientType(clientSettings, source.getClientType());
+
+        if (StringUtils.hasText(source.getParentClientId())) {
+            clientSettings.setting(SystemConstants.PARAMETER__PRODUCT_KEY, source.getParentClientId());
         }
 
         return clientSettings.build();

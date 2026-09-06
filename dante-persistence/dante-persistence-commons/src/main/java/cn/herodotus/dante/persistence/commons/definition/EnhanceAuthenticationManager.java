@@ -26,8 +26,8 @@
 package cn.herodotus.dante.persistence.commons.definition;
 
 import cn.herodotus.dante.core.constant.SystemConstants;
+import cn.herodotus.dante.persistence.commons.utils.OAuth2SettingUtils;
 import cn.herodotus.dante.security.definition.AuthenticationManager;
-import cn.herodotus.dante.security.domain.OAuth2ClientType;
 import cn.herodotus.dante.security.domain.RegisteredClientTransmitter;
 import cn.herodotus.dante.spring.context.ServiceContextHolder;
 import org.springframework.security.oauth2.core.AuthorizationGrantType;
@@ -79,15 +79,10 @@ public interface EnhanceAuthenticationManager extends AuthenticationManager {
         clientSettings.tokenEndpointAuthenticationSigningAlgorithm(SignatureAlgorithm.RS256);
 
         // 支持 OAuth2 Resource Indicator 所需配置
-        if (StringUtils.hasText(transmitter.getResourceIds())) {
-            clientSettings.setting(SystemConstants.PARAMETER__RESOURCE_IDS, transmitter.getResourceIds());
-        }
+        OAuth2SettingUtils.setResourceIds(clientSettings, transmitter.getResourceIds());
+
         // 支持客户端动态注册指定注册来源。默认指定为 'web'
-        if (StringUtils.hasText(transmitter.getClientType())) {
-            clientSettings.setting(SystemConstants.PARAMETER__APPLICATION_TYPE, transmitter.getClientType());
-        } else {
-            clientSettings.setting(SystemConstants.PARAMETER__APPLICATION_TYPE, OAuth2ClientType.WEB.getValue());
-        }
+        OAuth2SettingUtils.setClientType(clientSettings, transmitter.getClientType());
 
         Set<AuthorizationGrantType> authorizationGrantTypes = new HashSet<>(Set.of(AuthorizationGrantType.CLIENT_CREDENTIALS));
         if (transmitter.isRegistration() && StringUtils.hasText(transmitter.getParentClientId())) {

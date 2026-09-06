@@ -28,12 +28,17 @@ package cn.herodotus.dante.persistence.commons.converter;
 import cn.herodotus.dante.core.constant.SystemConstants;
 import cn.herodotus.dante.persistence.commons.domain.HerodotusClientSettings;
 import cn.herodotus.dante.persistence.commons.enums.AllJwsAlgorithm;
+import cn.herodotus.dante.persistence.commons.utils.OAuth2SettingUtils;
+import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.security.oauth2.jose.jws.JwsAlgorithm;
 import org.springframework.security.oauth2.jose.jws.MacAlgorithm;
 import org.springframework.security.oauth2.jose.jws.SignatureAlgorithm;
 import org.springframework.security.oauth2.server.authorization.settings.ClientSettings;
+import org.springframework.util.StringUtils;
+
+import java.util.List;
 
 /**
  * <p>Description: {@link ClientSettings} 转 {@link HerodotusClientSettings} 转换器 </p>
@@ -61,6 +66,8 @@ public class OAuth2ToClientSettingsConverter implements Converter<ClientSettings
             }
         }
 
+        target.setX509CertificateSubjectDN(source.getX509CertificateSubjectDN());
+
         if (source.getSettings().containsKey(SystemConstants.PARAMETER__PRODUCT_KEY)) {
             target.setParentClientId(source.getSetting(SystemConstants.PARAMETER__PRODUCT_KEY));
         }
@@ -69,11 +76,10 @@ public class OAuth2ToClientSettingsConverter implements Converter<ClientSettings
             target.setClientType(source.getSetting(SystemConstants.PARAMETER__APPLICATION_TYPE));
         }
 
-        if (source.getSettings().containsKey(SystemConstants.PARAMETER__RESOURCE_IDS)) {
-            target.setResourceIds(source.getSetting(SystemConstants.PARAMETER__RESOURCE_IDS));
+        List<String> resourceIds = OAuth2SettingUtils.getResourceIds(source);
+        if (CollectionUtils.isNotEmpty(resourceIds)) {
+            target.setResourceIds(StringUtils.collectionToCommaDelimitedString(resourceIds));
         }
-
-        target.setX509CertificateSubjectDN(source.getX509CertificateSubjectDN());
         return target;
     }
 }

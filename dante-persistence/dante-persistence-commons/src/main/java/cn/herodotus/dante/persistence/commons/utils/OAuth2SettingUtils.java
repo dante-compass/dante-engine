@@ -23,15 +23,19 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.oauth2.authentication.utils;
+package cn.herodotus.dante.persistence.commons.utils;
 
 import cn.herodotus.dante.core.constant.SystemConstants;
+import cn.herodotus.dante.security.domain.OAuth2ClientType;
 import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.Strings;
 import org.springframework.security.oauth2.server.authorization.settings.ClientSettings;
 
+import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 /**
  * <p>Description: OAuth2 Setting 相关工具类 </p>
@@ -48,7 +52,74 @@ public class OAuth2SettingUtils {
      * @return Resource Ids
      */
     public static List<String> getResourceIds(ClientSettings clientSettings) {
-        return clientSettings.getSetting(SystemConstants.CLIENT_SETTINGS__RESOURCE_IDS);
+        return clientSettings.getSetting(SystemConstants.CLIENT_SETTINGS_NAMESPACE__RESOURCE_IDS);
+    }
+
+    /**
+     * 向 ClientSettings 中设置 resource_ids
+     *
+     * @param clientSettingsBuilder ClientSettings 构建器
+     * @param resourceIds           字符串类型 Resource Ids
+     */
+    public static void setResourceIds(ClientSettings.Builder clientSettingsBuilder, Collection<String> resourceIds) {
+        if (CollectionUtils.isNotEmpty(resourceIds)) {
+            clientSettingsBuilder.setting(SystemConstants.CLIENT_SETTINGS_NAMESPACE__RESOURCE_IDS, resourceIds);
+        }
+    }
+
+    /**
+     * 向 ClientSettings 中设置 resource_ids
+     *
+     * @param clientSettingsBuilder ClientSettings 构建器
+     * @param resourceIds           字符串类型 Resource Ids
+     */
+    public static void setResourceIds(ClientSettings.Builder clientSettingsBuilder, String resourceIds) {
+        Set<String> resourceIdSet = org.springframework.util.StringUtils.commaDelimitedListToSet(resourceIds);
+        setResourceIds(clientSettingsBuilder, resourceIdSet);
+    }
+
+    /**
+     * 向 ClientSettings 中设置 resource_ids
+     *
+     * @param clientSettingsBuilder ClientSettings 构建器
+     * @param resourceIds           字符串类型 Resource Ids
+     */
+    public static void setResourceIds(ClientSettings.Builder clientSettingsBuilder, Object resourceIds) {
+        if (ObjectUtils.isEmpty(resourceIds)) {
+            setResourceIds(clientSettingsBuilder, (String) resourceIds);
+        }
+    }
+
+    /**
+     * 向 ClientSettings 中设置 resource_ids
+     *
+     * @param clientSettingsBuilder ClientSettings 构建器
+     * @param clientType            客户端类型 {@link OAuth2ClientType}
+     */
+    public static void setClientType(ClientSettings.Builder clientSettingsBuilder, OAuth2ClientType clientType) {
+        clientSettingsBuilder.setting(SystemConstants.PARAMETER__APPLICATION_TYPE, ObjectUtils.isNotEmpty(clientType) ? clientType : OAuth2ClientType.WEB);
+    }
+
+    /**
+     * 向 ClientSettings 中设置 resource_ids
+     *
+     * @param clientSettingsBuilder ClientSettings 构建器
+     * @param clientType            客户端类型
+     */
+    public static void setClientType(ClientSettings.Builder clientSettingsBuilder, String clientType) {
+        clientSettingsBuilder.setting(SystemConstants.PARAMETER__APPLICATION_TYPE, StringUtils.isNotBlank(clientType) ? new OAuth2ClientType(clientType) : OAuth2ClientType.WEB);
+    }
+
+    /**
+     * 向 ClientSettings 中设置 resource_ids
+     *
+     * @param clientSettingsBuilder ClientSettings 构建器
+     * @param clientType            客户端类型
+     */
+    public static void setClientType(ClientSettings.Builder clientSettingsBuilder, String claim, Object clientType) {
+        if (Strings.CS.equals(claim, SystemConstants.PARAMETER__APPLICATION_TYPE)) {
+            clientSettingsBuilder.setting(SystemConstants.PARAMETER__APPLICATION_TYPE, ObjectUtils.isNotEmpty(clientType) ? clientType : OAuth2ClientType.WEB);
+        }
     }
 
     /**

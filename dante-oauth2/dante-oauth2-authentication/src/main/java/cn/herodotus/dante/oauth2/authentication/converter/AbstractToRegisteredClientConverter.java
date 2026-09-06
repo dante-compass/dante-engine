@@ -27,6 +27,7 @@ package cn.herodotus.dante.oauth2.authentication.converter;
 
 import cn.herodotus.dante.core.constant.SymbolConstants;
 import cn.herodotus.dante.core.constant.SystemConstants;
+import cn.herodotus.dante.persistence.commons.utils.OAuth2SettingUtils;
 import cn.herodotus.dante.security.domain.OAuth2ClientType;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -37,6 +38,8 @@ import org.springframework.security.oauth2.server.authorization.client.Registere
 import org.springframework.security.oauth2.server.authorization.settings.ClientSettings;
 import org.springframework.security.oauth2.server.authorization.settings.OAuth2TokenFormat;
 import org.springframework.security.oauth2.server.authorization.settings.TokenSettings;
+
+import java.util.List;
 
 /**
  * <p>Description: SAS 客户端注册实体转 {@link RegisteredClient} 转换器抽象定义 </p>
@@ -84,10 +87,8 @@ abstract class AbstractToRegisteredClientConverter<T extends AbstractOAuth2Clien
 
         // 支持 OAuth2.0 中的资源标识符功能
         if (supportResourceIndicators) {
-            Object resourceIds = source.getClaims().get(SystemConstants.PARAMETER__RESOURCE_IDS);
-            if (ObjectUtils.isNotEmpty(resourceIds)) {
-                clientSettingsBuilder.setting(SystemConstants.CLIENT_SETTINGS__RESOURCE_IDS, resourceIds);
-            }
+            List<String> resourceIds = source.getClaimAsStringList(SystemConstants.PARAMETER__RESOURCE_IDS);
+            OAuth2SettingUtils.setResourceIds(clientSettingsBuilder, resourceIds);
         }
 
 

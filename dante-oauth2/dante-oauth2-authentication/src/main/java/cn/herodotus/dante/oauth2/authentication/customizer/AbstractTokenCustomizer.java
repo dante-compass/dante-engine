@@ -26,7 +26,7 @@
 package cn.herodotus.dante.oauth2.authentication.customizer;
 
 import cn.herodotus.dante.core.constant.SystemConstants;
-import cn.herodotus.dante.oauth2.authentication.utils.OAuth2SettingUtils;
+import cn.herodotus.dante.persistence.commons.utils.OAuth2SettingUtils;
 import cn.herodotus.dante.security.domain.HerodotusUser;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.ObjectUtils;

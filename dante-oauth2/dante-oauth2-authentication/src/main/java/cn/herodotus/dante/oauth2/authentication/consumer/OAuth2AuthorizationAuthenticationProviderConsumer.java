@@ -26,7 +26,7 @@
 package cn.herodotus.dante.oauth2.authentication.consumer;
 
 import cn.herodotus.dante.core.constant.SystemConstants;
-import cn.herodotus.dante.oauth2.authentication.utils.OAuth2SettingUtils;
+import cn.herodotus.dante.persistence.commons.utils.OAuth2SettingUtils;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.oauth2.core.OAuth2Error;
 import org.springframework.security.oauth2.core.OAuth2ErrorCodes;

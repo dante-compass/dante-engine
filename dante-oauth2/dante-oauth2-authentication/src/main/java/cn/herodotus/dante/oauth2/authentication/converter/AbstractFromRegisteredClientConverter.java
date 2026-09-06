@@ -26,7 +26,7 @@
 package cn.herodotus.dante.oauth2.authentication.converter;
 
 import cn.herodotus.dante.core.constant.SystemConstants;
-import cn.herodotus.dante.oauth2.authentication.utils.OAuth2SettingUtils;
+import cn.herodotus.dante.persistence.commons.utils.OAuth2SettingUtils;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.security.oauth2.server.authorization.AbstractOAuth2ClientRegistration;
@@ -69,6 +69,7 @@ abstract class AbstractFromRegisteredClientConverter<T extends AbstractOAuth2Cli
 
         // 支持 OAuth2.0 中的资源标识符功能
         if (supportResourceIndicators) {
+            // RegisteredClient 的 ClientSettings 中的 resourceIds 为列表，放入 OAuth2ClientRegistration 中也为列表。
             List<String> resourceIds = OAuth2SettingUtils.getResourceIds(clientSettings);
             if (CollectionUtils.isNotEmpty(resourceIds)) {
                 claims.put(SystemConstants.PARAMETER__RESOURCE_IDS, resourceIds);
