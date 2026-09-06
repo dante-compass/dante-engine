@@ -56,7 +56,7 @@ public class HerodotusToClientSettingsConverter<S extends ClientSettingsDetails>
 
         // 支持 OAuth2 Resource Indicator 所需配置
         if (StringUtils.hasText(source.getResourceIds())) {
-            clientSettings.setting(SystemConstants.PARAMETER__RESOURCE_IDS, source.getParentClientId());
+            clientSettings.setting(SystemConstants.PARAMETER__RESOURCE_IDS, source.getResourceIds());
         }
         // 支持客户端动态注册指定注册来源。默认指定为 'web'
         if (StringUtils.hasText(source.getClientType())) {

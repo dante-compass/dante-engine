@@ -80,7 +80,7 @@ public interface EnhanceAuthenticationManager extends AuthenticationManager {
 
         // 支持 OAuth2 Resource Indicator 所需配置
         if (StringUtils.hasText(transmitter.getResourceIds())) {
-            clientSettings.setting(SystemConstants.PARAMETER__RESOURCE_IDS, transmitter.getParentClientId());
+            clientSettings.setting(SystemConstants.PARAMETER__RESOURCE_IDS, transmitter.getResourceIds());
         }
         // 支持客户端动态注册指定注册来源。默认指定为 'web'
         if (StringUtils.hasText(transmitter.getClientType())) {
