@@ -31,6 +31,8 @@ import cn.herodotus.dante.security.domain.RegisteredClientTransmitter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationListener;
+import org.springframework.transaction.event.TransactionPhase;
+import org.springframework.transaction.event.TransactionalEventListener;
 
 import java.util.Optional;
 
@@ -54,6 +56,7 @@ public class LocalEnableAuthenticationListener implements ApplicationListener<En
         this.enhanceAuthenticationManager = enhanceAuthenticationManager;
     }
 
+    @TransactionalEventListener(phase = TransactionPhase.BEFORE_COMMIT)
     @Override
     public void onApplicationEvent(EnableAuthenticationEvent event) {
 
