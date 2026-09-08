@@ -25,7 +25,6 @@
 
 package cn.herodotus.dante.persistence.commons.converter;
 
-import cn.herodotus.dante.core.constant.SystemConstants;
 import cn.herodotus.dante.persistence.commons.definition.ClientSettingsDetails;
 import cn.herodotus.dante.persistence.commons.domain.HerodotusClientSettings;
 import cn.herodotus.dante.persistence.commons.enums.AllJwsAlgorithm;
@@ -47,15 +46,16 @@ public class HerodotusToClientSettingsConverter<S extends ClientSettingsDetails>
 
     @Override
     public ClientSettings convert(S source) {
-        ClientSettings.Builder clientSettings = ClientSettings.builder();
-        clientSettings.requireAuthorizationConsent(source.getRequireAuthorizationConsent());
-        clientSettings.requireProofKey(source.getRequireProofKey());
+        ClientSettings.Builder clientSettingsBuilder = ClientSettings.builder();
+        clientSettingsBuilder.requireAuthorizationConsent(source.getRequireAuthorizationConsent());
+        clientSettingsBuilder.requireProofKey(source.getRequireProofKey());
+
         if (StringUtils.hasText(source.getJwkSetUrl())) {
-            clientSettings.jwkSetUrl(source.getJwkSetUrl());
+            clientSettingsBuilder.jwkSetUrl(source.getJwkSetUrl());
         }
 
         if (StringUtils.hasText(source.getX509CertificateSubjectDN())) {
-            clientSettings.x509CertificateSubjectDN(source.getX509CertificateSubjectDN());
+            clientSettingsBuilder.x509CertificateSubjectDN(source.getX509CertificateSubjectDN());
         }
 
         AllJwsAlgorithm allJwsAlgorithm = source.getAuthenticationSigningAlgorithm();
@@ -63,24 +63,16 @@ public class HerodotusToClientSettingsConverter<S extends ClientSettingsDetails>
             if (allJwsAlgorithm.ordinal() < AllJwsAlgorithm.HS256.ordinal()) {
                 // 如果是签名算法, 转换成 SAS 签名算法
                 SignatureAlgorithm algorithm = SignatureAlgorithm.from(allJwsAlgorithm.name());
-                clientSettings.tokenEndpointAuthenticationSigningAlgorithm(ObjectUtils.isNotEmpty(algorithm) ? algorithm : SignatureAlgorithm.RS256);
+                clientSettingsBuilder.tokenEndpointAuthenticationSigningAlgorithm(ObjectUtils.isNotEmpty(algorithm) ? algorithm : SignatureAlgorithm.RS256);
             } else {
                 // 如果是 Mac 算法, 转换成 Mac 签名算法
                 MacAlgorithm algorithm = MacAlgorithm.from(allJwsAlgorithm.name());
-                clientSettings.tokenEndpointAuthenticationSigningAlgorithm(ObjectUtils.isNotEmpty(algorithm) ? algorithm : MacAlgorithm.HS256);
+                clientSettingsBuilder.tokenEndpointAuthenticationSigningAlgorithm(ObjectUtils.isNotEmpty(algorithm) ? algorithm : MacAlgorithm.HS256);
             }
         }
 
-        // 支持 OAuth2 Resource Indicator 所需配置
-        OAuth2SettingUtils.setResourceIds(clientSettings, source.getResourceIds());
+        OAuth2SettingUtils.setClientSettingsExtensions(clientSettingsBuilder, source);
 
-        // 支持客户端动态注册指定注册来源。默认指定为 'web'
-        OAuth2SettingUtils.setClientType(clientSettings, source.getClientType());
-
-        if (StringUtils.hasText(source.getParentClientId())) {
-            clientSettings.setting(SystemConstants.PARAMETER__PRODUCT_KEY, source.getParentClientId());
-        }
-
-        return clientSettings.build();
+        return clientSettingsBuilder.build();
     }
 }

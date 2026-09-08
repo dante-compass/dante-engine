@@ -44,7 +44,7 @@ public class RegisteredClientTransmitter implements RegisteredClientDetails {
 
     private String clientName;
 
-    private String clientType;
+    private String applicationType;
 
     private String parentClientId;
 
@@ -91,12 +91,12 @@ public class RegisteredClientTransmitter implements RegisteredClientDetails {
     }
 
     @Override
-    public String getClientType() {
-        return clientType;
+    public String getApplicationType() {
+        return applicationType;
     }
 
-    public void setClientType(String clientType) {
-        this.clientType = clientType;
+    public void setApplicationType(String applicationType) {
+        this.applicationType = applicationType;
     }
 
     @Override
@@ -142,7 +142,7 @@ public class RegisteredClientTransmitter implements RegisteredClientDetails {
                 .add("clientId", clientId)
                 .add("clientSecret", clientSecret)
                 .add("clientName", clientName)
-                .add("clientType", clientType)
+                .add("applicationType", applicationType)
                 .add("parentClientId", parentClientId)
                 .add("redirectUris", redirectUris)
                 .add("logo", logo)

@@ -25,10 +25,10 @@
 
 package cn.herodotus.dante.persistence.commons.converter;
 
-import cn.herodotus.dante.core.constant.SystemConstants;
 import cn.herodotus.dante.persistence.commons.domain.HerodotusClientSettings;
 import cn.herodotus.dante.persistence.commons.enums.AllJwsAlgorithm;
 import cn.herodotus.dante.persistence.commons.utils.OAuth2SettingUtils;
+import cn.herodotus.dante.security.domain.OAuth2ApplicationType;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.core.convert.converter.Converter;
@@ -68,18 +68,20 @@ public class OAuth2ToClientSettingsConverter implements Converter<ClientSettings
 
         target.setX509CertificateSubjectDN(source.getX509CertificateSubjectDN());
 
-        if (source.getSettings().containsKey(SystemConstants.PARAMETER__PRODUCT_KEY)) {
-            target.setParentClientId(source.getSetting(SystemConstants.PARAMETER__PRODUCT_KEY));
+        if (OAuth2SettingUtils.containProductKey(source)) {
+            target.setParentClientId(OAuth2SettingUtils.getProductKey(source));
         }
 
-        if (source.getSettings().containsKey(SystemConstants.PARAMETER__APPLICATION_TYPE)) {
-            target.setClientType(source.getSetting(SystemConstants.PARAMETER__APPLICATION_TYPE));
+        if (OAuth2SettingUtils.containApplicationType(source)) {
+            OAuth2ApplicationType applicationType = OAuth2SettingUtils.getApplicationType(source);
+            target.setClientType(applicationType.getValue());
         }
 
         List<String> resourceIds = OAuth2SettingUtils.getResourceIds(source);
         if (CollectionUtils.isNotEmpty(resourceIds)) {
             target.setResourceIds(StringUtils.collectionToCommaDelimitedString(resourceIds));
         }
+
         return target;
     }
 }

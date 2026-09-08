@@ -25,7 +25,7 @@
 
 package cn.herodotus.dante.security.definition;
 
-import cn.herodotus.dante.security.domain.OAuth2ClientType;
+import cn.herodotus.dante.security.domain.OAuth2ApplicationType;
 
 import java.io.Serializable;
 
@@ -60,8 +60,8 @@ public interface ExtendedClientSettingsDetails extends Serializable {
      *
      * @return 客户端类别
      */
-    default String getClientType() {
-        return OAuth2ClientType.WEB.getValue();
+    default String getApplicationType() {
+        return OAuth2ApplicationType.WEB.getValue();
     }
 
     /**

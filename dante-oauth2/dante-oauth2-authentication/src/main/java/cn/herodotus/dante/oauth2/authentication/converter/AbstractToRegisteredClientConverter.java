@@ -28,7 +28,7 @@ package cn.herodotus.dante.oauth2.authentication.converter;
 import cn.herodotus.dante.core.constant.SymbolConstants;
 import cn.herodotus.dante.core.constant.SystemConstants;
 import cn.herodotus.dante.persistence.commons.utils.OAuth2SettingUtils;
-import cn.herodotus.dante.security.domain.OAuth2ClientType;
+import cn.herodotus.dante.security.domain.OAuth2ApplicationType;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.Strings;
@@ -83,7 +83,7 @@ abstract class AbstractToRegisteredClientConverter<T extends AbstractOAuth2Clien
         // TokenSettings 的 builder() 方法会将 accessTokenFormat 格式默认设置为 OAuth2TokenFormat.SELF_CONTAINED。这里重新修改为 OAuth2TokenFormat.REFERENCE
         tokenSettingsBuilder.accessTokenFormat(OAuth2TokenFormat.REFERENCE);
         // clientSettingsBuilder 没有提供检测方法，所以先提前设定一个默认值，如果 source 设定了 SystemConstants.PARAMETER__APPLICATION_TYPE 后面可以使用新值覆盖。
-        clientSettingsBuilder.setting(SystemConstants.PARAMETER__APPLICATION_TYPE, OAuth2ClientType.WEB.getValue());
+        OAuth2SettingUtils.setApplicationType(clientSettingsBuilder, OAuth2ApplicationType.WEB);
 
         // 支持 OAuth2.0 中的资源标识符功能
         if (supportResourceIndicators) {
@@ -99,7 +99,7 @@ abstract class AbstractToRegisteredClientConverter<T extends AbstractOAuth2Clien
 
             if (Strings.CS.equals(claim, SystemConstants.PARAMETER__PRODUCT_KEY)) {
                 // 自定义动态注册属性存入到客户端设置中
-                clientSettingsBuilder.setting(claim, value);
+                OAuth2SettingUtils.setProductKey(clientSettingsBuilder, (String) value);
 
                 // 如果包含 ProductKey 同时 clientId 为空。那么就重新设置 clientId。物联网 clientId 格式为 {ProductKey}.{DeviceName}
                 if (StringUtils.isBlank(source.getClientId())) {
@@ -107,9 +107,7 @@ abstract class AbstractToRegisteredClientConverter<T extends AbstractOAuth2Clien
                 }
             }
 
-            if (Strings.CS.equals(claim, SystemConstants.PARAMETER__APPLICATION_TYPE)) {
-                clientSettingsBuilder.setting(claim, value);
-            }
+            OAuth2SettingUtils.setApplicationType(clientSettingsBuilder, claim, value);
         });
 
         builder.clientSettings(clientSettingsBuilder.build());

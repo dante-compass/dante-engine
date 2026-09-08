@@ -39,15 +39,15 @@ import java.io.Serializable;
  * @author : gengwei_zheng
  * @date : 2026/9/3 16:15
  */
-public class OAuth2ClientType implements Serializable {
+public class OAuth2ApplicationType implements Serializable {
 
-    public static final OAuth2ClientType WEB = new OAuth2ClientType("web");
-    public static final OAuth2ClientType NATIVE = new OAuth2ClientType("native");
-    public static final OAuth2ClientType IOT = new OAuth2ClientType("iot");
+    public static final OAuth2ApplicationType WEB = new OAuth2ApplicationType("web");
+    public static final OAuth2ApplicationType NATIVE = new OAuth2ApplicationType("native");
+    public static final OAuth2ApplicationType IOT = new OAuth2ApplicationType("iot");
 
     private final String value;
 
-    public OAuth2ClientType(String value) {
+    public OAuth2ApplicationType(String value) {
         Assert.hasText(value, "value cannot be empty");
         this.value = value;
     }
@@ -64,7 +64,7 @@ public class OAuth2ClientType implements Serializable {
         if (obj == null || this.getClass() != obj.getClass()) {
             return false;
         }
-        OAuth2ClientType that = (OAuth2ClientType) obj;
+        OAuth2ApplicationType that = (OAuth2ApplicationType) obj;
         return getValue().equals(that.getValue());
     }
 

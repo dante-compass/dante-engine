@@ -26,16 +26,18 @@
 package cn.herodotus.dante.persistence.commons.utils;
 
 import cn.herodotus.dante.core.constant.SystemConstants;
-import cn.herodotus.dante.security.domain.OAuth2ClientType;
+import cn.herodotus.dante.security.definition.ExtendedClientSettingsDetails;
+import cn.herodotus.dante.security.domain.OAuth2ApplicationType;
 import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.Strings;
 import org.springframework.security.oauth2.server.authorization.settings.ClientSettings;
 
-import java.util.Collection;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Set;
 
 /**
  * <p>Description: OAuth2 Setting 相关工具类 </p>
@@ -46,43 +48,35 @@ import java.util.Set;
 public class OAuth2SettingUtils {
 
     /**
-     * 从 ClientSettings 中读取 resource_ids
+     * 从 {@link ClientSettings} 中读取 resource_ids
      *
      * @param clientSettings OAuth2 客户端设置 {@link ClientSettings}
-     * @return Resource Ids
+     * @return resource_ids 对应值
      */
     public static List<String> getResourceIds(ClientSettings clientSettings) {
+        // 取值时设置为 List，方便使用 Spring StringUtils 相关工具类转换
         return clientSettings.getSetting(SystemConstants.CLIENT_SETTINGS_NAMESPACE__RESOURCE_IDS);
     }
 
     /**
-     * 向 ClientSettings 中设置 resource_ids
+     * 向 {@link ClientSettings} 中设置 resource_ids
      *
-     * @param clientSettingsBuilder ClientSettings 构建器
-     * @param resourceIds           字符串类型 Resource Ids
+     * @param clientSettingsBuilder {@link ClientSettings} 构建器
+     * @param resourceIds           字符串类型 resource_ids 值
      */
-    public static void setResourceIds(ClientSettings.Builder clientSettingsBuilder, Collection<String> resourceIds) {
-        if (CollectionUtils.isNotEmpty(resourceIds)) {
-            clientSettingsBuilder.setting(SystemConstants.CLIENT_SETTINGS_NAMESPACE__RESOURCE_IDS, resourceIds);
+    public static void setResourceIds(ClientSettings.Builder clientSettingsBuilder, String resourceIds) {
+        String[] resourceIdArray = org.springframework.util.StringUtils.commaDelimitedListToStringArray(resourceIds);
+        if (ArrayUtils.isNotEmpty(resourceIdArray)) {
+            List<String> ids = new ArrayList<>(Arrays.asList(resourceIdArray));
+            clientSettingsBuilder.setting(SystemConstants.CLIENT_SETTINGS_NAMESPACE__RESOURCE_IDS, ids);
         }
     }
 
     /**
-     * 向 ClientSettings 中设置 resource_ids
+     * 向 {@link ClientSettings} 中设置 resource_ids
      *
-     * @param clientSettingsBuilder ClientSettings 构建器
-     * @param resourceIds           字符串类型 Resource Ids
-     */
-    public static void setResourceIds(ClientSettings.Builder clientSettingsBuilder, String resourceIds) {
-        Set<String> resourceIdSet = org.springframework.util.StringUtils.commaDelimitedListToSet(resourceIds);
-        setResourceIds(clientSettingsBuilder, resourceIdSet);
-    }
-
-    /**
-     * 向 ClientSettings 中设置 resource_ids
-     *
-     * @param clientSettingsBuilder ClientSettings 构建器
-     * @param resourceIds           字符串类型 Resource Ids
+     * @param clientSettingsBuilder {@link ClientSettings} 构建器
+     * @param resourceIds           字符串类型 resource_ids 值
      */
     public static void setResourceIds(ClientSettings.Builder clientSettingsBuilder, Object resourceIds) {
         if (ObjectUtils.isEmpty(resourceIds)) {
@@ -91,35 +85,128 @@ public class OAuth2SettingUtils {
     }
 
     /**
-     * 向 ClientSettings 中设置 resource_ids
+     * 检查 {@link ClientSettings} 中是否含有 application_type key。
      *
-     * @param clientSettingsBuilder ClientSettings 构建器
-     * @param clientType            客户端类型 {@link OAuth2ClientType}
+     * @param clientSettings {@link ClientSettings}
+     * @return true Key 存在；false Key 不存在。
      */
-    public static void setClientType(ClientSettings.Builder clientSettingsBuilder, OAuth2ClientType clientType) {
-        clientSettingsBuilder.setting(SystemConstants.PARAMETER__APPLICATION_TYPE, ObjectUtils.isNotEmpty(clientType) ? clientType : OAuth2ClientType.WEB);
+    public static boolean containApplicationType(ClientSettings clientSettings) {
+        return clientSettings.getSettings().containsKey(SystemConstants.CLIENT_SETTINGS_NAMESPACE__APPLICATION_TYPE);
     }
 
     /**
-     * 向 ClientSettings 中设置 resource_ids
+     * 向 {@link ClientSettings} 中设置 application_type
      *
-     * @param clientSettingsBuilder ClientSettings 构建器
-     * @param clientType            客户端类型
+     * @param clientSettingsBuilder {@link ClientSettings} 构建器
+     * @param clientType            客户端类型 {@link OAuth2ApplicationType}
      */
-    public static void setClientType(ClientSettings.Builder clientSettingsBuilder, String clientType) {
-        clientSettingsBuilder.setting(SystemConstants.PARAMETER__APPLICATION_TYPE, StringUtils.isNotBlank(clientType) ? new OAuth2ClientType(clientType) : OAuth2ClientType.WEB);
+    public static void setApplicationType(ClientSettings.Builder clientSettingsBuilder, OAuth2ApplicationType clientType) {
+        clientSettingsBuilder.setting(SystemConstants.CLIENT_SETTINGS_NAMESPACE__APPLICATION_TYPE, ObjectUtils.isNotEmpty(clientType) ? clientType : OAuth2ApplicationType.WEB);
     }
 
     /**
-     * 向 ClientSettings 中设置 resource_ids
+     * 向 {@link ClientSettings} 中设置 application_type
      *
-     * @param clientSettingsBuilder ClientSettings 构建器
-     * @param clientType            客户端类型
+     * @param clientSettingsBuilder {@link ClientSettings} 构建器
+     * @param clientType            客户端类型 String
      */
-    public static void setClientType(ClientSettings.Builder clientSettingsBuilder, String claim, Object clientType) {
+    public static void setApplicationType(ClientSettings.Builder clientSettingsBuilder, String clientType) {
+        setApplicationType(clientSettingsBuilder, StringUtils.isNotBlank(clientType) ? new OAuth2ApplicationType(clientType) : OAuth2ApplicationType.WEB);
+    }
+
+    /**
+     * 向 {@link ClientSettings} 中设置 application_type
+     *
+     * @param clientSettingsBuilder {@link ClientSettings} 构建器
+     * @param clientType            客户端类型 Object
+     */
+    public static void setApplicationType(ClientSettings.Builder clientSettingsBuilder, String claim, Object clientType) {
         if (Strings.CS.equals(claim, SystemConstants.PARAMETER__APPLICATION_TYPE)) {
-            clientSettingsBuilder.setting(SystemConstants.PARAMETER__APPLICATION_TYPE, ObjectUtils.isNotEmpty(clientType) ? clientType : OAuth2ClientType.WEB);
+            clientSettingsBuilder.setting(SystemConstants.CLIENT_SETTINGS_NAMESPACE__APPLICATION_TYPE, ObjectUtils.isNotEmpty(clientType) ? clientType : OAuth2ApplicationType.WEB);
         }
+    }
+
+    /**
+     * 从 {@link ClientSettings} 中读取 application_type
+     *
+     * @param clientSettings OAuth2 客户端设置 {@link ClientSettings}
+     * @return application_type 值 {@link OAuth2ApplicationType}
+     */
+    public static OAuth2ApplicationType getApplicationType(ClientSettings clientSettings) {
+        return clientSettings.getSetting(SystemConstants.CLIENT_SETTINGS_NAMESPACE__APPLICATION_TYPE);
+    }
+
+    /**
+     * 检查 {@link ClientSettings} 中是否含有 product_key key。
+     *
+     * @param clientSettings {@link ClientSettings}
+     * @return true Key 存在；false Key 不存在。
+     */
+    public static boolean containProductKey(ClientSettings clientSettings) {
+        return clientSettings.getSettings().containsKey(SystemConstants.CLIENT_SETTINGS_NAMESPACE__PRODUCT_KEY);
+    }
+
+    /**
+     * 向 {@link ClientSettings} 中设置 product_key
+     *
+     * @param clientSettingsBuilder {@link ClientSettings} 构建器
+     * @param productKey            客户端类型 String
+     */
+    public static void setProductKey(ClientSettings.Builder clientSettingsBuilder, String productKey) {
+        clientSettingsBuilder.setting(SystemConstants.CLIENT_SETTINGS_NAMESPACE__PRODUCT_KEY, productKey);
+    }
+
+    /**
+     * 从 {@link ClientSettings} 中读取 product_key
+     *
+     * @param clientSettings {@link ClientSettings}
+     * @return product_key 值 {@link OAuth2ApplicationType}
+     */
+    public static String getProductKey(ClientSettings clientSettings) {
+        return clientSettings.getSetting(SystemConstants.CLIENT_SETTINGS_NAMESPACE__PRODUCT_KEY);
+    }
+
+    /**
+     * 判断是否为客户端动态注册。主要用于物联网产品中，区分是客户端动态注册还是认证动态开启和关闭。
+     *
+     * @param extensions         扩展信息实现类
+     * @param withParentClientId 是否包含 ParentClientId。该参数用于物联网区分是否为动态注册
+     * @param <T>                {@link ExtendedClientSettingsDetails} 扩展信息实现类型
+     * @return true 是动态注册，false 不是动态注册
+     */
+    public static <T extends ExtendedClientSettingsDetails> boolean isDynamicClientRegistration(T extensions, boolean withParentClientId) {
+        return withParentClientId && StringUtils.isNotBlank(extensions.getParentClientId());
+    }
+
+    /**
+     * 设置 {@link ClientSettings} 扩展信息方法。
+     *
+     * @param clientSettingsBuilder {@link ClientSettings} 构建器
+     * @param extensions            扩展信息实现类
+     * @param withParentClientId    是否包含 ParentClientId。该参数用于物联网区分是否为动态注册
+     * @param <T>                   {@link ExtendedClientSettingsDetails} 扩展信息实现类型
+     */
+    public static <T extends ExtendedClientSettingsDetails> void setClientSettingsExtensions(ClientSettings.Builder clientSettingsBuilder, T extensions, boolean withParentClientId) {
+        // 支持 OAuth2 Resource Indicator 所需配置
+        OAuth2SettingUtils.setResourceIds(clientSettingsBuilder, extensions.getResourceIds());
+
+        // 支持客户端动态注册指定注册来源。默认指定为 'web'
+        OAuth2SettingUtils.setApplicationType(clientSettingsBuilder, extensions.getApplicationType());
+
+        if (isDynamicClientRegistration(extensions, withParentClientId)) {
+            setProductKey(clientSettingsBuilder, extensions.getParentClientId());
+        }
+    }
+
+    /**
+     * 设置 {@link ClientSettings} 扩展信息方法。不管是不是客户端动态注册，设置完整扩展信息。
+     *
+     * @param clientSettingsBuilder {@link ClientSettings} 构建器
+     * @param extensions            扩展信息实现类
+     * @param <T>                   {@link ClientSettings} 扩展信息实现类型
+     */
+    public static <T extends ExtendedClientSettingsDetails> void setClientSettingsExtensions(ClientSettings.Builder clientSettingsBuilder, T extensions) {
+        setClientSettingsExtensions(clientSettingsBuilder, extensions, true);
     }
 
     /**

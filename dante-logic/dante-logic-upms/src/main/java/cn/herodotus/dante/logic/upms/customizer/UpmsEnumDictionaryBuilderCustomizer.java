@@ -27,7 +27,7 @@ package cn.herodotus.dante.logic.upms.customizer;
 
 import cn.herodotus.dante.core.builder.EnumDictionaryBuilder;
 import cn.herodotus.dante.core.function.EnumDictionaryBuilderCustomizer;
-import cn.herodotus.dante.data.commons.enums.ApplicationType;
+import cn.herodotus.dante.data.commons.enums.ClientType;
 import cn.herodotus.dante.data.commons.enums.DataItemStatus;
 import cn.herodotus.dante.logic.upms.enums.*;
 
@@ -45,7 +45,7 @@ public class UpmsEnumDictionaryBuilderCustomizer implements EnumDictionaryBuilde
         builder.append(DataItemStatus.getDictionaries());
         builder.append(OrganizationCategory.getDictionaries());
         builder.append(Identity.getDictionaries());
-        builder.append(ApplicationType.getDictionaries());
+        builder.append(ClientType.getDictionaries());
         builder.append(ElementCategory.getDictionaries());
         builder.append(MenuScenario.getDictionaries());
     }

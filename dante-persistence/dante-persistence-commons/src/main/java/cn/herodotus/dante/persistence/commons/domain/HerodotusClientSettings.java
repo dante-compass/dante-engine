@@ -109,7 +109,7 @@ public class HerodotusClientSettings implements BaseModel, ClientSettingsDetails
     }
 
     @Override
-    public String getClientType() {
+    public String getApplicationType() {
         return clientType;
     }
 

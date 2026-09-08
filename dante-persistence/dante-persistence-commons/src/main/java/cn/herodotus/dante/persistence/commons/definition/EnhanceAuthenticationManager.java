@@ -56,11 +56,10 @@ import java.util.Set;
 public interface EnhanceAuthenticationManager extends AuthenticationManager {
 
     /**
-     * 保存认证资源信息
+     * 添加授权页面资源信息
      *
      * @param transmitter 手动创建 oauth2_registered_client 数据的必要信息 {@link RegisteredClientTransmitter}
      */
-
     void addResource(RegisteredClientTransmitter transmitter);
 
     /**
@@ -73,20 +72,15 @@ public interface EnhanceAuthenticationManager extends AuthenticationManager {
     @Override
     default void enable(RegisteredClientTransmitter transmitter) {
 
-        ClientSettings.Builder clientSettings = ClientSettings.builder();
-        clientSettings.requireProofKey(false);
-        clientSettings.requireAuthorizationConsent(true);
-        clientSettings.tokenEndpointAuthenticationSigningAlgorithm(SignatureAlgorithm.RS256);
+        ClientSettings.Builder clientSettingsBuilder = ClientSettings.builder();
+        clientSettingsBuilder.requireProofKey(false);
+        clientSettingsBuilder.requireAuthorizationConsent(true);
+        clientSettingsBuilder.tokenEndpointAuthenticationSigningAlgorithm(SignatureAlgorithm.RS256);
 
-        // 支持 OAuth2 Resource Indicator 所需配置
-        OAuth2SettingUtils.setResourceIds(clientSettings, transmitter.getResourceIds());
-
-        // 支持客户端动态注册指定注册来源。默认指定为 'web'
-        OAuth2SettingUtils.setClientType(clientSettings, transmitter.getClientType());
+        OAuth2SettingUtils.setClientSettingsExtensions(clientSettingsBuilder, transmitter, transmitter.isRegistration());
 
         Set<AuthorizationGrantType> authorizationGrantTypes = new HashSet<>(Set.of(AuthorizationGrantType.CLIENT_CREDENTIALS));
-        if (transmitter.isRegistration() && StringUtils.hasText(transmitter.getParentClientId())) {
-            clientSettings.setting(SystemConstants.PARAMETER__PRODUCT_KEY, transmitter.getParentClientId());
+        if (OAuth2SettingUtils.isDynamicClientRegistration(transmitter, transmitter.isRegistration())) {
             authorizationGrantTypes.add(AuthorizationGrantType.AUTHORIZATION_CODE);
             authorizationGrantTypes.add(AuthorizationGrantType.DEVICE_CODE);
         }
@@ -98,7 +92,7 @@ public interface EnhanceAuthenticationManager extends AuthenticationManager {
                 .scope(StringUtils.collectionToCommaDelimitedString(List.of(SystemConstants.SCOPE_CLIENT_CREATE, SystemConstants.SCOPE_CLIENT_READ)))
                 .authorizationGrantTypes((types) -> types.addAll(authorizationGrantTypes))
                 .clientAuthenticationMethods((methods -> methods.addAll(Set.of(ClientAuthenticationMethod.CLIENT_SECRET_POST, ClientAuthenticationMethod.CLIENT_SECRET_BASIC))))
-                .redirectUri(ServiceContextHolder.getIotServiceUri())
+                .redirectUri(StringUtils.hasText(transmitter.getRedirectUris()) ? transmitter.getRedirectUris() : ServiceContextHolder.getIotServiceUri())
                 .tokenSettings(TokenSettings.builder()
                         .accessTokenFormat(OAuth2TokenFormat.REFERENCE)
                         .idTokenSignatureAlgorithm(SignatureAlgorithm.RS256)
@@ -106,7 +100,7 @@ public interface EnhanceAuthenticationManager extends AuthenticationManager {
                         .accessTokenTimeToLive(Duration.ofMinutes(10))
                         .refreshTokenTimeToLive(Duration.ofHours(1))
                         .build())
-                .clientSettings(clientSettings.build())
+                .clientSettings(clientSettingsBuilder.build())
                 .build();
         enable(registeredClient);
         addResource(transmitter);

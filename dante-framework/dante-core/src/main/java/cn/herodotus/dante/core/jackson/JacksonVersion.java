@@ -33,7 +33,7 @@ import tools.jackson.core.Version;
  * @author : gengwei.zheng
  * @date : 2023/4/28 14:39
  */
-public interface JacksonConstants {
+public interface JacksonVersion {
 
     Version DEFAULT_VERSION = new Version(1, 0, 0, null, null, null);
 }

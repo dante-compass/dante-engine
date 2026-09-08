@@ -25,10 +25,10 @@
 
 package cn.herodotus.dante.logic.identity.entity;
 
-import cn.herodotus.dante.data.commons.enums.ApplicationType;
+import cn.herodotus.dante.data.commons.enums.ClientType;
 import cn.herodotus.dante.logic.identity.definition.AbstractOAuth2RegisteredClient;
 import cn.herodotus.dante.oauth2.commons.constant.OAuth2Constants;
-import cn.herodotus.dante.security.domain.OAuth2ClientType;
+import cn.herodotus.dante.security.domain.OAuth2ApplicationType;
 import com.google.common.base.MoreObjects;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
@@ -84,9 +84,9 @@ public class OAuth2Application extends AbstractOAuth2RegisteredClient {
     private String homepage;
 
     @Schema(name = "应用类型", title = "用于区分不同类型的应用")
-    @Column(name = "application_type")
+    @Column(name = "client_type")
     @Enumerated(EnumType.ORDINAL)
-    private ApplicationType applicationType = ApplicationType.WEB;
+    private ClientType clientType = ClientType.WEB;
 
     @Schema(name = "应用对应Scope", title = "传递应用对应Scope ID数组")
     @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = OAuth2Constants.REGION_OAUTH2_APPLICATION_SCOPE)
@@ -140,12 +140,12 @@ public class OAuth2Application extends AbstractOAuth2RegisteredClient {
         this.homepage = homepage;
     }
 
-    public ApplicationType getApplicationType() {
-        return applicationType;
+    public ClientType getClientType() {
+        return clientType;
     }
 
-    public void setApplicationType(ApplicationType applicationType) {
-        this.applicationType = applicationType;
+    public void setClientType(ClientType clientType) {
+        this.clientType = clientType;
     }
 
     @Override
@@ -168,16 +168,16 @@ public class OAuth2Application extends AbstractOAuth2RegisteredClient {
     }
 
     @Override
-    public String getClientType() {
-        if (ObjectUtils.isNotEmpty(getApplicationType())) {
-            return switch (getApplicationType()) {
-                case IOT -> OAuth2ClientType.IOT.getValue();
-                case NATIVE -> OAuth2ClientType.NATIVE.getValue();
-                default -> OAuth2ClientType.WEB.getValue();
+    public String getApplicationType() {
+        if (ObjectUtils.isNotEmpty(getClientType())) {
+            return switch (getClientType()) {
+                case IOT -> OAuth2ApplicationType.IOT.getValue();
+                case NATIVE -> OAuth2ApplicationType.NATIVE.getValue();
+                default -> OAuth2ApplicationType.WEB.getValue();
             };
         }
 
-        return super.getClientType();
+        return super.getApplicationType();
     }
 
     @Override
@@ -203,7 +203,7 @@ public class OAuth2Application extends AbstractOAuth2RegisteredClient {
                 .add("abbreviation", abbreviation)
                 .add("logo", logo)
                 .add("homepage", homepage)
-                .add("applicationType", applicationType)
+                .add("clientType", clientType)
                 .toString();
     }
 }

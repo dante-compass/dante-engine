@@ -43,7 +43,7 @@ import java.util.Map;
  */
 @Schema(name = "应用类型")
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
-public enum ApplicationType implements DictionaryEnum {
+public enum ClientType implements DictionaryEnum {
 
     /**
      * 应用类型
@@ -56,11 +56,11 @@ public enum ApplicationType implements DictionaryEnum {
     IOT("5", "物联网应用"),
     NATIVE("6", "桌面应用");
 
-    private static final Map<Integer, ApplicationType> INDEX_MAP = new HashMap<>();
+    private static final Map<Integer, ClientType> INDEX_MAP = new HashMap<>();
     private static final List<Dictionary> DICTIONARIES = new ArrayList<>();
 
     static {
-        for (ApplicationType type : ApplicationType.values()) {
+        for (ClientType type : ClientType.values()) {
             INDEX_MAP.put(type.ordinal(), type);
             DICTIONARIES.add(type.getDictionary(type.name(), type.ordinal()));
         }
@@ -71,12 +71,12 @@ public enum ApplicationType implements DictionaryEnum {
     @Schema(name = "文字")
     private final String label;
 
-    ApplicationType(String value, String label) {
+    ClientType(String value, String label) {
         this.value = value;
         this.label = label;
     }
 
-    public static ApplicationType get(Integer index) {
+    public static ClientType get(Integer index) {
         return INDEX_MAP.get(index);
     }
 
