@@ -28,7 +28,6 @@ package cn.herodotus.dante.persistence.sas.jpa.converter;
 import cn.herodotus.dante.persistence.sas.jpa.entity.HerodotusAuthorizationResource;
 import cn.herodotus.dante.security.domain.OAuth2AuthorizationResource;
 import cn.herodotus.dante.security.domain.RegisteredClientTransmitter;
-import org.springframework.core.convert.converter.Converter;
 
 /**
  * <p>Description: {@link OAuth2AuthorizationResource} 转 {@link HerodotusAuthorizationResource} 转换器 </p>
@@ -36,18 +35,6 @@ import org.springframework.core.convert.converter.Converter;
  * @author : gengwei.zheng
  * @date : 2025/2/25 20:39
  */
-public class TransmitterToHerodotusAuthorizationResourceConverter implements Converter<RegisteredClientTransmitter, HerodotusAuthorizationResource> {
+public class TransmitterToHerodotusAuthorizationResourceConverter extends AbstractToHerodotusAuthorizationResourceConverter<RegisteredClientTransmitter> {
 
-    @Override
-    public HerodotusAuthorizationResource convert(RegisteredClientTransmitter source) {
-
-        HerodotusAuthorizationResource target = new HerodotusAuthorizationResource();
-        target.setId(source.getId());
-        target.setClientId(source.getClientId());
-        target.setRedirectUris(source.getRedirectUris());
-        target.setClientName(source.getClientName());
-        target.setLogo(source.getLogo());
-
-        return target;
-    }
 }

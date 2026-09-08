@@ -23,27 +23,17 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.persistence.sas.jpa.jackson;
+package cn.herodotus.dante.logic.identity.converter;
 
-import cn.herodotus.dante.security.domain.OAuth2ApplicationType;
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import cn.herodotus.dante.logic.identity.entity.OAuth2Application;
+import cn.herodotus.dante.security.converter.AbstractToOAuth2AuthorizationResourceConverter;
+import cn.herodotus.dante.security.domain.OAuth2AuthorizationResource;
 
 /**
- * <p>Description: {@link OAuth2ApplicationType} 序列化 Mixin </p>
+ * <p>Description: {@link OAuth2Application} 转  {@link OAuth2AuthorizationResource} 转换器</p>
  *
  * @author : gengwei_zheng
- * @date : 2026/9/7 22:45
+ * @date : 2026/9/9 0:10
  */
-@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY, getterVisibility = JsonAutoDetect.Visibility.NONE,
-        isGetterVisibility = JsonAutoDetect.Visibility.NONE)
-public class OAuth2ApplicationTypeMixin {
-
-    @JsonCreator
-    public OAuth2ApplicationTypeMixin(@JsonProperty("value") String value) {
-    }
-
+public class OAuth2ApplicationToOAuth2AuthorizationResourceConverter extends AbstractToOAuth2AuthorizationResourceConverter<OAuth2Application> {
 }

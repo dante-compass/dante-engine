@@ -23,27 +23,30 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.persistence.sas.jpa.jackson;
+package cn.herodotus.dante.persistence.sas.jpa.converter;
 
-import cn.herodotus.dante.security.domain.OAuth2ApplicationType;
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import cn.herodotus.dante.persistence.sas.jpa.entity.HerodotusAuthorizationResource;
+import cn.herodotus.dante.security.definition.RegisteredClientDetails;
+import org.springframework.core.convert.converter.Converter;
 
 /**
- * <p>Description: {@link OAuth2ApplicationType} 序列化 Mixin </p>
+ * <p>Description: {@link HerodotusAuthorizationResource} 转换器抽象定义 </p>
  *
- * @author : gengwei_zheng
- * @date : 2026/9/7 22:45
+ * @author : gengwei.zheng
+ * @date : 2025/2/25 20:39
  */
-@JsonTypeInfo(use = JsonTypeInfo.Id.CLASS)
-@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY, getterVisibility = JsonAutoDetect.Visibility.NONE,
-        isGetterVisibility = JsonAutoDetect.Visibility.NONE)
-public class OAuth2ApplicationTypeMixin {
+public abstract class AbstractToHerodotusAuthorizationResourceConverter<T extends RegisteredClientDetails> implements Converter<T, HerodotusAuthorizationResource> {
 
-    @JsonCreator
-    public OAuth2ApplicationTypeMixin(@JsonProperty("value") String value) {
+    @Override
+    public HerodotusAuthorizationResource convert(T source) {
+
+        HerodotusAuthorizationResource target = new HerodotusAuthorizationResource();
+        target.setId(source.getId());
+        target.setClientId(source.getClientId());
+        target.setRedirectUris(source.getRedirectUris());
+        target.setClientName(source.getClientName());
+        target.setLogo(source.getLogo());
+
+        return target;
     }
-
 }

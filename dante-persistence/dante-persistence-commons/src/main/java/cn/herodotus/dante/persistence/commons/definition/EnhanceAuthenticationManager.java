@@ -27,9 +27,13 @@ package cn.herodotus.dante.persistence.commons.definition;
 
 import cn.herodotus.dante.core.constant.SystemConstants;
 import cn.herodotus.dante.persistence.commons.utils.OAuth2SettingUtils;
+import cn.herodotus.dante.security.converter.AbstractToOAuth2AuthorizationResourceConverter;
 import cn.herodotus.dante.security.definition.AuthenticationManager;
+import cn.herodotus.dante.security.definition.RegisteredClientDetails;
+import cn.herodotus.dante.security.domain.OAuth2AuthorizationResource;
 import cn.herodotus.dante.security.domain.RegisteredClientTransmitter;
 import cn.herodotus.dante.spring.context.ServiceContextHolder;
+import org.jspecify.annotations.NonNull;
 import org.springframework.security.oauth2.core.AuthorizationGrantType;
 import org.springframework.security.oauth2.core.ClientAuthenticationMethod;
 import org.springframework.security.oauth2.jose.jws.SignatureAlgorithm;
@@ -60,7 +64,14 @@ public interface EnhanceAuthenticationManager extends AuthenticationManager {
      *
      * @param transmitter 手动创建 oauth2_registered_client 数据的必要信息 {@link RegisteredClientTransmitter}
      */
-    void addResource(RegisteredClientTransmitter transmitter);
+    void addResource(@NonNull RegisteredClientTransmitter transmitter);
+
+    /**
+     * 添加授权页面资源信息
+     *
+     * @param resource 资源信息 {@link OAuth2AuthorizationResource}
+     */
+    void addResource(@NonNull OAuth2AuthorizationResource resource);
 
     /**
      * 开启认证
@@ -106,6 +117,13 @@ public interface EnhanceAuthenticationManager extends AuthenticationManager {
         addResource(transmitter);
     }
 
+    default <T extends RegisteredClientDetails, C extends AbstractToOAuth2AuthorizationResourceConverter<T>> void enable(@NonNull RegisteredClient registeredClient, @NonNull T details, @NonNull C converter) {
+        enable(registeredClient);
+        OAuth2AuthorizationResource resource = converter.convert(details);
+        assert resource != null;
+        addResource(resource);
+    }
+
     /**
      * 开启认证
      * <p>
@@ -113,5 +131,5 @@ public interface EnhanceAuthenticationManager extends AuthenticationManager {
      *
      * @param registeredClient {@link RegisteredClient}
      */
-    void enable(RegisteredClient registeredClient);
+    void enable(@NonNull RegisteredClient registeredClient);
 }

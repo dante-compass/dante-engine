@@ -25,8 +25,8 @@
 
 package cn.herodotus.dante.persistence.sas.jpa.converter;
 
-import cn.herodotus.dante.persistence.commons.converter.AbstractOAuth2ToAuthorizationResourceConverter;
 import cn.herodotus.dante.persistence.sas.jpa.entity.HerodotusAuthorizationResource;
+import cn.herodotus.dante.security.converter.AbstractToOAuth2AuthorizationResourceConverter;
 import cn.herodotus.dante.security.domain.OAuth2AuthorizationResource;
 
 /**
@@ -35,5 +35,5 @@ import cn.herodotus.dante.security.domain.OAuth2AuthorizationResource;
  * @author : gengwei.zheng
  * @date : 2025/2/25 20:36
  */
-public class HerodotusToOAuth2AuthorizationResourceConverter extends AbstractOAuth2ToAuthorizationResourceConverter<HerodotusAuthorizationResource> {
+public class HerodotusToOAuth2AuthorizationResourceConverter extends AbstractToOAuth2AuthorizationResourceConverter<HerodotusAuthorizationResource> {
 }

@@ -51,6 +51,13 @@ public interface OAuth2AuthorizationResourceService {
     void save(RegisteredClientTransmitter transmitter);
 
     /**
+     * 保存 {@link OAuth2AuthorizationResource}
+     *
+     * @param resource {@link OAuth2AuthorizationResource}
+     */
+    void save(OAuth2AuthorizationResource resource);
+
+    /**
      * 根据 ClientId 查询 {@link OAuth2AuthorizationResource}
      *
      * @param clientId OAuth2 Client ID

@@ -23,7 +23,7 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.persistence.commons.converter;
+package cn.herodotus.dante.security.converter;
 
 import cn.herodotus.dante.security.definition.RegisteredClientDetails;
 import cn.herodotus.dante.security.domain.OAuth2AuthorizationResource;
@@ -35,7 +35,7 @@ import org.springframework.core.convert.converter.Converter;
  * @author : gengwei.zheng
  * @date : 2025/2/25 18:05
  */
-public abstract class AbstractOAuth2ToAuthorizationResourceConverter<T extends RegisteredClientDetails> implements Converter<T, OAuth2AuthorizationResource> {
+public abstract class AbstractToOAuth2AuthorizationResourceConverter<T extends RegisteredClientDetails> implements Converter<T, OAuth2AuthorizationResource> {
 
     @Override
     public OAuth2AuthorizationResource convert(T source) {

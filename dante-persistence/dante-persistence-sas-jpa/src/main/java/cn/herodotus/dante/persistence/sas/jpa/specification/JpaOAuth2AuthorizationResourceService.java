@@ -26,6 +26,7 @@
 package cn.herodotus.dante.persistence.sas.jpa.specification;
 
 import cn.herodotus.dante.persistence.sas.jpa.converter.HerodotusToOAuth2AuthorizationResourceConverter;
+import cn.herodotus.dante.persistence.sas.jpa.converter.OAuth2ToHerodotusAuthorizationResourceConverter;
 import cn.herodotus.dante.persistence.sas.jpa.converter.TransmitterToHerodotusAuthorizationResourceConverter;
 import cn.herodotus.dante.persistence.sas.jpa.entity.HerodotusAuthorizationResource;
 import cn.herodotus.dante.persistence.sas.jpa.service.HerodotusAuthorizationResourceService;
@@ -44,17 +45,24 @@ public class JpaOAuth2AuthorizationResourceService implements OAuth2Authorizatio
 
     private final HerodotusAuthorizationResourceService herodotusAuthorizationResourceService;
     private final Converter<HerodotusAuthorizationResource, OAuth2AuthorizationResource> toOAuth2;
-    private final Converter<RegisteredClientTransmitter, HerodotusAuthorizationResource> toHerodotus;
+    private final Converter<OAuth2AuthorizationResource, HerodotusAuthorizationResource> fromOAuth2;
+    private final Converter<RegisteredClientTransmitter, HerodotusAuthorizationResource> fromTransmitter;
 
     public JpaOAuth2AuthorizationResourceService(HerodotusAuthorizationResourceService herodotusAuthorizationResourceService) {
         this.herodotusAuthorizationResourceService = herodotusAuthorizationResourceService;
         this.toOAuth2 = new HerodotusToOAuth2AuthorizationResourceConverter();
-        this.toHerodotus = new TransmitterToHerodotusAuthorizationResourceConverter();
+        this.fromOAuth2 = new OAuth2ToHerodotusAuthorizationResourceConverter();
+        this.fromTransmitter = new TransmitterToHerodotusAuthorizationResourceConverter();
     }
 
     @Override
     public void save(RegisteredClientTransmitter transmitter) {
-        herodotusAuthorizationResourceService.save(toHerodotus.convert(transmitter));
+        herodotusAuthorizationResourceService.save(fromTransmitter.convert(transmitter));
+    }
+
+    @Override
+    public void save(OAuth2AuthorizationResource resource) {
+        herodotusAuthorizationResourceService.save(fromOAuth2.convert(resource));
     }
 
     @Override
