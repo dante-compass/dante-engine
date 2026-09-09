@@ -55,7 +55,7 @@ public class OAuth2SettingUtils {
      */
     public static List<String> getResourceIds(ClientSettings clientSettings) {
         // 取值时设置为 List，方便使用 Spring StringUtils 相关工具类转换
-        return clientSettings.getSetting(SystemConstants.CLIENT_SETTINGS_NAMESPACE__RESOURCE_IDS);
+        return clientSettings.getSetting(SystemConstants.CLIENT_SETTINGS__RESOURCE_IDS);
     }
 
     /**
@@ -68,7 +68,7 @@ public class OAuth2SettingUtils {
         String[] resourceIdArray = org.springframework.util.StringUtils.commaDelimitedListToStringArray(resourceIds);
         if (ArrayUtils.isNotEmpty(resourceIdArray)) {
             List<String> ids = new ArrayList<>(Arrays.asList(resourceIdArray));
-            clientSettingsBuilder.setting(SystemConstants.CLIENT_SETTINGS_NAMESPACE__RESOURCE_IDS, ids);
+            clientSettingsBuilder.setting(SystemConstants.CLIENT_SETTINGS__RESOURCE_IDS, ids);
         }
     }
 
@@ -91,7 +91,7 @@ public class OAuth2SettingUtils {
      * @return true Key 存在；false Key 不存在。
      */
     public static boolean containApplicationType(ClientSettings clientSettings) {
-        return clientSettings.getSettings().containsKey(SystemConstants.CLIENT_SETTINGS_NAMESPACE__APPLICATION_TYPE);
+        return clientSettings.getSettings().containsKey(SystemConstants.CLIENT_SETTINGS__APPLICATION_TYPE);
     }
 
     /**
@@ -101,7 +101,7 @@ public class OAuth2SettingUtils {
      * @param clientType            客户端类型 {@link OAuth2ApplicationType}
      */
     public static void setApplicationType(ClientSettings.Builder clientSettingsBuilder, OAuth2ApplicationType clientType) {
-        clientSettingsBuilder.setting(SystemConstants.CLIENT_SETTINGS_NAMESPACE__APPLICATION_TYPE, ObjectUtils.isNotEmpty(clientType) ? clientType : OAuth2ApplicationType.WEB);
+        clientSettingsBuilder.setting(SystemConstants.CLIENT_SETTINGS__APPLICATION_TYPE, ObjectUtils.isNotEmpty(clientType) ? clientType : OAuth2ApplicationType.WEB);
     }
 
     /**
@@ -122,7 +122,7 @@ public class OAuth2SettingUtils {
      */
     public static void setApplicationType(ClientSettings.Builder clientSettingsBuilder, String claim, Object clientType) {
         if (Strings.CS.equals(claim, SystemConstants.PARAMETER__APPLICATION_TYPE)) {
-            clientSettingsBuilder.setting(SystemConstants.CLIENT_SETTINGS_NAMESPACE__APPLICATION_TYPE, ObjectUtils.isNotEmpty(clientType) ? clientType : OAuth2ApplicationType.WEB);
+            clientSettingsBuilder.setting(SystemConstants.CLIENT_SETTINGS__APPLICATION_TYPE, ObjectUtils.isNotEmpty(clientType) ? clientType : OAuth2ApplicationType.WEB);
         }
     }
 
@@ -133,7 +133,7 @@ public class OAuth2SettingUtils {
      * @return application_type 值 {@link OAuth2ApplicationType}
      */
     public static OAuth2ApplicationType getApplicationType(ClientSettings clientSettings) {
-        return clientSettings.getSetting(SystemConstants.CLIENT_SETTINGS_NAMESPACE__APPLICATION_TYPE);
+        return clientSettings.getSetting(SystemConstants.CLIENT_SETTINGS__APPLICATION_TYPE);
     }
 
     /**
@@ -143,7 +143,7 @@ public class OAuth2SettingUtils {
      * @return true Key 存在；false Key 不存在。
      */
     public static boolean containProductKey(ClientSettings clientSettings) {
-        return clientSettings.getSettings().containsKey(SystemConstants.CLIENT_SETTINGS_NAMESPACE__PRODUCT_KEY);
+        return clientSettings.getSettings().containsKey(SystemConstants.CLIENT_SETTINGS__PRODUCT_KEY);
     }
 
     /**
@@ -153,7 +153,7 @@ public class OAuth2SettingUtils {
      * @param productKey            客户端类型 String
      */
     public static void setProductKey(ClientSettings.Builder clientSettingsBuilder, String productKey) {
-        clientSettingsBuilder.setting(SystemConstants.CLIENT_SETTINGS_NAMESPACE__PRODUCT_KEY, productKey);
+        clientSettingsBuilder.setting(SystemConstants.CLIENT_SETTINGS__PRODUCT_KEY, productKey);
     }
 
     /**
@@ -163,7 +163,7 @@ public class OAuth2SettingUtils {
      * @return product_key 值 {@link OAuth2ApplicationType}
      */
     public static String getProductKey(ClientSettings clientSettings) {
-        return clientSettings.getSetting(SystemConstants.CLIENT_SETTINGS_NAMESPACE__PRODUCT_KEY);
+        return clientSettings.getSetting(SystemConstants.CLIENT_SETTINGS__PRODUCT_KEY);
     }
 
     /**

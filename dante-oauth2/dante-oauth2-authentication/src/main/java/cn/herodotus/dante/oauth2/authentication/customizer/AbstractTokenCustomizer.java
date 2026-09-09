@@ -115,10 +115,10 @@ public abstract class AbstractTokenCustomizer {
     private void processResource(Map<String, Object> attributes, OAuth2TokenContext context) {
         if (AuthorizationGrantType.AUTHORIZATION_CODE.equals(context.getAuthorizationGrantType())) {
             OAuth2AuthorizationRequest authorizationRequest = context.getAuthorization().getAttribute(OAuth2AuthorizationRequest.class.getName());
-            String authorizationRequestResource = (String) authorizationRequest.getAdditionalParameters().get(SystemConstants.PARAMETER__RESOURCE);
+            String authorizationRequestResource = (String) authorizationRequest.getAdditionalParameters().get(OAuth2ParameterNames.RESOURCE);
 
             OAuth2AuthorizationCodeAuthenticationToken authorizationCodeAuthentication = context.getAuthorizationGrant();
-            String tokenRequestResource = (String) authorizationCodeAuthentication.getAdditionalParameters().get(SystemConstants.PARAMETER__RESOURCE);
+            String tokenRequestResource = (String) authorizationCodeAuthentication.getAdditionalParameters().get(OAuth2ParameterNames.RESOURCE);
 
             // Compare resource parameter from authorization request against resource parameter from access token request
             if (OAuth2SettingUtils.unavailable(authorizationRequestResource, tokenRequestResource)) {
@@ -129,7 +129,7 @@ public abstract class AbstractTokenCustomizer {
 
         } else if (AuthorizationGrantType.CLIENT_CREDENTIALS.equals(context.getAuthorizationGrantType())) {
             OAuth2ClientCredentialsAuthenticationToken clientCredentialsAuthentication = context.getAuthorizationGrant();
-            String resource = (String) clientCredentialsAuthentication.getAdditionalParameters().get(SystemConstants.PARAMETER__RESOURCE);
+            String resource = (String) clientCredentialsAuthentication.getAdditionalParameters().get(OAuth2ParameterNames.RESOURCE);
 
             // Compare resource parameter against registered resource ID's
             if (OAuth2SettingUtils.unavailable(context.getRegisteredClient().getClientSettings(), resource)) {

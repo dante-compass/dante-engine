@@ -123,19 +123,19 @@ public interface SystemConstants {
      */
     String PARAMETER__PRODUCT_KEY = "product_key";
     String PARAMETER__TOKEN_FORMAT = "token_format";
-    String PARAMETER__APPLICATION_TYPE  = "application_type";
+    String PARAMETER__APPLICATION_TYPE = "application_type";
     String PARAMETER__RESOURCE_IDS = "resource_ids";
-    String PARAMETER__RESOURCE = "resource";
-    String PARAMETER__CLIENT_ID_METADATA_DOCUMENT_SUPPORTED = "client_id_metadata_document_supported";
 
     /**
      * OAuth2 Setting Names
      */
     String SETTINGS_NAMESPACE = "settings.";
     String CLIENT_SETTINGS_NAMESPACE = SETTINGS_NAMESPACE.concat("client.");
-    String CLIENT_SETTINGS_NAMESPACE__PRODUCT_KEY = CLIENT_SETTINGS_NAMESPACE.concat("product-key");
-    String CLIENT_SETTINGS_NAMESPACE__APPLICATION_TYPE = CLIENT_SETTINGS_NAMESPACE.concat("application-type");
-    String CLIENT_SETTINGS_NAMESPACE__RESOURCE_IDS = CLIENT_SETTINGS_NAMESPACE.concat("resource-ids");
+    String CLIENT_SETTINGS__PRODUCT_KEY = CLIENT_SETTINGS_NAMESPACE.concat("product-key");
+    String CLIENT_SETTINGS__APPLICATION_TYPE = CLIENT_SETTINGS_NAMESPACE.concat("application-type");
+    String CLIENT_SETTINGS__RESOURCE_IDS = CLIENT_SETTINGS_NAMESPACE.concat("resource-ids");
+    String AUTHORIZATION_SERVER_SETTINGS__CLIENT_ID_METADATA_DOCUMENT_SUPPORTED = "client_id_metadata_document_supported";
+    String AUTHORIZATION_SERVER_SETTINGS__PARAMETER__AUTHORIZATION_RESPONSE_ISS_PARAMETER_SUPPORTED = "authorization_response_iss_parameter_supported";
     /**
      * OAuth2 模式类型
      */

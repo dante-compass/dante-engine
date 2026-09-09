@@ -33,6 +33,7 @@ import cn.herodotus.dante.oauth2.authentication.consumer.OAuth2TokenEndpointAuth
 import cn.herodotus.dante.oauth2.authentication.consumer.OidcClientRegistrationAuthenticationProviderConsumer;
 import cn.herodotus.dante.oauth2.authentication.provider.OAuth2ResourceOwnerPasswordAuthenticationConverter;
 import cn.herodotus.dante.oauth2.authentication.provider.OAuth2SocialCredentialsAuthenticationConverter;
+import cn.herodotus.dante.oauth2.authentication.response.OAuth2AuthorizationResponseHandler;
 import cn.herodotus.dante.security.definition.ClientDetailsService;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -95,6 +96,7 @@ public class OAuth2AuthorizationServerConfigurerCustomizer implements Customizer
                 .authorizationEndpoint(endpoint -> {
                     endpoint.errorResponseHandler(authenticationConfigurerManager.getOAuth2AuthenticationFailureHandler());
                     endpoint.authenticationProviders(new OAuth2AuthorizationAuthenticationProviderConsumer(authenticationConfigurerManager.getOAuth2AuthenticationProperties().getSupportResourceIndicators()));
+                    endpoint.authorizationResponseHandler(new OAuth2AuthorizationResponseHandler(authenticationConfigurerManager.getOAuth2AuthenticationProperties().getSupportAuthorizationResponseIssParameter()));
                     endpoint.consentPage(authenticationConfigurerManager.getOAuth2AuthenticationProperties().getAuthorizationConsentUri());
                 })
                 .deviceAuthorizationEndpoint(endpoint -> {

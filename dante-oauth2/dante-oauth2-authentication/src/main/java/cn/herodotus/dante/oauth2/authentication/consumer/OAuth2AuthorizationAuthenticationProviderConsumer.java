@@ -25,11 +25,11 @@
 
 package cn.herodotus.dante.oauth2.authentication.consumer;
 
-import cn.herodotus.dante.core.constant.SystemConstants;
 import cn.herodotus.dante.persistence.commons.utils.OAuth2SettingUtils;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.oauth2.core.OAuth2Error;
 import org.springframework.security.oauth2.core.OAuth2ErrorCodes;
+import org.springframework.security.oauth2.core.endpoint.OAuth2ParameterNames;
 import org.springframework.security.oauth2.core.oidc.OidcScopes;
 import org.springframework.security.oauth2.server.authorization.authentication.*;
 
@@ -80,7 +80,7 @@ public class OAuth2AuthorizationAuthenticationProviderConsumer implements Consum
                 return;
             }
 
-            String resource = (String) authenticationToken.getAdditionalParameters().get(SystemConstants.PARAMETER__RESOURCE);
+            String resource = (String) authenticationToken.getAdditionalParameters().get(OAuth2ParameterNames.RESOURCE);
 
             if (OAuth2SettingUtils.unavailable(authenticationContext.getRegisteredClient().getClientSettings(), resource)) {
                 OAuth2Error error = new OAuth2Error(OAuth2ErrorCodes.INVALID_REQUEST);

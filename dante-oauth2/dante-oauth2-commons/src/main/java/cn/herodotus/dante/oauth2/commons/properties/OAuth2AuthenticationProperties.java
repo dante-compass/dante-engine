@@ -74,6 +74,11 @@ public class OAuth2AuthenticationProperties {
     private Boolean supportResourceIndicators = Boolean.FALSE;
 
     /**
+     * 是否支持 OAuth2 授权码授权模式是否支持 Iss 参数
+     */
+    private Boolean supportAuthorizationResponseIssParameter = Boolean.FALSE;
+
+    /**
      * 开启登录失败限制
      */
     private SignInFailureLimited signInFailureLimited = new SignInFailureLimited();
@@ -137,6 +142,14 @@ public class OAuth2AuthenticationProperties {
         this.supportResourceIndicators = supportResourceIndicators;
     }
 
+    public Boolean getSupportAuthorizationResponseIssParameter() {
+        return supportAuthorizationResponseIssParameter;
+    }
+
+    public void setSupportAuthorizationResponseIssParameter(Boolean supportAuthorizationResponseIssParameter) {
+        this.supportAuthorizationResponseIssParameter = supportAuthorizationResponseIssParameter;
+    }
+
     public SignInFailureLimited getSignInFailureLimited() {
         return signInFailureLimited;
     }
@@ -193,6 +206,7 @@ public class OAuth2AuthenticationProperties {
                 .add("deviceVerificationFailureUri", deviceVerificationFailureUri)
                 .add("sslBundleProvider", sslBundleProvider)
                 .add("supportResourceIndicators", supportResourceIndicators)
+                .add("supportAuthorizationResponseIssParameter", supportAuthorizationResponseIssParameter)
                 .add("signInFailureLimited", signInFailureLimited)
                 .add("signInEndpointLimited", signInEndpointLimited)
                 .add("signInKickOutLimited", signInKickOutLimited)
