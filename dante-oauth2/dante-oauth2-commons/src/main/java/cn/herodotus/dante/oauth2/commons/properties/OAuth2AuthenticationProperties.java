@@ -69,16 +69,6 @@ public class OAuth2AuthenticationProperties {
     private String sslBundleProvider;
 
     /**
-     * 是否支持 OAuth2.0 中的资源标识符功能
-     */
-    private Boolean supportResourceIndicators = Boolean.FALSE;
-
-    /**
-     * 是否支持 OAuth2 授权码授权模式是否支持 Iss 参数
-     */
-    private Boolean supportAuthorizationResponseIssParameter = Boolean.FALSE;
-
-    /**
      * 开启登录失败限制
      */
     private SignInFailureLimited signInFailureLimited = new SignInFailureLimited();
@@ -100,7 +90,7 @@ public class OAuth2AuthenticationProperties {
      */
     private Persistence persistence = new Persistence();
 
-    private ClientIdMetadataDocument clientIdMetadataDocument = new ClientIdMetadataDocument();
+    private Mcp mcp = new Mcp();
 
     public String getAuthorizationConsentUri() {
         return authorizationConsentUri;
@@ -132,22 +122,6 @@ public class OAuth2AuthenticationProperties {
 
     public void setSslBundleProvider(String sslBundleProvider) {
         this.sslBundleProvider = sslBundleProvider;
-    }
-
-    public Boolean getSupportResourceIndicators() {
-        return supportResourceIndicators;
-    }
-
-    public void setSupportResourceIndicators(Boolean supportResourceIndicators) {
-        this.supportResourceIndicators = supportResourceIndicators;
-    }
-
-    public Boolean getSupportAuthorizationResponseIssParameter() {
-        return supportAuthorizationResponseIssParameter;
-    }
-
-    public void setSupportAuthorizationResponseIssParameter(Boolean supportAuthorizationResponseIssParameter) {
-        this.supportAuthorizationResponseIssParameter = supportAuthorizationResponseIssParameter;
     }
 
     public SignInFailureLimited getSignInFailureLimited() {
@@ -190,12 +164,12 @@ public class OAuth2AuthenticationProperties {
         this.persistence = persistence;
     }
 
-    public ClientIdMetadataDocument getClientIdMetadataDocument() {
-        return clientIdMetadataDocument;
+    public Mcp getMcp() {
+        return mcp;
     }
 
-    public void setClientIdMetadataDocument(ClientIdMetadataDocument clientIdMetadataDocument) {
-        this.clientIdMetadataDocument = clientIdMetadataDocument;
+    public void setMcp(Mcp mcp) {
+        this.mcp = mcp;
     }
 
     @Override
@@ -205,14 +179,12 @@ public class OAuth2AuthenticationProperties {
                 .add("deviceVerificationSuccessUri", deviceVerificationSuccessUri)
                 .add("deviceVerificationFailureUri", deviceVerificationFailureUri)
                 .add("sslBundleProvider", sslBundleProvider)
-                .add("supportResourceIndicators", supportResourceIndicators)
-                .add("supportAuthorizationResponseIssParameter", supportAuthorizationResponseIssParameter)
                 .add("signInFailureLimited", signInFailureLimited)
                 .add("signInEndpointLimited", signInEndpointLimited)
                 .add("signInKickOutLimited", signInKickOutLimited)
                 .add("formLogin", formLogin)
                 .add("persistence", persistence)
-                .add("clientIdMetadataDocument", clientIdMetadataDocument)
+                .add("mcp", mcp)
                 .toString();
     }
 
@@ -586,30 +558,57 @@ public class OAuth2AuthenticationProperties {
         }
     }
 
-    public static class ClientIdMetadataDocument {
+    public static class Mcp {
         /**
-         * 是否开启 CIMD功能，默认关闭
+         * 是否支持 OAuth2.0 中的资源标识符功能
          */
-        private Boolean enabled = Boolean.TRUE;
+        private Boolean supportResourceIndicators = Boolean.FALSE;
+
         /**
-         * 缓存最大时间，默认 24 小时
+         * 是否支持 OAuth2 授权码授权模式是否支持 Iss 参数
+         */
+        private Boolean supportAuthorizationResponseIssParameter = Boolean.FALSE;
+
+        /**
+         * 是否支持 OAuth Client ID Metadata Documents
+         */
+        private Boolean supportClientIdMetadataDocument = Boolean.FALSE;
+
+        /**
+         * CIMD 缓存最大时间，默认 24 小时
          */
         private Duration cacheMaxAge = Duration.ofDays(1);
         /**
-         * 是否允许 Http 类型的 Client Identifier
+         * CIMD 是否允许 Http 类型的 Client Identifier
          */
         private Boolean allowHttpUrlForClientIdentifier = Boolean.TRUE;
         /**
-         * 是否允许 Loopback 类型 Host 的 Client Identifier
+         * CIMD 是否允许 Loopback 类型 Host 的 Client Identifier
          */
         private Boolean allowLoopbackHostForClientIdentifier = Boolean.TRUE;
 
-        public Boolean getEnabled() {
-            return enabled;
+        public Boolean getSupportResourceIndicators() {
+            return supportResourceIndicators;
         }
 
-        public void setEnabled(Boolean enabled) {
-            this.enabled = enabled;
+        public void setSupportResourceIndicators(Boolean supportResourceIndicators) {
+            this.supportResourceIndicators = supportResourceIndicators;
+        }
+
+        public Boolean getSupportAuthorizationResponseIssParameter() {
+            return supportAuthorizationResponseIssParameter;
+        }
+
+        public void setSupportAuthorizationResponseIssParameter(Boolean supportAuthorizationResponseIssParameter) {
+            this.supportAuthorizationResponseIssParameter = supportAuthorizationResponseIssParameter;
+        }
+
+        public Boolean getSupportClientIdMetadataDocument() {
+            return supportClientIdMetadataDocument;
+        }
+
+        public void setSupportClientIdMetadataDocument(Boolean supportClientIdMetadataDocument) {
+            this.supportClientIdMetadataDocument = supportClientIdMetadataDocument;
         }
 
         public Duration getCacheMaxAge() {
@@ -639,7 +638,9 @@ public class OAuth2AuthenticationProperties {
         @Override
         public String toString() {
             return MoreObjects.toStringHelper(this)
-                    .add("enabled", enabled)
+                    .add("supportResourceIndicators", supportResourceIndicators)
+                    .add("supportAuthorizationResponseIssParameter", supportAuthorizationResponseIssParameter)
+                    .add("supportClientIdMetadataDocument", supportClientIdMetadataDocument)
                     .add("cacheMaxAge", cacheMaxAge)
                     .add("allowHttpUrlForClientIdentifier", allowHttpUrlForClientIdentifier)
                     .add("allowLoopbackHostForClientIdentifier", allowLoopbackHostForClientIdentifier)

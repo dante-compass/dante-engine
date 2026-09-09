@@ -41,12 +41,12 @@ public class DelegatingRegisteredClientRepository implements RegisteredClientRep
 
     private final RegisteredClientRepository defaultRegisteredClientRepository;
     private final RegisteredClientRepository cimdRegisteredClientRepository;
-    private final boolean clientIdMetadataDocumentEnabled;
+    private final boolean supportClientIdMetadataDocument;
 
     public DelegatingRegisteredClientRepository(RegisteredClientRepository defaultRegisteredClientRepository, OAuth2AuthenticationProperties authenticationProperties) {
         this.defaultRegisteredClientRepository = defaultRegisteredClientRepository;
         this.cimdRegisteredClientRepository = new ClientIdMetadataDocumentRegisteredClientRepository(authenticationProperties);
-        this.clientIdMetadataDocumentEnabled = authenticationProperties.getClientIdMetadataDocument().getEnabled();
+        this.supportClientIdMetadataDocument = authenticationProperties.getMcp().getSupportClientIdMetadataDocument();
     }
 
     @Override
@@ -61,7 +61,7 @@ public class DelegatingRegisteredClientRepository implements RegisteredClientRep
             return registeredClient;
         }
 
-        if (clientIdMetadataDocumentEnabled) {
+        if (supportClientIdMetadataDocument) {
             return cimdRegisteredClientRepository.findById(id);
         }
 
@@ -75,7 +75,7 @@ public class DelegatingRegisteredClientRepository implements RegisteredClientRep
             return registeredClient;
         }
 
-        if (clientIdMetadataDocumentEnabled) {
+        if (supportClientIdMetadataDocument) {
             return cimdRegisteredClientRepository.findByClientId(clientId);
         }
 

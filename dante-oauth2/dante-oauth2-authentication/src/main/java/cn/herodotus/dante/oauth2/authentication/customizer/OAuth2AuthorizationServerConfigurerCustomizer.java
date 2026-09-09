@@ -90,13 +90,13 @@ public class OAuth2AuthorizationServerConfigurerCustomizer implements Customizer
                 .clientAuthentication(endpoint -> endpoint.errorResponseHandler(authenticationConfigurerManager.getOAuth2AuthenticationFailureHandler()))
                 .clientRegistrationEndpoint(endpoint -> {
                     endpoint.errorResponseHandler(authenticationConfigurerManager.getOAuth2AuthenticationFailureHandler());
-                    endpoint.authenticationProviders(new OAuth2ClientRegistrationAuthenticationProviderConsumer(authenticationConfigurerManager.getOAuth2AuthenticationProperties().getSupportResourceIndicators()));
+                    endpoint.authenticationProviders(new OAuth2ClientRegistrationAuthenticationProviderConsumer(authenticationConfigurerManager.getOAuth2AuthenticationProperties().getMcp().getSupportResourceIndicators()));
                     endpoint.clientRegistrationResponseHandler(authenticationConfigurerManager.getOAuth2ClientRegistrationSuccessHandler());
                 })
                 .authorizationEndpoint(endpoint -> {
                     endpoint.errorResponseHandler(authenticationConfigurerManager.getOAuth2AuthenticationFailureHandler());
-                    endpoint.authenticationProviders(new OAuth2AuthorizationAuthenticationProviderConsumer(authenticationConfigurerManager.getOAuth2AuthenticationProperties().getSupportResourceIndicators()));
-                    endpoint.authorizationResponseHandler(new OAuth2AuthorizationResponseHandler(authenticationConfigurerManager.getOAuth2AuthenticationProperties().getSupportAuthorizationResponseIssParameter()));
+                    endpoint.authenticationProviders(new OAuth2AuthorizationAuthenticationProviderConsumer(authenticationConfigurerManager.getOAuth2AuthenticationProperties().getMcp().getSupportResourceIndicators()));
+                    endpoint.authorizationResponseHandler(new OAuth2AuthorizationResponseHandler(authenticationConfigurerManager.getOAuth2AuthenticationProperties().getMcp().getSupportAuthorizationResponseIssParameter()));
                     endpoint.consentPage(authenticationConfigurerManager.getOAuth2AuthenticationProperties().getAuthorizationConsentUri());
                 })
                 .deviceAuthorizationEndpoint(endpoint -> {
@@ -125,12 +125,16 @@ public class OAuth2AuthorizationServerConfigurerCustomizer implements Customizer
                 })
                 .tokenIntrospectionEndpoint(endpoint -> endpoint.errorResponseHandler(authenticationConfigurerManager.getOAuth2AuthenticationFailureHandler()))
                 .tokenRevocationEndpoint(endpoint -> endpoint.errorResponseHandler(authenticationConfigurerManager.getOAuth2AuthenticationFailureHandler()))
-                .oidc(oidc -> oidc.clientRegistrationEndpoint(endpoint -> {
-                            endpoint.errorResponseHandler(authenticationConfigurerManager.getOAuth2AuthenticationFailureHandler());
-                            endpoint.authenticationProviders(new OidcClientRegistrationAuthenticationProviderConsumer(authenticationConfigurerManager.getOAuth2AuthenticationProperties().getSupportResourceIndicators()));
-                            endpoint.clientRegistrationResponseHandler(authenticationConfigurerManager.getOidcClientRegistrationSuccessHandler());
-                        })
+                .oidc(oidc -> oidc
                         .userInfoEndpoint(userInfo -> userInfo
                                 .userInfoMapper(new HerodotusOidcUserInfoMapper())));
+//                .oidc(oidc -> oidc.clientRegistrationEndpoint(endpoint -> {
+//                            endpoint.errorResponseHandler(authenticationConfigurerManager.getOAuth2AuthenticationFailureHandler());
+//                            endpoint.authenticationProviders(new OidcClientRegistrationAuthenticationProviderConsumer(authenticationConfigurerManager.getOAuth2AuthenticationProperties().getMcp().getSupportResourceIndicators()));
+//                            endpoint.clientRegistrationResponseHandler(authenticationConfigurerManager.getOidcClientRegistrationSuccessHandler());
+//                        })
+//                        .userInfoEndpoint(userInfo -> userInfo
+//                                .userInfoMapper(new HerodotusOidcUserInfoMapper())));
+
     }
 }

@@ -50,12 +50,12 @@ class ClientIdMetadataDocumentRegisteredClientRepository implements RegisteredCl
     private final ClientIdMetadataDocumentResolver clientIdMetadataDocumentResolver;
     private final ClientMetadataValidator clientMetadataValidator;
 
-    public ClientIdMetadataDocumentRegisteredClientRepository(OAuth2AuthenticationProperties properties) {
-        this.cache = new ClientIdMetadataDocumentCache(properties.getClientIdMetadataDocument().getCacheMaxAge());
+    public ClientIdMetadataDocumentRegisteredClientRepository(OAuth2AuthenticationProperties authenticationProperties) {
+        this.cache = new ClientIdMetadataDocumentCache(authenticationProperties.getMcp().getCacheMaxAge());
         this.registeredClientConverter = new OAuth2ClientRegistrationRegisteredClientConverter();
         this.clientIdMetadataDocumentResolver = new DefaultClientIdMetadataDocumentResolver(this.cache,
-                properties.getClientIdMetadataDocument().getAllowHttpUrlForClientIdentifier(),
-                properties.getClientIdMetadataDocument().getAllowLoopbackHostForClientIdentifier());
+                authenticationProperties.getMcp().getAllowHttpUrlForClientIdentifier(),
+                authenticationProperties.getMcp().getAllowLoopbackHostForClientIdentifier());
         this.clientMetadataValidator = new DefaultClientMetadataValidator();
     }
 

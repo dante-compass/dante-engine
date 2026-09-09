@@ -136,6 +136,7 @@ public interface SystemConstants {
     String CLIENT_SETTINGS__RESOURCE_IDS = CLIENT_SETTINGS_NAMESPACE.concat("resource-ids");
     String AUTHORIZATION_SERVER_SETTINGS__CLIENT_ID_METADATA_DOCUMENT_SUPPORTED = "client_id_metadata_document_supported";
     String AUTHORIZATION_SERVER_SETTINGS__PARAMETER__AUTHORIZATION_RESPONSE_ISS_PARAMETER_SUPPORTED = "authorization_response_iss_parameter_supported";
+
     /**
      * OAuth2 模式类型
      */

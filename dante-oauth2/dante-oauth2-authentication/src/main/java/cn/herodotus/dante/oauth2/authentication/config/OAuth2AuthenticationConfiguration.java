@@ -75,14 +75,14 @@ public class OAuth2AuthenticationConfiguration {
 
     @Bean
     public OAuth2TokenCustomizer<JwtEncodingContext> jwtTokenCustomizer(OAuth2AuthenticationProperties authenticationProperties) {
-        HerodotusJwtTokenCustomizer customizer = new HerodotusJwtTokenCustomizer(authenticationProperties.getSupportResourceIndicators());
+        HerodotusJwtTokenCustomizer customizer = new HerodotusJwtTokenCustomizer(authenticationProperties.getMcp().getSupportResourceIndicators());
         log.trace("[Herodotus] |- Bean [OAuth2 Jwt Token Customizer] Configure.");
         return customizer;
     }
 
     @Bean
     public OAuth2TokenCustomizer<OAuth2TokenClaimsContext> opaqueTokenCustomizer(OAuth2AuthenticationProperties authenticationProperties) {
-        HerodotusOpaqueTokenCustomizer customizer = new HerodotusOpaqueTokenCustomizer(authenticationProperties.getSupportResourceIndicators());
+        HerodotusOpaqueTokenCustomizer customizer = new HerodotusOpaqueTokenCustomizer(authenticationProperties.getMcp().getSupportResourceIndicators());
         log.trace("[Herodotus] |- Bean [OAuth2 Opaque Token Customizer] Configure.");
         return customizer;
     }
