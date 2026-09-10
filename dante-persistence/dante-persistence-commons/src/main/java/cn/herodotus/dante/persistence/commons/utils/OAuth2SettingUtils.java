@@ -98,31 +98,31 @@ public class OAuth2SettingUtils {
      * 向 {@link ClientSettings} 中设置 application_type
      *
      * @param clientSettingsBuilder {@link ClientSettings} 构建器
-     * @param clientType            客户端类型 {@link OAuth2ApplicationType}
+     * @param applicationType       客户端类型 {@link OAuth2ApplicationType}
      */
-    public static void setApplicationType(ClientSettings.Builder clientSettingsBuilder, OAuth2ApplicationType clientType) {
-        clientSettingsBuilder.setting(SystemConstants.CLIENT_SETTINGS__APPLICATION_TYPE, ObjectUtils.isNotEmpty(clientType) ? clientType : OAuth2ApplicationType.WEB);
+    public static void setApplicationType(ClientSettings.Builder clientSettingsBuilder, OAuth2ApplicationType applicationType) {
+        clientSettingsBuilder.setting(SystemConstants.CLIENT_SETTINGS__APPLICATION_TYPE, ObjectUtils.isNotEmpty(applicationType) ? applicationType : OAuth2ApplicationType.WEB);
     }
 
     /**
      * 向 {@link ClientSettings} 中设置 application_type
      *
      * @param clientSettingsBuilder {@link ClientSettings} 构建器
-     * @param clientType            客户端类型 String
+     * @param applicationType       客户端类型 String
      */
-    public static void setApplicationType(ClientSettings.Builder clientSettingsBuilder, String clientType) {
-        setApplicationType(clientSettingsBuilder, StringUtils.isNotBlank(clientType) ? new OAuth2ApplicationType(clientType) : OAuth2ApplicationType.WEB);
+    public static void setApplicationType(ClientSettings.Builder clientSettingsBuilder, String applicationType) {
+        setApplicationType(clientSettingsBuilder, StringUtils.isNotBlank(applicationType) ? new OAuth2ApplicationType(applicationType) : OAuth2ApplicationType.WEB);
     }
 
     /**
      * 向 {@link ClientSettings} 中设置 application_type
      *
      * @param clientSettingsBuilder {@link ClientSettings} 构建器
-     * @param clientType            客户端类型 Object
+     * @param applicationType       客户端类型 Object
      */
-    public static void setApplicationType(ClientSettings.Builder clientSettingsBuilder, String claim, Object clientType) {
+    public static void setApplicationType(ClientSettings.Builder clientSettingsBuilder, String claim, Object applicationType) {
         if (Strings.CS.equals(claim, SystemConstants.PARAMETER__APPLICATION_TYPE)) {
-            clientSettingsBuilder.setting(SystemConstants.CLIENT_SETTINGS__APPLICATION_TYPE, ObjectUtils.isNotEmpty(clientType) ? clientType : OAuth2ApplicationType.WEB);
+            clientSettingsBuilder.setting(SystemConstants.CLIENT_SETTINGS__APPLICATION_TYPE, ObjectUtils.isNotEmpty(applicationType) ? applicationType : OAuth2ApplicationType.WEB);
         }
     }
 
