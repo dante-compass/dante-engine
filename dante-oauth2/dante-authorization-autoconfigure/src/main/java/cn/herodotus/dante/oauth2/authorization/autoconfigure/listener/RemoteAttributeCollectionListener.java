@@ -26,9 +26,10 @@
 package cn.herodotus.dante.oauth2.authorization.autoconfigure.listener;
 
 import cn.herodotus.dante.core.jackson.JacksonUtils;
-import cn.herodotus.dante.oauth2.authorization.autoconfigure.bus.RemoteRestMappingCollectEvent;
-import cn.herodotus.dante.oauth2.authorization.autoconfigure.processor.SecurityAttributeDistributionProcessor;
-import cn.herodotus.dante.messaging.domain.MappingAttribute;
+import cn.herodotus.dante.messaging.domain.AttributeCollector;
+import cn.herodotus.dante.oauth2.authorization.autoconfigure.bus.RemoteAttributeCollectionEvent;
+import cn.herodotus.dante.oauth2.authorization.autoconfigure.processor.SecurityAttributeProcessor;
+import org.apache.commons.collections4.CollectionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationListener;
@@ -38,34 +39,35 @@ import java.util.Optional;
 /**
  * <p>Description: SecurityMetadata远程变更事件监听 </p>
  * <p>
- * 所有服务启动完成，扫描 Rest 到所有接口之后，会通过发送 {@link RemoteRestMappingCollectEvent} 事件，将扫描到的接口数据发送到 UPMS
+ * 所有服务启动完成，扫描 Rest 到所有接口之后，会通过发送 {@link RemoteAttributeCollectionEvent} 事件，将扫描到的接口数据发送到 UPMS
  * <p>
- * {@link RemoteRestMappingGatherListener} 监听到 {@link RemoteRestMappingCollectEvent} 事件后，进行后续的处理。
+ * {@link RemoteAttributeCollectionListener} 监听到 {@link RemoteAttributeCollectionEvent} 事件后，进行后续的处理。
  *
  * @author : gengwei.zheng
  * @date : 2021/8/5 16:16
  */
-public class RemoteRestMappingGatherListener implements ApplicationListener<RemoteRestMappingCollectEvent> {
+public class RemoteAttributeCollectionListener implements ApplicationListener<RemoteAttributeCollectionEvent> {
 
-    private static final Logger log = LoggerFactory.getLogger(RemoteRestMappingGatherListener.class);
+    private static final Logger log = LoggerFactory.getLogger(RemoteAttributeCollectionListener.class);
 
-    private final SecurityAttributeDistributionProcessor securityAttributeDistributionProcessor;
+    private final SecurityAttributeProcessor securityAttributeProcessor;
 
-    public RemoteRestMappingGatherListener(SecurityAttributeDistributionProcessor securityAttributeDistributionProcessor) {
-        this.securityAttributeDistributionProcessor = securityAttributeDistributionProcessor;
+    public RemoteAttributeCollectionListener(SecurityAttributeProcessor securityAttributeProcessor) {
+        this.securityAttributeProcessor = securityAttributeProcessor;
     }
 
     @Override
-    public void onApplicationEvent(RemoteRestMappingCollectEvent event) {
+    public void onApplicationEvent(RemoteAttributeCollectionEvent event) {
 
-        log.info("[Herodotus] |- Request mapping gather REMOTE listener, response service [{}] event!", event.getOriginService());
+        log.info("[Herodotus] |- Attribute collect REMOTE listener, response service [{}] event!", event.getOriginService());
 
-        String requestMapping = event.getData();
+        String date = event.getData();
 
-        log.debug("[Herodotus] |- [R4] Request mapping process BEGIN!");
+        log.debug("[Herodotus] |- [R4] Attribute collect process BEGIN!");
 
-        Optional.ofNullable(requestMapping)
-                .flatMap(value -> Optional.ofNullable(JacksonUtils.toList(value, MappingAttribute.class)))
-                .ifPresent(securityAttributeDistributionProcessor::processRestMappings);
+        Optional.ofNullable(date)
+                .flatMap(value -> Optional.ofNullable(JacksonUtils.toObject(value, AttributeCollector.class)))
+                .filter(collector -> CollectionUtils.isNotEmpty(collector.getAttributes()))
+                .ifPresent(securityAttributeProcessor::postAttributeCollectorProcess);
     }
 }

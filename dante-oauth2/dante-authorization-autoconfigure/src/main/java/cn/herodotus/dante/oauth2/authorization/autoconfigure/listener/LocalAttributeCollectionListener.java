@@ -25,43 +25,42 @@
 
 package cn.herodotus.dante.oauth2.authorization.autoconfigure.listener;
 
-import cn.herodotus.dante.messaging.event.RestMappingCollectEvent;
-import cn.herodotus.dante.oauth2.authorization.autoconfigure.processor.SecurityAttributeDistributionProcessor;
-import cn.herodotus.dante.messaging.domain.MappingAttribute;
+import cn.herodotus.dante.messaging.domain.AttributeCollector;
+import cn.herodotus.dante.messaging.event.AttributeCollectionEvent;
+import cn.herodotus.dante.oauth2.authorization.autoconfigure.processor.SecurityAttributeProcessor;
 import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.lang3.ObjectUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationListener;
 
-import java.util.List;
-
 /**
- * <p>Description: 本地RequestMapping收集监听 </p>
+ * <p>Description: 本地MappingAttribute收集监听 </p>
  * <p>
  * 主要在单体式架构，以及 UUA 服务自身使用
  *
  * @author : gengwei.zheng
  * @date : 2021/8/8 22:02
  */
-public class LocalRestMappingCollectListener implements ApplicationListener<RestMappingCollectEvent> {
+public class LocalAttributeCollectionListener implements ApplicationListener<AttributeCollectionEvent> {
 
-    private static final Logger log = LoggerFactory.getLogger(LocalRestMappingCollectListener.class);
+    private static final Logger log = LoggerFactory.getLogger(LocalAttributeCollectionListener.class);
 
-    private final SecurityAttributeDistributionProcessor securityAttributeDistributionProcessor;
+    private final SecurityAttributeProcessor securityAttributeProcessor;
 
-    public LocalRestMappingCollectListener(SecurityAttributeDistributionProcessor securityAttributeDistributionProcessor) {
-        this.securityAttributeDistributionProcessor = securityAttributeDistributionProcessor;
+    public LocalAttributeCollectionListener(SecurityAttributeProcessor securityAttributeProcessor) {
+        this.securityAttributeProcessor = securityAttributeProcessor;
     }
 
     @Override
-    public void onApplicationEvent(RestMappingCollectEvent event) {
+    public void onApplicationEvent(AttributeCollectionEvent event) {
 
-        log.info("[Herodotus] |- Rest mapping gather LOCAL listener, response event!");
+        log.info("[Herodotus] |- Attribute collect LOCAL listener, response event!");
 
-        List<MappingAttribute> mappingAttributes = event.getData();
-        if (CollectionUtils.isNotEmpty(mappingAttributes)) {
-            log.debug("[Herodotus] |- [R4] Request mapping process BEGIN!");
-            securityAttributeDistributionProcessor.processRestMappings(mappingAttributes);
+        AttributeCollector collector = event.getData();
+        if (ObjectUtils.isNotEmpty(collector) && CollectionUtils.isNotEmpty(collector.getAttributes())) {
+            log.debug("[Herodotus] |- [R4] Attribute collect process BEGIN!");
+            securityAttributeProcessor.postAttributeCollectorProcess(collector);
         }
     }
 }

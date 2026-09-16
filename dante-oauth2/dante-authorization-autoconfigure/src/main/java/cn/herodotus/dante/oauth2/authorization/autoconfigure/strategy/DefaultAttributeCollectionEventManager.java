@@ -25,16 +25,14 @@
 
 package cn.herodotus.dante.oauth2.authorization.autoconfigure.strategy;
 
-import cn.herodotus.dante.messaging.strategy.RestMappingCollectEventManager;
-import cn.herodotus.dante.messaging.event.RestMappingCollectEvent;
-import cn.herodotus.dante.oauth2.authorization.attribute.SecurityAttributeAnalyzer;
-import cn.herodotus.dante.oauth2.authorization.autoconfigure.bus.RemoteRestMappingCollectEvent;
-import cn.herodotus.dante.messaging.domain.MappingAttribute;
+import cn.herodotus.dante.messaging.domain.AttributeCollector;
+import cn.herodotus.dante.messaging.event.AttributeCollectionEvent;
+import cn.herodotus.dante.messaging.strategy.AttributeCollectionEventManager;
+import cn.herodotus.dante.oauth2.authorization.attribute.SecurityAttributeManager;
+import cn.herodotus.dante.oauth2.authorization.autoconfigure.bus.RemoteAttributeCollectionEvent;
 import cn.herodotus.dante.spring.context.ServiceContextHolder;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 
 import java.lang.annotation.Annotation;
-import java.util.List;
 
 /**
  * <p>Description: 默认 RequestMapping 收集事件管理器</p>
@@ -42,17 +40,19 @@ import java.util.List;
  * @author : gengwei.zheng
  * @date : 2022/1/17 0:08
  */
-public class DefaultRestMappingCollectEventManager implements RestMappingCollectEventManager {
+public class DefaultAttributeCollectionEventManager implements AttributeCollectionEventManager {
 
-    private final SecurityAttributeAnalyzer securityAttributeAnalyzer;
+    private final SecurityAttributeManager securityAttributeManager;
+    private final Class<? extends Annotation> scanAnnotationClass;
 
-    public DefaultRestMappingCollectEventManager(SecurityAttributeAnalyzer securityAttributeAnalyzer) {
-        this.securityAttributeAnalyzer = securityAttributeAnalyzer;
+    public DefaultAttributeCollectionEventManager(SecurityAttributeManager securityAttributeManager, Class<? extends Annotation> scanAnnotationClass) {
+        this.securityAttributeManager = securityAttributeManager;
+        this.scanAnnotationClass = scanAnnotationClass;
     }
 
     @Override
     public Class<? extends Annotation> getScanAnnotationClass() {
-        return EnableWebSecurity.class;
+        return scanAnnotationClass;
     }
 
     @Override
@@ -61,17 +61,17 @@ public class DefaultRestMappingCollectEventManager implements RestMappingCollect
     }
 
     @Override
-    public void postLocalStorage(List<MappingAttribute> mappingAttributes) {
-        securityAttributeAnalyzer.processLocalResourceMatchers();
+    public void postLocalStorage(AttributeCollector collector) {
+        securityAttributeManager.postLocalResourceMatcherProcess();
     }
 
     @Override
-    public void postLocalProcess(List<MappingAttribute> data) {
-        publishEvent(new RestMappingCollectEvent(data));
+    public void postLocalProcess(AttributeCollector data) {
+        publishEvent(new AttributeCollectionEvent(data));
     }
 
     @Override
     public void postRemoteProcess(String data, String originService, String destinationService) {
-        publishEvent(new RemoteRestMappingCollectEvent(data, originService, destinationService));
+        publishEvent(new RemoteAttributeCollectionEvent(data, originService, destinationService));
     }
 }

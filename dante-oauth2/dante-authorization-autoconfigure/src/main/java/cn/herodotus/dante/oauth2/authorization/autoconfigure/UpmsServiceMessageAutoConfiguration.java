@@ -30,7 +30,7 @@ import cn.herodotus.dante.logic.upms.service.security.SysUserService;
 import cn.herodotus.dante.oauth2.authorization.autoconfigure.condition.ConditionalOnUpmsService;
 import cn.herodotus.dante.oauth2.authorization.autoconfigure.listener.*;
 import cn.herodotus.dante.oauth2.authorization.autoconfigure.processor.EnumDictionaryCollectProcessor;
-import cn.herodotus.dante.oauth2.authorization.autoconfigure.processor.SecurityAttributeDistributionProcessor;
+import cn.herodotus.dante.oauth2.authorization.autoconfigure.processor.SecurityAttributeProcessor;
 import cn.herodotus.dante.spring.condition.ConditionalOnArchitecture;
 import cn.herodotus.dante.spring.enums.Architecture;
 import jakarta.annotation.PostConstruct;
@@ -84,16 +84,16 @@ public class UpmsServiceMessageAutoConfiguration {
 
         @Bean
         @ConditionalOnMissingBean
-        public LocalRestMappingCollectListener localRestMappingCollectListener(SecurityAttributeDistributionProcessor securityAttributeDistributionProcessor) {
-            LocalRestMappingCollectListener listener = new LocalRestMappingCollectListener(securityAttributeDistributionProcessor);
-            log.trace("[Herodotus] |- Bean [Local Request Mapping Collect Listener] Configure.");
+        public LocalAttributeCollectionListener localMappingAttributeCollectListener(SecurityAttributeProcessor securityAttributeProcessor) {
+            LocalAttributeCollectionListener listener = new LocalAttributeCollectionListener(securityAttributeProcessor);
+            log.trace("[Herodotus] |- Bean [Local Mapping Attribute Collect Listener] Configure.");
             return listener;
         }
 
         @Bean
         @ConditionalOnMissingBean
-        public SysAttributeChangeListener sysAttributeChangeListener(SecurityAttributeDistributionProcessor securityAttributeDistributionProcessor) {
-            SysAttributeChangeListener listener = new SysAttributeChangeListener(securityAttributeDistributionProcessor);
+        public SysAttributeChangeListener sysAttributeChangeListener(SecurityAttributeProcessor securityAttributeProcessor) {
+            SysAttributeChangeListener listener = new SysAttributeChangeListener(securityAttributeProcessor);
             log.trace("[Herodotus] |- Bean [SysAttribute Change Listener] Configure.");
             return listener;
         }
@@ -121,9 +121,9 @@ public class UpmsServiceMessageAutoConfiguration {
 
         @Bean
         @ConditionalOnMissingBean
-        public RemoteRestMappingGatherListener remoteRestMappingGatherListener(SecurityAttributeDistributionProcessor securityAttributeDistributionProcessor) {
-            RemoteRestMappingGatherListener listener = new RemoteRestMappingGatherListener(securityAttributeDistributionProcessor);
-            log.trace("[Herodotus] |- Bean [Remote Request Mapping Collect Listener] Configure.");
+        public RemoteAttributeCollectionListener remoteRequestMappingGatherListener(SecurityAttributeProcessor securityAttributeProcessor) {
+            RemoteAttributeCollectionListener listener = new RemoteAttributeCollectionListener(securityAttributeProcessor);
+            log.trace("[Herodotus] |- Bean [Remote Mapping Attribute Collect Listener] Configure.");
             return listener;
         }
     }

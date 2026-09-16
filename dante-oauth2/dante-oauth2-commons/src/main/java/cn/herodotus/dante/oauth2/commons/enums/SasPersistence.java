@@ -43,7 +43,7 @@ public enum SasPersistence implements ConditionEnum {
     JPA {
         @Override
         public boolean isActive(Environment environment) {
-            return isDefault(environment, OAuth2Constants.ITEM_PERSISTENCE_SAS);
+            return isDefault(environment, OAuth2Constants.ITEM__PERSISTENCE_SAS);
         }
 
         @Override
@@ -58,7 +58,7 @@ public enum SasPersistence implements ConditionEnum {
     MONGODB {
         @Override
         public boolean isActive(Environment environment) {
-            return isActive(environment, OAuth2Constants.ITEM_PERSISTENCE_SAS);
+            return isActive(environment, OAuth2Constants.ITEM__PERSISTENCE_SAS);
         }
 
         @Override
@@ -73,7 +73,7 @@ public enum SasPersistence implements ConditionEnum {
     REDIS {
         @Override
         public boolean isActive(Environment environment) {
-            return isActive(environment, OAuth2Constants.ITEM_PERSISTENCE_SAS);
+            return isActive(environment, OAuth2Constants.ITEM__PERSISTENCE_SAS);
         }
 
         @Override

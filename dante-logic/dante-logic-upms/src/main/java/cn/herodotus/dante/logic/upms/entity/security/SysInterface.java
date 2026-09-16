@@ -27,6 +27,7 @@ package cn.herodotus.dante.logic.upms.entity.security;
 
 import cn.herodotus.dante.data.jpa.entity.AbstractSysEntity;
 import cn.herodotus.dante.logic.upms.domain.generator.SysInterfaceIdGenerator;
+import cn.herodotus.dante.spring.enums.MappingCategory;
 import com.google.common.base.MoreObjects;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
@@ -71,12 +72,17 @@ public class SysInterface extends AbstractSysEntity {
     private String methodName;
 
     @Schema(name = "请求URL")
-    @Column(name = "url", length = 2048)
+    @Column(name = "url", length = 1024)
     private String url;
 
-    @Schema(name = "表达式", description = "Security表达式字符串，通过该值设置动态权限")
+    @Schema(name = "请求URL")
     @Column(name = "version", length = 30)
     private String version;
+
+    @Schema(name = "接口映射类别")
+    @Enumerated(EnumType.STRING)
+    @Column(name = "category", length = 50)
+    private MappingCategory category;
 
     public String getInterfaceId() {
         return interfaceId;
@@ -142,6 +148,14 @@ public class SysInterface extends AbstractSysEntity {
         this.version = version;
     }
 
+    public MappingCategory getCategory() {
+        return category;
+    }
+
+    public void setCategory(MappingCategory category) {
+        this.category = category;
+    }
+
     @Override
     public boolean equals(Object o) {
 
@@ -168,6 +182,7 @@ public class SysInterface extends AbstractSysEntity {
                 .add("methodName", methodName)
                 .add("url", url)
                 .add("version", version)
+                .add("category", category)
                 .addValue(super.toString())
                 .toString();
     }

@@ -25,30 +25,45 @@
 
 package cn.herodotus.dante.logic.upms.converter;
 
-import cn.herodotus.dante.logic.upms.entity.security.SysInterface;
-import cn.herodotus.dante.messaging.domain.MappingAttribute;
+import cn.herodotus.dante.logic.upms.entity.security.SysAttribute;
+import cn.herodotus.dante.messaging.domain.AttributeDistributor;
+import cn.herodotus.dante.messaging.domain.SecurityAttribute;
+import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.core.convert.converter.Converter;
 
+import java.util.List;
+
 /**
- * <p>Description: RequestMapping 转 SysInterface 转换器 </p>
+ * <p>Description: SysAttribute 转 SecurityAttribute 转换器</p>
  *
  * @author : gengwei.zheng
- * @date : 2023/5/23 17:15
+ * @date : 2023/8/23 22:59
  */
-public class RequestMappingToSysInterfaceConverter implements Converter<MappingAttribute, SysInterface> {
+public class SysAttributesToAttributeDispatcherConverter implements Converter<List<SysAttribute>, AttributeDistributor> {
+
+    private final Converter<SysAttribute, SecurityAttribute> toSecurityAttribute;
+    private final String serviceId;
+    private final boolean isRestApi;
+
+    public SysAttributesToAttributeDispatcherConverter(String serviceId, boolean isRestApi) {
+        this.toSecurityAttribute = new SysAttributeToSecurityAttributeConverter();
+        this.serviceId = serviceId;
+        this.isRestApi = isRestApi;
+    }
 
     @Override
-    public SysInterface convert(MappingAttribute source) {
-        SysInterface target = new SysInterface();
-        target.setInterfaceId(source.getId());
-        target.setInterfaceCode(source.getCode());
-        target.setRequestMethod(source.getRequestMethod());
-        target.setServiceId(source.getServiceId());
-        target.setClassName(source.getClassName());
-        target.setMethodName(source.getMethodName());
-        target.setUrl(source.getUrl());
-        target.setDescription(source.getDescription());
-        target.setVersion(source.getVersion());
-        return target;
+    public AttributeDistributor convert(List<SysAttribute> source) {
+        if (CollectionUtils.isNotEmpty(source)) {
+            AttributeDistributor target = new AttributeDistributor();
+
+            List<SecurityAttribute> attributes = source.stream().map(toSecurityAttribute::convert).toList();
+            target.setAttributes(attributes);
+            target.setServiceId(serviceId);
+            target.setRest(isRestApi);
+
+            return target;
+        }
+
+        return null;
     }
 }

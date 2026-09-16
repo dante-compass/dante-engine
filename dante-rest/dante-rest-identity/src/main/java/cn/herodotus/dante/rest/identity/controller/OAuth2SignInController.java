@@ -72,7 +72,7 @@ public class OAuth2SignInController {
     }
 
 
-    @RequestMapping(value = OAuth2Constants.ANNOTATION_FORMLOGIN_LOGINPAGEURL, method = RequestMethod.GET)
+    @RequestMapping(value = OAuth2Constants.ANNOTATION__FORMLOGIN_LOGINPAGEURL, method = RequestMethod.GET)
     public ModelAndView login(Map<String, Object> model, HttpServletRequest request, HttpServletResponse response) {
 
         ModelAndView modelAndView = new ModelAndView("login");

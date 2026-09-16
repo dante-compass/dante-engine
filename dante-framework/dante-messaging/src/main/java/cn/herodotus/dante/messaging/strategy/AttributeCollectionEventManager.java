@@ -26,19 +26,19 @@
 package cn.herodotus.dante.messaging.strategy;
 
 import cn.herodotus.dante.messaging.definition.event.ApplicationStrategyEventManager;
-import cn.herodotus.dante.messaging.domain.MappingAttribute;
+import cn.herodotus.dante.messaging.domain.AttributeCollector;
 import cn.herodotus.dante.spring.context.ServiceContextHolder;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.ObjectUtils;
 
 import java.lang.annotation.Annotation;
-import java.util.List;
 import java.util.Map;
 
 /**
- * <p>Description: RestController 映射收集事件管理器 </p>
+ * <p>Description: 权限元数据映射收集事件管理器 </p>
  * <p>
- * 微服务架构下：服务启动时，会扫描服务中 RestController 接口映射信息，通过该事件管理器发送远程事件将扫描结果发送至 UPMS 服务中进行聚合存储。UPMS 服务本身也需要扫描接口，但不需要发送远程事件，使用本地事件即可
+ * 微服务架构下：服务启动时，会扫描服务中 RestController、GrpcService、McpService 映射信息，通过该事件管理器发送远程事件将扫描结果发送至 UPMS 服务中进行聚合存储。
+ * UPMS 服务本身也需要扫描接口，但不需要发送远程事件，使用本地事件即可
  * 单体架构下：仅需要发送本地事件即可。
  * <p>
  * 该事件管理器会自动判断在具体场景下，使用远程事件还是本地事件
@@ -46,7 +46,7 @@ import java.util.Map;
  * @author : gengwei.zheng
  * @date : 2022/1/16 18:42
  */
-public interface RestMappingCollectEventManager extends ApplicationStrategyEventManager<List<MappingAttribute>> {
+public interface AttributeCollectionEventManager extends ApplicationStrategyEventManager<AttributeCollector> {
 
     /**
      * 获取是否执行扫描的标记注解。
@@ -58,19 +58,19 @@ public interface RestMappingCollectEventManager extends ApplicationStrategyEvent
     /**
      * 执行本地数据存储
      *
-     * @param mappingAttributes 扫描到的RequestMapping
+     * @param collector 属性收集器 {@link AttributeCollector}
      */
-    void postLocalStorage(List<MappingAttribute> mappingAttributes);
+    void postLocalStorage(AttributeCollector collector);
 
     /**
-     * 发布远程事件，传送RequestMapping
+     * 发布远程事件，传送属性收集器对象
      *
-     * @param mappingAttributes 扫描到的RequestMapping
+     * @param collector 属性收集器 {@link AttributeCollector}
      */
     @Override
-    default void postProcess(List<MappingAttribute> mappingAttributes) {
-        postLocalStorage(mappingAttributes);
-        ApplicationStrategyEventManager.super.postProcess(mappingAttributes);
+    default void postProcess(AttributeCollector collector) {
+        postLocalStorage(collector);
+        ApplicationStrategyEventManager.super.postProcess(collector);
     }
 
     /**

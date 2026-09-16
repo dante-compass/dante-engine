@@ -50,7 +50,7 @@ import java.util.Set;
         @Index(name = "oauth2_scope_id_idx", columnList = "scope_id"),
         @Index(name = "oauth2_scope_code_idx", columnList = "scope_code")})
 @Cacheable
-@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = OAuth2Constants.REGION_OAUTH2_SCOPE)
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = OAuth2Constants.REGION__OAUTH2_SCOPE)
 public class OAuth2Scope extends AbstractSysEntity {
 
     @Id
@@ -64,7 +64,7 @@ public class OAuth2Scope extends AbstractSysEntity {
     @Column(name = "scope_name", length = 128)
     private String scopeName;
 
-    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = OAuth2Constants.REGION_OAUTH2_PERMISSION)
+    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = OAuth2Constants.REGION__OAUTH2_PERMISSION)
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REMOVE, CascadeType.MERGE}, fetch = FetchType.EAGER)
     @Fetch(FetchMode.SUBSELECT)
     @JoinTable(name = "oauth2_scope_permission",

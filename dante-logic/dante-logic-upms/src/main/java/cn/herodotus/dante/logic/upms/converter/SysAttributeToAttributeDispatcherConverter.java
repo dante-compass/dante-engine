@@ -23,23 +23,38 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.logic.upms.repository.security;
+package cn.herodotus.dante.logic.upms.converter;
 
-import cn.herodotus.dante.data.jpa.repository.BaseJpaRepository;
 import cn.herodotus.dante.logic.upms.entity.security.SysAttribute;
+import cn.herodotus.dante.messaging.domain.AttributeDistributor;
+import cn.herodotus.dante.messaging.domain.SecurityAttribute;
 import cn.herodotus.dante.spring.enums.MappingCategory;
+import org.springframework.core.convert.converter.Converter;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
- * <p>Description: SysAttributeRepository </p>
+ * <p>Description: SysAttribute 转 SecurityAttribute 转换器</p>
  *
  * @author : gengwei.zheng
- * @date : 2021/8/4 6:48
+ * @date : 2023/8/23 22:59
  */
-public interface SysAttributeRepository extends BaseJpaRepository<SysAttribute, String> {
+public class SysAttributeToAttributeDispatcherConverter implements Converter<SysAttribute, AttributeDistributor> {
 
-    List<SysAttribute> findByAttributeIdIn(List<String> ids);
+    private final Converter<SysAttribute, SecurityAttribute> toSecurityAttribute;
 
-    List<SysAttribute> findAllByServiceIdAndCategory(String serviceId, MappingCategory category);
+    public SysAttributeToAttributeDispatcherConverter() {
+        this.toSecurityAttribute = new SysAttributeToSecurityAttributeConverter();
+    }
+
+    @Override
+    public AttributeDistributor convert(SysAttribute source) {
+        AttributeDistributor target = new AttributeDistributor();
+        SecurityAttribute attribute = toSecurityAttribute.convert(source);
+        target.setServiceId(source.getServiceId());
+        target.setRest(Objects.equals(attribute.getCategory(), MappingCategory.REST.getValue()));
+        target.setAttributes(List.of(attribute));
+        return target;
+    }
 }

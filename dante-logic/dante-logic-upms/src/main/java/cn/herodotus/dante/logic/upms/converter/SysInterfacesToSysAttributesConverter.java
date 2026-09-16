@@ -55,6 +55,7 @@ public class SysInterfacesToSysAttributesConverter implements ListConverter<SysI
         target.setUpdateTime(source.getUpdateTime());
         target.setRanking(source.getRanking());
         target.setVersion(source.getVersion());
+        target.setCategory(source.getCategory());
         return target;
     }
 }

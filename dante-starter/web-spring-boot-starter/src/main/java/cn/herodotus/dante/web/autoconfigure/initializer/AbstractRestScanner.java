@@ -27,8 +27,10 @@ package cn.herodotus.dante.web.autoconfigure.initializer;
 
 import cn.herodotus.dante.core.constant.SymbolConstants;
 import cn.herodotus.dante.core.utils.WellFormedUtils;
+import cn.herodotus.dante.messaging.domain.AttributeCollector;
 import cn.herodotus.dante.messaging.domain.MappingAttribute;
-import cn.herodotus.dante.messaging.strategy.RestMappingCollectEventManager;
+import cn.herodotus.dante.messaging.strategy.AttributeCollectionEventManager;
+import cn.herodotus.dante.spring.enums.MappingCategory;
 import cn.herodotus.dante.spring.initializer.ApplicationReadyProcessor;
 import cn.herodotus.dante.web.autoconfigure.properties.ServiceProperties;
 import cn.herodotus.dante.web.support.WebPropertyFinder;
@@ -57,16 +59,16 @@ import java.util.stream.Collectors;
  * @author : gengwei.zheng
  * @date : 2024/1/31 23:38
  */
-public abstract class AbstractRestMappingScanner implements ApplicationReadyProcessor {
+public abstract class AbstractRestScanner implements ApplicationReadyProcessor {
 
-    private static final Logger log = LoggerFactory.getLogger(AbstractRestMappingScanner.class);
+    private static final Logger log = LoggerFactory.getLogger(AbstractRestScanner.class);
 
     private final ServiceProperties.Scan scan;
-    private final RestMappingCollectEventManager restMappingCollectEventManager;
+    private final AttributeCollectionEventManager attributeCollectionEventManager;
 
-    protected AbstractRestMappingScanner(ServiceProperties.Scan scan, RestMappingCollectEventManager restMappingCollectEventManager) {
+    protected AbstractRestScanner(ServiceProperties.Scan scan, AttributeCollectionEventManager attributeCollectionEventManager) {
         this.scan = scan;
-        this.restMappingCollectEventManager = restMappingCollectEventManager;
+        this.attributeCollectionEventManager = attributeCollectionEventManager;
     }
 
     @Override
@@ -167,7 +169,7 @@ public abstract class AbstractRestMappingScanner implements ApplicationReadyProc
      * @return 是否执行扫描
      */
     protected boolean notExecuteScanning() {
-        return !restMappingCollectEventManager.isPerformScan();
+        return !attributeCollectionEventManager.isPerformScan();
     }
 
     /**
@@ -179,7 +181,7 @@ public abstract class AbstractRestMappingScanner implements ApplicationReadyProc
     protected void complete(String serviceId, List<MappingAttribute> resources) {
         if (CollectionUtils.isNotEmpty(resources)) {
             log.debug("[Herodotus] |- [R2] Request mapping scan found [{}] resources in service [{}], go to next stage!", serviceId, resources.size());
-            restMappingCollectEventManager.postProcess(resources);
+            attributeCollectionEventManager.postProcess(new AttributeCollector(resources, serviceId));
         } else {
             log.debug("[Herodotus] |- [R2] Request mapping scan can not find any resources in service [{}]!", serviceId);
         }
@@ -230,7 +232,7 @@ public abstract class AbstractRestMappingScanner implements ApplicationReadyProc
      * @param method         接口对应的方法对象 {@link HandlerMethod}
      * @return 封装好的对象 {@link MappingAttribute}
      */
-    protected MappingAttribute buildRestMapping(String serviceId, String requestMethods, String urls, String version, HandlerMethod method) {
+    protected MappingAttribute buildMappingAttribute(String serviceId, String requestMethods, String urls, String version, HandlerMethod method) {
 
         // 1. 获取类名
         // method.getMethod().getDeclaringClass().getName() 取到的是注解实际所在类的名字，比如注解在父类叫BaseController，那么拿到的就是BaseController
@@ -261,6 +263,7 @@ public abstract class AbstractRestMappingScanner implements ApplicationReadyProc
         mappingAttribute.setClassName(className);
         mappingAttribute.setMethodName(methodName);
         mappingAttribute.setVersion(version);
+        mappingAttribute.setCategory(MappingCategory.REST.getValue());
         return mappingAttribute;
     }
 }

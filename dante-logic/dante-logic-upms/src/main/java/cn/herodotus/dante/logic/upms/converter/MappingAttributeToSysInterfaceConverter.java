@@ -23,22 +23,34 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.spring.enums;
+package cn.herodotus.dante.logic.upms.converter;
+
+import cn.herodotus.dante.logic.upms.entity.security.SysInterface;
+import cn.herodotus.dante.messaging.domain.MappingAttribute;
+import cn.herodotus.dante.spring.enums.MappingCategory;
+import org.springframework.core.convert.converter.Converter;
 
 /**
- * <p>Description: 证书使用策略 </p>
+ * <p>Description: RequestMapping 转 SysInterface 转换器 </p>
  *
  * @author : gengwei.zheng
- * @date : 2022/3/6 18:32
+ * @date : 2023/5/23 17:15
  */
-public enum Certificate {
+public class MappingAttributeToSysInterfaceConverter implements Converter<MappingAttribute, SysInterface> {
 
-    /**
-     * Spring Authorization Server 默认的 JWK 生成方式
-     */
-    STANDARD,
-    /**
-     * 自定义证书 JWK 生成方式
-     */
-    CUSTOM;
+    @Override
+    public SysInterface convert(MappingAttribute source) {
+        SysInterface target = new SysInterface();
+        target.setInterfaceId(source.getId());
+        target.setInterfaceCode(source.getCode());
+        target.setRequestMethod(source.getRequestMethod());
+        target.setServiceId(source.getServiceId());
+        target.setClassName(source.getClassName());
+        target.setMethodName(source.getMethodName());
+        target.setUrl(source.getUrl());
+        target.setDescription(source.getDescription());
+        target.setVersion(source.getVersion());
+        target.setCategory(MappingCategory.get(source.getCategory()));
+        return target;
+    }
 }

@@ -27,8 +27,8 @@ package cn.herodotus.dante.webmvc.autoconfigure.initializer;
 
 import cn.herodotus.dante.core.constant.SymbolConstants;
 import cn.herodotus.dante.messaging.domain.MappingAttribute;
-import cn.herodotus.dante.messaging.strategy.RestMappingCollectEventManager;
-import cn.herodotus.dante.web.autoconfigure.initializer.AbstractRestMappingScanner;
+import cn.herodotus.dante.messaging.strategy.AttributeCollectionEventManager;
+import cn.herodotus.dante.web.autoconfigure.initializer.AbstractRestScanner;
 import cn.herodotus.dante.web.autoconfigure.properties.ServiceProperties;
 import cn.herodotus.dante.web.support.WebPropertyFinder;
 import org.apache.commons.collections4.CollectionUtils;
@@ -57,13 +57,13 @@ import java.util.Set;
  * @author : gengwei.zheng
  * @date : 2020/6/2 19:52
  */
-public class RestMappingScanner extends AbstractRestMappingScanner {
+public class RestScanner extends AbstractRestScanner {
 
-    private static final Logger log = LoggerFactory.getLogger(RestMappingScanner.class);
+    private static final Logger log = LoggerFactory.getLogger(RestScanner.class);
     private final WebMvcProperties webMvcProperties;
 
-    public RestMappingScanner(WebMvcProperties webMvcProperties, ServiceProperties.Scan scan, RestMappingCollectEventManager restMappingCollectEventManager) {
-        super(scan, restMappingCollectEventManager);
+    public RestScanner(WebMvcProperties webMvcProperties, ServiceProperties.Scan scan, AttributeCollectionEventManager attributeCollectionEventManager) {
+        super(scan, attributeCollectionEventManager);
         this.webMvcProperties = webMvcProperties;
     }
 
@@ -97,7 +97,7 @@ public class RestMappingScanner extends AbstractRestMappingScanner {
                     }
 
                     // 4.2、拼装扫描信息
-                    MappingAttribute mappingAttribute = createRestMapping(serviceId, requestMappingInfo, handlerMethod);
+                    MappingAttribute mappingAttribute = createMappingAttribute(serviceId, requestMappingInfo, handlerMethod);
                     if (ObjectUtils.isEmpty(mappingAttribute)) {
                         continue;
                     }
@@ -110,7 +110,7 @@ public class RestMappingScanner extends AbstractRestMappingScanner {
         complete(serviceId, resources);
     }
 
-    private MappingAttribute createRestMapping(String serviceId, RequestMappingInfo info, HandlerMethod method) {
+    private MappingAttribute createMappingAttribute(String serviceId, RequestMappingInfo info, HandlerMethod method) {
         // 4.2.1、获取注解对应的请求类型
         RequestMethodsRequestCondition requestMethodsRequestCondition = info.getMethodsCondition();
         String requestMethods = StringUtils.join(requestMethodsRequestCondition.getMethods(), SymbolConstants.COMMA);
@@ -127,7 +127,7 @@ public class RestMappingScanner extends AbstractRestMappingScanner {
 
         String urls = String.join(SymbolConstants.COMMA, patternValues);
 
-        return buildRestMapping(serviceId, requestMethods, urls, version, method);
+        return buildMappingAttribute(serviceId, requestMethods, urls, version, method);
     }
 
     private String parseVersion(RequestMappingInfo info) {

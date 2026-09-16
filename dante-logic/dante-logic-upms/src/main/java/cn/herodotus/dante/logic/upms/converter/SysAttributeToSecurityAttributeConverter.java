@@ -28,8 +28,8 @@ package cn.herodotus.dante.logic.upms.converter;
 import cn.herodotus.dante.logic.upms.entity.security.SysAttribute;
 import cn.herodotus.dante.logic.upms.entity.security.SysPermission;
 import cn.herodotus.dante.messaging.domain.SecurityAttribute;
-import cn.herodotus.dante.spring.founction.ListConverter;
 import org.apache.commons.collections4.CollectionUtils;
+import org.springframework.core.convert.converter.Converter;
 import org.springframework.util.StringUtils;
 
 import java.util.List;
@@ -41,9 +41,10 @@ import java.util.Set;
  * @author : gengwei.zheng
  * @date : 2023/8/23 22:59
  */
-public class SysAttributeToAttributeTransmitterConverter implements ListConverter<SysAttribute, SecurityAttribute> {
+public class SysAttributeToSecurityAttributeConverter implements Converter<SysAttribute, SecurityAttribute> {
+
     @Override
-    public SecurityAttribute from(SysAttribute source) {
+    public SecurityAttribute convert(SysAttribute source) {
         SecurityAttribute target = new SecurityAttribute();
         target.setId(source.getAttributeId());
         target.setCode(source.getAttributeCode());
@@ -52,8 +53,11 @@ public class SysAttributeToAttributeTransmitterConverter implements ListConverte
         target.setUrl(source.getUrl());
         target.setRequestMethod(source.getRequestMethod());
         target.setServiceId(source.getServiceId());
-        target.setAttributeName(source.getDescription());
+        target.setDescription(source.getDescription());
+        target.setClassName(source.getClassName());
+        target.setMethodName(source.getMethodName());
         target.setVersion(source.getVersion());
+        target.setCategory(source.getCategory().getValue());
         return target;
     }
 

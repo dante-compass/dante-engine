@@ -23,27 +23,31 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.messaging.event;
+package cn.herodotus.dante.messaging.domain;
 
-import cn.herodotus.dante.messaging.definition.event.AbstractApplicationEvent;
-import cn.herodotus.dante.messaging.domain.MappingAttribute;
+import cn.herodotus.dante.messaging.definition.AbstractAttributeTransmitter;
 
-import java.time.Clock;
 import java.util.List;
 
 /**
- * <p>Description: 本地RequestMapping收集事件 </p>
+ * <p>Description: 权限元数据分发器 </p>
+ * <p>
+ * 权限数据汇总后，再次分发至各个服务传输对象
  *
  * @author : gengwei.zheng
- * @date : 2021/8/8 21:55
+ * @date : 2026/2/28 19:25
  */
-public class RestMappingCollectEvent extends AbstractApplicationEvent<List<MappingAttribute>> {
+public class AttributeDistributor extends AbstractAttributeTransmitter<SecurityAttribute> {
 
-    public RestMappingCollectEvent(List<MappingAttribute> data) {
-        super(data);
+    public AttributeDistributor() {
+        super();
     }
 
-    public RestMappingCollectEvent(List<MappingAttribute> data, Clock clock) {
-        super(data, clock);
+    public AttributeDistributor(List<SecurityAttribute> attributes, String serviceId) {
+        super(attributes, serviceId);
+    }
+
+    public AttributeDistributor(List<SecurityAttribute> attributes, String serviceId, Boolean rest) {
+        super(attributes, serviceId, rest);
     }
 }

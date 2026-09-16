@@ -33,15 +33,15 @@ import org.springframework.cloud.bus.event.RemoteApplicationEvent;
  * @author : gengwei.zheng
  * @date : 2021/8/6 11:23
  */
-public class RemoteRestMappingCollectEvent extends RemoteApplicationEvent {
+public class RemoteAttributeCollectionEvent extends RemoteApplicationEvent {
 
     private String data;
 
-    public RemoteRestMappingCollectEvent() {
+    public RemoteAttributeCollectionEvent() {
         super();
     }
 
-    public RemoteRestMappingCollectEvent(String data, String originService, String destinationService) {
+    public RemoteAttributeCollectionEvent(String data, String originService, String destinationService) {
         super(data, originService, DEFAULT_DESTINATION_FACTORY.getDestination(destinationService));
         this.data = data;
     }

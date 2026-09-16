@@ -57,7 +57,7 @@ import java.util.Set;
         @Index(name = "oauth2_application_id_idx", columnList = "application_id"),
         @Index(name = "oauth2_application_cid_idx", columnList = "client_id")})
 @Cacheable
-@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = OAuth2Constants.REGION_OAUTH2_APPLICATION)
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = OAuth2Constants.REGION__OAUTH2_APPLICATION)
 public class OAuth2Application extends AbstractOAuth2RegisteredClient {
 
     @Schema(name = "应用ID")
@@ -89,7 +89,7 @@ public class OAuth2Application extends AbstractOAuth2RegisteredClient {
     private ClientType clientType = ClientType.WEB;
 
     @Schema(name = "应用对应Scope", title = "传递应用对应Scope ID数组")
-    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = OAuth2Constants.REGION_OAUTH2_APPLICATION_SCOPE)
+    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = OAuth2Constants.REGION__OAUTH2_APPLICATION_SCOPE)
     @ManyToMany(fetch = FetchType.EAGER)
     @Fetch(FetchMode.SUBSELECT)
     @JoinTable(name = "oauth2_application_scope",

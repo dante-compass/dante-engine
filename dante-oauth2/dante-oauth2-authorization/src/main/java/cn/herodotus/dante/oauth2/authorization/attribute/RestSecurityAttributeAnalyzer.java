@@ -29,7 +29,6 @@ import cn.herodotus.dante.core.constant.SymbolConstants;
 import cn.herodotus.dante.messaging.domain.SecurityAttribute;
 import cn.herodotus.dante.oauth2.authorization.cache.HerodotusRequest;
 import cn.herodotus.dante.oauth2.authorization.definition.HerodotusSecurityAttribute;
-import cn.herodotus.dante.oauth2.authorization.servlet.ServletOAuth2ResourceMatcherConfigurer;
 import cn.herodotus.dante.spring.enums.UrlCategory;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -37,34 +36,26 @@ import org.apache.commons.lang3.Strings;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.*;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
- * <p>Description: SecurityMetadata异步处理Service </p>
+ * <p>Description: Rest 接口权限元数据分析处理器 </p>
  *
  * @author : gengwei.zheng
  * @date : 2021/8/1 17:43
  */
-public class SecurityAttributeAnalyzer {
+public class RestSecurityAttributeAnalyzer extends AbstractSecurityAttributeAnalyzer {
 
-    private static final Logger log = LoggerFactory.getLogger(SecurityAttributeAnalyzer.class);
+    private static final Logger log = LoggerFactory.getLogger(RestSecurityAttributeAnalyzer.class);
 
     private final RestSecurityAttributeStorage restSecurityAttributeStorage;
-    private final ServletOAuth2ResourceMatcherConfigurer servletOAuth2ResourceMatcherConfigurer;
+    private final Map<HerodotusRequest, List<HerodotusSecurityAttribute>> permitAllAttributes;
 
-    public SecurityAttributeAnalyzer(RestSecurityAttributeStorage restSecurityAttributeStorage, ServletOAuth2ResourceMatcherConfigurer servletOAuth2ResourceMatcherConfigurer) {
+    public RestSecurityAttributeAnalyzer(RestSecurityAttributeStorage restSecurityAttributeStorage, Map<HerodotusRequest, List<HerodotusSecurityAttribute>> permitAllAttributes) {
         this.restSecurityAttributeStorage = restSecurityAttributeStorage;
-        this.servletOAuth2ResourceMatcherConfigurer = servletOAuth2ResourceMatcherConfigurer;
-    }
-
-    /**
-     * 直接使用 {@link org.springframework.security.authorization.DefaultAuthorizationManagerFactory} 中的方法
-     *
-     * @param authority 权限
-     * @return 权限表达式
-     */
-    private String hasAuthority(String authority) {
-        return "hasAuthority('" + authority + "')";
+        this.permitAllAttributes = permitAllAttributes;
     }
 
     /**
@@ -74,8 +65,8 @@ public class SecurityAttributeAnalyzer {
      * @param urlCategory 分组类别
      * @param resources   权限数据
      */
-    private void appendToGroup(Map<UrlCategory, LinkedHashMap<HerodotusRequest, List<HerodotusSecurityAttribute>>> container, UrlCategory urlCategory, LinkedHashMap<HerodotusRequest, List<HerodotusSecurityAttribute>> resources) {
-        LinkedHashMap<HerodotusRequest, List<HerodotusSecurityAttribute>> value = new LinkedHashMap<>();
+    private void appendToGroup(Map<UrlCategory, Map<HerodotusRequest, List<HerodotusSecurityAttribute>>> container, UrlCategory urlCategory, Map<HerodotusRequest, List<HerodotusSecurityAttribute>> resources) {
+        Map<HerodotusRequest, List<HerodotusSecurityAttribute>> value = new LinkedHashMap<>();
 
         if (container.containsKey(urlCategory)) {
             value = container.get(urlCategory);
@@ -92,12 +83,12 @@ public class SecurityAttributeAnalyzer {
      * @param securityMatchers 静态权限数据
      * @return 分组后的权限数据
      */
-    private Map<UrlCategory, LinkedHashMap<HerodotusRequest, List<HerodotusSecurityAttribute>>> groupSecurityMatchers(Map<HerodotusRequest, List<HerodotusSecurityAttribute>> securityMatchers) {
+    private Map<UrlCategory, Map<HerodotusRequest, List<HerodotusSecurityAttribute>>> groupingSecurityMatchers(Map<HerodotusRequest, List<HerodotusSecurityAttribute>> securityMatchers) {
 
-        Map<UrlCategory, LinkedHashMap<HerodotusRequest, List<HerodotusSecurityAttribute>>> group = new LinkedHashMap<>();
+        Map<UrlCategory, Map<HerodotusRequest, List<HerodotusSecurityAttribute>>> group = new LinkedHashMap<>();
 
         securityMatchers.forEach((key, value) -> {
-            LinkedHashMap<HerodotusRequest, List<HerodotusSecurityAttribute>> resources = new LinkedHashMap<>();
+            Map<HerodotusRequest, List<HerodotusSecurityAttribute>> resources = new LinkedHashMap<>();
             resources.put(key, value);
             appendToGroup(group, UrlCategory.getCategory(key.getPattern()), resources);
         });
@@ -107,64 +98,26 @@ public class SecurityAttributeAnalyzer {
     }
 
     /**
-     * 解析并动态组装所需要的权限。
-     * <p>
-     * 1. 原 spring-security-oauth
-     * Spring Security 基础权限规则，来源于org.springframework.security.config.annotation.web.configurers.ExpressionUrlAuthorizationConfigurer.AuthorizedUrl
-     * OAuth2 权限规则来源于 org.springframework.security.oauth2.provider.expression.OAuth2SecurityExpressionMethods
-     * 2. 新 spring-authorization-server
-     * Spring Security 基础权限规则，来源于{@link org.springframework.security.authorization.DefaultAuthorizationManagerFactory}
-     * OAuth2 权限规则来源于 目前还没有
-     * <p>
-     * 具体解析采用的是 Security 的 <code> org.springframework.security.access.AccessDecisionVoter} </code> 方式，而不是采用自定义的 <code> org.springframework.security.access.AccessDecisionManager </code>该方式会与默认的 httpsecurity 配置覆盖。
-     * · 基本的权限验证采用的是：<code> org.springframework.security.access.vote.RoleVoter</code>
-     * · scope权限采用两种方式：
-     * 一种是：Spring Security org.springframework.security.oauth2.provider.vote.ScopeVoter 目前已取消
-     * 另一种是：OAuth2 'hasScope'和'hasAnyScope'方式  org.springframework.security.oauth2.provider.expression.OAuth2SecurityExpressionMethods#hasAnyScope(String...)
-     * <p>
-     * 如果实际应用不满足可以，自己扩展AccessDecisionVoter或者AccessDecisionManager
-     *
-     * @param securityAttribute {@link SecurityAttribute}
-     * @return security权限定义集合
-     */
-    private List<HerodotusSecurityAttribute> analysis(SecurityAttribute securityAttribute) {
-
-        List<HerodotusSecurityAttribute> attributes = new ArrayList<>();
-
-        if (StringUtils.isNotBlank(securityAttribute.getPermissions())) {
-            String[] permissions = org.springframework.util.StringUtils.commaDelimitedListToStringArray(securityAttribute.getPermissions());
-            Arrays.stream(permissions).forEach(item -> attributes.add(new HerodotusSecurityAttribute(hasAuthority(item))));
-        }
-
-        if (StringUtils.isNotBlank(securityAttribute.getWebExpression())) {
-            attributes.add(new HerodotusSecurityAttribute(securityAttribute.getWebExpression()));
-        }
-
-        return attributes;
-    }
-
-    /**
      * 创建请求和权限的映射数据
      *
-     * @param url              请求url
-     * @param methods          请求method
-     * @param version          请求版本
-     * @param configAttributes Security权限{@link HerodotusSecurityAttribute}
+     * @param url        请求url
+     * @param methods    请求method
+     * @param attributes Security权限{@link HerodotusSecurityAttribute}
      * @return 保存请求和权限的映射的Map
      */
-    private LinkedHashMap<HerodotusRequest, List<HerodotusSecurityAttribute>> convert(String url, String methods, String version, List<HerodotusSecurityAttribute> configAttributes) {
-        LinkedHashMap<HerodotusRequest, List<HerodotusSecurityAttribute>> result = new LinkedHashMap<>();
+    private Map<HerodotusRequest, List<HerodotusSecurityAttribute>> convert(String url, String methods, String version, List<HerodotusSecurityAttribute> attributes) {
+        Map<HerodotusRequest, List<HerodotusSecurityAttribute>> result = new LinkedHashMap<>();
         if (StringUtils.isBlank(methods)) {
-            result.put(new HerodotusRequest(url, null, version), configAttributes);
+            result.put(new HerodotusRequest(url, null, version), attributes);
         } else {
             // 如果methods是以逗号分隔的字符串，那么进行拆分处理
             if (Strings.CS.contains(methods, SymbolConstants.COMMA)) {
                 String[] multiMethod = StringUtils.split(methods, SymbolConstants.COMMA);
                 for (String method : multiMethod) {
-                    result.put(new HerodotusRequest(url, method, version), configAttributes);
+                    result.put(new HerodotusRequest(url, method, version), attributes);
                 }
             } else {
-                result.put(new HerodotusRequest(url, methods, version), configAttributes);
+                result.put(new HerodotusRequest(url, methods, version), attributes);
             }
         }
 
@@ -177,12 +130,12 @@ public class SecurityAttributeAnalyzer {
      * @param securityAttributes 权限数据
      * @return 分组后的权限数据
      */
-    private Map<UrlCategory, LinkedHashMap<HerodotusRequest, List<HerodotusSecurityAttribute>>> groupingSecurityMetadata(List<SecurityAttribute> securityAttributes) {
+    private Map<UrlCategory, Map<HerodotusRequest, List<HerodotusSecurityAttribute>>> groupingAttributeTransmitters(List<SecurityAttribute> securityAttributes) {
 
-        Map<UrlCategory, LinkedHashMap<HerodotusRequest, List<HerodotusSecurityAttribute>>> group = new LinkedHashMap<>();
+        Map<UrlCategory, Map<HerodotusRequest, List<HerodotusSecurityAttribute>>> group = new LinkedHashMap<>();
 
         securityAttributes.forEach(transmitter -> {
-            LinkedHashMap<HerodotusRequest, List<HerodotusSecurityAttribute>> resources = convert(transmitter.getUrl(), transmitter.getRequestMethod(), transmitter.getVersion(), analysis(transmitter));
+            Map<HerodotusRequest, List<HerodotusSecurityAttribute>> resources = convert(transmitter.getUrl(), transmitter.getRequestMethod(), transmitter.getVersion(), analysis(transmitter));
             appendToGroup(group, UrlCategory.getCategory(transmitter.getUrl()), resources);
         });
 
@@ -199,18 +152,17 @@ public class SecurityAttributeAnalyzer {
      * 2. 经过考虑，服务本地接口扫描完，就对所有的 RequestMapping 做一遍解析，现在感觉意义不大。
      * 因为，RequestMapping 汇总至 UPMS 后，还会做一次统一的分发。所以当前的设计思路是不对 RequestMapping 进行处理。后续根据需要再补充即可。
      */
-    public void processLocalResourceMatchers() {
+    public void postLocalResourceMatcherProcess() {
 
-        log.debug("[Herodotus] |- [R3] Process local configured security metadata.");
+        log.debug("[Herodotus] |- [R3] Process local configured security attribute.");
 
-        Map<HerodotusRequest, List<HerodotusSecurityAttribute>> requestMatchers = servletOAuth2ResourceMatcherConfigurer.getPermitAllAttributes();
-        if (MapUtils.isNotEmpty(requestMatchers)) {
-            Map<UrlCategory, LinkedHashMap<HerodotusRequest, List<HerodotusSecurityAttribute>>> grouping = groupSecurityMatchers(requestMatchers);
+        if (MapUtils.isNotEmpty(permitAllAttributes)) {
+            Map<UrlCategory, Map<HerodotusRequest, List<HerodotusSecurityAttribute>>> grouping = groupingSecurityMatchers(permitAllAttributes);
 
-            LinkedHashMap<HerodotusRequest, List<HerodotusSecurityAttribute>> wildcards = grouping.get(UrlCategory.WILDCARD);
+            Map<HerodotusRequest, List<HerodotusSecurityAttribute>> wildcards = grouping.get(UrlCategory.WILDCARD);
             restSecurityAttributeStorage.addToStorage(wildcards, false);
 
-            LinkedHashMap<HerodotusRequest, List<HerodotusSecurityAttribute>> fullPaths = grouping.get(UrlCategory.FULL_PATH);
+            Map<HerodotusRequest, List<HerodotusSecurityAttribute>> fullPaths = grouping.get(UrlCategory.FULL_PATH);
             restSecurityAttributeStorage.addToStorage(fullPaths, true);
         }
     }
@@ -222,19 +174,19 @@ public class SecurityAttributeAnalyzer {
      *
      * @param securityAttributes 权限数据
      */
-    public void processRemoteDistributionAttributes(List<SecurityAttribute> securityAttributes) {
+    public void postDistributionAttributeProcess(List<SecurityAttribute> securityAttributes) {
 
         // 从缓存中获取全部带有特殊字符的匹配规则
-        LinkedHashMap<HerodotusRequest, List<HerodotusSecurityAttribute>> compatibles = restSecurityAttributeStorage.getCompatible();
+        Map<HerodotusRequest, List<HerodotusSecurityAttribute>> compatibles = restSecurityAttributeStorage.getCompatible();
         // 创建一个临时的 Matcher 容器
-        LinkedHashMap<HerodotusRequest, List<HerodotusSecurityAttribute>> matchers = new LinkedHashMap<>(compatibles);
+        Map<HerodotusRequest, List<HerodotusSecurityAttribute>> matchers = new LinkedHashMap<>(compatibles);
 
         // 1. 对分发的 SecurityAttribute 进行分组
-        Map<UrlCategory, LinkedHashMap<HerodotusRequest, List<HerodotusSecurityAttribute>>> grouping = groupingSecurityMetadata(securityAttributes);
+        Map<UrlCategory, Map<HerodotusRequest, List<HerodotusSecurityAttribute>>> grouping = groupingAttributeTransmitters(securityAttributes);
 
         // 2. 拿到带有通配符的分组数据后，先存入本地然后将其作为 matchers 作为后续权限冲突分析的依据
         // 注意：静态权限采用聚合方式之后，matchers 可能为空
-        LinkedHashMap<HerodotusRequest, List<HerodotusSecurityAttribute>> wildcards = grouping.get(UrlCategory.WILDCARD);
+        Map<HerodotusRequest, List<HerodotusSecurityAttribute>> wildcards = grouping.get(UrlCategory.WILDCARD);
         if (MapUtils.isNotEmpty(wildcards)) {
             matchers.putAll(wildcards);
             restSecurityAttributeStorage.addToStorage(wildcards, false);
@@ -242,7 +194,7 @@ public class SecurityAttributeAnalyzer {
 
         // 3. 拿到带有占位符的分组数据，并检测是否存在冲突的匹配规则，然后将结果存入本地存储
         // 注意：这里 matchers 可能为空。
-        LinkedHashMap<HerodotusRequest, List<HerodotusSecurityAttribute>> placeholders = grouping.get(UrlCategory.PLACEHOLDER);
+        Map<HerodotusRequest, List<HerodotusSecurityAttribute>> placeholders = grouping.get(UrlCategory.PLACEHOLDER);
         log.debug("[Herodotus] |- Store placeholder type security attributes.");
         restSecurityAttributeStorage.addToStorage(matchers, placeholders, false);
 
@@ -251,7 +203,7 @@ public class SecurityAttributeAnalyzer {
             matchers.putAll(placeholders);
         }
         // 5. 拿到全路径的分组数据，并检测是否存在冲突的匹配规则，然后将结果存入本地存储
-        LinkedHashMap<HerodotusRequest, List<HerodotusSecurityAttribute>> fullPaths = grouping.get(UrlCategory.FULL_PATH);
+        Map<HerodotusRequest, List<HerodotusSecurityAttribute>> fullPaths = grouping.get(UrlCategory.FULL_PATH);
         log.debug("[Herodotus] |- Store full path type security attributes.");
         restSecurityAttributeStorage.addToStorage(matchers, fullPaths, true);
 

@@ -27,8 +27,7 @@ package cn.herodotus.dante.oauth2.authorization.config;
 
 import cn.herodotus.dante.core.builder.SecurityMatcher;
 import cn.herodotus.dante.core.function.SecurityMatcherBuilderCustomizer;
-import cn.herodotus.dante.oauth2.authorization.attribute.RestSecurityAttributeStorage;
-import cn.herodotus.dante.oauth2.authorization.attribute.SecurityAttributeAnalyzer;
+import cn.herodotus.dante.oauth2.authorization.attribute.SecurityAttributeManager;
 import cn.herodotus.dante.oauth2.authorization.customizer.OAuth2AuthorizationSecurityMatcherBuilderCustomizer;
 import cn.herodotus.dante.oauth2.authorization.properties.OAuth2AuthorizationProperties;
 import cn.herodotus.dante.oauth2.authorization.servlet.OAuth2SessionManagementConfigurerCustomer;
@@ -40,7 +39,6 @@ import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.ObjectProvider;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -82,29 +80,6 @@ public class OAuth2ServletAuthorizationConfiguration {
     }
 
     @Bean
-    @ConditionalOnMissingBean
-    public RestSecurityAttributeStorage securityMetadataSourceStorage() {
-        return new RestSecurityAttributeStorage();
-    }
-
-    @Bean
-    @ConditionalOnMissingBean
-    public ServletSecurityAuthorizationManager servletSecurityAuthorizationManager(RestSecurityAttributeStorage restSecurityAttributeStorage, ServletOAuth2ResourceMatcherConfigurer servletOAuth2ResourceMatcherConfigurer, ObjectProvider<ApiVersionStrategy> apiVersionStrategies) {
-        ServletSecurityAuthorizationManager manager = new ServletSecurityAuthorizationManager(restSecurityAttributeStorage, servletOAuth2ResourceMatcherConfigurer, apiVersionStrategies);
-        log.trace("[Herodotus] |- Bean [Servlet Security Authorization Manager] Configure.");
-        return manager;
-    }
-
-    @Bean
-    @ConditionalOnMissingBean
-    public SecurityAttributeAnalyzer securityAttributeAnalyzer(RestSecurityAttributeStorage restSecurityAttributeStorage, ServletOAuth2ResourceMatcherConfigurer servletOAuth2ResourceMatcherConfigurer) {
-        SecurityAttributeAnalyzer analyzer = new SecurityAttributeAnalyzer(restSecurityAttributeStorage, servletOAuth2ResourceMatcherConfigurer);
-        log.trace("[Herodotus] |- Bean [Security Attribute Analyzer] Configure.");
-        return analyzer;
-    }
-
-    @Bean
-    @ConditionalOnMissingBean
     public ServletOAuth2ResourceMatcherConfigurer servletSecurityMatcherConfigurer(OAuth2AuthorizationProperties authorizationProperties, ResourceUrlProvider resourceUrlProvider, SecurityMatcher securityMatcher) {
         ServletOAuth2ResourceMatcherConfigurer configurer = new ServletOAuth2ResourceMatcherConfigurer(authorizationProperties, resourceUrlProvider, securityMatcher);
         log.trace("[Herodotus] |- Bean [Servlet Security Matcher Configurer] Configure.");
@@ -112,7 +87,20 @@ public class OAuth2ServletAuthorizationConfiguration {
     }
 
     @Bean
-    @ConditionalOnMissingBean
+    public SecurityAttributeManager securityAttributeAnalyzer(ServletOAuth2ResourceMatcherConfigurer servletOAuth2ResourceMatcherConfigurer) {
+        SecurityAttributeManager analyzer = new SecurityAttributeManager(servletOAuth2ResourceMatcherConfigurer.getPermitAllAttributes());
+        log.trace("[Herodotus] |- Bean [Security Attribute Analyzer] Configure.");
+        return analyzer;
+    }
+
+    @Bean
+    public ServletSecurityAuthorizationManager servletSecurityAuthorizationManager(SecurityAttributeManager securityAttributeManager, ServletOAuth2ResourceMatcherConfigurer servletOAuth2ResourceMatcherConfigurer, ObjectProvider<ApiVersionStrategy> apiVersionStrategies) {
+        ServletSecurityAuthorizationManager manager = new ServletSecurityAuthorizationManager(securityAttributeManager, servletOAuth2ResourceMatcherConfigurer, apiVersionStrategies);
+        log.trace("[Herodotus] |- Bean [Servlet Security Authorization Manager] Configure.");
+        return manager;
+    }
+
+    @Bean
     public ServletOAuth2AuthorizationConfigurerManager servletOAuth2AuthorizationFacadeConfigurer(
             ServletTemplateHandler servletTemplateHandler,
             JwtDecoder jwtDecoder,

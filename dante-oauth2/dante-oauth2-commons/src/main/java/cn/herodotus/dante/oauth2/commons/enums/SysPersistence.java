@@ -43,7 +43,7 @@ public enum SysPersistence implements ConditionEnum {
     JPA {
         @Override
         public boolean isActive(Environment environment) {
-            return isDefault(environment, OAuth2Constants.ITEM_PERSISTENCE_SYS);
+            return isDefault(environment, OAuth2Constants.ITEM__PERSISTENCE_SYS);
         }
 
         @Override
@@ -58,7 +58,7 @@ public enum SysPersistence implements ConditionEnum {
     CASSANDRA {
         @Override
         public boolean isActive(Environment environment) {
-            return isActive(environment, OAuth2Constants.ITEM_PERSISTENCE_SYS);
+            return isActive(environment, OAuth2Constants.ITEM__PERSISTENCE_SYS);
         }
 
         @Override

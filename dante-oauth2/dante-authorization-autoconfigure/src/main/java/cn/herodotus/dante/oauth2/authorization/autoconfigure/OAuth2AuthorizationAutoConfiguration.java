@@ -25,14 +25,14 @@
 
 package cn.herodotus.dante.oauth2.authorization.autoconfigure;
 
-import cn.herodotus.dante.oauth2.authorization.attribute.RestSecurityAttributeStorage;
-import cn.herodotus.dante.oauth2.authorization.attribute.SecurityAttributeAnalyzer;
-import cn.herodotus.dante.oauth2.authorization.autoconfigure.listener.LocalRestMappingCollectListener;
-import cn.herodotus.dante.oauth2.authorization.autoconfigure.listener.RemoteRestMappingGatherListener;
-import cn.herodotus.dante.oauth2.authorization.autoconfigure.processor.SecurityAttributeDistributionProcessor;
-import cn.herodotus.dante.oauth2.authorization.autoconfigure.strategy.DefaultRestMappingCollectEventManager;
-import cn.herodotus.dante.oauth2.authorization.config.OAuth2ServletAuthorizationConfiguration;
 import cn.herodotus.dante.messaging.domain.SecurityAttribute;
+import cn.herodotus.dante.oauth2.authorization.attribute.RestSecurityAttributeAnalyzer;
+import cn.herodotus.dante.oauth2.authorization.attribute.RestSecurityAttributeStorage;
+import cn.herodotus.dante.oauth2.authorization.autoconfigure.listener.LocalAttributeCollectionListener;
+import cn.herodotus.dante.oauth2.authorization.autoconfigure.listener.RemoteAttributeCollectionListener;
+import cn.herodotus.dante.oauth2.authorization.autoconfigure.processor.SecurityAttributeProcessor;
+import cn.herodotus.dante.oauth2.authorization.autoconfigure.strategy.DefaultAttributeCollectionEventManager;
+import cn.herodotus.dante.oauth2.authorization.config.OAuth2ServletAuthorizationConfiguration;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
@@ -48,18 +48,18 @@ import java.util.List;
  * <p>Description: OAuth2 资源服务器自动配置模块 </p>
  * <p>
  * 接口（资源服务器中提供的 REST API）聚合汇总，实现权限管控的主要逻辑：
- * 1. 各服务（资源服务器）启动完成之后，会自动执行 {@code RestMappingScanner} 对该服务中的 REST API 进行扫描，然后将扫描结果转换成 {@link SecurityAttribute},通过 {@link DefaultRestMappingCollectEventManager} 将数据以 Event（Local Event 或基于 Spring Cloud Bus 的 Remote Event）方式发送到接口权限管理服务（当前为 UPMS 服务）
+ * 1. 各服务（资源服务器）启动完成之后，会自动执行 {@code RestMappingScanner} 对该服务中的 REST API 进行扫描，然后将扫描结果转换成 {@link SecurityAttribute},通过 {@link DefaultAttributeCollectionEventManager} 将数据以 Event（Local Event 或基于 Spring Cloud Bus 的 Remote Event）方式发送到接口权限管理服务（当前为 UPMS 服务）
  * 注意：
  * 1.1. 只有使用 Swagger {@link Operation} 注解标注过的 REST API 才会被扫描到。该措施主要为了强制编写 Swagger 说明
  * 1.2. UPMS 服务自身 REST API 也会进行聚合，但是不需要远程发送。
- * 1.3. {@link DefaultRestMappingCollectEventManager} 在发送 Event 时，会提前调用 {@link SecurityAttributeAnalyzer#processLocalResourceMatchers()} 对服务本地配置的静态权限进行处理，放入到本地权限缓存中 {@link RestSecurityAttributeStorage}。
- * 2. UPMS 服务会使用 {@link LocalRestMappingCollectListener} 接收本地（UPMS自身）和使用 {@link RemoteRestMappingGatherListener} 接收其它服务的接口数据
- * 注意：单体架构就只有 {@link LocalRestMappingCollectListener} 会生效。 {@link RemoteRestMappingGatherListener} 依赖消息队列，仅在微服务架构下生效。
- * 3. UPMS 接收到各服务的扫描到的接口数据后，会调用 {@link SecurityAttributeDistributionProcessor#processRestMappings(List)} 方法，执行以下操作：
+ * 1.3. {@link DefaultAttributeCollectionEventManager} 在发送 Event 时，会提前调用 {@link RestSecurityAttributeAnalyzer#postLocalResourceMatcherProcess()} 对服务本地配置的静态权限进行处理，放入到本地权限缓存中 {@link RestSecurityAttributeStorage}。
+ * 2. UPMS 服务会使用 {@link LocalAttributeCollectionListener} 接收本地（UPMS自身）和使用 {@link RemoteAttributeCollectionListener} 接收其它服务的接口数据
+ * 注意：单体架构就只有 {@link LocalAttributeCollectionListener} 会生效。 {@link RemoteAttributeCollectionListener} 依赖消息队列，仅在微服务架构下生效。
+ * 3. UPMS 接收到各服务的扫描到的接口数据后，会调用 {@link SecurityAttributeProcessor#postAttributeCollectProcess(AttributeCollector)} 方法，执行以下操作：
  * 3.1. 先将接口数据存入 {@code SysInterface} 表中。
  * 3.2. 查询 {@code SysInterface} 表中有的但是 {@code SysAttribute} 表中没有的数据，将这部分差异数据存入 {@code SysAttribute} 表中（注：该方法时为了规避 JPA 更新操作会全部字段覆盖同时兼顾性能的措施）
  * 3.3. 将 {@code SysAttribute} 中最新的数据，分发至指定的 serviceId 对应服务中（如果一个服务是多实例，只会又一个实例接收到分发数据，其它实例通过 JetCache 多级缓存的同步机制来同步数据，以此种方式来降低消息的发送，见：herodotus-cloud-kafka.yaml 中 Spring Cloud Stream 部分配置）
- * 4. 各个服务使用 {@link SecurityAttributeAnalyzer#processRemoteDistributionAttributes(List)} 方法接收接口权限管理服务（当前为 UPMS 服务）返回的数据。该方法会执行以下操作：
+ * 4. 各个服务使用 {@link RestSecurityAttributeAnalyzer#postDistributionAttributeProcess(List)} 方法接收接口权限管理服务（当前为 UPMS 服务）返回的数据。该方法会执行以下操作：
  * 4.1. 按照接口数据的类型（全路径、占位符、通配符）三种类型进行分组
  * 4.2. 先将占位符、通配符类型接口存入 {@link RestSecurityAttributeStorage} 的 {@code compatible} 的缓存中
  * 4.3. 然后拿到所有的全路径接口，与占位符、通配符进行比较，去除重复可能产生冲突的权限

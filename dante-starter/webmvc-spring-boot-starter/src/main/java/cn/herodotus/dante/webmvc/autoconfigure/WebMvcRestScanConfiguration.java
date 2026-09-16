@@ -25,16 +25,15 @@
 
 package cn.herodotus.dante.webmvc.autoconfigure;
 
-import cn.herodotus.dante.messaging.strategy.RestMappingCollectEventManager;
+import cn.herodotus.dante.messaging.strategy.AttributeCollectionEventManager;
 import cn.herodotus.dante.web.autoconfigure.properties.ServiceProperties;
 import cn.herodotus.dante.web.condition.ConditionalOnRestScanEnabled;
-import cn.herodotus.dante.webmvc.autoconfigure.initializer.RestMappingScanner;
+import cn.herodotus.dante.webmvc.autoconfigure.initializer.RestScanner;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.webmvc.autoconfigure.WebMvcProperties;
 import org.springframework.context.annotation.Bean;
@@ -47,24 +46,23 @@ import org.springframework.context.annotation.Configuration;
  * @date : 2022/1/16 18:40
  */
 @Configuration(proxyBeanMethods = false)
-@ConditionalOnClass(RestMappingCollectEventManager.class)
+@ConditionalOnClass(AttributeCollectionEventManager.class)
 @ConditionalOnRestScanEnabled
 @EnableConfigurationProperties(ServiceProperties.class)
-public class WebMvcRestMappingScanConfiguration {
+public class WebMvcRestScanConfiguration {
 
-    private static final Logger log = LoggerFactory.getLogger(WebMvcRestMappingScanConfiguration.class);
+    private static final Logger log = LoggerFactory.getLogger(WebMvcRestScanConfiguration.class);
 
     @PostConstruct
     public void postConstruct() {
-        log.info("[Herodotus] |- Auto [Servlet Rest Mapping Scan] Configure.");
+        log.info("[Herodotus] |- Auto [Servlet REST Scan] Configure.");
     }
 
     @Bean
-    @ConditionalOnBean(RestMappingCollectEventManager.class)
-    @ConditionalOnMissingBean
-    public RestMappingScanner restMappingScanner(WebMvcProperties webMvcProperties, ServiceProperties serviceProperties, RestMappingCollectEventManager requestMappingScanManager) {
-        RestMappingScanner scanner = new RestMappingScanner(webMvcProperties, serviceProperties.getScan(), requestMappingScanManager);
-        log.trace("[Herodotus] |- Bean [Servlet Rest Mapping Scanner] Configure.");
+    @ConditionalOnBean(AttributeCollectionEventManager.class)
+    public RestScanner restScanner(WebMvcProperties webMvcProperties, ServiceProperties serviceProperties, AttributeCollectionEventManager attributeCollectionEventManager) {
+        RestScanner scanner = new RestScanner(webMvcProperties, serviceProperties.getScan(), attributeCollectionEventManager);
+        log.trace("[Herodotus] |- Bean [Servlet REST Scanner] Configure.");
         return scanner;
     }
 }

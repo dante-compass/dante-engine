@@ -23,31 +23,20 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.messaging.domain;
+package cn.herodotus.dante.messaging.event;
 
-import cn.herodotus.dante.messaging.definition.AbstractAttributeTransmitter;
-
-import java.util.List;
+import cn.herodotus.dante.messaging.definition.event.AbstractApplicationEvent;
+import cn.herodotus.dante.messaging.domain.AttributeCollector;
 
 /**
- * <p>Description: 权限元数据分发器 </p>
- * <p>
- * 权限数据汇总后，再次分发至各个服务传输对象
+ * <p>Description: 本地MappingAttribute收集事件 </p>
  *
  * @author : gengwei.zheng
- * @date : 2026/2/28 19:25
+ * @date : 2021/8/8 21:55
  */
-public class AttributeDispatcher extends AbstractAttributeTransmitter<SecurityAttribute> {
+public class AttributeCollectionEvent extends AbstractApplicationEvent<AttributeCollector> {
 
-    public AttributeDispatcher() {
-        super();
-    }
-
-    public AttributeDispatcher(List<SecurityAttribute> attributes, String serviceId) {
-        super(attributes, serviceId);
-    }
-
-    public AttributeDispatcher(List<SecurityAttribute> attributes, String serviceId, Boolean rest) {
-        super(attributes, serviceId, rest);
+    public AttributeCollectionEvent(AttributeCollector collector) {
+        super(collector);
     }
 }

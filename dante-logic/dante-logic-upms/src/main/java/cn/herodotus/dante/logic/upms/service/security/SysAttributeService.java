@@ -30,6 +30,7 @@ import cn.herodotus.dante.data.jpa.service.AbstractJpaService;
 import cn.herodotus.dante.logic.upms.entity.security.SysAttribute;
 import cn.herodotus.dante.logic.upms.entity.security.SysPermission;
 import cn.herodotus.dante.logic.upms.repository.security.SysAttributeRepository;
+import cn.herodotus.dante.spring.enums.MappingCategory;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -80,8 +81,8 @@ public class SysAttributeService extends AbstractJpaService<SysAttribute, String
                 .orElse(null);
     }
 
-    public List<SysAttribute> findAllByServiceId(String serviceId) {
-        return sysAttributeRepository.findAllByServiceId(serviceId);
+    public List<SysAttribute> findAllByServiceId(String serviceId, boolean rest) {
+        return sysAttributeRepository.findAllByServiceIdAndCategory(serviceId, rest ? MappingCategory.REST : MappingCategory.GRPC);
     }
 
     public List<SysAttribute> findByAttributeIdIn(List<String> ids) {
