@@ -26,7 +26,7 @@
 package cn.herodotus.dante.webmvc.autoconfigure.initializer;
 
 import cn.herodotus.dante.core.constant.SymbolConstants;
-import cn.herodotus.dante.messaging.domain.RestMapping;
+import cn.herodotus.dante.messaging.domain.MappingAttribute;
 import cn.herodotus.dante.messaging.strategy.RestMappingCollectEventManager;
 import cn.herodotus.dante.web.autoconfigure.initializer.AbstractRestMappingScanner;
 import cn.herodotus.dante.web.autoconfigure.properties.ServiceProperties;
@@ -83,7 +83,7 @@ public class RestMappingScanner extends AbstractRestMappingScanner {
         Map<String, RequestMappingHandlerMapping> mappings = applicationContext.getBeansOfType(RequestMappingHandlerMapping.class);
 
         // 4、 获取url与类和方法的对应信息
-        List<RestMapping> resources = new ArrayList<>();
+        List<MappingAttribute> resources = new ArrayList<>();
         for (RequestMappingHandlerMapping mapping : mappings.values()) {
             Map<RequestMappingInfo, HandlerMethod> handlerMethods = mapping.getHandlerMethods();
             if (MapUtils.isNotEmpty(handlerMethods)) {
@@ -97,12 +97,12 @@ public class RestMappingScanner extends AbstractRestMappingScanner {
                     }
 
                     // 4.2、拼装扫描信息
-                    RestMapping restMapping = createRestMapping(serviceId, requestMappingInfo, handlerMethod);
-                    if (ObjectUtils.isEmpty(restMapping)) {
+                    MappingAttribute mappingAttribute = createRestMapping(serviceId, requestMappingInfo, handlerMethod);
+                    if (ObjectUtils.isEmpty(mappingAttribute)) {
                         continue;
                     }
 
-                    resources.add(restMapping);
+                    resources.add(mappingAttribute);
                 }
             }
         }
@@ -110,7 +110,7 @@ public class RestMappingScanner extends AbstractRestMappingScanner {
         complete(serviceId, resources);
     }
 
-    private RestMapping createRestMapping(String serviceId, RequestMappingInfo info, HandlerMethod method) {
+    private MappingAttribute createRestMapping(String serviceId, RequestMappingInfo info, HandlerMethod method) {
         // 4.2.1、获取注解对应的请求类型
         RequestMethodsRequestCondition requestMethodsRequestCondition = info.getMethodsCondition();
         String requestMethods = StringUtils.join(requestMethodsRequestCondition.getMethods(), SymbolConstants.COMMA);

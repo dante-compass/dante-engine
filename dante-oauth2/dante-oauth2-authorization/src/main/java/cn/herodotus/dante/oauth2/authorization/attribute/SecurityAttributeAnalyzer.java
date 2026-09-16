@@ -26,7 +26,7 @@
 package cn.herodotus.dante.oauth2.authorization.attribute;
 
 import cn.herodotus.dante.core.constant.SymbolConstants;
-import cn.herodotus.dante.messaging.domain.AttributeTransmitter;
+import cn.herodotus.dante.messaging.domain.SecurityAttribute;
 import cn.herodotus.dante.oauth2.authorization.cache.HerodotusRequest;
 import cn.herodotus.dante.oauth2.authorization.definition.HerodotusSecurityAttribute;
 import cn.herodotus.dante.oauth2.authorization.servlet.ServletOAuth2ResourceMatcherConfigurer;
@@ -124,20 +124,20 @@ public class SecurityAttributeAnalyzer {
      * <p>
      * 如果实际应用不满足可以，自己扩展AccessDecisionVoter或者AccessDecisionManager
      *
-     * @param attributeTransmitter {@link AttributeTransmitter}
+     * @param securityAttribute {@link SecurityAttribute}
      * @return security权限定义集合
      */
-    private List<HerodotusSecurityAttribute> analysis(AttributeTransmitter attributeTransmitter) {
+    private List<HerodotusSecurityAttribute> analysis(SecurityAttribute securityAttribute) {
 
         List<HerodotusSecurityAttribute> attributes = new ArrayList<>();
 
-        if (StringUtils.isNotBlank(attributeTransmitter.getPermissions())) {
-            String[] permissions = org.springframework.util.StringUtils.commaDelimitedListToStringArray(attributeTransmitter.getPermissions());
+        if (StringUtils.isNotBlank(securityAttribute.getPermissions())) {
+            String[] permissions = org.springframework.util.StringUtils.commaDelimitedListToStringArray(securityAttribute.getPermissions());
             Arrays.stream(permissions).forEach(item -> attributes.add(new HerodotusSecurityAttribute(hasAuthority(item))));
         }
 
-        if (StringUtils.isNotBlank(attributeTransmitter.getWebExpression())) {
-            attributes.add(new HerodotusSecurityAttribute(attributeTransmitter.getWebExpression()));
+        if (StringUtils.isNotBlank(securityAttribute.getWebExpression())) {
+            attributes.add(new HerodotusSecurityAttribute(securityAttribute.getWebExpression()));
         }
 
         return attributes;
@@ -174,14 +174,14 @@ public class SecurityAttributeAnalyzer {
     /**
      * 将 UPMS 分发的 SecurityAttributes 数据进行权限转换并分组
      *
-     * @param attributeTransmitters 权限数据
+     * @param securityAttributes 权限数据
      * @return 分组后的权限数据
      */
-    private Map<UrlCategory, LinkedHashMap<HerodotusRequest, List<HerodotusSecurityAttribute>>> groupingSecurityMetadata(List<AttributeTransmitter> attributeTransmitters) {
+    private Map<UrlCategory, LinkedHashMap<HerodotusRequest, List<HerodotusSecurityAttribute>>> groupingSecurityMetadata(List<SecurityAttribute> securityAttributes) {
 
         Map<UrlCategory, LinkedHashMap<HerodotusRequest, List<HerodotusSecurityAttribute>>> group = new LinkedHashMap<>();
 
-        attributeTransmitters.forEach(transmitter -> {
+        securityAttributes.forEach(transmitter -> {
             LinkedHashMap<HerodotusRequest, List<HerodotusSecurityAttribute>> resources = convert(transmitter.getUrl(), transmitter.getRequestMethod(), transmitter.getVersion(), analysis(transmitter));
             appendToGroup(group, UrlCategory.getCategory(transmitter.getUrl()), resources);
         });
@@ -220,9 +220,9 @@ public class SecurityAttributeAnalyzer {
      * <p>
      * 处理过程中，会根据规则对权限类型分组，然后进行去重的操作。
      *
-     * @param attributeTransmitters 权限数据
+     * @param securityAttributes 权限数据
      */
-    public void processRemoteDistributionAttributes(List<AttributeTransmitter> attributeTransmitters) {
+    public void processRemoteDistributionAttributes(List<SecurityAttribute> securityAttributes) {
 
         // 从缓存中获取全部带有特殊字符的匹配规则
         LinkedHashMap<HerodotusRequest, List<HerodotusSecurityAttribute>> compatibles = restSecurityAttributeStorage.getCompatible();
@@ -230,7 +230,7 @@ public class SecurityAttributeAnalyzer {
         LinkedHashMap<HerodotusRequest, List<HerodotusSecurityAttribute>> matchers = new LinkedHashMap<>(compatibles);
 
         // 1. 对分发的 SecurityAttribute 进行分组
-        Map<UrlCategory, LinkedHashMap<HerodotusRequest, List<HerodotusSecurityAttribute>>> grouping = groupingSecurityMetadata(attributeTransmitters);
+        Map<UrlCategory, LinkedHashMap<HerodotusRequest, List<HerodotusSecurityAttribute>>> grouping = groupingSecurityMetadata(securityAttributes);
 
         // 2. 拿到带有通配符的分组数据后，先存入本地然后将其作为 matchers 作为后续权限冲突分析的依据
         // 注意：静态权限采用聚合方式之后，matchers 可能为空

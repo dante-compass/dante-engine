@@ -35,8 +35,8 @@ import cn.herodotus.dante.messaging.definition.event.StrategyEventManager;
 import cn.herodotus.dante.messaging.event.ApplicationReadinessEvent;
 import cn.herodotus.dante.oauth2.authorization.attribute.SecurityAttributeAnalyzer;
 import cn.herodotus.dante.oauth2.authorization.autoconfigure.bus.RemoteAttributeDistributionEvent;
-import cn.herodotus.dante.messaging.domain.AttributeTransmitter;
-import cn.herodotus.dante.messaging.domain.RestMapping;
+import cn.herodotus.dante.messaging.domain.SecurityAttribute;
+import cn.herodotus.dante.messaging.domain.MappingAttribute;
 import cn.herodotus.dante.spring.context.ServiceContextHolder;
 import cn.herodotus.dante.spring.founction.ListConverter;
 import com.google.common.collect.ImmutableList;
@@ -55,12 +55,12 @@ import java.util.List;
  * @date : 2021/8/8 14:00
  */
 @Component
-public class SecurityAttributeDistributionProcessor implements StrategyEventManager<List<AttributeTransmitter>> {
+public class SecurityAttributeDistributionProcessor implements StrategyEventManager<List<SecurityAttribute>> {
 
     private static final Logger log = LoggerFactory.getLogger(SecurityAttributeDistributionProcessor.class);
 
     private final ListConverter<SysInterface, SysAttribute> toSysAttributes;
-    private final ListConverter<SysAttribute, AttributeTransmitter> toTransmitters;
+    private final ListConverter<SysAttribute, SecurityAttribute> toTransmitters;
 
     private final SysAttributeService sysAttributeService;
     private final SysInterfaceService sysInterfaceService;
@@ -80,7 +80,7 @@ public class SecurityAttributeDistributionProcessor implements StrategyEventMana
      * @param data 事件携带数据
      */
     @Override
-    public void postLocalProcess(List<AttributeTransmitter> data) {
+    public void postLocalProcess(List<SecurityAttribute> data) {
         securityAttributeAnalyzer.processRemoteDistributionAttributes(data);
     }
 
@@ -93,10 +93,10 @@ public class SecurityAttributeDistributionProcessor implements StrategyEventMana
      * 将SysAuthority表中存在，但是SysSecurityAttribute中不存在的数据同步至SysSecurityAttribute，保证两侧数据一致
      */
     @Transactional(rollbackFor = Exception.class)
-    public void processRestMappings(List<RestMapping> restMappings) {
+    public void processRestMappings(List<MappingAttribute> mappingAttributes) {
 
         // 将各个服务发送回来的 requestMappings 存储到 SysInterface 中
-        List<SysInterface> storedInterfaces = sysInterfaceService.storeRequestMappings(restMappings);
+        List<SysInterface> storedInterfaces = sysInterfaceService.storeRequestMappings(mappingAttributes);
 
         if (CollectionUtils.isNotEmpty(storedInterfaces)) {
             log.debug("[Herodotus] |- [R5] Request mapping store success, start to merge security metadata!");
@@ -138,14 +138,14 @@ public class SecurityAttributeDistributionProcessor implements StrategyEventMana
     public void distributionToService(String serviceId) {
         List<SysAttribute> sysAttributes = sysAttributeService.findAllByServiceId(serviceId);
         if (CollectionUtils.isNotEmpty(sysAttributes)) {
-            List<AttributeTransmitter> attributeTransmitters = toTransmitters.convert(sysAttributes);
+            List<SecurityAttribute> securityAttributes = toTransmitters.convert(sysAttributes);
             log.debug("[Herodotus] |- [R6] Synchronization permissions to service [{}]", serviceId);
-            this.postProcess(serviceId, attributeTransmitters);
+            this.postProcess(serviceId, securityAttributes);
         }
     }
 
     public void distributeChangedSecurityAttribute(SysAttribute sysAttribute) {
-        AttributeTransmitter attributeTransmitter = toTransmitters.from(sysAttribute);
-        postProcess(attributeTransmitter.getServiceId(), ImmutableList.of(attributeTransmitter));
+        SecurityAttribute securityAttribute = toTransmitters.from(sysAttribute);
+        postProcess(securityAttribute.getServiceId(), ImmutableList.of(securityAttribute));
     }
 }

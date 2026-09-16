@@ -31,52 +31,42 @@ import com.google.common.base.MoreObjects;
 import java.util.Objects;
 
 /**
- * <p>Description: Security Metadata 传输数据实体 </p>
+ * <p>Description: Controller 请求注解元数据封装实体 </p>
  *
  * @author : gengwei.zheng
- * @date : 2021/8/8 15:51
+ * @date : 2020/6/2 19:52
  */
-public class AttributeTransmitter extends AbstractRest {
+public class MappingAttribute extends AbstractRest {
 
-    private String attributeId;
+    public MappingAttribute() {
+    }
 
-    private String attributeCode;
+    private String id;
 
-    private String attributeName;
-
-    private String webExpression;
-
-    private String permissions;
+    private String code;
 
     private String className;
 
     private String methodName;
 
-    public AttributeTransmitter() {
+    private String description;
+
+    private String category;
+
+    public String getId() {
+        return id;
     }
 
-    public String getAttributeCode() {
-        return attributeCode;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public void setAttributeCode(String attributeCode) {
-        this.attributeCode = attributeCode;
+    public String getCode() {
+        return code;
     }
 
-    public String getAttributeId() {
-        return attributeId;
-    }
-
-    public void setAttributeId(String attributeId) {
-        this.attributeId = attributeId;
-    }
-
-    public String getAttributeName() {
-        return attributeName;
-    }
-
-    public void setAttributeName(String attributeName) {
-        this.attributeName = attributeName;
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public String getClassName() {
@@ -95,47 +85,45 @@ public class AttributeTransmitter extends AbstractRest {
         this.methodName = methodName;
     }
 
-    public String getPermissions() {
-        return permissions;
+    public String getDescription() {
+        return description;
     }
 
-    public void setPermissions(String permissions) {
-        this.permissions = permissions;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public String getWebExpression() {
-        return webExpression;
+    public String getCategory() {
+        return category;
     }
 
-    public void setWebExpression(String webExpression) {
-        this.webExpression = webExpression;
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     @Override
     public boolean equals(Object o) {
-
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        AttributeTransmitter that = (AttributeTransmitter) o;
-        return Objects.equals(attributeId, that.attributeId);
+        MappingAttribute that = (MappingAttribute) o;
+        return Objects.equals(id, that.id) && Objects.equals(code, that.code);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(attributeId);
+        return Objects.hash(id, code);
     }
 
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("attributeCode", attributeCode)
-                .add("attributeId", attributeId)
-                .add("attributeName", attributeName)
-                .add("webExpression", webExpression)
-                .add("permissions", permissions)
+                .add("id", id)
+                .add("code", code)
                 .add("className", className)
                 .add("methodName", methodName)
+                .add("description", description)
+                .add("category", category)
                 .addValue(super.toString())
                 .toString();
     }

@@ -23,26 +23,48 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.messaging.event;
+package cn.herodotus.dante.messaging.domain;
 
-import cn.herodotus.dante.messaging.definition.event.AbstractApplicationEvent;
-import cn.herodotus.dante.messaging.domain.StreamMessage;
-
-import java.time.Clock;
+import com.google.common.base.MoreObjects;
 
 /**
- * <p>Description: Spring Cloud Stream 类型消息发送事件 </p>
+ * <p>Description: Security Metadata 传输数据实体 </p>
  *
  * @author : gengwei.zheng
- * @date : 2023/10/26 15:17
+ * @date : 2021/8/8 15:51
  */
-public class StreamMessageSendingEvent extends AbstractApplicationEvent<StreamMessage> {
+public class SecurityAttribute extends MappingAttribute {
 
-    public StreamMessageSendingEvent(StreamMessage data) {
-        super(data);
+    private String webExpression;
+
+    private String permissions;
+
+    public SecurityAttribute() {
+        super();
     }
 
-    public StreamMessageSendingEvent(StreamMessage data, Clock clock) {
-        super(data, clock);
+    public String getWebExpression() {
+        return webExpression;
+    }
+
+    public void setWebExpression(String webExpression) {
+        this.webExpression = webExpression;
+    }
+
+    public String getPermissions() {
+        return permissions;
+    }
+
+    public void setPermissions(String permissions) {
+        this.permissions = permissions;
+    }
+
+    @Override
+    public String toString() {
+        return MoreObjects.toStringHelper(this)
+                .add("webExpression", webExpression)
+                .add("permissions", permissions)
+                .addValue(super.toString())
+                .toString();
     }
 }

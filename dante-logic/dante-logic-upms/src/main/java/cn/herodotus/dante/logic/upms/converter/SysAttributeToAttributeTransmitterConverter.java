@@ -27,7 +27,7 @@ package cn.herodotus.dante.logic.upms.converter;
 
 import cn.herodotus.dante.logic.upms.entity.security.SysAttribute;
 import cn.herodotus.dante.logic.upms.entity.security.SysPermission;
-import cn.herodotus.dante.messaging.domain.AttributeTransmitter;
+import cn.herodotus.dante.messaging.domain.SecurityAttribute;
 import cn.herodotus.dante.spring.founction.ListConverter;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.util.StringUtils;
@@ -41,12 +41,12 @@ import java.util.Set;
  * @author : gengwei.zheng
  * @date : 2023/8/23 22:59
  */
-public class SysAttributeToAttributeTransmitterConverter implements ListConverter<SysAttribute, AttributeTransmitter> {
+public class SysAttributeToAttributeTransmitterConverter implements ListConverter<SysAttribute, SecurityAttribute> {
     @Override
-    public AttributeTransmitter from(SysAttribute source) {
-        AttributeTransmitter target = new AttributeTransmitter();
-        target.setAttributeId(source.getAttributeId());
-        target.setAttributeCode(source.getAttributeCode());
+    public SecurityAttribute from(SysAttribute source) {
+        SecurityAttribute target = new SecurityAttribute();
+        target.setId(source.getAttributeId());
+        target.setCode(source.getAttributeCode());
         target.setWebExpression(source.getWebExpression());
         target.setPermissions(permissionToCommaDelimitedString(source.getPermissions()));
         target.setUrl(source.getUrl());

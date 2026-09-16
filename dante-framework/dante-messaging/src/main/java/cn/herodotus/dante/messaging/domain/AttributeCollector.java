@@ -23,26 +23,31 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.messaging.event;
+package cn.herodotus.dante.messaging.domain;
 
-import cn.herodotus.dante.messaging.definition.event.AbstractApplicationEvent;
-import cn.herodotus.dante.messaging.domain.StreamMessage;
+import cn.herodotus.dante.messaging.definition.AbstractAttributeTransmitter;
 
-import java.time.Clock;
+import java.util.List;
 
 /**
- * <p>Description: Spring Cloud Stream 类型消息发送事件 </p>
+ * <p>Description: 权限元数据收集器 </p>
+ * <p>
+ * 收集 REST API 或 gRPC 映射数据，并汇总至权限数据管理服务的传输对象
  *
  * @author : gengwei.zheng
- * @date : 2023/10/26 15:17
+ * @date : 2026/2/28 11:50
  */
-public class StreamMessageSendingEvent extends AbstractApplicationEvent<StreamMessage> {
+public class AttributeCollector extends AbstractAttributeTransmitter<MappingAttribute> {
 
-    public StreamMessageSendingEvent(StreamMessage data) {
-        super(data);
+    public AttributeCollector() {
+        super();
     }
 
-    public StreamMessageSendingEvent(StreamMessage data, Clock clock) {
-        super(data, clock);
+    public AttributeCollector(List<MappingAttribute> attributes, String serviceId) {
+        super(attributes, serviceId);
+    }
+
+    public AttributeCollector(List<MappingAttribute> attributes, String serviceId, Boolean rest) {
+        super(attributes, serviceId, rest);
     }
 }

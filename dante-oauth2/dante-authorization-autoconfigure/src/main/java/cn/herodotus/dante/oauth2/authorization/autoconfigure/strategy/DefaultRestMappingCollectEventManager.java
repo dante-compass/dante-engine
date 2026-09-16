@@ -29,7 +29,7 @@ import cn.herodotus.dante.messaging.strategy.RestMappingCollectEventManager;
 import cn.herodotus.dante.messaging.event.RestMappingCollectEvent;
 import cn.herodotus.dante.oauth2.authorization.attribute.SecurityAttributeAnalyzer;
 import cn.herodotus.dante.oauth2.authorization.autoconfigure.bus.RemoteRestMappingCollectEvent;
-import cn.herodotus.dante.messaging.domain.RestMapping;
+import cn.herodotus.dante.messaging.domain.MappingAttribute;
 import cn.herodotus.dante.spring.context.ServiceContextHolder;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 
@@ -61,12 +61,12 @@ public class DefaultRestMappingCollectEventManager implements RestMappingCollect
     }
 
     @Override
-    public void postLocalStorage(List<RestMapping> restMappings) {
+    public void postLocalStorage(List<MappingAttribute> mappingAttributes) {
         securityAttributeAnalyzer.processLocalResourceMatchers();
     }
 
     @Override
-    public void postLocalProcess(List<RestMapping> data) {
+    public void postLocalProcess(List<MappingAttribute> data) {
         publishEvent(new RestMappingCollectEvent(data));
     }
 

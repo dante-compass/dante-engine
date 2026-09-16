@@ -32,7 +32,7 @@ import cn.herodotus.dante.oauth2.authorization.autoconfigure.listener.RemoteRest
 import cn.herodotus.dante.oauth2.authorization.autoconfigure.processor.SecurityAttributeDistributionProcessor;
 import cn.herodotus.dante.oauth2.authorization.autoconfigure.strategy.DefaultRestMappingCollectEventManager;
 import cn.herodotus.dante.oauth2.authorization.config.OAuth2ServletAuthorizationConfiguration;
-import cn.herodotus.dante.messaging.domain.AttributeTransmitter;
+import cn.herodotus.dante.messaging.domain.SecurityAttribute;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
@@ -48,7 +48,7 @@ import java.util.List;
  * <p>Description: OAuth2 资源服务器自动配置模块 </p>
  * <p>
  * 接口（资源服务器中提供的 REST API）聚合汇总，实现权限管控的主要逻辑：
- * 1. 各服务（资源服务器）启动完成之后，会自动执行 {@code RestMappingScanner} 对该服务中的 REST API 进行扫描，然后将扫描结果转换成 {@link AttributeTransmitter},通过 {@link DefaultRestMappingCollectEventManager} 将数据以 Event（Local Event 或基于 Spring Cloud Bus 的 Remote Event）方式发送到接口权限管理服务（当前为 UPMS 服务）
+ * 1. 各服务（资源服务器）启动完成之后，会自动执行 {@code RestMappingScanner} 对该服务中的 REST API 进行扫描，然后将扫描结果转换成 {@link SecurityAttribute},通过 {@link DefaultRestMappingCollectEventManager} 将数据以 Event（Local Event 或基于 Spring Cloud Bus 的 Remote Event）方式发送到接口权限管理服务（当前为 UPMS 服务）
  * 注意：
  * 1.1. 只有使用 Swagger {@link Operation} 注解标注过的 REST API 才会被扫描到。该措施主要为了强制编写 Swagger 说明
  * 1.2. UPMS 服务自身 REST API 也会进行聚合，但是不需要远程发送。

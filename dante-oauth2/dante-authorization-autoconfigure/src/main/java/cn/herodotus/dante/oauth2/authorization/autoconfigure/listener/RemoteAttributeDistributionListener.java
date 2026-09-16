@@ -28,7 +28,7 @@ package cn.herodotus.dante.oauth2.authorization.autoconfigure.listener;
 import cn.herodotus.dante.core.jackson.JacksonUtils;
 import cn.herodotus.dante.oauth2.authorization.attribute.SecurityAttributeAnalyzer;
 import cn.herodotus.dante.oauth2.authorization.autoconfigure.bus.RemoteAttributeDistributionEvent;
-import cn.herodotus.dante.messaging.domain.AttributeTransmitter;
+import cn.herodotus.dante.messaging.domain.SecurityAttribute;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cloud.bus.ServiceMatcher;
@@ -65,7 +65,7 @@ public class RemoteAttributeDistributionListener implements ApplicationListener<
             log.debug("[Herodotus] |- Got attribute transmitter from service [{}], current [{}] start to process security attributes.", event.getOriginService(), event.getDestinationService());
 
             Optional.ofNullable(data)
-                    .flatMap(value -> Optional.ofNullable(JacksonUtils.toList(value, AttributeTransmitter.class)))
+                    .flatMap(value -> Optional.ofNullable(JacksonUtils.toList(value, SecurityAttribute.class)))
                     .ifPresent(securityAttributeAnalyzer::processRemoteDistributionAttributes);
         }
     }

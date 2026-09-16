@@ -27,8 +27,9 @@ package cn.herodotus.dante.web.autoconfigure.initializer;
 
 import cn.herodotus.dante.core.constant.SymbolConstants;
 import cn.herodotus.dante.core.utils.WellFormedUtils;
+import cn.herodotus.dante.messaging.domain.MappingAttribute;
 import cn.herodotus.dante.messaging.strategy.RestMappingCollectEventManager;
-import cn.herodotus.dante.messaging.domain.RestMapping;
+import cn.herodotus.dante.spring.initializer.ApplicationReadyProcessor;
 import cn.herodotus.dante.web.autoconfigure.properties.ServiceProperties;
 import cn.herodotus.dante.web.support.WebPropertyFinder;
 import cn.hutool.v7.crypto.SecureUtil;
@@ -42,7 +43,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationListener;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.method.HandlerMethod;
 
@@ -57,7 +57,7 @@ import java.util.stream.Collectors;
  * @author : gengwei.zheng
  * @date : 2024/1/31 23:38
  */
-public abstract class AbstractRestMappingScanner implements ApplicationListener<ApplicationReadyEvent> {
+public abstract class AbstractRestMappingScanner implements ApplicationReadyProcessor {
 
     private static final Logger log = LoggerFactory.getLogger(AbstractRestMappingScanner.class);
 
@@ -176,7 +176,7 @@ public abstract class AbstractRestMappingScanner implements ApplicationListener<
      * @param serviceId 服务ID
      * @param resources 扫描到的资源
      */
-    protected void complete(String serviceId, List<RestMapping> resources) {
+    protected void complete(String serviceId, List<MappingAttribute> resources) {
         if (CollectionUtils.isNotEmpty(resources)) {
             log.debug("[Herodotus] |- [R2] Request mapping scan found [{}] resources in service [{}], go to next stage!", serviceId, resources.size());
             restMappingCollectEventManager.postProcess(resources);
@@ -221,16 +221,16 @@ public abstract class AbstractRestMappingScanner implements ApplicationListener<
     }
 
     /**
-     * 将接口相关信息，转换为系统统一定义的 {@link RestMapping} 对象
+     * 将接口相关信息，转换为系统统一定义的 {@link MappingAttribute} 对象
      *
      * @param serviceId      服务ID
      * @param requestMethods 请求方法
      * @param urls           请求 URL
      * @param version        请求版本
      * @param method         接口对应的方法对象 {@link HandlerMethod}
-     * @return 封装好的对象 {@link RestMapping}
+     * @return 封装好的对象 {@link MappingAttribute}
      */
-    protected RestMapping buildRestMapping(String serviceId, String requestMethods, String urls, String version, HandlerMethod method) {
+    protected MappingAttribute buildRestMapping(String serviceId, String requestMethods, String urls, String version, HandlerMethod method) {
 
         // 1. 获取类名
         // method.getMethod().getDeclaringClass().getName() 取到的是注解实际所在类的名字，比如注解在父类叫BaseController，那么拿到的就是BaseController
@@ -248,19 +248,19 @@ public abstract class AbstractRestMappingScanner implements ApplicationListener<
         // 4. 生成 ID
         String id = createId(serviceId, requestMethods, urls, version);
 
-        RestMapping restMapping = new RestMapping();
-        restMapping.setMappingId(id);
-        restMapping.setMappingCode(createCode(urls, requestMethods));
-        restMapping.setServiceId(serviceId);
+        MappingAttribute mappingAttribute = new MappingAttribute();
+        mappingAttribute.setId(id);
+        mappingAttribute.setCode(createCode(urls, requestMethods));
+        mappingAttribute.setServiceId(serviceId);
         Operation apiOperation = method.getMethodAnnotation(Operation.class);
         if (ObjectUtils.isNotEmpty(apiOperation)) {
-            restMapping.setDescription(apiOperation.summary());
+            mappingAttribute.setDescription(apiOperation.summary());
         }
-        restMapping.setRequestMethod(requestMethods);
-        restMapping.setUrl(urls);
-        restMapping.setClassName(className);
-        restMapping.setMethodName(methodName);
-        restMapping.setVersion(version);
-        return restMapping;
+        mappingAttribute.setRequestMethod(requestMethods);
+        mappingAttribute.setUrl(urls);
+        mappingAttribute.setClassName(className);
+        mappingAttribute.setMethodName(methodName);
+        mappingAttribute.setVersion(version);
+        return mappingAttribute;
     }
 }

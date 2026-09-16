@@ -25,8 +25,8 @@
 
 package cn.herodotus.dante.messaging.event;
 
-import cn.herodotus.dante.messaging.domain.RestMapping;
 import cn.herodotus.dante.messaging.definition.event.AbstractApplicationEvent;
+import cn.herodotus.dante.messaging.domain.MappingAttribute;
 
 import java.time.Clock;
 import java.util.List;
@@ -37,13 +37,13 @@ import java.util.List;
  * @author : gengwei.zheng
  * @date : 2021/8/8 21:55
  */
-public class RestMappingCollectEvent extends AbstractApplicationEvent<List<RestMapping>> {
+public class RestMappingCollectEvent extends AbstractApplicationEvent<List<MappingAttribute>> {
 
-    public RestMappingCollectEvent(List<RestMapping> data) {
+    public RestMappingCollectEvent(List<MappingAttribute> data) {
         super(data);
     }
 
-    public RestMappingCollectEvent(List<RestMapping> data, Clock clock) {
+    public RestMappingCollectEvent(List<MappingAttribute> data, Clock clock) {
         super(data, clock);
     }
 }

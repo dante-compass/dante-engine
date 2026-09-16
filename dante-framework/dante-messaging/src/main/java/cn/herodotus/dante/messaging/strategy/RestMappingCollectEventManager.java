@@ -25,9 +25,9 @@
 
 package cn.herodotus.dante.messaging.strategy;
 
-import cn.herodotus.dante.messaging.domain.RestMapping;
-import cn.herodotus.dante.spring.context.ServiceContextHolder;
 import cn.herodotus.dante.messaging.definition.event.ApplicationStrategyEventManager;
+import cn.herodotus.dante.messaging.domain.MappingAttribute;
+import cn.herodotus.dante.spring.context.ServiceContextHolder;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.ObjectUtils;
 
@@ -46,7 +46,7 @@ import java.util.Map;
  * @author : gengwei.zheng
  * @date : 2022/1/16 18:42
  */
-public interface RestMappingCollectEventManager extends ApplicationStrategyEventManager<List<RestMapping>> {
+public interface RestMappingCollectEventManager extends ApplicationStrategyEventManager<List<MappingAttribute>> {
 
     /**
      * 获取是否执行扫描的标记注解。
@@ -58,19 +58,19 @@ public interface RestMappingCollectEventManager extends ApplicationStrategyEvent
     /**
      * 执行本地数据存储
      *
-     * @param restMappings 扫描到的RequestMapping
+     * @param mappingAttributes 扫描到的RequestMapping
      */
-    void postLocalStorage(List<RestMapping> restMappings);
+    void postLocalStorage(List<MappingAttribute> mappingAttributes);
 
     /**
      * 发布远程事件，传送RequestMapping
      *
-     * @param restMappings 扫描到的RequestMapping
+     * @param mappingAttributes 扫描到的RequestMapping
      */
     @Override
-    default void postProcess(List<RestMapping> restMappings) {
-        postLocalStorage(restMappings);
-        ApplicationStrategyEventManager.super.postProcess(restMappings);
+    default void postProcess(List<MappingAttribute> mappingAttributes) {
+        postLocalStorage(mappingAttributes);
+        ApplicationStrategyEventManager.super.postProcess(mappingAttributes);
     }
 
     /**

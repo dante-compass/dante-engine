@@ -26,7 +26,7 @@
 package cn.herodotus.dante.logic.upms.converter;
 
 import cn.herodotus.dante.logic.upms.entity.security.SysInterface;
-import cn.herodotus.dante.messaging.domain.RestMapping;
+import cn.herodotus.dante.messaging.domain.MappingAttribute;
 import org.springframework.core.convert.converter.Converter;
 
 /**
@@ -35,13 +35,13 @@ import org.springframework.core.convert.converter.Converter;
  * @author : gengwei.zheng
  * @date : 2023/5/23 17:15
  */
-public class RequestMappingToSysInterfaceConverter implements Converter<RestMapping, SysInterface> {
+public class RequestMappingToSysInterfaceConverter implements Converter<MappingAttribute, SysInterface> {
 
     @Override
-    public SysInterface convert(RestMapping source) {
+    public SysInterface convert(MappingAttribute source) {
         SysInterface target = new SysInterface();
-        target.setInterfaceId(source.getMappingId());
-        target.setInterfaceCode(source.getMappingCode());
+        target.setInterfaceId(source.getId());
+        target.setInterfaceCode(source.getCode());
         target.setRequestMethod(source.getRequestMethod());
         target.setServiceId(source.getServiceId());
         target.setClassName(source.getClassName());

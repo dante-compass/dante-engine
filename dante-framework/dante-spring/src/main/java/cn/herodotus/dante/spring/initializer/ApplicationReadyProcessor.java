@@ -23,26 +23,19 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.messaging.event;
+package cn.herodotus.dante.spring.initializer;
 
-import cn.herodotus.dante.messaging.definition.event.AbstractApplicationEvent;
-import cn.herodotus.dante.messaging.domain.StreamMessage;
-
-import java.time.Clock;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.ApplicationListener;
 
 /**
- * <p>Description: Spring Cloud Stream 类型消息发送事件 </p>
+ * <p>Description: 应用启动处理器 </p>
+ * <p>
+ * 系统中存在很多应用正常启动之后需要进行的操作。这些操作都需要实现 <code>ApplicationListener<ApplicationReadyEvent></code>。
+ * 为了方便使用，统一定义该接口，使用时直接实现该接口即可。
  *
- * @author : gengwei.zheng
- * @date : 2023/10/26 15:17
+ * @author : gengwei_zheng
+ * @date : 2026/9/16 12:11
  */
-public class StreamMessageSendingEvent extends AbstractApplicationEvent<StreamMessage> {
-
-    public StreamMessageSendingEvent(StreamMessage data) {
-        super(data);
-    }
-
-    public StreamMessageSendingEvent(StreamMessage data, Clock clock) {
-        super(data, clock);
-    }
+public interface ApplicationReadyProcessor extends ApplicationListener<ApplicationReadyEvent> {
 }

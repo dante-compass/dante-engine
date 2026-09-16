@@ -27,7 +27,7 @@ package cn.herodotus.dante.oauth2.authorization.autoconfigure.listener;
 
 import cn.herodotus.dante.messaging.event.RestMappingCollectEvent;
 import cn.herodotus.dante.oauth2.authorization.autoconfigure.processor.SecurityAttributeDistributionProcessor;
-import cn.herodotus.dante.messaging.domain.RestMapping;
+import cn.herodotus.dante.messaging.domain.MappingAttribute;
 import org.apache.commons.collections4.CollectionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -58,10 +58,10 @@ public class LocalRestMappingCollectListener implements ApplicationListener<Rest
 
         log.info("[Herodotus] |- Rest mapping gather LOCAL listener, response event!");
 
-        List<RestMapping> restMappings = event.getData();
-        if (CollectionUtils.isNotEmpty(restMappings)) {
+        List<MappingAttribute> mappingAttributes = event.getData();
+        if (CollectionUtils.isNotEmpty(mappingAttributes)) {
             log.debug("[Herodotus] |- [R4] Request mapping process BEGIN!");
-            securityAttributeDistributionProcessor.processRestMappings(restMappings);
+            securityAttributeDistributionProcessor.processRestMappings(mappingAttributes);
         }
     }
 }

@@ -31,7 +31,7 @@ import cn.herodotus.dante.logic.upms.converter.RequestMappingToSysInterfaceConve
 import cn.herodotus.dante.logic.upms.entity.security.SysAttribute;
 import cn.herodotus.dante.logic.upms.entity.security.SysInterface;
 import cn.herodotus.dante.logic.upms.repository.security.SysInterfaceRepository;
-import cn.herodotus.dante.messaging.domain.RestMapping;
+import cn.herodotus.dante.messaging.domain.MappingAttribute;
 import jakarta.persistence.criteria.Predicate;
 import jakarta.persistence.criteria.Root;
 import jakarta.persistence.criteria.Subquery;
@@ -55,7 +55,7 @@ import java.util.stream.Collectors;
 public class SysInterfaceService extends AbstractJpaService<SysInterface, String> {
 
     private final SysInterfaceRepository sysInterfaceRepository;
-    private final Converter<RestMapping, SysInterface> toSysInterface;
+    private final Converter<MappingAttribute, SysInterface> toSysInterface;
 
     public SysInterfaceService(SysInterfaceRepository sysInterfaceRepository) {
         this.sysInterfaceRepository = sysInterfaceRepository;
@@ -98,14 +98,14 @@ public class SysInterfaceService extends AbstractJpaService<SysInterface, String
         return this.findAll(specification);
     }
 
-    public List<SysInterface> storeRequestMappings(Collection<RestMapping> restMappings) {
-        List<SysInterface> sysAuthorities = toSysInterfaces(restMappings);
+    public List<SysInterface> storeRequestMappings(Collection<MappingAttribute> mappingAttributes) {
+        List<SysInterface> sysAuthorities = toSysInterfaces(mappingAttributes);
         return saveAll(sysAuthorities);
     }
 
-    private List<SysInterface> toSysInterfaces(Collection<RestMapping> restMappings) {
-        if (CollectionUtils.isNotEmpty(restMappings)) {
-            return restMappings.stream().map(toSysInterface::convert).collect(Collectors.toList());
+    private List<SysInterface> toSysInterfaces(Collection<MappingAttribute> mappingAttributes) {
+        if (CollectionUtils.isNotEmpty(mappingAttributes)) {
+            return mappingAttributes.stream().map(toSysInterface::convert).collect(Collectors.toList());
         }
         return new ArrayList<>();
     }
