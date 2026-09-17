@@ -59,14 +59,14 @@ import java.util.stream.Collectors;
  * @author : gengwei.zheng
  * @date : 2024/1/31 23:38
  */
-public abstract class AbstractRestScanner implements ApplicationReadyProcessor {
+public abstract class AbstractRequestMappingScanner implements ApplicationReadyProcessor {
 
-    private static final Logger log = LoggerFactory.getLogger(AbstractRestScanner.class);
+    private static final Logger log = LoggerFactory.getLogger(AbstractRequestMappingScanner.class);
 
     private final ServiceProperties.Scan scan;
     private final AttributeCollectionEventManager attributeCollectionEventManager;
 
-    protected AbstractRestScanner(ServiceProperties.Scan scan, AttributeCollectionEventManager attributeCollectionEventManager) {
+    protected AbstractRequestMappingScanner(ServiceProperties.Scan scan, AttributeCollectionEventManager attributeCollectionEventManager) {
         this.scan = scan;
         this.attributeCollectionEventManager = attributeCollectionEventManager;
     }

@@ -25,4 +25,4 @@
 
 cn.herodotus.dante.webmvc.autoconfigure.WebMvcAutoConfiguration
 cn.herodotus.dante.webmvc.autoconfigure.WebMvcCryptoAutoConfiguration
-cn.herodotus.dante.webmvc.autoconfigure.WebMvcRestScanConfiguration
+cn.herodotus.dante.webmvc.autoconfigure.WebMvcRestScanAutoConfiguration

@@ -28,7 +28,7 @@ package cn.herodotus.dante.webmvc.autoconfigure;
 import cn.herodotus.dante.messaging.strategy.AttributeCollectionEventManager;
 import cn.herodotus.dante.web.autoconfigure.properties.ServiceProperties;
 import cn.herodotus.dante.web.condition.ConditionalOnRestScanEnabled;
-import cn.herodotus.dante.webmvc.autoconfigure.initializer.RestScanner;
+import cn.herodotus.dante.webmvc.autoconfigure.initializer.RequestMappingScanner;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -49,9 +49,9 @@ import org.springframework.context.annotation.Configuration;
 @ConditionalOnClass(AttributeCollectionEventManager.class)
 @ConditionalOnRestScanEnabled
 @EnableConfigurationProperties(ServiceProperties.class)
-public class WebMvcRestScanConfiguration {
+public class WebMvcRestScanAutoConfiguration {
 
-    private static final Logger log = LoggerFactory.getLogger(WebMvcRestScanConfiguration.class);
+    private static final Logger log = LoggerFactory.getLogger(WebMvcRestScanAutoConfiguration.class);
 
     @PostConstruct
     public void postConstruct() {
@@ -60,8 +60,8 @@ public class WebMvcRestScanConfiguration {
 
     @Bean
     @ConditionalOnBean(AttributeCollectionEventManager.class)
-    public RestScanner restScanner(WebMvcProperties webMvcProperties, ServiceProperties serviceProperties, AttributeCollectionEventManager attributeCollectionEventManager) {
-        RestScanner scanner = new RestScanner(webMvcProperties, serviceProperties.getScan(), attributeCollectionEventManager);
+    public RequestMappingScanner requestMappingScanner(WebMvcProperties webMvcProperties, ServiceProperties serviceProperties, AttributeCollectionEventManager attributeCollectionEventManager) {
+        RequestMappingScanner scanner = new RequestMappingScanner(webMvcProperties, serviceProperties.getScan(), attributeCollectionEventManager);
         log.trace("[Herodotus] |- Bean [Servlet REST Scanner] Configure.");
         return scanner;
     }
