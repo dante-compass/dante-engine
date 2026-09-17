@@ -25,40 +25,34 @@
 
 package cn.herodotus.dante.logic.upms.converter;
 
-import cn.herodotus.dante.logic.upms.entity.security.SysAttribute;
 import cn.herodotus.dante.logic.upms.entity.security.SysInterface;
-import cn.herodotus.dante.spring.founction.ListConverter;
+import cn.herodotus.dante.messaging.domain.MappingAttribute;
+import cn.herodotus.dante.spring.enums.MappingCategory;
+import cn.herodotus.dante.spring.enums.MappingSubcategory;
+import org.springframework.core.convert.converter.Converter;
 
 /**
- * <p>Description: List {@link SysInterface} 转 List {@link SysAttribute} 转换器 </p>
+ * <p>Description: List {@link MappingAttribute} 转 List {@link SysInterface} 转换器 </p>
  *
  * @author : gengwei.zheng
- * @date : 2023/8/23 22:59
+ * @date : 2023/5/23 17:15
  */
-public class SysInterfacesToSysAttributesConverter implements ListConverter<SysInterface, SysAttribute> {
+public class MappingAttributesToSysInterfacesConverter implements Converter<MappingAttribute, SysInterface> {
 
     @Override
-    public SysAttribute from(SysInterface source) {
-        SysAttribute target = new SysAttribute();
-        target.setAttributeId(source.getInterfaceId());
-        target.setAttributeCode(source.getInterfaceCode());
+    public SysInterface convert(MappingAttribute source) {
+        SysInterface target = new SysInterface();
+        target.setInterfaceId(source.getId());
+        target.setInterfaceCode(source.getCode());
         target.setRequestMethod(source.getRequestMethod());
         target.setServiceId(source.getServiceId());
         target.setClassName(source.getClassName());
         target.setMethodName(source.getMethodName());
         target.setUrl(source.getUrl());
-        target.setVersion(source.getVersion());
-        target.setCategory(source.getCategory());
-        target.setSubcategory(source.getSubcategory());
-        target.setStatus(source.getStatus());
-        target.setReserved(source.getReserved());
         target.setDescription(source.getDescription());
-        target.setRanking(source.getRanking());
-        target.setCreateBy(source.getCreateBy());
-        target.setUpdateBy(source.getUpdateBy());
-        target.setReversion(source.getReversion());
-        target.setCreateTime(source.getCreateTime());
-        target.setUpdateTime(source.getUpdateTime());
+        target.setVersion(source.getVersion());
+        target.setCategory(MappingCategory.get(source.getCategory()));
+        target.setSubcategory(MappingSubcategory.get(source.getSubcategory()));
         return target;
     }
 }

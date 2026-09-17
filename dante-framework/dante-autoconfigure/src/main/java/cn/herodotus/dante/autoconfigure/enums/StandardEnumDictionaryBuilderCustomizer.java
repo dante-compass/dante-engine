@@ -23,34 +23,24 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.logic.upms.converter;
+package cn.herodotus.dante.autoconfigure.enums;
 
-import cn.herodotus.dante.logic.upms.entity.security.SysInterface;
-import cn.herodotus.dante.messaging.domain.MappingAttribute;
+import cn.herodotus.dante.core.builder.EnumDictionaryBuilder;
+import cn.herodotus.dante.core.function.EnumDictionaryBuilderCustomizer;
 import cn.herodotus.dante.spring.enums.MappingCategory;
-import org.springframework.core.convert.converter.Converter;
+import cn.herodotus.dante.spring.enums.MappingSubcategory;
 
 /**
- * <p>Description: RequestMapping 转 SysInterface 转换器 </p>
+ * <p>Description: 默认枚举数据字典定义器 </p>
  *
  * @author : gengwei.zheng
- * @date : 2023/5/23 17:15
+ * @date : 2024/8/23 16:00
  */
-public class MappingAttributeToSysInterfaceConverter implements Converter<MappingAttribute, SysInterface> {
+public class StandardEnumDictionaryBuilderCustomizer implements EnumDictionaryBuilderCustomizer {
 
     @Override
-    public SysInterface convert(MappingAttribute source) {
-        SysInterface target = new SysInterface();
-        target.setInterfaceId(source.getId());
-        target.setInterfaceCode(source.getCode());
-        target.setRequestMethod(source.getRequestMethod());
-        target.setServiceId(source.getServiceId());
-        target.setClassName(source.getClassName());
-        target.setMethodName(source.getMethodName());
-        target.setUrl(source.getUrl());
-        target.setDescription(source.getDescription());
-        target.setVersion(source.getVersion());
-        target.setCategory(MappingCategory.get(source.getCategory()));
-        return target;
+    public void customize(EnumDictionaryBuilder builder) {
+        builder.append(MappingCategory.getDictionaries());
+        builder.append(MappingSubcategory.getDictionaries());
     }
 }

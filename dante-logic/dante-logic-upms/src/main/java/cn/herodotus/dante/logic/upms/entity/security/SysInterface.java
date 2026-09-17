@@ -28,6 +28,7 @@ package cn.herodotus.dante.logic.upms.entity.security;
 import cn.herodotus.dante.data.jpa.entity.AbstractSysEntity;
 import cn.herodotus.dante.logic.upms.domain.generator.SysInterfaceIdGenerator;
 import cn.herodotus.dante.spring.enums.MappingCategory;
+import cn.herodotus.dante.spring.enums.MappingSubcategory;
 import com.google.common.base.MoreObjects;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
@@ -83,6 +84,11 @@ public class SysInterface extends AbstractSysEntity {
     @Enumerated(EnumType.STRING)
     @Column(name = "category", length = 50)
     private MappingCategory category;
+
+    @Schema(name = "接口映射子类别")
+    @Enumerated(EnumType.STRING)
+    @Column(name = "subcategory", length = 50)
+    private MappingSubcategory subcategory;
 
     public String getInterfaceId() {
         return interfaceId;
@@ -156,9 +162,16 @@ public class SysInterface extends AbstractSysEntity {
         this.category = category;
     }
 
+    public MappingSubcategory getSubcategory() {
+        return subcategory;
+    }
+
+    public void setSubcategory(MappingSubcategory subcategory) {
+        this.subcategory = subcategory;
+    }
+
     @Override
     public boolean equals(Object o) {
-
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
@@ -183,6 +196,7 @@ public class SysInterface extends AbstractSysEntity {
                 .add("url", url)
                 .add("version", version)
                 .add("category", category)
+                .add("subcategory", subcategory)
                 .addValue(super.toString())
                 .toString();
     }

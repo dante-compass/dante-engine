@@ -36,12 +36,12 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * <p>Description: SysAttribute 转 SecurityAttribute 转换器</p>
+ * <p>Description: {@link SysAttribute} 转 {@link SecurityAttribute} 转换器</p>
  *
  * @author : gengwei.zheng
  * @date : 2023/8/23 22:59
  */
-public class SysAttributeToSecurityAttributeConverter implements Converter<SysAttribute, SecurityAttribute> {
+class SysAttributeToSecurityAttributeConverter implements Converter<SysAttribute, SecurityAttribute> {
 
     @Override
     public SecurityAttribute convert(SysAttribute source) {
@@ -58,6 +58,7 @@ public class SysAttributeToSecurityAttributeConverter implements Converter<SysAt
         target.setMethodName(source.getMethodName());
         target.setVersion(source.getVersion());
         target.setCategory(source.getCategory().getValue());
+        target.setSubcategory(source.getSubcategory().getValue());
         return target;
     }
 

@@ -27,7 +27,7 @@ package cn.herodotus.dante.logic.upms.service.security;
 
 import cn.herodotus.dante.data.jpa.repository.BaseJpaRepository;
 import cn.herodotus.dante.data.jpa.service.AbstractJpaService;
-import cn.herodotus.dante.logic.upms.converter.MappingAttributeToSysInterfaceConverter;
+import cn.herodotus.dante.logic.upms.converter.MappingAttributesToSysInterfacesConverter;
 import cn.herodotus.dante.logic.upms.entity.security.SysAttribute;
 import cn.herodotus.dante.logic.upms.entity.security.SysInterface;
 import cn.herodotus.dante.logic.upms.repository.security.SysInterfaceRepository;
@@ -59,7 +59,7 @@ public class SysInterfaceService extends AbstractJpaService<SysInterface, String
 
     public SysInterfaceService(SysInterfaceRepository sysInterfaceRepository) {
         this.sysInterfaceRepository = sysInterfaceRepository;
-        this.toSysInterface = new MappingAttributeToSysInterfaceConverter();
+        this.toSysInterface = new MappingAttributesToSysInterfacesConverter();
     }
 
     @Override
