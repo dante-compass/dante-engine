@@ -25,6 +25,8 @@
 
 package cn.herodotus.dante.spring.context;
 
+import cn.herodotus.dante.core.constant.BaseConstants;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ConditionContext;
 import org.springframework.core.env.Environment;
 
@@ -150,5 +152,13 @@ public class PropertyResolver {
      */
     public static boolean getBoolean(ConditionContext conditionContext, String property, boolean defaultValue) {
         return getProperty(conditionContext, property, Boolean.class, defaultValue);
+    }
+
+    public static String getApplicationName(ApplicationContext applicationContext) {
+        return getProperty(applicationContext.getEnvironment(), BaseConstants.ITEM_SPRING_APPLICATION_NAME);
+    }
+
+    public static String getContextPath(ApplicationContext applicationContext) {
+        return getProperty(applicationContext.getEnvironment(), BaseConstants.ITEM_SERVLET_CONTEXT_PATH);
     }
 }

@@ -28,6 +28,7 @@ package cn.herodotus.dante.messaging.definition;
 import cn.herodotus.dante.messaging.domain.AttributeCollector;
 import cn.herodotus.dante.messaging.domain.MappingAttribute;
 import cn.herodotus.dante.messaging.strategy.AttributeCollectionEventManager;
+import cn.herodotus.dante.spring.context.PropertyResolver;
 import cn.herodotus.dante.spring.enums.MappingCategory;
 import cn.herodotus.dante.spring.initializer.ApplicationReadyProcessor;
 import org.apache.commons.collections4.CollectionUtils;
@@ -51,6 +52,7 @@ public abstract class AbstractMappingAttributeScanner implements ApplicationRead
     private static final Logger log = LoggerFactory.getLogger(AbstractMappingAttributeScanner.class);
 
     private final AttributeCollectionEventManager attributeCollectionEventManager;
+    private String serviceId;
 
     protected AbstractMappingAttributeScanner(AttributeCollectionEventManager attributeCollectionEventManager) {
         this.attributeCollectionEventManager = attributeCollectionEventManager;
@@ -66,7 +68,13 @@ public abstract class AbstractMappingAttributeScanner implements ApplicationRead
 
         log.debug("[Herodotus] |- [A1] Application is READY, start to scan mapping attributes!");
 
+        this.serviceId = PropertyResolver.getApplicationName(applicationContext);
+
         onApplicationEvent(applicationContext);
+    }
+
+    protected String getServiceId() {
+        return this.serviceId;
     }
 
     protected abstract void onApplicationEvent(ApplicationContext applicationContext);
@@ -74,11 +82,12 @@ public abstract class AbstractMappingAttributeScanner implements ApplicationRead
     /**
      * 扫描完成，发送 Event 传递数据。
      *
-     * @param serviceId  服务 ID
      * @param attributes 扫描到的属性值
      * @param category   映射类别 {@link MappingCategory}
      */
-    protected void complete(String serviceId, List<MappingAttribute> attributes, MappingCategory category) {
+    protected void complete(List<MappingAttribute> attributes, MappingCategory category) {
+        String serviceId = getServiceId();
+
         if (CollectionUtils.isNotEmpty(attributes)) {
             log.debug("[Herodotus] |- [A2] {} method scan found [{}] resources in service [{}], go to next stage!", category.getLabel(), serviceId, attributes.size());
             attributeCollectionEventManager.postProcess(new AttributeCollector(attributes, serviceId, category));
@@ -92,10 +101,9 @@ public abstract class AbstractMappingAttributeScanner implements ApplicationRead
     /**
      * 扫描完成，发送 Event 传递数据。
      *
-     * @param serviceId  服务 ID
      * @param attributes 扫描到的属性值
      */
-    protected void complete(String serviceId, List<MappingAttribute> attributes) {
-        complete(serviceId, attributes, MappingCategory.REST);
+    protected void complete(List<MappingAttribute> attributes) {
+        complete(attributes, MappingCategory.REST);
     }
 }

@@ -30,7 +30,6 @@ import cn.herodotus.dante.messaging.domain.MappingAttribute;
 import cn.herodotus.dante.messaging.strategy.AttributeCollectionEventManager;
 import cn.herodotus.dante.web.autoconfigure.initializer.AbstractRequestMappingScanner;
 import cn.herodotus.dante.web.autoconfigure.properties.ServiceProperties;
-import cn.herodotus.dante.web.support.WebPropertyFinder;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.ObjectUtils;
@@ -68,15 +67,12 @@ public class RequestMappingScanner extends AbstractRequestMappingScanner {
     }
 
     @Override
-    public void onApplicationEvent(ApplicationContext applicationContext) {
-
-        // 1、获取服务ID：该服务ID对于微服务是必需的。
-        String serviceId = WebPropertyFinder.getApplicationName(applicationContext);
+    protected void onApplicationEvent(ApplicationContext applicationContext) {
 
         // 2、只针对有EnableResourceServer注解的微服务进行扫描。如果变为单体架构目前不会用到EnableResourceServer所以增加的了一个Architecture判断
         if (notExecuteScanning()) {
             // 只扫描资源服务器
-            log.warn("[Herodotus] |- Can not found scan annotation in Service [{}], Skip!", serviceId);
+            log.warn("[Herodotus] |- Can not found scan annotation in Service [{}], Skip!", getServiceId());
             return;
         }
 
@@ -98,7 +94,7 @@ public class RequestMappingScanner extends AbstractRequestMappingScanner {
                     }
 
                     // 4.2、拼装扫描信息
-                    MappingAttribute mappingAttribute = createMappingAttribute(serviceId, requestMappingInfo, handlerMethod);
+                    MappingAttribute mappingAttribute = createMappingAttribute(requestMappingInfo, handlerMethod);
                     if (ObjectUtils.isEmpty(mappingAttribute)) {
                         continue;
                     }
@@ -108,10 +104,10 @@ public class RequestMappingScanner extends AbstractRequestMappingScanner {
             }
         }
 
-        complete(serviceId, resources);
+        complete(resources);
     }
 
-    private MappingAttribute createMappingAttribute(String serviceId, RequestMappingInfo info, HandlerMethod method) {
+    private MappingAttribute createMappingAttribute(RequestMappingInfo info, HandlerMethod method) {
         // 4.2.1、获取注解对应的请求类型
         RequestMethodsRequestCondition requestMethodsRequestCondition = info.getMethodsCondition();
         String requestMethods = StringUtils.join(requestMethodsRequestCondition.getMethods(), SymbolConstants.COMMA);
@@ -128,7 +124,7 @@ public class RequestMappingScanner extends AbstractRequestMappingScanner {
 
         String urls = String.join(SymbolConstants.COMMA, patternValues);
 
-        return buildMappingAttribute(serviceId, requestMethods, urls, version, method);
+        return buildMappingAttribute(requestMethods, urls, version, method);
     }
 
     private String parseVersion(RequestMappingInfo info) {

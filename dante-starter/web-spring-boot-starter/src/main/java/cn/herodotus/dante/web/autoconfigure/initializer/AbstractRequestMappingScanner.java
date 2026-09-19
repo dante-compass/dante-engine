@@ -30,9 +30,9 @@ import cn.herodotus.dante.core.utils.WellFormedUtils;
 import cn.herodotus.dante.messaging.definition.AbstractMappingAttributeScanner;
 import cn.herodotus.dante.messaging.domain.MappingAttribute;
 import cn.herodotus.dante.messaging.strategy.AttributeCollectionEventManager;
+import cn.herodotus.dante.spring.context.PropertyResolver;
 import cn.herodotus.dante.spring.enums.MappingCategory;
 import cn.herodotus.dante.web.autoconfigure.properties.ServiceProperties;
-import cn.herodotus.dante.web.support.WebPropertyFinder;
 import cn.hutool.v7.crypto.SecureUtil;
 import io.swagger.v3.oas.annotations.Hidden;
 import io.swagger.v3.oas.annotations.Operation;
@@ -42,7 +42,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.Strings;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.method.HandlerMethod;
@@ -68,18 +67,6 @@ public abstract class AbstractRequestMappingScanner extends AbstractMappingAttri
         super(attributeCollectionEventManager);
         this.scan = scan;
     }
-
-    @Override
-    public void onApplicationEvent(ApplicationReadyEvent event) {
-
-        ApplicationContext applicationContext = event.getApplicationContext();
-
-        log.debug("[Herodotus] |- [R1] Application is READY, start to scan request mapping!");
-
-        onApplicationEvent(applicationContext);
-    }
-
-    protected abstract void onApplicationEvent(ApplicationContext applicationContext);
 
     /**
      * 检测RequestMapping是否需要被排除
@@ -177,7 +164,7 @@ public abstract class AbstractRequestMappingScanner extends AbstractMappingAttri
      * @return 如果有 Context Path 就返回实际值，如果没有或者为 '/' 则返回空串。
      */
     protected String getContextPath(ApplicationContext applicationContext) {
-        String contextPath = WebPropertyFinder.getContextPath(applicationContext);
+        String contextPath = PropertyResolver.getContextPath(applicationContext);
         if (StringUtils.isNotBlank(contextPath) && !Strings.CS.equals(contextPath, SymbolConstants.FORWARD_SLASH)) {
             return WellFormedUtils.robustness(contextPath, SymbolConstants.FORWARD_SLASH, false, false);
         } else {
@@ -206,15 +193,15 @@ public abstract class AbstractRequestMappingScanner extends AbstractMappingAttri
     /**
      * 将接口相关信息，转换为系统统一定义的 {@link MappingAttribute} 对象
      *
-     * @param serviceId      服务ID
      * @param requestMethods 请求方法
      * @param urls           请求 URL
      * @param version        请求版本
      * @param method         接口对应的方法对象 {@link HandlerMethod}
      * @return 封装好的对象 {@link MappingAttribute}
      */
-    protected MappingAttribute buildMappingAttribute(String serviceId, String requestMethods, String urls, String version, HandlerMethod method) {
+    protected MappingAttribute buildMappingAttribute(String requestMethods, String urls, String version, HandlerMethod method) {
 
+        String serviceId = getServiceId();
         // 1. 获取类名
         // method.getMethod().getDeclaringClass().getName() 取到的是注解实际所在类的名字，比如注解在父类叫BaseController，那么拿到的就是BaseController
         // method.getBeanType().getName() 取到的是注解实际Bean的名字，比如注解在在父类叫BaseController，而实际类是SysUserController，那么拿到的就是SysUserController
