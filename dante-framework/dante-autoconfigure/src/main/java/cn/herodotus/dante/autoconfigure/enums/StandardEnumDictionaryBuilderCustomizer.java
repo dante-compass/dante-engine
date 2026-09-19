@@ -28,7 +28,6 @@ package cn.herodotus.dante.autoconfigure.enums;
 import cn.herodotus.dante.core.builder.EnumDictionaryBuilder;
 import cn.herodotus.dante.core.function.EnumDictionaryBuilderCustomizer;
 import cn.herodotus.dante.spring.enums.MappingCategory;
-import cn.herodotus.dante.spring.enums.MappingSubcategory;
 
 /**
  * <p>Description: 默认枚举数据字典定义器 </p>
@@ -41,6 +40,5 @@ public class StandardEnumDictionaryBuilderCustomizer implements EnumDictionaryBu
     @Override
     public void customize(EnumDictionaryBuilder builder) {
         builder.append(MappingCategory.getDictionaries());
-        builder.append(MappingSubcategory.getDictionaries());
     }
 }

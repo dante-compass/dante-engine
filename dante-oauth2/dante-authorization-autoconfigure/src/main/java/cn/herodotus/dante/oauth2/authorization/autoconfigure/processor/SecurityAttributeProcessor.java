@@ -128,9 +128,9 @@ public class SecurityAttributeProcessor implements StrategyEventManager<Attribut
     private void distributeAttributes(AttributeCollector collector) {
         // 每次处理都是只针对一个服务，所以该组数据 serviceId 肯定都相同
         String serviceId = collector.getServiceId();
-        List<SysAttribute> sysAttributes = sysAttributeService.findAllByServiceId(serviceId, collector.getRest());
+        List<SysAttribute> sysAttributes = sysAttributeService.findAllByServiceId(serviceId, collector.getCategory());
         if (CollectionUtils.isNotEmpty(sysAttributes)) {
-            Converter<List<SysAttribute>, AttributeDistributor> toDispatchers = new SysAttributesToAttributeDispatcherConverter(serviceId, collector.getRest());
+            Converter<List<SysAttribute>, AttributeDistributor> toDispatchers = new SysAttributesToAttributeDispatcherConverter(serviceId, collector.getCategory());
             AttributeDistributor dispatcher = toDispatchers.convert(sysAttributes);
             log.debug("[Herodotus] |- [R6] Synchronization permissions to service [{}]", serviceId);
             this.postProcess(serviceId, dispatcher);

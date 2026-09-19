@@ -28,6 +28,7 @@ package cn.herodotus.dante.logic.upms.converter;
 import cn.herodotus.dante.logic.upms.entity.security.SysAttribute;
 import cn.herodotus.dante.messaging.domain.AttributeDistributor;
 import cn.herodotus.dante.messaging.domain.SecurityAttribute;
+import cn.herodotus.dante.spring.enums.MappingCategory;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.core.convert.converter.Converter;
 
@@ -43,12 +44,12 @@ public class SysAttributesToAttributeDispatcherConverter implements Converter<Li
 
     private final Converter<SysAttribute, SecurityAttribute> toSecurityAttribute;
     private final String serviceId;
-    private final boolean isRestApi;
+    private final MappingCategory category;
 
-    public SysAttributesToAttributeDispatcherConverter(String serviceId, boolean isRestApi) {
+    public SysAttributesToAttributeDispatcherConverter(String serviceId, MappingCategory category) {
         this.toSecurityAttribute = new SysAttributeToSecurityAttributeConverter();
         this.serviceId = serviceId;
-        this.isRestApi = isRestApi;
+        this.category = category;
     }
 
     @Override
@@ -59,7 +60,7 @@ public class SysAttributesToAttributeDispatcherConverter implements Converter<Li
             List<SecurityAttribute> attributes = source.stream().map(toSecurityAttribute::convert).toList();
             target.setAttributes(attributes);
             target.setServiceId(serviceId);
-            target.setRest(isRestApi);
+            target.setCategory(category);
 
             return target;
         }

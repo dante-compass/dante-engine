@@ -53,8 +53,6 @@ public class MappingAttribute extends AbstractRest {
 
     private String category;
 
-    private String subcategory;
-
     public String getId() {
         return id;
     }
@@ -103,14 +101,6 @@ public class MappingAttribute extends AbstractRest {
         this.category = category;
     }
 
-    public String getSubcategory() {
-        return subcategory;
-    }
-
-    public void setSubcategory(String subcategory) {
-        this.subcategory = subcategory;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) {
@@ -134,7 +124,6 @@ public class MappingAttribute extends AbstractRest {
                 .add("methodName", methodName)
                 .add("description", description)
                 .add("category", category)
-                .add("subcategory", subcategory)
                 .addValue(super.toString())
                 .toString();
     }

@@ -29,7 +29,6 @@ import cn.herodotus.dante.data.jpa.entity.AbstractSysEntity;
 import cn.herodotus.dante.logic.upms.domain.generator.SysAttributeIdGenerator;
 import cn.herodotus.dante.logic.upms.domain.listener.SysAttributeEntityListener;
 import cn.herodotus.dante.spring.enums.MappingCategory;
-import cn.herodotus.dante.spring.enums.MappingSubcategory;
 import com.google.common.base.MoreObjects;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
@@ -94,11 +93,6 @@ public class SysAttribute extends AbstractSysEntity {
     @Enumerated(EnumType.STRING)
     @Column(name = "category", length = 50)
     private MappingCategory category;
-
-    @Schema(name = "接口映射子类别")
-    @Enumerated(EnumType.STRING)
-    @Column(name = "subcategory", length = 50)
-    private MappingSubcategory subcategory;
 
     @Schema(name = "属性对应权限", title = "根据属性关联权限数据")
     @ManyToMany(fetch = FetchType.EAGER)
@@ -190,14 +184,6 @@ public class SysAttribute extends AbstractSysEntity {
         this.category = category;
     }
 
-    public MappingSubcategory getSubcategory() {
-        return subcategory;
-    }
-
-    public void setSubcategory(MappingSubcategory subcategory) {
-        this.subcategory = subcategory;
-    }
-
     public Set<SysPermission> getPermissions() {
         return permissions;
     }
@@ -233,7 +219,6 @@ public class SysAttribute extends AbstractSysEntity {
                 .add("webExpression", webExpression)
                 .add("version", version)
                 .add("category", category)
-                .add("subcategory", subcategory)
                 .addValue(super.toString())
                 .toString();
     }

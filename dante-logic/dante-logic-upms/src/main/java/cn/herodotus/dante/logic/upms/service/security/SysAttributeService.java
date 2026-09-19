@@ -81,8 +81,8 @@ public class SysAttributeService extends AbstractJpaService<SysAttribute, String
                 .orElse(null);
     }
 
-    public List<SysAttribute> findAllByServiceId(String serviceId, boolean rest) {
-        return sysAttributeRepository.findAllByServiceIdAndCategory(serviceId, rest ? MappingCategory.REST : MappingCategory.GRPC);
+    public List<SysAttribute> findAllByServiceId(String serviceId, MappingCategory category) {
+        return sysAttributeRepository.findAllByServiceIdAndCategory(serviceId, category);
     }
 
     public List<SysAttribute> findByAttributeIdIn(List<String> ids) {

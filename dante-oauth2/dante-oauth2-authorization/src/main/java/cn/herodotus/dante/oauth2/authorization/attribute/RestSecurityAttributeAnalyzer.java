@@ -174,7 +174,8 @@ public class RestSecurityAttributeAnalyzer extends AbstractSecurityAttributeAnal
      *
      * @param securityAttributes 权限数据
      */
-    public void postDistributionAttributeProcess(List<SecurityAttribute> securityAttributes) {
+    @Override
+    public void postAttributeDistributionProcess(List<SecurityAttribute> securityAttributes) {
 
         // 从缓存中获取全部带有特殊字符的匹配规则
         Map<HerodotusRequest, List<HerodotusSecurityAttribute>> compatibles = restSecurityAttributeStorage.getCompatible();

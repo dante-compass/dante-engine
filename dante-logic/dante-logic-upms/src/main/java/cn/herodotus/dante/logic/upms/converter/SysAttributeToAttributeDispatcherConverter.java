@@ -29,10 +29,10 @@ import cn.herodotus.dante.logic.upms.entity.security.SysAttribute;
 import cn.herodotus.dante.messaging.domain.AttributeDistributor;
 import cn.herodotus.dante.messaging.domain.SecurityAttribute;
 import cn.herodotus.dante.spring.enums.MappingCategory;
+import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.core.convert.converter.Converter;
 
 import java.util.List;
-import java.util.Objects;
 
 /**
  * <p>Description: SysAttribute 转 SecurityAttribute 转换器</p>
@@ -53,7 +53,7 @@ public class SysAttributeToAttributeDispatcherConverter implements Converter<Sys
         AttributeDistributor target = new AttributeDistributor();
         SecurityAttribute attribute = toSecurityAttribute.convert(source);
         target.setServiceId(source.getServiceId());
-        target.setRest(Objects.equals(attribute.getCategory(), MappingCategory.REST.getValue()));
+        target.setCategory(ObjectUtils.isNotEmpty(source.getCategory()) ? source.getCategory() : MappingCategory.REST);
         target.setAttributes(List.of(attribute));
         return target;
     }

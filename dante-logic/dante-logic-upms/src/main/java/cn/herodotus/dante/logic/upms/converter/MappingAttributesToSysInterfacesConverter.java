@@ -28,7 +28,6 @@ package cn.herodotus.dante.logic.upms.converter;
 import cn.herodotus.dante.logic.upms.entity.security.SysInterface;
 import cn.herodotus.dante.messaging.domain.MappingAttribute;
 import cn.herodotus.dante.spring.enums.MappingCategory;
-import cn.herodotus.dante.spring.enums.MappingSubcategory;
 import org.springframework.core.convert.converter.Converter;
 
 /**
@@ -52,7 +51,6 @@ public class MappingAttributesToSysInterfacesConverter implements Converter<Mapp
         target.setDescription(source.getDescription());
         target.setVersion(source.getVersion());
         target.setCategory(MappingCategory.get(source.getCategory()));
-        target.setSubcategory(MappingSubcategory.get(source.getSubcategory()));
         return target;
     }
 }

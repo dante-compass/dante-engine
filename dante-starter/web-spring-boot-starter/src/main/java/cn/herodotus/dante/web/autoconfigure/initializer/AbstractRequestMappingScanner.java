@@ -27,11 +27,10 @@ package cn.herodotus.dante.web.autoconfigure.initializer;
 
 import cn.herodotus.dante.core.constant.SymbolConstants;
 import cn.herodotus.dante.core.utils.WellFormedUtils;
-import cn.herodotus.dante.messaging.domain.AttributeCollector;
+import cn.herodotus.dante.messaging.definition.AbstractMappingAttributeScanner;
 import cn.herodotus.dante.messaging.domain.MappingAttribute;
 import cn.herodotus.dante.messaging.strategy.AttributeCollectionEventManager;
 import cn.herodotus.dante.spring.enums.MappingCategory;
-import cn.herodotus.dante.spring.initializer.ApplicationReadyProcessor;
 import cn.herodotus.dante.web.autoconfigure.properties.ServiceProperties;
 import cn.herodotus.dante.web.support.WebPropertyFinder;
 import cn.hutool.v7.crypto.SecureUtil;
@@ -59,16 +58,15 @@ import java.util.stream.Collectors;
  * @author : gengwei.zheng
  * @date : 2024/1/31 23:38
  */
-public abstract class AbstractRequestMappingScanner implements ApplicationReadyProcessor {
+public abstract class AbstractRequestMappingScanner extends AbstractMappingAttributeScanner {
 
     private static final Logger log = LoggerFactory.getLogger(AbstractRequestMappingScanner.class);
 
     private final ServiceProperties.Scan scan;
-    private final AttributeCollectionEventManager attributeCollectionEventManager;
 
     protected AbstractRequestMappingScanner(ServiceProperties.Scan scan, AttributeCollectionEventManager attributeCollectionEventManager) {
+        super(attributeCollectionEventManager);
         this.scan = scan;
-        this.attributeCollectionEventManager = attributeCollectionEventManager;
     }
 
     @Override
@@ -169,24 +167,7 @@ public abstract class AbstractRequestMappingScanner implements ApplicationReadyP
      * @return 是否执行扫描
      */
     protected boolean notExecuteScanning() {
-        return !attributeCollectionEventManager.isPerformScan();
-    }
-
-    /**
-     * 扫描完成操作
-     *
-     * @param serviceId 服务ID
-     * @param resources 扫描到的资源
-     */
-    protected void complete(String serviceId, List<MappingAttribute> resources) {
-        if (CollectionUtils.isNotEmpty(resources)) {
-            log.debug("[Herodotus] |- [R2] Request mapping scan found [{}] resources in service [{}], go to next stage!", serviceId, resources.size());
-            attributeCollectionEventManager.postProcess(new AttributeCollector(resources, serviceId));
-        } else {
-            log.debug("[Herodotus] |- [R2] Request mapping scan can not find any resources in service [{}]!", serviceId);
-        }
-
-        log.info("[Herodotus] |- Request Mapping Scan for Service: [{}] FINISHED!", serviceId);
+        return !getAttributeCollectionEventManager().isPerformScan();
     }
 
     /**

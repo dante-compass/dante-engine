@@ -59,7 +59,7 @@ import java.util.List;
  * 3.1. 先将接口数据存入 {@code SysInterface} 表中。
  * 3.2. 查询 {@code SysInterface} 表中有的但是 {@code SysAttribute} 表中没有的数据，将这部分差异数据存入 {@code SysAttribute} 表中（注：该方法时为了规避 JPA 更新操作会全部字段覆盖同时兼顾性能的措施）
  * 3.3. 将 {@code SysAttribute} 中最新的数据，分发至指定的 serviceId 对应服务中（如果一个服务是多实例，只会又一个实例接收到分发数据，其它实例通过 JetCache 多级缓存的同步机制来同步数据，以此种方式来降低消息的发送，见：herodotus-cloud-kafka.yaml 中 Spring Cloud Stream 部分配置）
- * 4. 各个服务使用 {@link RestSecurityAttributeAnalyzer#postDistributionAttributeProcess(List)} 方法接收接口权限管理服务（当前为 UPMS 服务）返回的数据。该方法会执行以下操作：
+ * 4. 各个服务使用 {@link RestSecurityAttributeAnalyzer#postAttributeDistributionProcess(List)} 方法接收接口权限管理服务（当前为 UPMS 服务）返回的数据。该方法会执行以下操作：
  * 4.1. 按照接口数据的类型（全路径、占位符、通配符）三种类型进行分组
  * 4.2. 先将占位符、通配符类型接口存入 {@link RestSecurityAttributeStorage} 的 {@code compatible} 的缓存中
  * 4.3. 然后拿到所有的全路径接口，与占位符、通配符进行比较，去除重复可能产生冲突的权限

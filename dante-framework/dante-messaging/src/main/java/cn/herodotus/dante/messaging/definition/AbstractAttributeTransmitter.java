@@ -26,6 +26,7 @@
 package cn.herodotus.dante.messaging.definition;
 
 import cn.herodotus.dante.messaging.domain.MappingAttribute;
+import cn.herodotus.dante.spring.enums.MappingCategory;
 import com.google.common.base.MoreObjects;
 
 import java.io.Serializable;
@@ -46,19 +47,19 @@ public abstract class AbstractAttributeTransmitter<T extends MappingAttribute> i
     /**
      * 是否为 REST API。用来区分 REST API 的收集还是 gRPC 的收集
      */
-    private Boolean rest;
+    private MappingCategory category;
 
     protected AbstractAttributeTransmitter() {
     }
 
     protected AbstractAttributeTransmitter(List<T> attributes, String serviceId) {
-        this(attributes, serviceId, Boolean.TRUE);
+        this(attributes, serviceId, MappingCategory.REST);
     }
 
-    protected AbstractAttributeTransmitter(List<T> attributes, String serviceId, Boolean rest) {
+    protected AbstractAttributeTransmitter(List<T> attributes, String serviceId, MappingCategory category) {
         this.attributes = attributes;
         this.serviceId = serviceId;
-        this.rest = rest;
+        this.category = category;
     }
 
     public List<T> getAttributes() {
@@ -77,19 +78,19 @@ public abstract class AbstractAttributeTransmitter<T extends MappingAttribute> i
         this.serviceId = serviceId;
     }
 
-    public Boolean getRest() {
-        return rest;
+    public MappingCategory getCategory() {
+        return category;
     }
 
-    public void setRest(Boolean rest) {
-        this.rest = rest;
+    public void setCategory(MappingCategory category) {
+        this.category = category;
     }
 
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
                 .add("serviceId", serviceId)
-                .add("rest", rest)
+                .add("category", category)
                 .toString();
     }
 }

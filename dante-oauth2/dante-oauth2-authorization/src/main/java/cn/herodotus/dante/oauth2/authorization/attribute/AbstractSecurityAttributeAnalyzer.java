@@ -87,4 +87,6 @@ abstract class AbstractSecurityAttributeAnalyzer {
 
         return attributes;
     }
+
+    public abstract void postAttributeDistributionProcess(List<SecurityAttribute> securityAttributes);
 }

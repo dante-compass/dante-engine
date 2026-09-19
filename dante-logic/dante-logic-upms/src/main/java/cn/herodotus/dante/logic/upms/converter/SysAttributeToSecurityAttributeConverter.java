@@ -58,7 +58,6 @@ class SysAttributeToSecurityAttributeConverter implements Converter<SysAttribute
         target.setMethodName(source.getMethodName());
         target.setVersion(source.getVersion());
         target.setCategory(source.getCategory().getValue());
-        target.setSubcategory(source.getSubcategory().getValue());
         return target;
     }
 

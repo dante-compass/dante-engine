@@ -26,6 +26,7 @@
 package cn.herodotus.dante.messaging.domain;
 
 import cn.herodotus.dante.messaging.definition.AbstractAttributeTransmitter;
+import cn.herodotus.dante.spring.enums.MappingCategory;
 
 import java.util.List;
 
@@ -47,7 +48,7 @@ public class AttributeDistributor extends AbstractAttributeTransmitter<SecurityA
         super(attributes, serviceId);
     }
 
-    public AttributeDistributor(List<SecurityAttribute> attributes, String serviceId, Boolean rest) {
-        super(attributes, serviceId, rest);
+    public AttributeDistributor(List<SecurityAttribute> attributes, String serviceId, MappingCategory category) {
+        super(attributes, serviceId, category);
     }
 }

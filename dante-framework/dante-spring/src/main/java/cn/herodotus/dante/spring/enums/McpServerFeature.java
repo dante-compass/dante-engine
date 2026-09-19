@@ -23,32 +23,15 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.messaging.domain;
-
-import cn.herodotus.dante.messaging.definition.AbstractAttributeTransmitter;
-import cn.herodotus.dante.spring.enums.MappingCategory;
-
-import java.util.List;
+package cn.herodotus.dante.spring.enums;
 
 /**
- * <p>Description: 权限元数据收集器 </p>
- * <p>
- * 收集 REST API 或 gRPC 映射数据，并汇总至权限数据管理服务的传输对象
+ * <p>Description: 接口映射子类别 </p>
  *
- * @author : gengwei.zheng
- * @date : 2026/2/28 11:50
+ * @author : gengwei_zheng
+ * @date : 2026/9/17 13:10
  */
-public class AttributeCollector extends AbstractAttributeTransmitter<MappingAttribute> {
+public enum McpServerFeature {
 
-    public AttributeCollector() {
-        super();
-    }
-
-    public AttributeCollector(List<MappingAttribute> attributes, String serviceId) {
-        super(attributes, serviceId);
-    }
-
-    public AttributeCollector(List<MappingAttribute> attributes, String serviceId, MappingCategory category) {
-        super(attributes, serviceId, category);
-    }
+    MCP_TOOL, MCP_RESOURCE, MCP_PROMPT, MCP_COMPLETE;
 }

@@ -67,6 +67,7 @@ public class RequestMappingScanner extends AbstractRequestMappingScanner {
         this.webMvcProperties = webMvcProperties;
     }
 
+    @Override
     public void onApplicationEvent(ApplicationContext applicationContext) {
 
         // 1、获取服务ID：该服务ID对于微服务是必需的。

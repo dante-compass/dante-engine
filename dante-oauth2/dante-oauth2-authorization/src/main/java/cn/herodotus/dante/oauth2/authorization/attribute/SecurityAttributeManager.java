@@ -43,11 +43,12 @@ public class SecurityAttributeManager {
 
     private final RestSecurityAttributeStorage restSecurityAttributeStorage;
     private final RestSecurityAttributeAnalyzer restSecurityAttributeAnalyzer;
-
+    private final McpSecurityAttributeAnalyzer mcpSecurityAttributeAnalyzer;
 
     public SecurityAttributeManager(Map<HerodotusRequest, List<HerodotusSecurityAttribute>> permitAllAttributes) {
         this.restSecurityAttributeStorage = new RestSecurityAttributeStorage();
         this.restSecurityAttributeAnalyzer = new RestSecurityAttributeAnalyzer(this.restSecurityAttributeStorage, permitAllAttributes);
+        this.mcpSecurityAttributeAnalyzer = new McpSecurityAttributeAnalyzer();
     }
 
     public void postLocalResourceMatcherProcess() {
@@ -60,10 +61,9 @@ public class SecurityAttributeManager {
      * 处理过程中，会根据规则对权限类型分组，然后进行去重的操作。
      */
     public void postAttributeDistributorProcess(AttributeDistributor dispatcher) {
-        if (dispatcher.getRest()) {
-            this.restSecurityAttributeAnalyzer.postDistributionAttributeProcess(dispatcher.getAttributes());
-        } else {
-
+        switch (dispatcher.getCategory()) {
+            case MCP -> this.mcpSecurityAttributeAnalyzer.postAttributeDistributionProcess(dispatcher.getAttributes());
+            default -> this.restSecurityAttributeAnalyzer.postAttributeDistributionProcess(dispatcher.getAttributes());
         }
     }
 
