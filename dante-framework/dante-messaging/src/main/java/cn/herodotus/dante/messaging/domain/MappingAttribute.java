@@ -45,6 +45,8 @@ public class MappingAttribute extends AbstractRest {
 
     private String code;
 
+    private String name;
+
     private String className;
 
     private String methodName;
@@ -67,6 +69,14 @@ public class MappingAttribute extends AbstractRest {
 
     public void setCode(String code) {
         this.code = code;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getClassName() {
@@ -120,6 +130,7 @@ public class MappingAttribute extends AbstractRest {
         return MoreObjects.toStringHelper(this)
                 .add("id", id)
                 .add("code", code)
+                .add("name", name)
                 .add("className", className)
                 .add("methodName", methodName)
                 .add("description", description)
