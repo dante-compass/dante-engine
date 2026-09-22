@@ -25,76 +25,71 @@
 
 package cn.herodotus.dante.security.domain;
 
-import cn.herodotus.dante.security.definition.RegisteredClientDetails;
+import cn.herodotus.dante.core.domain.BaseModel;
 import com.google.common.base.MoreObjects;
 
+import java.util.Objects;
+
 /**
- * <p>Description: OAuth2 认证资源 </p>
+ * <p>Description: MCP Security 上下文信息 </p>
  *
- * @author : gengwei.zheng
- * @date : 2025/2/25 18:03
+ * @author : gengwei_zheng
+ * @date : 2026/9/22 13:04
  */
-public class OAuth2AuthorizationResource implements RegisteredClientDetails {
+public class McpContext implements BaseModel {
 
-    private String id;
-    private String clientId;
-    private String redirectUris;
-    private String clientName;
-    private String logo;
+    /**
+     * Mcp 注解名称
+     */
+    private String name;
+    /**
+     * Mcp 注解类型
+     */
+    private String feature;
 
-    @Override
-    public String getId() {
-        return id;
+    public McpContext() {
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public McpContext(String name, String feature) {
+        this.name = name;
+        this.feature = feature;
     }
 
-    @Override
-    public String getClientId() {
-        return clientId;
+    public String getName() {
+        return name;
     }
 
-    public void setClientId(String clientId) {
-        this.clientId = clientId;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    @Override
-    public String getRedirectUris() {
-        return redirectUris;
+    public String getFeature() {
+        return feature;
     }
 
-    public void setRedirectUris(String redirectUris) {
-        this.redirectUris = redirectUris;
-    }
-
-    @Override
-    public String getClientName() {
-        return clientName;
-    }
-
-    public void setClientName(String clientName) {
-        this.clientName = clientName;
+    public void setFeature(String feature) {
+        this.feature = feature;
     }
 
     @Override
-    public String getLogo() {
-        return logo;
+    public boolean equals(Object object) {
+        if (object == null || getClass() != object.getClass()) {
+            return false;
+        }
+        McpContext that = (McpContext) object;
+        return Objects.equals(name, that.name) && Objects.equals(feature, that.feature);
     }
 
-    public void setLogo(String logo) {
-        this.logo = logo;
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, feature);
     }
 
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("id", id)
-                .add("clientId", clientId)
-                .add("redirectUris", redirectUris)
-                .add("clientName", clientName)
-                .add("logo", logo)
+                .add("name", name)
+                .add("feature", feature)
                 .toString();
     }
 }

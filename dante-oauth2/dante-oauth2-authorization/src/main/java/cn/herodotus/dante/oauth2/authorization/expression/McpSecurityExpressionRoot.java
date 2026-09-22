@@ -23,37 +23,33 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.security.exception;
+package cn.herodotus.dante.oauth2.authorization.expression;
 
-import cn.herodotus.dante.core.domain.Feedback;
-import cn.herodotus.dante.core.exception.PlatformRuntimeException;
+import cn.herodotus.dante.security.domain.McpContext;
+import jakarta.servlet.http.HttpServletRequest;
+import org.jspecify.annotations.Nullable;
+import org.springframework.security.access.expression.SecurityExpressionRoot;
+import org.springframework.security.core.Authentication;
+
+import java.util.function.Supplier;
 
 /**
- * <p>Description: Security 属性 Class 未找到错误 </p>
+ * <p>Description: MCP Security 表达式 Root </p>
  *
- * @author : gengwei.zheng
- * @date : 2024/4/16 23:39
+ * @author : gengwei_zheng
+ * @date : 2026/9/22 13:21
  */
-public class SecurityAttributeClassNotFoundException extends PlatformRuntimeException {
+public class McpSecurityExpressionRoot extends SecurityExpressionRoot<McpContext> {
 
-    public SecurityAttributeClassNotFoundException() {
-        super();
-    }
-
-    public SecurityAttributeClassNotFoundException(String message) {
-        super(message);
-    }
-
-    public SecurityAttributeClassNotFoundException(String message, Throwable cause) {
-        super(message, cause);
-    }
-
-    public SecurityAttributeClassNotFoundException(Throwable cause) {
-        super(cause);
-    }
-
-    @Override
-    public Feedback getFeedback() {
-        return super.getFeedback();
+    /**
+     * Creates an instance for the given {@link Supplier} of the {@link Authentication}
+     * and {@link HttpServletRequest}.
+     *
+     * @param authentication the {@link Supplier} of the {@link Authentication} to use
+     * @param context        the {@link McpContext} to use
+     * @since 7.0
+     */
+    public McpSecurityExpressionRoot(Supplier<? extends @Nullable Authentication> authentication, McpContext context) {
+        super(authentication, context);
     }
 }

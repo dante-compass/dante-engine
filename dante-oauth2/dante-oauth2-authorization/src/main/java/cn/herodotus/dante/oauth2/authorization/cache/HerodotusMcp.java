@@ -25,10 +25,7 @@
 
 package cn.herodotus.dante.oauth2.authorization.cache;
 
-import com.google.common.base.MoreObjects;
-
-import java.io.Serializable;
-import java.util.Objects;
+import cn.herodotus.dante.security.domain.McpContext;
 
 /**
  * <p>Description: MCP 权限缓存数据 Key 实体 </p>
@@ -36,42 +33,13 @@ import java.util.Objects;
  * @author : gengwei_zheng
  * @date : 2026/9/19 16:37
  */
-public class HerodotusMcp implements Serializable {
-
-    private String name;
-    private String feature;
-    private String className;
-    private String methodName;
+public final class HerodotusMcp extends McpContext {
 
     public HerodotusMcp() {
+        super();
     }
 
-    public HerodotusMcp(String name, String feature, String className, String methodName) {
-        this.name = name;
-        this.feature = feature;
-        this.className = className;
-        this.methodName = methodName;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        if (object == null || getClass() != object.getClass()) {
-            return false;
-        }
-        HerodotusMcp that = (HerodotusMcp) object;
-        return Objects.equals(name, that.name) && Objects.equals(feature, that.feature) && Objects.equals(className, that.className) && Objects.equals(methodName, that.methodName);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, feature, className, methodName);
-    }
-
-    @Override
-    public String toString() {
-        return MoreObjects.toStringHelper(this)
-                .add("name", name)
-                .add("feature", feature)
-                .toString();
+    public HerodotusMcp(String name, String feature) {
+        super(name, feature);
     }
 }
