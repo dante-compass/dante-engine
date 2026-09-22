@@ -164,7 +164,8 @@ public class OAuth2Application extends AbstractOAuth2RegisteredClient {
 
     @Override
     public String getClientName() {
-        return getApplicationName();
+        // OAuth2Application 添加相关操作，使用 ApplicationId 作为 clientName。
+        return getApplicationId();
     }
 
     @Override

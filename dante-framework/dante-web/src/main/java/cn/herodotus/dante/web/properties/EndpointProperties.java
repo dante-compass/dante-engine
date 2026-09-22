@@ -28,7 +28,6 @@ package cn.herodotus.dante.web.properties;
 import cn.herodotus.dante.core.constant.SystemConstants;
 import cn.herodotus.dante.core.utils.WellFormedUtils;
 import cn.herodotus.dante.web.constant.WebConstants;
-import com.google.common.base.MoreObjects;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
@@ -60,6 +59,10 @@ public class EndpointProperties {
      * 物联网服务名称
      */
     private String iotServiceName;
+    /**
+     * MCP 服务名称
+     */
+    private String mcpServiceName;
 
     /**
      * 统一网关服务地址。可以是IP+端口，可以是域名
@@ -86,6 +89,11 @@ public class EndpointProperties {
      * 物联网服务地址
      */
     private String iotServiceUri;
+    /**
+     * MCP 服务地址
+     */
+    private String mcpServiceUri;
+
     /**
      * OAuth2 Authorization Code 模式认证端点，/oauth2/authorize uri 地址，可修改为自定义地址
      */
@@ -227,6 +235,14 @@ public class EndpointProperties {
         this.iotServiceName = iotServiceName;
     }
 
+    public String getMcpServiceName() {
+        return mcpServiceName;
+    }
+
+    public void setMcpServiceName(String mcpServiceName) {
+        this.mcpServiceName = mcpServiceName;
+    }
+
     public String getGatewayServiceUri() {
         return gatewayServiceUri;
     }
@@ -273,6 +289,14 @@ public class EndpointProperties {
 
     public void setIotServiceUri(String iotServiceUri) {
         this.iotServiceUri = iotServiceUri;
+    }
+
+    public String getMcpServiceUri() {
+        return WellFormedUtils.serviceUri(mcpServiceUri, getMcpServiceName(), getGatewayServiceUri(), "MCP");
+    }
+
+    public void setMcpServiceUri(String mcpServiceUri) {
+        this.mcpServiceUri = mcpServiceUri;
     }
 
     public String getAuthorizationUri() {
@@ -473,47 +497,5 @@ public class EndpointProperties {
 
     public void setOidcLogoutEndpoint(String oidcLogoutEndpoint) {
         this.oidcLogoutEndpoint = oidcLogoutEndpoint;
-    }
-
-    @Override
-    public String toString() {
-        return MoreObjects.toStringHelper(this)
-                .add("uaaServiceName", uaaServiceName)
-                .add("upmsServiceName", upmsServiceName)
-                .add("messageServiceName", messageServiceName)
-                .add("ossServiceName", ossServiceName)
-                .add("iotServiceName", iotServiceName)
-                .add("gatewayServiceUri", gatewayServiceUri)
-                .add("uaaServiceUri", uaaServiceUri)
-                .add("upmsServiceUri", upmsServiceUri)
-                .add("messageServiceUri", messageServiceUri)
-                .add("ossServiceUri", ossServiceUri)
-                .add("iotServiceUri", iotServiceUri)
-                .add("authorizationUri", authorizationUri)
-                .add("authorizationEndpoint", authorizationEndpoint)
-                .add("pushedAuthorizationRequestUri", pushedAuthorizationRequestUri)
-                .add("pushedAuthorizationRequestEndpoint", pushedAuthorizationRequestEndpoint)
-                .add("accessTokenUri", accessTokenUri)
-                .add("accessTokenEndpoint", accessTokenEndpoint)
-                .add("jwkSetUri", jwkSetUri)
-                .add("jwkSetEndpoint", jwkSetEndpoint)
-                .add("tokenRevocationUri", tokenRevocationUri)
-                .add("tokenRevocationEndpoint", tokenRevocationEndpoint)
-                .add("tokenIntrospectionUri", tokenIntrospectionUri)
-                .add("tokenIntrospectionEndpoint", tokenIntrospectionEndpoint)
-                .add("deviceAuthorizationUri", deviceAuthorizationUri)
-                .add("deviceAuthorizationEndpoint", deviceAuthorizationEndpoint)
-                .add("deviceVerificationUri", deviceVerificationUri)
-                .add("deviceVerificationEndpoint", deviceVerificationEndpoint)
-                .add("clientRegistrationUri", clientRegistrationUri)
-                .add("clientRegistrationEndpoint", clientRegistrationEndpoint)
-                .add("oidcClientRegistrationUri", oidcClientRegistrationUri)
-                .add("oidcClientRegistrationEndpoint", oidcClientRegistrationEndpoint)
-                .add("oidcLogoutUri", oidcLogoutUri)
-                .add("oidcLogoutEndpoint", oidcLogoutEndpoint)
-                .add("oidcUserInfoUri", oidcUserInfoUri)
-                .add("oidcUserInfoEndpoint", oidcUserInfoEndpoint)
-                .add("issuerUri", issuerUri)
-                .toString();
     }
 }
