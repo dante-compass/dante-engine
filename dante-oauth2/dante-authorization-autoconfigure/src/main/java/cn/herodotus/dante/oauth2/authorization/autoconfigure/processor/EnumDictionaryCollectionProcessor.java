@@ -46,15 +46,15 @@ import java.util.List;
  * @date : 2024/8/23 21:59
  */
 @Component
-public class EnumDictionaryCollectProcessor {
+public class EnumDictionaryCollectionProcessor {
 
-    private static final Logger log = LoggerFactory.getLogger(EnumDictionaryCollectProcessor.class);
+    private static final Logger log = LoggerFactory.getLogger(EnumDictionaryCollectionProcessor.class);
 
     private final SysEnumService sysEnumService;
     private final SysDictionaryService sysDictionaryService;
     private final ListConverter<SysEnum, SysDictionary> toDictionaries;
 
-    public EnumDictionaryCollectProcessor(SysEnumService sysEnumService, SysDictionaryService sysDictionaryService) {
+    public EnumDictionaryCollectionProcessor(SysEnumService sysEnumService, SysDictionaryService sysDictionaryService) {
         this.sysEnumService = sysEnumService;
         this.sysDictionaryService = sysDictionaryService;
         this.toDictionaries = new SysEnumToSysDictionaryConverter();

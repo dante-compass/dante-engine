@@ -23,22 +23,16 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.messaging.event;
+package cn.herodotus.dante.logic.upms.repository.oauth2;
 
-import cn.herodotus.dante.core.domain.Dictionary;
-import cn.herodotus.dante.messaging.definition.event.AbstractApplicationEvent;
-
-import java.util.List;
+import cn.herodotus.dante.data.jpa.repository.BaseJpaRepository;
+import cn.herodotus.dante.logic.upms.entity.oauth2.OAuth2ProtectedResourceMetadata;
 
 /**
- * <p>Description: 本地收集枚举字典事件 </p>
+ * <p>Description: {@link OAuth2ProtectedResourceMetadata} JPA Repository </p>
  *
- * @author : gengwei.zheng
- * @date : 2024/8/23 16:59
+ * @author : gengwei_zheng
+ * @date : 2026/9/20 15:27
  */
-public class EnumDictionaryCollectEvent extends AbstractApplicationEvent<List<Dictionary>> {
-
-    public EnumDictionaryCollectEvent(List<Dictionary> data) {
-        super(data);
-    }
+public interface OAuth2ProtectedResourceMetadataRepository extends BaseJpaRepository<OAuth2ProtectedResourceMetadata, String> {
 }

@@ -25,42 +25,41 @@
 
 package cn.herodotus.dante.oauth2.authorization.autoconfigure.listener;
 
-import cn.herodotus.dante.messaging.domain.AttributeCollector;
-import cn.herodotus.dante.messaging.event.AttributeCollectionEvent;
-import cn.herodotus.dante.oauth2.authorization.autoconfigure.processor.SecurityAttributeProcessor;
+import cn.herodotus.dante.messaging.event.ProtectedResourceMetadataDistributionEvent;
+import cn.herodotus.dante.security.definition.OAuth2ProtectedResourceMetadataStorage;
 import org.apache.commons.collections4.CollectionUtils;
-import org.apache.commons.lang3.ObjectUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationListener;
 
+import java.util.List;
+
 /**
- * <p>Description: 本地MappingAttribute收集监听 </p>
- * <p>
- * 主要在单体式架构，以及 UUA 服务自身使用
+ * <p>Description: 本地 Protected Resource Metadata 分发监听器  </p>
  *
- * @author : gengwei.zheng
- * @date : 2021/8/8 22:02
+ * @author : gengwei_zheng
+ * @date : 2026/9/23 16:29
  */
-public class LocalAttributeCollectionListener implements ApplicationListener<AttributeCollectionEvent> {
+public class LocalProtectedResourceMetadataDistributionListener implements ApplicationListener<ProtectedResourceMetadataDistributionEvent> {
 
-    private static final Logger log = LoggerFactory.getLogger(LocalAttributeCollectionListener.class);
+    private static final Logger log = LoggerFactory.getLogger(LocalProtectedResourceMetadataDistributionListener.class);
 
-    private final SecurityAttributeProcessor securityAttributeProcessor;
+    private final OAuth2ProtectedResourceMetadataStorage oauth2ProtectedResourceMetadataStorage;
 
-    public LocalAttributeCollectionListener(SecurityAttributeProcessor securityAttributeProcessor) {
-        this.securityAttributeProcessor = securityAttributeProcessor;
+    public LocalProtectedResourceMetadataDistributionListener(OAuth2ProtectedResourceMetadataStorage oauth2ProtectedResourceMetadataStorage) {
+        this.oauth2ProtectedResourceMetadataStorage = oauth2ProtectedResourceMetadataStorage;
     }
 
     @Override
-    public void onApplicationEvent(AttributeCollectionEvent event) {
+    public void onApplicationEvent(ProtectedResourceMetadataDistributionEvent event) {
 
-        log.info("[Herodotus] |- Attribute collection LOCAL listener, response event!");
+        log.info("[Herodotus] |- Protected resource metadata distribution LOCAL listener, response event!");
 
-        AttributeCollector collector = event.getData();
-        if (ObjectUtils.isNotEmpty(collector) && CollectionUtils.isNotEmpty(collector.getAttributes())) {
-            log.debug("[Herodotus] |- [R4] Attribute collection process BEGIN!");
-            securityAttributeProcessor.postAttributeCollectorProcess(collector);
+        List<String> data = event.getData();
+
+        if (CollectionUtils.isNotEmpty(data)) {
+            log.debug("[Herodotus] |- [PRM2] Protected resource metadata distribution process BEGIN!");
+            oauth2ProtectedResourceMetadataStorage.storeSupportedScopes(data);
         }
     }
 }

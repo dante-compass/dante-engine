@@ -25,6 +25,7 @@
 
 package cn.herodotus.dante.oauth2.authorization.servlet;
 
+import cn.herodotus.dante.security.definition.OAuth2ProtectedResourceMetadataStorage;
 import cn.herodotus.dante.web.definition.template.ServletTemplateHandler;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.security.oauth2.server.resource.introspection.OpaqueTokenIntrospector;
@@ -50,8 +51,9 @@ public class ServletOAuth2AuthorizationConfigurerManager {
             OpaqueTokenIntrospector opaqueTokenIntrospector,
             OAuth2SessionManagementConfigurerCustomer oauth2SessionManagementConfigurerCustomer,
             ServletOAuth2ResourceMatcherConfigurer servletOAuth2ResourceMatcherConfigurer,
-            ServletSecurityAuthorizationManager servletSecurityAuthorizationManager) {
-        this.oauth2ResourceServerConfigurerCustomer = new OAuth2ResourceServerConfigurerCustomer(jwtDecoder, opaqueTokenIntrospector);
+            ServletSecurityAuthorizationManager servletSecurityAuthorizationManager,
+            OAuth2ProtectedResourceMetadataStorage oauth2ProtectedResourceMetadataStorage) {
+        this.oauth2ResourceServerConfigurerCustomer = new OAuth2ResourceServerConfigurerCustomer(jwtDecoder, opaqueTokenIntrospector, oauth2ProtectedResourceMetadataStorage);
         this.oauth2SessionManagementConfigurerCustomer = oauth2SessionManagementConfigurerCustomer;
         this.oauth2AuthorizeHttpRequestsConfigurerCustomer = new OAuth2AuthorizeHttpRequestsConfigurerCustomer(servletOAuth2ResourceMatcherConfigurer, servletSecurityAuthorizationManager);
         this.oauth2ExceptionHandlingConfigurerCustomizer = new OAuth2ExceptionHandlingConfigurerCustomizer(servletTemplateHandler);

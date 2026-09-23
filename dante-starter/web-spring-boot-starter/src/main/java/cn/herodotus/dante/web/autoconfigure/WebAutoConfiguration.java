@@ -27,7 +27,7 @@ package cn.herodotus.dante.web.autoconfigure;
 
 import cn.herodotus.dante.core.builder.EnumDictionaryBuilder;
 import cn.herodotus.dante.core.function.ErrorCodeMapperBuilderCustomizer;
-import cn.herodotus.dante.messaging.strategy.EnumDictionaryCollectEventManager;
+import cn.herodotus.dante.messaging.strategy.EnumDictionaryCollectionEventManager;
 import cn.herodotus.dante.web.autoconfigure.config.SecureConfiguration;
 import cn.herodotus.dante.web.autoconfigure.config.SpringdocConfiguration;
 import cn.herodotus.dante.web.autoconfigure.customizer.WebErrorCodeMapperBuilderCustomizer;
@@ -68,8 +68,8 @@ public class WebAutoConfiguration {
     }
 
     @Bean
-    @ConditionalOnBean(EnumDictionaryCollectEventManager.class)
-    public EnumDictionaryCollector enumDictionaryCollector(EnumDictionaryBuilder builder, EnumDictionaryCollectEventManager manager) {
+    @ConditionalOnBean(EnumDictionaryCollectionEventManager.class)
+    public EnumDictionaryCollector enumDictionaryCollector(EnumDictionaryBuilder builder, EnumDictionaryCollectionEventManager manager) {
         EnumDictionaryCollector gather = new EnumDictionaryCollector(builder, manager);
         log.debug("[Herodotus] |- Strategy [Enum Dictionary Gather] Configure.");
         return gather;

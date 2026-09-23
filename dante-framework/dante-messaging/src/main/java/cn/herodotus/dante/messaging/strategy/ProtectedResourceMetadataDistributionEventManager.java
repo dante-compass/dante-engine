@@ -23,30 +23,17 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.oauth2.authorization.autoconfigure.bus;
+package cn.herodotus.dante.messaging.strategy;
 
-import org.springframework.cloud.bus.event.RemoteApplicationEvent;
+import cn.herodotus.dante.messaging.definition.event.StrategyEventManager;
+
+import java.util.List;
 
 /**
- * <p>Description: 枚举数据字典收集远程事件 </p>
+ * <p>Description: OAuth2 Protected Resource Metadata 分发 </p>
  *
- * @author : gengwei.zheng
- * @date : 2024/8/23 16:54
+ * @author : gengwei_zheng
+ * @date : 2026/9/22 18:10
  */
-public class RemoteEnumDictionaryCollectEvent extends RemoteApplicationEvent {
-
-    private String data;
-
-    public RemoteEnumDictionaryCollectEvent() {
-        super();
-    }
-
-    public RemoteEnumDictionaryCollectEvent(String data, String originService, String destinationService) {
-        super(data, originService, DEFAULT_DESTINATION_FACTORY.getDestination(destinationService));
-        this.data = data;
-    }
-
-    public String getData() {
-        return data;
-    }
+public interface ProtectedResourceMetadataDistributionEventManager extends StrategyEventManager<List<String>> {
 }

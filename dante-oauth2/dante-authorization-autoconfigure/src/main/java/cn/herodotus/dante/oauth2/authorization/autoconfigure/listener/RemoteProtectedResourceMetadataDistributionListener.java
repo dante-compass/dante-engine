@@ -25,10 +25,9 @@
 
 package cn.herodotus.dante.oauth2.authorization.autoconfigure.listener;
 
-import cn.herodotus.dante.core.domain.Dictionary;
 import cn.herodotus.dante.core.jackson.JacksonUtils;
-import cn.herodotus.dante.oauth2.authorization.autoconfigure.bus.RemoteEnumDictionaryCollectEvent;
-import cn.herodotus.dante.oauth2.authorization.autoconfigure.processor.EnumDictionaryCollectProcessor;
+import cn.herodotus.dante.oauth2.authorization.autoconfigure.bus.RemoteProtectedResourceMetadataDistributionEvent;
+import cn.herodotus.dante.security.definition.OAuth2ProtectedResourceMetadataStorage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationListener;
@@ -36,32 +35,32 @@ import org.springframework.context.ApplicationListener;
 import java.util.Optional;
 
 /**
- * <p>Description: 远程数据字典收集监听器 </p>
+ * <p>Description: 远程 Protected Resource Metadata 分发监听器 </p>
  *
- * @author : gengwei.zheng
- * @date : 2024/8/23 18:13
+ * @author : gengwei_zheng
+ * @date : 2026/9/23 16:29
  */
-public class RemoteEnumDictionaryCollectListener implements ApplicationListener<RemoteEnumDictionaryCollectEvent> {
+public class RemoteProtectedResourceMetadataDistributionListener implements ApplicationListener<RemoteProtectedResourceMetadataDistributionEvent> {
 
-    private static final Logger log = LoggerFactory.getLogger(RemoteEnumDictionaryCollectListener.class);
+    private static final Logger log = LoggerFactory.getLogger(RemoteProtectedResourceMetadataDistributionListener.class);
 
-    private final EnumDictionaryCollectProcessor processor;
+    private final OAuth2ProtectedResourceMetadataStorage oauth2ProtectedResourceMetadataStorage;
 
-    public RemoteEnumDictionaryCollectListener(EnumDictionaryCollectProcessor processor) {
-        this.processor = processor;
+    public RemoteProtectedResourceMetadataDistributionListener(OAuth2ProtectedResourceMetadataStorage oauth2ProtectedResourceMetadataStorage) {
+        this.oauth2ProtectedResourceMetadataStorage = oauth2ProtectedResourceMetadataStorage;
     }
 
     @Override
-    public void onApplicationEvent(RemoteEnumDictionaryCollectEvent event) {
+    public void onApplicationEvent(RemoteProtectedResourceMetadataDistributionEvent event) {
 
-        log.info("[Herodotus] |- Enum dictionary gather REMOTE listener, response service [{}] event!", event.getOriginService());
+        log.info("[Herodotus] |- Protected resource metadata distribution REMOTE listener, response service [{}] event!", event.getOriginService());
 
-        String dictionary = event.getData();
+        String data = event.getData();
 
-        log.debug("[Herodotus] |- [E3] Enum dictionary process BEGIN!");
+        log.debug("[Herodotus] |- [PRM2] Protected resource metadata distribution process BEGIN!");
 
-        Optional.ofNullable(dictionary)
-                .flatMap(value -> Optional.ofNullable(JacksonUtils.toList(value, Dictionary.class)))
-                .ifPresent(processor::postDictionaries);
+        Optional.ofNullable(data)
+                .flatMap(value -> Optional.ofNullable(JacksonUtils.toList(value, String.class)))
+                .ifPresent(oauth2ProtectedResourceMetadataStorage::storeSupportedScopes);
     }
 }

@@ -31,8 +31,11 @@ import cn.herodotus.dante.core.function.EnumDictionaryBuilderCustomizer;
 import cn.herodotus.dante.logic.upms.customizer.UpmsEnumDictionaryBuilderCustomizer;
 import cn.herodotus.dante.logic.upms.definition.SocialAuthenticationHandler;
 import cn.herodotus.dante.logic.upms.handler.DefaultSocialAuthenticationHandler;
+import cn.herodotus.dante.logic.upms.handler.ProtectedResourceMetadataDistributionHandler;
+import cn.herodotus.dante.logic.upms.service.oauth2.OAuth2ProtectedResourceMetadataService;
 import cn.herodotus.dante.logic.upms.service.security.SysSocialUserService;
 import cn.herodotus.dante.logic.upms.service.security.SysUserService;
+import cn.herodotus.dante.messaging.strategy.ProtectedResourceMetadataDistributionEventManager;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -54,14 +57,17 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EntityScan(basePackages = {
         "cn.herodotus.dante.logic.upms.entity.security",
         "cn.herodotus.dante.logic.upms.entity.hr",
+        "cn.herodotus.dante.logic.upms.entity.oauth2",
 })
 @EnableJpaRepositories(basePackages = {
         "cn.herodotus.dante.logic.upms.repository.security",
         "cn.herodotus.dante.logic.upms.repository.hr",
+        "cn.herodotus.dante.logic.upms.repository.oauth2",
 })
 @ComponentScan(basePackages = {
         "cn.herodotus.dante.logic.upms.service.security",
         "cn.herodotus.dante.logic.upms.service.hr",
+        "cn.herodotus.dante.logic.upms.service.oauth2",
 })
 @Import({AssistantAccessConfiguration.class})
 public class LogicUpmsConfiguration {
@@ -86,5 +92,12 @@ public class LogicUpmsConfiguration {
         UpmsEnumDictionaryBuilderCustomizer customizer = new UpmsEnumDictionaryBuilderCustomizer();
         log.debug("[Herodotus] |- Strategy [Upms EnumDictionary Builder Customizer] Configure.");
         return customizer;
+    }
+
+    @Bean
+    public ProtectedResourceMetadataDistributionHandler protectedResourceMetadataDistributionHandler(OAuth2ProtectedResourceMetadataService oauth2ProtectedResourceMetadataService, ProtectedResourceMetadataDistributionEventManager protectedResourceMetadataDistributionEventManager) {
+        ProtectedResourceMetadataDistributionHandler handler = new ProtectedResourceMetadataDistributionHandler(oauth2ProtectedResourceMetadataService, protectedResourceMetadataDistributionEventManager);
+        log.trace("[Herodotus] |- Bean [Protected Resource Metadata Distribution Handler] Configure.");
+        return handler;
     }
 }

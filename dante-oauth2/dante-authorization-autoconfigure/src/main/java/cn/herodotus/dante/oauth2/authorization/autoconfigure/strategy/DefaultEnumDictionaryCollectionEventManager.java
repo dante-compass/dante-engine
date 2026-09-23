@@ -23,23 +23,36 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.messaging.strategy;
+package cn.herodotus.dante.oauth2.authorization.autoconfigure.strategy;
 
 import cn.herodotus.dante.core.domain.Dictionary;
-import cn.herodotus.dante.messaging.definition.event.ApplicationStrategyEventManager;
+import cn.herodotus.dante.messaging.event.EnumDictionaryCollectionEvent;
+import cn.herodotus.dante.messaging.strategy.EnumDictionaryCollectionEventManager;
+import cn.herodotus.dante.oauth2.authorization.autoconfigure.bus.RemoteEnumDictionaryCollectionEvent;
+import cn.herodotus.dante.spring.context.ServiceContextHolder;
 
 import java.util.List;
 
 /**
- * <p>Description: 枚举数据字典收集事件管理器 </p>
- * <p>
- * 微服务架构下：服务启动时，会扫描服务中枚举字典信息，通过该事件管理器发送远程事件将扫描结果发送至 UPMS 服务中进行聚合存储。UPMS 服务本身也需要扫描枚举字典，但不需要发送远程事件，使用本地事件即可
- * 单体架构下：仅需要发送本地事件即可。
- * <p>
- * 该事件管理器会自动判断在具体场景下，使用远程事件还是本地事件
+ * <p>Description: 默认枚举数据字典收集事件管理器 </p>
  *
  * @author : gengwei.zheng
- * @date : 2024/8/23 17:02
+ * @date : 2024/8/23 17:03
  */
-public interface EnumDictionaryCollectEventManager extends ApplicationStrategyEventManager<List<Dictionary>> {
+public class DefaultEnumDictionaryCollectionEventManager implements EnumDictionaryCollectionEventManager {
+
+    @Override
+    public String getDestinationServiceName() {
+        return ServiceContextHolder.getUpmsServiceName();
+    }
+
+    @Override
+    public void postLocalProcess(List<Dictionary> data) {
+        publishEvent(new EnumDictionaryCollectionEvent(data));
+    }
+
+    @Override
+    public void postRemoteProcess(String data, String originService, String destinationService) {
+        publishEvent(new RemoteEnumDictionaryCollectionEvent(data, originService, destinationService));
+    }
 }

@@ -44,11 +44,13 @@ public class SecurityAttributeManager {
     private final RestSecurityAttributeStorage restSecurityAttributeStorage;
     private final RestSecurityAttributeAnalyzer restSecurityAttributeAnalyzer;
     private final McpSecurityAttributeAnalyzer mcpSecurityAttributeAnalyzer;
+    private final McpSecurityAttributeStorage mcpSecurityAttributeStorage;
 
     public SecurityAttributeManager(Map<HerodotusRequest, List<HerodotusSecurityAttribute>> permitAllAttributes) {
         this.restSecurityAttributeStorage = new RestSecurityAttributeStorage();
         this.restSecurityAttributeAnalyzer = new RestSecurityAttributeAnalyzer(this.restSecurityAttributeStorage, permitAllAttributes);
-        this.mcpSecurityAttributeAnalyzer = new McpSecurityAttributeAnalyzer();
+        this.mcpSecurityAttributeStorage = new McpSecurityAttributeStorage();
+        this.mcpSecurityAttributeAnalyzer = new McpSecurityAttributeAnalyzer(this.mcpSecurityAttributeStorage);
     }
 
     public void postLocalResourceMatcherProcess() {
@@ -85,5 +87,9 @@ public class SecurityAttributeManager {
      */
     public List<HerodotusSecurityAttribute> findRestAttribute(String url, String method, String version) {
         return restSecurityAttributeStorage.findAttribute(url, method, version);
+    }
+
+    public List<HerodotusSecurityAttribute> findMcpAttribute(String name, String feature) {
+        return mcpSecurityAttributeStorage.findAttribute(name, feature);
     }
 }

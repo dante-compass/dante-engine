@@ -71,6 +71,8 @@ public interface OAuth2Constants extends BaseConstants {
     String REGION__OAUTH2_APPLICATION = AREA_PREFIX + "oauth2:application";
     String REGION__OAUTH2_COMPLIANCE = AREA_PREFIX + "oauth2:compliance";
     String REGION__OAUTH2_PERMISSION = AREA_PREFIX + "oauth2:permission";
+    String REGION__OAUTH2_PROTECTED_RESOURCE_METADATA = AREA_PREFIX + "oauth2:prm";
+    String REGION__OAUTH2_RESOURCE_INDICATOR = AREA_PREFIX + "oauth2:resource";
     String REGION__OAUTH2_SCOPE = AREA_PREFIX + "oauth2:scope";
     String REGION__OAUTH2_APPLICATION_SCOPE = AREA_PREFIX + "oauth2:application:scope";
 
@@ -80,7 +82,9 @@ public interface OAuth2Constants extends BaseConstants {
     String CACHE_PREFIX__SECURITY = CACHE_PREFIX + "security:";
     String CACHE_PREFIX__SECURITY_ATTRIBUTE = CACHE_PREFIX__SECURITY + "attribute:";
 
+    String CACHE_NAME__PROTECTED_RESOURCE_METADATA_COMPATIBLE = CACHE_PREFIX__SECURITY_ATTRIBUTE + "prm:compatible:";
     String CACHE_NAME__SECURITY_ATTRIBUTE_REST_INDEXABLE = CACHE_PREFIX__SECURITY_ATTRIBUTE + "rest:indexable:";
     String CACHE_NAME__SECURITY_ATTRIBUTE_REST_COMPATIBLE = CACHE_PREFIX__SECURITY_ATTRIBUTE + "rest:compatible:";
+    String CACHE_NAME__SECURITY_ATTRIBUTE_GRPC_INDEXABLE = CACHE_PREFIX__SECURITY_ATTRIBUTE + "grpc:indexable:";
     String CACHE_NAME__SECURITY_ATTRIBUTE_MCP_INDEXABLE = CACHE_PREFIX__SECURITY_ATTRIBUTE + "mcp:indexable:";
 }

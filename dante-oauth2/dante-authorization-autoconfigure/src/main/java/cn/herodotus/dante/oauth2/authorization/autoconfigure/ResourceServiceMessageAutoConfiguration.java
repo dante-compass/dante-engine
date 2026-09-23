@@ -26,13 +26,15 @@
 package cn.herodotus.dante.oauth2.authorization.autoconfigure;
 
 import cn.herodotus.dante.messaging.strategy.AttributeCollectionEventManager;
-import cn.herodotus.dante.messaging.strategy.EnumDictionaryCollectEventManager;
+import cn.herodotus.dante.messaging.strategy.EnumDictionaryCollectionEventManager;
 import cn.herodotus.dante.messaging.strategy.MessageSendingEventManager;
+import cn.herodotus.dante.messaging.strategy.ProtectedResourceMetadataDistributionEventManager;
 import cn.herodotus.dante.oauth2.authorization.attribute.SecurityAttributeManager;
 import cn.herodotus.dante.oauth2.authorization.autoconfigure.listener.RemoteAttributeDistributionListener;
 import cn.herodotus.dante.oauth2.authorization.autoconfigure.strategy.DefaultAttributeCollectionEventManager;
-import cn.herodotus.dante.oauth2.authorization.autoconfigure.strategy.DefaultEnumDictionaryCollectEventManager;
+import cn.herodotus.dante.oauth2.authorization.autoconfigure.strategy.DefaultEnumDictionaryCollectionEventManager;
 import cn.herodotus.dante.oauth2.authorization.autoconfigure.strategy.DefaultMessageSendingEventManager;
+import cn.herodotus.dante.oauth2.authorization.autoconfigure.strategy.DefaultProtectedResourceMetadataDistributionEventManager;
 import cn.herodotus.dante.spring.condition.ConditionalOnArchitecture;
 import cn.herodotus.dante.spring.enums.Architecture;
 import jakarta.annotation.PostConstruct;
@@ -77,9 +79,9 @@ public class ResourceServiceMessageAutoConfiguration {
     }
 
     @Bean
-    public EnumDictionaryCollectEventManager enumDictionaryCollectEventManager() {
-        DefaultEnumDictionaryCollectEventManager manager = new DefaultEnumDictionaryCollectEventManager();
-        log.trace("[Herodotus] |- Bean [Enum Dictionary Gather Manager] Configure.");
+    public EnumDictionaryCollectionEventManager enumDictionaryCollectionEventManager() {
+        DefaultEnumDictionaryCollectionEventManager manager = new DefaultEnumDictionaryCollectionEventManager();
+        log.trace("[Herodotus] |- Bean [Enum Dictionary Collection Manager] Configure.");
         return manager;
     }
 
@@ -87,6 +89,13 @@ public class ResourceServiceMessageAutoConfiguration {
     public MessageSendingEventManager messageSendingEventManager() {
         DefaultMessageSendingEventManager manager = new DefaultMessageSendingEventManager();
         log.trace("[Herodotus] |- Bean [Unified Message Sending Event Manager] Configure.");
+        return manager;
+    }
+
+    @Bean
+    public ProtectedResourceMetadataDistributionEventManager protectedResourceMetadataDistributionEventManager() {
+        DefaultProtectedResourceMetadataDistributionEventManager manager = new DefaultProtectedResourceMetadataDistributionEventManager();
+        log.trace("[Herodotus] |- Bean [Protected Resource Metadata Distribution Event Manager] Configure.");
         return manager;
     }
 

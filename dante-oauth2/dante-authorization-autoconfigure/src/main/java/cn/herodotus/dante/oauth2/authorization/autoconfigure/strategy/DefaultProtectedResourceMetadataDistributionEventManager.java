@@ -25,34 +25,27 @@
 
 package cn.herodotus.dante.oauth2.authorization.autoconfigure.strategy;
 
-import cn.herodotus.dante.core.domain.Dictionary;
-import cn.herodotus.dante.messaging.event.EnumDictionaryCollectEvent;
-import cn.herodotus.dante.messaging.strategy.EnumDictionaryCollectEventManager;
-import cn.herodotus.dante.oauth2.authorization.autoconfigure.bus.RemoteEnumDictionaryCollectEvent;
-import cn.herodotus.dante.spring.context.ServiceContextHolder;
+import cn.herodotus.dante.messaging.event.ProtectedResourceMetadataDistributionEvent;
+import cn.herodotus.dante.messaging.strategy.ProtectedResourceMetadataDistributionEventManager;
+import cn.herodotus.dante.oauth2.authorization.autoconfigure.bus.RemoteProtectedResourceMetadataDistributionEvent;
 
 import java.util.List;
 
 /**
- * <p>Description: 默认枚举数据字典收集事件管理器 </p>
+ * <p>Description: 默认Protected Resource Metadata分发事件管理器 </p>
  *
- * @author : gengwei.zheng
- * @date : 2024/8/23 17:03
+ * @author : gengwei_zheng
+ * @date : 2026/9/23 16:07
  */
-public class DefaultEnumDictionaryCollectEventManager implements EnumDictionaryCollectEventManager {
+public class DefaultProtectedResourceMetadataDistributionEventManager implements ProtectedResourceMetadataDistributionEventManager {
 
     @Override
-    public String getDestinationServiceName() {
-        return ServiceContextHolder.getUpmsServiceName();
-    }
-
-    @Override
-    public void postLocalProcess(List<Dictionary> data) {
-        publishEvent(new EnumDictionaryCollectEvent(data));
+    public void postLocalProcess(List<String> data) {
+        publishEvent(new ProtectedResourceMetadataDistributionEvent(data));
     }
 
     @Override
     public void postRemoteProcess(String data, String originService, String destinationService) {
-        publishEvent(new RemoteEnumDictionaryCollectEvent(data, originService, destinationService));
+        publishEvent(new RemoteProtectedResourceMetadataDistributionEvent(data, originService, destinationService));
     }
 }

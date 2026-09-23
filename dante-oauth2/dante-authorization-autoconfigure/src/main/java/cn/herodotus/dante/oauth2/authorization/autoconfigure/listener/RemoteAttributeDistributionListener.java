@@ -59,7 +59,7 @@ public class RemoteAttributeDistributionListener implements ApplicationListener<
     public void onApplicationEvent(RemoteAttributeDistributionEvent event) {
 
         if (!serviceMatcher.isFromSelf(event)) {
-            log.info("[Herodotus] |- Attribute dispatch REMOTE listener, response service [{}] event!", event.getOriginService());
+            log.info("[Herodotus] |- Attribute distribution REMOTE listener, response service [{}] event!", event.getOriginService());
 
             String data = event.getData();
 

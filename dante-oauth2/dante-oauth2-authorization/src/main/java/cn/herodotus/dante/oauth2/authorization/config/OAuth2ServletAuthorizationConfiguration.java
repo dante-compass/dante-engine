@@ -28,17 +28,20 @@ package cn.herodotus.dante.oauth2.authorization.config;
 import cn.herodotus.dante.core.builder.SecurityMatcher;
 import cn.herodotus.dante.core.function.SecurityMatcherBuilderCustomizer;
 import cn.herodotus.dante.oauth2.authorization.attribute.SecurityAttributeManager;
+import cn.herodotus.dante.oauth2.authorization.customizer.DefaultOAuth2ProtectedResourceMetadataStorage;
 import cn.herodotus.dante.oauth2.authorization.customizer.OAuth2AuthorizationSecurityMatcherBuilderCustomizer;
 import cn.herodotus.dante.oauth2.authorization.properties.OAuth2AuthorizationProperties;
 import cn.herodotus.dante.oauth2.authorization.servlet.OAuth2SessionManagementConfigurerCustomer;
 import cn.herodotus.dante.oauth2.authorization.servlet.ServletOAuth2AuthorizationConfigurerManager;
 import cn.herodotus.dante.oauth2.authorization.servlet.ServletOAuth2ResourceMatcherConfigurer;
 import cn.herodotus.dante.oauth2.authorization.servlet.ServletSecurityAuthorizationManager;
+import cn.herodotus.dante.security.definition.OAuth2ProtectedResourceMetadataStorage;
 import cn.herodotus.dante.web.definition.template.ServletTemplateHandler;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.ObjectProvider;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -100,6 +103,15 @@ public class OAuth2ServletAuthorizationConfiguration {
         return manager;
     }
 
+
+    @Bean
+    @ConditionalOnMissingBean
+    public OAuth2ProtectedResourceMetadataStorage oauth2ProtectedResourceMetadataRepository() {
+        DefaultOAuth2ProtectedResourceMetadataStorage repository = new DefaultOAuth2ProtectedResourceMetadataStorage();
+        log.trace("[Herodotus] |- Bean [OAuth2 Protected Resource Metadata Repository] Configure.");
+        return repository;
+    }
+
     @Bean
     public ServletOAuth2AuthorizationConfigurerManager servletOAuth2AuthorizationFacadeConfigurer(
             ServletTemplateHandler servletTemplateHandler,
@@ -107,14 +119,16 @@ public class OAuth2ServletAuthorizationConfiguration {
             OpaqueTokenIntrospector opaqueTokenIntrospector,
             OAuth2SessionManagementConfigurerCustomer sessionManagementConfigurerCustomer,
             ServletOAuth2ResourceMatcherConfigurer servletOAuth2ResourceMatcherConfigurer,
-            ServletSecurityAuthorizationManager servletSecurityAuthorizationManager) {
+            ServletSecurityAuthorizationManager servletSecurityAuthorizationManager,
+            OAuth2ProtectedResourceMetadataStorage oauth2ProtectedResourceMetadataStorage) {
         ServletOAuth2AuthorizationConfigurerManager configurer = new ServletOAuth2AuthorizationConfigurerManager(
                 servletTemplateHandler,
                 jwtDecoder,
                 opaqueTokenIntrospector,
                 sessionManagementConfigurerCustomer,
                 servletOAuth2ResourceMatcherConfigurer,
-                servletSecurityAuthorizationManager);
+                servletSecurityAuthorizationManager,
+                oauth2ProtectedResourceMetadataStorage);
         log.trace("[Herodotus] |- Bean [Servlet OAuth2 Resource Server Configurer] Configure.");
         return configurer;
     }

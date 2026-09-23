@@ -25,14 +25,15 @@
 
 package cn.herodotus.dante.oauth2.authorization.attribute;
 
-import cn.herodotus.dante.messaging.domain.SecurityAttribute;
+import cn.herodotus.dante.cache.utils.JetCacheUtils;
 import cn.herodotus.dante.oauth2.authorization.cache.HerodotusMcp;
 import cn.herodotus.dante.oauth2.authorization.definition.HerodotusSecurityAttribute;
-import org.apache.commons.collections4.MapUtils;
+import cn.herodotus.dante.oauth2.commons.constant.OAuth2Constants;
+import com.alicp.jetcache.Cache;
+import com.alicp.jetcache.anno.CacheType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -42,28 +43,41 @@ import java.util.Map;
  * @author : gengwei_zheng
  * @date : 2026/9/19 0:12
  */
-class McpSecurityAttributeAnalyzer extends AbstractSecurityAttributeAnalyzer {
+class McpSecurityAttributeStorage {
 
-    private static final Logger log = LoggerFactory.getLogger(McpSecurityAttributeAnalyzer.class);
+    private static final Logger log = LoggerFactory.getLogger(McpSecurityAttributeStorage.class);
 
-    private final McpSecurityAttributeStorage mcpSecurityAttributeStorage;
+    /**
+     * 直接索引权限缓存，主要存储全路径权限
+     * 该种权限，直接通过 Map Key 进行获取
+     */
+    private final Cache<HerodotusMcp, List<HerodotusSecurityAttribute>> indexable;
 
-    public McpSecurityAttributeAnalyzer(McpSecurityAttributeStorage mcpSecurityAttributeStorage) {
-        this.mcpSecurityAttributeStorage = mcpSecurityAttributeStorage;
+    public McpSecurityAttributeStorage() {
+        this.indexable = JetCacheUtils.create(OAuth2Constants.CACHE_NAME__SECURITY_ATTRIBUTE_MCP_INDEXABLE, CacheType.BOTH, null, true);
     }
 
-    @Override
-    public void postAttributeDistributionProcess(List<SecurityAttribute> securityAttributes) {
-        Map<HerodotusMcp, List<HerodotusSecurityAttribute>> result = new LinkedHashMap<>();
+    /**
+     * 从 indexable 缓存中读取数据
+     *
+     * @param herodotusMcp 自定义扩展的 AntPathRequestMatchers {@link HerodotusMcp}
+     * @return 权限配置属性对象集合
+     */
+    private List<HerodotusSecurityAttribute> readFromIndexable(HerodotusMcp herodotusMcp) {
+        return this.indexable.get(herodotusMcp);
+    }
 
-        securityAttributes.forEach(attribute -> {
-            HerodotusMcp herodotusGrpc = new HerodotusMcp(attribute.getName(), attribute.getRequestMethod());
-            result.put(herodotusGrpc, analysis(attribute));
-        });
+    /**
+     * 向 indexable 缓存中添加请求权限映射Map。
+     *
+     * @param attributes 请求权限映射Map
+     */
+    protected void writeToIndexable(Map<HerodotusMcp, List<HerodotusSecurityAttribute>> attributes) {
+        this.indexable.putAll(attributes);
+    }
 
-        log.debug("[Herodotus] |- Grouping security metadata by category.");
-        if (MapUtils.isNotEmpty(result)) {
-            mcpSecurityAttributeStorage.writeToIndexable(result);
-        }
+    public List<HerodotusSecurityAttribute> findAttribute(String name, String feature) {
+        HerodotusMcp herodotusGrpc = new HerodotusMcp(name, feature);
+        return readFromIndexable(herodotusGrpc);
     }
 }

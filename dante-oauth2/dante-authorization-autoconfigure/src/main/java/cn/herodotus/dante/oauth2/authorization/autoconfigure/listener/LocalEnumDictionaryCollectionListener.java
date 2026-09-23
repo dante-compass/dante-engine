@@ -25,42 +25,41 @@
 
 package cn.herodotus.dante.oauth2.authorization.autoconfigure.listener;
 
-import cn.herodotus.dante.messaging.domain.AttributeCollector;
-import cn.herodotus.dante.messaging.event.AttributeCollectionEvent;
-import cn.herodotus.dante.oauth2.authorization.autoconfigure.processor.SecurityAttributeProcessor;
+import cn.herodotus.dante.core.domain.Dictionary;
+import cn.herodotus.dante.messaging.event.EnumDictionaryCollectionEvent;
+import cn.herodotus.dante.oauth2.authorization.autoconfigure.processor.EnumDictionaryCollectionProcessor;
 import org.apache.commons.collections4.CollectionUtils;
-import org.apache.commons.lang3.ObjectUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationListener;
 
+import java.util.List;
+
 /**
- * <p>Description: 本地MappingAttribute收集监听 </p>
- * <p>
- * 主要在单体式架构，以及 UUA 服务自身使用
+ * <p>Description: 本地数据字典收集器 </p>
  *
  * @author : gengwei.zheng
- * @date : 2021/8/8 22:02
+ * @date : 2024/8/23 18:13
  */
-public class LocalAttributeCollectionListener implements ApplicationListener<AttributeCollectionEvent> {
+public class LocalEnumDictionaryCollectionListener implements ApplicationListener<EnumDictionaryCollectionEvent> {
 
-    private static final Logger log = LoggerFactory.getLogger(LocalAttributeCollectionListener.class);
+    private static final Logger log = LoggerFactory.getLogger(LocalEnumDictionaryCollectionListener.class);
 
-    private final SecurityAttributeProcessor securityAttributeProcessor;
+    private final EnumDictionaryCollectionProcessor processor;
 
-    public LocalAttributeCollectionListener(SecurityAttributeProcessor securityAttributeProcessor) {
-        this.securityAttributeProcessor = securityAttributeProcessor;
+    public LocalEnumDictionaryCollectionListener(EnumDictionaryCollectionProcessor processor) {
+        this.processor = processor;
     }
 
     @Override
-    public void onApplicationEvent(AttributeCollectionEvent event) {
+    public void onApplicationEvent(EnumDictionaryCollectionEvent event) {
 
-        log.info("[Herodotus] |- Attribute collection LOCAL listener, response event!");
+        log.info("[Herodotus] |- Enum dictionary collection LOCAL listener, response event!");
 
-        AttributeCollector collector = event.getData();
-        if (ObjectUtils.isNotEmpty(collector) && CollectionUtils.isNotEmpty(collector.getAttributes())) {
-            log.debug("[Herodotus] |- [R4] Attribute collection process BEGIN!");
-            securityAttributeProcessor.postAttributeCollectorProcess(collector);
+        List<Dictionary> dictionaries = event.getData();
+        if (CollectionUtils.isNotEmpty(dictionaries)) {
+            log.debug("[Herodotus] |- [E3] Enum dictionary collection process BEGIN!");
+            processor.postDictionaries(dictionaries);
         }
     }
 }
