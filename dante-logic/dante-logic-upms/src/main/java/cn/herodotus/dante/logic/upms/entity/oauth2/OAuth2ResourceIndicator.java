@@ -46,8 +46,8 @@ import org.hibernate.annotations.UuidGenerator;
 @Schema(name = "OAuth2 Resource 实体")
 @Entity
 @Table(name = "oauth2_resource", indexes = {
-        @Index(name = "oauth2_resource_id_idx", columnList = "resource_id"),
-        @Index(name = "oauth2_application_cid_idx", columnList = "client_id")})
+        @Index(name = "oauth2_resource_id_idx", columnList = "indicator_id"),
+        @Index(name = "oauth2_resource_vid_idx", columnList = "indicator_value")})
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = OAuth2Constants.REGION__OAUTH2_RESOURCE_INDICATOR)
 public class OAuth2ResourceIndicator extends AbstractSysEntity {

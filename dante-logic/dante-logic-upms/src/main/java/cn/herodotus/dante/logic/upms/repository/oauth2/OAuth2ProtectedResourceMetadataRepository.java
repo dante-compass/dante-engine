@@ -27,6 +27,9 @@ package cn.herodotus.dante.logic.upms.repository.oauth2;
 
 import cn.herodotus.dante.data.jpa.repository.BaseJpaRepository;
 import cn.herodotus.dante.logic.upms.entity.oauth2.OAuth2ProtectedResourceMetadata;
+import jakarta.persistence.QueryHint;
+import org.hibernate.jpa.AvailableHints;
+import org.springframework.data.jpa.repository.QueryHints;
 
 /**
  * <p>Description: {@link OAuth2ProtectedResourceMetadata} JPA Repository </p>
@@ -35,4 +38,13 @@ import cn.herodotus.dante.logic.upms.entity.oauth2.OAuth2ProtectedResourceMetada
  * @date : 2026/9/20 15:27
  */
 public interface OAuth2ProtectedResourceMetadataRepository extends BaseJpaRepository<OAuth2ProtectedResourceMetadata, String> {
+
+    /**
+     * 根据 PRM code 查找 {@link OAuth2ProtectedResourceMetadata}
+     *
+     * @param metadataCode 角色代码
+     * @return {@link OAuth2ProtectedResourceMetadata}
+     */
+    @QueryHints(@QueryHint(name = AvailableHints.HINT_CACHEABLE, value = "true"))
+    OAuth2ProtectedResourceMetadata findByMetadataCode(String metadataCode);
 }

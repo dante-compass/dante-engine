@@ -27,6 +27,9 @@ package cn.herodotus.dante.logic.upms.repository.oauth2;
 
 import cn.herodotus.dante.data.jpa.repository.BaseJpaRepository;
 import cn.herodotus.dante.logic.upms.entity.oauth2.OAuth2ResourceIndicator;
+import jakarta.persistence.QueryHint;
+import org.hibernate.jpa.AvailableHints;
+import org.springframework.data.jpa.repository.QueryHints;
 
 /**
  * <p>Description: {@link OAuth2ResourceIndicator} JPA Repository </p>
@@ -35,4 +38,13 @@ import cn.herodotus.dante.logic.upms.entity.oauth2.OAuth2ResourceIndicator;
  * @date : 2026/9/20 13:55
  */
 public interface OAuth2ResourceIndicatorRepository extends BaseJpaRepository<OAuth2ResourceIndicator, String> {
+
+    /**
+     * 根据资源标识值查找 {@link OAuth2ResourceIndicator}
+     *
+     * @param indicatorValue 角色代码
+     * @return {@link OAuth2ResourceIndicator}
+     */
+    @QueryHints(@QueryHint(name = AvailableHints.HINT_CACHEABLE, value = "true"))
+    OAuth2ResourceIndicator findByIndicatorValue(String indicatorValue);
 }

@@ -50,7 +50,7 @@ import org.hibernate.annotations.UuidGenerator;
 @Entity
 @Table(name = "oauth2_protected_resource_metadata", indexes = {
         @Index(name = "oauth2_protected_resource_metadata_id_idx", columnList = "metadata_id"),
-        @Index(name = "oauth2_application_cid_idx", columnList = "client_id")})
+        @Index(name = "oauth2_protected_resource_metadata_cid_idx", columnList = "metadata_code")})
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = OAuth2Constants.REGION__OAUTH2_PROTECTED_RESOURCE_METADATA)
 public class OAuth2ProtectedResourceMetadata extends AbstractSysEntity {

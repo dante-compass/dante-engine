@@ -50,4 +50,8 @@ public class OAuth2ProtectedResourceMetadataService extends AbstractJpaService<O
     public BaseJpaRepository<OAuth2ProtectedResourceMetadata, String> getRepository() {
         return oauth2ProtectedResourceMetadataRepository;
     }
+
+    public OAuth2ProtectedResourceMetadata findByMetadataCode(String metadataCode) {
+        return oauth2ProtectedResourceMetadataRepository.findByMetadataCode(metadataCode);
+    }
 }

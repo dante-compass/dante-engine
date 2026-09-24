@@ -50,4 +50,8 @@ public class OAuth2ResourceIndicatorService extends AbstractJpaService<OAuth2Res
     public BaseJpaRepository<OAuth2ResourceIndicator, String> getRepository() {
         return oauth2ResourceIndicatorRepository;
     }
+
+    public OAuth2ResourceIndicator findByIndicatorValue(String indicatorValue) {
+        return oauth2ResourceIndicatorRepository.findByIndicatorValue(indicatorValue);
+    }
 }
