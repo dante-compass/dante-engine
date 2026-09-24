@@ -46,6 +46,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 /**
  * <p>Description: OAuth2 资源标识接口 </p>
  *
@@ -86,5 +88,14 @@ public class OAuth2ResourceIndicatorController extends AbstractJpaEntityWriteabl
     public Result<OAuth2ResourceIndicator> findByIndicatorValue(@PathVariable("indicatorValue") String indicatorValue) {
         OAuth2ResourceIndicator domain = oauth2ResourceIndicatorService.findByIndicatorValue(indicatorValue);
         return result(domain);
+    }
+
+    @AccessLimited
+    @Operation(summary = "获取全部资源标识接口", description = "获取全部资源标识接口",
+            responses = {@ApiResponse(description = "资源标识列表", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = Result.class)))})
+    @GetMapping("/list")
+    public Result<List<OAuth2ResourceIndicator>> findAll() {
+        List<OAuth2ResourceIndicator> indicators = oauth2ResourceIndicatorService.findAll();
+        return result(indicators);
     }
 }
