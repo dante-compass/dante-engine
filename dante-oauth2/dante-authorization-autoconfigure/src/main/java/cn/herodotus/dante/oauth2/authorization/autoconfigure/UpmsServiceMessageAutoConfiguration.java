@@ -88,9 +88,9 @@ public class UpmsServiceMessageAutoConfiguration {
         }
 
         @Bean
-        public LocalProtectedResourceMetadataDistributionListener localProtectedResourceMetadataDistributionListener(OAuth2ProtectedResourceMetadataStorage oauth2ProtectedResourceMetadataStorage) {
-            LocalProtectedResourceMetadataDistributionListener listener = new LocalProtectedResourceMetadataDistributionListener(oauth2ProtectedResourceMetadataStorage);
-            log.trace("[Herodotus] |- Bean [Local Protected Resource Metadata Distribution Listener] Configure.");
+        public LocalOAuth2SupportedScopeDistributionListener localOAuth2SupportedScopeDistributionListener(OAuth2ProtectedResourceMetadataStorage oauth2ProtectedResourceMetadataStorage) {
+            LocalOAuth2SupportedScopeDistributionListener listener = new LocalOAuth2SupportedScopeDistributionListener(oauth2ProtectedResourceMetadataStorage);
+            log.trace("[Herodotus] |- Bean [Local OAuth2 Supported Scope Distribution Listener] Configure.");
             return listener;
         }
 
@@ -128,9 +128,9 @@ public class UpmsServiceMessageAutoConfiguration {
         }
 
         @Bean
-        public RemoteProtectedResourceMetadataDistributionListener remoteProtectedResourceMetadataDistributionListener(OAuth2ProtectedResourceMetadataStorage oauth2ProtectedResourceMetadataStorage) {
-            RemoteProtectedResourceMetadataDistributionListener listener = new RemoteProtectedResourceMetadataDistributionListener(oauth2ProtectedResourceMetadataStorage);
-            log.trace("[Herodotus] |- Bean [Remote Protected Resource Metadata Distribution Listener] Configure.");
+        public RemoteOAuth2SupportedScopeDistributionListener remoteOAuth2SupportedScopeDistributionListener(OAuth2ProtectedResourceMetadataStorage oauth2ProtectedResourceMetadataStorage) {
+            RemoteOAuth2SupportedScopeDistributionListener listener = new RemoteOAuth2SupportedScopeDistributionListener(oauth2ProtectedResourceMetadataStorage);
+            log.trace("[Herodotus] |- Bean [Remote OAuth2 Supported Scope Distribution Listener] Configure.");
             return listener;
         }
     }

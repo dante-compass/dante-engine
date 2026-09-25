@@ -35,9 +35,9 @@ import java.util.List;
  * @author : gengwei_zheng
  * @date : 2026/9/23 16:14
  */
-public class ProtectedResourceMetadataDistributionEvent extends AbstractApplicationEvent<List<String>> {
+public class OAuth2SupportedScopeDistributionEvent extends AbstractApplicationEvent<List<String>> {
 
-    public ProtectedResourceMetadataDistributionEvent(List<String> data) {
+    public OAuth2SupportedScopeDistributionEvent(List<String> data) {
         super(data);
     }
 }

@@ -34,7 +34,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.UuidGenerator;
 
 /**
- * <p>Description: OAuth2 保护资源 </p>
+ * <p>Description: OAuth2 支持范围 </p>
  * <p>
  * OAuth 2.0 Protected Resource Metadata 数据储存层实体定义。
  * <p>
@@ -46,70 +46,71 @@ import org.hibernate.annotations.UuidGenerator;
  * @author : gengwei_zheng
  * @date : 2026/9/20 13:19
  */
-@Schema(name = "OAuth2 ProtectedResourceMetadata 实体")
+@Schema(name = "OAuth2 支持范围实体")
 @Entity
-@Table(name = "oauth2_protected_resource_metadata", indexes = {
-        @Index(name = "oauth2_protected_resource_metadata_id_idx", columnList = "metadata_id"),
-        @Index(name = "oauth2_protected_resource_metadata_cid_idx", columnList = "metadata_code")})
+@Table(name = "oauth2_supported_scope", indexes = {
+        @Index(name = "oauth2_supported_scope_id_idx", columnList = "scope_id"),
+        @Index(name = "oauth2_supported_scope_c_idx", columnList = "scope_code")})
 @Cacheable
-@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = OAuth2Constants.REGION__OAUTH2_PROTECTED_RESOURCE_METADATA)
-public class OAuth2ProtectedResourceMetadata extends AbstractSysEntity {
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = OAuth2Constants.REGION__OAUTH2_SUPPORTED_SCOPE)
+public class OAuth2SupportedScope extends AbstractSysEntity {
 
     @Id
     @UuidGenerator
-    @Column(name = "metadata_id", length = 64)
-    private String metadataId;
+    @Column(name = "scope_id", length = 64)
+    private String scopeId;
 
-    @Column(name = "metadata_code", length = 128, unique = true)
-    private String metadataCode;
+    @Column(name = "scope_code", length = 128, unique = true)
+    private String scopeCode;
 
-    @Column(name = "metadata_name", length = 128)
-    private String metadataName;
+    @Column(name = "scope_name", length = 128)
+    private String scopeName;
 
-    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = OAuth2Constants.REGION__OAUTH2_RESOURCE_INDICATOR)
+    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = OAuth2Constants.REGION__OAUTH2_RESOURCE)
     @ManyToOne
-    @JoinColumn(name = "indicator_id", nullable = false)
-    private OAuth2ResourceIndicator indicator;
+    @JoinColumn(name = "resource_id", nullable = false)
+    private OAuth2Resource resource;
 
-    public String getMetadataId() {
-        return metadataId;
+    public String getScopeId() {
+        return scopeId;
     }
 
-    public void setMetadataId(String metadataId) {
-        this.metadataId = metadataId;
+    public void setScopeId(String scopeId) {
+        this.scopeId = scopeId;
     }
 
-    public String getMetadataCode() {
-        return metadataCode;
+    public String getScopeCode() {
+        return scopeCode;
     }
 
-    public void setMetadataCode(String metadataCode) {
-        this.metadataCode = metadataCode;
+    public void setScopeCode(String scopeCode) {
+        this.scopeCode = scopeCode;
     }
 
-    public String getMetadataName() {
-        return metadataName;
+    public String getScopeName() {
+        return scopeName;
     }
 
-    public void setMetadataName(String metadataName) {
-        this.metadataName = metadataName;
+    public void setScopeName(String scopeName) {
+        this.scopeName = scopeName;
     }
 
-    public OAuth2ResourceIndicator getIndicator() {
-        return indicator;
+    public OAuth2Resource getResource() {
+        return resource;
     }
 
-    public void setIndicator(OAuth2ResourceIndicator indicator) {
-        this.indicator = indicator;
+    public void setResource(OAuth2Resource resource) {
+        this.resource = resource;
     }
 
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("metadataId", metadataId)
-                .add("metadataCode", metadataCode)
-                .add("metadataName", metadataName)
-                .add("indicator", indicator)
+                .add("scopeId", scopeId)
+                .add("scopeCode", scopeCode)
+                .add("scopeName", scopeName)
+                .add("resource", resource)
+                .addValue(super.toString())
                 .toString();
     }
 }

@@ -31,11 +31,11 @@ import cn.herodotus.dante.core.function.EnumDictionaryBuilderCustomizer;
 import cn.herodotus.dante.logic.upms.customizer.UpmsEnumDictionaryBuilderCustomizer;
 import cn.herodotus.dante.logic.upms.definition.SocialAuthenticationHandler;
 import cn.herodotus.dante.logic.upms.handler.DefaultSocialAuthenticationHandler;
-import cn.herodotus.dante.logic.upms.handler.ProtectedResourceMetadataDistributionHandler;
-import cn.herodotus.dante.logic.upms.service.oauth2.OAuth2ProtectedResourceMetadataService;
+import cn.herodotus.dante.logic.upms.handler.OAuth2SupportedScopeDistributionHandler;
+import cn.herodotus.dante.logic.upms.service.oauth2.OAuth2SupportedScopeService;
 import cn.herodotus.dante.logic.upms.service.security.SysSocialUserService;
 import cn.herodotus.dante.logic.upms.service.security.SysUserService;
-import cn.herodotus.dante.messaging.strategy.ProtectedResourceMetadataDistributionEventManager;
+import cn.herodotus.dante.messaging.strategy.OAuth2SupportedScopeDistributionEventManager;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -95,9 +95,9 @@ public class LogicUpmsConfiguration {
     }
 
     @Bean
-    public ProtectedResourceMetadataDistributionHandler protectedResourceMetadataDistributionHandler(OAuth2ProtectedResourceMetadataService oauth2ProtectedResourceMetadataService, ProtectedResourceMetadataDistributionEventManager protectedResourceMetadataDistributionEventManager) {
-        ProtectedResourceMetadataDistributionHandler handler = new ProtectedResourceMetadataDistributionHandler(oauth2ProtectedResourceMetadataService, protectedResourceMetadataDistributionEventManager);
-        log.trace("[Herodotus] |- Bean [Protected Resource Metadata Distribution Handler] Configure.");
+    public OAuth2SupportedScopeDistributionHandler oauth2SupportedScopeDistributionHandler(OAuth2SupportedScopeService oauth2SupportedScopeService, OAuth2SupportedScopeDistributionEventManager oauth2SupportedScopeDistributionEventManager) {
+        OAuth2SupportedScopeDistributionHandler handler = new OAuth2SupportedScopeDistributionHandler(oauth2SupportedScopeService, oauth2SupportedScopeDistributionEventManager);
+        log.trace("[Herodotus] |- Bean [OAuth2 Supported Scope Distribution Handler] Configure.");
         return handler;
     }
 }

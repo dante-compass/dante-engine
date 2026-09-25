@@ -33,15 +33,15 @@ import org.springframework.cloud.bus.event.RemoteApplicationEvent;
  * @author : gengwei.zheng
  * @date : 2021/8/6 11:24
  */
-public class RemoteProtectedResourceMetadataDistributionEvent extends RemoteApplicationEvent {
+public class RemoteOAuth2SupportedScopeDistributionEvent extends RemoteApplicationEvent {
 
     private String data;
 
-    public RemoteProtectedResourceMetadataDistributionEvent() {
+    public RemoteOAuth2SupportedScopeDistributionEvent() {
         super();
     }
 
-    public RemoteProtectedResourceMetadataDistributionEvent(String data, String originService, String destinationService) {
+    public RemoteOAuth2SupportedScopeDistributionEvent(String data, String originService, String destinationService) {
         super(data, originService, DEFAULT_DESTINATION_FACTORY.getDestination(destinationService));
         this.data = data;
     }

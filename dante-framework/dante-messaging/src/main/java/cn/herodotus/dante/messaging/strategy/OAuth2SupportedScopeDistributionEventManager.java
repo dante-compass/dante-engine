@@ -23,29 +23,17 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.oauth2.authorization.autoconfigure.strategy;
+package cn.herodotus.dante.messaging.strategy;
 
-import cn.herodotus.dante.messaging.event.ProtectedResourceMetadataDistributionEvent;
-import cn.herodotus.dante.messaging.strategy.ProtectedResourceMetadataDistributionEventManager;
-import cn.herodotus.dante.oauth2.authorization.autoconfigure.bus.RemoteProtectedResourceMetadataDistributionEvent;
+import cn.herodotus.dante.messaging.definition.event.StrategyEventManager;
 
 import java.util.List;
 
 /**
- * <p>Description: 默认Protected Resource Metadata分发事件管理器 </p>
+ * <p>Description: OAuth2 Protected Resource Metadata 分发 </p>
  *
  * @author : gengwei_zheng
- * @date : 2026/9/23 16:07
+ * @date : 2026/9/22 18:10
  */
-public class DefaultProtectedResourceMetadataDistributionEventManager implements ProtectedResourceMetadataDistributionEventManager {
-
-    @Override
-    public void postLocalProcess(List<String> data) {
-        publishEvent(new ProtectedResourceMetadataDistributionEvent(data));
-    }
-
-    @Override
-    public void postRemoteProcess(String data, String originService, String destinationService) {
-        publishEvent(new RemoteProtectedResourceMetadataDistributionEvent(data, originService, destinationService));
-    }
+public interface OAuth2SupportedScopeDistributionEventManager extends StrategyEventManager<List<String>> {
 }

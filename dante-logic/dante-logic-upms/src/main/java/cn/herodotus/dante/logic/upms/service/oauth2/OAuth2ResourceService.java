@@ -23,28 +23,35 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.logic.upms.repository.oauth2;
+package cn.herodotus.dante.logic.upms.service.oauth2;
 
 import cn.herodotus.dante.data.jpa.repository.BaseJpaRepository;
-import cn.herodotus.dante.logic.upms.entity.oauth2.OAuth2ProtectedResourceMetadata;
-import jakarta.persistence.QueryHint;
-import org.hibernate.jpa.AvailableHints;
-import org.springframework.data.jpa.repository.QueryHints;
+import cn.herodotus.dante.data.jpa.service.AbstractJpaService;
+import cn.herodotus.dante.logic.upms.entity.oauth2.OAuth2Resource;
+import cn.herodotus.dante.logic.upms.repository.oauth2.OAuth2ResourceRepository;
+import org.springframework.stereotype.Service;
 
 /**
- * <p>Description: {@link OAuth2ProtectedResourceMetadata} JPA Repository </p>
+ * <p>Description: {@link OAuth2Resource} Service </p>
  *
  * @author : gengwei_zheng
- * @date : 2026/9/20 15:27
+ * @date : 2026/9/20 13:56
  */
-public interface OAuth2ProtectedResourceMetadataRepository extends BaseJpaRepository<OAuth2ProtectedResourceMetadata, String> {
+@Service
+public class OAuth2ResourceService extends AbstractJpaService<OAuth2Resource, String> {
 
-    /**
-     * 根据 PRM code 查找 {@link OAuth2ProtectedResourceMetadata}
-     *
-     * @param metadataCode 角色代码
-     * @return {@link OAuth2ProtectedResourceMetadata}
-     */
-    @QueryHints(@QueryHint(name = AvailableHints.HINT_CACHEABLE, value = "true"))
-    OAuth2ProtectedResourceMetadata findByMetadataCode(String metadataCode);
+    private final OAuth2ResourceRepository oauth2ResourceRepository;
+
+    public OAuth2ResourceService(OAuth2ResourceRepository oauth2ResourceRepository) {
+        this.oauth2ResourceRepository = oauth2ResourceRepository;
+    }
+
+    @Override
+    public BaseJpaRepository<OAuth2Resource, String> getRepository() {
+        return oauth2ResourceRepository;
+    }
+
+    public OAuth2Resource findByResourceCode(String resourceCode) {
+        return oauth2ResourceRepository.findByResourceCode(resourceCode);
+    }
 }

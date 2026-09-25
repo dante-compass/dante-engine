@@ -23,17 +23,28 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.messaging.strategy;
+package cn.herodotus.dante.logic.upms.repository.oauth2;
 
-import cn.herodotus.dante.messaging.definition.event.StrategyEventManager;
-
-import java.util.List;
+import cn.herodotus.dante.data.jpa.repository.BaseJpaRepository;
+import cn.herodotus.dante.logic.upms.entity.oauth2.OAuth2Resource;
+import jakarta.persistence.QueryHint;
+import org.hibernate.jpa.AvailableHints;
+import org.springframework.data.jpa.repository.QueryHints;
 
 /**
- * <p>Description: OAuth2 Protected Resource Metadata 分发 </p>
+ * <p>Description: {@link OAuth2Resource} JPA Repository </p>
  *
  * @author : gengwei_zheng
- * @date : 2026/9/22 18:10
+ * @date : 2026/9/20 13:55
  */
-public interface ProtectedResourceMetadataDistributionEventManager extends StrategyEventManager<List<String>> {
+public interface OAuth2ResourceRepository extends BaseJpaRepository<OAuth2Resource, String> {
+
+    /**
+     * 根据资源代码查找 {@link OAuth2Resource}
+     *
+     * @param resourceCode 资源代码
+     * @return {@link OAuth2Resource}
+     */
+    @QueryHints(@QueryHint(name = AvailableHints.HINT_CACHEABLE, value = "true"))
+    OAuth2Resource findByResourceCode(String resourceCode);
 }

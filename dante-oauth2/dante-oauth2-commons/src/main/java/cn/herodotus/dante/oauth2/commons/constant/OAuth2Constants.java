@@ -69,12 +69,11 @@ public interface OAuth2Constants extends BaseConstants {
     String ANNOTATION__FORMLOGIN_LOGINPAGEURL = PLACEHOLDER_PREFIX + ITEM__FORMLOGIN_LOGINPAGEURL + SymbolConstants.COLON + DefaultLoginPageGeneratingFilter.DEFAULT_LOGIN_PAGE_URL + PLACEHOLDER_SUFFIX;
 
     String REGION__OAUTH2_APPLICATION = AREA_PREFIX + "oauth2:application";
-    String REGION__OAUTH2_COMPLIANCE = AREA_PREFIX + "oauth2:compliance";
     String REGION__OAUTH2_PERMISSION = AREA_PREFIX + "oauth2:permission";
-    String REGION__OAUTH2_PROTECTED_RESOURCE_METADATA = AREA_PREFIX + "oauth2:prm";
-    String REGION__OAUTH2_RESOURCE_INDICATOR = AREA_PREFIX + "oauth2:resource";
     String REGION__OAUTH2_SCOPE = AREA_PREFIX + "oauth2:scope";
-    String REGION__OAUTH2_APPLICATION_SCOPE = AREA_PREFIX + "oauth2:application:scope";
+    String REGION__OAUTH2_APPLICATION_SCOPE = REGION__OAUTH2_SCOPE + ":application";
+    String REGION__OAUTH2_SUPPORTED_SCOPE = REGION__OAUTH2_SCOPE + ":supported";
+    String REGION__OAUTH2_RESOURCE = AREA_PREFIX + "oauth2:resource";
 
     String CACHE_NAME__TOKEN_SIGN_IN_FAILURE_LIMITED = CACHE_TOKEN_BASE_PREFIX + "sign_in:failure_limited:";
     String CACHE_NAME__TOKEN_LOCKED_USER_DETAIL = CACHE_TOKEN_BASE_PREFIX + "locked:user_details:";

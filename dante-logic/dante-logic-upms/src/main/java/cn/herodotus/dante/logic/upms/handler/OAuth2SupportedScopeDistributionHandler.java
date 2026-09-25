@@ -25,9 +25,9 @@
 
 package cn.herodotus.dante.logic.upms.handler;
 
-import cn.herodotus.dante.logic.upms.entity.oauth2.OAuth2ProtectedResourceMetadata;
-import cn.herodotus.dante.logic.upms.service.oauth2.OAuth2ProtectedResourceMetadataService;
-import cn.herodotus.dante.messaging.strategy.ProtectedResourceMetadataDistributionEventManager;
+import cn.herodotus.dante.logic.upms.entity.oauth2.OAuth2SupportedScope;
+import cn.herodotus.dante.logic.upms.service.oauth2.OAuth2SupportedScopeService;
+import cn.herodotus.dante.messaging.strategy.OAuth2SupportedScopeDistributionEventManager;
 import cn.herodotus.dante.spring.initializer.ApplicationReadyProcessor;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.collections4.MapUtils;
@@ -45,16 +45,16 @@ import java.util.stream.Collectors;
  * @author : gengwei_zheng
  * @date : 2026/9/22 18:07
  */
-public class ProtectedResourceMetadataDistributionHandler implements ApplicationReadyProcessor {
+public class OAuth2SupportedScopeDistributionHandler implements ApplicationReadyProcessor {
 
-    private static final Logger log = LoggerFactory.getLogger(ProtectedResourceMetadataDistributionHandler.class);
+    private static final Logger log = LoggerFactory.getLogger(OAuth2SupportedScopeDistributionHandler.class);
 
-    private final OAuth2ProtectedResourceMetadataService oauth2ProtectedResourceMetadataService;
-    private final ProtectedResourceMetadataDistributionEventManager protectedResourceMetadataDistributionEventManager;
+    private final OAuth2SupportedScopeService oauth2SupportedScopeService;
+    private final OAuth2SupportedScopeDistributionEventManager oauth2SupportedScopeDistributionEventManager;
 
-    public ProtectedResourceMetadataDistributionHandler(OAuth2ProtectedResourceMetadataService oauth2ProtectedResourceMetadataService, ProtectedResourceMetadataDistributionEventManager protectedResourceMetadataDistributionEventManager) {
-        this.oauth2ProtectedResourceMetadataService = oauth2ProtectedResourceMetadataService;
-        this.protectedResourceMetadataDistributionEventManager = protectedResourceMetadataDistributionEventManager;
+    public OAuth2SupportedScopeDistributionHandler(OAuth2SupportedScopeService oauth2SupportedScopeService, OAuth2SupportedScopeDistributionEventManager oauth2SupportedScopeDistributionEventManager) {
+        this.oauth2SupportedScopeService = oauth2SupportedScopeService;
+        this.oauth2SupportedScopeDistributionEventManager = oauth2SupportedScopeDistributionEventManager;
     }
 
     @Override
@@ -62,17 +62,17 @@ public class ProtectedResourceMetadataDistributionHandler implements Application
 
         log.debug("[Herodotus] |- [PRM1] Application is READY, start to distribute Protected Resource Metadata!");
 
-        List<OAuth2ProtectedResourceMetadata> metadata = oauth2ProtectedResourceMetadataService.findAll();
+        List<OAuth2SupportedScope> metadata = oauth2SupportedScopeService.findAll();
         if (CollectionUtils.isNotEmpty(metadata)) {
 
             Map<String, List<String>> data = metadata.stream()
                     .collect(Collectors.groupingBy(
-                            item -> item.getIndicator().getIndicatorValue(),
-                            Collectors.mapping(OAuth2ProtectedResourceMetadata::getMetadataCode, Collectors.toList())
+                            item -> item.getResource().getResourceCode(),
+                            Collectors.mapping(OAuth2SupportedScope::getScopeCode, Collectors.toList())
                     ));
 
             if (MapUtils.isNotEmpty(data)) {
-                data.forEach(protectedResourceMetadataDistributionEventManager::postProcess);
+                data.forEach(oauth2SupportedScopeDistributionEventManager::postProcess);
             }
         }
 

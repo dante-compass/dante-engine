@@ -28,8 +28,8 @@ package cn.herodotus.dante.rest.upms.controller.oauth2;
 import cn.herodotus.dante.core.domain.Result;
 import cn.herodotus.dante.data.jpa.service.BaseJpaWriteableService;
 import cn.herodotus.dante.data.rest.servlet.AbstractJpaEntityWriteableController;
-import cn.herodotus.dante.logic.upms.entity.oauth2.OAuth2ResourceIndicator;
-import cn.herodotus.dante.logic.upms.service.oauth2.OAuth2ResourceIndicatorService;
+import cn.herodotus.dante.logic.upms.entity.oauth2.OAuth2Resource;
+import cn.herodotus.dante.logic.upms.service.oauth2.OAuth2ResourceService;
 import cn.herodotus.dante.web.annotation.AccessLimited;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -56,46 +56,46 @@ import java.util.List;
  */
 
 @RestController
-@RequestMapping("/authorize/indicator")
+@RequestMapping("/authorize/resource")
 @Tags({
         @Tag(name = "OAuth2 资源服务接口"),
-        @Tag(name = "OAuth2 资源标识接口")
+        @Tag(name = "OAuth2 资源管理接口")
 })
-public class OAuth2ResourceIndicatorController extends AbstractJpaEntityWriteableController<OAuth2ResourceIndicator, String> {
+public class OAuth2ResourceController extends AbstractJpaEntityWriteableController<OAuth2Resource, String> {
 
-    private final OAuth2ResourceIndicatorService oauth2ResourceIndicatorService;
+    private final OAuth2ResourceService oauth2ResourceService;
 
-    public OAuth2ResourceIndicatorController(OAuth2ResourceIndicatorService oauth2ResourceIndicatorService) {
-        this.oauth2ResourceIndicatorService = oauth2ResourceIndicatorService;
+    public OAuth2ResourceController(OAuth2ResourceService oauth2ResourceService) {
+        this.oauth2ResourceService = oauth2ResourceService;
     }
 
     @Override
-    public BaseJpaWriteableService<OAuth2ResourceIndicator, String> getService() {
-        return oauth2ResourceIndicatorService;
+    public BaseJpaWriteableService<OAuth2Resource, String> getService() {
+        return oauth2ResourceService;
     }
 
     @AccessLimited
-    @Operation(summary = "根据资源标识值查询资源标识", description = "根据输入的资源标识值，查询对应的资源标识",
+    @Operation(summary = "根据资源代码值查询资源", description = "根据输入的资源代码，查询对应的资源",
             responses = {
-                    @ApiResponse(description = "查询到的资源标识", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = OAuth2ResourceIndicator.class))),
+                    @ApiResponse(description = "查询到的资源", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = OAuth2Resource.class))),
                     @ApiResponse(responseCode = "500", description = "查询失败")
             }
     )
     @Parameters({
-            @Parameter(name = "indicatorValue", in = ParameterIn.PATH, required = true, description = "资源标识值"),
+            @Parameter(name = "resourceCode", in = ParameterIn.PATH, required = true, description = "资源代码"),
     })
-    @GetMapping("/{indicatorValue}")
-    public Result<OAuth2ResourceIndicator> findByIndicatorValue(@PathVariable("indicatorValue") String indicatorValue) {
-        OAuth2ResourceIndicator domain = oauth2ResourceIndicatorService.findByIndicatorValue(indicatorValue);
+    @GetMapping("/{resourceCode}")
+    public Result<OAuth2Resource> findByResourceCode(@PathVariable("resourceCode") String resourceCode) {
+        OAuth2Resource domain = oauth2ResourceService.findByResourceCode(resourceCode);
         return result(domain);
     }
 
     @AccessLimited
-    @Operation(summary = "获取全部资源标识接口", description = "获取全部资源标识接口",
+    @Operation(summary = "获取全部资源接口", description = "获取全部资源接口",
             responses = {@ApiResponse(description = "资源标识列表", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = Result.class)))})
     @GetMapping("/list")
-    public Result<List<OAuth2ResourceIndicator>> findAll() {
-        List<OAuth2ResourceIndicator> indicators = oauth2ResourceIndicatorService.findAll();
+    public Result<List<OAuth2Resource>> findAll() {
+        List<OAuth2Resource> indicators = oauth2ResourceService.findAll();
         return result(indicators);
     }
 }

@@ -27,31 +27,31 @@ package cn.herodotus.dante.logic.upms.service.oauth2;
 
 import cn.herodotus.dante.data.jpa.repository.BaseJpaRepository;
 import cn.herodotus.dante.data.jpa.service.AbstractJpaService;
-import cn.herodotus.dante.logic.upms.entity.oauth2.OAuth2ResourceIndicator;
-import cn.herodotus.dante.logic.upms.repository.oauth2.OAuth2ResourceIndicatorRepository;
+import cn.herodotus.dante.logic.upms.entity.oauth2.OAuth2SupportedScope;
+import cn.herodotus.dante.logic.upms.repository.oauth2.OAuth2SupportedScopeRepository;
 import org.springframework.stereotype.Service;
 
 /**
- * <p>Description: {@link OAuth2ResourceIndicator} Service </p>
+ * <p>Description: {@link OAuth2SupportedScope} Service </p>
  *
  * @author : gengwei_zheng
- * @date : 2026/9/20 13:56
+ * @date : 2026/9/20 15:28
  */
 @Service
-public class OAuth2ResourceIndicatorService extends AbstractJpaService<OAuth2ResourceIndicator, String> {
+public class OAuth2SupportedScopeService extends AbstractJpaService<OAuth2SupportedScope, String> {
 
-    private final OAuth2ResourceIndicatorRepository oauth2ResourceIndicatorRepository;
+    private final OAuth2SupportedScopeRepository oauth2SupportedScopeRepository;
 
-    public OAuth2ResourceIndicatorService(OAuth2ResourceIndicatorRepository oauth2ResourceIndicatorRepository) {
-        this.oauth2ResourceIndicatorRepository = oauth2ResourceIndicatorRepository;
+    public OAuth2SupportedScopeService(OAuth2SupportedScopeRepository oauth2SupportedScopeRepository) {
+        this.oauth2SupportedScopeRepository = oauth2SupportedScopeRepository;
     }
 
     @Override
-    public BaseJpaRepository<OAuth2ResourceIndicator, String> getRepository() {
-        return oauth2ResourceIndicatorRepository;
+    public BaseJpaRepository<OAuth2SupportedScope, String> getRepository() {
+        return oauth2SupportedScopeRepository;
     }
 
-    public OAuth2ResourceIndicator findByIndicatorValue(String indicatorValue) {
-        return oauth2ResourceIndicatorRepository.findByIndicatorValue(indicatorValue);
+    public OAuth2SupportedScope findByScopeCode(String scopeCode) {
+        return oauth2SupportedScopeRepository.findByScopeCode(scopeCode);
     }
 }

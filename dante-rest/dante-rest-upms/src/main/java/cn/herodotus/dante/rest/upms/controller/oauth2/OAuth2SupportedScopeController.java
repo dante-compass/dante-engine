@@ -28,8 +28,8 @@ package cn.herodotus.dante.rest.upms.controller.oauth2;
 import cn.herodotus.dante.core.domain.Result;
 import cn.herodotus.dante.data.jpa.service.BaseJpaWriteableService;
 import cn.herodotus.dante.data.rest.servlet.AbstractJpaEntityWriteableController;
-import cn.herodotus.dante.logic.upms.entity.oauth2.OAuth2ProtectedResourceMetadata;
-import cn.herodotus.dante.logic.upms.service.oauth2.OAuth2ProtectedResourceMetadataService;
+import cn.herodotus.dante.logic.upms.entity.oauth2.OAuth2SupportedScope;
+import cn.herodotus.dante.logic.upms.service.oauth2.OAuth2SupportedScopeService;
 import cn.herodotus.dante.web.annotation.AccessLimited;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -47,43 +47,43 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * <p>Description: OAuth2 保护资源接口 </p>
+ * <p>Description: OAuth2 支持范围接口 </p>
  *
  * @author : gengwei_zheng
  * @date : 2026/9/20 15:30
  */
 @RestController
-@RequestMapping("/authorize/prm")
+@RequestMapping("/authorize/supported")
 @Tags({
         @Tag(name = "OAuth2 资源服务接口"),
-        @Tag(name = "OAuth2 保护资源接口")
+        @Tag(name = "OAuth2 支持范围接口")
 })
-public class OAuth2ProtectedResourceMetadataController extends AbstractJpaEntityWriteableController<OAuth2ProtectedResourceMetadata, String> {
+public class OAuth2SupportedScopeController extends AbstractJpaEntityWriteableController<OAuth2SupportedScope, String> {
 
-    private final OAuth2ProtectedResourceMetadataService oauth2ProtectedResourceMetadataService;
+    private final OAuth2SupportedScopeService oauth2SupportedScopeService;
 
-    public OAuth2ProtectedResourceMetadataController(OAuth2ProtectedResourceMetadataService oauth2ProtectedResourceMetadataService) {
-        this.oauth2ProtectedResourceMetadataService = oauth2ProtectedResourceMetadataService;
+    public OAuth2SupportedScopeController(OAuth2SupportedScopeService oauth2SupportedScopeService) {
+        this.oauth2SupportedScopeService = oauth2SupportedScopeService;
     }
 
     @Override
-    public BaseJpaWriteableService<OAuth2ProtectedResourceMetadata, String> getService() {
-        return oauth2ProtectedResourceMetadataService;
+    public BaseJpaWriteableService<OAuth2SupportedScope, String> getService() {
+        return oauth2SupportedScopeService;
     }
-
+    
     @AccessLimited
-    @Operation(summary = "根据 PRM code 查询资源标识", description = "根据输入的资源标识值 PRM code，查询对应的 PRM",
+    @Operation(summary = "根据支持范围代码查询支持范围", description = "根据输入的支持范围代码，查询对应的支持范围",
             responses = {
-                    @ApiResponse(description = "查询到的 PRM", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = OAuth2ProtectedResourceMetadata.class))),
+                    @ApiResponse(description = "查询到的支持范围", content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE, schema = @Schema(implementation = OAuth2SupportedScope.class))),
                     @ApiResponse(responseCode = "500", description = "查询失败")
             }
     )
     @Parameters({
-            @Parameter(name = "metadataCode", in = ParameterIn.PATH, required = true, description = "PRM code"),
+            @Parameter(name = "scopeCode", in = ParameterIn.PATH, required = true, description = "支持范围代码"),
     })
-    @GetMapping("/{metadataCode}")
-    public Result<OAuth2ProtectedResourceMetadata> findByMetadataCode(@PathVariable("metadataCode") String metadataCode) {
-        OAuth2ProtectedResourceMetadata domain = oauth2ProtectedResourceMetadataService.findByMetadataCode(metadataCode);
+    @GetMapping("/{scopeCode}")
+    public Result<OAuth2SupportedScope> findByScopeCode(@PathVariable("scopeCode") String scopeCode) {
+        OAuth2SupportedScope domain = oauth2SupportedScopeService.findByScopeCode(scopeCode);
         return result(domain);
     }
 }

@@ -34,70 +34,70 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.UuidGenerator;
 
 /**
- * <p>Description: OAuth2 保护资源 </p>
+ * <p>Description: OAuth2 资源 </p>
  * <p>
  * OAuth 2.0 协议中的 Resource Indicators 数据储存层实体定义。
  * <p>
- * 之所以放在 UPMS（统一权限管理系统） 中，主要原因，是方便与 {@link OAuth2ProtectedResourceMetadata} 进行关联
+ * 之所以放在 UPMS（统一权限管理系统） 中，主要原因，是方便与 {@link OAuth2SupportedScope} 进行关联
  *
  * @author : gengwei_zheng
  * @date : 2026/9/20 13:19
  */
-@Schema(name = "OAuth2 Resource 实体")
+@Schema(name = "OAuth2 资源实体")
 @Entity
 @Table(name = "oauth2_resource", indexes = {
-        @Index(name = "oauth2_resource_id_idx", columnList = "indicator_id"),
-        @Index(name = "oauth2_resource_vid_idx", columnList = "indicator_value")})
+        @Index(name = "oauth2_resource_id_idx", columnList = "resource_id"),
+        @Index(name = "oauth2_resource_c_idx", columnList = "resource_code")})
 @Cacheable
-@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = OAuth2Constants.REGION__OAUTH2_RESOURCE_INDICATOR)
-public class OAuth2ResourceIndicator extends AbstractSysEntity {
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = OAuth2Constants.REGION__OAUTH2_RESOURCE)
+public class OAuth2Resource extends AbstractSysEntity {
 
     @Id
     @UuidGenerator
-    @Column(name = "indicator_id", length = 64)
-    private String indicatorId;
+    @Column(name = "resource_id", length = 64)
+    private String resourceId;
 
     /**
      * Resource Indicator 值。
      * <p>
      * 规范中可以为：1. 资源服务器访问 url 地址；2. 资源服务器名称。本系统中建议使用资源服务器的名称
      */
-    @Column(name = "indicator_value", length = 256, unique = true, nullable = false)
-    private String indicatorValue;
+    @Column(name = "resource_code", length = 256, unique = true, nullable = false)
+    private String resourceCode;
 
-    @Column(name = "indicator_name", length = 128)
-    private String indicatorName;
+    @Column(name = "resource_name", length = 128)
+    private String resourceName;
 
-    public String getIndicatorId() {
-        return indicatorId;
+    public String getResourceId() {
+        return resourceId;
     }
 
-    public void setIndicatorId(String indicatorId) {
-        this.indicatorId = indicatorId;
+    public void setResourceId(String resourceId) {
+        this.resourceId = resourceId;
     }
 
-    public String getIndicatorValue() {
-        return indicatorValue;
+    public String getResourceCode() {
+        return resourceCode;
     }
 
-    public void setIndicatorValue(String indicatorValue) {
-        this.indicatorValue = indicatorValue;
+    public void setResourceCode(String resourceCode) {
+        this.resourceCode = resourceCode;
     }
 
-    public String getIndicatorName() {
-        return indicatorName;
+    public String getResourceName() {
+        return resourceName;
     }
 
-    public void setIndicatorName(String indicatorName) {
-        this.indicatorName = indicatorName;
+    public void setResourceName(String resourceName) {
+        this.resourceName = resourceName;
     }
 
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("indicatorId", indicatorId)
-                .add("indicatorValue", indicatorValue)
-                .add("indicatorName", indicatorName)
+                .add("resourceId", resourceId)
+                .add("resourceCode", resourceCode)
+                .add("resourceName", resourceName)
                 .addValue(super.toString())
                 .toString();
     }

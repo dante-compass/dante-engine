@@ -28,13 +28,13 @@ package cn.herodotus.dante.oauth2.authorization.autoconfigure;
 import cn.herodotus.dante.messaging.strategy.AttributeCollectionEventManager;
 import cn.herodotus.dante.messaging.strategy.EnumDictionaryCollectionEventManager;
 import cn.herodotus.dante.messaging.strategy.MessageSendingEventManager;
-import cn.herodotus.dante.messaging.strategy.ProtectedResourceMetadataDistributionEventManager;
+import cn.herodotus.dante.messaging.strategy.OAuth2SupportedScopeDistributionEventManager;
 import cn.herodotus.dante.oauth2.authorization.attribute.SecurityAttributeManager;
 import cn.herodotus.dante.oauth2.authorization.autoconfigure.listener.RemoteAttributeDistributionListener;
 import cn.herodotus.dante.oauth2.authorization.autoconfigure.strategy.DefaultAttributeCollectionEventManager;
 import cn.herodotus.dante.oauth2.authorization.autoconfigure.strategy.DefaultEnumDictionaryCollectionEventManager;
 import cn.herodotus.dante.oauth2.authorization.autoconfigure.strategy.DefaultMessageSendingEventManager;
-import cn.herodotus.dante.oauth2.authorization.autoconfigure.strategy.DefaultProtectedResourceMetadataDistributionEventManager;
+import cn.herodotus.dante.oauth2.authorization.autoconfigure.strategy.DefaultOAuth2SupportedScopeDistributionEventManager;
 import cn.herodotus.dante.spring.condition.ConditionalOnArchitecture;
 import cn.herodotus.dante.spring.enums.Architecture;
 import jakarta.annotation.PostConstruct;
@@ -93,9 +93,9 @@ public class ResourceServiceMessageAutoConfiguration {
     }
 
     @Bean
-    public ProtectedResourceMetadataDistributionEventManager protectedResourceMetadataDistributionEventManager() {
-        DefaultProtectedResourceMetadataDistributionEventManager manager = new DefaultProtectedResourceMetadataDistributionEventManager();
-        log.trace("[Herodotus] |- Bean [Protected Resource Metadata Distribution Event Manager] Configure.");
+    public OAuth2SupportedScopeDistributionEventManager oauth2SupportedScopeDistributionEventManager() {
+        DefaultOAuth2SupportedScopeDistributionEventManager manager = new DefaultOAuth2SupportedScopeDistributionEventManager();
+        log.trace("[Herodotus] |- Bean [OAuth2 Supported Scope Distribution Event Manager] Configure.");
         return manager;
     }
 

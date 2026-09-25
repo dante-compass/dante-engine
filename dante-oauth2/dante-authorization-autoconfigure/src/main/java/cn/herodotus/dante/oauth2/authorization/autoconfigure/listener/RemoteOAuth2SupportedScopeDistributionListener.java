@@ -25,41 +25,42 @@
 
 package cn.herodotus.dante.oauth2.authorization.autoconfigure.listener;
 
-import cn.herodotus.dante.messaging.event.ProtectedResourceMetadataDistributionEvent;
+import cn.herodotus.dante.core.jackson.JacksonUtils;
+import cn.herodotus.dante.oauth2.authorization.autoconfigure.bus.RemoteOAuth2SupportedScopeDistributionEvent;
 import cn.herodotus.dante.security.definition.OAuth2ProtectedResourceMetadataStorage;
-import org.apache.commons.collections4.CollectionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationListener;
 
-import java.util.List;
+import java.util.Optional;
 
 /**
- * <p>Description: 本地 Protected Resource Metadata 分发监听器  </p>
+ * <p>Description: 远程 Protected Resource Metadata 分发监听器 </p>
  *
  * @author : gengwei_zheng
  * @date : 2026/9/23 16:29
  */
-public class LocalProtectedResourceMetadataDistributionListener implements ApplicationListener<ProtectedResourceMetadataDistributionEvent> {
+public class RemoteOAuth2SupportedScopeDistributionListener implements ApplicationListener<RemoteOAuth2SupportedScopeDistributionEvent> {
 
-    private static final Logger log = LoggerFactory.getLogger(LocalProtectedResourceMetadataDistributionListener.class);
+    private static final Logger log = LoggerFactory.getLogger(RemoteOAuth2SupportedScopeDistributionListener.class);
 
     private final OAuth2ProtectedResourceMetadataStorage oauth2ProtectedResourceMetadataStorage;
 
-    public LocalProtectedResourceMetadataDistributionListener(OAuth2ProtectedResourceMetadataStorage oauth2ProtectedResourceMetadataStorage) {
+    public RemoteOAuth2SupportedScopeDistributionListener(OAuth2ProtectedResourceMetadataStorage oauth2ProtectedResourceMetadataStorage) {
         this.oauth2ProtectedResourceMetadataStorage = oauth2ProtectedResourceMetadataStorage;
     }
 
     @Override
-    public void onApplicationEvent(ProtectedResourceMetadataDistributionEvent event) {
+    public void onApplicationEvent(RemoteOAuth2SupportedScopeDistributionEvent event) {
 
-        log.info("[Herodotus] |- Protected resource metadata distribution LOCAL listener, response event!");
+        log.info("[Herodotus] |- Protected resource metadata distribution REMOTE listener, response service [{}] event!", event.getOriginService());
 
-        List<String> data = event.getData();
+        String data = event.getData();
 
-        if (CollectionUtils.isNotEmpty(data)) {
-            log.debug("[Herodotus] |- [PRM2] Protected resource metadata distribution process BEGIN!");
-            oauth2ProtectedResourceMetadataStorage.storeSupportedScopes(data);
-        }
+        log.debug("[Herodotus] |- [PRM2] Protected resource metadata distribution process BEGIN!");
+
+        Optional.ofNullable(data)
+                .flatMap(value -> Optional.ofNullable(JacksonUtils.toList(value, String.class)))
+                .ifPresent(oauth2ProtectedResourceMetadataStorage::storeSupportedScopes);
     }
 }

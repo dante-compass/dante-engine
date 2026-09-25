@@ -23,35 +23,29 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.logic.upms.service.oauth2;
+package cn.herodotus.dante.oauth2.authorization.autoconfigure.strategy;
 
-import cn.herodotus.dante.data.jpa.repository.BaseJpaRepository;
-import cn.herodotus.dante.data.jpa.service.AbstractJpaService;
-import cn.herodotus.dante.logic.upms.entity.oauth2.OAuth2ProtectedResourceMetadata;
-import cn.herodotus.dante.logic.upms.repository.oauth2.OAuth2ProtectedResourceMetadataRepository;
-import org.springframework.stereotype.Service;
+import cn.herodotus.dante.messaging.event.OAuth2SupportedScopeDistributionEvent;
+import cn.herodotus.dante.messaging.strategy.OAuth2SupportedScopeDistributionEventManager;
+import cn.herodotus.dante.oauth2.authorization.autoconfigure.bus.RemoteOAuth2SupportedScopeDistributionEvent;
+
+import java.util.List;
 
 /**
- * <p>Description: {@link OAuth2ProtectedResourceMetadata} Service </p>
+ * <p>Description: 默认Protected Resource Metadata分发事件管理器 </p>
  *
  * @author : gengwei_zheng
- * @date : 2026/9/20 15:28
+ * @date : 2026/9/23 16:07
  */
-@Service
-public class OAuth2ProtectedResourceMetadataService extends AbstractJpaService<OAuth2ProtectedResourceMetadata, String> {
+public class DefaultOAuth2SupportedScopeDistributionEventManager implements OAuth2SupportedScopeDistributionEventManager {
 
-    private final OAuth2ProtectedResourceMetadataRepository oauth2ProtectedResourceMetadataRepository;
-
-    public OAuth2ProtectedResourceMetadataService(OAuth2ProtectedResourceMetadataRepository oauth2ProtectedResourceMetadataRepository) {
-        this.oauth2ProtectedResourceMetadataRepository = oauth2ProtectedResourceMetadataRepository;
+    @Override
+    public void postLocalProcess(List<String> data) {
+        publishEvent(new OAuth2SupportedScopeDistributionEvent(data));
     }
 
     @Override
-    public BaseJpaRepository<OAuth2ProtectedResourceMetadata, String> getRepository() {
-        return oauth2ProtectedResourceMetadataRepository;
-    }
-
-    public OAuth2ProtectedResourceMetadata findByMetadataCode(String metadataCode) {
-        return oauth2ProtectedResourceMetadataRepository.findByMetadataCode(metadataCode);
+    public void postRemoteProcess(String data, String originService, String destinationService) {
+        publishEvent(new RemoteOAuth2SupportedScopeDistributionEvent(data, originService, destinationService));
     }
 }

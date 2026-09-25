@@ -26,25 +26,25 @@
 package cn.herodotus.dante.logic.upms.repository.oauth2;
 
 import cn.herodotus.dante.data.jpa.repository.BaseJpaRepository;
-import cn.herodotus.dante.logic.upms.entity.oauth2.OAuth2ResourceIndicator;
+import cn.herodotus.dante.logic.upms.entity.oauth2.OAuth2SupportedScope;
 import jakarta.persistence.QueryHint;
 import org.hibernate.jpa.AvailableHints;
 import org.springframework.data.jpa.repository.QueryHints;
 
 /**
- * <p>Description: {@link OAuth2ResourceIndicator} JPA Repository </p>
+ * <p>Description: {@link OAuth2SupportedScope} JPA Repository </p>
  *
  * @author : gengwei_zheng
- * @date : 2026/9/20 13:55
+ * @date : 2026/9/20 15:27
  */
-public interface OAuth2ResourceIndicatorRepository extends BaseJpaRepository<OAuth2ResourceIndicator, String> {
+public interface OAuth2SupportedScopeRepository extends BaseJpaRepository<OAuth2SupportedScope, String> {
 
     /**
-     * 根据资源标识值查找 {@link OAuth2ResourceIndicator}
+     * 根据 PRM code 查找 {@link OAuth2SupportedScope}
      *
-     * @param indicatorValue 角色代码
-     * @return {@link OAuth2ResourceIndicator}
+     * @param scopeCode 角色代码
+     * @return {@link OAuth2SupportedScope}
      */
     @QueryHints(@QueryHint(name = AvailableHints.HINT_CACHEABLE, value = "true"))
-    OAuth2ResourceIndicator findByIndicatorValue(String indicatorValue);
+    OAuth2SupportedScope findByScopeCode(String scopeCode);
 }
