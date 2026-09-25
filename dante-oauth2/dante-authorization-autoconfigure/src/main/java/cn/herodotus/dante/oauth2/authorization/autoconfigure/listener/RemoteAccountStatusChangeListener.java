@@ -28,7 +28,7 @@ package cn.herodotus.dante.oauth2.authorization.autoconfigure.listener;
 import cn.herodotus.dante.core.jackson.JacksonUtils;
 import cn.herodotus.dante.data.commons.enums.DataItemStatus;
 import cn.herodotus.dante.logic.upms.service.security.SysUserService;
-import cn.herodotus.dante.message.commons.domain.AccountStatus;
+import cn.herodotus.dante.messaging.domain.AccountStatus;
 import cn.herodotus.dante.oauth2.authorization.autoconfigure.bus.RemoteAccountStatusChangeEvent;
 import org.apache.commons.lang3.ObjectUtils;
 import org.slf4j.Logger;

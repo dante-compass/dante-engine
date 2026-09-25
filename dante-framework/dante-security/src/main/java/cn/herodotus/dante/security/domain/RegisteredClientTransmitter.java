@@ -44,9 +44,13 @@ public class RegisteredClientTransmitter implements RegisteredClientDetails {
 
     private String clientName;
 
+    private String applicationType;
+
     private String parentClientId;
 
     private String redirectUris;
+
+    private String resourceIds;
 
     private String logo;
 
@@ -87,6 +91,15 @@ public class RegisteredClientTransmitter implements RegisteredClientDetails {
     }
 
     @Override
+    public String getApplicationType() {
+        return applicationType;
+    }
+
+    public void setApplicationType(String applicationType) {
+        this.applicationType = applicationType;
+    }
+
+    @Override
     public String getParentClientId() {
         return parentClientId;
     }
@@ -114,12 +127,22 @@ public class RegisteredClientTransmitter implements RegisteredClientDetails {
     }
 
     @Override
+    public String getResourceIds() {
+        return resourceIds;
+    }
+
+    public void setResourceIds(String resourceIds) {
+        this.resourceIds = resourceIds;
+    }
+
+    @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
                 .add("id", id)
                 .add("clientId", clientId)
                 .add("clientSecret", clientSecret)
                 .add("clientName", clientName)
+                .add("applicationType", applicationType)
                 .add("parentClientId", parentClientId)
                 .add("redirectUris", redirectUris)
                 .add("logo", logo)

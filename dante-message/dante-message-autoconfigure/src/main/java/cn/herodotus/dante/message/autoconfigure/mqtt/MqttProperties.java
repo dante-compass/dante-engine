@@ -25,7 +25,7 @@
 
 package cn.herodotus.dante.message.autoconfigure.mqtt;
 
-import cn.herodotus.dante.message.commons.constant.MessageConstants;
+import cn.herodotus.dante.messaging.constant.MessageConstants;
 import com.google.common.base.MoreObjects;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.integration.mqtt.support.MqttHeaders;

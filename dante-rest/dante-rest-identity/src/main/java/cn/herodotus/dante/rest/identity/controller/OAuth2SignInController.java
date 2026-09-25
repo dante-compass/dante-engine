@@ -72,7 +72,7 @@ public class OAuth2SignInController {
     }
 
 
-    @RequestMapping(value = OAuth2Constants.ANNOTATION_FORMLOGIN_LOGINPAGEURL, method = RequestMethod.GET)
+    @RequestMapping(value = OAuth2Constants.ANNOTATION__FORMLOGIN_LOGINPAGEURL, method = RequestMethod.GET)
     public ModelAndView login(Map<String, Object> model, HttpServletRequest request, HttpServletResponse response) {
 
         ModelAndView modelAndView = new ModelAndView("login");
@@ -114,7 +114,7 @@ public class OAuth2SignInController {
             ResponseCookie cookie = ResponseCookie.from("SESSION", Base64.encode(secretKey.getIdentity()))
                     .path(request.getContextPath() + "/")
                     .httpOnly(true)
-                    .secure(Strings.CI.equals(Protocol.HTTPS.getPrefix(), request.getScheme()))
+                    .secure(Strings.CI.equals(Protocol.HTTPS.getSchema(), request.getScheme()))
                     .sameSite("Lax")
                     .maxAge(authenticationProperties.getFormLogin().getCookieMaxAge())
                     .build();

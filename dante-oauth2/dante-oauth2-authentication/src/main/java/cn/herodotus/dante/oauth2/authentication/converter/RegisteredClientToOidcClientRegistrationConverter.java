@@ -44,7 +44,8 @@ public class RegisteredClientToOidcClientRegistrationConverter extends AbstractF
 
     private final RegisteredClientOidcClientRegistrationConverter delegate;
 
-    public RegisteredClientToOidcClientRegistrationConverter() {
+    public RegisteredClientToOidcClientRegistrationConverter(boolean supportResourceIndicators) {
+        super(supportResourceIndicators);
         this.delegate = new RegisteredClientOidcClientRegistrationConverter();
     }
 

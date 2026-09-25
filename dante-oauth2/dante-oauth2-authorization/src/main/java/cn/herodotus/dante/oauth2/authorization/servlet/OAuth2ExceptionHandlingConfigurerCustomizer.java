@@ -25,7 +25,7 @@
 
 package cn.herodotus.dante.oauth2.authorization.servlet;
 
-import cn.herodotus.dante.web.servlet.template.ThymeleafTemplateHandler;
+import cn.herodotus.dante.web.definition.template.ServletTemplateHandler;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.ExceptionHandlingConfigurer;
@@ -38,17 +38,17 @@ import org.springframework.security.config.annotation.web.configurers.ExceptionH
  */
 public class OAuth2ExceptionHandlingConfigurerCustomizer implements Customizer<ExceptionHandlingConfigurer<HttpSecurity>> {
 
-    private final ThymeleafTemplateHandler templateHandler;
+    private final ServletTemplateHandler servletTemplateHandler;
 
-    public OAuth2ExceptionHandlingConfigurerCustomizer(ThymeleafTemplateHandler templateHandler) {
-        this.templateHandler = templateHandler;
+    public OAuth2ExceptionHandlingConfigurerCustomizer(ServletTemplateHandler servletTemplateHandler) {
+        this.servletTemplateHandler = servletTemplateHandler;
     }
 
     @Override
     public void customize(ExceptionHandlingConfigurer<HttpSecurity> configurer) {
         configurer
-                .authenticationEntryPoint(new HerodotusAuthenticationEntryPoint(templateHandler))
-                .accessDeniedHandler(new HerodotusAccessDeniedHandler(templateHandler));
+                .authenticationEntryPoint(new HerodotusAuthenticationEntryPoint(servletTemplateHandler))
+                .accessDeniedHandler(new HerodotusAccessDeniedHandler(servletTemplateHandler));
     }
 }
 

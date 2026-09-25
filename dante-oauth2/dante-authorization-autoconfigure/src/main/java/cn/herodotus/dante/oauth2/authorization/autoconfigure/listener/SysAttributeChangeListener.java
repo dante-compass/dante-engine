@@ -27,7 +27,7 @@ package cn.herodotus.dante.oauth2.authorization.autoconfigure.listener;
 
 import cn.herodotus.dante.logic.upms.domain.event.SysAttributeChangeEvent;
 import cn.herodotus.dante.logic.upms.entity.security.SysAttribute;
-import cn.herodotus.dante.oauth2.authorization.autoconfigure.processor.SecurityAttributeDistributionProcessor;
+import cn.herodotus.dante.oauth2.authorization.autoconfigure.processor.SecurityAttributeProcessor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationListener;
@@ -44,10 +44,10 @@ public class SysAttributeChangeListener implements ApplicationListener<SysAttrib
 
     private static final Logger log = LoggerFactory.getLogger(SysAttributeChangeListener.class);
 
-    private final SecurityAttributeDistributionProcessor securityAttributeDistributionProcessor;
+    private final SecurityAttributeProcessor securityAttributeProcessor;
 
-    public SysAttributeChangeListener(SecurityAttributeDistributionProcessor securityAttributeDistributionProcessor) {
-        this.securityAttributeDistributionProcessor = securityAttributeDistributionProcessor;
+    public SysAttributeChangeListener(SecurityAttributeProcessor securityAttributeProcessor) {
+        this.securityAttributeProcessor = securityAttributeProcessor;
     }
 
     @Override
@@ -60,6 +60,6 @@ public class SysAttributeChangeListener implements ApplicationListener<SysAttrib
         log.debug("[Herodotus] |- Got SysAttribute, start to process SysAttribute change.");
 
         Optional.ofNullable(sysAttribute)
-                .ifPresent(securityAttributeDistributionProcessor::distributeChangedSecurityAttribute);
+                .ifPresent(securityAttributeProcessor::distributeChangedSecurityAttribute);
     }
 }

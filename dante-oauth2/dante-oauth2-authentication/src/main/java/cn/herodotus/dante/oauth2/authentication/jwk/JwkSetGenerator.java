@@ -96,7 +96,7 @@ public class JwkSetGenerator {
 
                 return new RSAKey.Builder((RSAPublicKey) certificate.getPublicKey())
                         .keyUse(KeyUse.SIGNATURE)
-                        .keyID(UUID.randomUUID().toString())
+                        .keyID(alias)
                         .keyStore(keyStore)
                         .privateKey((RSAPrivateKey) keyStore.getKey(alias, SecurityProvider.toChars(password)))
                         .x509CertChain(Collections.singletonList(Base64.encode(certificate.getEncoded())))
@@ -126,6 +126,34 @@ public class JwkSetGenerator {
     }
 
     /**
+     * 使用 Spring 标准 SSl 配置信息生成 {@link RSAKey}
+     *
+     * @return {@link RSAKey}
+     */
+    private RSAKey useStandardRSAKeyStrategy() {
+        if (ObjectUtils.isNotEmpty(sslBundles) && ObjectUtils.isNotEmpty(authenticationProperties.getSslBundleProvider())) {
+            return useStandardRSAKeyStrategy(authenticationProperties.getSslBundleProvider(), sslBundles);
+        }
+        return null;
+    }
+
+    /**
+     * 生成 {@link RSAKey}
+     *
+     * @return {@link RSAKey}
+     */
+    public RSAKey generateRSAKey() {
+        RSAKey rsaKey = useStandardRSAKeyStrategy();
+
+        // 如果标准 Spring SSL 读取证书内容失败，则使用默认方式提供证书内容
+        if (ObjectUtils.isEmpty(rsaKey)) {
+            rsaKey = useDefaultRSAKeyStrategy();
+        }
+
+        return rsaKey;
+    }
+
+    /**
      * 根据自定义配置或者标准的 Spring SSL bundle 配置生成 {@link JWKSet}
      * <p>
      * 如果没有配置自定义配置或者标准的 Spring SSL bundle，或者相关配置读取失败，则采用默认生成逻辑进行兜底
@@ -133,17 +161,6 @@ public class JwkSetGenerator {
      * @return {@link JWKSet}
      */
     public JWKSet generate() {
-        RSAKey rsaKey = null;
-
-        if (ObjectUtils.isNotEmpty(sslBundles) && ObjectUtils.isNotEmpty(authenticationProperties.getSslBundleProvider())) {
-            rsaKey = useStandardRSAKeyStrategy(authenticationProperties.getSslBundleProvider(), sslBundles);
-        }
-
-        // 如果标准 Spring SSL 读取证书内容失败，则使用默认方式提供证书内容
-        if (ObjectUtils.isEmpty(rsaKey)) {
-            rsaKey = useDefaultRSAKeyStrategy();
-        }
-
-        return new JWKSet(rsaKey);
+        return new JWKSet(generateRSAKey());
     }
 }

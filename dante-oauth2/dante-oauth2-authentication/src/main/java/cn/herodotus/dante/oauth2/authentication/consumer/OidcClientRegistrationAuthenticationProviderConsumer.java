@@ -46,13 +46,19 @@ import java.util.function.Consumer;
  */
 public class OidcClientRegistrationAuthenticationProviderConsumer implements Consumer<List<AuthenticationProvider>> {
 
+    private final boolean supportResourceIndicators;
+
+    public OidcClientRegistrationAuthenticationProviderConsumer(boolean supportResourceIndicators) {
+        this.supportResourceIndicators = supportResourceIndicators;
+    }
+
     @Override
     public void accept(List<AuthenticationProvider> authenticationProviders) {
 
         Converter<OidcClientRegistration, RegisteredClient> toRegisteredClientConverter =
-                new OidcClientRegistrationToRegisteredClientConverter();
+                new OidcClientRegistrationToRegisteredClientConverter(supportResourceIndicators);
         Converter<RegisteredClient, OidcClientRegistration> toOidcClientRegistrationConverter =
-                new RegisteredClientToOidcClientRegistrationConverter();
+                new RegisteredClientToOidcClientRegistrationConverter(supportResourceIndicators);
 
         authenticationProviders.forEach((authenticationProvider) -> {
             if (authenticationProvider instanceof OidcClientRegistrationAuthenticationProvider provider) {

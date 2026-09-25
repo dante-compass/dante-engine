@@ -27,12 +27,18 @@ package cn.herodotus.dante.persistence.commons.converter;
 
 import cn.herodotus.dante.persistence.commons.domain.HerodotusClientSettings;
 import cn.herodotus.dante.persistence.commons.enums.AllJwsAlgorithm;
+import cn.herodotus.dante.persistence.commons.utils.OAuth2SettingUtils;
+import cn.herodotus.dante.security.domain.OAuth2ApplicationType;
+import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.security.oauth2.jose.jws.JwsAlgorithm;
 import org.springframework.security.oauth2.jose.jws.MacAlgorithm;
 import org.springframework.security.oauth2.jose.jws.SignatureAlgorithm;
 import org.springframework.security.oauth2.server.authorization.settings.ClientSettings;
+import org.springframework.util.StringUtils;
+
+import java.util.List;
 
 /**
  * <p>Description: {@link ClientSettings} 转 {@link HerodotusClientSettings} 转换器 </p>
@@ -61,6 +67,21 @@ public class OAuth2ToClientSettingsConverter implements Converter<ClientSettings
         }
 
         target.setX509CertificateSubjectDN(source.getX509CertificateSubjectDN());
+
+        if (OAuth2SettingUtils.containProductKey(source)) {
+            target.setParentClientId(OAuth2SettingUtils.getProductKey(source));
+        }
+
+        if (OAuth2SettingUtils.containApplicationType(source)) {
+            OAuth2ApplicationType applicationType = OAuth2SettingUtils.getApplicationType(source);
+            target.setClientType(applicationType.getValue());
+        }
+
+        List<String> resourceIds = OAuth2SettingUtils.getResourceIds(source);
+        if (CollectionUtils.isNotEmpty(resourceIds)) {
+            target.setResourceIds(StringUtils.collectionToCommaDelimitedString(resourceIds));
+        }
+
         return target;
     }
 }

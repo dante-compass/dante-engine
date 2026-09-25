@@ -41,7 +41,7 @@ import org.springframework.stereotype.Component;
 public class LockedAccountStampManager extends AbstractStampManager<String, String> {
 
     public LockedAccountStampManager(OAuth2AuthenticationProperties authenticationProperties) {
-        super(OAuth2Constants.CACHE_NAME_TOKEN_LOCKED_USER_DETAIL, authenticationProperties.getSignInFailureLimited().getExpire());
+        super(OAuth2Constants.CACHE_NAME__TOKEN_LOCKED_USER_DETAIL, authenticationProperties.getSignInFailureLimited().getExpire());
     }
 
     @Override

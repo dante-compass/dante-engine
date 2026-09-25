@@ -26,6 +26,7 @@
 package cn.herodotus.dante.oauth2.authorization.servlet;
 
 import cn.herodotus.dante.oauth2.authorization.converter.HerodotusJwtAuthenticationConverter;
+import cn.herodotus.dante.security.definition.OAuth2ProtectedResourceMetadataStorage;
 import cn.herodotus.dante.security.utils.SecurityUtils;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -52,16 +53,22 @@ public class OAuth2ResourceServerConfigurerCustomer implements Customizer<OAuth2
     private final JwtDecoder jwtDecoder;
     private final OpaqueTokenIntrospector opaqueTokenIntrospector;
     private final BearerTokenResolver bearerTokenResolver;
+    private final OAuth2ProtectedResourceMetadataStorage oauth2ProtectedResourceMetadataStorage;
 
-    public OAuth2ResourceServerConfigurerCustomer(JwtDecoder jwtDecoder, OpaqueTokenIntrospector opaqueTokenIntrospector) {
+    public OAuth2ResourceServerConfigurerCustomer(JwtDecoder jwtDecoder, OpaqueTokenIntrospector opaqueTokenIntrospector, OAuth2ProtectedResourceMetadataStorage oauth2ProtectedResourceMetadataStorage) {
         this.jwtDecoder = jwtDecoder;
         this.opaqueTokenIntrospector = opaqueTokenIntrospector;
+        this.oauth2ProtectedResourceMetadataStorage = oauth2ProtectedResourceMetadataStorage;
         this.bearerTokenResolver = new DefaultBearerTokenResolver();
     }
 
     @Override
     public void customize(OAuth2ResourceServerConfigurer<HttpSecurity> configurer) {
-        configurer.authenticationManagerResolver(getAuthenticationManagerResolver(this.jwtDecoder, this.opaqueTokenIntrospector));
+        configurer.authenticationManagerResolver(getAuthenticationManagerResolver(this.jwtDecoder, this.opaqueTokenIntrospector))
+                .protectedResourceMetadata(metadata -> metadata
+                        .protectedResourceMetadataCustomizer(
+                                new ServletOAuth2ProtectedResourceMetadataConsumer(
+                                        this.oauth2ProtectedResourceMetadataStorage)));
     }
 
     private AuthenticationManagerResolver<HttpServletRequest> getAuthenticationManagerResolver(JwtDecoder jwtDecoder, OpaqueTokenIntrospector opaqueTokenIntrospector) {

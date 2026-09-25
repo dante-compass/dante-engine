@@ -26,7 +26,7 @@
 package cn.herodotus.dante.oauth2.extension.manager;
 
 import cn.herodotus.dante.data.commons.enums.DataItemStatus;
-import cn.herodotus.dante.message.commons.domain.AccountStatus;
+import cn.herodotus.dante.messaging.domain.AccountStatus;
 import cn.herodotus.dante.oauth2.commons.strategy.AccountStatusChangedEventManager;
 import cn.herodotus.dante.oauth2.extension.stamp.LockedAccountStampManager;
 import cn.herodotus.dante.security.definition.EnhanceUserDetailsService;

@@ -40,6 +40,7 @@ import org.springframework.security.web.util.matcher.RequestMatcher;
 
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * <p>Description: SecurityAttribute 本地存储 </p>
@@ -55,7 +56,7 @@ public class RestSecurityAttributeStorage {
      * 模式匹配权限缓存。主要存储 包含 "*"、"?" 和 "{"、"}" 等特殊字符的路径权限。
      * 该种权限，需要通过遍历，利用 AntPathRequestMatcher 机制进行匹配
      */
-    private final Cache<String, LinkedHashMap<HerodotusRequest, List<HerodotusSecurityAttribute>>> compatible;
+    private final Cache<String, Map<HerodotusRequest, List<HerodotusSecurityAttribute>>> compatible;
     /**
      * 直接索引权限缓存，主要存储全路径权限
      * 该种权限，直接通过 Map Key 进行获取
@@ -63,8 +64,8 @@ public class RestSecurityAttributeStorage {
     private final Cache<HerodotusRequest, List<HerodotusSecurityAttribute>> indexable;
 
     public RestSecurityAttributeStorage() {
-        this.compatible = JetCacheUtils.create(OAuth2Constants.CACHE_NAME_SECURITY_METADATA_COMPATIBLE, CacheType.BOTH, null, true, true);
-        this.indexable = JetCacheUtils.create(OAuth2Constants.CACHE_NAME_SECURITY_METADATA_INDEXABLE, CacheType.BOTH, null, true, true);
+        this.compatible = JetCacheUtils.create(OAuth2Constants.CACHE_NAME__SECURITY_ATTRIBUTE_REST_COMPATIBLE, CacheType.BOTH, null, true);
+        this.indexable = JetCacheUtils.create(OAuth2Constants.CACHE_NAME__SECURITY_ATTRIBUTE_REST_INDEXABLE, CacheType.BOTH, null, true);
     }
 
     /**
@@ -72,21 +73,42 @@ public class RestSecurityAttributeStorage {
      *
      * @return 需要进行模式匹配的权限数据
      */
-    private LinkedHashMap<HerodotusRequest, List<HerodotusSecurityAttribute>> readFromCompatible() {
-        LinkedHashMap<HerodotusRequest, List<HerodotusSecurityAttribute>> compatible = this.compatible.get(KEY_COMPATIBLE);
+    private Map<HerodotusRequest, List<HerodotusSecurityAttribute>> readFromCompatible() {
+        Map<HerodotusRequest, List<HerodotusSecurityAttribute>> compatible = this.compatible.get(KEY_COMPATIBLE);
         if (MapUtils.isNotEmpty(compatible)) {
             return compatible;
         }
         return new LinkedHashMap<>();
-
     }
 
     /**
-     * 写入 compatible 缓存
+     * 向 compatible 缓存中添加需要路径匹配的（包含*号的url）请求权限映射Map。
+     * <p>
+     * 如果缓存中不存在以{@link RequestMatcher}为Key的数据，那么添加数据
+     * 如果缓存中存在以{@link RequestMatcher}为Key的数据，那么合并数据
      *
-     * @param compatible 请求路径和权限配置属性映射Map
+     * @param herodotusRequest 请求匹配对象 {@link HerodotusRequest}
+     * @param attributes       权限配置 {@link HerodotusSecurityAttribute}
      */
-    private void writeToCompatible(LinkedHashMap<HerodotusRequest, List<HerodotusSecurityAttribute>> compatible) {
+    private void writeToCompatible(HerodotusRequest herodotusRequest, List<HerodotusSecurityAttribute> attributes) {
+        Map<HerodotusRequest, List<HerodotusSecurityAttribute>> compatible = this.getCompatible();
+        // 使用merge会让整个功能的设计更加复杂，暂时改为直接覆盖已有数据，后续视情况再做变更。
+        compatible.put(herodotusRequest, attributes);
+        log.trace("[Herodotus] |- Append [{}] to Compatible cache, current size is [{}]", herodotusRequest, compatible.size());
+        this.compatible.put(KEY_COMPATIBLE, compatible);
+    }
+
+    /**
+     * 向 compatible 缓存中添加需要路径匹配的（包含*号的url）请求权限映射Map。
+     * <p>
+     * 如果缓存中不存在以{@link RequestMatcher}为Key的数据，那么添加数据
+     * 如果缓存中存在以{@link RequestMatcher}为Key的数据，那么合并数据
+     *
+     * @param attributes 请求权限映射Map
+     */
+    private void writeToCompatible(Map<HerodotusRequest, List<HerodotusSecurityAttribute>> attributes) {
+        Map<HerodotusRequest, List<HerodotusSecurityAttribute>> compatible = this.getCompatible();
+        compatible.putAll(attributes);
         this.compatible.put(KEY_COMPATIBLE, compatible);
     }
 
@@ -101,26 +123,25 @@ public class RestSecurityAttributeStorage {
     }
 
     /**
-     * 写入 indexable 缓存
+     * 向 indexable 缓存中添加需请求权限映射。
+     * <p>
+     * 如果缓存中不存在以{@link HerodotusRequest}为Key的数据，那么添加数据
+     * 如果缓存中存在以{@link HerodotusRequest}为Key的数据，那么合并数据
      *
-     * @param herodotusRequest 自定义扩展的 AntPathRequestMatchers {@link HerodotusRequest}
-     * @param configAttributes 权限配置属性
+     * @param herodotusRequest 请求匹配对象 {@link HerodotusRequest}
+     * @param attributes       权限配置 {@link HerodotusSecurityAttribute}
      */
-    private void writeToIndexable(HerodotusRequest herodotusRequest, List<HerodotusSecurityAttribute> configAttributes) {
-        this.indexable.put(herodotusRequest, configAttributes);
+    private void writeToIndexable(HerodotusRequest herodotusRequest, List<HerodotusSecurityAttribute> attributes) {
+        this.indexable.put(herodotusRequest, attributes);
     }
 
     /**
-     * 根据请求的 url 和 method 获取权限对象
+     * 向 indexable 缓存中添加请求权限映射Map。
      *
-     * @param url     请求 URL
-     * @param method  请求 method
-     * @param verison API 版本
-     * @return 与请求url 和 method 匹配的权限数据，或者是空集合
+     * @param attributes 请求权限映射Map
      */
-    public List<HerodotusSecurityAttribute> getConfigAttribute(String url, String method, String verison) {
-        HerodotusRequest herodotusRequest = new HerodotusRequest(url, method, verison);
-        return readFromIndexable(herodotusRequest);
+    private void writeToIndexable(Map<HerodotusRequest, List<HerodotusSecurityAttribute>> attributes) {
+        this.indexable.putAll(attributes);
     }
 
     /**
@@ -128,82 +149,37 @@ public class RestSecurityAttributeStorage {
      *
      * @return 如果缓存中存在，则返回请求权限映射Map集合，如果不存在则返回一个空的{@link LinkedHashMap}
      */
-    public LinkedHashMap<HerodotusRequest, List<HerodotusSecurityAttribute>> getCompatible() {
+    public Map<HerodotusRequest, List<HerodotusSecurityAttribute>> getCompatible() {
         return readFromCompatible();
-    }
-
-    /**
-     * 向 compatible 缓存中添加需要路径匹配的（包含*号的url）请求权限映射Map。
-     * <p>
-     * 如果缓存中不存在以{@link RequestMatcher}为Key的数据，那么添加数据
-     * 如果缓存中存在以{@link RequestMatcher}为Key的数据，那么合并数据
-     *
-     * @param herodotusRequest 请求匹配对象 {@link HerodotusRequest}
-     * @param configAttributes 权限配置 {@link HerodotusSecurityAttribute}
-     */
-    private void appendToCompatible(HerodotusRequest herodotusRequest, List<HerodotusSecurityAttribute> configAttributes) {
-        LinkedHashMap<HerodotusRequest, List<HerodotusSecurityAttribute>> compatible = this.getCompatible();
-//        compatible.merge(requestMatcher, configAttributes, (oldConfigAttributes, newConfigAttributes) -> {
-//            newConfigAttributes.addAll(oldConfigAttributes);
-//            return newConfigAttributes;
-//        });
-
-        // 使用merge会让整个功能的设计更加复杂，暂时改为直接覆盖已有数据，后续视情况再做变更。
-        compatible.put(herodotusRequest, configAttributes);
-        log.trace("[Herodotus] |- Append [{}] to Compatible cache, current size is [{}]", herodotusRequest, compatible.size());
-        writeToCompatible(compatible);
-    }
-
-    /**
-     * 向 compatible 缓存中添加需要路径匹配的（包含*号的url）请求权限映射Map。
-     * <p>
-     * 如果缓存中不存在以{@link RequestMatcher}为Key的数据，那么添加数据
-     * 如果缓存中存在以{@link RequestMatcher}为Key的数据，那么合并数据
-     *
-     * @param configAttributes 请求权限映射Map
-     */
-    private void appendToCompatible(LinkedHashMap<HerodotusRequest, List<HerodotusSecurityAttribute>> configAttributes) {
-        configAttributes.forEach(this::appendToCompatible);
-    }
-
-    /**
-     * 向 indexable 缓存中添加需请求权限映射。
-     * <p>
-     * 如果缓存中不存在以{@link HerodotusRequest}为Key的数据，那么添加数据
-     * 如果缓存中存在以{@link HerodotusRequest}为Key的数据，那么合并数据
-     *
-     * @param herodotusRequest 请求匹配对象 {@link HerodotusRequest}
-     * @param configAttributes 权限配置 {@link HerodotusSecurityAttribute}
-     */
-    private void appendToIndexable(HerodotusRequest herodotusRequest, List<HerodotusSecurityAttribute> configAttributes) {
-        writeToIndexable(herodotusRequest, configAttributes);
-    }
-
-    /**
-     * 向 indexable 缓存中添加请求权限映射Map。
-     *
-     * @param configAttributes 请求权限映射Map
-     */
-    private void appendToIndexable(LinkedHashMap<HerodotusRequest, List<HerodotusSecurityAttribute>> configAttributes) {
-        configAttributes.forEach(this::appendToIndexable);
     }
 
     /**
      * 将权限数据添加至本地存储
      *
-     * @param configAttributes 权限数据
-     * @param isIndexable      true 存入 indexable cache；false 存入 compatible cache
+     * @param attributes  权限数据
+     * @param isIndexable true 存入 indexable cache；false 存入 compatible cache
      */
-    public void addToStorage(LinkedHashMap<HerodotusRequest, List<HerodotusSecurityAttribute>> configAttributes, boolean isIndexable) {
-        if (MapUtils.isNotEmpty(configAttributes)) {
+    public void addToStorage(Map<HerodotusRequest, List<HerodotusSecurityAttribute>> attributes, boolean isIndexable) {
+        if (MapUtils.isNotEmpty(attributes)) {
             if (isIndexable) {
-                appendToIndexable(configAttributes);
+                writeToIndexable(attributes);
             } else {
-                appendToCompatible(configAttributes);
+                writeToCompatible(attributes);
             }
         }
     }
 
+    /**
+     * 根据请求的 url method 和 version 获取权限对象
+     *
+     * @param url    请求 URL
+     * @param method 请求 method
+     * @return 与请求url 和 method 匹配的权限数据，或者是空集合
+     */
+    public List<HerodotusSecurityAttribute> findAttribute(String url, String method, String version) {
+        HerodotusRequest herodotusRequest = new HerodotusRequest(url, method, version);
+        return readFromIndexable(herodotusRequest);
+    }
 
     /**
      * 将权限数据添加至本地存储，存储之前进行规则冲突校验
@@ -212,8 +188,8 @@ public class RestSecurityAttributeStorage {
      * @param attributes  权限数据
      * @param isIndexable true 存入 indexable cache；false 存入 compatible cache
      */
-    public void addToStorage(LinkedHashMap<HerodotusRequest, List<HerodotusSecurityAttribute>> matchers, LinkedHashMap<HerodotusRequest, List<HerodotusSecurityAttribute>> attributes, boolean isIndexable) {
-        LinkedHashMap<HerodotusRequest, List<HerodotusSecurityAttribute>> result = new LinkedHashMap<>();
+    public void addToStorage(Map<HerodotusRequest, List<HerodotusSecurityAttribute>> matchers, Map<HerodotusRequest, List<HerodotusSecurityAttribute>> attributes, boolean isIndexable) {
+        Map<HerodotusRequest, List<HerodotusSecurityAttribute>> result = new LinkedHashMap<>();
         if (MapUtils.isNotEmpty(matchers)) {
             if (MapUtils.isNotEmpty(attributes)) {
                 result = checkConflict(matchers, attributes);
@@ -231,17 +207,19 @@ public class RestSecurityAttributeStorage {
      * 规则冲突校验
      * <p>
      * 如存在规则冲突，则保留可支持最大化范围规则，冲突的其它规则则不保存
+     * <p>
+     * 2025.12.05: 去除重复无需考虑版本问题
      *
-     * @param matchers         校验资源
-     * @param configAttributes 权限数据
+     * @param matchers   校验资源
+     * @param attributes 权限数据
      * @return 去除冲突的权限数据
      */
-    private LinkedHashMap<HerodotusRequest, List<HerodotusSecurityAttribute>> checkConflict(LinkedHashMap<HerodotusRequest, List<HerodotusSecurityAttribute>> matchers, LinkedHashMap<HerodotusRequest, List<HerodotusSecurityAttribute>> configAttributes) {
+    private Map<HerodotusRequest, List<HerodotusSecurityAttribute>> checkConflict(Map<HerodotusRequest, List<HerodotusSecurityAttribute>> matchers, Map<HerodotusRequest, List<HerodotusSecurityAttribute>> attributes) {
 
-        LinkedHashMap<HerodotusRequest, List<HerodotusSecurityAttribute>> result = new LinkedHashMap<>(configAttributes);
+        Map<HerodotusRequest, List<HerodotusSecurityAttribute>> result = new LinkedHashMap<>(attributes);
 
         for (HerodotusRequest matcher : matchers.keySet()) {
-            for (HerodotusRequest item : configAttributes.keySet()) {
+            for (HerodotusRequest item : attributes.keySet()) {
                 // 如果是修改的是占位符类型的接口的权限，同时 matchers 中也包含该占位符权限，那么就会因为配到而导致被删除，最终导致该接口的权限无法更新保存。
                 // 例如：被检测请求为 /iot/product-category/{id}，而 matchers 中也存在 /iot/product-category/{id}，那么就会被从 result 中删掉。而导致无法更新 /iot/product-category/{id} 的权限
                 if (!matcher.equals(item)) {

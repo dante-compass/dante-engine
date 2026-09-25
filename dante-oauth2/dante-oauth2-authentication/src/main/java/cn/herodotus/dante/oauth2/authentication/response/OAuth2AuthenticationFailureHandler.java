@@ -27,8 +27,8 @@ package cn.herodotus.dante.oauth2.authentication.response;
 
 import cn.herodotus.dante.oauth2.authentication.utils.OAuth2EndpointUtils;
 import cn.herodotus.dante.security.exception.SecurityGlobalExceptionHandler;
-import cn.herodotus.dante.web.servlet.template.AbstractResponseHandler;
-import cn.herodotus.dante.web.servlet.template.ThymeleafTemplateHandler;
+import cn.herodotus.dante.web.definition.template.ServletTemplateHandler;
+import cn.herodotus.dante.web.servlet.response.AbstractResponseHandler;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -61,8 +61,8 @@ public class OAuth2AuthenticationFailureHandler extends AbstractResponseHandler 
 
     private final HttpMessageConverter<OAuth2Error> errorHttpMessageConverter = new OAuth2ErrorHttpMessageConverter();
 
-    public OAuth2AuthenticationFailureHandler(ThymeleafTemplateHandler templateHandler) {
-        super(templateHandler);
+    public OAuth2AuthenticationFailureHandler(ServletTemplateHandler servletTemplateHandler) {
+        super(servletTemplateHandler);
     }
 
     @Override
@@ -70,7 +70,7 @@ public class OAuth2AuthenticationFailureHandler extends AbstractResponseHandler 
 
         log.warn("[Herodotus] |- Authentication operation failure!");
 
-        MultiValueMap<String, String> parameters = OAuth2EndpointUtils.getParameters(request);
+        MultiValueMap<String, String> parameters = OAuth2EndpointUtils.getFormParameters(request);
         String deviceCode = parameters.getFirst(OAuth2ParameterNames.DEVICE_CODE);
         // 兼容 Device Grant 错误处理
         // Device Grant 需要 SAS 原始出错信息，如果采用原有 SecurityGlobalExceptionHandler 处理方式，将导致前端获取到错误的错误信息

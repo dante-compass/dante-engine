@@ -27,6 +27,7 @@ package cn.herodotus.dante.oauth2.authentication.converter;
 
 import cn.herodotus.dante.core.constant.SystemConstants;
 import cn.herodotus.dante.security.domain.RegisteredClientTransmitter;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.security.oauth2.server.authorization.AbstractOAuth2ClientRegistration;
 
@@ -56,7 +57,16 @@ public class AbstractToRegisteredClientTransmitterConverter<T extends AbstractOA
         target.setClientSecret(source.getClientSecret());
         target.setRedirectUris(org.springframework.util.StringUtils.collectionToCommaDelimitedString(source.getRedirectUris()));
         // 在 OidcClientRegistrationToRegisteredClientConverter 或 OAuth2ClientRegistrationToRegisteredClientConverter 中已经判断过 ProductKey 是否为空，这里就不重复判断。
-        target.setParentClientId(source.getClaims().get(SystemConstants.PARAMETER__PRODUCT_KEY).toString());
+        target.setParentClientId(source.getClaimAsString(SystemConstants.PARAMETER__PRODUCT_KEY));
+        // 在 OidcClientRegistrationToRegisteredClientConverter 或 OAuth2ClientRegistrationToRegisteredClientConverter 中已经设置过 ApplicationType 默认值。
+        target.setApplicationType(source.getClaimAsString(SystemConstants.PARAMETER__APPLICATION_TYPE));
+
+        // 客户端动态注册信息中，resourceIds 列表转成逗号分割字符串放入 RegisteredClientTransmitter，便于传输。
+        String resourceIds = org.springframework.util.StringUtils.collectionToCommaDelimitedString(source.getClaimAsStringList(SystemConstants.PARAMETER__RESOURCE_IDS));
+        if (StringUtils.isNotBlank(resourceIds)) {
+            target.setResourceIds(resourceIds);
+        }
+
         return target;
     }
 }

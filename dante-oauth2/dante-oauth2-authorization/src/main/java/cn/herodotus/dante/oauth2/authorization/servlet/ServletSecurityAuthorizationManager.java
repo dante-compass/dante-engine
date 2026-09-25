@@ -25,7 +25,7 @@
 
 package cn.herodotus.dante.oauth2.authorization.servlet;
 
-import cn.herodotus.dante.oauth2.authorization.attribute.RestSecurityAttributeStorage;
+import cn.herodotus.dante.oauth2.authorization.attribute.SecurityAttributeManager;
 import cn.herodotus.dante.oauth2.authorization.cache.HerodotusRequest;
 import cn.herodotus.dante.oauth2.authorization.definition.HerodotusSecurityAttribute;
 import cn.herodotus.dante.spring.context.ServiceContextHolder;
@@ -51,7 +51,6 @@ import org.springframework.security.web.servlet.util.matcher.PathPatternRequestM
 import org.springframework.security.web.util.matcher.RequestMatcher;
 import org.springframework.web.accept.ApiVersionStrategy;
 
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Supplier;
@@ -71,23 +70,31 @@ public class ServletSecurityAuthorizationManager implements AuthorizationManager
 
     private static final Logger log = LoggerFactory.getLogger(ServletSecurityAuthorizationManager.class);
 
-    private final RestSecurityAttributeStorage restSecurityAttributeStorage;
+    private final SecurityAttributeManager securityAttributeManager;
     private final ServletOAuth2ResourceMatcherConfigurer servletOAuth2ResourceMatcherConfigurer;
     private final ObjectProvider<ApiVersionStrategy> apiVersionStrategies;
 
-    public ServletSecurityAuthorizationManager(RestSecurityAttributeStorage restSecurityAttributeStorage, ServletOAuth2ResourceMatcherConfigurer servletOAuth2ResourceMatcherConfigurer, ObjectProvider<ApiVersionStrategy> apiVersionStrategies) {
-        this.restSecurityAttributeStorage = restSecurityAttributeStorage;
+    public ServletSecurityAuthorizationManager(SecurityAttributeManager securityAttributeManager, ServletOAuth2ResourceMatcherConfigurer servletOAuth2ResourceMatcherConfigurer, ObjectProvider<ApiVersionStrategy> apiVersionStrategies) {
+        this.securityAttributeManager = securityAttributeManager;
         this.servletOAuth2ResourceMatcherConfigurer = servletOAuth2ResourceMatcherConfigurer;
         this.apiVersionStrategies = apiVersionStrategies;
     }
 
+    public SecurityAttributeManager getSecurityAttributeManager() {
+        return securityAttributeManager;
+    }
+
     @Override
     public @Nullable AuthorizationResult authorize(Supplier<? extends @Nullable Authentication> authentication, RequestAuthorizationContext object) {
+
         final HttpServletRequest request = object.getRequest();
 
         String url = request.getRequestURI();
         String method = request.getMethod();
 
+        // OAuth2AuthorizeHttpRequestsConfigurerCustomer 中配置的拦截优先级较高
+        // 所以 SecurityMatcher 中还是要配置 StaticResource，这部分拦截会配置到 OAuth2AuthorizeHttpRequestsConfigurerCustomer
+        // OAuth2AuthorizeHttpRequestsConfigurerCustomer 会优先检查 SecurityMatcher StaticResource 中配置，没有匹配的会到这里进行检测
         if (servletOAuth2ResourceMatcherConfigurer.isStaticRequest(request, url)) {
             log.trace("[Herodotus] |- Is static resource : [{}], Passed!", url);
             return new AuthorizationDecision(true);
@@ -109,8 +116,8 @@ public class ServletSecurityAuthorizationManager implements AuthorizationManager
             return new AuthorizationDecision(authentication.get().isAuthenticated());
         }
 
-        List<HerodotusSecurityAttribute> configAttributes = findConfigAttribute(url, method, request);
-        if (CollectionUtils.isEmpty(configAttributes)) {
+        List<HerodotusSecurityAttribute> attributes = findConfigAttribute(url, method, request);
+        if (CollectionUtils.isEmpty(attributes)) {
             log.warn("[Herodotus] |- NO PRIVILEGES : [{}].", url);
 
             if (!servletOAuth2ResourceMatcherConfigurer.isStrictMode()) {
@@ -123,8 +130,8 @@ public class ServletSecurityAuthorizationManager implements AuthorizationManager
             return new AuthorizationDecision(false);
         }
 
-        for (HerodotusSecurityAttribute configAttribute : configAttributes) {
-            WebExpressionAuthorizationManager webExpressionAuthorizationManager = new WebExpressionAuthorizationManager(configAttribute.getAttribute());
+        for (HerodotusSecurityAttribute attribute : attributes) {
+            WebExpressionAuthorizationManager webExpressionAuthorizationManager = new WebExpressionAuthorizationManager(attribute.getExpression());
             AuthorizationResult decision = webExpressionAuthorizationManager.authorize(authentication, object);
             if (decision.isGranted()) {
                 log.debug("[Herodotus] |- Request [{}] is authorized!", object.getRequest().getRequestURI());
@@ -148,20 +155,20 @@ public class ServletSecurityAuthorizationManager implements AuthorizationManager
             version = apiVersionStrategy.resolveVersion(request);
         }
 
-        log.debug("[Herodotus] |- Finding security attribute use : [{}] - [{}]", method, path);
+        log.debug("[Herodotus] |- Finding security attribute use : [{}] - [{}] - [{}]", method, path, version);
 
-        List<HerodotusSecurityAttribute> configAttributes = this.restSecurityAttributeStorage.getConfigAttribute(url, method, version);
-        if (CollectionUtils.isNotEmpty(configAttributes)) {
-            log.debug("[Herodotus] |- Get configAttributes from local storage for : [{}] - [{}]", url, method);
-            return configAttributes;
+        List<HerodotusSecurityAttribute> attributes = this.securityAttributeManager.findRestAttribute(path, method, version);
+        if (CollectionUtils.isNotEmpty(attributes)) {
+            log.debug("[Herodotus] |- Get security attributes from local storage for : [{}] - [{}] - [{}]", method, path, version);
+            return attributes;
         } else {
-            LinkedHashMap<HerodotusRequest, List<HerodotusSecurityAttribute>> compatible = this.restSecurityAttributeStorage.getCompatible();
+            Map<HerodotusRequest, List<HerodotusSecurityAttribute>> compatible = this.securityAttributeManager.getRestCompatible();
             if (MapUtils.isNotEmpty(compatible)) {
                 // 支持含有**通配符的路径搜索
                 for (Map.Entry<HerodotusRequest, List<HerodotusSecurityAttribute>> entry : compatible.entrySet()) {
                     RequestMatcher.MatchResult matchResult = matches(request, entry.getKey());
                     if (matchResult.isMatch()) {
-                        log.debug("[Herodotus] |- Request match the wildcard [{}] - [{}]", entry.getKey(), entry.getValue());
+                        log.debug("[Herodotus] |- Request match the wildcard [{}] - [{}] - [{}]", entry.getKey(), entry.getValue(), version);
                         return entry.getValue();
                     }
                 }

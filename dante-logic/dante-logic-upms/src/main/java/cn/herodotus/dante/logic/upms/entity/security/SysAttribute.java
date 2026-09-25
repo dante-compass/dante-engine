@@ -28,6 +28,7 @@ package cn.herodotus.dante.logic.upms.entity.security;
 import cn.herodotus.dante.data.jpa.entity.AbstractSysEntity;
 import cn.herodotus.dante.logic.upms.domain.generator.SysAttributeIdGenerator;
 import cn.herodotus.dante.logic.upms.domain.listener.SysAttributeEntityListener;
+import cn.herodotus.dante.spring.enums.MappingCategory;
 import com.google.common.base.MoreObjects;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
@@ -87,6 +88,11 @@ public class SysAttribute extends AbstractSysEntity {
     @Schema(name = "表达式", description = "Security表达式字符串，通过该值设置动态权限")
     @Column(name = "version", length = 30)
     private String version;
+
+    @Schema(name = "接口映射类别")
+    @Enumerated(EnumType.STRING)
+    @Column(name = "category", length = 50)
+    private MappingCategory category;
 
     @Schema(name = "属性对应权限", title = "根据属性关联权限数据")
     @ManyToMany(fetch = FetchType.EAGER)
@@ -170,6 +176,14 @@ public class SysAttribute extends AbstractSysEntity {
         this.version = version;
     }
 
+    public MappingCategory getCategory() {
+        return category;
+    }
+
+    public void setCategory(MappingCategory category) {
+        this.category = category;
+    }
+
     public Set<SysPermission> getPermissions() {
         return permissions;
     }
@@ -180,17 +194,16 @@ public class SysAttribute extends AbstractSysEntity {
 
     @Override
     public boolean equals(Object o) {
-
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
         SysAttribute that = (SysAttribute) o;
-        return Objects.equals(attributeId, that.attributeId);
+        return Objects.equals(attributeId, that.attributeId) && Objects.equals(serviceId, that.serviceId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(attributeId);
+        return Objects.hash(attributeId, serviceId);
     }
 
     @Override
@@ -205,6 +218,7 @@ public class SysAttribute extends AbstractSysEntity {
                 .add("url", url)
                 .add("webExpression", webExpression)
                 .add("version", version)
+                .add("category", category)
                 .addValue(super.toString())
                 .toString();
     }

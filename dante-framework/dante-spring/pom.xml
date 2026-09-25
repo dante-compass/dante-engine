@@ -31,13 +31,13 @@
     <parent>
         <groupId>cn.herodotus.dante</groupId>
         <artifactId>dante-framework</artifactId>
-        <version>4.1.1.0</version>
+        <version>4.1.1.1</version>
     </parent>
 
     <artifactId>dante-spring</artifactId>
     <name>${project.artifactId}</name>
 
-    <description>Dante Cloud 云原生微服务基座组件库框架Spring及SpringBoot相关基础模块</description>
+    <description>Dante Cloud 云原生微服务基座组件库框架 Spring 及 SpringBoot 相关基础模块</description>
 
     <dependencies>
         <dependency>

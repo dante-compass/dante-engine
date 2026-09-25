@@ -28,6 +28,7 @@ package cn.herodotus.dante.persistence.commons.converter;
 import cn.herodotus.dante.persistence.commons.definition.ClientSettingsDetails;
 import cn.herodotus.dante.persistence.commons.domain.HerodotusClientSettings;
 import cn.herodotus.dante.persistence.commons.enums.AllJwsAlgorithm;
+import cn.herodotus.dante.persistence.commons.utils.OAuth2SettingUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.security.oauth2.jose.jws.MacAlgorithm;
@@ -48,22 +49,29 @@ public class HerodotusToClientSettingsConverter<S extends ClientSettingsDetails>
         ClientSettings.Builder clientSettingsBuilder = ClientSettings.builder();
         clientSettingsBuilder.requireAuthorizationConsent(source.getRequireAuthorizationConsent());
         clientSettingsBuilder.requireProofKey(source.getRequireProofKey());
+
         if (StringUtils.hasText(source.getJwkSetUrl())) {
             clientSettingsBuilder.jwkSetUrl(source.getJwkSetUrl());
         }
+
+        if (StringUtils.hasText(source.getX509CertificateSubjectDN())) {
+            clientSettingsBuilder.x509CertificateSubjectDN(source.getX509CertificateSubjectDN());
+        }
+
         AllJwsAlgorithm allJwsAlgorithm = source.getAuthenticationSigningAlgorithm();
         if (ObjectUtils.isNotEmpty(allJwsAlgorithm)) {
             if (allJwsAlgorithm.ordinal() < AllJwsAlgorithm.HS256.ordinal()) {
                 // 如果是签名算法, 转换成 SAS 签名算法
-                clientSettingsBuilder.tokenEndpointAuthenticationSigningAlgorithm(SignatureAlgorithm.from(allJwsAlgorithm.name()));
+                SignatureAlgorithm algorithm = SignatureAlgorithm.from(allJwsAlgorithm.name());
+                clientSettingsBuilder.tokenEndpointAuthenticationSigningAlgorithm(ObjectUtils.isNotEmpty(algorithm) ? algorithm : SignatureAlgorithm.RS256);
             } else {
                 // 如果是 Mac 算法, 转换成 Mac 签名算法
-                clientSettingsBuilder.tokenEndpointAuthenticationSigningAlgorithm(MacAlgorithm.from(allJwsAlgorithm.name()));
+                MacAlgorithm algorithm = MacAlgorithm.from(allJwsAlgorithm.name());
+                clientSettingsBuilder.tokenEndpointAuthenticationSigningAlgorithm(ObjectUtils.isNotEmpty(algorithm) ? algorithm : MacAlgorithm.HS256);
             }
         }
-        if (StringUtils.hasText(source.getX509CertificateSubjectDN())) {
-            clientSettingsBuilder.x509CertificateSubjectDN(source.getX509CertificateSubjectDN());
-        }
+
+        OAuth2SettingUtils.setClientSettingsExtensions(clientSettingsBuilder, source);
 
         return clientSettingsBuilder.build();
     }

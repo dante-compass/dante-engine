@@ -25,7 +25,7 @@
 
 package cn.herodotus.dante.message.autoconfigure.mqtt.gateway;
 
-import cn.herodotus.dante.message.commons.constant.Channels;
+import cn.herodotus.dante.messaging.constant.Channels;
 import org.springframework.integration.annotation.MessagingGateway;
 import org.springframework.integration.context.IntegrationContextUtils;
 import org.springframework.integration.mqtt.support.MqttHeaders;

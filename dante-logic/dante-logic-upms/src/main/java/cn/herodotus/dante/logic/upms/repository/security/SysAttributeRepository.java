@@ -27,9 +27,7 @@ package cn.herodotus.dante.logic.upms.repository.security;
 
 import cn.herodotus.dante.data.jpa.repository.BaseJpaRepository;
 import cn.herodotus.dante.logic.upms.entity.security.SysAttribute;
-import jakarta.persistence.QueryHint;
-import org.hibernate.jpa.AvailableHints;
-import org.springframework.data.jpa.repository.QueryHints;
+import cn.herodotus.dante.spring.enums.MappingCategory;
 
 import java.util.List;
 
@@ -41,9 +39,7 @@ import java.util.List;
  */
 public interface SysAttributeRepository extends BaseJpaRepository<SysAttribute, String> {
 
-    @QueryHints(@QueryHint(name = AvailableHints.HINT_CACHEABLE, value = "true"))
     List<SysAttribute> findByAttributeIdIn(List<String> ids);
 
-    @QueryHints(@QueryHint(name = AvailableHints.HINT_CACHEABLE, value = "true"))
-    List<SysAttribute> findAllByServiceId(String serviceId);
+    List<SysAttribute> findAllByServiceIdAndCategory(String serviceId, MappingCategory category);
 }

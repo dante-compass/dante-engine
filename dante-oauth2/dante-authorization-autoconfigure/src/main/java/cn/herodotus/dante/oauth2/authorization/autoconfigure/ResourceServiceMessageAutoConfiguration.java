@@ -25,14 +25,16 @@
 
 package cn.herodotus.dante.oauth2.authorization.autoconfigure;
 
-import cn.herodotus.dante.message.commons.definition.strategy.EnumDictionaryCollectEventManager;
-import cn.herodotus.dante.message.commons.definition.strategy.MessageSendingEventManager;
-import cn.herodotus.dante.message.commons.definition.strategy.RestMappingCollectEventManager;
-import cn.herodotus.dante.oauth2.authorization.attribute.SecurityAttributeAnalyzer;
+import cn.herodotus.dante.messaging.strategy.AttributeCollectionEventManager;
+import cn.herodotus.dante.messaging.strategy.EnumDictionaryCollectionEventManager;
+import cn.herodotus.dante.messaging.strategy.MessageSendingEventManager;
+import cn.herodotus.dante.messaging.strategy.OAuth2SupportedScopeDistributionEventManager;
+import cn.herodotus.dante.oauth2.authorization.attribute.SecurityAttributeManager;
 import cn.herodotus.dante.oauth2.authorization.autoconfigure.listener.RemoteAttributeDistributionListener;
-import cn.herodotus.dante.oauth2.authorization.autoconfigure.strategy.DefaultEnumDictionaryCollectEventManager;
+import cn.herodotus.dante.oauth2.authorization.autoconfigure.strategy.DefaultAttributeCollectionEventManager;
+import cn.herodotus.dante.oauth2.authorization.autoconfigure.strategy.DefaultEnumDictionaryCollectionEventManager;
 import cn.herodotus.dante.oauth2.authorization.autoconfigure.strategy.DefaultMessageSendingEventManager;
-import cn.herodotus.dante.oauth2.authorization.autoconfigure.strategy.DefaultRestMappingCollectEventManager;
+import cn.herodotus.dante.oauth2.authorization.autoconfigure.strategy.DefaultOAuth2SupportedScopeDistributionEventManager;
 import cn.herodotus.dante.spring.condition.ConditionalOnArchitecture;
 import cn.herodotus.dante.spring.enums.Architecture;
 import jakarta.annotation.PostConstruct;
@@ -47,6 +49,7 @@ import org.springframework.cloud.bus.StreamBusBridge;
 import org.springframework.cloud.bus.jackson.RemoteApplicationEventScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 
 /**
  * <p>Description: 资源型服务消息配置  </p>
@@ -67,17 +70,18 @@ public class ResourceServiceMessageAutoConfiguration {
     }
 
     @Bean
+    @ConditionalOnMissingBean
     @ConditionalOnWebApplication(type = ConditionalOnWebApplication.Type.SERVLET)
-    public RestMappingCollectEventManager servletRestMappingCollectEventManager(SecurityAttributeAnalyzer analyzer) {
-        DefaultRestMappingCollectEventManager manager = new DefaultRestMappingCollectEventManager(analyzer);
-        log.trace("[Herodotus] |- Bean [Servlet Request Mapping Collect Manager] Configure.");
+    public AttributeCollectionEventManager servletAttributeCollectionEventManager(SecurityAttributeManager securityAttributeManager) {
+        DefaultAttributeCollectionEventManager manager = new DefaultAttributeCollectionEventManager(securityAttributeManager, EnableWebSecurity.class);
+        log.trace("[Herodotus] |- Bean [Servlet Attribute Collection Manager] Configure.");
         return manager;
     }
 
     @Bean
-    public EnumDictionaryCollectEventManager enumDictionaryCollectEventManager() {
-        DefaultEnumDictionaryCollectEventManager manager = new DefaultEnumDictionaryCollectEventManager();
-        log.trace("[Herodotus] |- Bean [Enum Dictionary Gather Manager] Configure.");
+    public EnumDictionaryCollectionEventManager enumDictionaryCollectionEventManager() {
+        DefaultEnumDictionaryCollectionEventManager manager = new DefaultEnumDictionaryCollectionEventManager();
+        log.trace("[Herodotus] |- Bean [Enum Dictionary Collection Manager] Configure.");
         return manager;
     }
 
@@ -85,6 +89,13 @@ public class ResourceServiceMessageAutoConfiguration {
     public MessageSendingEventManager messageSendingEventManager() {
         DefaultMessageSendingEventManager manager = new DefaultMessageSendingEventManager();
         log.trace("[Herodotus] |- Bean [Unified Message Sending Event Manager] Configure.");
+        return manager;
+    }
+
+    @Bean
+    public OAuth2SupportedScopeDistributionEventManager oauth2SupportedScopeDistributionEventManager() {
+        DefaultOAuth2SupportedScopeDistributionEventManager manager = new DefaultOAuth2SupportedScopeDistributionEventManager();
+        log.trace("[Herodotus] |- Bean [OAuth2 Supported Scope Distribution Event Manager] Configure.");
         return manager;
     }
 
@@ -99,7 +110,7 @@ public class ResourceServiceMessageAutoConfiguration {
 
         @Bean
         @ConditionalOnMissingBean
-        public RemoteAttributeDistributionListener remoteAttributeDistributionListener(SecurityAttributeAnalyzer analyzer, ServiceMatcher serviceMatcher) {
+        public RemoteAttributeDistributionListener remoteAttributeDistributionListener(SecurityAttributeManager analyzer, ServiceMatcher serviceMatcher) {
             RemoteAttributeDistributionListener listener = new RemoteAttributeDistributionListener(analyzer, serviceMatcher);
             log.trace("[Herodotus] |- Bean [Remote Attribute Distribution Listener] Configure.");
             return listener;

@@ -25,9 +25,9 @@
 
 package cn.herodotus.dante.message.servlet.websocket.definition;
 
-import cn.herodotus.dante.message.commons.constant.MessageConstants;
-import cn.herodotus.dante.message.commons.definition.AbstractBroadcastMessage;
-import cn.herodotus.dante.message.commons.definition.AbstractUserMessage;
+import cn.herodotus.dante.messaging.constant.MessageConstants;
+import cn.herodotus.dante.messaging.definition.AbstractBroadcastMessage;
+import cn.herodotus.dante.messaging.definition.AbstractUserMessage;
 
 /**
  * <p>Description: WebSocket 消息发送操作定义 </p>

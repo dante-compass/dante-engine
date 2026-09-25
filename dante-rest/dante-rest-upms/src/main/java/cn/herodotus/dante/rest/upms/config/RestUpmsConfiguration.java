@@ -51,6 +51,7 @@ import org.springframework.context.annotation.Configuration;
 @ComponentScan(basePackages = {
         "cn.herodotus.dante.rest.upms.controller.hr",
         "cn.herodotus.dante.rest.upms.controller.security",
+        "cn.herodotus.dante.rest.upms.controller.oauth2",
 })
 public class RestUpmsConfiguration {
 

@@ -58,7 +58,7 @@ public class AutoUnlockAccountListener extends KeyExpirationEventMessageListener
     @Override
     public void onMessage(Message message, byte[] pattern) {
         String key = new String(message.getBody(), StandardCharsets.UTF_8);
-        if (Strings.CS.contains(key, OAuth2Constants.CACHE_NAME_TOKEN_LOCKED_USER_DETAIL)) {
+        if (Strings.CS.contains(key, OAuth2Constants.CACHE_NAME__TOKEN_LOCKED_USER_DETAIL)) {
             String userId = StringUtils.substringAfterLast(key, SymbolConstants.COLON);
             log.info("[Herodotus] |- Parse the user [{}] at expired redis cache key [{}]", userId, key);
             if (StringUtils.isNotBlank(userId)) {

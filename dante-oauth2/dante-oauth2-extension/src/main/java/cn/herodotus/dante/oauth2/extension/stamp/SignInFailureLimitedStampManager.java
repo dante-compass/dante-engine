@@ -45,7 +45,7 @@ public class SignInFailureLimitedStampManager extends AbstractCountStampManager 
     private final OAuth2AuthenticationProperties authenticationProperties;
 
     public SignInFailureLimitedStampManager(OAuth2AuthenticationProperties authenticationProperties) {
-        super(OAuth2Constants.CACHE_NAME_TOKEN_SIGN_IN_FAILURE_LIMITED, authenticationProperties.getSignInFailureLimited().getExpire());
+        super(OAuth2Constants.CACHE_NAME__TOKEN_SIGN_IN_FAILURE_LIMITED, authenticationProperties.getSignInFailureLimited().getExpire());
         this.authenticationProperties = authenticationProperties;
     }
 

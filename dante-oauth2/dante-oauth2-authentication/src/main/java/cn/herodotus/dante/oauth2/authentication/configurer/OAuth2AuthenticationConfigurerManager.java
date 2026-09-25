@@ -32,7 +32,7 @@ import cn.herodotus.dante.oauth2.commons.properties.OAuth2AuthenticationProperti
 import cn.herodotus.dante.oauth2.commons.strategy.OAuth2ClientRegistrationSuccessEventManager;
 import cn.herodotus.dante.oauth2.commons.strategy.OAuth2DeviceVerificationSuccessEventManager;
 import cn.herodotus.dante.security.definition.OAuth2AuthorizationResourceService;
-import cn.herodotus.dante.web.servlet.template.ThymeleafTemplateHandler;
+import cn.herodotus.dante.web.definition.template.ServletTemplateHandler;
 import cn.herodotus.dante.web.support.crypto.DigitalEnvelopeProcessor;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClientRepository;
 
@@ -59,7 +59,7 @@ public class OAuth2AuthenticationConfigurerManager {
     private final OidcClientRegistrationSuccessHandler oidcClientRegistrationSuccessHandler;
 
     public OAuth2AuthenticationConfigurerManager(
-            ThymeleafTemplateHandler thymeleafTemplateHandler,
+            ServletTemplateHandler servletTemplateHandler,
             DigitalEnvelopeProcessor digitalEnvelopeProcessor,
             OAuth2AuthenticationProperties oauth2AuthenticationProperties,
             RegisteredClientRepository registeredClientRepository,
@@ -71,7 +71,7 @@ public class OAuth2AuthenticationConfigurerManager {
         this.oauth2FormLoginConfigurerCustomizer = new OAuth2FormLoginConfigurerCustomizer(oauth2AuthenticationProperties);
         this.oauth2ExceptionHandlingConfigurerCustomizer = new OAuth2ExceptionHandlingConfigurerCustomizer(oauth2AuthenticationProperties);
         this.oauth2AccessTokenResponseHandler = new OAuth2AccessTokenResponseHandler(digitalEnvelopeProcessor);
-        this.oauth2AuthenticationFailureHandler = new OAuth2AuthenticationFailureHandler(thymeleafTemplateHandler);
+        this.oauth2AuthenticationFailureHandler = new OAuth2AuthenticationFailureHandler(servletTemplateHandler);
         this.oauth2ClientRegistrationSuccessHandler = new OAuth2ClientRegistrationSuccessHandler(registeredClientRepository, authorizationResourceService, clientRegistrationSuccessEventManager);
         this.oidcClientRegistrationSuccessHandler = new OidcClientRegistrationSuccessHandler(registeredClientRepository, authorizationResourceService, clientRegistrationSuccessEventManager);
         this.oauth2DeviceVerificationSuccessHandler = new OAuth2DeviceVerificationSuccessHandler(oauth2AuthenticationProperties.getDeviceVerificationSuccessUri(), deviceVerificationSuccessEventManager);

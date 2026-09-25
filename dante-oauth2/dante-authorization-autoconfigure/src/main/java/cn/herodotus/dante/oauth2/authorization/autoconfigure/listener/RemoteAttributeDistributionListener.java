@@ -26,9 +26,10 @@
 package cn.herodotus.dante.oauth2.authorization.autoconfigure.listener;
 
 import cn.herodotus.dante.core.jackson.JacksonUtils;
-import cn.herodotus.dante.oauth2.authorization.attribute.SecurityAttributeAnalyzer;
+import cn.herodotus.dante.messaging.domain.AttributeDistributor;
+import cn.herodotus.dante.oauth2.authorization.attribute.SecurityAttributeManager;
 import cn.herodotus.dante.oauth2.authorization.autoconfigure.bus.RemoteAttributeDistributionEvent;
-import cn.herodotus.dante.security.domain.attribute.AttributeTransmitter;
+import org.apache.commons.collections4.CollectionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cloud.bus.ServiceMatcher;
@@ -46,11 +47,11 @@ public class RemoteAttributeDistributionListener implements ApplicationListener<
 
     private static final Logger log = LoggerFactory.getLogger(RemoteAttributeDistributionListener.class);
 
-    private final SecurityAttributeAnalyzer securityAttributeAnalyzer;
+    private final SecurityAttributeManager securityAttributeManager;
     private final ServiceMatcher serviceMatcher;
 
-    public RemoteAttributeDistributionListener(SecurityAttributeAnalyzer securityAttributeAnalyzer, ServiceMatcher serviceMatcher) {
-        this.securityAttributeAnalyzer = securityAttributeAnalyzer;
+    public RemoteAttributeDistributionListener(SecurityAttributeManager securityAttributeManager, ServiceMatcher serviceMatcher) {
+        this.securityAttributeManager = securityAttributeManager;
         this.serviceMatcher = serviceMatcher;
     }
 
@@ -58,15 +59,16 @@ public class RemoteAttributeDistributionListener implements ApplicationListener<
     public void onApplicationEvent(RemoteAttributeDistributionEvent event) {
 
         if (!serviceMatcher.isFromSelf(event)) {
-            log.info("[Herodotus] |- Remote attribute transmitter sync listener, response service [{}] event!", event.getOriginService());
+            log.info("[Herodotus] |- Attribute distribution REMOTE listener, response service [{}] event!", event.getOriginService());
 
             String data = event.getData();
 
-            log.debug("[Herodotus] |- Got attribute transmitter from service [{}], current [{}] start to process security attributes.", event.getOriginService(), event.getDestinationService());
+            log.debug("[Herodotus] |- Got attribute data from service [{}], current [{}] start to process security attributes.", event.getOriginService(), event.getDestinationService());
 
             Optional.ofNullable(data)
-                    .flatMap(value -> Optional.ofNullable(JacksonUtils.toList(value, AttributeTransmitter.class)))
-                    .ifPresent(securityAttributeAnalyzer::processRemoteDistributionAttributes);
+                    .flatMap(value -> Optional.ofNullable(JacksonUtils.toObject(value, AttributeDistributor.class)))
+                    .filter(dispatcher -> CollectionUtils.isNotEmpty(dispatcher.getAttributes()))
+                    .ifPresent(securityAttributeManager::postAttributeDistributorProcess);
         }
     }
 }

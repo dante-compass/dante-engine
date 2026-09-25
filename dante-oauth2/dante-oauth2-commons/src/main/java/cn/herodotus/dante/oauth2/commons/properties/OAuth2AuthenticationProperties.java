@@ -63,11 +63,11 @@ public class OAuth2AuthenticationProperties {
      */
     private String deviceVerificationFailureUri = SystemConstants.OAUTH2_DEVICE_VERIFICATION_FAILURE_URI;
 
-
     /**
      * Ssl Bundle Provider 名称，该名称与 Spring SSL 配置匹配。
      */
     private String sslBundleProvider;
+
     /**
      * 开启登录失败限制
      */
@@ -89,6 +89,8 @@ public class OAuth2AuthenticationProperties {
      * 核心数据持久化方式
      */
     private Persistence persistence = new Persistence();
+
+    private Mcp mcp = new Mcp();
 
     public String getAuthorizationConsentUri() {
         return authorizationConsentUri;
@@ -162,15 +164,27 @@ public class OAuth2AuthenticationProperties {
         this.persistence = persistence;
     }
 
+    public Mcp getMcp() {
+        return mcp;
+    }
+
+    public void setMcp(Mcp mcp) {
+        this.mcp = mcp;
+    }
+
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
                 .add("authorizationConsentUri", authorizationConsentUri)
+                .add("deviceVerificationSuccessUri", deviceVerificationSuccessUri)
+                .add("deviceVerificationFailureUri", deviceVerificationFailureUri)
                 .add("sslBundleProvider", sslBundleProvider)
                 .add("signInFailureLimited", signInFailureLimited)
                 .add("signInEndpointLimited", signInEndpointLimited)
                 .add("signInKickOutLimited", signInKickOutLimited)
                 .add("formLogin", formLogin)
+                .add("persistence", persistence)
+                .add("mcp", mcp)
                 .toString();
     }
 
@@ -540,6 +554,96 @@ public class OAuth2AuthenticationProperties {
                     .add("initialized", initialized)
                     .add("sas", sas)
                     .add("sys", sys)
+                    .toString();
+        }
+    }
+
+    public static class Mcp {
+        /**
+         * 是否支持 OAuth2.0 中的资源标识符功能
+         */
+        private Boolean supportResourceIndicators = Boolean.FALSE;
+
+        /**
+         * 是否支持 OAuth2 授权码授权模式是否支持 Iss 参数
+         */
+        private Boolean supportAuthorizationResponseIssParameter = Boolean.FALSE;
+
+        /**
+         * 是否支持 OAuth Client ID Metadata Documents
+         */
+        private Boolean supportClientIdMetadataDocument = Boolean.FALSE;
+
+        /**
+         * CIMD 缓存最大时间，默认 24 小时
+         */
+        private Duration cacheMaxAge = Duration.ofDays(1);
+        /**
+         * CIMD 是否允许 Http 类型的 Client Identifier
+         */
+        private Boolean allowHttpUrlForClientIdentifier = Boolean.TRUE;
+        /**
+         * CIMD 是否允许 Loopback 类型 Host 的 Client Identifier
+         */
+        private Boolean allowLoopbackHostForClientIdentifier = Boolean.TRUE;
+
+        public Boolean getSupportResourceIndicators() {
+            return supportResourceIndicators;
+        }
+
+        public void setSupportResourceIndicators(Boolean supportResourceIndicators) {
+            this.supportResourceIndicators = supportResourceIndicators;
+        }
+
+        public Boolean getSupportAuthorizationResponseIssParameter() {
+            return supportAuthorizationResponseIssParameter;
+        }
+
+        public void setSupportAuthorizationResponseIssParameter(Boolean supportAuthorizationResponseIssParameter) {
+            this.supportAuthorizationResponseIssParameter = supportAuthorizationResponseIssParameter;
+        }
+
+        public Boolean getSupportClientIdMetadataDocument() {
+            return supportClientIdMetadataDocument;
+        }
+
+        public void setSupportClientIdMetadataDocument(Boolean supportClientIdMetadataDocument) {
+            this.supportClientIdMetadataDocument = supportClientIdMetadataDocument;
+        }
+
+        public Duration getCacheMaxAge() {
+            return cacheMaxAge;
+        }
+
+        public void setCacheMaxAge(Duration cacheMaxAge) {
+            this.cacheMaxAge = cacheMaxAge;
+        }
+
+        public Boolean getAllowHttpUrlForClientIdentifier() {
+            return allowHttpUrlForClientIdentifier;
+        }
+
+        public void setAllowHttpUrlForClientIdentifier(Boolean allowHttpUrlForClientIdentifier) {
+            this.allowHttpUrlForClientIdentifier = allowHttpUrlForClientIdentifier;
+        }
+
+        public Boolean getAllowLoopbackHostForClientIdentifier() {
+            return allowLoopbackHostForClientIdentifier;
+        }
+
+        public void setAllowLoopbackHostForClientIdentifier(Boolean allowLoopbackHostForClientIdentifier) {
+            this.allowLoopbackHostForClientIdentifier = allowLoopbackHostForClientIdentifier;
+        }
+
+        @Override
+        public String toString() {
+            return MoreObjects.toStringHelper(this)
+                    .add("supportResourceIndicators", supportResourceIndicators)
+                    .add("supportAuthorizationResponseIssParameter", supportAuthorizationResponseIssParameter)
+                    .add("supportClientIdMetadataDocument", supportClientIdMetadataDocument)
+                    .add("cacheMaxAge", cacheMaxAge)
+                    .add("allowHttpUrlForClientIdentifier", allowHttpUrlForClientIdentifier)
+                    .add("allowLoopbackHostForClientIdentifier", allowLoopbackHostForClientIdentifier)
                     .toString();
         }
     }

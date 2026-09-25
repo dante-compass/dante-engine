@@ -25,9 +25,9 @@
 
 package cn.herodotus.dante.message.servlet.websocket.sender;
 
-import cn.herodotus.dante.message.commons.constant.MessageConstants;
-import cn.herodotus.dante.message.commons.domain.StreamMessage;
-import cn.herodotus.dante.message.commons.event.StreamMessageSendingEvent;
+import cn.herodotus.dante.messaging.constant.MessageConstants;
+import cn.herodotus.dante.messaging.domain.StreamMessage;
+import cn.herodotus.dante.messaging.event.StreamMessageSendingEvent;
 import cn.herodotus.dante.message.servlet.websocket.domain.StompWebSocketMessage;
 import cn.herodotus.dante.spring.context.ServiceContextHolder;
 import org.slf4j.Logger;

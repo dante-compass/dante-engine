@@ -25,7 +25,7 @@
 
 package cn.herodotus.dante.logic.upms.entity.security;
 
-import cn.herodotus.dante.data.commons.enums.ApplicationType;
+import cn.herodotus.dante.data.commons.enums.ClientType;
 import cn.herodotus.dante.data.jpa.entity.AbstractSysEntity;
 import cn.herodotus.dante.logic.upms.constant.LogicUpmsConstants;
 import cn.herodotus.dante.logic.upms.enums.ElementCategory;
@@ -112,9 +112,9 @@ public class SysElement extends AbstractSysEntity {
     private MenuScenario menuScenario = MenuScenario.APP;
 
     @Schema(name = "应用类型", title = "用于区分不同类型的应用")
-    @Column(name = "application_type", length = 50)
+    @Column(name = "client_type", length = 50)
     @Enumerated(EnumType.STRING)
-    private ApplicationType applicationType = ApplicationType.WEB;
+    private ClientType clientType = ClientType.WEB;
 
     @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = LogicUpmsConstants.REGION_SYS_ROLE)
     @Schema(name = "元素角色")
@@ -247,12 +247,12 @@ public class SysElement extends AbstractSysEntity {
         this.menuScenario = menuScenario;
     }
 
-    public ApplicationType getApplicationType() {
-        return applicationType;
+    public ClientType getApplicationType() {
+        return clientType;
     }
 
-    public void setApplicationType(ApplicationType applicationType) {
-        this.applicationType = applicationType;
+    public void setApplicationType(ClientType clientType) {
+        this.clientType = clientType;
     }
 
     public Set<SysRole> getRoles() {
@@ -296,7 +296,7 @@ public class SysElement extends AbstractSysEntity {
                 .add("ignoreAuth", ignoreAuth)
                 .add("elementCategory", elementCategory)
                 .add("menuScenario", menuScenario)
-                .add("applicationType", applicationType)
+                .add("clientType", clientType)
                 .addValue(super.toString())
                 .toString();
     }

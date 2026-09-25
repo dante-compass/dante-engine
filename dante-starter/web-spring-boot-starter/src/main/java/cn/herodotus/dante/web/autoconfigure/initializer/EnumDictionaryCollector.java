@@ -27,7 +27,7 @@ package cn.herodotus.dante.web.autoconfigure.initializer;
 
 import cn.herodotus.dante.core.builder.EnumDictionaryBuilder;
 import cn.herodotus.dante.core.domain.Dictionary;
-import cn.herodotus.dante.message.commons.definition.strategy.EnumDictionaryCollectEventManager;
+import cn.herodotus.dante.messaging.strategy.EnumDictionaryCollectionEventManager;
 import org.apache.commons.collections4.CollectionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -47,11 +47,11 @@ public class EnumDictionaryCollector implements ApplicationListener<ApplicationR
     private static final Logger log = LoggerFactory.getLogger(EnumDictionaryCollector.class);
 
     private final EnumDictionaryBuilder enumDictionaryBuilder;
-    private final EnumDictionaryCollectEventManager enumDictionaryCollectEventManager;
+    private final EnumDictionaryCollectionEventManager enumDictionaryCollectionEventManager;
 
-    public EnumDictionaryCollector(EnumDictionaryBuilder enumDictionaryBuilder, EnumDictionaryCollectEventManager enumDictionaryCollectEventManager) {
+    public EnumDictionaryCollector(EnumDictionaryBuilder enumDictionaryBuilder, EnumDictionaryCollectionEventManager enumDictionaryCollectionEventManager) {
         this.enumDictionaryBuilder = enumDictionaryBuilder;
-        this.enumDictionaryCollectEventManager = enumDictionaryCollectEventManager;
+        this.enumDictionaryCollectionEventManager = enumDictionaryCollectionEventManager;
     }
 
     @Override
@@ -63,7 +63,7 @@ public class EnumDictionaryCollector implements ApplicationListener<ApplicationR
 
         if (CollectionUtils.isNotEmpty(dictionaries)) {
             log.debug("[Herodotus] |- [E2] Enum dictionary scan found [{}] resources in current service, go to next stage!", dictionaries.size());
-            enumDictionaryCollectEventManager.postProcess(dictionaries);
+            enumDictionaryCollectionEventManager.postProcess(dictionaries);
         } else {
             log.debug("[Herodotus] |- [E2] Enum dictionary scan can not find any resources in current service!");
         }

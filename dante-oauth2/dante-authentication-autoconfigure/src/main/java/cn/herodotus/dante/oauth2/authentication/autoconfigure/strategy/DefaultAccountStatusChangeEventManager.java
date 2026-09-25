@@ -25,7 +25,7 @@
 
 package cn.herodotus.dante.oauth2.authentication.autoconfigure.strategy;
 
-import cn.herodotus.dante.message.commons.domain.AccountStatus;
+import cn.herodotus.dante.messaging.domain.AccountStatus;
 import cn.herodotus.dante.oauth2.authorization.autoconfigure.bus.RemoteAccountStatusChangeEvent;
 import cn.herodotus.dante.oauth2.commons.event.AccountStatusChangeEvent;
 import cn.herodotus.dante.oauth2.commons.strategy.AccountStatusChangedEventManager;

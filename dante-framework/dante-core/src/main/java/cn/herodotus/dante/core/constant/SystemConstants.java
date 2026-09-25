@@ -119,6 +119,25 @@ public interface SystemConstants {
     String OAUTH2_DEVICE_VERIFICATION_SUCCESS_URI = "/device_activation_success";
     String OAUTH2_DEVICE_VERIFICATION_FAILURE_URI = "/device_activation_failure";
     /**
+     * for Dynamic Client Configuration
+     */
+    String PARAMETER__PRODUCT_KEY = "product_key";
+    String PARAMETER__TOKEN_FORMAT = "token_format";
+    String PARAMETER__APPLICATION_TYPE = "application_type";
+    String PARAMETER__RESOURCE_IDS = "resource_ids";
+
+    /**
+     * OAuth2 Setting Names
+     */
+    String SETTINGS_NAMESPACE = "settings.";
+    String CLIENT_SETTINGS_NAMESPACE = SETTINGS_NAMESPACE.concat("client.");
+    String CLIENT_SETTINGS__PRODUCT_KEY = CLIENT_SETTINGS_NAMESPACE.concat("product-key");
+    String CLIENT_SETTINGS__APPLICATION_TYPE = CLIENT_SETTINGS_NAMESPACE.concat("application-type");
+    String CLIENT_SETTINGS__RESOURCE_IDS = CLIENT_SETTINGS_NAMESPACE.concat("resource-ids");
+    String AUTHORIZATION_SERVER_SETTINGS__CLIENT_ID_METADATA_DOCUMENT_SUPPORTED = "client_id_metadata_document_supported";
+    String AUTHORIZATION_SERVER_SETTINGS__PARAMETER__AUTHORIZATION_RESPONSE_ISS_PARAMETER_SUPPORTED = "authorization_response_iss_parameter_supported";
+
+    /**
      * OAuth2 模式类型
      */
     String USERNAME = "username";
@@ -153,10 +172,7 @@ public interface SystemConstants {
      * for OpenID Connect 1.0 Dynamic Client Configuration
      */
     String SCOPE_CLIENT_READ = "client.read";
-    /**
-     * for Dynamic Client Configuration
-     */
-    String TOKEN_FORMAT = "token_format";
+
 
     /* ---------- Security 相关常量 ---------- */
 
@@ -202,7 +218,6 @@ public interface SystemConstants {
     /**
      * 物联网自定义属性
      */
-    String PARAMETER__PRODUCT_KEY = "product_key";
     String EMQX__WEBHOOK_URI = "/open/emqx/webhook";
 
     /* ---------- 测试相关常量 ---------- */

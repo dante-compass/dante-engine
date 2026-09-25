@@ -27,7 +27,6 @@ package cn.herodotus.dante.oauth2.authorization.definition;
 
 import cn.herodotus.dante.core.builder.SecurityMatcher;
 import cn.herodotus.dante.oauth2.authorization.cache.HerodotusRequest;
-import cn.herodotus.dante.oauth2.commons.enums.PermissionExpression;
 import org.apache.commons.collections4.CollectionUtils;
 
 import java.util.LinkedHashMap;
@@ -68,9 +67,7 @@ public abstract class AbstractSecurityMatcherConfigurer {
     private Map<HerodotusRequest, List<HerodotusSecurityAttribute>> createPermitAllAttributes(List<String> permitAllResources) {
         if (CollectionUtils.isNotEmpty(permitAllResources)) {
             Map<HerodotusRequest, List<HerodotusSecurityAttribute>> result = new LinkedHashMap<>();
-            permitAllResources.forEach(item -> {
-                result.put(new HerodotusRequest(item), List.of(new HerodotusSecurityAttribute(PermissionExpression.PERMIT_ALL.getValue())));
-            });
+            permitAllResources.forEach(item -> result.put(new HerodotusRequest(item), List.of(HerodotusSecurityAttribute.createDefaultPermitAll())));
             return result;
         }
         return new LinkedHashMap<>();

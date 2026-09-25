@@ -25,7 +25,7 @@
 
 package cn.herodotus.dante.security.domain;
 
-import cn.herodotus.dante.core.domain.BaseModel;
+import cn.herodotus.dante.security.definition.RegisteredClientDetails;
 import com.google.common.base.MoreObjects;
 
 /**
@@ -34,7 +34,7 @@ import com.google.common.base.MoreObjects;
  * @author : gengwei.zheng
  * @date : 2025/2/25 18:03
  */
-public class OAuth2AuthorizationResource implements BaseModel {
+public class OAuth2AuthorizationResource implements RegisteredClientDetails {
 
     private String id;
     private String clientId;
@@ -42,6 +42,7 @@ public class OAuth2AuthorizationResource implements BaseModel {
     private String clientName;
     private String logo;
 
+    @Override
     public String getId() {
         return id;
     }
@@ -50,6 +51,7 @@ public class OAuth2AuthorizationResource implements BaseModel {
         this.id = id;
     }
 
+    @Override
     public String getClientId() {
         return clientId;
     }
@@ -58,6 +60,7 @@ public class OAuth2AuthorizationResource implements BaseModel {
         this.clientId = clientId;
     }
 
+    @Override
     public String getRedirectUris() {
         return redirectUris;
     }
@@ -66,6 +69,7 @@ public class OAuth2AuthorizationResource implements BaseModel {
         this.redirectUris = redirectUris;
     }
 
+    @Override
     public String getClientName() {
         return clientName;
     }
@@ -74,6 +78,7 @@ public class OAuth2AuthorizationResource implements BaseModel {
         this.clientName = clientName;
     }
 
+    @Override
     public String getLogo() {
         return logo;
     }

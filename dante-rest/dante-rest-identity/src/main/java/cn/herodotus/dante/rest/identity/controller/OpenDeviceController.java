@@ -51,12 +51,12 @@ public class OpenDeviceController {
         return "activation";
     }
 
-    @GetMapping(value = OAuth2Constants.ANNOTATION_DEVICE_VERIFICATION_SUCCESS_URI)
+    @GetMapping(value = OAuth2Constants.ANNOTATION__DEVICE_VERIFICATION_SUCCESS_URI)
     public String activationAllowed() {
         return "activation-allowed";
     }
 
-    @GetMapping(value = OAuth2Constants.ANNOTATION_DEVICE_VERIFICATION_FAILURE_URI)
+    @GetMapping(value = OAuth2Constants.ANNOTATION__DEVICE_VERIFICATION_FAILURE_URI)
     public String activationDenied() {
         return "activation-denied";
     }

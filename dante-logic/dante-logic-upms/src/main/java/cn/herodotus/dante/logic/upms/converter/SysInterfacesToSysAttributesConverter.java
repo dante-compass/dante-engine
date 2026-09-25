@@ -30,7 +30,7 @@ import cn.herodotus.dante.logic.upms.entity.security.SysInterface;
 import cn.herodotus.dante.spring.founction.ListConverter;
 
 /**
- * <p>Description: List<SysInterface> 转 List<SysAttribute> 转换器 </p>
+ * <p>Description: List {@link SysInterface} 转 List {@link SysAttribute} 转换器 </p>
  *
  * @author : gengwei.zheng
  * @date : 2023/8/23 22:59
@@ -47,14 +47,17 @@ public class SysInterfacesToSysAttributesConverter implements ListConverter<SysI
         target.setClassName(source.getClassName());
         target.setMethodName(source.getMethodName());
         target.setUrl(source.getUrl());
+        target.setVersion(source.getVersion());
+        target.setCategory(source.getCategory());
         target.setStatus(source.getStatus());
         target.setReserved(source.getReserved());
         target.setDescription(source.getDescription());
+        target.setRanking(source.getRanking());
+        target.setCreateBy(source.getCreateBy());
+        target.setUpdateBy(source.getUpdateBy());
         target.setReversion(source.getReversion());
         target.setCreateTime(source.getCreateTime());
         target.setUpdateTime(source.getUpdateTime());
-        target.setRanking(source.getRanking());
-        target.setVersion(source.getVersion());
         return target;
     }
 }

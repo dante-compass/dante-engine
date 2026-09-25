@@ -26,9 +26,11 @@
 package cn.herodotus.dante.persistence.sas.jpa.config;
 
 import cn.herodotus.dante.oauth2.commons.enums.SasPersistence;
+import cn.herodotus.dante.oauth2.commons.properties.OAuth2AuthenticationProperties;
 import cn.herodotus.dante.persistence.commons.condition.ConditionalOnSasPersistence;
 import cn.herodotus.dante.persistence.commons.definition.EnhanceAuthenticationManager;
 import cn.herodotus.dante.persistence.commons.definition.HerodotusUserLoggingService;
+import cn.herodotus.dante.persistence.commons.metadata.DelegatingRegisteredClientRepository;
 import cn.herodotus.dante.persistence.sas.jpa.repository.HerodotusRegisteredClientRepository;
 import cn.herodotus.dante.persistence.sas.jpa.service.*;
 import cn.herodotus.dante.persistence.sas.jpa.specification.*;
@@ -72,10 +74,11 @@ public class PersistenceSasJpaConfiguration {
     }
 
     @Bean
-    public RegisteredClientRepository registeredClientRepository(HerodotusRegisteredClientService herodotusRegisteredClientService) {
-        JpaRegisteredClientRepository jpaRegisteredClientRepository = new JpaRegisteredClientRepository(herodotusRegisteredClientService);
+    public RegisteredClientRepository registeredClientRepository(HerodotusRegisteredClientService herodotusRegisteredClientService, OAuth2AuthenticationProperties authenticationProperties) {
+        JpaRegisteredClientRepository defaultRegisteredClientRepository = new JpaRegisteredClientRepository(herodotusRegisteredClientService);
+        DelegatingRegisteredClientRepository registeredClientRepository = new DelegatingRegisteredClientRepository(defaultRegisteredClientRepository, authenticationProperties);
         log.trace("[Herodotus] |- Bean [JPA Registered Client Repository] Configure.");
-        return jpaRegisteredClientRepository;
+        return registeredClientRepository;
     }
 
     @Bean

@@ -51,6 +51,10 @@ import java.util.Map;
  */
 public class HerodotusJwtTokenCustomizer extends AbstractTokenCustomizer implements OAuth2TokenCustomizer<JwtEncodingContext> {
 
+    public HerodotusJwtTokenCustomizer(boolean supportResourceIndicators) {
+        super(supportResourceIndicators);
+    }
+
     @Override
     public void customize(JwtEncodingContext context) {
 
@@ -66,8 +70,8 @@ public class HerodotusJwtTokenCustomizer extends AbstractTokenCustomizer impleme
                 if (ObjectUtils.isNotEmpty(authentication)) {
                     Map<String, Object> attributes = new HashMap<>();
                     appendAll(attributes, authentication, context.getAuthorizedScopes());
-                    JwtClaimsSet.Builder jwtClaimSetBuilder = context.getClaims();
-                    jwtClaimSetBuilder.claims(claims -> claims.putAll(attributes));
+                    appendResource(attributes, context);
+                    context.getClaims().claims(claims -> claims.putAll(attributes));
                 }
             }
 

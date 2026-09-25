@@ -31,7 +31,7 @@
     <parent>
         <groupId>cn.herodotus.dante</groupId>
         <artifactId>dante-starter</artifactId>
-        <version>4.1.1.0</version>
+        <version>4.1.1.1</version>
     </parent>
 
     <artifactId>web-spring-boot-starter</artifactId>
@@ -52,7 +52,7 @@
 
         <dependency>
             <groupId>cn.herodotus.dante</groupId>
-            <artifactId>dante-message-commons</artifactId>
+            <artifactId>dante-messaging</artifactId>
         </dependency>
 
         <dependency>

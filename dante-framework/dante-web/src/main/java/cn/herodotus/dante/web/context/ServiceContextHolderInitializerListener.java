@@ -25,8 +25,8 @@
 
 package cn.herodotus.dante.web.context;
 
+import cn.herodotus.dante.spring.context.PropertyResolver;
 import cn.herodotus.dante.spring.context.ServiceContextHolder;
-import cn.herodotus.dante.web.support.WebPropertyFinder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationListener;
@@ -45,7 +45,7 @@ public class ServiceContextHolderInitializerListener implements ApplicationListe
     @Override
     public void onApplicationEvent(ApplicationContextEvent event) {
         ServiceContextHolder.setApplicationContext(event.getApplicationContext());
-        ServiceContextHolder.setApplicationName(WebPropertyFinder.getApplicationName(event.getApplicationContext()));
+        ServiceContextHolder.setApplicationName(PropertyResolver.getApplicationName(event.getApplicationContext()));
         log.debug("[Herodotus] |- HERODOTUS ApplicationContext initialization completed.");
     }
 }

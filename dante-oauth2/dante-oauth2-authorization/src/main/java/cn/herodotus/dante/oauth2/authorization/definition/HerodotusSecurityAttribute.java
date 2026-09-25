@@ -25,13 +25,21 @@
 
 package cn.herodotus.dante.oauth2.authorization.definition;
 
+import cn.herodotus.dante.oauth2.commons.enums.PermissionExpression;
+import cn.herodotus.dante.security.exception.SecurityAttributeClassNotFoundException;
+import cn.hutool.v7.core.reflect.TypeUtil;
+import cn.hutool.v7.core.reflect.method.MethodUtil;
+import cn.hutool.v7.extra.spring.SpringUtil;
 import com.google.common.base.MoreObjects;
-import org.springframework.util.Assert;
-import org.springframework.util.StringUtils;
+import org.aopalliance.intercept.MethodInvocation;
+import org.apache.commons.lang3.ClassUtils;
+import org.apache.commons.lang3.ObjectUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.security.util.MethodInvocationUtils;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import java.lang.reflect.Method;
 import java.util.Objects;
 
 /**
@@ -44,57 +52,93 @@ import java.util.Objects;
  */
 public class HerodotusSecurityAttribute implements Serializable {
 
-    private String attribute;
+    private static final Logger log = LoggerFactory.getLogger(HerodotusSecurityAttribute.class);
+
+    private String expression;
+
+    private String className;
+
+    private String methodName;
 
     public HerodotusSecurityAttribute() {
     }
 
-    public HerodotusSecurityAttribute(String config) {
-        Assert.hasText(config, "You must provide a configuration attribute");
-        this.attribute = config;
+    public String getExpression() {
+        return expression;
     }
 
-    public static HerodotusSecurityAttribute create(String attribute) {
-        Assert.notNull(attribute, "You must supply an array of attribute names");
-        return new HerodotusSecurityAttribute(attribute.trim());
+    public void setExpression(String expression) {
+        this.expression = expression;
     }
 
-    public static List<HerodotusSecurityAttribute> createListFromCommaDelimitedString(String access) {
-        return createList(StringUtils.commaDelimitedListToStringArray(access));
+    public String getClassName() {
+        return className;
     }
 
-    public static List<HerodotusSecurityAttribute> createList(String... attributeNames) {
-        Assert.notNull(attributeNames, "You must supply an array of attribute names");
-        List<HerodotusSecurityAttribute> attributes = new ArrayList<>(attributeNames.length);
-        for (String attribute : attributeNames) {
-            attributes.add(new HerodotusSecurityAttribute(attribute.trim()));
+    public void setClassName(String className) {
+        this.className = className;
+    }
+
+    public String getMethodName() {
+        return methodName;
+    }
+
+    public void setMethodName(String methodName) {
+        this.methodName = methodName;
+    }
+
+    public static HerodotusSecurityAttribute create(String expression, String className, String methodName) {
+        HerodotusSecurityAttribute attribute = new HerodotusSecurityAttribute();
+        attribute.setExpression(expression);
+        attribute.setClassName(className);
+        attribute.setMethodName(methodName);
+        return attribute;
+    }
+
+    public static HerodotusSecurityAttribute createDefaultPermitAll() {
+        HerodotusSecurityAttribute attribute = new HerodotusSecurityAttribute();
+        attribute.setExpression(PermissionExpression.PERMIT_ALL.getValue());
+        attribute.setClassName(HerodotusSecurityAttribute.class.getName());
+        attribute.setMethodName("getExpression");
+        return attribute;
+    }
+
+    public static MethodInvocation createMethodInvocation(HerodotusSecurityAttribute attribute) {
+        try {
+            Class<?> clazz = ClassUtils.getClass(attribute.getClassName());
+            Object object = SpringUtil.getBean(clazz);
+
+            if (ObjectUtils.isEmpty(object)) {
+                return MethodInvocationUtils.createFromClass(new HerodotusSecurityAttribute(), HerodotusSecurityAttribute.class, attribute.getMethodName(), null, null);
+            } else {
+                Method method = MethodUtil.getMethodByName(clazz, attribute.getMethodName());
+                Class<?>[] classArgs = TypeUtil.getParamClasses(method);
+                return MethodInvocationUtils.createFromClass(object, clazz, attribute.getMethodName(), classArgs, null);
+            }
+        } catch (ClassNotFoundException e) {
+            log.error("[Herodotus] |- Reactive createMethodInvocation error, can not found the class [{}]", attribute.getClassName());
+            throw new SecurityAttributeClassNotFoundException(e);
         }
-        return attributes;
-    }
-
-    public String getAttribute() {
-        return this.attribute;
     }
 
     @Override
     public boolean equals(Object o) {
-
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
         HerodotusSecurityAttribute that = (HerodotusSecurityAttribute) o;
-        return Objects.equals(attribute, that.attribute);
+        return Objects.equals(expression, that.expression);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(attribute);
+        return Objects.hashCode(expression);
     }
 
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("attrib", attribute)
+                .add("attrib", expression)
                 .toString();
     }
 }

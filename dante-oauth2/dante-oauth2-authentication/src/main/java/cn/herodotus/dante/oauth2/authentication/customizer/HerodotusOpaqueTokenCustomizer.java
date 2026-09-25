@@ -32,7 +32,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.server.authorization.OAuth2TokenType;
 import org.springframework.security.oauth2.server.authorization.authentication.OAuth2ClientAuthenticationToken;
 import org.springframework.security.oauth2.server.authorization.token.OAuth2TokenClaimsContext;
-import org.springframework.security.oauth2.server.authorization.token.OAuth2TokenClaimsSet;
 import org.springframework.security.oauth2.server.authorization.token.OAuth2TokenCustomizer;
 
 import java.util.HashMap;
@@ -48,6 +47,10 @@ import java.util.Map;
  * @date : 2022/10/9 20:43
  */
 public class HerodotusOpaqueTokenCustomizer extends AbstractTokenCustomizer implements OAuth2TokenCustomizer<OAuth2TokenClaimsContext> {
+
+    public HerodotusOpaqueTokenCustomizer(boolean supportResourceIndicators) {
+        super(supportResourceIndicators);
+    }
 
     @Override
     public void customize(OAuth2TokenClaimsContext context) {
@@ -66,8 +69,8 @@ public class HerodotusOpaqueTokenCustomizer extends AbstractTokenCustomizer impl
                     if (ObjectUtils.isNotEmpty(authentication)) {
                         Map<String, Object> attributes = new HashMap<>();
                         appendAll(attributes, authentication, context.getAuthorizedScopes());
-                        OAuth2TokenClaimsSet.Builder tokenClaimSetBuilder = context.getClaims();
-                        tokenClaimSetBuilder.claims(claims -> claims.putAll(attributes));
+                        appendResource(attributes, context);
+                        context.getClaims().claims(claims -> claims.putAll(attributes));
                     }
                 }
             }

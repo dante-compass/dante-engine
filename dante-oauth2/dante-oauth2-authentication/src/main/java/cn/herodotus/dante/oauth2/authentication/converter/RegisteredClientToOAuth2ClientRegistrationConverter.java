@@ -44,7 +44,8 @@ public class RegisteredClientToOAuth2ClientRegistrationConverter extends Abstrac
 
     private final RegisteredClientOAuth2ClientRegistrationConverter delegate;
 
-    public RegisteredClientToOAuth2ClientRegistrationConverter() {
+    public RegisteredClientToOAuth2ClientRegistrationConverter(boolean supportResourceIndicators) {
+        super(supportResourceIndicators);
         this.delegate = new RegisteredClientOAuth2ClientRegistrationConverter();
     }
 

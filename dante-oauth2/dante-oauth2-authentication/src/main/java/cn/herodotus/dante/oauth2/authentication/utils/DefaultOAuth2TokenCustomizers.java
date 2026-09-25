@@ -24,15 +24,18 @@
  */
 package cn.herodotus.dante.oauth2.authentication.utils;
 
+import com.nimbusds.jose.jwk.JWK;
 import org.springframework.security.oauth2.core.ClientAuthenticationMethod;
 import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
 import org.springframework.security.oauth2.core.OAuth2Error;
 import org.springframework.security.oauth2.core.OAuth2ErrorCodes;
+import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.security.oauth2.server.authorization.OAuth2TokenType;
 import org.springframework.security.oauth2.server.authorization.authentication.OAuth2ClientAuthenticationToken;
 import org.springframework.security.oauth2.server.authorization.authentication.OAuth2TokenExchangeActor;
 import org.springframework.security.oauth2.server.authorization.authentication.OAuth2TokenExchangeCompositeAuthenticationToken;
 import org.springframework.security.oauth2.server.authorization.token.*;
+import org.springframework.util.CollectionUtils;
 
 import java.security.MessageDigest;
 import java.security.cert.X509Certificate;
@@ -57,6 +60,8 @@ final class DefaultOAuth2TokenCustomizers {
     }
 
     private static void customize(OAuth2TokenContext tokenContext, Map<String, Object> claims) {
+        Map<String, Object> cnfClaims = null;
+
         // Add 'cnf' claim for Mutual-TLS Client Certificate-Bound Access Tokens
         if (OAuth2TokenType.ACCESS_TOKEN.equals(tokenContext.getTokenType())
                 && tokenContext.getAuthorizationGrant() != null && tokenContext.getAuthorizationGrant()
@@ -70,15 +75,47 @@ final class DefaultOAuth2TokenCustomizers {
                 X509Certificate[] clientCertificateChain = (X509Certificate[]) clientAuthentication.getCredentials();
                 try {
                     String sha256Thumbprint = computeSHA256Thumbprint(clientCertificateChain[0]);
-                    Map<String, Object> x5tClaim = new HashMap<>();
-                    x5tClaim.put("x5t#S256", sha256Thumbprint);
-                    claims.put("cnf", x5tClaim);
+                    cnfClaims = new HashMap<>();
+                    cnfClaims.put("x5t#S256", sha256Thumbprint);
                 } catch (Exception ex) {
                     OAuth2Error error = new OAuth2Error(OAuth2ErrorCodes.SERVER_ERROR,
                             "Failed to compute SHA-256 Thumbprint for client X509Certificate.", null);
                     throw new OAuth2AuthenticationException(error, ex);
                 }
             }
+        }
+
+        // Add 'cnf' claim for OAuth 2.0 Demonstrating Proof of Possession (DPoP)
+        Jwt dPoPProofJwt = tokenContext.get(OAuth2TokenContext.DPOP_PROOF_KEY);
+        if (OAuth2TokenType.ACCESS_TOKEN.equals(tokenContext.getTokenType()) && dPoPProofJwt != null) {
+            JWK jwk = null;
+            @SuppressWarnings("unchecked")
+            Map<String, Object> jwkJson = (Map<String, Object>) dPoPProofJwt.getHeaders().get("jwk");
+            try {
+                jwk = JWK.parse(jwkJson);
+            } catch (Exception ignored) {
+            }
+            if (jwk == null) {
+                OAuth2Error error = new OAuth2Error(OAuth2ErrorCodes.INVALID_DPOP_PROOF,
+                        "jwk header is missing or invalid.", null);
+                throw new OAuth2AuthenticationException(error);
+            }
+
+            try {
+                String sha256Thumbprint = jwk.computeThumbprint().toString();
+                if (cnfClaims == null) {
+                    cnfClaims = new HashMap<>();
+                }
+                cnfClaims.put("jkt", sha256Thumbprint);
+            } catch (Exception ex) {
+                OAuth2Error error = new OAuth2Error(OAuth2ErrorCodes.SERVER_ERROR,
+                        "Failed to compute SHA-256 Thumbprint for DPoP Proof PublicKey.", null);
+                throw new OAuth2AuthenticationException(error, ex);
+            }
+        }
+
+        if (!CollectionUtils.isEmpty(cnfClaims)) {
+            claims.put("cnf", cnfClaims);
         }
 
         // Add 'act' claim for delegation use case of Token Exchange Grant.

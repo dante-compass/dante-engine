@@ -26,7 +26,7 @@
 package cn.herodotus.dante.message.servlet.websocket.utils;
 
 import cn.herodotus.dante.cache.utils.RedisBitMapUtils;
-import cn.herodotus.dante.message.commons.constant.MessageConstants;
+import cn.herodotus.dante.messaging.constant.MessageConstants;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.http.server.ServerHttpRequest;

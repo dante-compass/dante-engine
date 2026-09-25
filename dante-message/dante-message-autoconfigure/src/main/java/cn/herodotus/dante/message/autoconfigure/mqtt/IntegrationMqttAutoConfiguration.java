@@ -29,7 +29,7 @@ import cn.herodotus.dante.core.utils.ListUtils;
 import cn.herodotus.dante.core.utils.NumberUtils;
 import cn.herodotus.dante.message.autoconfigure.event.IntegrationEventAutoConfiguration;
 import cn.herodotus.dante.message.autoconfigure.mqtt.gateway.MqttMessagingGateway;
-import cn.herodotus.dante.message.commons.constant.Channels;
+import cn.herodotus.dante.messaging.constant.Channels;
 import cn.hutool.v7.core.util.ByteUtil;
 import jakarta.annotation.PostConstruct;
 import org.eclipse.paho.mqttv5.client.IMqttAsyncClient;

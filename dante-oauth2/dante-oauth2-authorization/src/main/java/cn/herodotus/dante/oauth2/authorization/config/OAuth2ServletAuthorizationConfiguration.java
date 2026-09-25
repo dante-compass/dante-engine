@@ -27,15 +27,16 @@ package cn.herodotus.dante.oauth2.authorization.config;
 
 import cn.herodotus.dante.core.builder.SecurityMatcher;
 import cn.herodotus.dante.core.function.SecurityMatcherBuilderCustomizer;
-import cn.herodotus.dante.oauth2.authorization.attribute.RestSecurityAttributeStorage;
-import cn.herodotus.dante.oauth2.authorization.attribute.SecurityAttributeAnalyzer;
+import cn.herodotus.dante.oauth2.authorization.attribute.SecurityAttributeManager;
+import cn.herodotus.dante.oauth2.authorization.customizer.DefaultOAuth2ProtectedResourceMetadataStorage;
 import cn.herodotus.dante.oauth2.authorization.customizer.OAuth2AuthorizationSecurityMatcherBuilderCustomizer;
 import cn.herodotus.dante.oauth2.authorization.properties.OAuth2AuthorizationProperties;
 import cn.herodotus.dante.oauth2.authorization.servlet.OAuth2SessionManagementConfigurerCustomer;
 import cn.herodotus.dante.oauth2.authorization.servlet.ServletOAuth2AuthorizationConfigurerManager;
 import cn.herodotus.dante.oauth2.authorization.servlet.ServletOAuth2ResourceMatcherConfigurer;
 import cn.herodotus.dante.oauth2.authorization.servlet.ServletSecurityAuthorizationManager;
-import cn.herodotus.dante.web.servlet.template.ThymeleafTemplateHandler;
+import cn.herodotus.dante.security.definition.OAuth2ProtectedResourceMetadataStorage;
+import cn.herodotus.dante.web.definition.template.ServletTemplateHandler;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -82,29 +83,6 @@ public class OAuth2ServletAuthorizationConfiguration {
     }
 
     @Bean
-    @ConditionalOnMissingBean
-    public RestSecurityAttributeStorage securityMetadataSourceStorage() {
-        return new RestSecurityAttributeStorage();
-    }
-
-    @Bean
-    @ConditionalOnMissingBean
-    public ServletSecurityAuthorizationManager servletSecurityAuthorizationManager(RestSecurityAttributeStorage restSecurityAttributeStorage, ServletOAuth2ResourceMatcherConfigurer servletOAuth2ResourceMatcherConfigurer, ObjectProvider<ApiVersionStrategy> apiVersionStrategies) {
-        ServletSecurityAuthorizationManager manager = new ServletSecurityAuthorizationManager(restSecurityAttributeStorage, servletOAuth2ResourceMatcherConfigurer, apiVersionStrategies);
-        log.trace("[Herodotus] |- Bean [Servlet Security Authorization Manager] Configure.");
-        return manager;
-    }
-
-    @Bean
-    @ConditionalOnMissingBean
-    public SecurityAttributeAnalyzer securityAttributeAnalyzer(RestSecurityAttributeStorage restSecurityAttributeStorage, ServletOAuth2ResourceMatcherConfigurer servletOAuth2ResourceMatcherConfigurer) {
-        SecurityAttributeAnalyzer analyzer = new SecurityAttributeAnalyzer(restSecurityAttributeStorage, servletOAuth2ResourceMatcherConfigurer);
-        log.trace("[Herodotus] |- Bean [Security Attribute Analyzer] Configure.");
-        return analyzer;
-    }
-
-    @Bean
-    @ConditionalOnMissingBean
     public ServletOAuth2ResourceMatcherConfigurer servletSecurityMatcherConfigurer(OAuth2AuthorizationProperties authorizationProperties, ResourceUrlProvider resourceUrlProvider, SecurityMatcher securityMatcher) {
         ServletOAuth2ResourceMatcherConfigurer configurer = new ServletOAuth2ResourceMatcherConfigurer(authorizationProperties, resourceUrlProvider, securityMatcher);
         log.trace("[Herodotus] |- Bean [Servlet Security Matcher Configurer] Configure.");
@@ -112,21 +90,45 @@ public class OAuth2ServletAuthorizationConfiguration {
     }
 
     @Bean
+    public SecurityAttributeManager securityAttributeAnalyzer(ServletOAuth2ResourceMatcherConfigurer servletOAuth2ResourceMatcherConfigurer) {
+        SecurityAttributeManager analyzer = new SecurityAttributeManager(servletOAuth2ResourceMatcherConfigurer.getPermitAllAttributes());
+        log.trace("[Herodotus] |- Bean [Security Attribute Analyzer] Configure.");
+        return analyzer;
+    }
+
+    @Bean
+    public ServletSecurityAuthorizationManager servletSecurityAuthorizationManager(SecurityAttributeManager securityAttributeManager, ServletOAuth2ResourceMatcherConfigurer servletOAuth2ResourceMatcherConfigurer, ObjectProvider<ApiVersionStrategy> apiVersionStrategies) {
+        ServletSecurityAuthorizationManager manager = new ServletSecurityAuthorizationManager(securityAttributeManager, servletOAuth2ResourceMatcherConfigurer, apiVersionStrategies);
+        log.trace("[Herodotus] |- Bean [Servlet Security Authorization Manager] Configure.");
+        return manager;
+    }
+
+
+    @Bean
     @ConditionalOnMissingBean
+    public OAuth2ProtectedResourceMetadataStorage oauth2ProtectedResourceMetadataRepository() {
+        DefaultOAuth2ProtectedResourceMetadataStorage repository = new DefaultOAuth2ProtectedResourceMetadataStorage();
+        log.trace("[Herodotus] |- Bean [OAuth2 Protected Resource Metadata Repository] Configure.");
+        return repository;
+    }
+
+    @Bean
     public ServletOAuth2AuthorizationConfigurerManager servletOAuth2AuthorizationFacadeConfigurer(
-            ThymeleafTemplateHandler thymeleafTemplateHandler,
+            ServletTemplateHandler servletTemplateHandler,
             JwtDecoder jwtDecoder,
             OpaqueTokenIntrospector opaqueTokenIntrospector,
             OAuth2SessionManagementConfigurerCustomer sessionManagementConfigurerCustomer,
             ServletOAuth2ResourceMatcherConfigurer servletOAuth2ResourceMatcherConfigurer,
-            ServletSecurityAuthorizationManager servletSecurityAuthorizationManager) {
+            ServletSecurityAuthorizationManager servletSecurityAuthorizationManager,
+            OAuth2ProtectedResourceMetadataStorage oauth2ProtectedResourceMetadataStorage) {
         ServletOAuth2AuthorizationConfigurerManager configurer = new ServletOAuth2AuthorizationConfigurerManager(
-                thymeleafTemplateHandler,
+                servletTemplateHandler,
                 jwtDecoder,
                 opaqueTokenIntrospector,
                 sessionManagementConfigurerCustomer,
                 servletOAuth2ResourceMatcherConfigurer,
-                servletSecurityAuthorizationManager);
+                servletSecurityAuthorizationManager,
+                oauth2ProtectedResourceMetadataStorage);
         log.trace("[Herodotus] |- Bean [Servlet OAuth2 Resource Server Configurer] Configure.");
         return configurer;
     }

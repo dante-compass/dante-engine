@@ -32,7 +32,7 @@
     <parent>
         <artifactId>dante-engine</artifactId>
         <groupId>cn.herodotus.dante</groupId>
-        <version>4.1.1.0</version>
+        <version>4.1.1.1</version>
     </parent>
 
     <artifactId>dante-message</artifactId>
@@ -44,7 +44,6 @@
 
     <modules>
         <module>dante-message-autoconfigure</module>
-        <module>dante-message-commons</module>
         <module>dante-message-servlet-websocket</module>
         <module>dante-message-emqx</module>
     </modules>

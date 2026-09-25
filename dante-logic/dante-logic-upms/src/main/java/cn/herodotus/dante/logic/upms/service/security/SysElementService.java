@@ -25,7 +25,7 @@
 
 package cn.herodotus.dante.logic.upms.service.security;
 
-import cn.herodotus.dante.data.commons.enums.ApplicationType;
+import cn.herodotus.dante.data.commons.enums.ClientType;
 import cn.herodotus.dante.data.jpa.repository.BaseJpaRepository;
 import cn.herodotus.dante.data.jpa.service.AbstractJpaService;
 import cn.herodotus.dante.logic.upms.entity.security.SysElement;
@@ -87,13 +87,13 @@ public class SysElementService extends AbstractJpaService<SysElement, String> {
         return this.findByPage(specification, pageable);
     }
 
-    public List<SysElement> findAllByRoleCodes(ApplicationType applicationType, String[] roles) {
+    public List<SysElement> findAllByRoleCodes(ClientType clientType, String[] roles) {
         Specification<SysElement> specification = (root, criteriaQuery, criteriaBuilder) -> {
 
             List<Predicate> predicates = new ArrayList<>();
 
-            if (ObjectUtils.isNotEmpty(applicationType)) {
-                predicates.add(criteriaBuilder.equal(root.get("applicationType"), applicationType));
+            if (ObjectUtils.isNotEmpty(clientType)) {
+                predicates.add(criteriaBuilder.equal(root.get("clientType"), clientType));
             }
 
             if (ArrayUtils.isNotEmpty(roles)) {

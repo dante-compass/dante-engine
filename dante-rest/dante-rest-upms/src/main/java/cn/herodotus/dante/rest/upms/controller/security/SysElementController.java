@@ -26,7 +26,7 @@
 package cn.herodotus.dante.rest.upms.controller.security;
 
 import cn.herodotus.dante.core.domain.Result;
-import cn.herodotus.dante.data.commons.enums.ApplicationType;
+import cn.herodotus.dante.data.commons.enums.ClientType;
 import cn.herodotus.dante.data.jpa.service.BaseJpaWriteableService;
 import cn.herodotus.dante.data.rest.servlet.AbstractJpaEntityWriteableController;
 import cn.herodotus.dante.logic.upms.entity.security.SysElement;
@@ -96,7 +96,7 @@ public class SysElementController extends AbstractJpaEntityWriteableController<S
     })
     @GetMapping("/resources")
     public Result<Elements> findAllByRoleCodes(@RequestParam(name = "roles[]") String[] roles) {
-        List<SysElement> sysElements = sysElementService.findAllByRoleCodes(ApplicationType.WEB, roles);
+        List<SysElement> sysElements = sysElementService.findAllByRoleCodes(ClientType.WEB, roles);
         return result(toElements.convert(sysElements));
     }
 

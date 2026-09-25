@@ -25,15 +25,18 @@
 
 package cn.herodotus.dante.oauth2.authorization.servlet;
 
+import cn.herodotus.dante.core.domain.Result;
 import cn.herodotus.dante.security.exception.SecurityGlobalExceptionHandler;
-import cn.herodotus.dante.web.servlet.template.AbstractResponseHandler;
-import cn.herodotus.dante.web.servlet.template.ThymeleafTemplateHandler;
+import cn.herodotus.dante.web.definition.template.ServletTemplateHandler;
+import cn.herodotus.dante.web.servlet.response.AbstractResponseHandler;
+import cn.herodotus.dante.web.servlet.utils.RequestUtils;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.oauth2.server.resource.web.access.BearerTokenAccessDeniedHandler;
 import org.springframework.security.web.access.AccessDeniedHandler;
 
 import java.io.IOException;
@@ -47,9 +50,10 @@ import java.io.IOException;
 public class HerodotusAccessDeniedHandler extends AbstractResponseHandler implements AccessDeniedHandler {
 
     private static final Logger log = LoggerFactory.getLogger(HerodotusAccessDeniedHandler.class);
+    private final AccessDeniedHandler bearerTokenAccessDeniedHandler = new BearerTokenAccessDeniedHandler();
 
-    public HerodotusAccessDeniedHandler(ThymeleafTemplateHandler templateHandler) {
-        super(templateHandler);
+    public HerodotusAccessDeniedHandler(ServletTemplateHandler servletTemplateHandler) {
+        super(servletTemplateHandler);
     }
 
     @Override
@@ -57,6 +61,14 @@ public class HerodotusAccessDeniedHandler extends AbstractResponseHandler implem
 
         log.warn("[Herodotus] |- Access Denied for request [{}],which in reactive service!", request.getRequestURI());
 
-        process(request, response, () -> SecurityGlobalExceptionHandler.resolveSecurityException(exception, request.getRequestURI()));
+        Result<String> result = SecurityGlobalExceptionHandler.resolveSecurityException(exception, request.getRequestURI());
+
+        if (RequestUtils.isHtml(request)) {
+            rendererHtml(request, response, result);
+        } else {
+            // 支持返回 WWW-Authenticate 头
+            bearerTokenAccessDeniedHandler.handle(request, response, exception);
+            rendererJson(request, response, result);
+        }
     }
 }

@@ -45,24 +45,29 @@ import java.util.function.Consumer;
  */
 public class OAuth2ClientRegistrationAuthenticationProviderConsumer implements Consumer<List<AuthenticationProvider>> {
 
+    private final boolean supportResourceIndicators;
+
+    public OAuth2ClientRegistrationAuthenticationProviderConsumer(boolean supportResourceIndicators) {
+        this.supportResourceIndicators = supportResourceIndicators;
+    }
+
     @Override
     public void accept(List<AuthenticationProvider> authenticationProviders) {
 
         Converter<OAuth2ClientRegistration, RegisteredClient> toRegisteredClientConverter =
-                new OAuth2ClientRegistrationToRegisteredClientConverter();
-        Converter<RegisteredClient, OAuth2ClientRegistration> toOidcClientRegistrationConverter =
-                new RegisteredClientToOAuth2ClientRegistrationConverter();
+                new OAuth2ClientRegistrationToRegisteredClientConverter(supportResourceIndicators);
+        Converter<RegisteredClient, OAuth2ClientRegistration> toOAuth2ClientRegistrationConverter =
+                new RegisteredClientToOAuth2ClientRegistrationConverter(supportResourceIndicators);
 
         authenticationProviders.forEach((authenticationProvider) -> {
             if (authenticationProvider instanceof OAuth2ClientRegistrationAuthenticationProvider provider) {
                 provider.setRegisteredClientConverter(toRegisteredClientConverter);
-                provider.setClientRegistrationConverter(toOidcClientRegistrationConverter);
+                provider.setClientRegistrationConverter(toOAuth2ClientRegistrationConverter);
                 provider.setAuthenticationValidator(
                         OAuth2ClientRegistrationAuthenticationValidator.DEFAULT_REDIRECT_URI_VALIDATOR
                                 .andThen(OAuth2ClientRegistrationAuthenticationValidator.DEFAULT_JWK_SET_URI_VALIDATOR)
                                 .andThen(OAuth2ClientRegistrationAuthenticationValidator.SIMPLE_SCOPE_VALIDATOR));
             }
         });
-
     }
 }

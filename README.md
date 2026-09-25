@@ -8,18 +8,18 @@
     <a href="https://spring.io/projects/spring-boot" target="_blank"><img src="https://img.shields.io/badge/Spring%20Boot-4.1.1-blue.svg?logo=springboot" alt="Spring Boot 4.1.1"></a>
     <a href="https://spring.io/projects/spring-cloud" target="_blank"><img src="https://img.shields.io/badge/Spring%20Cloud-2025.1.3-blue.svg?logo=springboot" alt="Spring Cloud 2025.1.3"></a>
     <a href="https://github.com/alibaba/spring-cloud-alibaba" target="_blank"><img src="https://img.shields.io/badge/Spring%20Cloud%20Alibaba-2025.1.0.0-blue.svg?logo=alibabadotcom" alt="Spring Cloud Alibaba 2025.1.0.0"></a>
-    <a href="https://github.com/Tencent/spring-cloud-tencent" target="_blank"><img src="https://img.shields.io/badge/Spring%20Cloud%20Tencent-2.1.2.0--2025.0.2-blue.svg?logo=qq" alt="Spring Cloud Tencent 2.1.2.0-2025.0.2"></a>
-    <a href="https://nacos.io/docs/latest/overview/" target="_blank"><img src="https://img.shields.io/badge/Nacos-3.2.3-brightgreen.svg?logo=alibabadotcom" alt="Nacos 3.2.3"></a>
+    <a href="https://github.com/Tencent/spring-cloud-tencent" target="_blank"><img src="https://img.shields.io/badge/Spring%20Cloud%20Tencent-2.1.2.0--2025.1.1-blue.svg?logo=qq" alt="Spring Cloud Tencent 2.1.2.0-2025.1.1"></a>
+    <a href="https://nacos.io/docs/latest/overview/" target="_blank"><img src="https://img.shields.io/badge/Nacos-3.2.4-brightgreen.svg?logo=alibabadotcom" alt="Nacos 3.2.4"></a>
 </p>
 <p align="center">
     <a href="https://my.oschina.net/pointerv" target="_blank"><img src="https://img.shields.io/badge/Author-%E7%A0%81%E5%8C%A0%E5%90%9B-orange" alt="码匠君"></a>
     <a href="./LICENSE"><img src="https://img.shields.io/badge/License-Apache--2.0-blue.svg?logo=apache" alt="License Apache 2.0"></a>
     <a href="https://bell-sw.com/pages/downloads/#downloads" target="_blank"><img src="https://img.shields.io/badge/JDK-25%2B-green.svg?logo=openjdk" alt="Java 25"></a>
-    <a href="https://github.com/dante-compass/dante-engine" target="_blank"><img src="https://img.shields.io/badge/Version-4.1.1.0-red.svg?logo=spring" alt="Version 4.1.1.0"></a>
-    <a href="https://github.com/dromara/dante-cloud" target="_blank"><img src="https://img.shields.io/badge/Dante%20Cloud-4.1.1.0-red.svg?logo=spring" alt="Dante Cloud 4.1.1.0"></a>
-    <a href="https://github.com/dante-compass/thingsbrain" target="_blank"><img src="https://img.shields.io/badge/ThingsBrain-4.1.1.0-red.svg?logo=spring" alt="ThingsBrain 4.1.1.0"></a>
-    <a href="https://github.com/dante-compass/dante-cloud-ui" target="_blank"><img src="https://img.shields.io/badge/Dante%20Cloud%20UI-4.1.1.0-blue.svg?logo=quasar&logoColor=%23050A14" alt="Dante Cloud UI 4.1.1.0"></a>
-    <a href="https://github.com/dante-compass/herodotus-cloud-ui-vuetify" target="_blank"><img src="https://img.shields.io/badge/Dante%20Cloud%20UI(New)-4.1.1.0-blue.svg?logo=vuetify&logoColor=%231867C0" alt="Dante Cloud UI(New) 4.1.1.0"></a>
+    <a href="https://github.com/dante-compass/dante-engine" target="_blank"><img src="https://img.shields.io/badge/Version-4.1.1.1-red.svg?logo=spring" alt="Version 4.1.1.1"></a>
+    <a href="https://github.com/dromara/dante-cloud" target="_blank"><img src="https://img.shields.io/badge/Dante%20Cloud-4.1.1.1-red.svg?logo=spring" alt="Dante Cloud 4.1.1.1"></a>
+    <a href="https://github.com/dante-compass/thingsbrain" target="_blank"><img src="https://img.shields.io/badge/ThingsBrain-4.1.1.1-red.svg?logo=spring" alt="ThingsBrain 4.1.1.1"></a>
+    <a href="https://github.com/dante-compass/dante-cloud-ui" target="_blank"><img src="https://img.shields.io/badge/Dante%20Cloud%20UI-4.1.1.1-blue.svg?logo=quasar&logoColor=%23050A14" alt="Dante Cloud UI 4.1.1.1"></a>
+    <a href="https://github.com/dante-compass/herodotus-cloud-ui-vuetify" target="_blank"><img src="https://img.shields.io/badge/Dante%20Cloud%20UI(New)-4.1.1.1-blue.svg?logo=vuetify&logoColor=%231867C0" alt="Dante Cloud UI(New) 4.1.1.1"></a>
     <a href="https://github.com/dante-compass/dante-engine"><img src="https://img.shields.io/github/stars/dante-compass/dante-engine.svg?label=Github%20Stars" alt="Github star"></a>
     <a href="https://github.com/dante-compass/dante-engine"><img src="https://img.shields.io/github/forks/dante-compass/dante-engine.svg?label=Github%20Forks" alt="Github fork"></a>
     <a href="https://gitee.com/dante-compass/dante-engine"><img src="https://gitee.com/dante-compass/dante-engine/badge/star.svg?theme=dark" alt="Gitee star"></a>
@@ -38,6 +38,8 @@
 ---
 
 ## 项目介绍
+
+**Dante Cloud** 国内首个支持阻塞式和响应式服务并行的、开箱即用的企业级云原生微服务基座和面向 AI Agent 开发的智能基座。是采用**领域驱动模型(DDD)**设计思想，以「**高质量代码、低安全漏洞**」为核心，基于 Spring 生态全域开源技术，高度**模块化和组件化设计**，支持**智能电视、IoT等物联网设备**认证，满足**国家三级等保要求**，支持**接口国密数字信封加解密**等一系列安全体系的一站式多租户微服务解决方案。独创的可以“**一套代码实现微服务和单体两种架构灵活切换**”的企业级应用系统，赋能企业级智能应用构建。
 
 Dante Engine 为 Dante Cloud 微服务项目核心组件库，是 Dante Cloud 项目核心内容。单独提取一个工程，一方面便于多项目共享代码，提升代码维护的便捷性；另一方面，Dante Engine 已经提前编译完成并发布中央仓库，可以极大地提升 Dante Cloud 主工程的编译效率。
 
@@ -84,6 +86,7 @@ dante-engine
 ├    ├── dante-cache -- 缓存相关基础代码模块
 ├    ├── dante-core -- 核心定义模块
 ├    ├── dante-hibernate -- Hibernate 扩展模块
+├    ├── dante-messaging -- Messaging 相关基础代码模块
 ├    ├── dante-security -- Security 相关基础代码模块
 ├    ├── dante-spring -- SpringBoot 相关基础代码模块
 ├    └── dante-web -- Web 服务相关基础代码模块
@@ -93,7 +96,6 @@ dante-engine
 ├    └── dante-logic-upms -- UPMS 业务逻辑模块
 ├── dante-message -- 消息模块
 ├    ├── dante-message-autoconfigure -- 消息自动配置模块
-├    ├── dante-message-commons -- 消息通用代码模块
 ├    ├── dante-message-emqx -- Emqx 封装模块
 ├    └── dante-message-servlet-websocket -- 基于 Servlet 环境下的 Websocket 功能封装模块
 ├── dante-oauth2 -- OAuth2 认证模块
@@ -138,17 +140,17 @@ dante-engine
 
 ## 2. 分支说明
 
-|          分支名称          | 对应 Spring 生态版本                          | 对应 JDK 版本 | 用途             | 现状                                                          |
-|:----------------------:|-----------------------------------------|-----------|----------------|-------------------------------------------------------------|
-|         master         | Spring Boot 4.1 和 Spring Cloud 2025.1.3 | JDK 25    | 主要发布分支         | 推荐使用代码分支                                                    |
-|        develop         | Spring Boot 4.1 和 Spring Cloud 2025.1.3 | JDK 25    | Development 分支 | 新功能、ISSUE 均以此分支作为开发，发布后会 PR 至 master 分支                     |
-|         4.0.X          | Spring Boot 4.0 和 Spring Cloud 2025.1.1 | JDK 25    | 历史版本，停止维护      | 基于 Spring Boot 4.0 时代开发的代码分支，稳定可用，停止维护                      |
-|         3.5.X          | Spring Boot 3.5 和 Spring Cloud 2025.0.X | JDK 17    | 历史版本，停止维护      | 基于 Spring Boot 3.5 时代开发的代码分支，稳定可用，停止维护                      |
-|         3.4.X          | Spring Boot 3.4 和 Spring Cloud 2024.0.X | JDK 17    | 历史版本，停止维护      | 基于 Spring Boot 3.4 时代开发的代码分支，稳定可用，停止维护                      |
-|      3.2.X-3.3.X       | Spring Boot 3.3 和 Spring Cloud 2023.0.X | JDK 17    | 历史版本，停止维护      | 基于 Spring Boot 3.3 时代开发的代码分支，稳定可用，停止维护                      |
-|         3.1.X          | Spring Boot 3.1 和 Spring Cloud 2022.0.X | JDK 17    | 历史版本，停止维护      | 基于 Spring Boot 3.1 时代开发的代码分支，稳定可用，停止维护                      |
-|         2.7.X          | Spring Boot 2.7 和 Spring Cloud 2021.0.X | JDK 8     | 历史版本，停止维护      | 基于 Spring Boot 2.7 时代开发的代码分支，稳定可用，停止维护                      |
-| spring-security-oauth2 | Spring Boot 2.6 和 Spring Cloud 2021.0.X | JDK 8     | 历史代码，不再维护      | 基于原 Spring Security OAuth2 实现的微服务，稳定可用，因相关组件均不在维护，所以该版本停止维护 |
+|        分支名称        | 对应 Spring 生态版本                     | 对应 JDK 版本 | 用途               | 现状                                                                                           |
+|:----------------------:|------------------------------------------|---------------|--------------------|------------------------------------------------------------------------------------------------|
+|         master         | Spring Boot 4.1 和 Spring Cloud 2025.1.3 | JDK 25        | 主要发布分支       | 推荐使用代码分支                                                                               |
+|        develop         | Spring Boot 4.1 和 Spring Cloud 2025.1.3 | JDK 25        | Development 分支   | 新功能、ISSUE 均以此分支作为开发，发布后会 PR 至 master 分支                                   |
+|         4.0.X          | Spring Boot 4.0 和 Spring Cloud 2025.1.1 | JDK 25        | 历史版本，停止维护 | 基于 Spring Boot 4.0 时代开发的代码分支，稳定可用，停止维护                                    |
+|         3.5.X          | Spring Boot 3.5 和 Spring Cloud 2025.0.X | JDK 17        | 历史版本，停止维护 | 基于 Spring Boot 3.5 时代开发的代码分支，稳定可用，停止维护                                    |
+|         3.4.X          | Spring Boot 3.4 和 Spring Cloud 2024.0.X | JDK 17        | 历史版本，停止维护 | 基于 Spring Boot 3.4 时代开发的代码分支，稳定可用，停止维护                                    |
+|      3.2.X-3.3.X       | Spring Boot 3.3 和 Spring Cloud 2023.0.X | JDK 17        | 历史版本，停止维护 | 基于 Spring Boot 3.3 时代开发的代码分支，稳定可用，停止维护                                    |
+|         3.1.X          | Spring Boot 3.1 和 Spring Cloud 2022.0.X | JDK 17        | 历史版本，停止维护 | 基于 Spring Boot 3.1 时代开发的代码分支，稳定可用，停止维护                                    |
+|         2.7.X          | Spring Boot 2.7 和 Spring Cloud 2021.0.X | JDK 8         | 历史版本，停止维护 | 基于 Spring Boot 2.7 时代开发的代码分支，稳定可用，停止维护                                    |
+| spring-security-oauth2 | Spring Boot 2.6 和 Spring Cloud 2021.0.X | JDK 8         | 历史代码，不再维护 | 基于原 Spring Security OAuth2 实现的微服务，稳定可用，因相关组件均不在维护，所以该版本停止维护 |
 
 # [四]、项目地址
 
@@ -175,7 +177,7 @@ dante-engine
 - **Gitee**：[https://gitee.com/dante-compass/herodotus-cloud-ui-vuetify](https://gitee.com/dante-compass/herodotus-cloud-ui-vuetify)
 - **Github**：[https://github.com/dante-compass/herodotus-cloud-ui-vuetify](https://github.com/dante-compass/herodotus-cloud-ui-vuetify)
 
-## 5. ThingsBrain 基于 Dante Cloud 的物联网平台（加速开发中...）
+## 5. ThingsBrain 基于 Dante Cloud 的物联网平台
 
 - **Gitee**：[https://gitee.com/dante-compass/thingsbrain](https://gitee.com/dante-compass/thingsbrain)
 - **Github**：[https://github.com/dante-compass/thingsbrain](https://github.com/dante-compass/thingsbrain)
@@ -197,17 +199,17 @@ Dante Cloud 已通过由第三方进行的软件出厂安全测试。详情参�
 
 ## 赞助人列表
 
-| 序号 |                    赞助人                     |    赞助时间    | 序号 |                      赞助人                       |    赞助时间    | 序号 |                   赞助人                    |    赞助时间    |
-|:--:|:------------------------------------------:|:----------:|:--:|:----------------------------------------------:|:----------:|:--:|:----------------------------------------:|:----------:|
-| 1  |                   ご沉默菋噵                    | 2021-10-25 | 2  |    [偷土豆的人](https://gitee.com/dongzongyang)     | 2021-11-24 | 3  |    [lorron](https://gitee.com/lorron)    | 2022-04-04 |
-| 4  |                    在云端                     | 2022-12-26 | 5  |        [西晽](https://gitee.com/syllvin)         | 2022-12-27 | 6  | [p911gt3rs](https://gitee.com/p911gt3rs) | 2023-01-03 |
-| 7  |     [jacsty](https://gitee.com/jacsty)     | 2023-01-31 | 8  |  [hubert_rust](https://gitee.com/hubert_rust)  | 2023-03-16 | 9  |   [Zkey Z](https://gitee.com/zkeyzvip)   | 2023-03-18 |
-| 10 |      [志国欧巴](https://gitee.com/zzgf16)      | 2023-03-27 | 11 |  [michael](https://gitee.com/yiminyangguang)   | 2023-04-07 | 12 |  [大叔丨小巷](https://gitee.com/yushui_wang)  | 2023-04-11 |
-| 13 |   [sun_left](https://gitee.com/sun_left)   | 2023-04-19 | 14 | [time、sand](https://gitee.com/tzy15680905763)  | 2023-07-06 | 15 |   [印第安老斑鸠](https://gitee.com/deadncut)   | 2023-09-09 |
-| 16 |                    一阵风                     | 2023-12-10 | 17 |                      Jack                      | 2024-03-01 | 18 | [onehelper](https://gitee.com/onehelper) | 2024-05-24 |
-| 19 | [宁哥](https://gitee.com/seabuckthorn-syrup) | 2024-05-29 | 20 | [cryptoneedle](https://gitee.com/cryptoneedle) | 2024-11-01 | 21 |                  别吓跑我的鱼                  | 2025-01-10 |
-| 22 |   [代码裁缝](https://gitee.com/code-tailor)    | 2025-03-01 | 23 |                    Go ahead                    | 2025-03-10 | 24 |    [hoku](https://gitee.com/hoku888)     | 2025-06-18 |
-| 25 |                     飞翔                     | 2025-07-19 | 26 |                                                |            | 27 |                                          |            |
+| 序号 |                    赞助人                    |  赞助时间  | 序号 |                     赞助人                     |  赞助时间  | 序号 |                   赞助人                    |  赞助时间  |
+|:----:|:--------------------------------------------:|:----------:|:----:|:----------------------------------------------:|:----------:|:----:|:-------------------------------------------:|:----------:|
+|  1   |                  ご沉默菋噵                  | 2021-10-25 |  2   |  [偷土豆的人](https://gitee.com/dongzongyang)  | 2021-11-24 |  3   |     [lorron](https://gitee.com/lorron)      | 2022-04-04 |
+|  4   |                    在云端                    | 2022-12-26 |  5   |       [西晽](https://gitee.com/syllvin)        | 2022-12-27 |  6   |  [p911gt3rs](https://gitee.com/p911gt3rs)   | 2023-01-03 |
+|  7   |      [jacsty](https://gitee.com/jacsty)      | 2023-01-31 |  8   |  [hubert_rust](https://gitee.com/hubert_rust)  | 2023-03-16 |  9   |    [Zkey Z](https://gitee.com/zkeyzvip)     | 2023-03-18 |
+|  10  |     [志国欧巴](https://gitee.com/zzgf16)     | 2023-03-27 |  11  |  [michael](https://gitee.com/yiminyangguang)   | 2023-04-07 |  12  | [大叔丨小巷](https://gitee.com/yushui_wang) | 2023-04-11 |
+|  13  |    [sun_left](https://gitee.com/sun_left)    | 2023-04-19 |  14  | [time、sand](https://gitee.com/tzy15680905763) | 2023-07-06 |  15  | [印第安老斑鸠](https://gitee.com/deadncut)  | 2023-09-09 |
+|  16  |                    一阵风                    | 2023-12-10 |  17  |                      Jack                      | 2024-03-01 |  18  |  [onehelper](https://gitee.com/onehelper)   | 2024-05-24 |
+|  19  | [宁哥](https://gitee.com/seabuckthorn-syrup) | 2024-05-29 |  20  | [cryptoneedle](https://gitee.com/cryptoneedle) | 2024-11-01 |  21  |                别吓跑我的鱼                 | 2025-01-10 |
+|  22  |  [代码裁缝](https://gitee.com/code-tailor)   | 2025-03-01 |  23  |                    Go ahead                    | 2025-03-10 |  24  |      [hoku](https://gitee.com/hoku888)      | 2025-06-18 |
+|  25  |                     飞翔                     | 2025-07-19 |  26  |                                                |            |  27  |                                             |            |
 
 # [八]、关注我
 

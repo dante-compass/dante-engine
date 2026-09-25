@@ -25,7 +25,7 @@
 
 package cn.herodotus.dante.security.jackson;
 
-import cn.herodotus.dante.core.jackson.JacksonConstants;
+import cn.herodotus.dante.core.jackson.JacksonVersion;
 import cn.herodotus.dante.security.domain.FormLoginWebAuthenticationDetails;
 import cn.herodotus.dante.security.domain.HerodotusGrantedAuthority;
 import cn.herodotus.dante.security.domain.HerodotusUser;
@@ -41,7 +41,7 @@ import tools.jackson.databind.jsontype.BasicPolymorphicTypeValidator;
 public class HerodotusJacksonModule extends SecurityJacksonModule {
 
     public HerodotusJacksonModule() {
-        super(HerodotusJacksonModule.class.getName(), JacksonConstants.DEFAULT_VERSION);
+        super(HerodotusJacksonModule.class.getName(), JacksonVersion.DEFAULT_VERSION);
     }
 
     @Override

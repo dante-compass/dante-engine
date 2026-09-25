@@ -31,7 +31,7 @@
     <parent>
         <groupId>cn.herodotus.dante</groupId>
         <artifactId>dante-engine</artifactId>
-        <version>4.1.1.0</version>
+        <version>4.1.1.1</version>
     </parent>
 
     <artifactId>dante-framework</artifactId>
@@ -49,5 +49,6 @@
         <module>dante-security</module>
         <module>dante-spring</module>
         <module>dante-web</module>
+        <module>dante-messaging</module>
     </modules>
 </project>

@@ -32,6 +32,7 @@ import cn.herodotus.dante.persistence.sas.jpa.converter.OAuth2ToHerodotusRegiste
 import cn.herodotus.dante.persistence.sas.jpa.entity.HerodotusRegisteredClient;
 import cn.herodotus.dante.persistence.sas.jpa.service.HerodotusRegisteredClientService;
 import org.apache.commons.lang3.ObjectUtils;
+import org.jspecify.annotations.Nullable;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClientRepository;
@@ -69,13 +70,13 @@ public class JpaRegisteredClientRepository implements RegisteredClientRepository
     }
 
     @Override
-    public RegisteredClient findById(String id) {
+    public @Nullable RegisteredClient findById(String id) {
         Optional<HerodotusRegisteredClient> herodotusRegisteredClient = this.herodotusRegisteredClientService.findById(id);
         return herodotusRegisteredClient.map(this::toObject).orElse(null);
     }
 
     @Override
-    public RegisteredClient findByClientId(String clientId) {
+    public @Nullable RegisteredClient findByClientId(String clientId) {
         return this.herodotusRegisteredClientService.findByClientId(clientId).map(this::toObject).orElse(null);
     }
 

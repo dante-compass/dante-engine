@@ -81,6 +81,10 @@ public abstract class AbstractOAuth2RegisteredClient extends AbstractRegisteredC
     @Schema(name = "X509证书DN")
     @Column(name = "subject_dn")
     private String x509CertificateSubjectDN;
+
+    @Schema(name = "资源标识符", title = "支持多个值，以逗号分隔")
+    @Column(name = "resource_ids", length = 1000)
+    private String resourceIds;
     /* --- ClientSettings End --- */
 
 
@@ -187,6 +191,15 @@ public abstract class AbstractOAuth2RegisteredClient extends AbstractRegisteredC
     }
 
     @Override
+    public String getResourceIds() {
+        return resourceIds;
+    }
+
+    public void setResourceIds(String resourceIds) {
+        this.resourceIds = resourceIds;
+    }
+
+    @Override
     public Duration getAuthorizationCodeTimeToLive() {
         return authorizationCodeTimeToLive;
     }
@@ -268,6 +281,7 @@ public abstract class AbstractOAuth2RegisteredClient extends AbstractRegisteredC
                 .add("jwkSetUrl", jwkSetUrl)
                 .add("authenticationSigningAlgorithm", authenticationSigningAlgorithm)
                 .add("x509CertificateSubjectDN", x509CertificateSubjectDN)
+                .add("resourceIds", resourceIds)
                 .add("authorizationCodeTimeToLive", authorizationCodeTimeToLive)
                 .add("deviceCodeTimeToLive", deviceCodeTimeToLive)
                 .add("accessTokenTimeToLive", accessTokenTimeToLive)
@@ -276,6 +290,7 @@ public abstract class AbstractOAuth2RegisteredClient extends AbstractRegisteredC
                 .add("reuseRefreshTokens", reuseRefreshTokens)
                 .add("idTokenSignatureAlgorithmJwsAlgorithm", idTokenSignatureAlgorithmJwsAlgorithm)
                 .add("x509CertificateBoundAccessTokens", x509CertificateBoundAccessTokens)
+                .addValue(super.toString())
                 .toString();
     }
 }

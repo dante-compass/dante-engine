@@ -6,7 +6,7 @@
     <parent>
         <groupId>cn.herodotus.dante</groupId>
         <artifactId>dante-persistence</artifactId>
-        <version>4.1.1.0</version>
+        <version>4.1.1.1</version>
     </parent>
 
     <artifactId>dante-persistence-commons</artifactId>
@@ -23,6 +23,11 @@
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-oauth2-authorization-server</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.herodotus.dante</groupId>
+            <artifactId>dante-cache</artifactId>
         </dependency>
     </dependencies>
 

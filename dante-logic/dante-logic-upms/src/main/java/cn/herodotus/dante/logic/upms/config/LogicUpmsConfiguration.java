@@ -31,8 +31,11 @@ import cn.herodotus.dante.core.function.EnumDictionaryBuilderCustomizer;
 import cn.herodotus.dante.logic.upms.customizer.UpmsEnumDictionaryBuilderCustomizer;
 import cn.herodotus.dante.logic.upms.definition.SocialAuthenticationHandler;
 import cn.herodotus.dante.logic.upms.handler.DefaultSocialAuthenticationHandler;
+import cn.herodotus.dante.logic.upms.handler.OAuth2SupportedScopeDistributionHandler;
+import cn.herodotus.dante.logic.upms.service.oauth2.OAuth2SupportedScopeService;
 import cn.herodotus.dante.logic.upms.service.security.SysSocialUserService;
 import cn.herodotus.dante.logic.upms.service.security.SysUserService;
+import cn.herodotus.dante.messaging.strategy.OAuth2SupportedScopeDistributionEventManager;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -54,14 +57,17 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EntityScan(basePackages = {
         "cn.herodotus.dante.logic.upms.entity.security",
         "cn.herodotus.dante.logic.upms.entity.hr",
+        "cn.herodotus.dante.logic.upms.entity.oauth2",
 })
 @EnableJpaRepositories(basePackages = {
         "cn.herodotus.dante.logic.upms.repository.security",
         "cn.herodotus.dante.logic.upms.repository.hr",
+        "cn.herodotus.dante.logic.upms.repository.oauth2",
 })
 @ComponentScan(basePackages = {
         "cn.herodotus.dante.logic.upms.service.security",
         "cn.herodotus.dante.logic.upms.service.hr",
+        "cn.herodotus.dante.logic.upms.service.oauth2",
 })
 @Import({AssistantAccessConfiguration.class})
 public class LogicUpmsConfiguration {
@@ -86,5 +92,12 @@ public class LogicUpmsConfiguration {
         UpmsEnumDictionaryBuilderCustomizer customizer = new UpmsEnumDictionaryBuilderCustomizer();
         log.debug("[Herodotus] |- Strategy [Upms EnumDictionary Builder Customizer] Configure.");
         return customizer;
+    }
+
+    @Bean
+    public OAuth2SupportedScopeDistributionHandler oauth2SupportedScopeDistributionHandler(OAuth2SupportedScopeService oauth2SupportedScopeService, OAuth2SupportedScopeDistributionEventManager oauth2SupportedScopeDistributionEventManager) {
+        OAuth2SupportedScopeDistributionHandler handler = new OAuth2SupportedScopeDistributionHandler(oauth2SupportedScopeService, oauth2SupportedScopeDistributionEventManager);
+        log.trace("[Herodotus] |- Bean [OAuth2 Supported Scope Distribution Handler] Configure.");
+        return handler;
     }
 }

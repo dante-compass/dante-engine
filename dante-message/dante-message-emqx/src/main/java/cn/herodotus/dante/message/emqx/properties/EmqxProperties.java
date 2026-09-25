@@ -25,7 +25,7 @@
 
 package cn.herodotus.dante.message.emqx.properties;
 
-import cn.herodotus.dante.message.commons.constant.MessageConstants;
+import cn.herodotus.dante.messaging.constant.MessageConstants;
 import cn.herodotus.dante.message.emqx.condition.EventSource;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

@@ -27,11 +27,13 @@ package cn.herodotus.dante.logic.identity.service;
 
 import cn.herodotus.dante.data.jpa.repository.BaseJpaRepository;
 import cn.herodotus.dante.data.jpa.service.AbstractJpaService;
+import cn.herodotus.dante.logic.identity.converter.OAuth2ApplicationToOAuth2AuthorizationResourceConverter;
 import cn.herodotus.dante.logic.identity.converter.OAuth2ApplicationToRegisteredClientConverter;
 import cn.herodotus.dante.logic.identity.entity.OAuth2Application;
 import cn.herodotus.dante.logic.identity.entity.OAuth2Scope;
 import cn.herodotus.dante.logic.identity.repository.OAuth2ApplicationRepository;
 import cn.herodotus.dante.persistence.commons.definition.EnhanceAuthenticationManager;
+import cn.herodotus.dante.security.converter.AbstractToOAuth2AuthorizationResourceConverter;
 import org.apache.commons.lang3.ObjectUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -59,11 +61,13 @@ public class OAuth2ApplicationService extends AbstractJpaService<OAuth2Applicati
     private final OAuth2ApplicationRepository oauth2ApplicationRepository;
     private final EnhanceAuthenticationManager enhanceAuthenticationManager;
     private final Converter<OAuth2Application, RegisteredClient> toRegisteredClient;
+    private final AbstractToOAuth2AuthorizationResourceConverter<OAuth2Application> toAuthorizationResource;
 
     public OAuth2ApplicationService(OAuth2ApplicationRepository oauth2ApplicationRepository, EnhanceAuthenticationManager enhanceAuthenticationManager) {
         this.oauth2ApplicationRepository = oauth2ApplicationRepository;
         this.enhanceAuthenticationManager = enhanceAuthenticationManager;
         this.toRegisteredClient = new OAuth2ApplicationToRegisteredClientConverter();
+        this.toAuthorizationResource = new OAuth2ApplicationToOAuth2AuthorizationResourceConverter();
     }
 
     @Override
@@ -109,7 +113,7 @@ public class OAuth2ApplicationService extends AbstractJpaService<OAuth2Applicati
      */
     public OAuth2Application synchronize(OAuth2Application entity) {
         if (ObjectUtils.isNotEmpty(entity)) {
-            enhanceAuthenticationManager.enable(Objects.requireNonNull(toRegisteredClient.convert(entity)));
+            enhanceAuthenticationManager.enable(Objects.requireNonNull(toRegisteredClient.convert(entity)), entity, toAuthorizationResource);
             return entity;
         } else {
             log.error("[Herodotus] |- OAuth2ApplicationService saveOrUpdate error!");

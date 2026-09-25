@@ -25,7 +25,7 @@
 
 package cn.herodotus.dante.message.emqx.definition.event;
 
-import cn.herodotus.dante.spring.event.AbstractApplicationEvent;
+import cn.herodotus.dante.messaging.definition.event.AbstractApplicationEvent;
 import cn.herodotus.dante.message.emqx.definition.domain.AbstractWebhook;
 
 import java.time.Clock;

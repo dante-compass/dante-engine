@@ -27,12 +27,12 @@ package cn.herodotus.dante.rest.identity.controller;
 
 import cn.herodotus.dante.core.domain.Result;
 import cn.herodotus.dante.core.domain.SecretKey;
-import cn.herodotus.dante.oauth2.extension.dto.SignInErrorPrompt;
 import cn.herodotus.dante.oauth2.extension.dto.SignInErrorStatus;
 import cn.herodotus.dante.oauth2.extension.stamp.SignInFailureLimitedStampManager;
 import cn.herodotus.dante.rest.identity.dto.Session;
 import cn.herodotus.dante.rest.identity.dto.SessionCreate;
 import cn.herodotus.dante.rest.identity.dto.SessionExchange;
+import cn.herodotus.dante.rest.identity.dto.SignInErrorPrompt;
 import cn.herodotus.dante.rest.identity.service.InterfaceSecurityService;
 import cn.herodotus.dante.web.annotation.Crypto;
 import io.swagger.v3.oas.annotations.Operation;

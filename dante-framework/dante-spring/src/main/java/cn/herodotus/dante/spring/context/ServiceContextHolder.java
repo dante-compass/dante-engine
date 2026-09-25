@@ -209,6 +209,15 @@ public class ServiceContextHolder {
         getServiceContext().setIotServiceName(iotServiceName);
     }
 
+    public static String getMcpServiceName() {
+        return getServiceContext().getMcpServiceName();
+    }
+
+    public static void setMcpServiceName(String mcpServiceName) {
+        getServiceContext().setMcpServiceName(mcpServiceName);
+    }
+
+
     public static String getGatewayServiceUri() {
         return getServiceContext().getGatewayServiceUri();
     }
@@ -255,6 +264,14 @@ public class ServiceContextHolder {
 
     public static void setIotServiceUri(String iotServiceUri) {
         getServiceContext().setIotServiceUri(iotServiceUri);
+    }
+
+    public static String getMcpServiceUri() {
+        return getServiceContext().getMcpServiceUri();
+    }
+
+    public static void setMcpServiceUri(String mcpServiceUri) {
+        getServiceContext().setMcpServiceUri(mcpServiceUri);
     }
 
     public static String getAuthorizationUri() {

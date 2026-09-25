@@ -26,8 +26,9 @@
 package cn.herodotus.dante.persistence.commons.definition;
 
 import cn.herodotus.dante.security.definition.OAuth2AuthorizationResourceService;
+import cn.herodotus.dante.security.domain.OAuth2AuthorizationResource;
 import cn.herodotus.dante.security.domain.RegisteredClientTransmitter;
-import org.apache.commons.lang3.ObjectUtils;
+import org.jspecify.annotations.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
@@ -56,15 +57,18 @@ public abstract class AbstractEnhanceAuthenticationManager implements EnhanceAut
     }
 
     @Override
-    public void enable(RegisteredClient registeredClient) {
-        if (ObjectUtils.isNotEmpty(registeredClient)) {
-            log.debug("[Herodotus] |- [AUTHENTICATION-SWITCH] Authentication enable FINISHED for  [{}].", registeredClient.getClientId());
-            registeredClientRepository.save(registeredClient);
-        }
+    public void enable(@NonNull RegisteredClient registeredClient) {
+        log.debug("[Herodotus] |- [AUTHENTICATION-SWITCH] Authentication enable FINISHED for  [{}].", registeredClient.getClientId());
+        registeredClientRepository.save(registeredClient);
     }
 
     @Override
-    public void addResource(RegisteredClientTransmitter transmitter) {
+    public void addResource(@NonNull RegisteredClientTransmitter transmitter) {
         authorizationResourceService.process(transmitter);
+    }
+
+    @Override
+    public void addResource(@NonNull OAuth2AuthorizationResource resource) {
+        authorizationResourceService.save(resource);
     }
 }

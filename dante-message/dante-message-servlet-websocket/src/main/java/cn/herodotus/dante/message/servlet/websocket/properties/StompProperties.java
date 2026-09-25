@@ -27,7 +27,7 @@ package cn.herodotus.dante.message.servlet.websocket.properties;
 
 import cn.herodotus.dante.core.constant.HerodotusHeaders;
 import cn.herodotus.dante.core.utils.WellFormedUtils;
-import cn.herodotus.dante.message.commons.constant.MessageConstants;
+import cn.herodotus.dante.messaging.constant.MessageConstants;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

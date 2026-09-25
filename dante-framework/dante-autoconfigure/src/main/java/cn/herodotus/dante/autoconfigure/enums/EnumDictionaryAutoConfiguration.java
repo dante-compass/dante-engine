@@ -52,6 +52,13 @@ public class EnumDictionaryAutoConfiguration {
     }
 
     @Bean
+    public EnumDictionaryBuilderCustomizer standardEnumDictionaryBuilderCustomizer() {
+        StandardEnumDictionaryBuilderCustomizer customizer = new StandardEnumDictionaryBuilderCustomizer();
+        log.debug("[Herodotus] |- Strategy [Standard Enum Dictionary Builder Customizer] Configure.");
+        return customizer;
+    }
+
+    @Bean
     public EnumDictionaryBuilder enumDictionaryBuilder(List<EnumDictionaryBuilderCustomizer> customizers) {
         EnumDictionaryBuilder builder = new EnumDictionaryBuilder();
         customize(builder, customizers);

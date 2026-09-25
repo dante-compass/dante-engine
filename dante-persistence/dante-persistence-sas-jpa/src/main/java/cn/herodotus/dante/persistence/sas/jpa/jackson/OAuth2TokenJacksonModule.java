@@ -25,7 +25,8 @@
 
 package cn.herodotus.dante.persistence.sas.jpa.jackson;
 
-import cn.herodotus.dante.core.jackson.JacksonConstants;
+import cn.herodotus.dante.core.jackson.JacksonVersion;
+import cn.herodotus.dante.security.domain.OAuth2ApplicationType;
 import org.springframework.security.jackson.SecurityJacksonModule;
 import org.springframework.security.oauth2.core.AuthorizationGrantType;
 import org.springframework.security.oauth2.core.ClientAuthenticationMethod;
@@ -44,7 +45,7 @@ import tools.jackson.databind.jsontype.BasicPolymorphicTypeValidator;
 public class OAuth2TokenJacksonModule extends SecurityJacksonModule {
 
     public OAuth2TokenJacksonModule() {
-        super(OAuth2TokenJacksonModule.class.getName(), JacksonConstants.DEFAULT_VERSION);
+        super(OAuth2TokenJacksonModule.class.getName(), JacksonVersion.DEFAULT_VERSION);
     }
 
     @Override
@@ -54,6 +55,7 @@ public class OAuth2TokenJacksonModule extends SecurityJacksonModule {
                 .allowIfSubType(TokenSettings.class)
                 .allowIfSubType(ClientSettings.class)
                 .allowIfSubType(RegisteredClient.class)
+                .allowIfSubType(OAuth2ApplicationType.class)
                 .allowIfSubType(OAuth2ClientAuthenticationToken.class);
     }
 
@@ -64,6 +66,7 @@ public class OAuth2TokenJacksonModule extends SecurityJacksonModule {
         context.setMixIn(TokenSettings.class, TokenSettingsMixin.class);
         context.setMixIn(ClientSettings.class, ClientSettingsMixin.class);
         context.setMixIn(RegisteredClient.class, RegisteredClientMixin.class);
+        context.setMixIn(OAuth2ApplicationType.class, OAuth2ApplicationTypeMixin.class);
         context.setMixIn(OAuth2ClientAuthenticationToken.class, OAuth2ClientAuthenticationTokenMixin.class);
     }
 }

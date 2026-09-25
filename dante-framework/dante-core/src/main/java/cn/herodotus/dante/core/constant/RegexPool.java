@@ -59,4 +59,5 @@ public interface RegexPool extends cn.hutool.v7.core.regex.RegexPool {
      */
     String DNS_COMPATIBLE = "^[a-z0-9][a-z0-9\\.\\-]{1,61}[a-z0-9]$";
 
+    String MAX_AGE = "\\bmax-age=(\\d+)\\b";
 }
