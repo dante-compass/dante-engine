@@ -60,4 +60,9 @@ public interface RegexPool extends cn.hutool.v7.core.regex.RegexPool {
     String DNS_COMPATIBLE = "^[a-z0-9][a-z0-9\\.\\-]{1,61}[a-z0-9]$";
 
     String MAX_AGE = "\\bmax-age=(\\d+)\\b";
+
+    /**
+     * 允许的字符：英文字母大小写、数字、-、_、@、.、:
+     */
+    String STRING_TEMPLATE = "[A-Za-z0-9_@.:-]+";
 }
