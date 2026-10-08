@@ -90,8 +90,8 @@ public class SysAttribute extends AbstractSysEntity {
     private String version;
 
     @Schema(name = "接口映射类别")
+    @Column(name = "category", length = 30)
     @Enumerated(EnumType.STRING)
-    @Column(name = "category", length = 50)
     private MappingCategory category;
 
     @Schema(name = "属性对应权限", title = "根据属性关联权限数据")
