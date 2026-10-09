@@ -121,7 +121,7 @@ public class MessageSendingDispatcher  {
     }
 
     private void sendMqtt(Supplier<MqttMessage> supplier) {
-        publishEvent(new MqttMessageSendingEvent(supplier.get()));
+        ServiceContextHolder.publishEvent(new MqttMessageSendingEvent(supplier.get()));
     }
 
     private void sendWebSocketBroadcast(Supplier<BroadcastMessage> supplier) {
