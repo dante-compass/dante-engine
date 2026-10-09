@@ -27,7 +27,7 @@ package cn.herodotus.dante.logic.upms.domain.listener;
 
 import cn.herodotus.dante.logic.upms.domain.event.SysAttributeChangeEvent;
 import cn.herodotus.dante.logic.upms.entity.security.SysAttribute;
-import cn.herodotus.dante.spring.context.AbstractApplicationContextAware;
+import cn.herodotus.dante.spring.context.ServiceContextHolder;
 import jakarta.persistence.PostUpdate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,13 +38,13 @@ import org.slf4j.LoggerFactory;
  * @author : gengwei.zheng
  * @date : 2021/8/4 16:54
  */
-public class SysAttributeEntityListener extends AbstractApplicationContextAware {
+public class SysAttributeEntityListener {
 
     private static final Logger log = LoggerFactory.getLogger(SysAttributeEntityListener.class);
 
     @PostUpdate
     protected void postUpdate(SysAttribute entity) {
         log.debug("[Herodotus] |- [1] SysAttribute entity @PostUpdate activated, value is : [{}]. Trigger SysAttribute change event.", entity.toString());
-        publishEvent(new SysAttributeChangeEvent(entity));
+        ServiceContextHolder.publishEvent(new SysAttributeChangeEvent(entity));
     }
 }

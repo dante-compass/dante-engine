@@ -28,16 +28,16 @@ package cn.herodotus.dante.message.autoconfigure.message;
 import cn.herodotus.dante.core.jackson.JacksonUtils;
 import cn.herodotus.dante.core.jackson.JsonNodeUtils;
 import cn.herodotus.dante.messaging.definition.Message;
-import cn.herodotus.dante.messaging.enums.MessageCategory;
 import cn.herodotus.dante.messaging.domain.BroadcastMessage;
 import cn.herodotus.dante.messaging.domain.MqttMessage;
 import cn.herodotus.dante.messaging.domain.StreamMessage;
 import cn.herodotus.dante.messaging.domain.UserMessage;
+import cn.herodotus.dante.messaging.enums.MessageCategory;
 import cn.herodotus.dante.messaging.event.MqttMessageSendingEvent;
 import cn.herodotus.dante.messaging.event.StreamMessageSendingEvent;
 import cn.herodotus.dante.messaging.event.WebSocketBroadcastMessageSendingEvent;
 import cn.herodotus.dante.messaging.event.WebSocketUserMessageSendingEvent;
-import cn.herodotus.dante.spring.context.AbstractApplicationContextAware;
+import cn.herodotus.dante.spring.context.ServiceContextHolder;
 import org.apache.commons.lang3.ObjectUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -52,7 +52,7 @@ import java.util.function.Supplier;
  * @author : gengwei.zheng
  * @date : 2024/10/25 21:06
  */
-public class MessageSendingDispatcher extends AbstractApplicationContextAware {
+public class MessageSendingDispatcher  {
 
     private static final Logger log = LoggerFactory.getLogger(MessageSendingDispatcher.class);
 
@@ -125,14 +125,14 @@ public class MessageSendingDispatcher extends AbstractApplicationContextAware {
     }
 
     private void sendWebSocketBroadcast(Supplier<BroadcastMessage> supplier) {
-        publishEvent(new WebSocketBroadcastMessageSendingEvent(supplier.get()));
+        ServiceContextHolder.publishEvent(new WebSocketBroadcastMessageSendingEvent(supplier.get()));
     }
 
     private void sendWebSocketUser(Supplier<UserMessage> supplier) {
-        publishEvent(new WebSocketUserMessageSendingEvent(supplier.get()));
+        ServiceContextHolder.publishEvent(new WebSocketUserMessageSendingEvent(supplier.get()));
     }
 
     private void sendStream(Supplier<StreamMessage> supplier) {
-        publishEvent(new StreamMessageSendingEvent(supplier.get()));
+        ServiceContextHolder.publishEvent(new StreamMessageSendingEvent(supplier.get()));
     }
 }

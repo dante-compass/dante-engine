@@ -25,11 +25,13 @@
 
 package cn.herodotus.dante.autoconfigure;
 
+import cn.herodotus.dante.spring.context.ServiceContextHolderInitializer;
 import cn.hutool.v7.extra.spring.SpringUtil;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
 
 /**
@@ -49,5 +51,12 @@ public class ApplicationAutoConfiguration {
     @PostConstruct
     public void postConstruct() {
         log.info("[Herodotus] |- Auto [Application] Configure.");
+    }
+
+    @Bean
+    public ServiceContextHolderInitializer serviceContextHolderInitializer() {
+        ServiceContextHolderInitializer listener = new ServiceContextHolderInitializer();
+        log.trace("[Herodotus] |- Bean [Service Context Holder Initializer] Configure.");
+        return listener;
     }
 }
