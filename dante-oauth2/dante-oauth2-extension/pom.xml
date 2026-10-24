@@ -47,6 +47,11 @@
 
         <dependency>
             <groupId>cn.herodotus.dante</groupId>
+            <artifactId>dante-data-jpa</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.herodotus.dante</groupId>
             <artifactId>dante-cache</artifactId>
         </dependency>
     </dependencies>

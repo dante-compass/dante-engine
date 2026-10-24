@@ -36,7 +36,6 @@ import me.zhyd.oauth.request.*;
 import me.zhyd.oauth.utils.AuthStateUtils;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.ObjectUtils;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -96,7 +95,6 @@ public class JustAuthProcessor {
         return configs.entrySet().stream().collect(Collectors.toMap(Map.Entry::getKey, entry -> getAuthorizeUrl(entry.getKey(), entry.getValue())));
     }
 
-    @NotNull
     private Map<String, AuthConfig> getConfigs() {
         Map<String, AuthConfig> configs = justAuthProperties.getConfigs();
         if (MapUtils.isEmpty(configs)) {
@@ -106,7 +104,6 @@ public class JustAuthProcessor {
     }
 
 
-    @NotNull
     private AuthConfig getAuthConfig(AuthDefaultSource authDefaultSource) {
         Map<String, AuthConfig> configs = getConfigs();
 
