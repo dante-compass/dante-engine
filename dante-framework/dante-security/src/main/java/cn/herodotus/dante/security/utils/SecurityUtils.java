@@ -204,13 +204,10 @@ public class SecurityUtils {
         try {
             Base64URL[] parts = JOSEObject.split(realContent);
             // JWS(3段) 或 JWE(5段)
-            if (parts.length == 3 || parts.length == 5) {
-                return true;
-            }
+            return parts.length == 3 || parts.length == 5;
         } catch (ParseException e) {
-            log.warn("[Herodotus] |- Determine if JWT Token has failed!", e);
+            log.warn("[Herodotus] |- Determine JWT Token has failed, is Opaque Token");
+            return false;
         }
-
-        return false;
     }
 }
