@@ -69,7 +69,7 @@
         </dependency>
 
         <dependency>
-            <groupId>cn.herodotus.opensteward</groupId>
+            <groupId>org.dromara.justauth</groupId>
             <artifactId>JustAuth</artifactId>
         </dependency>
 

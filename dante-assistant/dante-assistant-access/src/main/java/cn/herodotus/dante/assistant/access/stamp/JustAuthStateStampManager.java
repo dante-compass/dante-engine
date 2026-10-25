@@ -31,8 +31,6 @@ import cn.herodotus.dante.cache.definition.AbstractStampManager;
 import cn.hutool.v7.core.data.id.IdUtil;
 import me.zhyd.oauth.cache.AuthStateCache;
 
-import java.util.concurrent.TimeUnit;
-
 /**
  * <p>Description: 自定义JustAuth State Cache </p>
  *
@@ -56,12 +54,12 @@ public class JustAuthStateStampManager extends AbstractStampManager<String, Stri
     }
 
     @Override
-    public void cache(String key, String value, long expire) {
-        this.put(key, value, expire, TimeUnit.MILLISECONDS);
+    public boolean containsKey(String key) {
+        return this.containKey(key);
     }
 
     @Override
-    public boolean containsKey(String key) {
-        return this.containKey(key);
+    public void expire(String key) {
+
     }
 }
