@@ -23,26 +23,29 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.logic.upms.domain.event;
-
-import cn.herodotus.dante.logic.upms.entity.security.SysAttribute;
-import cn.herodotus.dante.messaging.definition.event.AbstractApplicationEvent;
-
-import java.time.Clock;
+package cn.herodotus.dante.spring.event;
 
 /**
- * <p>Description: SysSecurityAttribute实体数据变更事件 </p>
+ * <p>Description: 应用策略事件 </p>
  *
  * @author : gengwei.zheng
- * @date : 2021/8/4 22:18
+ * @date : 2022/3/29 7:26
  */
-public class SysAttributeChangeEvent extends AbstractApplicationEvent<SysAttribute> {
+public interface DestinationStrategyEventManager<T> extends StrategyEventManager<T> {
 
-    public SysAttributeChangeEvent(SysAttribute data) {
-        super(data);
-    }
+    /**
+     * 目的服务名称
+     *
+     * @return 服务名称
+     */
+    String getDestinationServiceName();
 
-    public SysAttributeChangeEvent(SysAttribute data, Clock clock) {
-        super(data, clock);
+    /**
+     * 发送事件
+     *
+     * @param data 事件携带数据
+     */
+    default void postProcess(T data) {
+        postProcess(getDestinationServiceName(), data);
     }
 }

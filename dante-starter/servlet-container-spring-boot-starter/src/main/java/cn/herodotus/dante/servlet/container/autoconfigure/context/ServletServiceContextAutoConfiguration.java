@@ -25,7 +25,7 @@
 
 package cn.herodotus.dante.servlet.container.autoconfigure.context;
 
-import cn.herodotus.dante.web.context.ServiceContextHolderInitializerListener;
+import cn.herodotus.dante.autoconfigure.ApplicationAutoConfiguration;
 import cn.herodotus.dante.web.properties.EndpointProperties;
 import cn.herodotus.dante.web.properties.PlatformProperties;
 import jakarta.annotation.PostConstruct;
@@ -34,7 +34,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.web.server.autoconfigure.ServerProperties;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
@@ -44,7 +43,7 @@ import org.springframework.context.annotation.Configuration;
  * @author : gengwei.zheng
  * @date : 2025/12/2 12:30
  */
-@AutoConfiguration
+@AutoConfiguration(after = ApplicationAutoConfiguration.class)
 @EnableConfigurationProperties({EndpointProperties.class, PlatformProperties.class, ServerProperties.class})
 public class ServletServiceContextAutoConfiguration {
 
@@ -71,11 +70,5 @@ public class ServletServiceContextAutoConfiguration {
     })
     static class ServiceContextConfiguration {
 
-        @Bean
-        public ServiceContextHolderInitializerListener serviceContextHolderListener() {
-            ServiceContextHolderInitializerListener listener = new ServiceContextHolderInitializerListener();
-            log.trace("[Herodotus] |- Bean [Service Context Holder Initializer Listener] Configure.");
-            return listener;
-        }
     }
 }

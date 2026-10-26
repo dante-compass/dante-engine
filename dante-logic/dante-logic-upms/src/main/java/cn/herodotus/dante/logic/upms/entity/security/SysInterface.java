@@ -80,8 +80,8 @@ public class SysInterface extends AbstractSysEntity {
     private String version;
 
     @Schema(name = "接口映射类别")
+    @Column(name = "category", length = 30)
     @Enumerated(EnumType.STRING)
-    @Column(name = "category", length = 50)
     private MappingCategory category;
 
     public String getInterfaceId() {

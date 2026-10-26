@@ -32,6 +32,7 @@ import cn.herodotus.dante.assistant.access.properties.JustAuthProperties;
 import cn.herodotus.dante.assistant.access.stamp.JustAuthStateStampManager;
 import cn.herodotus.dante.security.enums.AccountCategory;
 import jakarta.annotation.PostConstruct;
+import me.zhyd.oauth.utils.JsonUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
@@ -39,6 +40,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import tools.jackson.databind.ObjectMapper;
 
 /**
  * <p>Description: JustAuth配置 </p>
@@ -86,5 +88,12 @@ public class AssistantAccessJustAuthConfiguration {
         JustAuthAccessHandler justAuthAccessHandler = new JustAuthAccessHandler(justAuthProcessor);
         log.trace("[Herodotus] |- Bean [Just Auth Access Handler] Configure.");
         return justAuthAccessHandler;
+    }
+
+    @Bean
+    @ConditionalOnBean(ObjectMapper.class)
+    public JsonUtils jsonUtils(ObjectMapper objectMapper) {
+        JsonUtils.setObjectMapper(objectMapper);
+        return JsonUtils.getInstance();
     }
 }

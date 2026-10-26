@@ -23,14 +23,13 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.web.context;
+package cn.herodotus.dante.spring.context;
 
-import cn.herodotus.dante.spring.context.PropertyResolver;
-import cn.herodotus.dante.spring.context.ServiceContextHolder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.ApplicationListener;
-import org.springframework.context.event.ApplicationContextEvent;
+import org.springframework.beans.BeansException;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 
 /**
  * <p>Description: ServiceContextHolder 初始化器 </p>
@@ -38,14 +37,14 @@ import org.springframework.context.event.ApplicationContextEvent;
  * @author : gengwei.zheng
  * @date : 2025/12/2 12:12
  */
-public class ServiceContextHolderInitializerListener implements ApplicationListener<ApplicationContextEvent> {
+public class ServiceContextHolderInitializer implements ApplicationContextAware {
 
-    private static final Logger log = LoggerFactory.getLogger(ServiceContextHolderInitializerListener.class);
+    private static final Logger log = LoggerFactory.getLogger(ServiceContextHolderInitializer.class);
 
     @Override
-    public void onApplicationEvent(ApplicationContextEvent event) {
-        ServiceContextHolder.setApplicationContext(event.getApplicationContext());
-        ServiceContextHolder.setApplicationName(PropertyResolver.getApplicationName(event.getApplicationContext()));
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        ServiceContextHolder.setApplicationContext(applicationContext);
+        ServiceContextHolder.setApplicationName(PropertyResolver.getApplicationName(applicationContext));
         log.debug("[Herodotus] |- HERODOTUS ApplicationContext initialization completed.");
     }
 }

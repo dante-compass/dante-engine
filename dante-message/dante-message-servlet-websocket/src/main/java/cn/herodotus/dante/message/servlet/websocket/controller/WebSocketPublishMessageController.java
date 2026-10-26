@@ -25,13 +25,13 @@
 
 package cn.herodotus.dante.message.servlet.websocket.controller;
 
+import cn.herodotus.dante.message.servlet.websocket.definition.WebSocketMessageSender;
+import cn.herodotus.dante.message.servlet.websocket.domain.StompWebSocketMessage;
 import cn.herodotus.dante.messaging.constant.MessageConstants;
 import cn.herodotus.dante.messaging.domain.DialogueMessage;
 import cn.herodotus.dante.messaging.event.DialogueMessageReceivingEvent;
-import cn.herodotus.dante.message.servlet.websocket.definition.WebSocketMessageSender;
-import cn.herodotus.dante.message.servlet.websocket.domain.StompWebSocketMessage;
 import cn.herodotus.dante.security.domain.UserPrincipal;
-import cn.herodotus.dante.spring.context.AbstractApplicationContextAware;
+import cn.herodotus.dante.spring.context.ServiceContextHolder;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.messaging.handler.annotation.MessageMapping;
@@ -47,7 +47,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @date : 2022/12/5 17:49
  */
 @RestController
-public class WebSocketPublishMessageController extends AbstractApplicationContextAware {
+public class WebSocketPublishMessageController {
 
     private final WebSocketMessageSender webSocketMessageSender;
 
@@ -87,7 +87,7 @@ public class WebSocketPublishMessageController extends AbstractApplicationContex
                 detail.setSenderAvatar(sender.getAvatar());
             }
 
-            this.publishEvent(new DialogueMessageReceivingEvent(detail));
+            ServiceContextHolder.publishEvent(new DialogueMessageReceivingEvent(detail));
 
             response.setPayload("私信发送成功");
         } else {

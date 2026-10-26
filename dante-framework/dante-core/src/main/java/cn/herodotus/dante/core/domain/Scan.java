@@ -23,66 +23,51 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.messaging.definition;
+package cn.herodotus.dante.core.domain;
 
-import cn.herodotus.dante.core.domain.BaseModel;
-import com.google.common.base.MoreObjects;
+import cn.herodotus.dante.core.constant.SystemConstants;
+import org.apache.commons.collections4.CollectionUtils;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Stream;
 
 /**
- * <p>Description: Rest 接口信息抽象定义 </p>
+ * <p>Description: 应用启动扫描通用属性定义实体 </p>
  *
- * @author : gengwei.zheng
- * @date : 2024/12/10 18:43
+ * @author : gengwei_zheng
+ * @date : 2026/10/10 17:31
  */
-public abstract class AbstractRest implements BaseModel {
+public class Scan {
+    /**
+     * 是否开启接口扫描
+     */
+    private Boolean enabled = true;
+    /**
+     * 指定扫描的命名空间。未指定的命名空间中，即使包含 RequestMapping，也不会被添加进来。
+     */
+    private List<String> groupIds;
 
-    private String requestMethod;
-
-    private String serviceId;
-
-    private String url;
-
-    private String version;
-
-    public String getRequestMethod() {
-        return requestMethod;
+    public Boolean getEnabled() {
+        return enabled;
     }
 
-    public void setRequestMethod(String requestMethod) {
-        this.requestMethod = requestMethod;
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
     }
 
-    public String getServiceId() {
-        return serviceId;
+    public List<String> getGroupIds() {
+        List<String> defaultGroupIds = Stream.of(SystemConstants.PACKAGE_NAME).toList();
+
+        if (CollectionUtils.isEmpty(this.groupIds)) {
+            this.groupIds = new ArrayList<>();
+        }
+
+        this.groupIds.addAll(defaultGroupIds);
+        return groupIds;
     }
 
-    public void setServiceId(String serviceId) {
-        this.serviceId = serviceId;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    public String getVersion() {
-        return version;
-    }
-
-    public void setVersion(String version) {
-        this.version = version;
-    }
-
-    @Override
-    public String toString() {
-        return MoreObjects.toStringHelper(this)
-                .add("requestMethod", requestMethod)
-                .add("serviceId", serviceId)
-                .add("url", url)
-                .add("version", version)
-                .toString();
+    public void setGroupIds(List<String> groupIds) {
+        this.groupIds = groupIds;
     }
 }

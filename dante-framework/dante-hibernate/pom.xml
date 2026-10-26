@@ -31,7 +31,7 @@
     <parent>
         <groupId>cn.herodotus.dante</groupId>
         <artifactId>dante-framework</artifactId>
-        <version>4.1.1.1</version>
+        <version>4.1.2.0</version>
     </parent>
 
     <artifactId>dante-hibernate</artifactId>
@@ -65,10 +65,6 @@
         <dependency>
             <groupId>org.xerial</groupId>
             <artifactId>sqlite-jdbc</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.opengauss</groupId>
-            <artifactId>opengauss-jdbc</artifactId>
         </dependency>
 
         <!--解决 Hibernate 自定义缓存分页不生效问题-->

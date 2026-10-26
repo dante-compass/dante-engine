@@ -25,8 +25,8 @@
 
 package cn.herodotus.dante.oauth2.commons.strategy;
 
-import cn.herodotus.dante.messaging.definition.event.ApplicationStrategyEventManager;
 import cn.herodotus.dante.security.domain.RegisteredClientTransmitter;
+import cn.herodotus.dante.spring.event.DestinationStrategyEventManager;
 
 /**
  * <p>Description: 客户端注册成功事件管理器 </p>
@@ -34,5 +34,5 @@ import cn.herodotus.dante.security.domain.RegisteredClientTransmitter;
  * @author : gengwei.zheng
  * @date : 2024/8/21 21:56
  */
-public interface OAuth2ClientRegistrationSuccessEventManager extends ApplicationStrategyEventManager<RegisteredClientTransmitter> {
+public interface OAuth2ClientRegistrationSuccessEventManager extends DestinationStrategyEventManager<RegisteredClientTransmitter> {
 }

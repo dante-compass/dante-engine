@@ -23,29 +23,22 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.messaging.definition.event;
+package cn.herodotus.dante.messaging.processor;
+
+import cn.herodotus.dante.messaging.domain.AccountStatus;
 
 /**
- * <p>Description: 应用策略事件 </p>
+ * <p>Description: 账户状态变更传输处理器 </p>
  *
- * @author : gengwei.zheng
- * @date : 2022/3/29 7:26
+ * @author : gengwei_zheng
+ * @date : 2026/10/12 22:46
  */
-public interface ApplicationStrategyEventManager<T> extends StrategyEventManager<T> {
+public interface AccountStatusTransferProcessor {
 
     /**
-     * 目的服务名称
+     * 变更账户状态
      *
-     * @return 服务名称
+     * @param accountStatus 状态
      */
-    String getDestinationServiceName();
-
-    /**
-     * 发送事件
-     *
-     * @param data 事件携带数据
-     */
-    default void postProcess(T data) {
-        postProcess(getDestinationServiceName(), data);
-    }
+    void changeUserStatus(AccountStatus accountStatus);
 }

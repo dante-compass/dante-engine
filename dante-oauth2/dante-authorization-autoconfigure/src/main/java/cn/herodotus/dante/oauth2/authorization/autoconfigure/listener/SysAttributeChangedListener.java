@@ -23,37 +23,44 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.spring.context;
+package cn.herodotus.dante.oauth2.authorization.autoconfigure.listener;
 
-import org.apache.commons.lang3.ObjectUtils;
-import org.springframework.beans.BeansException;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
-import org.springframework.context.ApplicationEvent;
+import cn.herodotus.dante.logic.upms.domain.event.SysAttributeChangedEvent;
+import cn.herodotus.dante.messaging.domain.AttributeDistributor;
+import cn.herodotus.dante.messaging.strategy.AttributeDistributionEventManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.context.ApplicationListener;
+
+import java.util.Optional;
 
 /**
- * <p>Description: 抽象 JPA 实体变更 Listener</p>
+ * <p>Description: SysSecurityAttribute变更事件监听 </p>
  *
  * @author : gengwei.zheng
- * @date : 2021/8/11 18:12
+ * @date : 2021/8/4 22:18
  */
-public abstract class AbstractApplicationContextAware implements ApplicationContextAware {
+public class SysAttributeChangedListener implements ApplicationListener<SysAttributeChangedEvent> {
 
-    private ApplicationContext applicationContext;
+    private static final Logger log = LoggerFactory.getLogger(SysAttributeChangedListener.class);
 
-    protected ApplicationContext getApplicationContext() {
-        if (ObjectUtils.isEmpty(applicationContext)) {
-            return ServiceContextHolder.getApplicationContext();
-        }
-        return applicationContext;
+    private final AttributeDistributionEventManager eventManager;
+
+    public SysAttributeChangedListener(AttributeDistributionEventManager eventManager) {
+        this.eventManager = eventManager;
     }
+
 
     @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        this.applicationContext = applicationContext;
-    }
+    public void onApplicationEvent(SysAttributeChangedEvent event) {
 
-    protected void publishEvent(ApplicationEvent event) {
-        this.getApplicationContext().publishEvent(event);
+        log.debug("[Herodotus] |- SysAttribute Change Listener, response event!");
+
+        AttributeDistributor distributor = event.getData();
+
+        log.debug("[Herodotus] |- Got SysAttribute, start to process SysAttribute change.");
+
+        Optional.ofNullable(distributor)
+                .ifPresent(eventManager::postProcess);
     }
 }

@@ -52,7 +52,7 @@ import java.util.Set;
 @Entity
 @Table(name = "sys_element", indexes = {@Index(name = "sys_element_id_idx", columnList = "element_id")})
 @Cacheable
-@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = LogicUpmsConstants.REGION_SYS_ELEMENT)
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = LogicUpmsConstants.REGION__SYS_ELEMENT)
 public class SysElement extends AbstractSysEntity {
 
     @Id
@@ -102,21 +102,21 @@ public class SysElement extends AbstractSysEntity {
     private Boolean ignoreAuth = false;
 
     @Schema(name = "元素类别", description = "用于表示不同类型的前端元素，例如：菜单、按钮")
-    @Column(name = "element_category", length = 50)
+    @Column(name = "element_category", length = 30)
     @Enumerated(EnumType.STRING)
     private ElementCategory elementCategory = ElementCategory.MENU;
 
     @Schema(name = "菜单类别", description = "用于表示不同类型菜单，例如: Web应用菜单，小程序菜单")
-    @Column(name = "menu_scenario", length = 50)
+    @Column(name = "menu_scenario", length = 30)
     @Enumerated(EnumType.STRING)
     private MenuScenario menuScenario = MenuScenario.APP;
 
     @Schema(name = "应用类型", title = "用于区分不同类型的应用")
-    @Column(name = "client_type", length = 50)
+    @Column(name = "client_type", length = 30)
     @Enumerated(EnumType.STRING)
     private ClientType clientType = ClientType.WEB;
 
-    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = LogicUpmsConstants.REGION_SYS_ROLE)
+    @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = LogicUpmsConstants.REGION__SYS_ROLE)
     @Schema(name = "元素角色")
     @ManyToMany(fetch = FetchType.EAGER)
     @Fetch(FetchMode.SUBSELECT)

@@ -25,8 +25,8 @@
 
 package cn.herodotus.dante.oauth2.commons.strategy;
 
-import cn.herodotus.dante.messaging.definition.event.ApplicationStrategyEventManager;
 import cn.herodotus.dante.messaging.domain.AccountStatus;
+import cn.herodotus.dante.spring.event.DestinationStrategyEventManager;
 
 /**
  * <p>Description: 用户状态变更服务 </p>
@@ -34,6 +34,6 @@ import cn.herodotus.dante.messaging.domain.AccountStatus;
  * @author : gengwei.zheng
  * @date : 2022/7/10 16:23
  */
-public interface AccountStatusChangedEventManager extends ApplicationStrategyEventManager<AccountStatus> {
+public interface AccountStatusChangedEventManager extends DestinationStrategyEventManager<AccountStatus> {
 
 }

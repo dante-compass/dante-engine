@@ -31,7 +31,7 @@
     <parent>
         <groupId>cn.herodotus.dante</groupId>
         <artifactId>dante-framework</artifactId>
-        <version>4.1.1.1</version>
+        <version>4.1.2.0</version>
     </parent>
 
     <artifactId>dante-core</artifactId>
@@ -40,6 +40,13 @@
     <description>Dante Cloud 云原生微服务基座组件库框架核心通用代码模块</description>
 
     <dependencies>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-collections4</artifactId>

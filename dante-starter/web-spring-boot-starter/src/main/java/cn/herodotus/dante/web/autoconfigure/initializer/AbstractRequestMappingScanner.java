@@ -26,28 +26,23 @@
 package cn.herodotus.dante.web.autoconfigure.initializer;
 
 import cn.herodotus.dante.core.constant.SymbolConstants;
-import cn.herodotus.dante.core.utils.WellFormedUtils;
+import cn.herodotus.dante.core.domain.Scan;
 import cn.herodotus.dante.messaging.definition.AbstractMappingAttributeScanner;
+import cn.herodotus.dante.messaging.domain.AttributeCollector;
 import cn.herodotus.dante.messaging.domain.MappingAttribute;
 import cn.herodotus.dante.messaging.strategy.AttributeCollectionEventManager;
-import cn.herodotus.dante.spring.context.PropertyResolver;
 import cn.herodotus.dante.spring.enums.MappingCategory;
-import cn.herodotus.dante.web.autoconfigure.properties.ServiceProperties;
+import cn.herodotus.dante.spring.event.DestinationStrategyEventManager;
 import cn.hutool.v7.crypto.SecureUtil;
 import io.swagger.v3.oas.annotations.Hidden;
 import io.swagger.v3.oas.annotations.Operation;
-import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.Strings;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.ApplicationContext;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.method.HandlerMethod;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * <p>Description: RequestMapping 扫描器抽象定义 </p>
@@ -61,11 +56,8 @@ public abstract class AbstractRequestMappingScanner extends AbstractMappingAttri
 
     private static final Logger log = LoggerFactory.getLogger(AbstractRequestMappingScanner.class);
 
-    private final ServiceProperties.Scan scan;
-
-    protected AbstractRequestMappingScanner(ServiceProperties.Scan scan, AttributeCollectionEventManager attributeCollectionEventManager) {
-        super(attributeCollectionEventManager);
-        this.scan = scan;
+    protected AbstractRequestMappingScanner(Scan scan, AttributeCollectionEventManager attributeCollectionEventManager) {
+        super(scan, attributeCollectionEventManager);
     }
 
     /**
@@ -89,11 +81,7 @@ public abstract class AbstractRequestMappingScanner extends AbstractMappingAttri
      * @return boolean
      */
     protected boolean isSpringAnnotationMatched(HandlerMethod handlerMethod) {
-        if (scan.getJustScanRestController()) {
-            return handlerMethod.getMethod().getDeclaringClass().getAnnotation(RestController.class) != null;
-        }
-
-        return true;
+        return handlerMethod.getBeanType().isAnnotationPresent(RestController.class);
     }
 
     /**
@@ -109,22 +97,6 @@ public abstract class AbstractRequestMappingScanner extends AbstractMappingAttri
 
         Operation operation = handlerMethod.getMethodAnnotation(Operation.class);
         return ObjectUtils.isNotEmpty(operation) && !operation.hidden();
-    }
-
-    /**
-     * 如果当前class的groupId在GroupId列表中，那么就进行扫描，否则就排除
-     *
-     * @param className 当前扫描的controller类名
-     * @return Boolean
-     */
-    private boolean isLegalGroup(String className) {
-        if (StringUtils.isNotEmpty(className)) {
-            List<String> groupIds = scan.getScanGroupIds();
-            List<String> result = groupIds.stream().filter(groupId -> Strings.CS.contains(className, groupId)).collect(Collectors.toList());
-            return CollectionUtils.sizeIsEmpty(result);
-        } else {
-            return true;
-        }
     }
 
     /**
@@ -154,22 +126,12 @@ public abstract class AbstractRequestMappingScanner extends AbstractMappingAttri
      * @return 是否执行扫描
      */
     protected boolean notExecuteScanning() {
-        return !getAttributeCollectionEventManager().isPerformScan();
-    }
-
-    /**
-     * 从 {@link ApplicationContext} 中读取 Context Path
-     *
-     * @param applicationContext 应用上下文 {@link ApplicationContext}
-     * @return 如果有 Context Path 就返回实际值，如果没有或者为 '/' 则返回空串。
-     */
-    protected String getContextPath(ApplicationContext applicationContext) {
-        String contextPath = PropertyResolver.getContextPath(applicationContext);
-        if (StringUtils.isNotBlank(contextPath) && !Strings.CS.equals(contextPath, SymbolConstants.FORWARD_SLASH)) {
-            return WellFormedUtils.robustness(contextPath, SymbolConstants.FORWARD_SLASH, false, false);
-        } else {
-            return StringUtils.EMPTY;
+        DestinationStrategyEventManager<AttributeCollector> manager = getStrategyEventManager();
+        if (ObjectUtils.isNotEmpty(manager) && manager instanceof AttributeCollectionEventManager collectionEventManager) {
+            return !collectionEventManager.isPerformScan();
         }
+
+        return true;
     }
 
     /**
@@ -208,7 +170,7 @@ public abstract class AbstractRequestMappingScanner extends AbstractMappingAttri
         String className = method.getBeanType().getName();
 
         // 2. 检测该类是否在GroupIds列表中
-        if (isLegalGroup(className)) {
+        if (isIllegalGroupId(className)) {
             return null;
         }
 

@@ -25,6 +25,7 @@
 
 package cn.herodotus.dante.core.utils;
 
+import cn.herodotus.dante.core.constant.RegexPool;
 import org.apache.commons.text.StringSubstitutor;
 
 import java.util.HashMap;
@@ -72,7 +73,7 @@ public class StringTemplateUtils {
      */
     private static Map<String, String> extractByRegex(String template, String source) {
         // 将模板中的占位符转换为正则捕获组（如 ${code} → (?<code>\w+)）
-        String regex = template.replaceAll("\\$\\{(\\w+)}", "(?<$1>\\\\w+)");
+        String regex = template.replaceAll("\\$\\{(\\w+)}", "(?<$1>" + RegexPool.STRING_TEMPLATE + ")");
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(source);
 

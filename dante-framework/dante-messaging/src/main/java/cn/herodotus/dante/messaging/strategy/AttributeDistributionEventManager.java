@@ -23,33 +23,20 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.messaging.definition.event;
+package cn.herodotus.dante.messaging.strategy;
 
-import org.springframework.context.ApplicationEvent;
-
-import java.time.Clock;
+import cn.herodotus.dante.messaging.domain.AttributeDistributor;
+import cn.herodotus.dante.spring.event.StrategyEventManager;
 
 /**
- * <p>Description: 自定义 Application Event 基础类 </p>
+ * <p>Description: 权限元数据映射分发事件管理器 </p>
  *
- * @author : gengwei.zheng
- * @date : 2022/2/4 15:14
+ * @author : gengwei_zheng
+ * @date : 2026/10/12 23:43
  */
-public abstract class AbstractApplicationEvent<T> extends ApplicationEvent {
+public interface AttributeDistributionEventManager extends StrategyEventManager<AttributeDistributor> {
 
-    private final T data;
-
-    public AbstractApplicationEvent(T data) {
-        super(data);
-        this.data = data;
-    }
-
-    public AbstractApplicationEvent(T data, Clock clock) {
-        super(data, clock);
-        this.data = data;
-    }
-
-    public T getData() {
-        return data;
+    default void postProcess(AttributeDistributor data) {
+        postProcess(data.getServiceId(), data);
     }
 }

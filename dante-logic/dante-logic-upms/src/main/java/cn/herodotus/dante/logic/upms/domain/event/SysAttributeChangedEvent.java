@@ -23,23 +23,29 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.oauth2.authorization.cache;
+package cn.herodotus.dante.logic.upms.domain.event;
 
-import cn.herodotus.dante.security.domain.McpContext;
+import cn.herodotus.dante.logic.upms.converter.SysAttributeToAttributeDispatcherConverter;
+import cn.herodotus.dante.logic.upms.entity.security.SysAttribute;
+import cn.herodotus.dante.messaging.domain.AttributeDistributor;
+import cn.herodotus.dante.spring.context.AbstractApplicationEvent;
+import org.springframework.core.convert.converter.Converter;
 
 /**
- * <p>Description: MCP 权限缓存数据 Key 实体 </p>
+ * <p>Description: SysSecurityAttribute实体数据变更事件 </p>
  *
- * @author : gengwei_zheng
- * @date : 2026/9/19 16:37
+ * @author : gengwei.zheng
+ * @date : 2021/8/4 22:18
  */
-public final class HerodotusMcp extends McpContext {
+public class SysAttributeChangedEvent extends AbstractApplicationEvent<AttributeDistributor> {
 
-    public HerodotusMcp() {
-        super();
+    public SysAttributeChangedEvent(SysAttribute data) {
+        Converter<SysAttribute, AttributeDistributor> toDispatcher = new SysAttributeToAttributeDispatcherConverter();
+        AttributeDistributor distributor = toDispatcher.convert(data);
+        this(distributor);
     }
 
-    public HerodotusMcp(String name, String feature) {
-        super(name, feature);
+    public SysAttributeChangedEvent(AttributeDistributor data) {
+        super(data);
     }
 }

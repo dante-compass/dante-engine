@@ -23,43 +23,41 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.oauth2.authorization.autoconfigure.listener;
+package cn.herodotus.dante.logic.upms.manager.security;
 
-import cn.herodotus.dante.logic.upms.domain.event.SysAttributeChangeEvent;
-import cn.herodotus.dante.logic.upms.entity.security.SysAttribute;
-import cn.herodotus.dante.oauth2.authorization.autoconfigure.processor.SecurityAttributeProcessor;
+import cn.herodotus.dante.data.commons.enums.DataItemStatus;
+import cn.herodotus.dante.logic.upms.entity.security.SysUser;
+import cn.herodotus.dante.logic.upms.service.security.SysUserService;
+import cn.herodotus.dante.messaging.domain.AccountStatus;
+import cn.herodotus.dante.messaging.processor.AccountStatusTransferProcessor;
+import org.apache.commons.lang3.ObjectUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.ApplicationListener;
-
-import java.util.Optional;
 
 /**
- * <p>Description: SysSecurityAttribute变更事件监听 </p>
+ * <p>Description: {@link SysUser} Manager </p>
  *
- * @author : gengwei.zheng
- * @date : 2021/8/4 22:18
+ * @author : gengwei_zheng
+ * @date : 2026/10/12 22:51
  */
-public class SysAttributeChangeListener implements ApplicationListener<SysAttributeChangeEvent> {
+public class SysUserManager implements AccountStatusTransferProcessor {
 
-    private static final Logger log = LoggerFactory.getLogger(SysAttributeChangeListener.class);
+    private static final Logger log = LoggerFactory.getLogger(SysUserManager.class);
 
-    private final SecurityAttributeProcessor securityAttributeProcessor;
+    private final SysUserService sysUserService;
 
-    public SysAttributeChangeListener(SecurityAttributeProcessor securityAttributeProcessor) {
-        this.securityAttributeProcessor = securityAttributeProcessor;
+    public SysUserManager(SysUserService sysUserService) {
+        this.sysUserService = sysUserService;
     }
 
     @Override
-    public void onApplicationEvent(SysAttributeChangeEvent event) {
-
-        log.debug("[Herodotus] |- SysAttribute Change Listener, response event!");
-
-        SysAttribute sysAttribute = event.getData();
-
-        log.debug("[Herodotus] |- Got SysAttribute, start to process SysAttribute change.");
-
-        Optional.ofNullable(sysAttribute)
-                .ifPresent(securityAttributeProcessor::distributeChangedSecurityAttribute);
+    public void changeUserStatus(AccountStatus accountStatus) {
+        if (ObjectUtils.isNotEmpty(accountStatus)) {
+            DataItemStatus dataItemStatus = DataItemStatus.valueOf(accountStatus.getStatus());
+            if (ObjectUtils.isNotEmpty(dataItemStatus)) {
+                log.debug("[Herodotus] |- [A2] Account status changed process BEGIN!");
+                sysUserService.changeStatus(accountStatus.getUserId(), dataItemStatus);
+            }
+        }
     }
 }
