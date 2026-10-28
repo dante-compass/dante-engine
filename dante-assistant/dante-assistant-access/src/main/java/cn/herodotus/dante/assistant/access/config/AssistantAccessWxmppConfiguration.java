@@ -27,12 +27,11 @@ package cn.herodotus.dante.assistant.access.config;
 
 import cn.herodotus.dante.assistant.access.condition.ConditionalOnWxmppEnabled;
 import cn.herodotus.dante.assistant.access.processor.WxmppLogHandler;
-import cn.herodotus.dante.assistant.access.processor.WxmppProcessor;
+import cn.herodotus.dante.assistant.access.processor.WxmppRequestProcessor;
 import cn.herodotus.dante.assistant.access.properties.WxmppProperties;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -57,13 +56,12 @@ public class AssistantAccessWxmppConfiguration {
     }
 
     @Bean
-    @ConditionalOnMissingBean
-    public WxmppProcessor wxmppProcessor(WxmppProperties wxmppProperties, StringRedisTemplate stringRedisTemplate) {
-        WxmppProcessor wxmppProcessor = new WxmppProcessor();
-        wxmppProcessor.setWxmppProperties(wxmppProperties);
-        wxmppProcessor.setWxmppLogHandler(new WxmppLogHandler());
-        wxmppProcessor.setStringRedisTemplate(stringRedisTemplate);
-        log.trace("[Herodotus] |- Bean [Wxmpp Processor] Configure.");
-        return wxmppProcessor;
+    public WxmppRequestProcessor wxmppRequestProcessor(WxmppProperties wxmppProperties, StringRedisTemplate stringRedisTemplate) {
+        WxmppRequestProcessor wxmppRequestProcessor = new WxmppRequestProcessor();
+        wxmppRequestProcessor.setWxmppProperties(wxmppProperties);
+        wxmppRequestProcessor.setWxmppLogHandler(new WxmppLogHandler());
+        wxmppRequestProcessor.setStringRedisTemplate(stringRedisTemplate);
+        log.trace("[Herodotus] |- Bean [Wxmpp Request Processor] Configure.");
+        return wxmppRequestProcessor;
     }
 }

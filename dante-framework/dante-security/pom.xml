@@ -46,6 +46,11 @@
         </dependency>
 
         <dependency>
+            <groupId>org.dromara.anduin</groupId>
+            <artifactId>dromara-anduin</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>jakarta.servlet</groupId>
             <artifactId>jakarta.servlet-api</artifactId>
         </dependency>
@@ -66,11 +71,6 @@
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-oauth2-jose</artifactId>
             <optional>true</optional>
-        </dependency>
-
-        <dependency>
-            <groupId>org.dromara.justauth</groupId>
-            <artifactId>JustAuth</artifactId>
         </dependency>
 
         <!-- ReactiveBearerTokenResolver 需要依赖这个包，同时解决 ReactiveSecurityUtils 依赖问题 -->

@@ -47,9 +47,9 @@ import java.util.stream.Collectors;
  * @author : gengwei.zheng
  * @date : 2021/5/27 20:25
  */
-public class WxmppProcessor implements InitializingBean {
+public class WxmppRequestProcessor implements InitializingBean {
 
-    private static final Logger log = LoggerFactory.getLogger(WxmppProcessor.class);
+    private static final Logger log = LoggerFactory.getLogger(WxmppRequestProcessor.class);
 
     private WxMpService wxMpService;
 

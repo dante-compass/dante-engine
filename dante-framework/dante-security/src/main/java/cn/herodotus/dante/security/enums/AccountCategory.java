@@ -29,7 +29,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.google.common.collect.ImmutableMap;
 import io.swagger.v3.oas.annotations.media.Schema;
-import me.zhyd.oauth.config.AuthDefaultSource;
+import org.dromara.anduin.config.AuthDefaultSource;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -27,20 +27,20 @@ package cn.herodotus.dante.assistant.access.properties;
 
 import cn.herodotus.dante.assistant.access.constant.AccessConstants;
 import com.google.common.base.MoreObjects;
-import me.zhyd.oauth.config.AuthConfig;
+import org.dromara.anduin.config.AuthConfig;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 import java.time.Duration;
 import java.util.Map;
 
 /**
- * <p>Description: 用于支持JustAuth第三方登录的配置 </p>
+ * <p>Description: 用于支持Anduin第三方登录的配置 </p>
  *
  * @author : gengwei.zheng
  * @date : 2021/5/16 10:24
  */
-@ConfigurationProperties(prefix = AccessConstants.PROPERTY_ACCESS_JUSTAUTH)
-public class JustAuthProperties {
+@ConfigurationProperties(prefix = AccessConstants.PROPERTY_ACCESS_ANDUIN)
+public class AnduinProperties {
 
     /**
      * 是否开启

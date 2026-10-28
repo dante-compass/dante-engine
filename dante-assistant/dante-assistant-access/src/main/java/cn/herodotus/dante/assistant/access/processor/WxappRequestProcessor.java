@@ -51,16 +51,16 @@ import java.util.stream.Collectors;
  * @author : gengwei.zheng
  * @date : 2021/5/27 20:29
  */
-public class WxappProcessor {
+public class WxappRequestProcessor {
 
-    private static final Logger log = LoggerFactory.getLogger(WxappProcessor.class);
+    private static final Logger log = LoggerFactory.getLogger(WxappRequestProcessor.class);
 
     private final WxappProperties wxappProperties;
     private final WxappLogHandler wxappLogHandler;
     private final Map<String, WxMaMessageRouter> wxMaMessageRouters;
     private final Map<String, WxMaService> wxMaServices;
 
-    public WxappProcessor(WxappProperties wxappProperties) {
+    public WxappRequestProcessor(WxappProperties wxappProperties) {
         this.wxappProperties = wxappProperties;
         this.wxappLogHandler = new WxappLogHandler();
         this.wxMaMessageRouters = Maps.newHashMap();

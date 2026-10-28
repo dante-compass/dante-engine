@@ -23,23 +23,43 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.assistant.access.condition;
+package cn.herodotus.dante.assistant.access.stamp;
 
 import cn.herodotus.dante.assistant.access.constant.AccessConstants;
-import cn.herodotus.dante.core.constant.BaseConstants;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-
-import java.lang.annotation.*;
+import cn.herodotus.dante.assistant.access.properties.AnduinProperties;
+import cn.herodotus.dante.cache.definition.AbstractStampManager;
+import cn.hutool.v7.core.data.id.IdUtil;
+import org.dromara.anduin.cache.AuthStateCache;
 
 /**
- * <p>Description: JustAuth开启条件注解 </p>
+ * <p>Description: 自定义Anduin State Cache </p>
  *
  * @author : gengwei.zheng
- * @date : 2022/1/24 14:40
+ * @date : 2021/5/22 10:22
  */
-@Target({ElementType.TYPE, ElementType.METHOD})
-@Retention(RetentionPolicy.RUNTIME)
-@Documented
-@ConditionalOnProperty(prefix = AccessConstants.PROPERTY_ACCESS_JUSTAUTH, name = BaseConstants.PROPERTY_ENABLED, havingValue = "true")
-public @interface ConditionalOnJustAuthEnabled {
+public class AnduinStateStampManager extends AbstractStampManager<String, String> implements AuthStateCache {
+
+    public AnduinStateStampManager(AnduinProperties anduinProperties) {
+        super(AccessConstants.CACHE_NAME_TOKEN_ANDUIN, anduinProperties.getTimeout());
+    }
+
+    @Override
+    public String nextStamp(String key) {
+        return IdUtil.fastSimpleUUID();
+    }
+
+    @Override
+    public void cache(String key, String value) {
+        this.put(key, value);
+    }
+
+    @Override
+    public boolean containsKey(String key) {
+        return this.containKey(key);
+    }
+
+    @Override
+    public void expire(String key) {
+
+    }
 }

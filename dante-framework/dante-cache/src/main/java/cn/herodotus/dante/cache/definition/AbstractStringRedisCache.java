@@ -34,7 +34,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * <p>Description: SimpleRedisCache的基础实现 </p>
  * <p>
- * 增加这一层是为了方便扩展，比如说支持JustAuth
+ * 增加这一层是为了方便扩展，比如说支持Anduin
  *
  * @author : gengwei.zheng
  * @date : 2021/5/21 23:45
