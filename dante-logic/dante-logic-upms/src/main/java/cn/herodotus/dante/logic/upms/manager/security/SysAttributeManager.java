@@ -78,7 +78,7 @@ public class SysAttributeManager implements AttributeTransferProcessor {
         List<SysInterface> storedInterfaces = sysInterfaceService.storeMappingAttributes(collector.getAttributes());
 
         if (CollectionUtils.isNotEmpty(storedInterfaces)) {
-            log.info("[Herodotus] |- ATTRIBUTE COLLECTOR: security attribute store success, start to merge security metadata!");
+            log.info("[Herodotus] |- ATTRIBUTE COLLECTOR: collection data store success, start to merge security metadata!");
 
             // 查询将新增的 SysInterface，将其转存到 SysAttribute 中
             List<SysInterface> sysInterfaces = sysInterfaceService.findAllocatable();

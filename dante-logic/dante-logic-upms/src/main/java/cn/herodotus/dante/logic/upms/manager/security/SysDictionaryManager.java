@@ -65,7 +65,7 @@ public class SysDictionaryManager implements EnumDictionaryTransferProcessor {
         List<SysEnum> storedEnums = sysEnumService.storeDictionaries(dictionaries);
 
         if (CollectionUtils.isNotEmpty(storedEnums)) {
-            log.debug("[Herodotus] |- [E4] Dictionary store success, start to merge system dictionary!");
+            log.info("[Herodotus] |- DICTIONARY COLLECTOR: collection data store success, start to merge sys dictionary!");
 
             // 查询将新增的 SysEnum，将其转存到 SysDictionary 中
             List<SysEnum> sysEnums = sysEnumService.findAllocatable();
@@ -73,12 +73,12 @@ public class SysDictionaryManager implements EnumDictionaryTransferProcessor {
                 List<SysDictionary> elements = toDictionaries.convert(sysEnums);
                 List<SysDictionary> result = sysDictionaryService.saveAll(elements);
                 if (CollectionUtils.isNotEmpty(result)) {
-                    log.debug("[Herodotus] |- [E5] Merge enum dictionary SUCCESS and FINISHED!");
+                    log.debug("[Herodotus] |- DICTIONARY COLLECTOR: merge enum dictionary SUCCESS and FINISHED!");
                 } else {
-                    log.error("[Herodotus] |- [E5] Merge enum dictionary failed!, Please Check!");
+                    log.error("[Herodotus] |- DICTIONARY COLLECTOR: merge enum dictionary failed!, Please Check!");
                 }
             } else {
-                log.debug("[Herodotus] |- No enum dictionary requires merge, SKIP!");
+                log.debug("[Herodotus] |- DICTIONARY COLLECTOR: no enum dictionary requires merge, SKIP!");
             }
         }
     }

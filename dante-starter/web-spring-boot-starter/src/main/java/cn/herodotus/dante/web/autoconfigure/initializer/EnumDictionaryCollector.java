@@ -46,7 +46,7 @@ public class EnumDictionaryCollector extends AbstractApplicationReadyScanner<Lis
     private final EnumDictionaryBuilder enumDictionaryBuilder;
 
     public EnumDictionaryCollector(EnumDictionaryBuilder enumDictionaryBuilder, EnumDictionaryCollectionEventManager enumDictionaryCollectionEventManager) {
-        super(null, ScanResource.ENUMS, enumDictionaryCollectionEventManager);
+        super(null, ScanResource.DICTIONARY, enumDictionaryCollectionEventManager);
         this.enumDictionaryBuilder = enumDictionaryBuilder;
     }
 

@@ -34,7 +34,7 @@ package cn.herodotus.dante.core.enums;
 public enum ScanResource {
 
     ATTRIBUTE("security attribute"),
-    ENUMS("enum dictionary"),
+    DICTIONARY("enum dictionary"),
     TASK("task scheduling"),
     SUPPORTED_SCOPE("protected resource metadata");
 
