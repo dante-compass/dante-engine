@@ -45,12 +45,4 @@ public interface AttributeTransferProcessor {
      * @param publishEvent 数据发送操作
      */
     void storeAndMergeAttributeCollector(AttributeCollector collector, BiConsumer<String, AttributeDistributor> publishEvent);
-
-    /**
-     * SysAttribute 数据条目发生变化后触发数据更新
-     *
-     * @param attribute    变更后数据。JSON 字符串较少代码耦合
-     * @param publishEvent 数据发送操作
-     */
-    void distributeChangedSecurityAttribute(String attribute, BiConsumer<String, AttributeDistributor> publishEvent);
 }

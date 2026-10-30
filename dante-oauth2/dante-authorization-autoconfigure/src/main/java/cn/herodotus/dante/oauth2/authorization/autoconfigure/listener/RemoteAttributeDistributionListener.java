@@ -59,11 +59,11 @@ public class RemoteAttributeDistributionListener implements ApplicationListener<
     public void onApplicationEvent(RemoteAttributeDistributionEvent event) {
 
         if (!serviceMatcher.isFromSelf(event)) {
-            log.info("[Herodotus] |- Attribute distribution REMOTE listener, response service [{}] event!", event.getOriginService());
+            log.info("[Herodotus] |- ATTRIBUTE DISTRIBUTOR: attribute distribution REMOTE listener, response service [{}] event!", event.getOriginService());
 
             String data = event.getData();
 
-            log.debug("[Herodotus] |- Got attribute data from service [{}], current [{}] start to process security attributes.", event.getOriginService(), event.getDestinationService());
+            log.debug("[Herodotus] |- ATTRIBUTE DISTRIBUTOR: get attribute data from service [{}], current [{}] start to process security attributes.", event.getOriginService(), event.getDestinationService());
 
             Optional.ofNullable(data)
                     .flatMap(value -> Optional.ofNullable(JacksonUtils.toObject(value, AttributeDistributor.class)))

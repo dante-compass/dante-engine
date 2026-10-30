@@ -25,8 +25,6 @@
 
 package cn.herodotus.dante.logic.upms.manager.security;
 
-import cn.herodotus.dante.core.jackson.JacksonUtils;
-import cn.herodotus.dante.logic.upms.converter.SysAttributeToAttributeDispatcherConverter;
 import cn.herodotus.dante.logic.upms.converter.SysAttributesToAttributeDispatcherConverter;
 import cn.herodotus.dante.logic.upms.converter.SysInterfacesToSysAttributesConverter;
 import cn.herodotus.dante.logic.upms.entity.security.SysAttribute;
@@ -38,8 +36,6 @@ import cn.herodotus.dante.messaging.domain.AttributeDistributor;
 import cn.herodotus.dante.messaging.processor.AttributeTransferProcessor;
 import cn.herodotus.dante.spring.founction.ListConverter;
 import org.apache.commons.collections4.CollectionUtils;
-import org.apache.commons.lang3.ObjectUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.convert.converter.Converter;
@@ -82,7 +78,7 @@ public class SysAttributeManager implements AttributeTransferProcessor {
         List<SysInterface> storedInterfaces = sysInterfaceService.storeMappingAttributes(collector.getAttributes());
 
         if (CollectionUtils.isNotEmpty(storedInterfaces)) {
-            log.debug("[Herodotus] |- Mapping attribute store success, start to merge security metadata!");
+            log.info("[Herodotus] |- ATTRIBUTE COLLECTOR: security attribute store success, start to merge security metadata!");
 
             // 查询将新增的 SysInterface，将其转存到 SysAttribute 中
             List<SysInterface> sysInterfaces = sysInterfaceService.findAllocatable();
@@ -90,12 +86,12 @@ public class SysAttributeManager implements AttributeTransferProcessor {
                 List<SysAttribute> elements = toSysAttributes.convert(sysInterfaces);
                 List<SysAttribute> result = sysAttributeService.saveAll(elements);
                 if (CollectionUtils.isNotEmpty(result)) {
-                    log.debug("[Herodotus] |- Merge security attribute SUCCESS and FINISHED!");
+                    log.debug("[Herodotus] |- ATTRIBUTE COLLECTOR: merge security attribute SUCCESS and FINISHED!");
                 } else {
-                    log.error("[Herodotus] |- Merge Security attribute failed!, Please Check!");
+                    log.error("[Herodotus] |- ATTRIBUTE COLLECTOR: merge security attribute failed!, Please Check!");
                 }
             } else {
-                log.debug("[Herodotus] |- No security attribute requires merge, SKIP!");
+                log.debug("[Herodotus] |- ATTRIBUTE COLLECTOR: no security attribute requires merge, SKIP!");
             }
 
             // 执行权限数据分发
@@ -110,24 +106,8 @@ public class SysAttributeManager implements AttributeTransferProcessor {
         if (CollectionUtils.isNotEmpty(sysAttributes)) {
             Converter<List<SysAttribute>, AttributeDistributor> toDispatchers = new SysAttributesToAttributeDispatcherConverter(serviceId, collector.getCategory());
             AttributeDistributor dispatcher = toDispatchers.convert(sysAttributes);
-            log.debug("[Herodotus] |- [R6] Synchronization permissions to service [{}]", serviceId);
+            log.debug("[Herodotus] |- ATTRIBUTE DISTRIBUTOR: synchronization permissions to service [{}]", serviceId);
             publishEvent.accept(serviceId, dispatcher);
-        }
-    }
-
-    @Override
-    public void distributeChangedSecurityAttribute(String attribute, BiConsumer<String, AttributeDistributor> publishEvent) {
-        if (StringUtils.isNotEmpty(attribute)) {
-            SysAttribute sysAttribute = JacksonUtils.toObject(attribute, SysAttribute.class);
-            if (ObjectUtils.isNotEmpty(sysAttribute)) {
-                Converter<SysAttribute, AttributeDistributor> toDispatcher = new SysAttributeToAttributeDispatcherConverter();
-                AttributeDistributor dispatcher = toDispatcher.convert(sysAttribute);
-                publishEvent.accept(dispatcher.getServiceId(), dispatcher);
-            } else {
-                log.error("[Herodotus] |- Changed sysAttribute deserialization to entity failed.");
-            }
-        } else {
-            log.error("[Herodotus] |- Changed sysAttribute data is null.");
         }
     }
 }

@@ -63,7 +63,7 @@ public abstract class AbstractApplicationReadyScanner<T> implements ApplicationR
     public void onApplicationEvent(ApplicationReadyEvent event) {
         ApplicationContext applicationContext = event.getApplicationContext();
 
-        log.debug("[Herodotus] |- Application is READY, start to scan attributes!");
+        log.debug("[Herodotus] |- ATTRIBUTE SCANNER: application is ready, start to scan attributes!");
 
         this.serviceId = PropertyResolver.getApplicationName(applicationContext);
 
@@ -118,14 +118,12 @@ public abstract class AbstractApplicationReadyScanner<T> implements ApplicationR
      * @param size 扫描到的数据数量
      */
     protected void complete(T data, int size) {
-
         if (isNotEmpty(data)) {
-            log.debug("[Herodotus] |- Scanner found [{}] resources in service [{}], go to next stage!", serviceId, size);
+            log.debug("[Herodotus] |- ATTRIBUTE SCANNER: found [{}] resources in service [{}], go to next stage!", serviceId, size);
+            log.info("[Herodotus] |- ATTRIBUTE COLLECTOR: sending collection event for service: [{}].", getServiceId());
             strategyEventManager.postProcess(data);
         } else {
-            log.debug("[Herodotus] |- Scanner can not find any resources in service [{}]!", serviceId);
+            log.debug("[Herodotus] |- ATTRIBUTE SCANNER: can not find any resources in service [{}]!", serviceId);
         }
-
-        log.info("[Herodotus] |- Scanning for Service: [{}] FINISHED!", serviceId);
     }
 }

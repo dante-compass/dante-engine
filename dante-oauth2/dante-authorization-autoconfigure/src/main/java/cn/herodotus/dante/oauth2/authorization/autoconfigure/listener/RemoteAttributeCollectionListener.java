@@ -63,11 +63,11 @@ public class RemoteAttributeCollectionListener implements ApplicationListener<Re
     @Override
     public void onApplicationEvent(RemoteAttributeCollectionEvent event) {
 
-        log.info("[Herodotus] |- Attribute collection REMOTE listener, response service [{}] event!", event.getOriginService());
+        log.info("[Herodotus] |- ATTRIBUTE COLLECTOR: attribute collection REMOTE listener, response service [{}] event!", event.getOriginService());
 
         String date = event.getData();
 
-        log.debug("[Herodotus] |- [R4] Attribute collection process BEGIN!");
+        log.debug("[Herodotus] |- ATTRIBUTE COLLECTOR: REMOTE attribute collection data process BEGIN!");
 
         Optional.ofNullable(date)
                 .flatMap(value -> Optional.ofNullable(JacksonUtils.toObject(value, AttributeCollector.class)))

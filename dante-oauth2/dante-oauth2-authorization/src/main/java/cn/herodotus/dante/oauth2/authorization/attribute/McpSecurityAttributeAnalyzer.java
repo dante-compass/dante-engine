@@ -65,5 +65,7 @@ public class McpSecurityAttributeAnalyzer extends AbstractSecurityAttributeAnaly
         if (MapUtils.isNotEmpty(result)) {
             mcpSecurityAttributeStorage.writeToIndexable(result);
         }
+
+        log.debug("[Herodotus] |- ATTRIBUTE DISTRIBUTOR: MCP security attributes process has FINISHED!");
     }
 }

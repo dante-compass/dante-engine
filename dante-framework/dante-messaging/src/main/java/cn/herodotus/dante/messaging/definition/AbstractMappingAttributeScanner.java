@@ -66,7 +66,7 @@ public abstract class AbstractMappingAttributeScanner extends AbstractApplicatio
      * @param category   映射类别 {@link MappingCategory}
      */
     protected void complete(List<MappingAttribute> attributes, MappingCategory category) {
-        log.info("[Herodotus] |- Scanner for {} resources in service: [{}] COMPLETE!", category.getLabel(), getServiceId());
+        log.info("[Herodotus] |- ATTRIBUTE SCANNER: scanning for {} resources in service: [{}] COMPLETE!", category.getLabel(), getServiceId());
         complete(new AttributeCollector(attributes, getServiceId(), category), attributes.size());
     }
 
