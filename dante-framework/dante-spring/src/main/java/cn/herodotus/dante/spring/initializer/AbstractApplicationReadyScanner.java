@@ -27,6 +27,7 @@ package cn.herodotus.dante.spring.initializer;
 
 import cn.herodotus.dante.core.constant.SymbolConstants;
 import cn.herodotus.dante.core.domain.Scan;
+import cn.herodotus.dante.core.enums.ScanResource;
 import cn.herodotus.dante.spring.context.PropertyResolver;
 import cn.herodotus.dante.spring.event.DestinationStrategyEventManager;
 import org.apache.commons.collections4.CollectionUtils;
@@ -51,11 +52,13 @@ public abstract class AbstractApplicationReadyScanner<T> implements ApplicationR
     private static final Logger log = LoggerFactory.getLogger(AbstractApplicationReadyScanner.class);
 
     private final Scan scan;
+    private final ScanResource scanResource;
     private final DestinationStrategyEventManager<T> strategyEventManager;
     private String serviceId;
 
-    public AbstractApplicationReadyScanner(Scan scan, DestinationStrategyEventManager<T> strategyEventManager) {
+    public AbstractApplicationReadyScanner(Scan scan, ScanResource scanResource, DestinationStrategyEventManager<T> strategyEventManager) {
         this.scan = scan;
+        this.scanResource = scanResource;
         this.strategyEventManager = strategyEventManager;
     }
 
@@ -63,7 +66,7 @@ public abstract class AbstractApplicationReadyScanner<T> implements ApplicationR
     public void onApplicationEvent(ApplicationReadyEvent event) {
         ApplicationContext applicationContext = event.getApplicationContext();
 
-        log.debug("[Herodotus] |- ATTRIBUTE SCANNER: application is ready, start to scan attributes!");
+        log.debug("[Herodotus] |- {} SCANNER: application is ready, start to scan {}!", scanResource.name(), scanResource.getValue());
 
         this.serviceId = PropertyResolver.getApplicationName(applicationContext);
 
@@ -79,6 +82,14 @@ public abstract class AbstractApplicationReadyScanner<T> implements ApplicationR
      * @return {@code true} 数据不为空，{@code false} 数据为空。
      */
     protected abstract boolean isNotEmpty(T data);
+
+    /**
+     * 获取结果数量
+     *
+     * @param data 传递的数据
+     * @return 数量
+     */
+    protected abstract int size(T data);
 
 
     protected String getServiceId() {
@@ -115,15 +126,16 @@ public abstract class AbstractApplicationReadyScanner<T> implements ApplicationR
      * 扫描完成，发送 Event 传递数据
      *
      * @param data 扫描到的属性值
-     * @param size 扫描到的数据数量
      */
-    protected void complete(T data, int size) {
+    protected void complete(T data) {
+        int size = size(data);
+
         if (isNotEmpty(data)) {
-            log.debug("[Herodotus] |- ATTRIBUTE SCANNER: found [{}] resources in service [{}], go to next stage!", serviceId, size);
-            log.info("[Herodotus] |- ATTRIBUTE COLLECTOR: sending collection event for service: [{}].", getServiceId());
+            log.debug("[Herodotus] |- {} SCANNER: found [{}] resources in service [{}], go to next stage!", scanResource.name(), getServiceId(), size);
+            log.info("[Herodotus] |- {} COLLECTOR: sending collection event for service: [{}].", scanResource.name(),getServiceId());
             strategyEventManager.postProcess(data);
         } else {
-            log.debug("[Herodotus] |- ATTRIBUTE SCANNER: can not find any resources in service [{}]!", serviceId);
+            log.debug("[Herodotus] |- {} SCANNER: can not find any resources in service [{}]!", scanResource.name(),getServiceId());
         }
     }
 }

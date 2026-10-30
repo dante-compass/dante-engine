@@ -27,12 +27,11 @@ package cn.herodotus.dante.web.autoconfigure.initializer;
 
 import cn.herodotus.dante.core.builder.EnumDictionaryBuilder;
 import cn.herodotus.dante.core.domain.Dictionary;
+import cn.herodotus.dante.core.enums.ScanResource;
 import cn.herodotus.dante.messaging.strategy.EnumDictionaryCollectionEventManager;
+import cn.herodotus.dante.spring.initializer.AbstractApplicationReadyScanner;
 import org.apache.commons.collections4.CollectionUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.boot.context.event.ApplicationReadyEvent;
-import org.springframework.context.ApplicationListener;
+import org.springframework.context.ApplicationContext;
 
 import java.util.List;
 
@@ -42,32 +41,28 @@ import java.util.List;
  * @author : gengwei.zheng
  * @date : 2024/8/23 17:09
  */
-public class EnumDictionaryCollector implements ApplicationListener<ApplicationReadyEvent> {
-
-    private static final Logger log = LoggerFactory.getLogger(EnumDictionaryCollector.class);
+public class EnumDictionaryCollector extends AbstractApplicationReadyScanner<List<Dictionary>> {
 
     private final EnumDictionaryBuilder enumDictionaryBuilder;
-    private final EnumDictionaryCollectionEventManager enumDictionaryCollectionEventManager;
 
     public EnumDictionaryCollector(EnumDictionaryBuilder enumDictionaryBuilder, EnumDictionaryCollectionEventManager enumDictionaryCollectionEventManager) {
+        super(null, ScanResource.ENUMS, enumDictionaryCollectionEventManager);
         this.enumDictionaryBuilder = enumDictionaryBuilder;
-        this.enumDictionaryCollectionEventManager = enumDictionaryCollectionEventManager;
     }
 
     @Override
-    public void onApplicationEvent(ApplicationReadyEvent event) {
-
-        log.debug("[Herodotus] |- [E1] Application is READY, start to scan enum dictionary!");
-
+    protected void onApplicationEvent(ApplicationContext applicationContext) {
         List<Dictionary> dictionaries = enumDictionaryBuilder.getDictionaries();
+        complete(dictionaries);
+    }
 
-        if (CollectionUtils.isNotEmpty(dictionaries)) {
-            log.debug("[Herodotus] |- [E2] Enum dictionary scan found [{}] resources in current service, go to next stage!", dictionaries.size());
-            enumDictionaryCollectionEventManager.postProcess(dictionaries);
-        } else {
-            log.debug("[Herodotus] |- [E2] Enum dictionary scan can not find any resources in current service!");
-        }
+    @Override
+    protected boolean isNotEmpty(List<Dictionary> data) {
+        return CollectionUtils.isNotEmpty(data);
+    }
 
-        log.info("[Herodotus] |- Enum dictionary scan for current service FINISHED!");
+    @Override
+    protected int size(List<Dictionary> data) {
+        return isNotEmpty(data) ? data.size() : 0;
     }
 }
