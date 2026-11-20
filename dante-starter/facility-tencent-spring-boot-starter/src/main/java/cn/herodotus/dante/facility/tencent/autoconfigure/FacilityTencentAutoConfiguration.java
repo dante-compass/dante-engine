@@ -23,23 +23,26 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.assistant.access.condition;
+package cn.herodotus.dante.facility.tencent.autoconfigure;
 
-import cn.herodotus.dante.assistant.access.constant.AccessConstants;
-import cn.herodotus.dante.core.constant.BaseConstants;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-
-import java.lang.annotation.*;
+import jakarta.annotation.PostConstruct;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.boot.autoconfigure.AutoConfiguration;
 
 /**
- * <p>Description: JustAuth开启条件注解 </p>
+ * <p>Description: 基础设置自动配置 </p>
  *
  * @author : gengwei.zheng
- * @date : 2022/1/24 14:40
+ * @date : 2022/2/5 19:09
  */
-@Target({ElementType.TYPE, ElementType.METHOD})
-@Retention(RetentionPolicy.RUNTIME)
-@Documented
-@ConditionalOnProperty(prefix = AccessConstants.PROPERTY_ACCESS_JUSTAUTH, name = BaseConstants.PROPERTY_ENABLED, havingValue = "true")
-public @interface ConditionalOnJustAuthEnabled {
+@AutoConfiguration
+public class FacilityTencentAutoConfiguration {
+
+    private static final Logger log = LoggerFactory.getLogger(FacilityTencentAutoConfiguration.class);
+
+    @PostConstruct
+    public void postConstruct() {
+        log.info("[Herodotus] |- Starter [Facility Tencent] Configure.");
+    }
 }

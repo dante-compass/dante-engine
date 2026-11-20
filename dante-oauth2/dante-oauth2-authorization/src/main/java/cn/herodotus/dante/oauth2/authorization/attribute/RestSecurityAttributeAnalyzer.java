@@ -154,7 +154,7 @@ public class RestSecurityAttributeAnalyzer extends AbstractSecurityAttributeAnal
      */
     public void postLocalResourceMatcherProcess() {
 
-        log.debug("[Herodotus] |- [R3] Process local configured security attribute.");
+        log.debug("[Herodotus] |- ATTRIBUTE SCANNER: process local configured REST security attribute.");
 
         if (MapUtils.isNotEmpty(permitAllAttributes)) {
             Map<UrlCategory, Map<HerodotusRequest, List<HerodotusSecurityAttribute>>> grouping = groupingSecurityMatchers(permitAllAttributes);
@@ -208,6 +208,6 @@ public class RestSecurityAttributeAnalyzer extends AbstractSecurityAttributeAnal
         log.debug("[Herodotus] |- Store full path type security attributes.");
         restSecurityAttributeStorage.addToStorage(matchers, fullPaths, true);
 
-        log.debug("[Herodotus] |- [R7] Security attributes process has FINISHED!");
+        log.debug("[Herodotus] |- ATTRIBUTE DISTRIBUTOR: REST security attributes process has FINISHED!");
     }
 }

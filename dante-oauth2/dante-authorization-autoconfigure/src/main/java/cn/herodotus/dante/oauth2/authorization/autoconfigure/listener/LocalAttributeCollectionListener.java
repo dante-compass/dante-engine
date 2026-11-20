@@ -59,11 +59,11 @@ public class LocalAttributeCollectionListener implements ApplicationListener<Att
     @Override
     public void onApplicationEvent(AttributeCollectionEvent event) {
 
-        log.info("[Herodotus] |- Attribute collection LOCAL listener, response event!");
+        log.info("[Herodotus] |- ATTRIBUTE COLLECTOR: attribute collection LOCAL listener, response event!");
 
         AttributeCollector collector = event.getData();
         if (ObjectUtils.isNotEmpty(collector) && CollectionUtils.isNotEmpty(collector.getAttributes())) {
-            log.debug("[Herodotus] |- [R4] Attribute collect process BEGIN!");
+            log.debug("[Herodotus] |- ATTRIBUTE COLLECTOR: LOCAL attribute collection data process BEGIN!");
             processor.storeAndMergeAttributeCollector(collector, eventManager::postProcess);
         }
     }

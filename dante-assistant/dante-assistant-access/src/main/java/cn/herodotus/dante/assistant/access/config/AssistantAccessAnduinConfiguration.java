@@ -25,25 +25,24 @@
 
 package cn.herodotus.dante.assistant.access.config;
 
-import cn.herodotus.dante.assistant.access.condition.ConditionalOnJustAuthEnabled;
-import cn.herodotus.dante.assistant.access.processor.JustAuthAccessHandler;
-import cn.herodotus.dante.assistant.access.processor.JustAuthProcessor;
-import cn.herodotus.dante.assistant.access.properties.JustAuthProperties;
-import cn.herodotus.dante.assistant.access.stamp.JustAuthStateStampManager;
+import cn.herodotus.dante.assistant.access.condition.ConditionalOnAnduinEnabled;
+import cn.herodotus.dante.assistant.access.processor.AnduinAccessHandler;
+import cn.herodotus.dante.assistant.access.processor.AnduinRequestProcessor;
+import cn.herodotus.dante.assistant.access.properties.AnduinProperties;
+import cn.herodotus.dante.assistant.access.stamp.AnduinStateStampManager;
 import cn.herodotus.dante.security.enums.AccountCategory;
 import jakarta.annotation.PostConstruct;
-import me.zhyd.oauth.utils.JsonUtils;
+import org.dromara.anduin.utils.JsonUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import tools.jackson.databind.ObjectMapper;
 
 /**
- * <p>Description: JustAuth配置 </p>
+ * <p>Description: Anduin配置 </p>
  * <p>
  * 仅在存在herodotus.platform.social.justauth.configs配置的情况下才注入
  *
@@ -51,43 +50,38 @@ import tools.jackson.databind.ObjectMapper;
  * @date : 2021/5/22 11:25
  */
 @Configuration(proxyBeanMethods = false)
-@ConditionalOnJustAuthEnabled
-@EnableConfigurationProperties(JustAuthProperties.class)
-public class AssistantAccessJustAuthConfiguration {
+@ConditionalOnAnduinEnabled
+@EnableConfigurationProperties(AnduinProperties.class)
+public class AssistantAccessAnduinConfiguration {
 
-    private static final Logger log = LoggerFactory.getLogger(AssistantAccessJustAuthConfiguration.class);
+    private static final Logger log = LoggerFactory.getLogger(AssistantAccessAnduinConfiguration.class);
 
     @PostConstruct
     public void postConstruct() {
-        log.debug("[Herodotus] |- Module [Assistant Access JustAuth] Configure.");
+        log.debug("[Herodotus] |- Module [Assistant Access Anduin] Configure.");
     }
 
     @Bean
-    @ConditionalOnMissingBean
-    public JustAuthStateStampManager justAuthStateStampManager(JustAuthProperties justAuthProperties) {
-        JustAuthStateStampManager justAuthStateStampManager = new JustAuthStateStampManager(justAuthProperties);
-        log.trace("[Herodotus] |- Bean [Just Auth State Redis Cache] Configure.");
-        return justAuthStateStampManager;
+    public AnduinStateStampManager anduinStateStampManager(AnduinProperties anduinProperties) {
+        AnduinStateStampManager anduinStateStampManager = new AnduinStateStampManager(anduinProperties);
+        log.trace("[Herodotus] |- Bean [Anduin State Redis Cache] Configure.");
+        return anduinStateStampManager;
     }
 
     @Bean
-    @ConditionalOnBean(JustAuthStateStampManager.class)
-    @ConditionalOnMissingBean
-    public JustAuthProcessor justAuthProcessor(JustAuthStateStampManager justAuthStateStampManager, JustAuthProperties justAuthProperties) {
-        JustAuthProcessor justAuthProcessor = new JustAuthProcessor();
-        justAuthProcessor.setJustAuthStateRedisCache(justAuthStateStampManager);
-        justAuthProcessor.setJustAuthProperties(justAuthProperties);
-        log.trace("[Herodotus] |- Bean [Just Auth Request Generator] Configure.");
-        return justAuthProcessor;
+    public AnduinRequestProcessor anduinRequestProcessor(AnduinProperties anduinProperties, AnduinStateStampManager anduinStateStampManager) {
+        AnduinRequestProcessor processor = new AnduinRequestProcessor(anduinProperties, anduinStateStampManager);
+        log.trace("[Herodotus] |- Bean [Anduin Request Processor] Configure.");
+        return processor;
     }
+
 
     @Bean(AccountCategory.JUST_AUTH_HANDLER)
-    @ConditionalOnBean(JustAuthProcessor.class)
-    @ConditionalOnMissingBean
-    public JustAuthAccessHandler justAuthAccessHandler(JustAuthProcessor justAuthProcessor) {
-        JustAuthAccessHandler justAuthAccessHandler = new JustAuthAccessHandler(justAuthProcessor);
-        log.trace("[Herodotus] |- Bean [Just Auth Access Handler] Configure.");
-        return justAuthAccessHandler;
+    @ConditionalOnBean(AnduinRequestProcessor.class)
+    public AnduinAccessHandler anduinAccessHandler(AnduinRequestProcessor anduinRequestProcessor) {
+        AnduinAccessHandler anduinAccessHandler = new AnduinAccessHandler(anduinRequestProcessor);
+        log.trace("[Herodotus] |- Bean [Anduin Access Handler] Configure.");
+        return anduinAccessHandler;
     }
 
     @Bean

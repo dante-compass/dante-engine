@@ -36,7 +36,7 @@ import cn.binarywang.wx.miniapp.bean.WxMaJscode2SessionResult;
 public class AccessResponse {
 
     /**
-     * JustAuth 认证URL
+     * Anduin 认证URL
      */
     private String authorizeUrl;
     /**

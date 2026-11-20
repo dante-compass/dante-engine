@@ -32,7 +32,6 @@ import cn.herodotus.dante.core.function.ErrorCodeMapperBuilderCustomizer;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
@@ -47,7 +46,7 @@ import java.util.Map;
  */
 @Configuration(proxyBeanMethods = false)
 @Import({
-        AssistantAccessJustAuthConfiguration.class,
+        AssistantAccessAnduinConfiguration.class,
         AssistantAccessSmsConfiguration.class,
         AssistantAccessWxappConfiguration.class,
         AssistantAccessWxmppConfiguration.class
@@ -62,7 +61,6 @@ public class AssistantAccessConfiguration {
     }
 
     @Bean
-    @ConditionalOnMissingBean
     public AccessHandlerStrategyFactory accessHandlerStrategyFactory(Map<String, AccessHandler> handlers) {
         AccessHandlerStrategyFactory accessHandlerStrategyFactory = new AccessHandlerStrategyFactory(handlers);
         log.trace("[Herodotus] |- Bean [Access Handler Strategy Factory] Configure.");

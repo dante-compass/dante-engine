@@ -25,7 +25,7 @@
 
 package cn.herodotus.dante.rest.upms.controller.social;
 
-import cn.herodotus.dante.assistant.access.processor.JustAuthProcessor;
+import cn.herodotus.dante.assistant.access.processor.AnduinRequestProcessor;
 import cn.herodotus.dante.core.domain.Result;
 import cn.herodotus.dante.rest.upms.event.AutomaticSignInEvent;
 import cn.hutool.v7.core.bean.BeanUtil;
@@ -35,7 +35,7 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import me.zhyd.oauth.model.AuthCallback;
+import org.dromara.anduin.model.AuthCallback;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,12 +56,12 @@ import java.util.Map;
  */
 @RestController
 @Tag(name = "社交登录Redirect Url")
-public class JustAuthAccessController {
+public class AnduinAccessController {
 
     @Autowired
     private ApplicationContext applicationContext;
     @Autowired
-    private JustAuthProcessor justAuthProcessor;
+    private AnduinRequestProcessor anduinRequestProcessor;
 
     @Operation(summary = "社交登录redirect url地址", description = "社交登录标准模式的redirect url地址，获取第三方登录返回的code")
     @Parameters({
@@ -78,7 +78,7 @@ public class JustAuthAccessController {
     @Operation(summary = "获取社交登录列表", description = "根据后台已配置社交登录信息，返回可用的社交登录控制列表")
     @GetMapping("/open/identity/sources")
     public Result<Map<String, String>> list() {
-        Map<String, String> list = justAuthProcessor.getAuthorizeUrls();
+        Map<String, String> list = anduinRequestProcessor.getAuthorizeUrls();
         if (MapUtils.isNotEmpty(list)) {
             return Result.success("获取社交登录列表成功", list);
         } else {

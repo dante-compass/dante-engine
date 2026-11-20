@@ -23,43 +23,19 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.assistant.access.stamp;
+package cn.herodotus.dante.feign.autoconfigure.annotation;
 
-import cn.herodotus.dante.assistant.access.constant.AccessConstants;
-import cn.herodotus.dante.assistant.access.properties.JustAuthProperties;
-import cn.herodotus.dante.cache.definition.AbstractStampManager;
-import cn.hutool.v7.core.data.id.IdUtil;
-import me.zhyd.oauth.cache.AuthStateCache;
+import java.lang.annotation.*;
 
 /**
- * <p>Description: 自定义JustAuth State Cache </p>
+ * <p>Description: Feign 内部调用标记注解 </p>
  *
  * @author : gengwei.zheng
- * @date : 2021/5/22 10:22
+ * @date : 2022/5/31 12:10
  */
-public class JustAuthStateStampManager extends AbstractStampManager<String, String> implements AuthStateCache {
+@Target({ElementType.METHOD})
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+public @interface Inner {
 
-    public JustAuthStateStampManager(JustAuthProperties justAuthProperties) {
-        super(AccessConstants.CACHE_NAME_TOKEN_JUSTAUTH, justAuthProperties.getTimeout());
-    }
-
-    @Override
-    public String nextStamp(String key) {
-        return IdUtil.fastSimpleUUID();
-    }
-
-    @Override
-    public void cache(String key, String value) {
-        this.put(key, value);
-    }
-
-    @Override
-    public boolean containsKey(String key) {
-        return this.containKey(key);
-    }
-
-    @Override
-    public void expire(String key) {
-
-    }
 }

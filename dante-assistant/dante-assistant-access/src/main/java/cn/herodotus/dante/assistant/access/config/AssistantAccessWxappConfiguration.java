@@ -27,14 +27,13 @@ package cn.herodotus.dante.assistant.access.config;
 
 import cn.herodotus.dante.assistant.access.condition.ConditionalOnWxappEnabled;
 import cn.herodotus.dante.assistant.access.processor.WxappAccessHandler;
-import cn.herodotus.dante.assistant.access.processor.WxappProcessor;
+import cn.herodotus.dante.assistant.access.processor.WxappRequestProcessor;
 import cn.herodotus.dante.assistant.access.properties.WxappProperties;
 import cn.herodotus.dante.security.enums.AccountCategory;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -58,18 +57,16 @@ public class AssistantAccessWxappConfiguration {
     }
 
     @Bean
-    @ConditionalOnMissingBean
-    public WxappProcessor wxappProcessor(WxappProperties wxappProperties) {
-        WxappProcessor wxappProcessor = new WxappProcessor(wxappProperties);
-        log.trace("[Herodotus] |- Bean [Wxapp Processor] Configure.");
-        return wxappProcessor;
+    public WxappRequestProcessor wxappRequestProcessor(WxappProperties wxappProperties) {
+        WxappRequestProcessor wxappRequestProcessor = new WxappRequestProcessor(wxappProperties);
+        log.trace("[Herodotus] |- Bean [Wxapp Request Processor] Configure.");
+        return wxappRequestProcessor;
     }
 
     @Bean(AccountCategory.WECHAT_MINI_APP_HANDLER)
-    @ConditionalOnBean(WxappProcessor.class)
-    @ConditionalOnMissingBean
-    public WxappAccessHandler wxappAccessHandler(WxappProcessor wxappProcessor) {
-        WxappAccessHandler wxappAccessHandler = new WxappAccessHandler(wxappProcessor);
+    @ConditionalOnBean(WxappRequestProcessor.class)
+    public WxappAccessHandler wxappAccessHandler(WxappRequestProcessor wxappRequestProcessor) {
+        WxappAccessHandler wxappAccessHandler = new WxappAccessHandler(wxappRequestProcessor);
         log.trace("[Herodotus] |- Bean [Wxapp Access Handler] Configure.");
         return wxappAccessHandler;
     }

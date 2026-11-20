@@ -27,7 +27,7 @@ package cn.herodotus.dante.assistant.access.definition.domain;
 
 import com.google.common.base.MoreObjects;
 import io.swagger.v3.oas.annotations.media.Schema;
-import me.zhyd.oauth.enums.AuthUserGender;
+import org.dromara.anduin.enums.AuthUserGender;
 
 /**
  * <p>Description: 外部程序接入返回用户信息 </p>
@@ -38,10 +38,10 @@ import me.zhyd.oauth.enums.AuthUserGender;
 public class AccessUserDetails {
 
     /**
-     * JustAuth中的关键词
-     * 以下内容了解后，将会使你更容易地上手JustAuth。
+     * Anduin中的关键词
+     * 以下内容了解后，将会使你更容易地上手Anduin。
      * <p>
-     * source JustAuth支持的第三方平台，比如：GITHUB、GITEE等
+     * source Anduin支持的第三方平台，比如：GITHUB、GITEE等
      * uuid 一般为第三方平台的用户ID。以下几个平台需特别注意：
      * 钉钉、抖音：uuid 为用户的 unionid
      * 微信公众平台登录、京东、酷家乐、美团：uuid 为用户的 openId

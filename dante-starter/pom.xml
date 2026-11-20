@@ -31,7 +31,7 @@
     <parent>
         <groupId>cn.herodotus.dante</groupId>
         <artifactId>dante-engine</artifactId>
-        <version>4.1.2.0</version>
+        <version>4.1.3.0</version>
     </parent>
 
     <artifactId>dante-starter</artifactId>
@@ -44,6 +44,9 @@
     <modules>
         <module>cache-spring-boot-starter</module>
         <module>data-rdbms-spring-boot-starter</module>
+        <module>facility-alibaba-spring-boot-starter</module>
+        <module>facility-tencent-spring-boot-starter</module>
+        <module>feign-spring-boot-starter</module>
         <module>logging-spring-boot-starter</module>
         <module>oss-spring-boot-starter</module>
         <module>reactive-container-spring-boot-starter</module>

@@ -30,30 +30,30 @@ import cn.herodotus.dante.assistant.access.definition.domain.AccessResponse;
 import cn.herodotus.dante.assistant.access.definition.domain.AccessUserDetails;
 import cn.herodotus.dante.assistant.access.exception.AccessIdentityVerificationFailedException;
 import cn.herodotus.dante.security.domain.AccessPrincipal;
-import me.zhyd.oauth.model.AuthCallback;
-import me.zhyd.oauth.model.AuthResponse;
-import me.zhyd.oauth.model.AuthToken;
-import me.zhyd.oauth.model.AuthUser;
-import me.zhyd.oauth.request.AuthRequest;
 import org.apache.commons.lang3.ObjectUtils;
+import org.dromara.anduin.model.AuthCallback;
+import org.dromara.anduin.model.AuthResponse;
+import org.dromara.anduin.model.AuthToken;
+import org.dromara.anduin.model.AuthUser;
+import org.dromara.anduin.request.AuthRequest;
 
 /**
- * <p>Description: JustAuth 接入处理器 </p>
+ * <p>Description: Anduin 接入处理器 </p>
  *
  * @author : gengwei.zheng
  * @date : 2022/1/25 17:45
  */
-public class JustAuthAccessHandler implements AccessHandler {
+public class AnduinAccessHandler implements AccessHandler {
 
-    private final JustAuthProcessor justAuthProcessor;
+    private final AnduinRequestProcessor anduinRequestProcessor;
 
-    public JustAuthAccessHandler(JustAuthProcessor justAuthProcessor) {
-        this.justAuthProcessor = justAuthProcessor;
+    public AnduinAccessHandler(AnduinRequestProcessor anduinRequestProcessor) {
+        this.anduinRequestProcessor = anduinRequestProcessor;
     }
 
     @Override
     public AccessResponse preProcess(String core, String... params) {
-        String url = justAuthProcessor.getAuthorizeUrl(core);
+        String url = anduinRequestProcessor.getAuthorizeUrl(core);
 
         AccessResponse accessResponse = new AccessResponse();
         accessResponse.setAuthorizeUrl(url);
@@ -62,7 +62,7 @@ public class JustAuthAccessHandler implements AccessHandler {
 
     @Override
     public AccessUserDetails loadUserDetails(String source, AccessPrincipal accessPrincipal) {
-        AuthRequest authRequest = justAuthProcessor.getAuthRequest(source);
+        AuthRequest authRequest = anduinRequestProcessor.getAuthRequest(source);
 
         AuthCallback authCallback = AuthCallback.builder()
                 .code(accessPrincipal.getCode())

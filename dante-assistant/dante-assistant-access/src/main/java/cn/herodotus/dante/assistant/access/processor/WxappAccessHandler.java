@@ -45,15 +45,15 @@ import org.apache.commons.lang3.ObjectUtils;
  */
 public class WxappAccessHandler implements AccessHandler {
 
-    private final WxappProcessor wxappProcessor;
+    private final WxappRequestProcessor wxappRequestProcessor;
 
-    public WxappAccessHandler(WxappProcessor wxappProcessor) {
-        this.wxappProcessor = wxappProcessor;
+    public WxappAccessHandler(WxappRequestProcessor wxappRequestProcessor) {
+        this.wxappRequestProcessor = wxappRequestProcessor;
     }
 
     @Override
     public AccessResponse preProcess(String core, String... params) {
-        WxMaJscode2SessionResult wxMaSession = wxappProcessor.login(core, params[0]);
+        WxMaJscode2SessionResult wxMaSession = wxappRequestProcessor.login(core, params[0]);
         if (ObjectUtils.isNotEmpty(wxMaSession)) {
             AccessResponse accessResponse = new AccessResponse();
             accessResponse.setSession(wxMaSession);
@@ -65,7 +65,7 @@ public class WxappAccessHandler implements AccessHandler {
 
     @Override
     public AccessUserDetails loadUserDetails(String source, AccessPrincipal accessPrincipal) {
-        WxMaUserInfo wxMaUserInfo = wxappProcessor.getUserInfo(accessPrincipal.getAppId(), accessPrincipal.getSessionKey(), accessPrincipal.getEncryptedData(), accessPrincipal.getIv());
+        WxMaUserInfo wxMaUserInfo = wxappRequestProcessor.getUserInfo(accessPrincipal.getAppId(), accessPrincipal.getSessionKey(), accessPrincipal.getEncryptedData(), accessPrincipal.getIv());
         if (ObjectUtils.isNotEmpty(wxMaUserInfo)) {
             return convertWxMaUserInfoToAccessUserDetails(wxMaUserInfo, accessPrincipal);
         }

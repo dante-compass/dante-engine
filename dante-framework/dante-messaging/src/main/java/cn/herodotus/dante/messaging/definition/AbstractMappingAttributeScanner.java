@@ -26,6 +26,7 @@
 package cn.herodotus.dante.messaging.definition;
 
 import cn.herodotus.dante.core.domain.Scan;
+import cn.herodotus.dante.core.enums.ScanResource;
 import cn.herodotus.dante.messaging.domain.AttributeCollector;
 import cn.herodotus.dante.messaging.domain.MappingAttribute;
 import cn.herodotus.dante.messaging.strategy.AttributeCollectionEventManager;
@@ -51,12 +52,17 @@ public abstract class AbstractMappingAttributeScanner extends AbstractApplicatio
     private static final Logger log = LoggerFactory.getLogger(AbstractMappingAttributeScanner.class);
 
     protected AbstractMappingAttributeScanner(Scan scan, AttributeCollectionEventManager attributeCollectionEventManager) {
-        super(scan, attributeCollectionEventManager);
+        super(scan, ScanResource.ATTRIBUTE, attributeCollectionEventManager);
     }
 
     @Override
     protected boolean isNotEmpty(AttributeCollector data) {
         return ObjectUtils.isNotEmpty(data) && CollectionUtils.isNotEmpty(data.getAttributes());
+    }
+
+    @Override
+    protected int size(AttributeCollector data) {
+        return isNotEmpty(data) ? data.getAttributes().size() : 0;
     }
 
     /**
@@ -66,8 +72,8 @@ public abstract class AbstractMappingAttributeScanner extends AbstractApplicatio
      * @param category   映射类别 {@link MappingCategory}
      */
     protected void complete(List<MappingAttribute> attributes, MappingCategory category) {
-        log.info("[Herodotus] |- Scanner for {} resources in service: [{}] COMPLETE!", category.getLabel(), getServiceId());
-        complete(new AttributeCollector(attributes, getServiceId(), category), attributes.size());
+        log.info("[Herodotus] |- ATTRIBUTE SCANNER: scanning for {} resources in service: [{}] COMPLETE!", category.getLabel(), getServiceId());
+        complete(new AttributeCollector(attributes, getServiceId(), category));
     }
 
     /**

@@ -25,17 +25,16 @@
 
 package cn.herodotus.dante.rest.upms.config;
 
-import cn.herodotus.dante.assistant.access.condition.ConditionalOnJustAuthEnabled;
+import cn.herodotus.dante.assistant.access.condition.ConditionalOnAnduinEnabled;
 import cn.herodotus.dante.assistant.access.condition.ConditionalOnSmsEnabled;
 import cn.herodotus.dante.assistant.access.condition.ConditionalOnWxappEnabled;
 import cn.herodotus.dante.logic.upms.annotation.EnableHerodotusLogicUpms;
-import cn.herodotus.dante.rest.upms.controller.social.JustAuthAccessController;
+import cn.herodotus.dante.rest.upms.controller.social.AnduinAccessController;
 import cn.herodotus.dante.rest.upms.controller.social.PhoneNumberAccessController;
 import cn.herodotus.dante.rest.upms.controller.social.WxappAccessController;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -64,28 +63,25 @@ public class RestUpmsConfiguration {
 
     @Bean
     @ConditionalOnSmsEnabled
-    @ConditionalOnMissingBean
     public PhoneNumberAccessController phoneNumberAccessController() {
-        PhoneNumberAccessController phoneNumberAuthenticationController = new PhoneNumberAccessController();
+        PhoneNumberAccessController controller = new PhoneNumberAccessController();
         log.trace("[Herodotus] |- Bean [Phone Number Access Controller] Configure.");
-        return phoneNumberAuthenticationController;
+        return controller;
     }
 
     @Bean
-    @ConditionalOnJustAuthEnabled
-    @ConditionalOnMissingBean
-    public JustAuthAccessController justAuthSignInController() {
-        JustAuthAccessController justAuthAuthenticationController = new JustAuthAccessController();
-        log.trace("[Herodotus] |- Bean [Just Auth Access Controller] Configure.");
-        return justAuthAuthenticationController;
+    @ConditionalOnAnduinEnabled
+    public AnduinAccessController anduinAccessController() {
+        AnduinAccessController controller = new AnduinAccessController();
+        log.trace("[Herodotus] |- Bean [Anduin Access Controller] Configure.");
+        return controller;
     }
 
     @Bean
     @ConditionalOnWxappEnabled
-    @ConditionalOnMissingBean
     public WxappAccessController wxappAccessController() {
-        WxappAccessController wxappAccessController = new WxappAccessController();
+        WxappAccessController controller = new WxappAccessController();
         log.trace("[Herodotus] |- Bean [Wxapp Access Controller] Configure.");
-        return wxappAccessController;
+        return controller;
     }
 }

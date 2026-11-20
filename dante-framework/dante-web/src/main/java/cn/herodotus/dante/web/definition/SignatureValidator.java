@@ -26,7 +26,7 @@
 package cn.herodotus.dante.web.definition;
 
 import cn.herodotus.dante.core.domain.SignatureValidationResult;
-import cn.herodotus.dante.core.enums.SignatureMethod;
+import cn.herodotus.dante.spring.enums.SignatureMethod;
 
 import java.util.Map;
 

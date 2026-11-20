@@ -32,7 +32,7 @@ import java.util.Map;
 /**
  * <p>Description: 自动登录事件 </p>
  * <p>
- * JustAuth 接收到 Callback以后，统一走系统 /oauth/token 接口获取 Token
+ * Anduin 接收到 Callback以后，统一走系统 /oauth/token 接口获取 Token
  *
  * @author : gengwei.zheng
  * @date : 2022/1/26 14:35

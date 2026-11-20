@@ -42,7 +42,7 @@ public interface SysSocialUserRepository extends BaseJpaRepository<SysSocialUser
     /**
      * 通过 uuid 和 source查询用户
      *
-     * @param uuid   JustAuth返回信息中uuid，具体信息查询JustAuth {@see :https://justauth.wiki/quickstart/explain.html}
+     * @param uuid   Anduin返回信息中uuid，具体信息查询Anduin {@see :https://justauth.wiki/quickstart/explain.html}
      * @param source 第三方登录类型的字符串
      * @return SysSocialUser
      */
