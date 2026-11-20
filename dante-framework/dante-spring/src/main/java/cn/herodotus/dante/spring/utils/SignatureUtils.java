@@ -23,11 +23,11 @@
  * 6. 若您的项目无法满足以上几点，可申请商业授权
  */
 
-package cn.herodotus.dante.core.utils;
+package cn.herodotus.dante.spring.utils;
 
 import cn.herodotus.dante.core.constant.SymbolConstants;
 import cn.herodotus.dante.core.domain.SignatureValidationResult;
-import cn.herodotus.dante.core.enums.SignatureMethod;
+import cn.herodotus.dante.spring.enums.SignatureMethod;
 import cn.hutool.v7.crypto.SecureUtil;
 import org.apache.commons.lang3.Strings;
 

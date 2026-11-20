@@ -27,8 +27,8 @@ package cn.herodotus.dante.web.autoconfigure.support;
 
 import cn.herodotus.dante.core.constant.SystemConstants;
 import cn.herodotus.dante.core.domain.SignatureValidationResult;
-import cn.herodotus.dante.core.enums.SignatureMethod;
-import cn.herodotus.dante.core.utils.SignatureUtils;
+import cn.herodotus.dante.spring.enums.SignatureMethod;
+import cn.herodotus.dante.spring.utils.SignatureUtils;
 import cn.herodotus.dante.web.autoconfigure.stamp.SignatureRandomStampManager;
 import cn.herodotus.dante.web.definition.SignatureValidator;
 

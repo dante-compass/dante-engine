@@ -132,10 +132,10 @@ public abstract class AbstractApplicationReadyScanner<T> implements ApplicationR
 
         if (isNotEmpty(data)) {
             log.debug("[Herodotus] |- {} SCANNER: found [{}] resources in service [{}], go to next stage!", scanResource.name(), getServiceId(), size);
-            log.info("[Herodotus] |- {} COLLECTOR: sending collection event for service: [{}].", scanResource.name(),getServiceId());
+            log.info("[Herodotus] |- {} COLLECTOR: sending collection event for service: [{}].", scanResource.name(), getServiceId());
             strategyEventManager.postProcess(data);
         } else {
-            log.debug("[Herodotus] |- {} SCANNER: can not find any resources in service [{}]!", scanResource.name(),getServiceId());
+            log.debug("[Herodotus] |- {} SCANNER: can not find any resources in service [{}]!", scanResource.name(), getServiceId());
         }
     }
 }
