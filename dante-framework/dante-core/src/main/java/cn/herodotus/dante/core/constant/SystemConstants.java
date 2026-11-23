@@ -93,6 +93,9 @@ public interface SystemConstants {
     String BEARER_TOKEN = BEARER_TYPE + SymbolConstants.SPACE;
     String BASIC_TYPE = "Basic";
     String BASIC_TOKEN = BASIC_TYPE + SymbolConstants.SPACE;
+
+    String AUTHORITY_PREFIX = "SCOPE_";
+
     /**
      * OAuth2 Default Endpoint
      */

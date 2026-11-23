@@ -27,6 +27,7 @@ package cn.herodotus.dante.servlet.container.autoconfigure.oauth2;
 
 import cn.herodotus.dante.security.definition.BearerTokenResolver;
 import cn.herodotus.dante.servlet.container.autoconfigure.context.ServletServiceContextAutoConfiguration;
+import cn.herodotus.dante.servlet.container.autoconfigure.restclient.RestClientAutoConfiguration;
 import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -41,9 +42,10 @@ import org.springframework.data.domain.AuditorAware;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.security.oauth2.server.resource.authentication.BearerTokenAuthenticationToken;
 import org.springframework.security.oauth2.server.resource.introspection.OpaqueTokenIntrospector;
+import org.springframework.web.client.RestClient;
 
-@AutoConfiguration(after = ServletServiceContextAutoConfiguration.class)
-@ConditionalOnClass(BearerTokenAuthenticationToken.class)
+@AutoConfiguration(after = {ServletServiceContextAutoConfiguration.class, RestClientAutoConfiguration.class})
+@ConditionalOnClass({BearerTokenAuthenticationToken.class, RestClient.class})
 @Import({
         ServletRestControllerAdvice.class
 })
@@ -62,8 +64,8 @@ public class ServletOAuth2AuthorizationAutoConfiguration {
 
         @Bean
         @ConditionalOnMissingBean
-        public OpaqueTokenIntrospector herodotusServletOpaqueTokenIntrospector(OAuth2ResourceServerProperties resourceServerProperties) {
-            HerodotusServletOpaqueTokenIntrospector introspector = new HerodotusServletOpaqueTokenIntrospector(resourceServerProperties);
+        public OpaqueTokenIntrospector herodotusServletOpaqueTokenIntrospector(OAuth2ResourceServerProperties resourceServerProperties, RestClient restClient) {
+            HerodotusServletOpaqueTokenIntrospector introspector = new HerodotusServletOpaqueTokenIntrospector(resourceServerProperties, restClient);
             log.trace("[Herodotus] |- Bean [Herodotus Servlet Opaque Token Introspector] Configure.");
             return introspector;
         }
