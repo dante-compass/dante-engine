@@ -27,16 +27,18 @@ package cn.herodotus.dante.rest.oss.proxy;
 
 import cn.herodotus.dante.assistant.oss.properties.OssProperties;
 import jakarta.servlet.http.HttpServletRequest;
-import org.springframework.http.*;
-import org.springframework.http.client.SimpleClientHttpRequestFactory;
+import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StreamUtils;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.web.client.RestClient;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.Collections;
 import java.util.List;
 import java.util.function.Function;
@@ -51,38 +53,35 @@ import java.util.function.Function;
 public class OssPresignedUrlProxy {
 
     private final Function<HttpServletRequest, String> function;
-    private final RestTemplate restTemplate;
+    private final RestClient restClient;
 
     public OssPresignedUrlProxy(OssProperties ossProperties) {
         this.function = new OssProxyAddressFunction(ossProperties);
-        this.restTemplate = new RestTemplate(new SimpleClientHttpRequestFactory());
+        this.restClient = RestClient.builder().build();
     }
 
     public ResponseEntity<String> delegate(HttpServletRequest request) {
         try {
-            String target = function.apply(request);
-            RequestEntity<byte[]> requestEntity = createRequestEntity(request, target);
-            return restTemplate.exchange(requestEntity, String.class);
+            String targetUrl = function.apply(request);
+
+            String method = request.getMethod();
+            HttpMethod originalMethod = StringUtils.isNotEmpty(method) ? HttpMethod.valueOf(method) : HttpMethod.GET;
+            HttpHeaders originalHeaders = readRequestHeader(request);
+
+            RestClient.RequestBodySpec spec = restClient
+                    .method(originalMethod)
+                    .uri(targetUrl)
+                    .headers(headers -> headers.putAll(originalHeaders));
+
+            byte[] body = readRequestBody(request);
+            if (ArrayUtils.isNotEmpty(body)) {
+                spec.body(body);
+            }
+
+            return spec.retrieve().toEntity(String.class);
         } catch (Exception e) {
             return new ResponseEntity<>("Delegate ERROR", HttpStatus.INTERNAL_SERVER_ERROR);
         }
-    }
-
-    /**
-     * 创建请求
-     *
-     * @param request 请求 {@link HttpServletRequest}
-     * @param url     请求地址
-     * @return 具体请求
-     * @throws URISyntaxException uri语法错误
-     * @throws IOException        io错误
-     */
-    private RequestEntity<byte[]> createRequestEntity(HttpServletRequest request, String url) throws URISyntaxException, IOException {
-        String method = request.getMethod();
-        HttpMethod httpMethod = method != null ? HttpMethod.valueOf(method) : null;
-        HttpHeaders headers = readRequestHeader(request);
-        byte[] body = readRequestBody(request);
-        return new RequestEntity<>(body, headers, httpMethod, new URI(url));
     }
 
     /**
