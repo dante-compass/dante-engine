@@ -28,7 +28,7 @@ package cn.herodotus.dante.message.autoconfigure.mqtt;
 import cn.herodotus.dante.messaging.constant.MessageConstants;
 import com.google.common.base.MoreObjects;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.integration.mqtt.support.MqttHeaders;
+import org.springframework.integration.mqtt.client.support.MqttHeaders;
 
 import java.time.Duration;
 import java.util.List;
@@ -43,9 +43,13 @@ import java.util.List;
 public class MqttProperties {
 
     /**
-     * Mqtt 服务器地址，支持多个
+     * Mqtt 服务器主机地址
      */
-    private List<String> serverUrls;
+    private String host;
+    /**
+     * Mqtt 服务器主机端口。默认：8883
+     */
+    private Integer port = 8883;
     /**
      * 连接用户名
      */
@@ -66,7 +70,7 @@ public class MqttProperties {
      * <p>
      * 默认值为60秒
      */
-    private Duration keepAliveInterval = Duration.ofSeconds(60);
+    private Duration keepAlive = Duration.ofSeconds(60);
     /**
      * 设置如果连接丢失，客户端是否会自动尝试重新连接到服务器。
      * <p>
@@ -79,7 +83,7 @@ public class MqttProperties {
     /**
      * 第一次自动重新连接尝试前等待的时间（秒）。默认值 1 秒
      */
-    private Duration automaticReconnectMinDelay = Duration.ofSeconds(1);
+    private Duration automaticReconnectInitialDelay = Duration.ofSeconds(1);
     /**
      * 等待自动重新连接尝试的最长时间（秒）。默认值 120 秒
      */
@@ -138,12 +142,20 @@ public class MqttProperties {
      */
     private List<String> defaultSubscribes = List.of("herodotus.mqtt");
 
-    public List<String> getServerUrls() {
-        return serverUrls;
+    public String getHost() {
+        return host;
     }
 
-    public void setServerUrls(List<String> serverUrls) {
-        this.serverUrls = serverUrls;
+    public void setHost(String host) {
+        this.host = host;
+    }
+
+    public Integer getPort() {
+        return port;
+    }
+
+    public void setPort(Integer port) {
+        this.port = port;
     }
 
     public String getUsername() {
@@ -170,12 +182,12 @@ public class MqttProperties {
         this.clientId = clientId;
     }
 
-    public Duration getKeepAliveInterval() {
-        return keepAliveInterval;
+    public Duration getKeepAlive() {
+        return keepAlive;
     }
 
-    public void setKeepAliveInterval(Duration keepAliveInterval) {
-        this.keepAliveInterval = keepAliveInterval;
+    public void setKeepAlive(Duration keepAlive) {
+        this.keepAlive = keepAlive;
     }
 
     public Boolean getAutomaticReconnect() {
@@ -186,12 +198,12 @@ public class MqttProperties {
         this.automaticReconnect = automaticReconnect;
     }
 
-    public Duration getAutomaticReconnectMinDelay() {
-        return automaticReconnectMinDelay;
+    public Duration getAutomaticReconnectInitialDelay() {
+        return automaticReconnectInitialDelay;
     }
 
-    public void setAutomaticReconnectMinDelay(Duration automaticReconnectMinDelay) {
-        this.automaticReconnectMinDelay = automaticReconnectMinDelay;
+    public void setAutomaticReconnectInitialDelay(Duration automaticReconnectInitialDelay) {
+        this.automaticReconnectInitialDelay = automaticReconnectInitialDelay;
     }
 
     public Duration getAutomaticReconnectMaxDelay() {
@@ -261,13 +273,14 @@ public class MqttProperties {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("serverUrls", serverUrls)
+                .add("host", host)
+                .add("port", port)
                 .add("username", username)
                 .add("password", password)
                 .add("clientId", clientId)
-                .add("keepAliveInterval", keepAliveInterval)
+                .add("keepAlive", keepAlive)
                 .add("automaticReconnect", automaticReconnect)
-                .add("automaticReconnectMinDelay", automaticReconnectMinDelay)
+                .add("automaticReconnectInitialDelay", automaticReconnectInitialDelay)
                 .add("automaticReconnectMaxDelay", automaticReconnectMaxDelay)
                 .add("cleanStart", cleanStart)
                 .add("sessionExpiryInterval", sessionExpiryInterval)
@@ -275,7 +288,6 @@ public class MqttProperties {
                 .add("topicExpression", topicExpression)
                 .add("defaultQos", defaultQos)
                 .add("maximumPacketSize", maximumPacketSize)
-                .add("defaultSubscribes", defaultSubscribes)
                 .toString();
     }
 }

@@ -25,16 +25,14 @@
 
 package cn.herodotus.dante.message.autoconfigure.emqx;
 
-import cn.herodotus.dante.messaging.constant.Channels;
 import cn.herodotus.dante.message.emqx.condition.ConditionalOnEventSource;
 import cn.herodotus.dante.message.emqx.condition.EventSource;
 import cn.herodotus.dante.message.emqx.event.SystemClientConnectedEvent;
 import cn.herodotus.dante.message.emqx.event.SystemClientDisconnectedEvent;
 import cn.herodotus.dante.message.emqx.event.SystemClientSubscribedEvent;
 import cn.herodotus.dante.message.emqx.event.SystemClientUnsubscribedEvent;
+import cn.herodotus.dante.messaging.constant.Channels;
 import jakarta.annotation.PostConstruct;
-import org.eclipse.paho.mqttv5.client.IMqttAsyncClient;
-import org.eclipse.paho.mqttv5.client.MqttConnectionOptions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -44,8 +42,8 @@ import org.springframework.integration.context.IntegrationContextUtils;
 import org.springframework.integration.dsl.IntegrationFlow;
 import org.springframework.integration.dsl.MessageChannels;
 import org.springframework.integration.event.outbound.ApplicationEventPublishingMessageHandler;
-import org.springframework.integration.mqtt.core.ClientManager;
-import org.springframework.integration.mqtt.inbound.Mqttv5PahoMessageDrivenChannelAdapter;
+import org.springframework.integration.mqtt.client.core.Mqtt5ClientManager;
+import org.springframework.integration.mqtt.client.inbound.Mqtt5MessageDrivenChannelAdapter;
 import org.springframework.messaging.MessageChannel;
 
 /**
@@ -105,13 +103,13 @@ class EmqxSystemTopicToEventFlowConfiguration {
 
     @Bean
     public IntegrationFlow emqxSystemTopicToEventFlow(
-            ClientManager<IMqttAsyncClient, MqttConnectionOptions> clientManager,
+            Mqtt5ClientManager mqtt5ClientManager,
             ApplicationEventPublishingMessageHandler applicationEventPublishingMessageHandler,
             @Qualifier(Channels.EMQX__DEFAULT_SYSTEM_TOPIC_INBOUND_CHANNEL) MessageChannel emqxDefaultSystemTopicInboundChannel,
             @Qualifier(Channels.EMQX__DEFAULT_INBOUND_TO_EVENT_CHANNEL) MessageChannel emqxDefaultInboundToEventChannel) {
-        Mqttv5PahoMessageDrivenChannelAdapter adapter = new Mqttv5PahoMessageDrivenChannelAdapter(clientManager, EMQX_MONITOR_TOPICS);
+        Mqtt5MessageDrivenChannelAdapter adapter = new Mqtt5MessageDrivenChannelAdapter(mqtt5ClientManager, EMQX_MONITOR_TOPICS);
         adapter.setPayloadType(String.class);
-        adapter.setManualAcks(false);
+        adapter.setManualAck(false);
         adapter.setOutputChannel(emqxDefaultSystemTopicInboundChannel);
         adapter.setErrorChannelName(IntegrationContextUtils.ERROR_CHANNEL_BEAN_NAME);
 

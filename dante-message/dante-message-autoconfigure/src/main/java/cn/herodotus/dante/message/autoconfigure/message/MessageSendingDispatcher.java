@@ -52,7 +52,7 @@ import java.util.function.Supplier;
  * @author : gengwei.zheng
  * @date : 2024/10/25 21:06
  */
-public class MessageSendingDispatcher  {
+public class MessageSendingDispatcher {
 
     private static final Logger log = LoggerFactory.getLogger(MessageSendingDispatcher.class);
 

@@ -34,7 +34,7 @@ import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Import;
-import org.springframework.integration.mqtt.core.ClientManager;
+import org.springframework.integration.mqtt.client.core.ClientManager;
 
 /**
  * <p>Description: Emqx Integration 自动配置 </p>
