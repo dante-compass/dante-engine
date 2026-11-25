@@ -114,10 +114,10 @@ public class HerodotusKeyConverter implements Function<Object, Object> {
     private String originalKeyToMd5(Object value) {
         try {
             String json = this.objectMapper.writeValueAsString(value);
-            log.trace("[Herodotus] |- Cache keyConverter convert queryKey to json is : [{}]", json);
+            log.trace("[Herodotus] |- Convert queryKey to json is : [{}]", json);
             return SecureUtil.md5(json);
         } catch (JacksonException e) {
-            log.error("[Herodotus] |- Cache keyConverter convert cache error when to json! {}", e.getMessage());
+            log.error("[Herodotus] |- Convert queryKey to json catch error! {}", e.getMessage());
             return null;
         }
     }
