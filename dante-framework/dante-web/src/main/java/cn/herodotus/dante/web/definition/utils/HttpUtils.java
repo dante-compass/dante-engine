@@ -27,11 +27,13 @@ package cn.herodotus.dante.web.definition.utils;
 
 import cn.herodotus.dante.core.constant.SymbolConstants;
 import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.Strings;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -54,12 +56,18 @@ public class HttpUtils {
      */
     private static Map<String, String> rawCookieToMap(String cookie) {
         if (StringUtils.isNotBlank(cookie)) {
-            return Stream.of(cookie.split(SymbolConstants.SEMICOLON_AND_SPACE))
-                    .map(pair -> pair.split(SymbolConstants.EQUAL))
-                    .collect(Collectors.toMap(kv -> kv[0], kv -> kv[1]));
-        } else {
-            return Collections.emptyMap();
+
+            String[] items = StringUtils.split(cookie, SymbolConstants.SEMICOLON_AND_SPACE);
+            if (ArrayUtils.isNotEmpty(items)) {
+                return Arrays.stream(items)
+                        .map(pair -> StringUtils.split(pair, SymbolConstants.EQUAL))
+                        // 过滤掉 pair 没有值的情况，防止后续 kv[1] 出现索引错误 例如：emqxauth=
+                        .filter(value -> ArrayUtils.isArrayIndexValid(value, 1))
+                        .collect(Collectors.toMap(kv -> kv[0], kv -> kv[1]));
+            }
         }
+
+        return Collections.emptyMap();
     }
 
     /**

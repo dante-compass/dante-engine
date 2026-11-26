@@ -54,9 +54,9 @@ public class ServiceProperties {
     public static class Scanner {
 
         private Scan rest = new Scan();
-        private Scan grpc = new  Scan();
-        private Scan task = new  Scan();
-        private Scan mcp = new  Scan();
+        private Scan grpc = new Scan();
+        private Scan task = new Scan();
+        private Scan mcp = new Scan();
 
         public Scan getRest() {
             return rest;
