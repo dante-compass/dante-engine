@@ -28,6 +28,7 @@ package cn.herodotus.dante.oauth2.authentication.converter;
 import cn.herodotus.dante.core.constant.SystemConstants;
 import cn.herodotus.dante.persistence.commons.utils.OAuth2SettingUtils;
 import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.security.oauth2.server.authorization.AbstractOAuth2ClientRegistration;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
@@ -36,8 +37,6 @@ import org.springframework.security.oauth2.server.authorization.settings.ClientS
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 
 /**
  * <p>Description:  {@link RegisteredClient} 转 SAS 客户端注册实体转换器抽象定义 </p>
@@ -52,10 +51,9 @@ import java.util.stream.Collectors;
  */
 abstract class AbstractFromRegisteredClientConverter<T extends AbstractOAuth2ClientRegistration> implements Converter<RegisteredClient, T> {
 
-    private static final List<String> CLIENT_METADATA = List.of(
-            SystemConstants.PARAMETER__PRODUCT_KEY,
-            SystemConstants.PARAMETER__TOKEN_FORMAT,
-            SystemConstants.PARAMETER__APPLICATION_TYPE);
+    private static final Map<String, String> CLIENT_METADATA = Map.of(
+            SystemConstants.CLIENT_SETTINGS__PRODUCT_KEY, SystemConstants.PARAMETER__PRODUCT_KEY,
+            SystemConstants.CLIENT_SETTINGS__APPLICATION_TYPE, SystemConstants.PARAMETER__APPLICATION_TYPE);
 
     private final boolean supportResourceIndicators;
 
@@ -76,9 +74,13 @@ abstract class AbstractFromRegisteredClientConverter<T extends AbstractOAuth2Cli
             }
         }
 
-        claims.putAll(CLIENT_METADATA.stream()
-                .filter(metadata -> clientSettings.getSetting(metadata) != null)
-                .collect(Collectors.toMap(Function.identity(), clientSettings::getSetting)));
+        CLIENT_METADATA.forEach((key, value) -> {
+            Object settingValue = clientSettings.getSetting(key);
+            if (ObjectUtils.isNotEmpty(settingValue)) {
+                claims.put(value, settingValue);
+            }
+        });
+
         return claims;
     }
 }
