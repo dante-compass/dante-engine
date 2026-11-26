@@ -31,6 +31,7 @@ import cn.herodotus.dante.message.autoconfigure.event.IntegrationEventAutoConfig
 import cn.herodotus.dante.message.autoconfigure.mqtt.gateway.MqttMessagingGateway;
 import cn.herodotus.dante.messaging.constant.Channels;
 import cn.hutool.v7.core.util.ByteUtil;
+import com.hivemq.client.mqtt.MqttClientTransportConfig;
 import com.hivemq.client.mqtt.datatypes.MqttQos;
 import com.hivemq.client.mqtt.lifecycle.MqttClientAutoReconnect;
 import com.hivemq.client.mqtt.mqtt5.Mqtt5Client;
@@ -124,6 +125,11 @@ public class IntegrationMqttAutoConfiguration {
                 .password(ByteUtil.toBytes(mqttProperties.getPassword(), StandardCharsets.UTF_8))
                 .build();
 
+        MqttClientTransportConfig transportConfig = MqttClientTransportConfig.builder()
+                .mqttConnectTimeout(mqttProperties.getMqttConnectTimeout().toMillis(), TimeUnit.MILLISECONDS)
+                .socketConnectTimeout(mqttProperties.getSocketConnectTimeout().toMillis(), TimeUnit.MILLISECONDS)
+                .build();
+
         Mqtt5ClientConfig config;
         if (mqttProperties.getAutomaticReconnect()) {
             MqttClientAutoReconnect autoReconnect = MqttClientAutoReconnect.builder()
@@ -135,6 +141,7 @@ public class IntegrationMqttAutoConfiguration {
                     .identifier(mqttProperties.getClientId())
                     .serverHost(mqttProperties.getHost())
                     .serverPort(mqttProperties.getPort())
+                    .transportConfig(transportConfig)
                     .simpleAuth(auth)
                     .automaticReconnect(autoReconnect)
                     .build()
@@ -145,6 +152,7 @@ public class IntegrationMqttAutoConfiguration {
                     .identifier(mqttProperties.getClientId())
                     .serverHost(mqttProperties.getHost())
                     .serverPort(mqttProperties.getPort())
+                    .transportConfig(transportConfig)
                     .simpleAuth(auth)
                     .build()
                     .getConfig();

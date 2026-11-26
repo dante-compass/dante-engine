@@ -45,11 +45,11 @@ public class MqttProperties {
     /**
      * Mqtt 服务器主机地址
      */
-    private String host;
+    private String host = "localhost";
     /**
      * Mqtt 服务器主机端口。默认：8883
      */
-    private Integer port = 8883;
+    private Integer port = 1883;
     /**
      * 连接用户名
      */
@@ -88,6 +88,16 @@ public class MqttProperties {
      * 等待自动重新连接尝试的最长时间（秒）。默认值 120 秒
      */
     private Duration automaticReconnectMaxDelay = Duration.ofSeconds(120);
+
+    /**
+     * 连接套接字到服务器的超时。单位：毫秒。默认：10000
+     */
+    private Duration socketConnectTimeout = Duration.ofMillis(10000);
+
+    /**
+     * 发送Connect消息与接收ConnAck消息之间的超时时间。单位：毫秒。默认：10000
+     */
+    private Duration mqttConnectTimeout = Duration.ofMillis(10000);
     /**
      * 设置客户端和服务器是否应在重新启动和重新连接时记住状态。
      * <p>
@@ -214,6 +224,22 @@ public class MqttProperties {
         this.automaticReconnectMaxDelay = automaticReconnectMaxDelay;
     }
 
+    public Duration getSocketConnectTimeout() {
+        return socketConnectTimeout;
+    }
+
+    public void setSocketConnectTimeout(Duration socketConnectTimeout) {
+        this.socketConnectTimeout = socketConnectTimeout;
+    }
+
+    public Duration getMqttConnectTimeout() {
+        return mqttConnectTimeout;
+    }
+
+    public void setMqttConnectTimeout(Duration mqttConnectTimeout) {
+        this.mqttConnectTimeout = mqttConnectTimeout;
+    }
+
     public Boolean getCleanStart() {
         return cleanStart;
     }
@@ -282,6 +308,8 @@ public class MqttProperties {
                 .add("automaticReconnect", automaticReconnect)
                 .add("automaticReconnectInitialDelay", automaticReconnectInitialDelay)
                 .add("automaticReconnectMaxDelay", automaticReconnectMaxDelay)
+                .add("socketConnectTimeout", socketConnectTimeout)
+                .add("mqttConnectTimeout", mqttConnectTimeout)
                 .add("cleanStart", cleanStart)
                 .add("sessionExpiryInterval", sessionExpiryInterval)
                 .add("topicHeader", topicHeader)
